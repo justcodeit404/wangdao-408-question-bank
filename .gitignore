@@ -1,0 +1,65 @@
+# Large / copyrighted PDFs and backups
+*.pdf
+*.pdf.backup
+
+# OCR raw outputs and extracted page images
+ocr/
+ocr_*/
+pdf_images/
+pdf_images_*/
+
+# Generated JS data bundles (rebuilt by build_all.py)
+math-bank/data.js
+math-bank/data-*.js
+
+# Python / tool caches
+__pycache__/
+*.pyc
+*.pyo
+.playwright-mcp/
+
+# Backup / temp files
+*.backup
+*.bak
+*.bak-*
+*.old
+*.log
+*.pid
+
+# Local screenshots / verification images
+*.png
+*.jpg
+*.jpeg
+
+# Runtime / test outputs
+scripts_output/*.old
+scripts_output/ocr_p8.json
+scripts_output/qa_pairs_new.json
+db*.json
+ds_test.json
+test_raw.json
+test_raw_sample.*
+no_answer_remaining.json
+no_answer_list*.json
+inspect_noanswer*
+ocr_headers_check.txt
+page*.txt
+pages_*.txt
+raw_samples.*
+raw_tree.txt
+qa_around_*.json
+chapter_diffs.json
+issue_samples_exact.json
+answer_search.json
+app_answer_search.json
+b_tree_sections.json
+ds_algo_chapter.json
+search_sections.json
+toc_btree.json
+toc_search.json
+correction_list.html
+questions_all.json
+
+# HTML backups
+math-bank/*.backup*
+math-bank/*.bak*

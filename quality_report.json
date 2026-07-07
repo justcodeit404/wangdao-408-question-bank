@@ -1,0 +1,256 @@
+{
+  "courses": {
+    "数据结构": {
+      "total": 796,
+      "chapters": 57,
+      "counts": {
+        "no_answer": 7,
+        "no_options": 0,
+        "empty_content": 0,
+        "choice_without_choice": 0,
+        "app_with_choice": 0,
+        "has_subquestion_markers": 1,
+        "has_image_markers": 141,
+        "no_image_ref": 0
+      },
+      "issues": {
+        "no_answer": [
+          {
+            "chapter": "线性表 · 线性表的顺序表示 · 解答题",
+            "id": "A09",
+            "type": "计算题",
+            "content_preview": "【2010统考真题】设将n（n>1）个整数存放到一维数组R中。设计一个在时间和空间\n两方面都尽可能高效的算法。将R中保存的序列循环左移p（O<p<n）个位置，即",
+            "page": 23
+          },
+          {
+            "chapter": "线性表 · 线性表的链式表示 · 解答题",
+            "id": "A08",
+            "type": "计算题",
+            "content_preview": "设A和B是两个单链表（带头结点），其中元素递增有序。设计一个算法从A和B中\n的公共元素产生单链表C，要求不破坏A、B的结点。",
+            "page": 44
+          },
+          {
+            "chapter": "树与二叉树 · 树的基本概念 · 解答题",
+            "id": "A04",
+            "type": "计算题",
+            "content_preview": "已知一棵度为m的树中，有n个度为1的结点，有n2个度为2的结点.….有nm个度为\nm的结点，问该树有多少个叶结点?",
+            "page": 131
+          },
+          {
+            "chapter": "树与二叉树 · 二叉树的遍历和线索二叉树 · 解答题",
+            "id": "A17",
+            "type": "计算题",
+            "content_preview": "【2022统考真题】已知非空二叉树T的结点值均为正整数，采用顺序存储方式保存，数\n据结构定义如下:\ntypedef struct { //MAX_SIZE为已定",
+            "page": 151
+          },
+          {
+            "chapter": "查找 · 顺序查找和折半查找 · 解答题",
+            "id": "A06",
+            "type": "计算题",
+            "content_preview": "已知一个n阶矩阵A和一个目标值k。该矩阵无重复元素，每行从左到右升序排列，每\n列从上到下升序排列。请设计一个在时间上尽可能高效的算法，判断矩阵中是否存在目\n1 ",
+            "page": 274
+          },
+          {
+            "chapter": "排序 · 选择排序 · 解答题",
+            "id": "A04",
+            "type": "计算题",
+            "content_preview": "通常使用的堆也称二叉堆，因为它是用完全二叉树来实现的，树中结点最多只有两个孩\n子。同理可以有m叉堆，即用完全m叉树来实现的堆。\n1）下图是一个m叉小根堆，问m值",
+            "page": 359
+          },
+          {
+            "chapter": "排序 · 各种内部排序算法的比较及应用 · 解答题",
+            "id": "A04",
+            "type": "计算题",
+            "content_preview": "设有一个数组中存放了一个无序的关键序列K,K2,\",Kn。现要求将K,放在将元素排序\n后的正确位置上，试编写实现该功能的算法，要求比较关键字的次数不超过n。",
+            "page": 379
+          }
+        ],
+        "has_subquestion_markers": [
+          {
+            "chapter": "栈、队列和数组 · 栈和队列的应用 · 选择题",
+            "id": "X07",
+            "type": "选择题",
+            "content_preview": "设有如下递归函数，在func（func（5））的执行过程中，第4个被执行的func函数是（）。\nint func(int x){\nif(x<=3) return",
+            "page": 99
+          }
+        ]
+      },
+      "issue_totals": {
+        "no_answer": 7,
+        "has_subquestion_markers": 1
+      }
+    },
+    "组成原理": {
+      "total": 663,
+      "chapters": 42,
+      "counts": {
+        "no_answer": 6,
+        "no_options": 0,
+        "empty_content": 0,
+        "choice_without_choice": 0,
+        "app_with_choice": 0,
+        "has_subquestion_markers": 0,
+        "has_image_markers": 23,
+        "no_image_ref": 0
+      },
+      "issues": {
+        "no_answer": [
+          {
+            "chapter": "数据的表示和运算 · 运算方法和运算电路 · 解答题",
+            "id": "A05",
+            "type": "计算题",
+            "content_preview": "【2011统考真题】假定在一个8位字长的计算机中运行如下C程序段:\nunsigned int x=134;\nunsigned int y=246;\nint m=",
+            "page": 49
+          },
+          {
+            "chapter": "数据的表示和运算 · 运算方法和运算电路 · 解答题",
+            "id": "A06",
+            "type": "计算题",
+            "content_preview": "【2020统考真题】有实现xXy的两个C语言函数如下:\nunsigned umul (unsigned x, unsigned y) {return x*y;\n",
+            "page": 49
+          },
+          {
+            "chapter": "指令系统 · 程序的机器级代码表示 · 解答题",
+            "id": "A08",
+            "type": "计算题",
+            "content_preview": "【2024 统考真题】对于题05中的计算机M，C语言程序P包含的语句“sum+=a[i];”在\nM中对应的指令序列S如下。\nslli r4, r2, 2 //R",
+            "page": 186
+          },
+          {
+            "chapter": "指令系统 · 程序的机器级代码表示 · 解答题",
+            "id": "A09",
+            "type": "计算题",
+            "content_preview": "【2025统考真题】现有C语言程序P的部分代码如下所示。假定运行程序P的计算机\nM字长为 32 位，按字节编址。假定P的部分机器级代码如图(a)所示，其中，R0",
+            "page": 186
+          },
+          {
+            "chapter": "中央处理器 · 数据通路的功能和基本结构 · 解答题",
+            "id": "A10",
+            "type": "计算题",
+            "content_preview": "【2022统考真题】某CPU中部分数据通路如下图所示，其中，GPRs为通用寄存器组;\nFR为标志寄存器，用于存放ALU产生的标志信息；带箭头虚线表示控制信号，如",
+            "page": 218
+          },
+          {
+            "chapter": "输入/输出系统 · I/O方式 · 解答题",
+            "id": "A11",
+            "type": "计算题",
+            "content_preview": "【2022统考真题】假设某磁盘驱动器中有4个双面盘片，每个盘面有20000个磁道，每\n个磁道有500个扇区，每个扇区可记录512字节的数据，盘片转速为7200r",
+            "page": 314
+          }
+        ]
+      },
+      "issue_totals": {
+        "no_answer": 6
+      }
+    },
+    "计算机网络": {
+      "total": 627,
+      "chapters": 44,
+      "counts": {
+        "no_answer": 7,
+        "no_options": 0,
+        "empty_content": 0,
+        "choice_without_choice": 0,
+        "app_with_choice": 0,
+        "has_subquestion_markers": 1,
+        "has_image_markers": 75,
+        "no_image_ref": 0
+      },
+      "issues": {
+        "no_answer": [
+          {
+            "chapter": "计算机网络体系结构 · 计算机网络概述 · 解答题",
+            "id": "A02",
+            "type": "计算题",
+            "content_preview": "考虑一个最大距离为 2km 的局域网，当带宽多大时，传播时延（传播速率为 2x10*m/s）等\n于100B分组的发送时延？对于512B分组，结果又如何?",
+            "page": 14
+          },
+          {
+            "chapter": "数据链路层 · 流量控制与可靠传输机制 · 解答题",
+            "id": "A03",
+            "type": "计算题",
+            "content_preview": "假设一个信道的数据传输速率为 5kb/s，单向传播时延为 30ms，帧长在什么范围内时,\n才能使用于差错控制的停止-等待协议的效率至少为50%？（忽略确认帧的发",
+            "page": 72
+          },
+          {
+            "chapter": "数据链路层 · 流量控制与可靠传输机制 · 解答题",
+            "id": "A08",
+            "type": "计算题",
+            "content_preview": "【2017统考真题】甲乙双方均采用后退N帧协议（GBN）进行持续的双向数据传输,\n且双方始终采用捎带确认，帧长均为1000B。Sx,和Rxy分别表示甲方和乙方发",
+            "page": 72
+          },
+          {
+            "chapter": "网络层 · IPv4 · 解答题",
+            "id": "A19",
+            "type": "计算题",
+            "content_preview": "【2025统考真题】某公司在承建国家重大工程项目时，工程部需要较长时间驻扎在偏远\n山区，工程部网络需要连接公司总部网络。假设综合考虑方案的技术可行性、安全性与\n",
+            "page": 156
+          },
+          {
+            "chapter": "网络层 · IPv4 · 解答题",
+            "id": "A20",
+            "type": "计算题",
+            "content_preview": "10.10.33/26\n总部\n生活区子网\n服务器\n请回答下列问题。\n1）若忽略卫星信号中继以及TR1和TR2调制解调的时间开销，则R1到R2之间卫星链\n路的单向",
+            "page": 156
+          },
+          {
+            "chapter": "网络层 · 路由算法与路由协议 · 解答题",
+            "id": "A07",
+            "type": "计算题",
+            "content_preview": "【2024统考真题】网络空间是继陆海空天之后的“第五疆域”，网络技术是网络疆域建\n设与治理的基础。路由算法与协议是网络核心技术之一，对其准确认知、合理选择与应用",
+            "page": 201
+          },
+          {
+            "chapter": "传输层 · UDP · 解答题",
+            "id": "A05",
+            "type": "计算题",
+            "content_preview": "一个UDP用户数据报的数据字段为8192B，要使用以太网来传送。假定IP数据报无选\n项。试问应当划分为几个IP数据报片？说明每个IP数据报片的数据字段长度和片段",
+            "page": 236
+          }
+        ],
+        "has_subquestion_markers": [
+          {
+            "chapter": "计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题",
+            "id": "X23",
+            "type": "选择题",
+            "content_preview": "在OSI参考模型中，提供流量控制功能的层是第（①）层；提供建立、维护和拆除端到\n端的连接的层是（②)；为数据分组提供在网络中路由功能的是（③)；传输层提供(④)",
+            "page": 27
+          }
+        ]
+      },
+      "issue_totals": {
+        "no_answer": 7,
+        "has_subquestion_markers": 1
+      }
+    },
+    "操作系统": {
+      "total": 751,
+      "chapters": 28,
+      "counts": {
+        "no_answer": 0,
+        "no_options": 0,
+        "empty_content": 0,
+        "choice_without_choice": 0,
+        "app_with_choice": 0,
+        "has_subquestion_markers": 0,
+        "has_image_markers": 40,
+        "no_image_ref": 0
+      },
+      "issues": {},
+      "issue_totals": {}
+    }
+  },
+  "summary": {
+    "total_questions": 2837,
+    "total_issues": {
+      "no_answer": 20,
+      "no_options": 0,
+      "empty_content": 0,
+      "choice_without_choice": 0,
+      "app_with_choice": 0,
+      "has_subquestion_markers": 2,
+      "has_image_markers": 279,
+      "no_image_ref": 0
+    }
+  }
+}
