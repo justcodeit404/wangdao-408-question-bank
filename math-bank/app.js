@@ -43,14 +43,23 @@ async function loadBankData(courseName) {
   const resultText = document.getElementById('resultText');
   try {
     if (!window.loadCourseData) throw new Error('data.js loader not found');
+    if (resultText) resultText.innerHTML = '正在加载课程数据…';
     bank = await window.loadCourseData(courseName);
   } catch (e) {
     console.error(e);
-    if (resultText) resultText.textContent = '课程数据加载失败：' + e.message;
+    if (resultText) {
+      resultText.innerHTML = '课程数据加载失败：' + escapeHtml(e.message) +
+        ' <a href="#" onclick="retryLoadCourse();return false;" style="color:var(--accent)">重试</a>';
+    }
     bank = null;
   } finally {
     isLoadingCourse = false;
   }
+}
+
+function retryLoadCourse() {
+  const course = getCurrentCourse();
+  if (course) loadBankData(course);
 }
 
 const STATUS_KEY = 'mathbank_status_v1';
@@ -166,7 +175,7 @@ function syncUrl() {
 function restoreFromUrl() {
   const params = new URLSearchParams(window.location.search);
   const course = params.get('course');
-  if (course && (bank.courses || []).some(c => c.name === course)) selectedCourse = course;
+  if (course && getAvailableCourses().some(c => c.name === course)) selectedCourse = course;
   selectedChapter = params.get('chapter') || '';
   document.getElementById('typeFilter').value = params.get('type') || '';
   document.getElementById('featureFilter').value = params.get('feature') || '';
@@ -179,10 +188,30 @@ function restoreFromUrl() {
 // ========================
 function buildAllQuestions() {
   allQuestions = [];
+  const tokenSplitRe = /[\s,.;:!?。，；：！？、（）()\[\]"'"]+/;
   currentChapters.forEach(ch => {
     const chapterKey = (ch.l1_name || '?') + '|' + (ch.l2_name || '?') + '|' + (ch.section_type || '?');
     ch.questions.forEach(q => {
       const entry = {...q, chapter: ch.name, chapterKey: chapterKey, course: ch.course || ''};
+
+      // 为每道题建立可搜索 token 集合，多词搜索时比长字符串 includes 更快且更准
+      const tokens = new Set();
+      function addTokens(text) {
+        if (!text) return;
+        text.toLowerCase().split(tokenSplitRe).forEach(t => { if (t.length > 1) tokens.add(t); });
+      }
+      addTokens(q.content);
+      addTokens(ch.name);
+      addTokens(q.id);
+      if (q.sub_questions) q.sub_questions.forEach(addTokens);
+      if (q.options) Object.values(q.options).forEach(addTokens);
+      if (q.answer) {
+        if (q.answer.choice) addTokens(q.answer.choice);
+        if (q.answer.explanation) addTokens(q.answer.explanation);
+      }
+      entry._searchTokens = tokens;
+
+      // 保留完整搜索文本用于连续子串兜底
       const parts = [q.content, ch.name, q.id];
       if (q.sub_questions) parts.push(...q.sub_questions);
       if (q.options) parts.push(...Object.values(q.options));
@@ -425,9 +454,7 @@ function renderStats() {
   const stats = [
     {label: '总题数', value: allQuestions.length, action: 'all'},
     {label: '选择', value: types['选择题'] || 0, action: '选择题'},
-    {label: '计算', value: types['计算题'] || 0, action: '计算题'},
-    {label: '证明', value: types['证明题'] || 0, action: '证明题'},
-    {label: '填空', value: types['填空题'] || 0, action: '填空题'},
+    {label: '解答', value: types['解答题'] || 0, action: '解答题'},
     {label: '子问', value: counts.sub, action: 'sub'},
     {label: '图片', value: counts.image, action: 'image'},
     {label: '收藏', value: favCount, action: 'favorite', kind: 'status'},
@@ -445,6 +472,8 @@ function renderStats() {
 
   container.querySelectorAll('.stat-pill').forEach(item => {
     item.addEventListener('click', () => {
+      // 顶部统计胶囊属于全局筛选，清空已选章节以展示全部相关题目
+      selectedChapter = '';
       const action = item.dataset.stat;
       const kind = item.dataset.kind;
       if (kind === 'status') {
@@ -473,6 +502,7 @@ function renderStats() {
       }
       currentPage = 1;
       applyFilters();
+      renderChapters();
       renderStats();
     });
   });
@@ -482,6 +512,7 @@ function renderStats() {
 // Filtering & Search
 // ========================
 function filterQuestions(source, opts) {
+  const tokenSplitRe = /[\s,.;:!?。，；：！？、（）()\[\]"'"]+/;
   return source.filter(q => {
     if (opts.chapter && q.chapterKey !== opts.chapter) return false;
     if (opts.type && q.type !== opts.type) return false;
@@ -492,7 +523,15 @@ function filterQuestions(source, opts) {
       if (opts.status === 'done' && st !== 'correct' && st !== 'wrong') return false;
       if (opts.status !== 'done' && st !== opts.status) return false;
     }
-    if (opts.search && !q._searchText.includes(opts.search)) return false;
+    if (opts.search) {
+      const term = opts.search;
+      // 1) 连续子串命中：保持原有搜索行为
+      if (q._searchText.includes(term)) return true;
+      // 2) 多词分词命中：每个长度>1的词都出现在题目 token 集合中
+      const words = term.split(tokenSplitRe).filter(w => w.length > 1);
+      if (words.length > 1 && words.every(w => q._searchTokens.has(w))) return true;
+      return false;
+    }
     return true;
   });
 }
@@ -552,8 +591,8 @@ function renderGrid(search) {
   }
 
   grid.innerHTML = pageQs.map((q, i) => {
-    const typeClass = q.type === '选择题' ? 'choice' : q.type === '证明题' ? 'proof' : q.type === '填空题' ? 'fill' : '';
-    const typeShort = q.type === '选择题' ? '选择' : q.type === '计算题' ? '计算' : q.type === '证明题' ? '证明' : q.type === '填空题' ? '填空' : q.type;
+    const typeClass = q.type === '选择题' ? 'choice' : 'nonchoice';
+    const typeShort = q.type === '选择题' ? '选择' : '解答';
     const tags = [];
     if (q.sub_questions) tags.push(`${q.sub_questions.length} 个子问`);
     if (q.has_image) tags.push('含图片');
@@ -857,7 +896,7 @@ function renderModalContent(q) {
   const container = document.getElementById('modalContent');
   container.innerHTML = `
     <div class="q-chapter">${escapeHtml(q.chapter)} · 第 ${q.page} 页</div>
-    <div class="q-id">${escapeHtml(q.id)} <span class="row-type ${q.type === '选择题' ? 'choice' : q.type === '证明题' ? 'proof' : q.type === '填空题' ? 'fill' : ''}">${q.type}</span></div>
+    <div class="q-id">${escapeHtml(q.id)} <span class="row-type ${q.type === '选择题' ? 'choice' : 'nonchoice'}">${q.type}</span></div>
     ${questionBodyHtml(q)}
   `;
   renderQuestionBody(container, q);
@@ -1058,10 +1097,13 @@ function resumePractice(saved) {
   return true;
 }
 
-const PRACTICE_KEY = 'mathbank_practice_' + document.title;
-function saveProgress() { try { localStorage.setItem(PRACTICE_KEY, JSON.stringify({ids: practiceQueue.map(questionKey), index: practiceIndex})); } catch(e) {} }
-function loadProgress() { try { const r = localStorage.getItem(PRACTICE_KEY); return r ? JSON.parse(r) : null; } catch(e) { return null; } }
-function clearProgress() { try { localStorage.removeItem(PRACTICE_KEY); } catch(e) {} }
+function practiceKey(courseName) {
+  // 使用固定前缀 + 课程名，避免 document.title 变化导致进度丢失，同时按课程隔离进度
+  return 'mathbank_practice_v1_' + (courseName || getCurrentCourse() || 'default');
+}
+function saveProgress() { try { localStorage.setItem(practiceKey(), JSON.stringify({ids: practiceQueue.map(questionKey), index: practiceIndex})); } catch(e) {} }
+function loadProgress() { try { const r = localStorage.getItem(practiceKey()); return r ? JSON.parse(r) : null; } catch(e) { return null; } }
+function clearProgress() { try { localStorage.removeItem(practiceKey()); } catch(e) {} }
 
 function randomQuestion() {
   if (filteredQuestions.length === 0) return;
@@ -1190,13 +1232,18 @@ function renderKatex(element) {
 const katexCache = new Map();
 
 function renderMath(latex, displayMode) {
+  if (!latex || !latex.trim()) return '';
   const key = (displayMode ? 'D:' : 'I:') + latex;
   if (katexCache.has(key)) return katexCache.get(key);
   let html;
   try {
     html = katex.renderToString(latex, {throwOnError: false, displayMode});
+    // 若 KaTeX 返回了错误标记，回退为纯文本，避免页面出现大片红色错误提示
+    if (html && html.includes('katex-error')) {
+      html = `<span class="katex-fallback">${escapeHtml(latex)}</span>`;
+    }
   } catch (e) {
-    html = `<span class="katex-error" title="${escapeHtml(e.message)}">${escapeHtml(latex)}</span>`;
+    html = `<span class="katex-fallback" title="${escapeHtml(String(e.message))}">${escapeHtml(latex)}</span>`;
   }
   katexCache.set(key, html);
   return html;

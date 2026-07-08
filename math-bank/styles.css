@@ -663,8 +663,7 @@ img, svg { display: block; }
 }
 
 .row-type.choice { background: var(--success-soft); color: var(--success); }
-.row-type.proof { background: var(--warning-soft); color: var(--warning); }
-.row-type.fill { background: var(--danger-soft); color: var(--danger); }
+.row-type.nonchoice { background: var(--warning-soft); color: var(--warning); }
 
 .row-body {
   min-width: 0;

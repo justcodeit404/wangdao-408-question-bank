@@ -2,20 +2,30 @@
 *.pdf
 *.pdf.backup
 
-# OCR raw outputs and extracted page images
-ocr/
-ocr_*/
-pdf_images/
-pdf_images_*/
+# Extracted page images (large, can be regenerated from PDFs)
+assets/pdf_images/
 
-# Generated JS data bundles (rebuilt by build_all.py)
+# OCR raw outputs
+data/ocr/
+
+# Extracted TOC / QA pairs (can be regenerated from PDFs)
+data/qa/
+data/toc/
+
+# Generated questions, reports and frontend bundles
+output/
 math-bank/data.js
+math-bank/data-*.json
+math-bank/data-*.json.gz
 math-bank/data-*.js
+math-bank/数据结构题库.html
 
 # Python / tool caches
 __pycache__/
 *.pyc
 *.pyo
+.pytest_cache/
+tests/__pycache__/
 .playwright-mcp/
 
 # Backup / temp files
@@ -30,36 +40,9 @@ __pycache__/
 *.png
 *.jpg
 *.jpeg
+screenshots/
+tmp/
 
-# Runtime / test outputs
-scripts_output/*.old
-scripts_output/ocr_p8.json
-scripts_output/qa_pairs_new.json
-db*.json
-ds_test.json
-test_raw.json
-test_raw_sample.*
-no_answer_remaining.json
-no_answer_list*.json
-inspect_noanswer*
-ocr_headers_check.txt
-page*.txt
-pages_*.txt
-raw_samples.*
-raw_tree.txt
-qa_around_*.json
-chapter_diffs.json
-issue_samples_exact.json
-answer_search.json
-app_answer_search.json
-b_tree_sections.json
-ds_algo_chapter.json
-search_sections.json
-toc_btree.json
-toc_search.json
-correction_list.html
-questions_all.json
-
-# HTML backups
-math-bank/*.backup*
-math-bank/*.bak*
+# Deprecated / leftover directories
+scripts_output/
+archive/
