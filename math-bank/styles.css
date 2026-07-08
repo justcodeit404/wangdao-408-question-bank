@@ -680,6 +680,7 @@ img, svg { display: block; }
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  white-space: pre-wrap;
 }
 
 .row-meta {
@@ -877,6 +878,7 @@ img, svg { display: block; }
   background: var(--surface-secondary);
   border-radius: var(--radius-lg);
   border: 1px solid var(--border);
+  white-space: pre-wrap;
 }
 
 .modal-content .q-options { margin-bottom: 18px; }
@@ -893,6 +895,7 @@ img, svg { display: block; }
   display: flex;
   align-items: flex-start;
   gap: 10px;
+  white-space: pre-wrap;
 }
 
 .option-item:hover { border-color: var(--accent); background: var(--surface-hover); }
@@ -931,6 +934,7 @@ img, svg { display: block; }
   margin-bottom: 8px;
   font-size: 0.98rem;
   line-height: 1.7;
+  white-space: pre-wrap;
 }
 
 .q-image {

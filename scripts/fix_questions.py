@@ -271,22 +271,106 @@ def extract_choice_from_explanation(expl):
     return None
 
 
+# 圆圈数字与阿拉伯数字的映射，用于 OCR 修正和子问题拆分
+_CIRCLE_NUMBERS = '①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳'
+_CIRCLE_TO_ARABIC = {c: i + 1 for i, c in enumerate(_CIRCLE_NUMBERS)}
+_ARABIC_TO_CIRCLE = {i + 1: c for i, c in enumerate(_CIRCLE_NUMBERS)}
+_CIRCLE_RE = re.compile('[' + _CIRCLE_NUMBERS + ']')
+_CODE_LINE_RE = re.compile(r'\b(if|else|for|while|return|void|int|char|float|double|printf|scanf)\b|[{};]|=|\+\+|--|\[.*\]')
+
+
+def looks_like_code(line):
+    """判断一行文本是否像代码行（用于 OCR 圆圈数字修正）。"""
+    return bool(_CODE_LINE_RE.search(line))
+
+
+def fix_circle_number_ocr(content):
+    """修正 OCR 把圆圈数字识别为单独阿拉伯数字行的问题。
+
+    例如：
+      i++;
+      2 y=0;
+    其中单独一行的 '2' 出现在代码段之间，应修正为 '②'。
+    """
+    if not content:
+        return content
+    lines = content.split('\n')
+    new_lines = []
+    for i, line in enumerate(lines):
+        s = line.strip()
+        # 处理行首单独出现的 2-9，可能后面跟着子问题内容（如 "2 y=0;"）
+        m = re.match(r'^([2-9])\s+(.*)$', s)
+        if m:
+            num, rest = m.group(1), m.group(2)
+            prev = lines[i - 1] if i > 0 else ''
+            nxt = lines[i + 1] if i + 1 < len(lines) else ''
+            # 前后都是代码行，或当前行剩余部分像代码，才修正为圆圈数字
+            if looks_like_code(prev) and looks_like_code(nxt) and looks_like_code(rest):
+                new_lines.append(_ARABIC_TO_CIRCLE.get(int(num), num) + ' ' + rest)
+                continue
+        new_lines.append(line)
+    return '\n'.join(new_lines)
+
+
 def split_sub_questions(content):
-    """识别题干中的 （1）...（2）... 并拆分。返回 (主题干, [子问1, 子问2, ...])。
-    如果无法拆分，返回 (content, None)。"""
+    """识别题干中的子问题标记并拆分。
+
+    支持：
+      - 圆圈数字：①、②、③ …
+      - 中文括号：（1）、（2）…
+      - 半角括号：(1)、(2) …
+
+    如果第一个子问题没有显式标记（如 OCR 漏识别），但主题干后面紧跟着代码段，
+    则把主题干之后、第一个标记之前的代码段作为第一个子问题。
+
+    返回 (主题干, [子问1, 子问2, ...])。如果无法拆分，返回 (content, None)。
+    """
     if not content:
         return content, None
-    # 支持中文括号 （1） 和半角括号 (1)
-    pattern = r'[\(（]([1-9]\d*)[\)）]'
-    markers = list(re.finditer(pattern, content))
-    if len(markers) < 2:
+
+    # 先修正 OCR 常见的圆圈数字误识别
+    content = fix_circle_number_ocr(content)
+
+    # 收集圆圈数字标记位置及其数字
+    markers = []
+    for m in _CIRCLE_RE.finditer(content):
+        markers.append((m.start(), _CIRCLE_TO_ARABIC[m.group(0)]))
+
+    # 按位置排序
+    markers.sort(key=lambda x: x[0])
+
+    # 至少需要两个显式圆圈数字标记；如果只有一个标记但主题干后面紧跟着代码段，
+    # 且主题干明确提示有多个子问题（如"各程序段""下列""分别"），才可推断第一个
+    # 子问题没有标记，按两个子问题处理。
+    main_preview = content[:markers[0][0]].strip() if markers else content.strip()
+    first_marker_num = markers[0][1] if markers else 0
+    implicit_hint_words = ['各', '下列', '分别']
+    has_implicit_hint = any(w in main_preview for w in implicit_hint_words)
+    has_implicit_first = (
+        len(markers) == 1
+        and first_marker_num > 1
+        and has_implicit_hint
+        and '\n' in content
+        and looks_like_code(content)
+    )
+    if len(markers) < 2 and not has_implicit_first:
         return content, None
 
-    main = content[:markers[0].start()].strip()
+    main = content[:markers[0][0]].strip()
     subs = []
-    for i, m in enumerate(markers):
-        start = m.start()
-        end = markers[i + 1].start() if i + 1 < len(markers) else len(content)
+
+    # 如果主题干后面紧跟着代码/内容，说明第一个子问题没有标记
+    # 把主题干中第一行之后的部分作为第一个子问题
+    if '\n' in main and looks_like_code(main) and has_implicit_hint:
+        first_newline = content.find('\n')
+        main = content[:first_newline].strip()
+        first_sub = content[first_newline + 1:markers[0][0]].strip()
+        if first_sub:
+            subs.append(first_sub)
+
+    for i, (pos, num) in enumerate(markers):
+        start = pos
+        end = markers[i + 1][0] if i + 1 < len(markers) else len(content)
         sub = content[start:end].strip()
         if sub:
             subs.append(sub)
@@ -387,6 +471,11 @@ def fix_file(path, pdf_images_dir=None, course_key=None):
 
     for ch in data.get('chapters', []):
         for q in ch.get('questions', []):
+            # 清理历史误拆：选择题不应有 sub_questions
+            if q.get('type') == '选择题' and q.get('sub_questions'):
+                q['content'] = (q.get('content', '') + '\n' + '\n'.join(q.get('sub_questions', []))).strip()
+                q['sub_questions'] = None
+
             ans = q.get('answer') or {}
             expl = (ans.get('explanation') or '').strip()
 
@@ -425,8 +514,8 @@ def fix_file(path, pdf_images_dir=None, course_key=None):
                 ans['explanation'] = fix_common_ocr_errors(ans['explanation'])
                 q['answer'] = ans
 
-            # 5. 拆分子问题
-            if not q.get('sub_questions'):
+            # 5. 拆分子问题（仅解答题，避免选择题选项中的编号被误拆）
+            if not q.get('sub_questions') and q.get('type') != '选择题':
                 main, subs = split_sub_questions(cleaned)
                 if subs:
                     q['content'] = main
