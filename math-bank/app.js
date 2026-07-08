@@ -66,6 +66,12 @@ const STATUS_KEY = 'mathbank_status_v1';
 let statusMap = {};
 
 function questionKey(q) { return q.chapter + '::' + q.id; }
+function displayId(q) { return (q.id || '').replace(/^[XA]/, ''); }
+function normalizeDisplayText(text) {
+  if (!text) return text;
+  // 修复 OCR 导致的括号左右不一致：如 （) 或 (） 统一为 （）
+  return text.replace(/（\s*\)/g, '（）').replace(/\(\s*）/g, '（）');
+}
 function getTotalPages() { return Math.ceil(filteredQuestions.length / pageSize) || 1; }
 
 function shuffleArray(arr) {
@@ -599,13 +605,13 @@ function renderGrid(search) {
     const statusIcons = statusIconsHtml(q);
 
     return `
-      <div class="question-row" tabindex="0" role="button" aria-label="${q.id} ${q.type}" data-index="${start + i}">
-        <span class="row-index">#${start + i + 1}</span>
+      <div class="question-row" tabindex="0" role="button" aria-label="${displayId(q)} ${q.type}" data-index="${start + i}">
+        <span class="row-index">${start + i + 1}</span>
         <span class="row-type ${typeClass}">${typeShort}</span>
         <div class="row-body">
           <div class="row-content" id="card-text-${start+i}"></div>
           <div class="row-meta">
-            <span>${escapeHtml(q.id)}</span>
+            <span>${escapeHtml(displayId(q))}</span>
             <span class="dot"></span>
             <span>第 ${q.page} 页</span>
             <span class="dot"></span>
@@ -627,7 +633,7 @@ function renderGrid(search) {
         && q.sub_questions && q.sub_questions.length > 0
           ? q.sub_questions[0]
           : q.content;
-      el.textContent = preview;
+      el.textContent = normalizeDisplayText(preview);
       renderKatex(el);
       if (search) highlightText(el, search);
     }
@@ -738,7 +744,7 @@ function bindRevealAnswer(container) {
     const q = container._q;
     if (q && q.answer) {
       if (ansText && q.answer.explanation) {
-        ansText.textContent = q.answer.explanation;
+        ansText.textContent = normalizeDisplayText(q.answer.explanation);
         renderKatex(ansText);
       }
       ansBox.hidden = false;
@@ -778,7 +784,7 @@ function bindPracticeInteractions(container, q) {
           }
           const expl = fb.querySelector('[data-role="feedbackExplain"]');
           if (expl && q.answer && q.answer.explanation) {
-            expl.textContent = '解析：' + q.answer.explanation;
+            expl.textContent = '解析：' + normalizeDisplayText(q.answer.explanation);
             renderKatex(expl);
           }
         }
@@ -837,7 +843,7 @@ function restorePracticeState(container, q) {
       }
       const expl = fb.querySelector('[data-role="feedbackExplain"]');
       if (expl && q.answer && q.answer.explanation) {
-        expl.textContent = '解析：' + q.answer.explanation;
+        expl.textContent = '解析：' + normalizeDisplayText(q.answer.explanation);
         renderKatex(expl);
       }
     }
@@ -848,7 +854,7 @@ function restorePracticeState(container, q) {
     if (btn) { btn.disabled = true; btn.parentElement.style.display = 'none'; }
     if (ansBox) ansBox.hidden = false;
     if (ansText && q.answer && q.answer.explanation) {
-      ansText.textContent = q.answer.explanation;
+      ansText.textContent = normalizeDisplayText(q.answer.explanation);
       renderKatex(ansText);
     }
   }
@@ -867,20 +873,20 @@ function questionBodyHtml(q, mode) {
 
 function renderQuestionBody(container, q, mode) {
   const qtext = container.querySelector('[data-role="qtext"]');
-  if (qtext) { qtext.textContent = q.content; renderKatex(qtext); }
+  if (qtext) { qtext.textContent = normalizeDisplayText(q.content); renderKatex(qtext); }
 
   if (q.options) {
     const optMathEls = container.querySelectorAll('.opt-math');
     const entries = Object.entries(q.options);
     optMathEls.forEach((el, i) => {
-      if (entries[i]) { el.textContent = entries[i][1]; renderKatex(el); }
+      if (entries[i]) { el.textContent = normalizeDisplayText(entries[i][1]); renderKatex(el); }
     });
   }
 
   if (q.sub_questions) {
     const subEls = container.querySelectorAll('[data-role="sub"]');
     q.sub_questions.forEach((s, i) => {
-      if (subEls[i]) { subEls[i].textContent = s; renderKatex(subEls[i]); }
+      if (subEls[i]) { subEls[i].textContent = normalizeDisplayText(s); renderKatex(subEls[i]); }
     });
   }
 
@@ -896,7 +902,7 @@ function renderModalContent(q) {
   const container = document.getElementById('modalContent');
   container.innerHTML = `
     <div class="q-chapter">${escapeHtml(q.chapter)} · 第 ${q.page} 页</div>
-    <div class="q-id">${escapeHtml(q.id)} <span class="row-type ${q.type === '选择题' ? 'choice' : 'nonchoice'}">${q.type}</span></div>
+    <div class="q-id">${escapeHtml(displayId(q))} <span class="row-type ${q.type === '选择题' ? 'choice' : 'nonchoice'}">${q.type}</span></div>
     ${questionBodyHtml(q)}
   `;
   renderQuestionBody(container, q);
@@ -1016,7 +1022,7 @@ function renderPractice() {
   const progress = `${practiceIndex + 1} / ${practiceQueue.length}`;
 
   container.innerHTML = `
-    <div class="practice-progress">${escapeHtml(q.chapter)} · ${escapeHtml(q.id)} · ${progress}</div>
+    <div class="practice-progress">${escapeHtml(q.chapter)} · ${escapeHtml(displayId(q))} · ${progress}</div>
     <div class="practice-question">
       <div class="q-id" style="margin-bottom:14px;font-size:0.95rem;color:var(--text-tertiary);font-weight:600;">${q.type} · 第 ${q.page} 页</div>
       ${questionBodyHtml(q, 'practice')}
