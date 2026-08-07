@@ -8,6 +8,8 @@ import sys
 from pathlib import Path
 import fitz
 
+from utils import write_json_atomic
+
 
 def main():
     if len(sys.argv) < 3:
@@ -24,9 +26,7 @@ def main():
     # 同时落一份 toc.json 到 data/（兼容旧用法）
     stem = Path(out_json).stem.replace('_qa_pairs', '')
     toc_path = Path('data') / f'toc_{stem}.json'
-    toc_path.parent.mkdir(parents=True, exist_ok=True)
-    with open(toc_path, 'w', encoding='utf-8') as f:
-        json.dump(toc, f, ensure_ascii=False, indent=2)
+    write_json_atomic(toc_path, toc, indent=2, ensure_ascii=False)
     print(f'已保存 {toc_path}')
     qa_pairs = []
     L3_indices = [i for i, t in enumerate(toc) if t[0] == 3]
@@ -74,9 +74,8 @@ def main():
         })
 
     print(f'找到 {len(qa_pairs)} 个 题目-答案 对')
-    Path(out_json).parent.mkdir(parents=True, exist_ok=True)
-    with open(out_json, 'w', encoding='utf-8') as f:
-        json.dump({'total_pages': total_pages, 'qa_pairs': qa_pairs}, f, ensure_ascii=False, indent=2)
+    write_json_atomic(out_json, {'total_pages': total_pages, 'qa_pairs': qa_pairs},
+                      indent=2, ensure_ascii=False)
     print(f'已保存 {out_json}')
     doc.close()
 

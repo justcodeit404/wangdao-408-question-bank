@@ -10,7 +10,11 @@
 import json
 import sys
 from pathlib import Path
-from rapidocr_onnxruntime import RapidOCR
+
+# monorepo OCR 规则：统一 GPU 入口
+_REPO = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(_REPO / "tools"))
+from ocr_gpu import create_rapid_ocr  # noqa: E402
 
 
 def main():
@@ -24,7 +28,7 @@ def main():
     label = sys.argv[4]
 
     ocr_dir.mkdir(parents=True, exist_ok=True)
-    engine = RapidOCR()
+    engine, _backend = create_rapid_ocr()
     data = json.load(open(qa_json, encoding='utf-8'))
     qa = data['qa_pairs']
     total_pages = data['total_pages']

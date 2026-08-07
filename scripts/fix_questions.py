@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """对 questions_*.json 应用安全的自动修复：
-  1. 从解析文本中提取缺失的选择题答案 choice
-  2. 拆分题干中的子问题标记 （1）...（2）... 为 sub_questions
-  3. 对题干含图标记的题目设置 has_image=true，并按题目 bbox 裁剪出精准截图
-  4. 清理空 explanation 占位符
+1. 从解析文本中提取缺失的选择题答案 choice
+2. 拆分题干中的子问题标记 （1）...（2）... 为 sub_questions
+3. 对题干含图标记的题目设置 has_image=true，并按题目 bbox 裁剪出精准截图
+4. 清理空 explanation 占位符
 """
+
 import json
 import re
 import sys
@@ -13,78 +14,647 @@ from pathlib import Path
 from PIL import Image
 
 from config import image_dir_for, PROJECT_ROOT, MATH_BANK_DIR, COURSE_BY_OUT_JSON
+from parse_patterns import has_real_image_ref
 
-sys.stdout.reconfigure(encoding='utf-8')
+sys.stdout.reconfigure(encoding="utf-8")
 
 # 题目区域截图的四周留白（像素）
 # 原 60 过大会把相邻题目也裁进来；10 足够保留插图边缘，同时最大限度避免混入邻题
 CROP_PADDING = 10
 
-# 题干中真正指向附图/插图的短语；避免把“图论”“并查集涉及图”等讨论主题的"图"字误标
-IMAGE_MARKERS = [
-    '如图', '见下图', '如下图所示', '如图所示', '图中所示',
-    '右图', '左图', '下图', '上图', '给出下图', '给出上图',
-]
+# 已逐页对照原书确认的少量补丁。放在主修复流程中，避免下次全量重建又丢失。
+CURATED_OPTION_PATCHES = {
+    ("ds", 360, "X18"): {
+        "D": "6,1,7,9,8,4,5→7,1,6,9,8,4,5→7,9,6,1,8,4,5→9,7,6,1,8,4,5→9,8,6,1,7,4,5",
+    },
+    # 2009 统考真题：打印缓冲区题与下一道 2012 操作符栈题在 OCR 时被串接，
+    # 导致本题选项错贴成 2012 题的 5/7/8/11。已对照真题订正。
+    ("ds", 100, "X12"): {
+        "A": "栈",
+        "B": "队列",
+        "C": "树",
+        "D": "图",
+    },
+    # 对称矩阵下三角按行压缩：OCR 把 A 的 "+j" 吃掉并把 1 读成 3。
+    # 对照 assets/pdf_images/ds/page_109.png + 答案页 A[1][1]→下标 2。
+    ("ds", 109, "X03"): {
+        "A": "(i+1)i/2+j",
+        "B": "(i+1)i/2",
+        "C": "(2n-i+1)i/2",
+        "D": "(2n-i-1)i/2",
+    },
+    # 下三角按列压缩：B 选项首字符 j 被读成 Jj；其余空格规范化。
+    ("ds", 110, "X08"): {
+        "A": "(j-1)(2n-j+1)/2+i-j",
+        "B": "(j-1)(2n-j+2)/2+i-j+1",
+        "C": "(j-1)(2n-j+2)/2+i-j",
+        "D": "(j-1)(2n-j+1)/2+i-j-1",
+    },
+    # 计组 Cache 局部性：选项 C/D 的数组下标被 OCR 截断/错位。
+    ("coa", 123, "X07"): {
+        "C": "将第5行改为 sum+=a[i][k][j];",
+        "D": "将第5行改为 sum+=a[j][i][k];",
+    },
+}
 
-# 不含真实附图的“图”字场景，用于过滤误报
-IMAGE_FALSE_POSITIVES = [
-    '图的基本概念', '图论', '并查集涉及图', '涉及图', '图的相关', '图的存储',
-    '图的遍历', '图的拓扑', '图的最短', '图的最小生成', '图的应用',
-    '有向图', '无向图', '连通图', '强连通图', '生成树', '森林',
-]
+# 原书题干/解析中已人工确认的 OCR 字符修正。
+CURATED_TEXT_PATCHES = {
+    ("ds", 73, "X14"): {
+        "content": "设a,b,c,d,e,f以所给的次序入栈，若在入栈操作时，允许出栈操作，则下面不会出现\n的出栈序列为（）。",
+        "explanation": "根据栈“先进后出”的特点，且在入栈操作的同时允许出栈操作，显然选项D中c最先出栈，\n则此时栈内必定为a和b，但因为a先于b入栈，所以a要晚出栈。对于某个出栈的元素，在它之\n前入栈却晚出栈的元素必定是按逆序出栈的，其余答案均是可能出现的情况。",
+    },
+    ("ds", 74, "X29"): {
+        "content": "【2013统考真题】一个栈的入栈序列为1,2,3,…,n，出栈序列是P1,P2,P3,…,Pn。若P2=3,\n则P3可能取值的个数是（）。",
+        "explanation": "显然，3之后的4,5,...,n都是P3可取的数（一直入栈直到该数入栈后马上出栈）。接下来\n分析1和2是否可取：P1可以是3之前入栈的数（可能是1或2），也可以是4。当P1=1时，\nP3可取2；当P1=2时，P3可取1。因此，P3可能取除3外的所有数，个数为n-1。",
+    },
+    # page_109：A[i][j] 下标被 OCR 吃掉；解析跨页被截断。对照 page_109/111 原图。
+    ("ds", 109, "X03"): {
+        "content": (
+            "有一个 n×n 的对称矩阵 A，将其下三角部分按行存放在一维数组 B 中，"
+            "而 A[0][0]存放于B[0]中，则元素A[i][j]存放于B中的（）处。"
+        ),
+        "explanation": (
+            "此题要注意3个细节：矩阵的最小下标为0；数组下标也是从0开始的；"
+            "矩阵按行优先存在数组中。注意到此三点，答案不难得到为选项A。"
+            "此外，本类题建议采用特殊值代入法求解，例如，A[1][1]对应的下标应为2，"
+            "代入后只有选项A满足条件。"
+        ),
+    },
+    # page_110：B[k]、aij 被 OCR 截断/错识。
+    ("ds", 110, "X08"): {
+        "content": (
+            "若将n阶下三角矩阵A按列优先顺序压缩存放在一维数组B[1...n(n+1)/2+1]中，"
+            "则存放到B[k]中的非零元素aij（1≤i,j≤n）的下标i,j与k的对应关系是（）。"
+        ),
+        "explanation": (
+            "按列优先存储，故元素aij前有j-1列，共有n+(n-1)+…+(n-j+2)=(j-1)(2n-j+2)/2个"
+            "元素，元素aij是第j列上第i-j+1个元素，数组B的下标从1开始，"
+            "k=(j-1)(2n-j+2)/2+i-j+1。"
+        ),
+    },
+}
+
+# 仅对已逐条核对的题目字段做字符替换，避免误伤散列表装填因子 α 等正确符号。
+CURATED_CHARACTER_REPLACEMENTS = {
+    # 数据结构：普通变量 a 被 OCR 误识别为 α。
+    **{
+        ("ds", page, qid, field): (("α", "a"),)
+        for page, qid, field in (
+            (25, "A11", "explanation"),
+            (26, "A14", "content"),
+            (26, "A14", "explanation"),
+            (73, "X15", "explanation"),
+            (73, "X19", "explanation"),
+            (73, "X26", "explanation"),
+            (73, "X27", "content"),
+            (73, "X28", "explanation"),
+            (88, "X20", "explanation"),
+            (151, "X01", "explanation"),
+            (152, "X02", "option_B"),
+            (153, "X12", "option_A"),
+            (153, "X12", "explanation"),
+            (153, "X19", "explanation"),
+            (154, "X33", "explanation"),
+            (155, "X35", "explanation"),
+            (155, "X38", "content"),
+            (155, "X38", "explanation"),
+            (155, "X39", "content"),
+            (155, "X39", "explanation"),
+            (156, "A10", "explanation"),
+            (177, "X04", "content"),
+            (177, "X04", "explanation"),
+            (179, "X19", "explanation"),
+            (179, "X20", "explanation"),
+            (224, "X08", "explanation"),
+            (243, "X14", "explanation"),
+            (247, "X46", "explanation"),
+        )
+    },
+    # 此处原书变量为带下标的 a_i。
+    ("ds", 19, "X04", "explanation"): (
+        ("元素α在顺序表中的位序", "元素aᵢ在顺序表中的位序"),
+    ),
+    # 计组：普通变量 a、z、地址 [x] 及异或符号的定点纠错。
+    ("coa", 53, "A05", "explanation"): (("α", "a"),),
+    ("coa", 34, "X32", "explanation"): (("ε", "z"),),
+    ("coa", 190, "A05", "explanation"): (("0Φ1=1", "0⊕1=1"),),
+    ("coa", 264, "A01", "content"): (("[α]", "[x]"),),
+    # 2026-08 408 OCR 公式/下标专项修复（已对照原书裁剪图确认）
+    ("ds", 123, "X10", "content"): (("i和」", "i和j"),),
+    ("ds", 276, "X22", "content"): (("elseif", "else if"),),
+    ("coa", 70, "X45", "content"): (("employee[].id", "employee[1].id"),),
+    ("coa", 123, "X07", "content"): (
+        ("? for(j=0;j<n;j++)", "③ for(j=0;j<n;j++)"),
+        ("? sum+=a[k][j][i];", "⑤ sum+=a[k][j][i];"),
+    ),
+    ("coa", 186, "X04", "content"): (
+        ("sum+=b[ij]", "sum+=b[i][j]"),
+        ("b[i] [j]", "b[i][j]"),
+    ),
+    ("coa", 187, "X07", "content"): (("a[i", "a[i]"),),
+    ("coa", 242, "X25", "content"): (("R[r2]-R[r1]", "R[r2]←R[r1]"),),
+    ("coa", 263, "X28", "content"): (
+        ("Il: add s2,sl, s0", "I1: add s2,s1, s0"),
+        ("12: load s3, O(t2)", "I2: load s3, 0(t2)"),
+        ("14: store s2,O(t2)", "I4: store s2,0(t2)"),
+    ),
+    ("coa", 263, "X30", "content"): (
+        ("11 add s2,sl, s0", "I1 add s2,s1, s0"),
+        ("R[s2]R[s1] + R[s0]", "R[s2]←R[s1] + R[s0]"),
+        ("12 peo s3, 0(s2)", "I2 load s3, 0(s2)"),
+        ("R[s3]M[R[s2] + 0]", "R[s3]←M[R[s2] + 0]"),
+        ("13 beq t2,s3,L1", "I3 beq t2,s3,L1"),
+        ("!ppe t2,t2,20", "I4 addi t2,t2,20"),
+        ("R[t2]-R[t2]+ 20", "R[t2]←R[t2]+ 20"),
+        ("15 L1:", "I5 L1:"),
+        ("II1~", "I1~"),
+    ),
+    ("os", 122, "X36", "content"): (
+        ("Po、P互斥", "P0、P1互斥"),
+        ("进程 PO 进程 P1", "进程 P0 进程 P1"),
+        (
+            "while(flag[l]&&turn== 1); while(flag[0]&&turn==0）",
+            "while(flag[1]&&turn==1); while(flag[0]&&turn==0)",
+        ),
+    ),
+    ("os", 123, "X45", "content"): (("chopStick[(i+1)&5]", "chopStick[(i+1)%5]"),),
+    ("os", 124, "X48", "content"): (
+        ("进程Po和进程P", "进程P0和进程P1"),
+        ("若进程P和进程P访问", "若进程P0和进程P1访问"),
+        (
+            "void PO () //进程Po void P1() //进程P1",
+            "void P0 () //进程P0 void P1() //进程P1",
+        ),
+        (
+            "while(flag[l]&&(turn== 1)) ; while(flag[0]&&(turn==0)）",
+            "while(flag[1]&&(turn==1)) ; while(flag[0]&&(turn==0))",
+        ),
+    ),
+}
+
+# 原书答案页与题目页均已人工确认的答案/解析修正。
+CURATED_ANSWER_PATCHES = {
+    # 跨页解析被 parse_answer_page 按页切断：OCR 续页无题号前缀 → 后半段丢失。
+    # 以下 4 条均对照 data/ocr/ds 答案页拼回全文（2027 王道数据结构）。
+    ("ds", 87, "X01"): {
+        "choice": "D",
+        "explanation": (
+            "栈和队列的逻辑结构都是线性结构，都可以采用顺序存储或链式存储，选项A和B错误，"
+            "选项C显然也错误。只有选项D才是栈和队列的本质区别，限定表中插入和删除操作位置的不同。"
+        ),
+    },
+    ("ds", 88, "X12"): {
+        "choice": "B",
+        "explanation": (
+            "因为队列需在双端进行操作，所以选项C和D的链表显然不太适合链队。"
+            "对于选项A，链表在完成入队和出队后还要修改为循环的，对于队列来讲这是多余的（画蛇添足）。"
+            "对于选项B，因为有首指针，所以适合删除首结点；因为有队尾指针，所以适合在其后插入结点。"
+        ),
+    },
+    ("ds", 100, "X11"): {
+        "choice": "A",
+        "explanation": (
+            "使用栈可以模拟递归的过程，以此来消除递归，但对于单向递归和尾递归而言，可以用迭代"
+            "的方式来消除递归，选项A正确。不同的入栈和出栈组合操作，会产生许多不同的输出序列，"
+            "选项B错误。通常使用栈来处理函数或过程调用，选项C错误。队列和栈都是操作受限的线性表，"
+            "但只有队列允许在表的两端进行运算，而栈只允许在栈顶方向进行操作，选项D错误。"
+        ),
+    },
+    # 2009 统考真题：打印缓冲区题选项被错贴，解析保持 FIFO 逻辑。
+    ("ds", 100, "X12"): {
+        "choice": "B",
+        "explanation": (
+            "在提取数据时必须保持原来数据的顺序，所以缓冲区的特性是先进先出，应选队列。"
+        ),
+    },
+    ("ds", 178, "X06"): {
+        "choice": "D",
+        "explanation": (
+            "森林转换为二叉树后，二叉树的根结点及其左子树由第1棵树转换得到，"
+            "二叉树的根结点的右子树由剩余的森林转换得到，以此类推，可以划分出第2、3、…棵树的结点。"
+            "具有16个结点的完全二叉树的形态如右图所示，沿二叉树的根结点往右下遍历，共有4个结点，"
+            "可知森林中有4棵树，其中第1棵树的结点数最多，有9个。"
+        ),
+    },
+    ("coa", 291, "X01"): {
+        "choice": "D",
+        "explanation": "同步总线事务通常包括地址/命令阶段和数据阶段，需要多个时钟周期完成；地址与数据一般分时传输。现代同步总线支持突发传输，一次事务可连续传送多个数据单元，因此 D 项错误。",
+    },
+    ("coa", 291, "X02"): {
+        "choice": "C",
+        "explanation": "不同速度的设备之间既可采用异步方式，也可采用同步方式；同步控制能够传送数据，但会限制快速设备性能。",
+    },
+    ("coa", 291, "X03"): {
+        "choice": "C",
+        "explanation": "同步控制由统一时序控制，采用公共时钟和统一时钟周期，既可用于 CPU 控制，也可用于高速外部设备控制。",
+    },
+}
+
+# OCR 把个别单选题的选项读坏后，会误归入“综合应用题”并串接下一题解析。
+# 以下内容均已逐页对照原书确认；主流程末尾会把它们移回对应选择题章节。
+CURATED_CHOICE_PATCHES = {
+    ("ds", 132, "A01"): {
+        "id": "X08",
+        "content": "设一棵m叉树中有N₁个度数为1的结点，N₂个度数为2的结点，……，Nₘ个度数为m的结点，则该树中共有（）个叶结点。",
+        "options": {
+            "A": "∑(i-1)Nᵢ（i=1…m）",
+            "B": "∑Nᵢ（i=1…m）",
+            "C": "∑(i-1)Nᵢ（i=2…m）",
+            "D": "∑(i-1)Nᵢ+1（i=2…m）",
+        },
+        "answer": {
+            "choice": "D",
+            "explanation": "树中叶结点数 n₀=1+∑(i-1)Nᵢ（i=2…m）。",
+        },
+    },
+    ("ds", 212, "A01"): {
+        "id": "X05",
+        "content": "一个有n个顶点的图用邻接矩阵A表示，若图为有向图，顶点vᵢ的入度是（）；若图为无向图，顶点vᵢ的度是（）。",
+        "options": {
+            "A": "∑A[i][j]（i=1…n）",
+            "B": "∑A[j][i]（j=1…n）",
+            "C": "∑A[j][i]（i=1…n）",
+            "D": "∑A[j][i]（j=1…n）或∑A[i][j]（j=1…n）",
+        },
+        "answer": {
+            "choice": "BD",
+            "explanation": "第一空选 B：有向图中第 i 列之和为 vᵢ 的入度；第二空选 D：无向图的邻接矩阵对称，第 i 行或第 i 列之和均为 vᵢ 的度。",
+        },
+    },
+    ("ds", 342, "A01"): {
+        "id": "X13",
+        "content": "折半插入排序算法的时间复杂度为（）。",
+        "options": {"A": "O(n)", "B": "O(nlog₂n)", "C": "O(n²)", "D": "O(n³)"},
+        "answer": {
+            "choice": "C",
+            "explanation": "折半查找只减少比较次数，元素移动次数仍为 O(n²)，因此总时间复杂度为 O(n²)。",
+        },
+    },
+    ("coa", 52, "A01"): {
+        "id": "X31",
+        "content": "【2018统考真题】减法指令“sub R1,R2,R3”的功能为“(R1)-(R2)→R3”，该指令执行后将生成进位/借位标志CF和溢出标志OF。若(R1)=FFFF FFFFH，(R2)=FFFF FFF0H，则该减法指令执行后，CF与OF分别为（）。",
+        "options": {
+            "A": "CF=0，OF=0",
+            "B": "CF=1，OF=0",
+            "C": "CF=0，OF=1",
+            "D": "CF=1，OF=1",
+        },
+        "answer": {
+            "choice": "A",
+            "explanation": "FFFFFFFH−FFFFFFF0H=0000000FH，无借位且无符号溢出，因此 CF=0、OF=0。",
+        },
+    },
+    ("coa", 52, "A02"): {
+        "id": "X32",
+        "content": "【2023统考真题】已知x、y为int型，当x=100、y=200时，执行“x减y”指令得到的溢出标志OF和借位标志CF分别为0、1，那么当x=10、y=-20时，执行该指令得到的OF和CF分别为（）。",
+        "options": {
+            "A": "OF=0，CF=0",
+            "B": "OF=0，CF=1",
+            "C": "OF=1，CF=0",
+            "D": "OF=1，CF=1",
+        },
+        "answer": {
+            "choice": "B",
+            "explanation": "10−(−20)=30，在int范围内，不发生有符号溢出，OF=0；按无符号减法需要借位，CF=1。",
+        },
+    },
+    ("coa", 186, "A01"): {
+        "id": "X02",
+        "content": "假设R[ax]=7FE6H，R[bx]=FFE8H，执行指令“sub bx,ax”后，寄存器的内容和各标志的变化为（）。",
+        "options": {
+            "A": "R[ax]=8002H，OF=0，SF=1，CF=1，ZF=0",
+            "B": "R[bx]=8002H，OF=0，SF=1，CF=0，ZF=0",
+            "C": "R[ax]=8002H，OF=1，SF=1，CF=0，ZF=0",
+            "D": "R[bx]=8002H，OF=1，SF=1，CF=0，ZF=0",
+        },
+        "answer": {
+            "choice": "B",
+            "explanation": "FFE8H−7FE6H=8002H，结果写回 bx；两个操作数和结果的符号位均为 1，不发生有符号溢出，OF=0；结果为负且非零，SF=1、ZF=0，无借位，CF=0。",
+        },
+    },
+    ("net", 75, "A01"): {
+        "id": "X30",
+        "content": "【2023统考真题】假设通过同一条信道，数据链路层分别采用停止-等待协议、GBN协议和SR协议（发送窗口和接收窗口相等）传输数据，三个协议的数据帧长相同，忽略确认帧长，帧序号位数为3比特。若对应三个协议的发送方最大信道利用率分别是U₁、U₂和U₃，则U₁、U₂和U₃满足的关系是（）。",
+        "options": {"A": "U₁≤U₂≤U₃", "B": "U₁≤U₃≤U₂", "C": "U₂≤U₃≤U₁", "D": "U₃≤U₂≤U₁"},
+        "answer": {
+            "choice": "B",
+            "explanation": "3比特序号下，GBN发送窗口最大为7，SR发送窗口最大为4，停止-等待窗口为1，因此 U₁≤U₃≤U₂。",
+        },
+    },
+}
+
+# OCR 把带 A/B/C/D 序列的综合应用题误分类为选择题。
+# 以下题目已对照原书题目页和答案页确认，主流程末尾会移回解答题章节。
+CURATED_APPLICATION_PATCHES = {
+    ("ds", 74, "X03_2"): {
+        "id": "A03",
+        "content": "栈的初态和终态均为空，以I和O分别表示入栈和出栈，则出入栈的操作序列可表示为由I和O组成的序列，可以操作的序列称为合法序列，否则称为非法序列。",
+        "options": None,
+        "sub_questions": [
+            "下面所示的序列中哪些是合法的？\nA. IOIIOIOO　B. IOOIOIIO　C. IIIOIOIO　D. IIIOOIOO",
+            "通过对（1）的分析，写出一个算法，判定所给的操作序列是否合法。若合法，返回 true，否则返回 false（假定被判定的操作序列已存入一维数组中）。",
+        ],
+        "answer": {
+            "choice": None,
+            "explanation": "（1）A、D 合法，B、C 不合法。B 中先入栈 1 次，再连续出栈 2 次，出现空栈出栈；C 中入栈和出栈次数不相等，最终栈不为空。\n\n（2）扫描操作序列，用 balance 表示当前栈内元素个数。遇到 I 时 balance 加 1，遇到 O 时 balance 减 1；若任意时刻 balance 小于 0，则序列非法。扫描结束后 balance 必须等于 0。\n\nbool Judge(const char A[]) {\n    int balance = 0;\n    for (int i = 0; A[i] != '\\0'; ++i) {\n        if (A[i] == 'I') {\n            ++balance;\n        } else if (A[i] == 'O') {\n            if (--balance < 0) return false;\n        } else {\n            return false;\n        }\n    }\n    return balance == 0;\n}",
+        },
+    },
+}
 
 
-def has_real_image_ref(content):
-    """判断题干是否真正指向附图（而非章节术语中的“图”字）。"""
-    if not content:
-        return False
-    # 先排除明确不含图的课程术语
-    for fp in IMAGE_FALSE_POSITIVES:
-        if fp in content:
-            return False
-    return any(m in content for m in IMAGE_MARKERS)
+def apply_curated_choice_patches(data, course_key):
+    """修复并移动已核对的误分类单选题，返回实际应用数量。"""
+    applied = 0
+    for (key, page, old_id), patch in CURATED_CHOICE_PATCHES.items():
+        if key != course_key:
+            continue
+        # 已完成过首次移动时，旧 Axx 题已不存在；仍需刷新目标题，保证补丁修改
+        # 在后续重复构建中生效。
+        existing = next(
+            (
+                q
+                for ch in data.get("chapters", [])
+                for q in ch.get("questions", [])
+                if int(q.get("page") or 0) == page
+                and str(q.get("id") or "") == patch["id"]
+                and q.get("type") == "选择题"
+            ),
+            None,
+        )
+        if existing is not None:
+            if any(existing.get(field) != value for field, value in patch.items()):
+                existing.update(patch)
+                existing["type"] = "选择题"
+                existing["sub_questions"] = None
+                applied += 1
+            continue
+        source_ch = None
+        question = None
+        for ch in data.get("chapters", []):
+            for q in ch.get("questions", []):
+                if int(q.get("page") or 0) == page and str(q.get("id") or "") == old_id:
+                    source_ch, question = ch, q
+                    break
+            if question is not None:
+                break
+        if question is None or source_ch is None:
+            continue
+
+        target_name = re.sub(
+            r"\s*·\s*解答题\s*$", " · 选择题", source_ch.get("name") or ""
+        )
+        target_ch = next(
+            (ch for ch in data.get("chapters", []) if ch.get("name") == target_name),
+            None,
+        )
+        if target_ch is None:
+            raise ValueError(f"找不到补丁目标章节: {target_name}")
+        if any(q.get("id") == patch["id"] for q in target_ch.get("questions", [])):
+            raise ValueError(f"补丁题号冲突: {target_name} {patch['id']}")
+
+        source_ch["questions"].remove(question)
+        question.update(patch)
+        question["type"] = "选择题"
+        question["sub_questions"] = None
+        target_ch["questions"].append(question)
+        target_ch["questions"].sort(
+            key=lambda q: (
+                int(re.search(r"\d+", str(q.get("id") or "9999")).group()),
+                str(q.get("id") or ""),
+            )
+        )
+        applied += 1
+
+    for ch in data.get("chapters", []):
+        ch["question_count"] = len(ch.get("questions", []))
+    data["total_questions"] = sum(
+        ch["question_count"] for ch in data.get("chapters", [])
+    )
+    return applied
+
+
+def apply_curated_application_patches(data, course_key):
+    """修复并移动已核对的误分类综合应用题，返回实际应用数量。"""
+    applied = 0
+    for (key, page, old_id), patch in CURATED_APPLICATION_PATCHES.items():
+        if key != course_key:
+            continue
+        existing = next(
+            (
+                q
+                for ch in data.get("chapters", [])
+                for q in ch.get("questions", [])
+                if int(q.get("page") or 0) == page
+                and str(q.get("id") or "") == patch["id"]
+                and q.get("type") == "解答题"
+            ),
+            None,
+        )
+        if existing is not None:
+            changed = False
+            if any(existing.get(field) != value for field, value in patch.items()):
+                existing.update(patch)
+                existing["type"] = "解答题"
+                changed = True
+            # 某些历史构建同时保留了误分类 Xxx 和正确 Axx，需删除重复的选择题副本。
+            for ch in data.get("chapters", []):
+                stale = [
+                    q
+                    for q in ch.get("questions", [])
+                    if int(q.get("page") or 0) == page
+                    and str(q.get("id") or "") == old_id
+                    and q.get("type") == "选择题"
+                ]
+                for q in stale:
+                    ch["questions"].remove(q)
+                    changed = True
+            if changed:
+                applied += 1
+            continue
+
+        source_ch = None
+        question = None
+        for ch in data.get("chapters", []):
+            for q in ch.get("questions", []):
+                if int(q.get("page") or 0) == page and str(q.get("id") or "") == old_id:
+                    source_ch, question = ch, q
+                    break
+            if question is not None:
+                break
+        if question is None or source_ch is None:
+            continue
+
+        target_name = re.sub(
+            r"\s*·\s*选择题\s*$", " · 解答题", source_ch.get("name") or ""
+        )
+        target_ch = next(
+            (ch for ch in data.get("chapters", []) if ch.get("name") == target_name),
+            None,
+        )
+        if target_ch is None:
+            raise ValueError(f"找不到综合应用题补丁目标章节: {target_name}")
+        if any(q.get("id") == patch["id"] for q in target_ch.get("questions", [])):
+            raise ValueError(f"综合应用题补丁题号冲突: {target_name} {patch['id']}")
+
+        source_ch["questions"].remove(question)
+        question.update(patch)
+        question["type"] = "解答题"
+        target_ch["questions"].append(question)
+        target_ch["questions"].sort(
+            key=lambda q: (
+                int(re.search(r"\d+", str(q.get("id") or "9999")).group()),
+                str(q.get("id") or ""),
+            )
+        )
+        applied += 1
+
+    for ch in data.get("chapters", []):
+        ch["question_count"] = len(ch.get("questions", []))
+    data["total_questions"] = sum(
+        ch["question_count"] for ch in data.get("chapters", [])
+    )
+    return applied
+
+
+def apply_curated_character_replacements(q, course_key):
+    """应用已核对的字段级字符纠错，返回是否发生修改。"""
+    page = int(q.get("page") or 0)
+    qid = str(q.get("id") or "")
+    changed = False
+    for field in (
+        "content",
+        "explanation",
+        "option_A",
+        "option_B",
+        "option_C",
+        "option_D",
+    ):
+        replacements = CURATED_CHARACTER_REPLACEMENTS.get(
+            (course_key, page, qid, field)
+        )
+        if not replacements:
+            continue
+        if field == "content":
+            current = q.get("content") or ""
+        elif field == "explanation":
+            current = (q.get("answer") or {}).get("explanation") or ""
+        else:
+            current = (q.get("options") or {}).get(field[-1]) or ""
+        updated = current
+        for old, new in replacements:
+            updated = updated.replace(old, new)
+        if updated == current:
+            continue
+        if field == "content":
+            q["content"] = updated
+        elif field == "explanation":
+            answer = q.get("answer") or {}
+            answer["explanation"] = updated
+            q["answer"] = answer
+        else:
+            options = q.get("options") or {}
+            options[field[-1]] = updated
+            q["options"] = options
+        changed = True
+    return changed
 
 
 # 页眉/页脚噪音：每页顶部/底部可能出现书名，前面可能带页码
 # 如 "2027年数据结构考研复习指导" 或 "8 2027年数据结构考研复习指导"
-PAGE_NOISE_RE = re.compile(r'\n\s*(?:\d+\s+)?\d{4}年.{0,20}考研复习指导\s*$', re.MULTILINE)
-PAGE_NOISE_START_RE = re.compile(r'^\s*(?:\d+\s+)?\d{4}年.{0,20}考研复习指导\s*\n')
-
-# 章节页眉/页脚：如 "第2章线性表 19"、"第 4章 指令系统 153"
-CHAPTER_PAGE_NOISE_RE = re.compile(
-    r'^\s*第\s*\d+\s*章\s*[^\n]{1,30}?\s+\d+\s*$',
+PAGE_NOISE_RE = re.compile(
+    r"\n\s*(?:\d+\s+)?\d{4}年.{0,20}考研复习指导\s*$", re.MULTILINE
+)
+PAGE_NOISE_START_RE = re.compile(r"^\s*(?:\d+\s+)?\d{4}年.{0,20}考研复习指导\s*\n")
+# 行内/任意行：书名页眉
+BOOK_TITLE_LINE_RE = re.compile(
+    r"^\s*(?:\d+\s+)?\d{4}年.{0,25}考研复习指导\s*$",
     re.MULTILINE,
 )
+BOOK_TITLE_INLINE_RE = re.compile(
+    r"(?:\d+\s+)?2027年(?:数据结构|计算机组成原理|计算机网络|操作系统)?考研复习指导"
+)
+
+# 章节页眉/页脚：
+# - "第2章线性表 19" / "第 4章 指令系统 153"（带页码）
+# - "第1章 绪 论" / "第1章绪论"（跨页时整行掉进代码题干，无页码）
+CHAPTER_PAGE_NOISE_RE = re.compile(
+    r"^\s*第\s*\d+\s*章\s*[^\n]{0,40}?(?:\s+\d{1,3})?\s*$",
+    re.MULTILINE,
+)
+# 选项/题干末尾粘连的章节页脚（不一定单独成行）
+CHAPTER_FOOTER_TRAIL_RE = re.compile(
+    r"[\n\r\s]*第\s*\d+\s*章\s*[^\n]{0,40}?\s+\d{1,3}\s*$"
+)
+# 答案区标题误入
+ANSWER_SECTION_NOISE_RE = re.compile(
+    r"^\s*\d+(?:\.\d+)+\s*[～~\-—]*\s*答案与解析\s*$",
+    re.MULTILINE,
+)
+# 单独页码行（OCR 常把页码夹在代码中间）
+LONE_PAGE_NUM_RE = re.compile(r"^\s*\d{1,3}\s*$", re.MULTILINE)
 
 
 def clean_content(content):
-    """清理题干中的页眉/页脚噪音，如 '2027年数据结构考研复习指导'、'第2章线性表 19'。"""
+    """清理题干/解析中的页眉页脚与跨页章节标题噪音。"""
     if not content:
         return content
     # 去掉末尾单独一行的噪音
-    content = PAGE_NOISE_RE.sub('', content)
+    content = PAGE_NOISE_RE.sub("", content)
     # 去掉开头单独一行的噪音（理论上较少）
-    content = PAGE_NOISE_START_RE.sub('', content)
-    # 去掉章节页眉/页脚行
-    content = CHAPTER_PAGE_NOISE_RE.sub('', content)
+    content = PAGE_NOISE_START_RE.sub("", content)
+    content = BOOK_TITLE_LINE_RE.sub("", content)
+    content = BOOK_TITLE_INLINE_RE.sub("", content)
+    # 去掉章节页眉/页脚行（含「第1章 绪 论」这类无页码标题）
+    content = CHAPTER_PAGE_NOISE_RE.sub("", content)
+    content = ANSWER_SECTION_NOISE_RE.sub("", content)
+    # 去掉行末粘连的「第X章… 页码」
+    content = CHAPTER_FOOTER_TRAIL_RE.sub("", content)
+    # 去掉夹在中间的纯页码行（前后都是内容时才删，避免误伤「答案 01」类）
+    lines = content.split("\n")
+    cleaned_lines = []
+    for i, line in enumerate(lines):
+        if LONE_PAGE_NUM_RE.match(line):
+            # 仅当上下行都像正文/代码时丢弃孤立页码
+            prev_ok = i > 0 and lines[i - 1].strip() != ""
+            next_ok = i + 1 < len(lines) and lines[i + 1].strip() != ""
+            if prev_ok and next_ok:
+                continue
+        cleaned_lines.append(line)
+    content = "\n".join(cleaned_lines)
+    # 压缩因删行产生的多余空行
+    content = re.sub(r"\n{3,}", "\n\n", content)
     return content.strip()
+
+
+def clean_option_text(text):
+    """清理选项中粘连的章节页脚，如 '与数组a的元素次序相反\\n第2章线性表 41'。"""
+    if not text:
+        return text
+    text = CHAPTER_FOOTER_TRAIL_RE.sub("", str(text))
+    text = CHAPTER_PAGE_NOISE_RE.sub("", text)
+    text = BOOK_TITLE_LINE_RE.sub("", text)
+    return text.strip()
 
 
 # 题干中常见的插图标注 / OCR 误识别的图注碎片
 # xau/π 是 OCR 将图注/箭头误识别成的无意义字符；<- 在 C/C++ 题干中通常也是图注箭头
 DIAGRAM_ARTIFACT_PATTERNS = [
     # 2012 统考真题“loading 和 being 共同后缀”一题的图注碎片
-    r'^\s*strl[、,，]?\s*$',
-    r'^\s*str2\s*$',
-    r'^\s*[→\-~]+\s*n\s*[→\-~]+\s*g\s*$',
+    r"^\s*strl[、,，]?\s*$",
+    r"^\s*str2\s*$",
+    r"^\s*[→\-~]+\s*n\s*[→\-~]+\s*g\s*$",
     # 无意义的 OCR 乱码
-    r'\bxau\b',
-    r'π',
+    r"\bxau\b",
+    r"π",
 ]
-DIAGRAM_ARTIFACT_RE = re.compile('|'.join(f'({p})' for p in DIAGRAM_ARTIFACT_PATTERNS), re.MULTILINE)
+DIAGRAM_ARTIFACT_RE = re.compile(
+    "|".join(f"({p})" for p in DIAGRAM_ARTIFACT_PATTERNS), re.MULTILINE
+)
 
 # 从图注碎片行中抢救被混入的选项，如 "N==x-==<- ' B. L->prior==NULL&&L->next==NULL"
-OPTION_IN_GARBAGE_RE = re.compile(r'([A-Da-d])[\.．、]\s*(.+?)(?=\s+[A-Da-d][\.．、]\s*|$)', re.DOTALL)
+OPTION_IN_GARBAGE_RE = re.compile(
+    r"([A-Da-d])[\.．、]\s*(.+?)(?=\s+[A-Da-d][\.．、]\s*|$)", re.DOTALL
+)
 
 
 def is_diagram_artifact_line(line):
@@ -96,20 +666,20 @@ def is_diagram_artifact_line(line):
     if not line.strip():
         return False
     # 明确的 OCR 乱码
-    if re.search(r'\bxau\b|π', line):
+    if re.search(r"\bxau\b|π", line):
         return True
     # 图注选项标签行，如 "(d) ad<-d=xau..."
-    if re.match(r'^\s*[（(]\s*d\s*[）)]', line):
+    if re.match(r"^\s*[（(]\s*d\s*[）)]", line):
         return True
     # 包含 <- 箭头时，需排除数学比较式（如 x<-16, a<-b 且整体为合法表达式）
-    if '<-' in line:
+    if "<-" in line:
         # 行首为 ! : = 等图注符号，肯定是碎片
-        if re.match(r'^\s*[!:=]', line):
+        if re.match(r"^\s*[!:=]", line):
             return True
         # 若只有一个 <- 且前后是 ASCII 标识符/数字（比较式），保留
-        arrows = re.findall(r'<-(?!=)', line)
-        if len(arrows) == 1 and '->' not in line:
-            m = re.search(r'([A-Za-z0-9_]+)<-(-?[A-Za-z0-9_]+)', line)
+        arrows = re.findall(r"<-(?!=)", line)
+        if len(arrows) == 1 and "->" not in line:
+            m = re.search(r"([A-Za-z0-9_]+)<-(-?[A-Za-z0-9_]+)", line)
             if m:
                 return False
         # 多个 <- 或混有 -> 等，视为图注箭头碎片
@@ -118,8 +688,8 @@ def is_diagram_artifact_line(line):
 
 
 # 罗马数字，避免被误当作图注标签块清理
-_ROMAN_NUMERALS = {'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'}
-_LABEL_LINE_RE = re.compile(r'^[A-Za-z0-9\s]+$')
+_ROMAN_NUMERALS = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"}
+_LABEL_LINE_RE = re.compile(r"^[A-Za-z0-9\s]+$")
 
 
 def _is_label_line(line):
@@ -153,30 +723,264 @@ def _strip_trailing_label_block(lines):
     return lines[:end], len(label_block)
 
 
+def fix_ocr_zero_letter_o(text: str) -> str:
+    """数字语境中把 OCR 把 0 误识成 O/o/Ｏ 的情况改回 0。
+
+    刻意避开：
+    - 大 O 复杂度 O(n)、O(1)
+    - 栈操作序列中的 I/O
+    - I/O 设备、标识符中间的字母 O
+    """
+    if not text:
+        return text
+
+    # 数组下标：A[O] / A[O..5] / A[O...n] / a[0][O] / d[O]
+    text = re.sub(r"([A-Za-z])\[([OoＯ])(?=[\].\d…～~])", r"\1[0", text)
+    text = re.sub(r"\[([OoＯ])\]", "[0]", text)
+
+    # 下标区间起点：O..n / O...n / O～n-1（不在字母后）
+    text = re.sub(r"(?<![A-Za-z0-9_])[OoＯ](?=\.\.|\.\.\.|…|～|~)", "0", text)
+
+    # 中文数量/返回值语境：入度为O、返回O、值为O、都为O、等于O
+    text = re.sub(
+        r"(入度|出度|度数?|返回|等于|初值|取值|都为|值为|为)[OoＯ](?![A-Za-z(（])",
+        r"\g<1>0",
+        text,
+    )
+
+    # 比较：==O / <=O / O== 等（排除 O( 复杂度；排除线代零矩阵 E=O / A=O）
+    # 注意：单独的 =O 常表示零矩阵，不能改成 =0
+    text = re.sub(r"(==|!=|<=|>=)\s*[OoＯ](?![A-Za-z(（0-9])", r"\1 0", text)
+    text = re.sub(r"(?<![A-Za-z0-9_])[OoＯ]\s*(==|!=|<=|>=|<|>)", r"0\1", text)
+    # 严格小于/大于后的孤立 O（入度>O 等），但避免 A=O / E=O 零矩阵
+    text = re.sub(r"([<>])\s*[OoＯ](?![A-Za-z(（0-9])", r"\g<1>0", text)
+
+    # 选项/并列数字：3和O、O和5（排除「I和O」栈操作：要求 O 侧邻数字或句读）
+    text = re.sub(r"(?<=\d)和[OoＯ](?![A-Za-z(（])", "和0", text)
+    text = re.sub(r"(?<![A-Za-z0-9_])[OoＯ]和(?=\d)", "0和", text)
+
+    # 括号/逗号中的孤立 O：F(O)、S(O)、(1,4,O)
+    text = re.sub(r"([,，(（])\s*[OoＯ](?=\s*[,，)）])", r"\g<1>0", text)
+    text = re.sub(r"([A-Za-z_]\w*)\(\s*[OoＯ]\s*\)", r"\1(0)", text)
+
+    # 十六进制字面量中的字母 o：0x000o0111 → 0x00000111
+    text = re.sub(r"(0[xX][0-9A-Fa-f]*)[oO](?=[0-9A-Fa-f])", r"\g<1>0", text)
+
+    # 二进制/比特串中的 O：0111111O → 01111110
+    text = re.sub(r"(?<=[01])[OoＯ](?=[01])", "0", text)
+    text = re.sub(r"(?<=[01])[OoＯ](?![A-Za-z0-9_])", "0", text)
+
+    return text
+
+
+def fix_ocr_letter_l_as_one(text: str) -> str:
+    """指针/算术语境中把 +l / n+l 误识改回 +1（不依赖整段是否像代码）。"""
+    if not text:
+        return text
+    # rear+l / front+l / n+l / MaxSize 上下文
+    text = re.sub(
+        r"\b(rear|front|top|MaxSize|maxsize|n|m)\s*\+\s*l\b",
+        r"\1+1",
+        text,
+        flags=re.IGNORECASE,
+    )
+    # (...+l) / +l% / +l)
+    text = re.sub(r"\+\s*l(?=\s*[)）%])", "+1", text)
+    return text
+
+
+def fix_ocr_missing_mod_percent(text: str) -> str:
+    """循环队列等题中取模符号 % 被 OCR 丢掉的常见形态。
+
+    例：
+      front=(front+1)6 → front=(front+1)%6
+      (rear+1)(n+1) → (rear+1)%(n+1)
+
+    刻意保守：不匹配普通数学连乘 (a)(b)，避免误插入 %。
+    """
+    if not text:
+        return text
+    # 队指针自增后直接跟容量数字：front=(front+1)6
+    text = re.sub(
+        r"(\b(?:front|rear|top)\b[^\n]{0,40}?\+\s*1\s*[)）])\s*(?=\d)",
+        r"\1%",
+        text,
+        flags=re.IGNORECASE,
+    )
+    # )( 之间漏 %，右侧仅 n+1 / MaxSize（不含裸数字，避免 (f)(1-x) 类数学式）
+    text = re.sub(
+        r"([)）])\s*(?=[(（](?:n\s*\+\s*1|MaxSize|maxsize)\b)",
+        r"\1%",
+        text,
+        flags=re.IGNORECASE,
+    )
+    return text
+
+
 def fix_common_ocr_errors(text):
     """修正 OCR 常见错误，如图论题中 V5 被误识别为 Vs、罗马数字被误识别。"""
     if not text:
         return text
     # V5 被误识别为 Vs；V5s 是 Vs 后再多识别一个 s
-    text = re.sub(r'(?<![A-Za-z0-9_])V5s(?![A-Za-z0-9_])', 'V5', text)
-    text = re.sub(r'(?<![A-Za-z0-9_])Vs(?![A-Za-z0-9_])', 'V5', text)
+    text = re.sub(r"(?<![A-Za-z0-9_])V5s(?![A-Za-z0-9_])", "V5", text)
+    text = re.sub(r"(?<![A-Za-z0-9_])Vs(?![A-Za-z0-9_])", "V5", text)
     # 小写 v5 被误识别为 vs（出现在选项序列中）
-    text = re.sub(r'(?<![A-Za-z0-9_])vs(?![A-Za-z0-9_])', 'v5', text)
+    text = re.sub(r"(?<![A-Za-z0-9_])vs(?![A-Za-z0-9_])", "v5", text)
 
     # 罗马数字 OCR 修正：OCR 常把 II/III 识别成全角罗马数字与字母 I 的混合
     # 如 ⅡI -> II、IⅢI -> III、ⅢI -> III、ⅠI -> II
-    text = text.replace('ⅡI', 'II').replace('IⅢI', 'III').replace('ⅢI', 'III')
-    text = text.replace('ⅠI', 'II').replace('ⅠⅠ', 'II').replace('ⅠⅠⅠ', 'III')
+    text = text.replace("ⅡI", "II").replace("IⅢI", "III").replace("ⅢI", "III")
+    text = text.replace("ⅠI", "II").replace("ⅠⅠ", "II").replace("ⅠⅠⅠ", "III")
     # 剩余全角罗马数字统一转成 ASCII
-    text = (text
-            .replace('Ⅰ', 'I').replace('Ⅱ', 'II').replace('Ⅲ', 'III')
-            .replace('Ⅳ', 'IV').replace('Ⅴ', 'V').replace('Ⅵ', 'VI')
-            .replace('Ⅶ', 'VII').replace('Ⅷ', 'VIII').replace('Ⅸ', 'IX')
-            .replace('Ⅹ', 'X'))
+    text = (
+        text.replace("Ⅰ", "I")
+        .replace("Ⅱ", "II")
+        .replace("Ⅲ", "III")
+        .replace("Ⅳ", "IV")
+        .replace("Ⅴ", "V")
+        .replace("Ⅵ", "VI")
+        .replace("Ⅶ", "VII")
+        .replace("Ⅷ", "VIII")
+        .replace("Ⅸ", "IX")
+        .replace("Ⅹ", "X")
+    )
+    text = text.replace("é", "e")
+    # ASCII 罗马数字粘连：IIII / IIIl / IIl
+    text = re.sub(r"I{4,}", "III", text)
+    text = re.sub(r"III[lL]", "III", text)
+    text = re.sub(r"(?<![A-Za-z])IIl(?![A-Za-z])", "III", text)
+    text = re.sub(r"(?<![A-Za-z])IIL(?![A-Za-z])", "III", text)
 
-    # 时间复杂度中 O 被误识别为 0，如 0(n) -> O(n)
-    text = re.sub(r'(?<![A-Za-z0-9_])0\(([^)]+)\)', r'O(\1)', text)
+    # 时间复杂度中 O 被误识别为 0 / ○ / 〇，如 0(n) ○(1) -> O(n) O(1)
+    # 必须先于「O→0」数字修正，避免误伤后再回不去。
+    # 仅匹配复杂度常见形态；排除 0(n=1,2,…) 这类「大于 0，下标从 n=」数学写法。
+    text = re.sub(
+        r"(?<![A-Za-z0-9_])[0○〇]\(\s*(?![nN]\s*=)"
+        r"((?:n|m|N|M|1|log|lg|ln)(?:\s*[\^*²₃]?[^)=]*)?)\s*\)",
+        r"O(\1)",
+        text,
+    )
+
+    # 数字 0 被误识别为字母 O（数组下标、入度、返回值等）
+    text = fix_ocr_zero_letter_o(text)
+    # rear+l / n+l 等 1 被误识别为 l
+    text = fix_ocr_letter_l_as_one(text)
+    # 取模 % 丢失
+    text = fix_ocr_missing_mod_percent(text)
+
+    # 数组下标 A□ -> A[]（常见于排序/顺序表题）
+    text = re.sub(r"([A-Za-z])□", r"\1[]", text)
+    # 二进制语境：变成O / 变成０ -> 变成0
+    text = re.sub(r"变成\s*[OＯ〇]", "变成0", text)
+    text = re.sub(r"([01])\s*变成\s*[OＯ〇]", r"\1变成0", text)
+    # Null 误识别
+    text = re.sub(r"(?<![A-Za-z])Vull(?![A-Za-z])", "Null", text)
+    text = re.sub(r"(?<![A-Za-z])Nuli(?![A-Za-z])", "Null", text)
+    # 指数常见 OCR：2"-1 / 2n-1 在滑动窗口题中常为 2^n-1（保守：仅匹配带引号形式）
+    text = re.sub(r'2["”″]+\s*-\s*1', "2^n-1", text)
     return text
+
+
+_CODE_HINT_RE = re.compile(
+    r"\b(void|int|for|while|if|else|return|printf|scanf|typedef|struct|char|float|double)\b"
+    r"|[;{}]|==|!=|<=|>=|\+\+|--"
+)
+
+
+def looks_like_code(text: str) -> bool:
+    if not text:
+        return False
+    return bool(_CODE_HINT_RE.search(text)) and (
+        "{" in text
+        or "for(" in text
+        or "while(" in text
+        or "void " in text
+        or "int " in text
+    )
+
+
+def fix_code_ocr_digits(text: str) -> str:
+    """代码语境中把 OCR 把数字 1 误识成字母 l 的常见情况改回。"""
+    if not text:
+        return text
+    # n==l / i==l / n<=l / n>=l / n!=l
+    text = re.sub(r"\b([A-Za-z_]\w*)\s*(==|!=|<=|>=|<|>)\s*l\b", r"\1\2 1", text)
+    # for(i=l; / for(j=l; / for(k=l;
+    text = re.sub(r"for\s*\(\s*([A-Za-z_]\w*)\s*=\s*l\b", r"for(\1=1", text)
+    # i=l; j=l, 初始化（避免破坏 label / long 等标识符：仅单字母变量）
+    text = re.sub(r"\b([ijkmnxyz])\s*=\s*l\b", r"\1=1", text)
+    # n-l / n+l / fact(n-l)
+    text = re.sub(r"([A-Za-z0-9_\)\]])\s*-\s*l\b", r"\1-1", text)
+    text = re.sub(r"([A-Za-z0-9_\)\]])\s*\+\s*l\b", r"\1+1", text)
+    # (y+l) (x+l)
+    text = re.sub(r"\(\s*([A-Za-z_]\w*)\s*\+\s*l\s*\)", r"(\1+1)", text)
+    # A[j+l] 等
+    text = re.sub(r"\[\s*([A-Za-z_]\w*)\s*\+\s*l\s*\]", r"[\1+1]", text)
+    return text
+
+
+def balance_c_braces(text: str) -> str:
+    """若题干含 C 风格代码且 { 多于 }，尽量补全 }。
+
+    王道 PDF 跨页时结尾大括号常被裁掉，导致「代码不完整」观感。
+    额外处理：`...printf(...)\\nelse{` 这种 if 块未闭合直接接 else。
+    """
+    if not text or not looks_like_code(text):
+        return text
+    # if { ... else{ 且 else 前缺少 }
+    text = re.sub(
+        r'([;"\)\n])\s*\n\s*else\s*\{',
+        r"\1\n}else{",
+        text,
+    )
+    open_n = text.count("{")
+    close_n = text.count("}")
+    if open_n > close_n:
+        missing = open_n - close_n
+        # 插在文本末尾；若末尾是中文说明句则插在代码与说明之间
+        m = re.search(r"(\n[^\n{;}]{8,}[。？！；]\s*)$", text)
+        if m and looks_like_code(text[: m.start()]):
+            text = text[: m.start()] + ("\n" + "}" * missing) + text[m.start() :]
+        else:
+            text = text.rstrip() + "\n" + "}" * missing
+    elif close_n > open_n:
+        # 去掉文末多余的 }
+        extra = close_n - open_n
+        while extra > 0 and re.search(r"\}\s*$", text):
+            text = re.sub(r"\}\s*$", "", text.rstrip())
+            extra -= 1
+        text = text.rstrip()
+    return text
+
+
+def fix_code_in_content(text: str) -> str:
+    """综合修复代码题题干：数字误识 + 缺失大括号。"""
+    if not text or not looks_like_code(text):
+        # 仍修复杂度记号
+        text = re.sub(r"(?<![A-Za-z0-9_])[0○〇]\(([^)]+)\)", r"O(\1)", text or "")
+        return text
+    text = fix_code_ocr_digits(text)
+    # A[+1] OCR 漏 j → A[j+1]
+    text = re.sub(r"A\[\s*\+\s*1\s*\]", "A[j+1]", text)
+    text = balance_c_braces(text)
+    # 压缩代码区内多余空行
+    text = re.sub(r"\{\n\n+", "{\n", text)
+    return text
+
+
+def fix_big_o_option(text: str) -> str:
+    """选项里的复杂度记号规范化。"""
+    if not text:
+        return text
+    t = str(text).strip()
+    t = re.sub(r"(?<![A-Za-z0-9_])[0○〇]\(([^)]+)\)", r"O(\1)", t)
+    # O(3/n) 常见误识 → O(n^{1/3})（立方根，while i*i*i<=n）
+    if re.fullmatch(r"O\s*\(\s*3\s*/\s*n\s*\)", t.replace(" ", "")):
+        t = "O(n^{1/3})"
+    # O(<n) / O(√n) 保留 √；O(nl/2) → O(n^{1/2})
+    t = re.sub(r"O\s*\(\s*nl\s*/\s*2\s*\)", r"O(n^{1/2})", t)
+    t = re.sub(r"O\s*\(\s*n1\s*/\s*2\s*\)", r"O(n^{1/2})", t)
+    return t
 
 
 def clean_option_trailing_punct(text):
@@ -184,16 +988,16 @@ def clean_option_trailing_punct(text):
     if not text:
         return text
     # 删除末尾单独的 》，除非文本中包含 《
-    if text.endswith('》') and '《' not in text:
+    if text.endswith("》") and "《" not in text:
         text = text[:-1]
     # 删除末尾单独的 ），除非文本中包含 （
-    if text.endswith('）') and '（' not in text:
+    if text.endswith("）") and "（" not in text:
         text = text[:-1]
     return text.rstrip()
 
 
 # 选项标签，支持 A./A．/A、 等
-OPTION_LABEL_RE = re.compile(r'([B-D])[\.．、]\s*')
+OPTION_LABEL_RE = re.compile(r"([B-D])[\.．、]\s*")
 
 
 def split_merged_options(options):
@@ -203,7 +1007,7 @@ def split_merged_options(options):
         return False, options
     changed = False
     new_opts = dict(options)
-    for letter in 'ABC':
+    for letter in "ABC":
         if letter not in new_opts:
             continue
         text = new_opts[letter]
@@ -214,7 +1018,7 @@ def split_merged_options(options):
             continue
         split_pos = m.start()
         prefix = text[:split_pos].rstrip()
-        suffix = text[m.end():].strip()
+        suffix = text[m.end() :].strip()
         found_label = m.group(1)
         # 仅当发现的标签正好是当前选项的下一个字母时才拆分
         if found_label == nxt and prefix and suffix:
@@ -230,7 +1034,7 @@ def clean_diagram_artifacts(content, options=None):
     if not content:
         return content
     options = options or {}
-    lines = content.split('\n')
+    lines = content.split("\n")
 
     # 1. 清理题干末尾的图注标签块
     lines, _ = _strip_trailing_label_block(lines)
@@ -242,16 +1046,16 @@ def clean_diagram_artifacts(content, options=None):
             # 尝试抢救该行中的选项
             for m in OPTION_IN_GARBAGE_RE.finditer(line):
                 letter = m.group(1).upper()
-                text = m.group(2).strip().replace('\n', ' ')
+                text = m.group(2).strip().replace("\n", " ")
                 if letter not in options and text:
                     options[letter] = text
             continue
         cleaned_lines.append(line)
-    cleaned = '\n'.join(cleaned_lines)
-    cleaned = DIAGRAM_ARTIFACT_RE.sub('', cleaned)
+    cleaned = "\n".join(cleaned_lines)
+    cleaned = DIAGRAM_ARTIFACT_RE.sub("", cleaned)
     # OCR 常把 str1 误识别为 strl；在题干中纠正好让正文更自然
-    cleaned = re.sub(r'(?<![A-Za-z0-9_])strl(?![A-Za-z0-9_])', 'str1', cleaned)
-    cleaned = re.sub(r'\n\s*\n+', '\n\n', cleaned)
+    cleaned = re.sub(r"(?<![A-Za-z0-9_])strl(?![A-Za-z0-9_])", "str1", cleaned)
+    cleaned = re.sub(r"\n\s*\n+", "\n\n", cleaned)
     return cleaned.strip()
 
 
@@ -260,23 +1064,25 @@ def extract_choice_from_explanation(expl):
     if not expl:
         return None
     patterns = [
-        r'[\【\[]?答案[\】\]]?[:：\s]+([A-Ga-g](?:[、,，\s]+[A-Ga-g])*)',
-        r'答案[:：\s]*([A-Ga-g](?:[、,，\s]+[A-Ga-g])*)',
-        r'[\【\[]答案[\】\]][\s:：]*([A-Ga-g](?:[、,，\s]+[A-Ga-g])*)',
+        r"[\【\[]?答案[\】\]]?[:：\s]+([A-Ga-g](?:[、,，\s]+[A-Ga-g])*)",
+        r"答案[:：\s]*([A-Ga-g](?:[、,，\s]+[A-Ga-g])*)",
+        r"[\【\[]答案[\】\]][\s:：]*([A-Ga-g](?:[、,，\s]+[A-Ga-g])*)",
     ]
     for p in patterns:
         m = re.search(p, expl)
         if m:
-            return ''.join(re.findall(r'[A-Ga-g]', m.group(1))).upper()
+            return "".join(re.findall(r"[A-Ga-g]", m.group(1))).upper()
     return None
 
 
 # 圆圈数字与阿拉伯数字的映射，用于 OCR 修正和子问题拆分
-_CIRCLE_NUMBERS = '①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳'
+_CIRCLE_NUMBERS = "①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳"
 _CIRCLE_TO_ARABIC = {c: i + 1 for i, c in enumerate(_CIRCLE_NUMBERS)}
 _ARABIC_TO_CIRCLE = {i + 1: c for i, c in enumerate(_CIRCLE_NUMBERS)}
-_CIRCLE_RE = re.compile('[' + _CIRCLE_NUMBERS + ']')
-_CODE_LINE_RE = re.compile(r'\b(if|else|for|while|return|void|int|char|float|double|printf|scanf)\b|[{};]|=|\+\+|--|\[.*\]')
+_CIRCLE_RE = re.compile("[" + _CIRCLE_NUMBERS + "]")
+_CODE_LINE_RE = re.compile(
+    r"\b(if|else|for|while|return|void|int|char|float|double|printf|scanf)\b|[{};]|=|\+\+|--|\[.*\]"
+)
 
 
 def looks_like_code(line):
@@ -294,22 +1100,22 @@ def fix_circle_number_ocr(content):
     """
     if not content:
         return content
-    lines = content.split('\n')
+    lines = content.split("\n")
     new_lines = []
     for i, line in enumerate(lines):
         s = line.strip()
         # 处理行首单独出现的 2-9，可能后面跟着子问题内容（如 "2 y=0;"）
-        m = re.match(r'^([2-9])\s+(.*)$', s)
+        m = re.match(r"^([2-9])\s+(.*)$", s)
         if m:
             num, rest = m.group(1), m.group(2)
-            prev = lines[i - 1] if i > 0 else ''
-            nxt = lines[i + 1] if i + 1 < len(lines) else ''
+            prev = lines[i - 1] if i > 0 else ""
+            nxt = lines[i + 1] if i + 1 < len(lines) else ""
             # 前后都是代码行，或当前行剩余部分像代码，才修正为圆圈数字
             if looks_like_code(prev) and looks_like_code(nxt) and looks_like_code(rest):
-                new_lines.append(_ARABIC_TO_CIRCLE.get(int(num), num) + ' ' + rest)
+                new_lines.append(_ARABIC_TO_CIRCLE.get(int(num), num) + " " + rest)
                 continue
         new_lines.append(line)
-    return '\n'.join(new_lines)
+    return "\n".join(new_lines)
 
 
 def split_sub_questions(content):
@@ -342,29 +1148,29 @@ def split_sub_questions(content):
     # 至少需要两个显式圆圈数字标记；如果只有一个标记但主题干后面紧跟着代码段，
     # 且主题干明确提示有多个子问题（如"各程序段""下列""分别"），才可推断第一个
     # 子问题没有标记，按两个子问题处理。
-    main_preview = content[:markers[0][0]].strip() if markers else content.strip()
+    main_preview = content[: markers[0][0]].strip() if markers else content.strip()
     first_marker_num = markers[0][1] if markers else 0
-    implicit_hint_words = ['各', '下列', '分别']
+    implicit_hint_words = ["各", "下列", "分别"]
     has_implicit_hint = any(w in main_preview for w in implicit_hint_words)
     has_implicit_first = (
         len(markers) == 1
         and first_marker_num > 1
         and has_implicit_hint
-        and '\n' in content
+        and "\n" in content
         and looks_like_code(content)
     )
     if len(markers) < 2 and not has_implicit_first:
         return content, None
 
-    main = content[:markers[0][0]].strip()
+    main = content[: markers[0][0]].strip()
     subs = []
 
     # 如果主题干后面紧跟着代码/内容，说明第一个子问题没有标记
     # 把主题干中第一行之后的部分作为第一个子问题
-    if '\n' in main and looks_like_code(main) and has_implicit_hint:
-        first_newline = content.find('\n')
+    if "\n" in main and looks_like_code(main) and has_implicit_hint:
+        first_newline = content.find("\n")
         main = content[:first_newline].strip()
-        first_sub = content[first_newline + 1:markers[0][0]].strip()
+        first_sub = content[first_newline + 1 : markers[0][0]].strip()
         if first_sub:
             subs.append(first_sub)
 
@@ -378,20 +1184,20 @@ def split_sub_questions(content):
 
 
 # 题干中暗示图位于右侧/下方的关键词
-RIGHT_IMAGE_MARKERS = ['右图', '右下图', '右上图']
-LEFT_IMAGE_MARKERS = ['左图', '左下图', '左上图']
-BELOW_IMAGE_MARKERS = ['下图', '如下图所示', '见下图', '给出下图']
-ABOVE_IMAGE_MARKERS = ['上图', '见上图', '给出上图']
+RIGHT_IMAGE_MARKERS = ["右图", "右下图", "右上图"]
+LEFT_IMAGE_MARKERS = ["左图", "左下图", "左上图"]
+BELOW_IMAGE_MARKERS = ["下图", "如下图所示", "见下图", "给出下图"]
+ABOVE_IMAGE_MARKERS = ["上图", "见上图", "给出上图"]
 
 
-def crop_question_image(page_path, page, bbox, course_key, qid, content=''):
+def crop_question_image(page_path, page, bbox, course_key, qid, content=""):
     """按题目文本 bbox 裁剪对应页图片，保存到 math-bank/crops/<course_key>/ 下。
     若题干含"右图/左图"等提示，会相应扩展裁剪范围以包含插图。
     返回输出路径；若失败返回 None。"""
     try:
         img = Image.open(page_path)
     except Exception as e:
-        print(f'[crop error] open {page_path}: {e}')
+        print(f"[crop error] open {page_path}: {e}")
         return None
     w, h = img.size
     x0, y0, x1, y1 = bbox
@@ -412,26 +1218,26 @@ def crop_question_image(page_path, page, bbox, course_key, qid, content=''):
     if x1 <= x0 or y1 <= y0:
         return None
     cropped = img.crop((x0, y0, x1, y1))
-    out_dir = MATH_BANK_DIR / 'crops' / course_key
+    out_dir = MATH_BANK_DIR / "crops" / course_key
     out_dir.mkdir(parents=True, exist_ok=True)
-    out_path = out_dir / f'page_{page:03d}_{qid}.png'
-    cropped.save(out_path, 'PNG')
+    out_path = out_dir / f"page_{page:03d}_{qid}.png"
+    cropped.save(out_path, "PNG")
     return out_path
 
 
 def detect_image_ref(q, pdf_images_dir, course_key=None):
     """如果题干含图标记且所在页有截图，返回 image_ref。
     优先按题目 bbox 裁剪出精准截图；没有 bbox 时回退到整页原图。"""
-    content = q.get('content') or ''
+    content = q.get("content") or ""
     if not has_real_image_ref(content):
         return None
-    page = q.get('page')
+    page = q.get("page")
     if not page:
         return None
-    page_file = f'page_{page:03d}.png'
+    page_file = f"page_{page:03d}.png"
     candidates = [
         pdf_images_dir / page_file,
-        PROJECT_ROOT / 'assets/pdf_images/ds' / page_file,
+        PROJECT_ROOT / "assets/pdf_images/ds" / page_file,
     ]
     page_path = None
     for p in candidates:
@@ -441,129 +1247,233 @@ def detect_image_ref(q, pdf_images_dir, course_key=None):
     if not page_path:
         return None
 
-    bbox = q.get('bbox')
+    bbox = q.get("bbox")
     if bbox and course_key:
-        crop_path = crop_question_image(page_path, page, bbox, course_key, q.get('id', '00'), content=content)
+        crop_path = crop_question_image(
+            page_path, page, bbox, course_key, q.get("id", "00"), content=content
+        )
         if crop_path:
             rel = crop_path.relative_to(MATH_BANK_DIR).as_posix()
-            return {'page': page, 'note': '题干含图，已按题目区域裁剪', 'cropped': rel}
+            return {"page": page, "note": "题干含图，已按题目区域裁剪", "cropped": rel}
 
     # 回退：关联整页原图
     rel = page_path.relative_to(PROJECT_ROOT).as_posix()
-    if not rel.startswith('../'):
-        rel = '../' + rel
-    return {'page': page, 'note': '题干含图，已关联到原题页', 'cropped': rel}
+    if not rel.startswith("../"):
+        rel = "../" + rel
+    return {"page": page, "note": "题干含图，已关联到原题页", "cropped": rel}
 
 
 def fix_file(path, pdf_images_dir=None, course_key=None):
     path = Path(path)
     if course_key is None:
         course = COURSE_BY_OUT_JSON.get(path.name)
-        course_key = getattr(course, 'key', None) if course else None
-    data = json.load(open(path, encoding='utf-8'))
+        course_key = getattr(course, "key", None) if course else None
+    data = json.load(open(path, encoding="utf-8"))
     fixes = {
-        'choice_filled': 0,
-        'sub_questions_split': 0,
-        'image_ref_added': 0,
-        'empty_explanation_cleaned': 0,
-        'content_noise_cleaned': 0,
+        "choice_filled": 0,
+        "sub_questions_split": 0,
+        "image_ref_added": 0,
+        "empty_explanation_cleaned": 0,
+        "content_noise_cleaned": 0,
+        "curated_option_patched": 0,
+        "curated_character_patched": 0,
+        "curated_text_patched": 0,
+        "curated_answer_patched": 0,
     }
 
-    for ch in data.get('chapters', []):
-        for q in ch.get('questions', []):
+    for ch in data.get("chapters", []):
+        for q in ch.get("questions", []):
             # 清理历史误拆：选择题不应有 sub_questions
-            if q.get('type') == '选择题' and q.get('sub_questions'):
-                q['content'] = (q.get('content', '') + '\n' + '\n'.join(q.get('sub_questions', []))).strip()
-                q['sub_questions'] = None
+            if q.get("type") == "选择题" and q.get("sub_questions"):
+                q["content"] = (
+                    q.get("content", "") + "\n" + "\n".join(q.get("sub_questions", []))
+                ).strip()
+                q["sub_questions"] = None
 
-            ans = q.get('answer') or {}
-            expl = (ans.get('explanation') or '').strip()
+            ans = q.get("answer") or {}
+            expl = (ans.get("explanation") or "").strip()
 
             # 1. 提取缺失的选择题答案
-            if q.get('type') == '选择题' and not ans.get('choice') and expl:
+            if q.get("type") == "选择题" and not ans.get("choice") and expl:
                 choice = extract_choice_from_explanation(expl)
                 if choice:
-                    ans['choice'] = choice
-                    q['answer'] = ans
-                    fixes['choice_filled'] += 1
+                    ans["choice"] = choice
+                    q["answer"] = ans
+                    fixes["choice_filled"] += 1
 
-            # 2. 清理题干中的页眉/页脚噪音
-            content = q.get('content') or ''
+            # 2. 清理题干中的页眉/页脚噪音（含跨页「第X章…」掉进代码）
+            content = q.get("content") or ""
             cleaned = clean_content(content)
             # 3. 清理图注 / OCR 箭头碎片，同时从碎片中抢救选项
-            options = q.get('options') or {}
+            options = q.get("options") or {}
             cleaned2 = clean_diagram_artifacts(cleaned, options)
-            if cleaned2 != content or options != q.get('options'):
-                q['content'] = cleaned2
+            if cleaned2 != content or options != q.get("options"):
+                q["content"] = cleaned2
                 if options:
-                    q['options'] = options
-                fixes['content_noise_cleaned'] += 1
+                    q["options"] = options
+                fixes["content_noise_cleaned"] += 1
+            else:
+                q["content"] = cleaned2
 
-            # 3.5 全局 OCR 错误修正（Vs→V5 等）
-            q['content'] = fix_common_ocr_errors(q.get('content') or '')
-            if q.get('options'):
-                for k, v in q['options'].items():
+            # 3.5 全局 OCR 错误修正（Vs→V5 等）+ 代码补全 + 选项页脚
+            before_code = q.get("content") or ""
+            q["content"] = fix_common_ocr_errors(before_code)
+            q["content"] = fix_code_in_content(q["content"])
+            if q["content"] != before_code:
+                fixes["content_noise_cleaned"] += 1
+            if q.get("options"):
+                for k, v in list(q["options"].items()):
+                    v = clean_option_text(v)
                     v = fix_common_ocr_errors(v)
-                    q['options'][k] = clean_option_trailing_punct(v)
+                    v = fix_big_o_option(v)
+                    q["options"][k] = clean_option_trailing_punct(v)
                 # 3.6 拆分被合并的选项（如 A 里包含 B.）
-                changed, new_opts = split_merged_options(q['options'])
+                changed, new_opts = split_merged_options(q["options"])
                 if changed:
-                    q['options'] = new_opts
-                    fixes['content_noise_cleaned'] += 1
-            if ans.get('explanation'):
-                ans['explanation'] = fix_common_ocr_errors(ans['explanation'])
-                q['answer'] = ans
+                    q["options"] = new_opts
+                    fixes["content_noise_cleaned"] += 1
+                # 3.6.5 选项键按 A/B/C/D 排序（OCR 双栏读序常变成 A,C,D,B）
+                opts = q.get("options") or {}
+                if isinstance(opts, dict) and len(opts) > 1:
+                    ordered = {
+                        k: opts[k] for k in sorted(opts.keys(), key=lambda x: str(x))
+                    }
+                    if list(opts.keys()) != list(ordered.keys()):
+                        q["options"] = ordered
+                        fixes["content_noise_cleaned"] += 1
+                # 3.7 选项重复时，尝试把 OCR 坏掉的复杂度选项拉开（常见 A/C 同为 O(n)）
+                vals = [
+                    str(q["options"].get(k, "")).strip()
+                    for k in "ABCD"
+                    if k in q["options"]
+                ]
+                if vals and len(vals) != len(set(vals)):
+                    # 仅对「全是 O(...)」且有重复的选择题做轻量修正留给专项补丁
+                    pass
+
+            patch = CURATED_OPTION_PATCHES.get(
+                (course_key, int(q.get("page") or 0), str(q.get("id") or ""))
+            )
+            if patch:
+                current = q.get("options") or {}
+                changed = any(current.get(k) != v for k, v in patch.items())
+                if changed:
+                    current.update(patch)
+                    q["options"] = current
+                    fixes["curated_option_patched"] += 1
+
+            if apply_curated_character_replacements(q, course_key):
+                ans = q.get("answer") or {}
+                expl = (ans.get("explanation") or "").strip()
+                fixes["curated_character_patched"] += 1
+
+            text_patch = CURATED_TEXT_PATCHES.get(
+                (course_key, int(q.get("page") or 0), str(q.get("id") or ""))
+            )
+            if text_patch:
+                changed = False
+                if q.get("content") != text_patch["content"]:
+                    q["content"] = text_patch["content"]
+                    changed = True
+                current_answer = q.get("answer") or {}
+                if current_answer.get("explanation") != text_patch["explanation"]:
+                    current_answer["explanation"] = text_patch["explanation"]
+                    q["answer"] = current_answer
+                    ans = current_answer
+                    expl = current_answer["explanation"]
+                    changed = True
+                if changed:
+                    fixes["curated_text_patched"] += 1
+
+            answer_patch = CURATED_ANSWER_PATCHES.get(
+                (course_key, int(q.get("page") or 0), str(q.get("id") or ""))
+            )
+            if answer_patch and q.get("answer") != answer_patch:
+                q["answer"] = dict(answer_patch)
+                ans = q["answer"]
+                expl = ans["explanation"]
+                fixes["curated_answer_patched"] += 1
+            if ans.get("explanation"):
+                ans["explanation"] = fix_code_in_content(
+                    fix_common_ocr_errors(clean_content(ans["explanation"]))
+                )
+                q["answer"] = ans
 
             # 5. 拆分子问题（仅解答题，避免选择题选项中的编号被误拆）
-            if not q.get('sub_questions') and q.get('type') != '选择题':
+            if not q.get("sub_questions") and q.get("type") != "选择题":
                 main, subs = split_sub_questions(cleaned)
                 if subs:
-                    q['content'] = main
-                    q['sub_questions'] = subs
-                    fixes['sub_questions_split'] += 1
+                    q["content"] = main
+                    q["sub_questions"] = subs
+                    fixes["sub_questions_split"] += 1
 
             # 6. 图片关联
-            ref = q.get('image_ref')
-            cropped_missing = ref and ref.get('cropped') and not (MATH_BANK_DIR / ref['cropped']).exists()
-            needs_image = not q.get('has_image') or not ref or not ref.get('cropped') or cropped_missing
+            ref = q.get("image_ref")
+            cropped_missing = (
+                ref
+                and ref.get("cropped")
+                and not (MATH_BANK_DIR / ref["cropped"]).exists()
+            )
+            needs_image = (
+                not q.get("has_image")
+                or not ref
+                or not ref.get("cropped")
+                or cropped_missing
+            )
             if needs_image:
-                new_ref = detect_image_ref(q, pdf_images_dir or image_dir_for(path.name), course_key=course_key)
+                new_ref = detect_image_ref(
+                    q, pdf_images_dir or image_dir_for(path.name), course_key=course_key
+                )
                 if new_ref:
-                    q['has_image'] = True
-                    q['image_ref'] = new_ref
-                    fixes['image_ref_added'] += 1
+                    q["has_image"] = True
+                    q["image_ref"] = new_ref
+                    fixes["image_ref_added"] += 1
 
             # 7. 清理空 explanation
-            if ans and not ans.get('choice') and not expl:
-                if 'answer' in q and q['answer'] is not None and not any(q['answer'].values()):
-                    q['answer'] = None
-                    fixes['empty_explanation_cleaned'] += 1
+            if ans and not ans.get("choice") and not expl:
+                if (
+                    "answer" in q
+                    and q["answer"] is not None
+                    and not any(q["answer"].values())
+                ):
+                    q["answer"] = None
+                    fixes["empty_explanation_cleaned"] += 1
 
-    data['total_questions'] = sum(ch['question_count'] for ch in data.get('chapters', []))
+    fixes["curated_choice_reclassified"] = apply_curated_choice_patches(
+        data, course_key
+    )
+    fixes["curated_application_reclassified"] = apply_curated_application_patches(
+        data, course_key
+    )
+    data["total_questions"] = sum(
+        ch["question_count"] for ch in data.get("chapters", [])
+    )
     out_path = path
-    out_path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding='utf-8')
-    print(f'Fixed {path}: {fixes}')
+    out_path.write_text(
+        json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+    print(f"Fixed {path}: {fixes}")
     return fixes
 
 
 def main():
     files = sys.argv[1:] or [
-        'output/questions.json',
-        'output/questions_coa.json',
-        'output/questions_net.json',
-        'output/questions_os.json',
+        "output/questions.json",
+        "output/questions_coa.json",
+        "output/questions_net.json",
+        "output/questions_os.json",
     ]
     total = {}
     for fn in files:
         p = Path(fn)
         if not p.exists():
-            print(f'[skip] {fn} not found')
+            print(f"[skip] {fn} not found")
             continue
         fixes = fix_file(p, image_dir_for(p.name))
         for k, v in fixes.items():
             total[k] = total.get(k, 0) + v
-    print(f'总计修复: {total}')
+    print(f"总计修复: {total}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -1,0 +1,6321 @@
+{
+  "generated": true,
+  "count": 164,
+  "page_thumbs": 107,
+  "items": [
+    {
+      "uid": "ds:46:X17:线性表 · 线性表的链式表示 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "线性表 · 线性表的链式表示 · 选择题",
+      "id": "X17",
+      "type": "选择题",
+      "page": 46,
+      "topic": "2.3.7 本节试题精选",
+      "content": "在如下图所示的双链表中，已知指针p指向结点 A，若要在结点A和C之间插入指针q\n所指的结点B，则依次执行的语句序列可以是（）。\n↑d",
+      "options": [
+        {
+          "k": "A",
+          "v": "①②④③"
+        },
+        {
+          "k": "B",
+          "v": "④③②①"
+        },
+        {
+          "k": "C",
+          "v": "③④①②"
+        },
+        {
+          "k": "D",
+          "v": "①③④②"
+        }
+      ],
+      "answer": "A",
+      "image": "crops/ds/page_046_X17.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_046.jpg",
+      "bbox": [
+        152.0,
+        629.0,
+        958.0,
+        863.0
+      ],
+      "crop_box": [
+        350,
+        689,
+        717,
+        807
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "ds:50:A18:线性表 · 线性表的链式表示 · 解答题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "线性表 · 线性表的链式表示 · 解答题",
+      "id": "A18",
+      "type": "解答题",
+      "page": 50,
+      "topic": "2.3.7 本节试题精选",
+      "content": "【2012统考真题】假定采用带头结点的单链表保存单词，当两个单词有相同的后缀时，\n可共享相同的后缀存储空间，例如，loading和being 的存储映像如下图所示。\n\n→n→\n\nb→e\n设 str1 和 str2 分别指向两个单词所在单链表的头结点，链表结点结构为data next]\n请设计一个时间上尽可能高效的算法，找出由Str1和Str2所指向两个链表共同后缀的起始位置（如图中字符i所在结点的位置p）。要求：\n1）给出算法的基本设计思想。\n2）根据设计思想，采用C或C++或Java语言描述算法，关键之处给出注释。\n3）说明你所设计算法的时间复杂度。",
+      "options": [],
+      "answer": null,
+      "image": "crops/ds/page_050_A18.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_050.jpg",
+      "bbox": [
+        154.0,
+        152.0,
+        954.0,
+        507.0
+      ],
+      "crop_box": [
+        275,
+        207,
+        834,
+        327
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "ds:101:X16:栈、队列和数组 · 栈和队列的应用 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "栈、队列和数组 · 栈和队列的应用 · 选择题",
+      "id": "X16",
+      "type": "选择题",
+      "page": 101,
+      "topic": "3.3.6 本节试题精选",
+      "content": "【2016统考真题】设有如下图所示的火车车轨，入口和出口之间有n条轨道，列车的行进方向均为从左至右，列车可驶入任意一条轨道。现有编号为1～9的9列列车，驶入的次序依次是8,4,2,5,3,9,1,6,7。若期望驶出的次序依次为1～9，则n至少是（）。",
+      "options": [
+        {
+          "k": "A",
+          "v": "2"
+        },
+        {
+          "k": "B",
+          "v": "3"
+        },
+        {
+          "k": "C",
+          "v": "4"
+        },
+        {
+          "k": "D",
+          "v": "5"
+        }
+      ],
+      "answer": "C",
+      "image": "crops/ds/page_101_X16.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_101.jpg",
+      "bbox": [
+        172.0,
+        213.0,
+        972.0,
+        506.0
+      ],
+      "crop_box": [
+        225,
+        301,
+        873,
+        478
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "ds:154:X32:树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题",
+      "id": "X32",
+      "type": "选择题",
+      "page": 154,
+      "topic": "5.3.3 本节试题精选",
+      "content": "【2009统考真题】给定二叉树如右图所示。设N代表二叉树的根，L代表根结点的左子树，R代表根结点的右子树。若遍历后的结点序列是\n3175624，则其遍历方式是（）。",
+      "options": [
+        {
+          "k": "A",
+          "v": "LRN"
+        },
+        {
+          "k": "B",
+          "v": "NRL"
+        },
+        {
+          "k": "C",
+          "v": "RLN"
+        },
+        {
+          "k": "D",
+          "v": "RNL"
+        }
+      ],
+      "answer": "D",
+      "image": "crops/ds/page_154_X32.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_154.jpg",
+      "bbox": [
+        153.0,
+        913.0,
+        824.0,
+        1029.0
+      ],
+      "crop_box": [
+        64,
+        903,
+        1018,
+        1041
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "ds:154:X33:树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题",
+      "id": "X33",
+      "type": "选择题",
+      "page": 154,
+      "topic": "5.3.3 本节试题精选",
+      "content": "【2010统考真题】下列线索二叉树中（用虚线表示线索），符合后序线索树定义的是（）。\nNull.\nNull\nA. B. C D.",
+      "options": [
+        {
+          "k": "A",
+          "v": "见图 A"
+        },
+        {
+          "k": "B",
+          "v": "C"
+        },
+        {
+          "k": "C",
+          "v": "见图 C"
+        },
+        {
+          "k": "D",
+          "v": "见图 D"
+        }
+      ],
+      "answer": "D",
+      "image": "crops/ds/page_154_X33.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_154.jpg",
+      "bbox": [
+        153.0,
+        1036.0,
+        857.0,
+        1287.0
+      ],
+      "crop_box": [
+        64,
+        1026,
+        1018,
+        1298
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "ds:155:X37:树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题",
+      "id": "X37",
+      "type": "选择题",
+      "page": 155,
+      "topic": "5.3.3 本节试题精选",
+      "content": "【2014统考真题】若对右图所示的二叉树进行中序线索化，则结点X的左右线索指向的结点分别是（）。",
+      "options": [
+        {
+          "k": "A",
+          "v": "e, c"
+        },
+        {
+          "k": "B",
+          "v": "e,a"
+        },
+        {
+          "k": "C",
+          "v": "d,c"
+        },
+        {
+          "k": "D",
+          "v": "b,a"
+        }
+      ],
+      "answer": "D",
+      "image": "crops/ds/page_155_X37.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_155.jpg",
+      "bbox": [
+        170.0,
+        358.0,
+        844.0,
+        443.0
+      ],
+      "crop_box": [
+        64,
+        350,
+        1018,
+        453
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "ds:155:X39:树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题",
+      "id": "X39",
+      "type": "选择题",
+      "page": 155,
+      "topic": "5.3.3 本节试题精选",
+      "content": "【2017统考真题】某二叉树的树形如右图所示，其后序序列为e,a,c,b,d,\ng,f，树中与结点a同层的结点是（）。",
+      "options": [
+        {
+          "k": "A",
+          "v": "C"
+        },
+        {
+          "k": "B",
+          "v": "d"
+        },
+        {
+          "k": "C",
+          "v": "f"
+        },
+        {
+          "k": "D",
+          "v": "g"
+        }
+      ],
+      "answer": "B",
+      "image": "crops/ds/page_155_X39.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_155.jpg",
+      "bbox": [
+        168.0,
+        504.0,
+        847.0,
+        592.0
+      ],
+      "crop_box": [
+        64,
+        494,
+        1018,
+        598
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "ds:155:X42:树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题",
+      "id": "X42",
+      "type": "选择题",
+      "page": 155,
+      "topic": "5.3.3 本节试题精选",
+      "content": "【2023统考真题】已知一棵二叉树的树形如右图所示，若其后序遍历序列为fdbeca，则其先（前）序遍历序列是（）。",
+      "options": [
+        {
+          "k": "A",
+          "v": "aedfbc"
+        },
+        {
+          "k": "B",
+          "v": "acebdf"
+        },
+        {
+          "k": "C",
+          "v": "cabefd"
+        },
+        {
+          "k": "D",
+          "v": "dfebac"
+        }
+      ],
+      "answer": "A",
+      "image": "crops/ds/page_155_X42.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_155.jpg",
+      "bbox": [
+        171.0,
+        867.0,
+        820.0,
+        980.0
+      ],
+      "crop_box": [
+        64,
+        857,
+        1018,
+        987
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "ds:157:A16:树与二叉树 · 二叉树的遍历和线索二叉树 · 解答题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "树与二叉树 · 二叉树的遍历和线索二叉树 · 解答题",
+      "id": "A16",
+      "type": "解答题",
+      "page": 157,
+      "topic": "5.3.3 本节试题精选",
+      "content": "【2022 统考真题】已知非空二叉树T的结点值均为正整数，采用顺序存储方式保存，数据结构定义如下：\ntypedef struct { //MAX_SIZE为已定义常量\nint SqBiTNode[MAX_SIZE]; //保存二叉树结点值的数组\nint ElemNum; //实际占用的数组元素个数\n}SqBiTree;\nT中不存在的结点在数组SqBiTNode 中用-1表示。例如，对于下图所示的两棵非空二叉树T和T2,\n二叉树T 二叉树T2\nT的存储结果如下:\nT1.SqBiTNode 40 25 60 -1 30 80 -1 -1 27\nT1.ElemNum=10\nT2的存储结果如下：\nT2.SqBiTNode 40 50 60 -1 30 -1 -1 35\nT2.ElemNum=11\n请设计一个尽可能高效的算法，判定一棵采用这种方式存储的二叉树是否为二叉搜索树，若是，则返回true，否则，返回false。要求:\n1）给出算法的基本设计思想。\n2）根据设计思想，采用C或C++语言描述算法，关键之处给出注释。",
+      "options": [],
+      "answer": null,
+      "image": "crops/ds/page_157_A16.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_157.jpg",
+      "bbox": [
+        173.0,
+        181.0,
+        972.0,
+        864.0
+      ],
+      "crop_box": [
+        198,
+        355,
+        911,
+        756
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "ds:178:X13:树与二叉树 · 树、森林 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "树与二叉树 · 树、森林 · 选择题",
+      "id": "X13",
+      "type": "选择题",
+      "page": 178,
+      "topic": "5.4.4 本节试题精选",
+      "content": "右图是一棵逻辑上的树T，则在关于该树的存储结构的叙述中，错误的是（）。",
+      "options": [
+        {
+          "k": "A",
+          "v": "若T采用双亲表示法，则有9个指向双亲的指针"
+        },
+        {
+          "k": "B",
+          "v": "若T采用孩子表示法，则在T中查找某个结点的孩子比双亲表示法更方便"
+        },
+        {
+          "k": "C",
+          "v": "若T采用孩子兄弟表示法，则在T中查找某个结点的双亲的时间复杂度为O(1)"
+        },
+        {
+          "k": "D",
+          "v": "双亲表示法是顺序存储结构，孩子表示法和孩子兄弟表示法通常是链式存储结构"
+        }
+      ],
+      "answer": "C",
+      "image": "crops/ds/page_178_X13.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_178.jpg",
+      "bbox": [
+        154.0,
+        1091.0,
+        931.0,
+        1327.0
+      ],
+      "crop_box": [
+        64,
+        1081,
+        1018,
+        1338
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "ds:190:X02:树与二叉树 · 树与二叉树的应用 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "树与二叉树 · 树与二叉树的应用 · 选择题",
+      "id": "X02",
+      "type": "选择题",
+      "page": 190,
+      "topic": "5.5.3 本节试题精选",
+      "content": "给定整数集合{3,5,6,9,12}，与之对应的哈夫曼树是（）。\nA. B. C. D.",
+      "options": [
+        {
+          "k": "A",
+          "v": "见图 A"
+        },
+        {
+          "k": "B",
+          "v": "见图 B"
+        },
+        {
+          "k": "C",
+          "v": "见图 C"
+        },
+        {
+          "k": "D",
+          "v": "见图 D"
+        }
+      ],
+      "answer": "C",
+      "image": "crops/ds/page_190_X02.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_190.jpg",
+      "bbox": [
+        154.0,
+        600.0,
+        858.0,
+        766.0
+      ],
+      "crop_box": [
+        64,
+        590,
+        1018,
+        774
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "ds:203:X12:图 · 图的基本概念 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "图 · 图的基本概念 · 选择题",
+      "id": "X12",
+      "type": "选择题",
+      "page": 203,
+      "topic": "6.1.2 本节试题精选",
+      "content": "在右图所示的有向图中，共有（）个强连通分量。",
+      "options": [
+        {
+          "k": "A",
+          "v": "1"
+        },
+        {
+          "k": "B",
+          "v": "2"
+        },
+        {
+          "k": "C",
+          "v": "3"
+        },
+        {
+          "k": "D",
+          "v": "4"
+        }
+      ],
+      "answer": "B",
+      "image": "crops/ds/page_203_X12.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_203.jpg",
+      "bbox": [
+        170.0,
+        1171.0,
+        647.0,
+        1258.0
+      ],
+      "crop_box": [
+        64,
+        1161,
+        1018,
+        1266
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "ds:213:A02:图 · 图的存储及基本操作 · 解答题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "图 · 图的存储及基本操作 · 解答题",
+      "id": "A02",
+      "type": "解答题",
+      "page": 213,
+      "topic": "6.2.6 本节试题精选",
+      "content": "已知带权有向图G的邻接矩阵如下图所示，请画出该带权有向图G。\n015212",
+      "options": [],
+      "answer": null,
+      "image": "crops/ds/page_213_A02.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_213.jpg",
+      "bbox": [
+        171.0,
+        93.0,
+        946.0,
+        1303.0
+      ],
+      "crop_box": [
+        199,
+        790,
+        787,
+        1101
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "ds:213:X20:图 · 图的存储及基本操作 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "图 · 图的存储及基本操作 · 选择题",
+      "id": "X20",
+      "type": "选择题",
+      "page": 213,
+      "topic": "6.2.6 本节试题精选",
+      "content": "【2024统考真题】若无向图G=(V,E)的邻接多重表如下图所示，则G中顶点b与d的度分别是（）。",
+      "options": [
+        {
+          "k": "A",
+          "v": "0, 2"
+        },
+        {
+          "k": "B",
+          "v": "2, 4"
+        },
+        {
+          "k": "C",
+          "v": "2, 5"
+        },
+        {
+          "k": "D",
+          "v": "3, 4"
+        }
+      ],
+      "answer": "B",
+      "image": "crops/ds/page_213_X20.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_213.jpg",
+      "bbox": [
+        169.0,
+        763.0,
+        972.0,
+        1130.0
+      ],
+      "crop_box": [
+        199,
+        790,
+        787,
+        1101
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "ds:214:A03:图 · 图的存储及基本操作 · 解答题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "图 · 图的存储及基本操作 · 解答题",
+      "id": "A03",
+      "type": "解答题",
+      "page": 214,
+      "topic": "6.2.6 本节试题精选",
+      "content": "设图G=(V,E)以邻接表存储，如下图所示。画出其邻接矩阵存储及图G。",
+      "options": [],
+      "answer": null,
+      "image": "crops/ds/page_214_A03.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_214.jpg",
+      "bbox": [
+        154.0,
+        153.0,
+        831.0,
+        288.0
+      ],
+      "crop_box": [
+        64,
+        143,
+        1018,
+        298
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "ds:214:A07:图 · 图的存储及基本操作 · 解答题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "图 · 图的存储及基本操作 · 解答题",
+      "id": "A07",
+      "type": "解答题",
+      "page": 214,
+      "topic": "6.2.6 本节试题精选",
+      "content": "【2015统考真题】已知含有5个顶点的图G如右图所示。\n请回答下列问题：\n1）写出图G的邻接矩阵A（行、列下标从0开始）。\n2）求A²，矩阵A2中位于0行3列元素值的含义是什么？\n3）若已知具有n（n≥2）个顶点的图的邻接矩阵为B，则B^m（2≤m≤n）中非零元素的含义是什么？",
+      "options": [],
+      "answer": null,
+      "image": "crops/ds/page_214_A07.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_214.jpg",
+      "bbox": [
+        155.0,
+        547.0,
+        952.0,
+        723.0
+      ],
+      "crop_box": [
+        64,
+        537,
+        1018,
+        733
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "ds:214:A09:图 · 图的存储及基本操作 · 解答题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "图 · 图的存储及基本操作 · 解答题",
+      "id": "A09",
+      "type": "解答题",
+      "page": 214,
+      "topic": "6.2.6 本节试题精选",
+      "content": "【2023统考真题】已知有向图G采用邻接矩阵存储，类型定义如下：\ntypedef struct{ //图的类型定义\nint numVertices,numEdges; //图的顶点数和有向边数\nchar VerticesList[MAXV]; //顶点表，MAXV为已定义常量\nint Edge[MAXV][MAXV]; //邻接矩阵\n}MGraph;\n将图中出度大于入度的顶点称为K顶点。例如，在右图中，顶点a和b为K顶点。\n请设计算法 int printVertices(MGraph G)，对给定的任意非空有向图G，输出G中所有的K顶点，并返回K顶点的个数。要求：\n1）给出算法的基本设计思想。\n2）根据设计思想，采用C或C++语言描述算法，关键之处给出注释。\n3）说明你所设计算法的时间复杂度和空间复杂度。",
+      "options": [],
+      "answer": null,
+      "image": "crops/ds/page_214_A09.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_214.jpg",
+      "bbox": [
+        152.0,
+        152.0,
+        813.0,
+        1367.0
+      ],
+      "crop_box": [
+        426,
+        142,
+        961,
+        550
+      ],
+      "image_note": "题干含图，OCR空隙+墨迹自动重裁"
+    },
+    {
+      "uid": "ds:224:X08:图 · 图的遍历 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "图 · 图的遍历 · 选择题",
+      "id": "X08",
+      "type": "选择题",
+      "page": 224,
+      "topic": "6.3.4 本节试题精选",
+      "content": "如右图所示，在下面的5个序列中，符合深度优先遍历的序列个数是（）。\n1. aebfdc 2. acfdeb3.aedfcb4.aefdbc 5. aecfdb",
+      "options": [
+        {
+          "k": "A",
+          "v": "5"
+        },
+        {
+          "k": "B",
+          "v": "4"
+        },
+        {
+          "k": "C",
+          "v": "3"
+        },
+        {
+          "k": "D",
+          "v": "2"
+        }
+      ],
+      "answer": "D",
+      "image": "crops/ds/page_224_X08.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_224.jpg",
+      "bbox": [
+        152.0,
+        850.0,
+        777.0,
+        999.0
+      ],
+      "crop_box": [
+        64,
+        840,
+        1018,
+        1010
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "ds:224:X10:图 · 图的遍历 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "图 · 图的遍历 · 选择题",
+      "id": "X10",
+      "type": "选择题",
+      "page": 224,
+      "topic": "6.3.4 本节试题精选",
+      "content": "一个有向图G的邻接表存储如下图所示，从顶点1出发，对图G调用深度优先遍历所得顶点序列是（）；按广度优先遍历所得顶点序列是（）。",
+      "options": [
+        {
+          "k": "A",
+          "v": "125436"
+        },
+        {
+          "k": "B",
+          "v": "124536"
+        },
+        {
+          "k": "C",
+          "v": "124563"
+        },
+        {
+          "k": "D",
+          "v": "362514"
+        }
+      ],
+      "answer": "AB",
+      "image": "crops/ds/page_224_X10.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_224.jpg",
+      "bbox": [
+        155.0,
+        1096.0,
+        953.0,
+        1391.0
+      ],
+      "crop_box": [
+        268,
+        1151,
+        803,
+        1365
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "ds:225:A01:图 · 图的遍历 · 解答题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "图 · 图的遍历 · 解答题",
+      "id": "A01",
+      "type": "解答题",
+      "page": 225,
+      "topic": "6.3.4 本节试题精选",
+      "content": "图G=(V,E)以邻接表存储，如下图所示，试画出图G的深度优先生成树和广度优先生成树（假设从顶点1开始遍历）。",
+      "options": [],
+      "answer": null,
+      "image": "crops/ds/page_225_A01.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_225.jpg",
+      "bbox": [
+        169.0,
+        1075.0,
+        970.0,
+        1131.0
+      ],
+      "crop_box": [
+        64,
+        1065,
+        1018,
+        1141
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "ds:225:X16:图 · 图的遍历 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "图 · 图的遍历 · 选择题",
+      "id": "X16",
+      "type": "选择题",
+      "page": 225,
+      "topic": "6.3.4 本节试题精选",
+      "content": "【2013统考真题】下列选项中，不是右图所示无向图的广度优先遍历序列的是（）。",
+      "options": [
+        {
+          "k": "A",
+          "v": "h,c,a, b,d, e,g,f"
+        },
+        {
+          "k": "B",
+          "v": "e,a,f, g, b,h, c,d"
+        },
+        {
+          "k": "C",
+          "v": "d, b, c, a, h, e,f,g"
+        },
+        {
+          "k": "D",
+          "v": "a,b,c, d, h, e,f,g"
+        }
+      ],
+      "answer": "D",
+      "image": "crops/ds/page_225_X16.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_225.jpg",
+      "bbox": [
+        171.0,
+        578.0,
+        646.0,
+        758.0
+      ],
+      "crop_box": [
+        64,
+        568,
+        1018,
+        765
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "ds:243:X16:图 · 图的应用 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "图 · 图的应用 · 选择题",
+      "id": "X16",
+      "type": "选择题",
+      "page": 243,
+      "topic": "6.4.6 本节试题精选",
+      "content": "右图所示有向图的所有拓扑序列共有（）个。",
+      "options": [
+        {
+          "k": "A",
+          "v": "4"
+        },
+        {
+          "k": "B",
+          "v": "6"
+        },
+        {
+          "k": "C",
+          "v": "5"
+        },
+        {
+          "k": "D",
+          "v": "7"
+        }
+      ],
+      "answer": "C",
+      "image": "crops/ds/page_243_X16.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_243.jpg",
+      "bbox": [
+        173.0,
+        1274.0,
+        622.0,
+        1361.0
+      ],
+      "crop_box": [
+        64,
+        1264,
+        1018,
+        1366
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "ds:244:X22:图 · 图的应用 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "图 · 图的应用 · 选择题",
+      "id": "X22",
+      "type": "选择题",
+      "page": 244,
+      "topic": "6.4.6 本节试题精选",
+      "content": "下图所示的AOE网中，关键路径长度为（）。",
+      "options": [
+        {
+          "k": "A",
+          "v": "16"
+        },
+        {
+          "k": "B",
+          "v": "17"
+        },
+        {
+          "k": "C",
+          "v": "18"
+        },
+        {
+          "k": "D",
+          "v": "19\na = 4"
+        }
+      ],
+      "answer": "C",
+      "image": "crops/ds/page_244_X22.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_244.jpg",
+      "bbox": [
+        153.0,
+        655.0,
+        792.0,
+        904.0
+      ],
+      "crop_box": [
+        64,
+        645,
+        1018,
+        917
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "ds:245:X27:图 · 图的应用 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "图 · 图的应用 · 选择题",
+      "id": "X27",
+      "type": "选择题",
+      "page": 245,
+      "topic": "6.4.6 本节试题精选",
+      "content": "【2010统考真题】对右图进行拓扑排序，可得不同拓扑序列的个数是（）。",
+      "options": [
+        {
+          "k": "A",
+          "v": "4"
+        },
+        {
+          "k": "B",
+          "v": "3"
+        },
+        {
+          "k": "C",
+          "v": "2"
+        },
+        {
+          "k": "D",
+          "v": "1"
+        }
+      ],
+      "answer": "B",
+      "image": "crops/ds/page_245_X27.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_245.jpg",
+      "bbox": [
+        171.0,
+        355.0,
+        740.0,
+        466.0
+      ],
+      "crop_box": [
+        64,
+        345,
+        1018,
+        475
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "ds:245:X29:图 · 图的应用 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "图 · 图的应用 · 选择题",
+      "id": "X29",
+      "type": "选择题",
+      "page": 245,
+      "topic": "6.4.6 本节试题精选",
+      "content": "【2012统考真题】对右图所示的有向带权图，若采用\nDijkstra 算法求从源点a 到其他各顶点的最短路径,\n则得到的第一条最短路径的目标顶点是b，第二条最短路径的目标顶点是C，后续得到的其余各最短路径的目标顶点依次是（）。",
+      "options": [
+        {
+          "k": "A",
+          "v": "d,e,f"
+        },
+        {
+          "k": "B",
+          "v": "e, d,f"
+        },
+        {
+          "k": "C",
+          "v": "f,d,e"
+        },
+        {
+          "k": "D",
+          "v": "f,e, d"
+        }
+      ],
+      "answer": "C",
+      "image": "crops/ds/page_245_X29.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_245.jpg",
+      "bbox": [
+        169.0,
+        674.0,
+        845.0,
+        853.0
+      ],
+      "crop_box": [
+        64,
+        664,
+        1018,
+        860
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "ds:245:X32:图 · 图的应用 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "图 · 图的应用 · 选择题",
+      "id": "X32",
+      "type": "选择题",
+      "page": 245,
+      "topic": "6.4.6 本节试题精选",
+      "content": "【2014统考真题】对右图所示的有向图进行拓扑排序，得到的拓扑序列可能是（）。",
+      "options": [
+        {
+          "k": "A",
+          "v": "3,1,2,4,5,6"
+        },
+        {
+          "k": "B",
+          "v": "3,1,2,4,6,5"
+        },
+        {
+          "k": "C",
+          "v": "3,1,4,2,5,6"
+        },
+        {
+          "k": "D",
+          "v": "3,1,4,2,6,5"
+        }
+      ],
+      "answer": "D",
+      "image": "crops/ds/page_245_X32.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_245.jpg",
+      "bbox": [
+        169.0,
+        93.0,
+        945.0,
+        1393.0
+      ],
+      "crop_box": [
+        64,
+        1267,
+        1018,
+        1488
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "ds:246:X33:图 · 图的应用 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "图 · 图的应用 · 选择题",
+      "id": "X33",
+      "type": "选择题",
+      "page": 246,
+      "topic": "6.4.6 本节试题精选",
+      "content": "【2015统考真题】求右图所示带权图的最小（代价）生成树时，可能是Kruskal算法第2次选中但不是Prim算法（从V4开始）第2次选中的边是（）。",
+      "options": [
+        {
+          "k": "A",
+          "v": "(V, V3)"
+        },
+        {
+          "k": "B",
+          "v": "(V, V4)"
+        },
+        {
+          "k": "C",
+          "v": "(V2, V3)"
+        },
+        {
+          "k": "D",
+          "v": "(V3, V4)"
+        }
+      ],
+      "answer": "C",
+      "image": "crops/ds/page_246_X33.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_246.jpg",
+      "bbox": [
+        153.0,
+        153.0,
+        897.0,
+        300.0
+      ],
+      "crop_box": [
+        64,
+        143,
+        1018,
+        306
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "ds:246:X35:图 · 图的应用 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "图 · 图的应用 · 选择题",
+      "id": "X35",
+      "type": "选择题",
+      "page": 246,
+      "topic": "6.4.6 本节试题精选",
+      "content": "【2016统考真题】使用Dijkstra算法求下图中从顶点1到其他各顶点的最短路径，依次得到的各最短路径的目标顶点是（）。",
+      "options": [
+        {
+          "k": "A",
+          "v": "5,2,3,4,6"
+        },
+        {
+          "k": "B",
+          "v": "5,2,3,6,4"
+        },
+        {
+          "k": "C",
+          "v": "5,2,4,3,6"
+        },
+        {
+          "k": "D",
+          "v": "5,2,6,3,4"
+        }
+      ],
+      "answer": "B",
+      "image": "crops/ds/page_246_X35.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_246.jpg",
+      "bbox": [
+        154.0,
+        454.0,
+        953.0,
+        686.0
+      ],
+      "crop_box": [
+        350,
+        508,
+        717,
+        658
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "ds:246:X38:图 · 图的应用 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "图 · 图的应用 · 选择题",
+      "id": "X38",
+      "type": "选择题",
+      "page": 246,
+      "topic": "6.4.6 本节试题精选",
+      "content": "【2019统考真题】下图所示的AOE网表示一项包含8个活动的工程。活动d的最早开始时间和最迟开始时间分别是（）。\na=3",
+      "options": [
+        {
+          "k": "A",
+          "v": "3和7"
+        },
+        {
+          "k": "B",
+          "v": "12和12"
+        },
+        {
+          "k": "C",
+          "v": "12和14"
+        },
+        {
+          "k": "D",
+          "v": "15和15"
+        }
+      ],
+      "answer": "C",
+      "image": "crops/ds/page_246_X38.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_246.jpg",
+      "bbox": [
+        154.0,
+        960.0,
+        953.0,
+        1182.0
+      ],
+      "crop_box": [
+        358,
+        1013,
+        708,
+        1151
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "ds:247:X43:图 · 图的应用 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "图 · 图的应用 · 选择题",
+      "id": "X43",
+      "type": "选择题",
+      "page": 247,
+      "topic": "6.4.6 本节试题精选",
+      "content": "【2021统考真题】给定右图所示有向图，该图的拓扑有序序列的个数是（）。",
+      "options": [
+        {
+          "k": "A",
+          "v": "1"
+        },
+        {
+          "k": "B",
+          "v": "2"
+        },
+        {
+          "k": "C",
+          "v": "3"
+        },
+        {
+          "k": "D",
+          "v": "4"
+        }
+      ],
+      "answer": "A",
+      "image": "crops/ds/page_247_X43.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_247.jpg",
+      "bbox": [
+        172.0,
+        518.0,
+        781.0,
+        634.0
+      ],
+      "crop_box": [
+        64,
+        508,
+        1018,
+        645
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "ds:247:X44:图 · 图的应用 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "图 · 图的应用 · 选择题",
+      "id": "X44",
+      "type": "选择题",
+      "page": 247,
+      "topic": "6.4.6 本节试题精选",
+      "content": "【2021统考真题】使用Dijkstra算法求下图中从顶点1到其余各顶点的最短路径，将当前找到的从顶点1到顶点2,3,4,5的最短路径长度保存在数组dist中，求出第二条最短路径后，dist 中的内容更新为（）。\n26",
+      "options": [
+        {
+          "k": "A",
+          "v": "26,3, 14, 6"
+        },
+        {
+          "k": "B",
+          "v": "25,3,14,6"
+        },
+        {
+          "k": "C",
+          "v": "21,3, 14,6"
+        },
+        {
+          "k": "D",
+          "v": "15,3,14,6"
+        }
+      ],
+      "answer": "C",
+      "image": "crops/ds/page_247_X44.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_247.jpg",
+      "bbox": [
+        172.0,
+        640.0,
+        924.0,
+        960.0
+      ],
+      "crop_box": [
+        419,
+        725,
+        681,
+        930
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "ds:247:X45:图 · 图的应用 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "图 · 图的应用 · 选择题",
+      "id": "X45",
+      "type": "选择题",
+      "page": 247,
+      "topic": "6.4.6 本节试题精选",
+      "content": "【2022统考真题】下图是一个有10个活动的A0E网，时间余量最大的活动是（）。",
+      "options": [
+        {
+          "k": "A",
+          "v": "c"
+        },
+        {
+          "k": "B",
+          "v": "g"
+        },
+        {
+          "k": "C",
+          "v": "h"
+        },
+        {
+          "k": "D",
+          "v": "j"
+        }
+      ],
+      "answer": "B",
+      "image": "crops/ds/page_247_X45.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_247.jpg",
+      "bbox": [
+        171.0,
+        965.0,
+        943.0,
+        1164.0
+      ],
+      "crop_box": [
+        363,
+        992,
+        737,
+        1132
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "ds:248:A01:图 · 图的应用 · 解答题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "图 · 图的应用 · 解答题",
+      "id": "A01",
+      "type": "解答题",
+      "page": 248,
+      "topic": "6.4.6 本节试题精选",
+      "content": "已知有向图如右图所示。\n1）写出该图的邻接矩阵表示并据此给出从顶点1出发的深度优先遍历序列。\n2）求该有向图的强连通分量的数目。\n3）给出该图的任意两个拓扑序列。\n4）若将该图视为无向图，分别用Prim算法和Kruskal算法求最小生成树。",
+      "options": [],
+      "answer": null,
+      "image": "crops/ds/page_248_A01.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_248.jpg",
+      "bbox": [
+        155.0,
+        352.0,
+        689.0,
+        558.0
+      ],
+      "crop_box": [
+        64,
+        342,
+        1018,
+        568
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "ds:248:A02:图 · 图的应用 · 解答题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "图 · 图的应用 · 解答题",
+      "id": "A02",
+      "type": "解答题",
+      "page": 248,
+      "topic": "6.4.6 本节试题精选",
+      "content": "对右图所示的无向图，按照 Dijkstra 算法，写出从顶点1到其他各个顶点的最短路径和最短路径长度（顺序不能颠倒）。",
+      "options": [],
+      "answer": null,
+      "image": "crops/ds/page_248_A02.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_248.jpg",
+      "bbox": [
+        155.0,
+        564.0,
+        743.0,
+        617.0
+      ],
+      "crop_box": [
+        64,
+        554,
+        1018,
+        627
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "ds:248:A03:图 · 图的应用 · 解答题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "图 · 图的应用 · 解答题",
+      "id": "A03",
+      "type": "解答题",
+      "page": 248,
+      "topic": "6.4.6 本节试题精选",
+      "content": "下图所示为一个用AOE网表示的工程。\n1）画出此图的邻接表表示。\n2）完成此工程至少需要多少时间？\n3）指出关键路径。\n4）哪些活动加速可以缩短完成工程所需的时间？\na6=1 a=3\na=6",
+      "options": [],
+      "answer": null,
+      "image": "crops/ds/page_248_A03.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_248.jpg",
+      "bbox": [
+        153.0,
+        624.0,
+        632.0,
+        985.0
+      ],
+      "crop_box": [
+        64,
+        614,
+        1018,
+        995
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "ds:249:A08:图 · 图的应用 · 解答题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "图 · 图的应用 · 解答题",
+      "id": "A08",
+      "type": "解答题",
+      "page": 249,
+      "topic": "6.4.6 本节试题精选",
+      "content": "【2011统考真题】已知有6个顶点（顶点编号为0～5）的有向带权图G，其邻接矩阵\nA为上三角矩阵，按行为主序（行优先）保存在如下的一维数组中。\n46 8 8\n8 3 3\n要求：\n1）写出图G的邻接矩阵A。\n2）画出有向带权图G。\n3）求图G的关键路径，并计算该关键路径的长度。\n要链路状态信息（LSI），R1构造的网络拓扑图（见下图）是根据题下表及R1的接口名构造出来的网络拓扑。\nR1的LSI R2的LSI R3的 LSI R4的LSI 备注\nRouter ID 10.1.1.1 10.1.1.2 10.1.1.5 10.1.1.6 标识路由器的IP地址\nID 10.1.1.2 10.1.1.1 10.1.1.6 10.1.1.5 所连路由器的Router ID\nLinkl IP 10.1.1.1 10.1.1.2 10.1.1.5 10.1.1.6 Linkl的本地IP地址\nMetric 3 6 6 Linkl的费用\nID 10.1.1.5 10.1.1.6 10.1.1.1 10.1.1.2 所连路由器的Router ID\nLink2 IP 10.1.1.9 10.1.1.13 10.1.1.10 10.1.1.14 Link2的本地IP地址\nMetric 2 4 2 4 Link2的费用\nPrefix 192.1.1.0/24 192.1.6.0/24 192.1.5.0/24 192.1.7.0/24 直连网络Netl的网络前缀\nNet1\nMetric 到达直连网络Netl的费用\nLO\nE0\n192.1.1.0/24 192.1.6.0/24\nR1 3 R2\nL1 10.1.1.13",
+      "options": [],
+      "answer": null,
+      "image": "crops/ds/page_249_A08.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_249.jpg",
+      "bbox": [
+        170.0,
+        336.0,
+        971.0,
+        1029.0
+      ],
+      "crop_box": [
+        200,
+        615,
+        885,
+        683
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "ds:250:A11:图 · 图的应用 · 解答题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "图 · 图的应用 · 解答题",
+      "id": "A11",
+      "type": "解答题",
+      "page": 250,
+      "topic": "6.4.6 本节试题精选",
+      "content": "【2018统考真题】拟建设一个光通信骨干网络连通BJ、CS、\nXA、QD、JN、NJ、TL和WH等8个城市，右图中无向边上的权值表示两个城市之间备选光缆的铺设费用。\n请回答下列问题：\n1）仅从铺设费用角度出发，给出所有可能的最经济的光\nWH N\n缆铺设方案（用带权图表示），并计算相应方案的总费用。\n2）该图可采用图的哪种存储结构？给出求解问题1）所用的算法名称。\n3）假设每个城市采用一个路由器按1）中得到的最经济方案组网，主机H1直接连接\nTL的路由器，主机H2直接连接BJ的路由器。若H1向H2发送一个TTL=5的IP\n分组，则H2是否可以收到该IP分组？",
+      "options": [],
+      "answer": null,
+      "image": "crops/ds/page_250_A11.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_250.jpg",
+      "bbox": [
+        155.0,
+        305.0,
+        954.0,
+        652.0
+      ],
+      "crop_box": [
+        64,
+        295,
+        1018,
+        662
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "ds:250:A13:图 · 图的应用 · 解答题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "图 · 图的应用 · 解答题",
+      "id": "A13",
+      "type": "解答题",
+      "page": 250,
+      "topic": "6.4.6 本节试题精选",
+      "content": "【2025统考真题】某工程包含12个活动，使用右图所示的AOE网描述，图中各边上标注了活动及其持续时间。\nb=5\n=3\nh=1\n请回答下列问题（活动均用活动名表示）。\n1）完成该工程的最短时间是多少？哪些活动是关键活动？\n2）若以最短时间完成工程，则与活动e同时进行的活动可能有哪些?\n3）时间余量最大的活动是哪个？其时间余量是多少？\n4）假设工程从时刻〇启动，因某种原因，活动b在时刻6开始。为了保证工程不延期，在其他活动持续时间均不变的情况下，b的持续时间最多是多少？若不改变b\n的持续时间，则压缩哪个活动的持续时间也能保证工程不延期？",
+      "options": [],
+      "answer": null,
+      "image": "crops/ds/page_250_A13.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_250.jpg",
+      "bbox": [
+        154.0,
+        152.0,
+        973.0,
+        1383.0
+      ],
+      "crop_box": [
+        426,
+        140,
+        966,
+        550
+      ],
+      "image_note": "题干含图，OCR空隙+墨迹自动重裁"
+    },
+    {
+      "uid": "ds:276:X23:查找 · 顺序查找和折半查找 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "查找 · 顺序查找和折半查找 · 选择题",
+      "id": "X23",
+      "type": "选择题",
+      "page": 276,
+      "topic": "7.2.4 本节试题精选",
+      "content": "【2017统考真题】下列二叉树中，可能成为折半查找判定树（不含外部结点）的是（）。\nA. B.\nD.",
+      "options": [
+        {
+          "k": "A",
+          "v": "见图 A"
+        },
+        {
+          "k": "B",
+          "v": "见图 B"
+        },
+        {
+          "k": "C",
+          "v": "见图 C"
+        },
+        {
+          "k": "D",
+          "v": "见图 D"
+        }
+      ],
+      "answer": "A",
+      "image": "crops/ds/page_276_X23.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_276.jpg",
+      "bbox": [
+        154.0,
+        741.0,
+        950.0,
+        898.0
+      ],
+      "crop_box": [
+        143,
+        730,
+        961,
+        964
+      ],
+      "image_note": "题干含图，OCR空隙+墨迹自动重裁"
+    },
+    {
+      "uid": "ds:297:X19:查找 · 树形查找 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "查找 · 树形查找 · 选择题",
+      "id": "X19",
+      "type": "选择题",
+      "page": 297,
+      "topic": "7.3.4 本节试题精选",
+      "content": "下列四个选项中，满足红黑树定义的是（）。\nA. B. C. D.",
+      "options": [
+        {
+          "k": "A",
+          "v": "见图 A"
+        },
+        {
+          "k": "B",
+          "v": "见图 B"
+        },
+        {
+          "k": "C",
+          "v": "见图 C"
+        },
+        {
+          "k": "D",
+          "v": "见图 D"
+        }
+      ],
+      "answer": "A",
+      "image": "crops/ds/page_297_X19.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_297.jpg",
+      "bbox": [
+        169.0,
+        1125.0,
+        761.0,
+        1185.0
+      ],
+      "crop_box": [
+        159,
+        1116,
+        864,
+        1338
+      ],
+      "image_note": "题干含图，OCR空隙+墨迹自动重裁"
+    },
+    {
+      "uid": "ds:298:X21:查找 · 树形查找 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "查找 · 树形查找 · 选择题",
+      "id": "X21",
+      "type": "选择题",
+      "page": 298,
+      "topic": "7.3.4 本节试题精选",
+      "content": "将关键字5,4,3,2,1依次插入初始为空的红黑树T，则T的最终形态是（）。\nA. B.\nD.",
+      "options": [
+        {
+          "k": "A",
+          "v": "见图 A"
+        },
+        {
+          "k": "B",
+          "v": "见图 B"
+        },
+        {
+          "k": "C",
+          "v": "见图 C"
+        },
+        {
+          "k": "D",
+          "v": "见图 D"
+        }
+      ],
+      "answer": "D",
+      "image": "crops/ds/page_298_X21.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_298.jpg",
+      "bbox": [
+        152.0,
+        152.0,
+        867.0,
+        377.0
+      ],
+      "crop_box": [
+        140,
+        141,
+        879,
+        375
+      ],
+      "image_note": "题干含图，OCR空隙+墨迹自动重裁"
+    },
+    {
+      "uid": "ds:298:X22:查找 · 树形查找 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "查找 · 树形查找 · 选择题",
+      "id": "X22",
+      "type": "选择题",
+      "page": 298,
+      "topic": "7.3.4 本节试题精选",
+      "content": "在下图所示的红黑树中插入结点2且染成红色后，则下一步应进行的操作是（）。",
+      "options": [
+        {
+          "k": "A",
+          "v": "左旋"
+        },
+        {
+          "k": "B",
+          "v": "右旋"
+        },
+        {
+          "k": "C",
+          "v": "变色"
+        },
+        {
+          "k": "D",
+          "v": "无须调整"
+        }
+      ],
+      "answer": "B",
+      "image": "crops/ds/page_298_X22.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_298.jpg",
+      "bbox": [
+        152.0,
+        471.0,
+        909.0,
+        669.0
+      ],
+      "crop_box": [
+        366,
+        495,
+        699,
+        639
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "ds:298:X23:查找 · 树形查找 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "查找 · 树形查找 · 选择题",
+      "id": "X23",
+      "type": "选择题",
+      "page": 298,
+      "topic": "7.3.4 本节试题精选",
+      "content": "【2009统考真题】下列二叉排序树中，满足平衡二叉树定义的是（）。\nA. B. C. D.",
+      "options": [
+        {
+          "k": "A",
+          "v": "见图 A"
+        },
+        {
+          "k": "B",
+          "v": "见图 B"
+        },
+        {
+          "k": "C",
+          "v": "见图 C"
+        },
+        {
+          "k": "D",
+          "v": "见图 D"
+        }
+      ],
+      "answer": "B",
+      "image": "crops/ds/page_298_X23.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_298.jpg",
+      "bbox": [
+        149.0,
+        671.0,
+        818.0,
+        884.0
+      ],
+      "crop_box": [
+        64,
+        661,
+        1018,
+        895
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "ds:298:X24:查找 · 树形查找 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "查找 · 树形查找 · 选择题",
+      "id": "X24",
+      "type": "选择题",
+      "page": 298,
+      "topic": "7.3.4 本节试题精选",
+      "content": "【2010统考真题】在下图所示的平衡二叉树中插入关键字48后得到一棵新平衡二叉树，\n在新平衡二叉树中，关键字37所在结点的左右子结点中保存的关键字分别是（）。",
+      "options": [
+        {
+          "k": "A",
+          "v": "13,48"
+        },
+        {
+          "k": "B",
+          "v": "24,48"
+        },
+        {
+          "k": "C",
+          "v": "24,53"
+        },
+        {
+          "k": "D",
+          "v": "24, 90"
+        }
+      ],
+      "answer": "C",
+      "image": "crops/ds/page_298_X24.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_298.jpg",
+      "bbox": [
+        154.0,
+        890.0,
+        951.0,
+        1100.0
+      ],
+      "crop_box": [
+        447,
+        945,
+        619,
+        1074
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "ds:299:X30:查找 · 树形查找 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "查找 · 树形查找 · 选择题",
+      "id": "X30",
+      "type": "选择题",
+      "page": 299,
+      "topic": "7.3.4 本节试题精选",
+      "content": "【2018统考真题】已知二叉排序树如右图所示，元素之间应满足的大小关系是（）。 X1",
+      "options": [
+        {
+          "k": "A",
+          "v": "x<x<xs"
+        },
+        {
+          "k": "B",
+          "v": "x<x4<xs"
+        },
+        {
+          "k": "C",
+          "v": "x3<xs<x4"
+        },
+        {
+          "k": "D",
+          "v": "x4<x3<x5"
+        }
+      ],
+      "answer": "C",
+      "image": "crops/ds/page_299_X30.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_299.jpg",
+      "bbox": [
+        170.0,
+        479.0,
+        810.0,
+        598.0
+      ],
+      "crop_box": [
+        64,
+        469,
+        1018,
+        605
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "ds:299:X33:查找 · 树形查找 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "查找 · 树形查找 · 选择题",
+      "id": "X33",
+      "type": "选择题",
+      "page": 299,
+      "topic": "7.3.4 本节试题精选",
+      "content": "【2021统考真题】给定平衡二叉树如右图所示，插入关键字23后，\n根中的关键字是（）。",
+      "options": [
+        {
+          "k": "A",
+          "v": "16"
+        },
+        {
+          "k": "B",
+          "v": "20"
+        },
+        {
+          "k": "C",
+          "v": "23"
+        },
+        {
+          "k": "D",
+          "v": "25"
+        }
+      ],
+      "answer": "D",
+      "image": "crops/ds/page_299_X33.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_299.jpg",
+      "bbox": [
+        170.0,
+        961.0,
+        799.0,
+        1076.0
+      ],
+      "crop_box": [
+        64,
+        951,
+        1018,
+        1086
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "ds:299:X34:查找 · 树形查找 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "查找 · 树形查找 · 选择题",
+      "id": "X34",
+      "type": "选择题",
+      "page": 299,
+      "topic": "7.3.4 本节试题精选",
+      "content": "【2024 统考真题】一棵二叉搜索树如右图所示，k、k、k分别是对应结点中保存的关键字。子树T的任一结点中保存的关键字x满足的是（）。",
+      "options": [
+        {
+          "k": "A",
+          "v": "x<k"
+        },
+        {
+          "k": "B",
+          "v": "x>k2"
+        },
+        {
+          "k": "C",
+          "v": "k<x<k"
+        },
+        {
+          "k": "D",
+          "v": "k<x<k2"
+        }
+      ],
+      "answer": "D",
+      "image": "crops/ds/page_299_X34.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_299.jpg",
+      "bbox": [
+        168.0,
+        1081.0,
+        811.0,
+        1230.0
+      ],
+      "crop_box": [
+        64,
+        1071,
+        1018,
+        1488
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "ds:314:X01:查找 · B树 和B+树 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "查找 · B树 和B+树 · 选择题",
+      "id": "X01",
+      "type": "选择题",
+      "page": 314,
+      "topic": "7.4.3 本节试题精选",
+      "content": "右图所示是一棵（）。 1225",
+      "options": [
+        {
+          "k": "A",
+          "v": "4阶B树"
+        },
+        {
+          "k": "B",
+          "v": "3阶B树"
+        },
+        {
+          "k": "C",
+          "v": "4阶B+树"
+        },
+        {
+          "k": "D",
+          "v": "无法确定"
+        }
+      ],
+      "answer": "D",
+      "image": "crops/ds/page_314_X01.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_314.jpg",
+      "bbox": [
+        151.0,
+        578.0,
+        957.0,
+        666.0
+      ],
+      "crop_box": [
+        64,
+        568,
+        1018,
+        674
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "ds:315:X15:查找 · B树 和B+树 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "查找 · B树 和B+树 · 选择题",
+      "id": "X15",
+      "type": "选择题",
+      "page": 315,
+      "topic": "7.4.3 本节试题精选",
+      "content": "【2012统考真题】已知一棵3阶B树，如右图所示。删除关键字 78 得到一棵新 B 树，其最右叶结点中的关键字是（）。 1735 5565",
+      "options": [
+        {
+          "k": "A",
+          "v": "60"
+        },
+        {
+          "k": "B",
+          "v": "60,62\n10 2④062 78"
+        },
+        {
+          "k": "C",
+          "v": "62,65"
+        },
+        {
+          "k": "D",
+          "v": "65"
+        }
+      ],
+      "answer": "D",
+      "image": "crops/ds/page_315_X15.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_315.jpg",
+      "bbox": [
+        172.0,
+        909.0,
+        967.0,
+        1056.0
+      ],
+      "crop_box": [
+        64,
+        899,
+        1018,
+        1064
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "ds:316:A02:查找 · B树 和B+树 · 解答题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "查找 · B树 和B+树 · 解答题",
+      "id": "A02",
+      "type": "解答题",
+      "page": 316,
+      "topic": "7.4.3 本节试题精选",
+      "content": "对如右图所示的3阶B树，依次执行下列操作，画出各步操作的结果。 50\n1）插入90 2）插入25 3）插入45\n30 80\n4）删除60 5）删除80",
+      "options": [],
+      "answer": null,
+      "image": "crops/ds/page_316_A02.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_316.jpg",
+      "bbox": [
+        153.0,
+        841.0,
+        892.0,
+        955.0
+      ],
+      "crop_box": [
+        64,
+        831,
+        1018,
+        965
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "ds:316:X23:查找 · B树 和B+树 · 选择题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "查找 · B树 和B+树 · 选择题",
+      "id": "X23",
+      "type": "选择题",
+      "page": 316,
+      "topic": "7.4.3 本节试题精选",
+      "content": "【2022统考真题】在下图所示的5阶B树T中，删除关键字260之后需要进行必要的调整，得到新的B树T。下列选项中，不可能是T根结点中关键字序列的是（）。\n6090260350\n3050 708085 100110 280300 400500",
+      "options": [
+        {
+          "k": "A",
+          "v": "60,90,280"
+        },
+        {
+          "k": "B",
+          "v": "60,90,350"
+        },
+        {
+          "k": "C",
+          "v": "60,85,110, 350"
+        },
+        {
+          "k": "D",
+          "v": "60,90,110,350"
+        }
+      ],
+      "answer": "D",
+      "image": "crops/ds/page_316_X23.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_316.jpg",
+      "bbox": [
+        155.0,
+        360.0,
+        953.0,
+        584.0
+      ],
+      "crop_box": [
+        269,
+        414,
+        796,
+        524
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "ds:361:A04:排序 · 选择排序 · 解答题",
+      "course": "ds",
+      "course_name": "数据结构",
+      "chapter": "排序 · 选择排序 · 解答题",
+      "id": "A04",
+      "type": "解答题",
+      "page": 361,
+      "topic": "8.4.3 本节试题精选",
+      "content": "通常使用的堆也称二叉堆，因为它是用完全二叉树来实现的，树中结点最多只有两个孩子。同理可以有m叉堆，即用完全m叉树来实现的堆。\n1）下图是一个m叉小根堆，问m值是多少？向这个堆插入一个元素65后，堆中的元素如何变化？再删除堆顶元素呢？请画出变化后的树形。\n2）从0开始对完全4叉树中的结点从左到右、从上到下进行编号。若给定一个结点k,\n其父结点的编号是多少？（若存在），其第i（i=1,2,3,4）个孩子的编号是多少?\n3）在m叉堆中进行插入和删除操作的时间复杂度是多少?",
+      "options": [],
+      "answer": null,
+      "image": "crops/ds/page_361_A04.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/ds/page_361.jpg",
+      "bbox": [
+        171.0,
+        667.0,
+        971.0,
+        1027.0
+      ],
+      "crop_box": [
+        335,
+        781,
+        765,
+        939
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "coa:50:X23:数据的表示和运算 · 运算方法和运算电路 · 选择题",
+      "course": "coa",
+      "course_name": "计算机组成原理",
+      "chapter": "数据的表示和运算 · 运算方法和运算电路 · 选择题",
+      "id": "X23",
+      "type": "选择题",
+      "page": 50,
+      "topic": "2.2.5 本节习题精选",
+      "content": "下图是实现32位补码一位乘法的逻辑结构图，下列说法中正确的是（）。\n被乘数寄存器X\n32 32\n加/减\n32位ALU\n64位 右移乘积寄存器P丨乘数寄存器Y 控制逻辑计数器C\n32 写使能\n↑时钟",
+      "options": [
+        {
+          "k": "A",
+          "v": "32位无符号整数的乘法电路和该图没有区别"
+        },
+        {
+          "k": "B",
+          "v": "在执行过程中，ALU要么做加法，要么做减法，不可能执行空操作"
+        },
+        {
+          "k": "C",
+          "v": "图中的乘积寄存器P和乘数寄存器Y所执行的右移是算术右移"
+        },
+        {
+          "k": "D",
+          "v": "计算完成后，若乘积寄存器P中的值不全为0，则发生溢出"
+        }
+      ],
+      "answer": "C",
+      "image": "crops/coa/page_050_X23.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/coa/page_050.jpg",
+      "bbox": [
+        155.0,
+        149.0,
+        847.0,
+        1358.0
+      ],
+      "crop_box": [
+        289,
+        134,
+        811,
+        366
+      ],
+      "image_note": "题干含图，OCR空隙+墨迹自动重裁"
+    },
+    {
+      "uid": "coa:51:X24:数据的表示和运算 · 运算方法和运算电路 · 选择题",
+      "course": "coa",
+      "course_name": "计算机组成原理",
+      "chapter": "数据的表示和运算 · 运算方法和运算电路 · 选择题",
+      "id": "X24",
+      "type": "选择题",
+      "page": 51,
+      "topic": "2.2.5 本节习题精选",
+      "content": "某计算机采用下图所示的补码除法器执行32位补码整数除法运算，当除数寄存器Y与余数/商寄存器Q的初始值为（）时，除法执行时间最短（Y、Q均为补码表示）。\n除数寄存器Y\n32 32\n加/减\n32位ALU\n32 64位左移 控制逻辑余数寄存器R!余数/商寄存器Q\n计数器Cn\n32 时钟",
+      "options": [
+        {
+          "k": "A",
+          "v": "Y=FFFF FFFF,Q= 8000 0000"
+        },
+        {
+          "k": "B",
+          "v": "Y= 8000 0000,Q= FFFF FFFF"
+        },
+        {
+          "k": "C",
+          "v": "Y=FFFF FFFF, Q=FFFF FFFF"
+        },
+        {
+          "k": "D",
+          "v": "Y= 8000 0000, Q = 8000 0000"
+        }
+      ],
+      "answer": "B",
+      "image": "crops/coa/page_051_X24.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/coa/page_051.jpg",
+      "bbox": [
+        172.0,
+        490.0,
+        968.0,
+        830.0
+      ],
+      "crop_box": [
+        288,
+        542,
+        811,
+        773
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "coa:94:X17:存储系统 · 主存储器 · 选择题",
+      "course": "coa",
+      "course_name": "计算机组成原理",
+      "chapter": "存储系统 · 主存储器 · 选择题",
+      "id": "X17",
+      "type": "选择题",
+      "page": 94,
+      "topic": "3.2.4 本节习题精选",
+      "content": "DRAM具有破坏性读出的特性，需要定时刷新，下列说法中不正确的是（）。",
+      "options": [
+        {
+          "k": "A",
+          "v": "刷新是以行为单位的"
+        },
+        {
+          "k": "B",
+          "v": "刷新是为了给DRAM存储单元中的存储电容重新充电"
+        },
+        {
+          "k": "C",
+          "v": "刷新是通过对存储单元进行\"读但不输出数据\"，即\"假读\"的操作来实现的"
+        },
+        {
+          "k": "D",
+          "v": "DRAM 内部设有专门的刷新电路，不会影响到CPU的正常访存"
+        }
+      ],
+      "answer": "D",
+      "image": "crops/coa/page_094_X17.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/coa/page_094.jpg",
+      "bbox": [
+        153.0,
+        699.0,
+        875.0,
+        844.0
+      ],
+      "crop_box": [
+        64,
+        689,
+        1018,
+        856
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "coa:95:X29:存储系统 · 主存储器 · 选择题",
+      "course": "coa",
+      "course_name": "计算机组成原理",
+      "chapter": "存储系统 · 主存储器 · 选择题",
+      "id": "X29",
+      "type": "选择题",
+      "page": 95,
+      "topic": "3.2.4 本节习题精选",
+      "content": "【2010统考真题】下列有关RAM和ROM的叙述中，正确的是（）。\nI.RAM是易失性存储器，ROM是非易失性存储器\nII.RAM和ROM都采用随机存取方式进行信息访问\nIII.RAM和ROM都可用作Cache\nIV.RAM和ROM都需要进行刷新",
+      "options": [
+        {
+          "k": "A",
+          "v": "仅I和II"
+        },
+        {
+          "k": "B",
+          "v": "仅II和III"
+        },
+        {
+          "k": "C",
+          "v": "仅I、II和III"
+        },
+        {
+          "k": "D",
+          "v": "仅II、III和IV"
+        }
+      ],
+      "answer": "A",
+      "image": "crops/coa/page_095_X29.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/coa/page_095.jpg",
+      "bbox": [
+        170.0,
+        945.0,
+        916.0,
+        1119.0
+      ],
+      "crop_box": [
+        64,
+        935,
+        1018,
+        1132
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "coa:142:A02:存储系统 · 虚拟存储器 · 解答题",
+      "course": "coa",
+      "course_name": "计算机组成原理",
+      "chapter": "存储系统 · 虚拟存储器 · 解答题",
+      "id": "A02",
+      "type": "解答题",
+      "page": 142,
+      "topic": "3.6.6 本节习题精选",
+      "content": "下图表示使用快表（页表）的虚实地址转换条件，快表存放在相联存储器中，其容量为\n8个存储单元。\n页号 该页在主存中的起始位置\n32 42000\n25 38000\n96000 虚拟地址 页号 页内地址\n00009 15 0324\n4 40000 2 7 0128\n15 80000 3 48 0516\n5 50000\n34 70000\n1）当CPU按虚拟地址1去访问主存时，主存的实地址码是多少？\n2）当CPU按虚拟地址2去访问主存时，主存的实地址码是多少？\n3）当CPU按虚拟地址3去访问主存时，主存的实地址码是多少？",
+      "options": [],
+      "answer": null,
+      "image": "crops/coa/page_142_A02.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/coa/page_142.jpg",
+      "bbox": [
+        155.0,
+        147.0,
+        952.0,
+        1392.0
+      ],
+      "crop_box": [
+        179,
+        1087,
+        885,
+        1338
+      ],
+      "image_note": "题干含图，OCR空隙+墨迹自动重裁"
+    },
+    {
+      "uid": "coa:143:A04:存储系统 · 虚拟存储器 · 解答题",
+      "course": "coa",
+      "course_name": "计算机组成原理",
+      "chapter": "存储系统 · 虚拟存储器 · 解答题",
+      "id": "A04",
+      "type": "解答题",
+      "page": 143,
+      "topic": "3.6.6 本节习题精选",
+      "content": "【2011统考真题】某计算机存储器按字节编址，虚拟（逻辑）地址空间大小为16MB，主存（物理）地址空间大小为1MB，页面大小为4KB；Cache采用直接映射方式，共8行;\n主存与Cache之间交换的块大小为32B。系统运行到某一时刻时，页表的部分内容和Cache\n的部分内容分别如下的左图和右图所示，图中页框号及标记字段的内容为十六进制形式。\n回答下列问题：\n1）虚拟地址共有几位，哪几位表示虚页号？物理地址共有几位，哪几位表示页框号（物理页号）？\n2）使用物理地址访问Cache时，物理地址应划分成哪几个字段？要求说明每个字段的位数及在物理地址中的位置。\n虚页号 有效位 页框号 行号 有效位 标记\n0 1 06 0 1 020\n1 1 04 .* 1 0 一 .**\n2 1 15 2 1 01D **.\n3 1 02 3 1 105\n4 0 一 4 064\n1 2B 5 1 14D\n6 0 一 6 0 一\n7 32 7 27A\n3）虚拟地址001C60H所在的页面是否在主存中？若在主存中，则该虚拟地址对应的物理地址是什么？访问该地址时是否Cache命中？要求说明理由。\n4）假定为该机配置一个4路组相联的TLB，共可存放8个页表项，若其当前内容（十六进制)如下图所示，则此时虚拟地址024BACH所在的页面是否存在主存中？要求说明理由。\n组号 有效位标记页框号 有效位标记页框号 有效位标记页框号 有效位标记页框号\n0 0 一 1 001 15 0 一 一 1 012 1F\n1 013 2D 0 1 008 7E 0",
+      "options": [],
+      "answer": null,
+      "image": "crops/coa/page_143_A04.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/coa/page_143.jpg",
+      "bbox": [
+        171.0,
+        611.0,
+        973.0,
+        1325.0
+      ],
+      "crop_box": [
+        426,
+        599,
+        982,
+        1025
+      ],
+      "image_note": "题干含图，OCR空隙+墨迹自动重裁"
+    },
+    {
+      "uid": "coa:144:A06:存储系统 · 虚拟存储器 · 解答题",
+      "course": "coa",
+      "course_name": "计算机组成原理",
+      "chapter": "存储系统 · 虚拟存储器 · 解答题",
+      "id": "A06",
+      "type": "解答题",
+      "page": 144,
+      "topic": "3.6.6 本节习题精选",
+      "content": "【2018统考真题】某计算机采用页式虚拟存储管理方式，按字节编址。CPU进行存储访问的过程如下图所示。根据该图回答下列问题。\nCPU 数据\nCache\n虚页号（20位） 页内地址（12位） 多路选择\n!TLB Tag 有效位 实页号\n1 F800H 比较器 比较器\n0008CH 1 0040H\nH0910 F8000H F2840H\n8C040H 1\n008C0H 23008H\n：：：\nH00+00 01600H\n04320H 0 0E80H\n比较器有效位 Tag Data Data Tag 有效位\nTLB缺失实页号 页内地址 20位 3位 5位\n10位 10位\nPDBR\n页目录 页表\n1）主存物理地址占多少位?\n2）TLB采用什么映射方式？TLB是用SRAM还是用DRAM实现？\n3）Cache采用什么映射方式？若Cache采用LRU算法和回写法，则Cache每行中除数据（Data）、标记和有效位外，还应有哪些附加位？Cache总容量是多少？Cache\n中有效位的作用是什么？\n4）若CPU给出的虚拟地址为0008C040H，则对应的物理地址是多少？是否在Cache\n中命中？说明理由。若CPU给出的虚拟地址为0007C260H，则该地址所在主存块映射到的Cache组号是多少?",
+      "options": [],
+      "answer": null,
+      "image": "crops/coa/page_144_A06.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/coa/page_144.jpg",
+      "bbox": [
+        155.0,
+        152.0,
+        972.0,
+        1383.0
+      ],
+      "crop_box": [
+        183,
+        753,
+        966,
+        1267
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "coa:190:A05:指令系统 · 程序的机器级代码表示 · 解答题",
+      "course": "coa",
+      "course_name": "计算机组成原理",
+      "chapter": "指令系统 · 程序的机器级代码表示 · 解答题",
+      "id": "A05",
+      "type": "解答题",
+      "page": 190,
+      "topic": "4.3.5 本节习题精选",
+      "content": "【2024统考真题】假定计算机M字长为32位，按字节编址，采用32位定长指令字，\n指令add、slli和lw的格式、编码和功能说明如图(a)所示。\n指令31 25 24 2019 15 14 1211 76 0 指令功能说明\nppe 0000000 rs2 rs1 000 rd 0110011 R[rd]R[rs1] + R[rs2]\nslli 0000000 shamt rs1 010 rd 0010011 R[rd]R[rs1]<<shamt\nIw imm rs1 010 p1 1100000 R[rd]M[R[rs1] + imm]\n图(a)\n其中，R[x]表示通用寄存器x的内容，M[x]表示地址为x的存储单元内容，shamt为移位位数，imm为补码表示的偏移量。图(b)给出了计算机M的部分数据通路及其控制信号（用带箭头虚线表示），其中A和B分别表示从通用寄存器rs1和rs2中读出的内容；IR[31:20]\n表示指令寄存器中的高12位；控制信号Ext为0、1时扩展器分别实现零扩展、符号扩展，\nALUctr为000、001、010时ALU分别实现加、减、逻辑左移运算。请回答下列问题。\nA+32\n>OF\n→SF 32\nB32\n>ZF\n>CF\nIR[31:20]↓2\n扩展器 000：加\n0：零扩展 001：减\n010：逻辑左移\n1：符号扩展 Ext ALUBsrc ALUctr\n图(b)\n1）计算机M最多有多少个通用寄存器？为什么shamt字段占5位?\n2）执行add指令时，控制信号ALUBsrc的取值应是什么？若rsl和rs2寄存器内容分别是87654321H和98765432H，则add指令执行后，ALU输出端F、OF和CF的结果分别是什么？若该add指令处理的是无符号整数，则应根据哪个标志判断是否溢出？\n3）执行slli指令时，控制信号Ext的取值可以是0也可以是1，为什么？\n4）执行lw指令时，控制信号Ext、ALUctr的取值分别是什么?\n5）若一条指令的机器码是A040A103H，则该指令一定是lw指令，为什么？若执行该指令时，R[01H]=FFFFA2D0H，则所读取数据的存储地址是什么？",
+      "options": [],
+      "answer": null,
+      "image": "crops/coa/page_190_A05.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/coa/page_190.jpg",
+      "bbox": [
+        154.0,
+        153.0,
+        971.0,
+        1375.0
+      ],
+      "crop_box": [
+        64,
+        143,
+        1018,
+        1385
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "coa:191:A06:指令系统 · 程序的机器级代码表示 · 解答题",
+      "course": "coa",
+      "course_name": "计算机组成原理",
+      "chapter": "指令系统 · 程序的机器级代码表示 · 解答题",
+      "id": "A06",
+      "type": "解答题",
+      "page": 191,
+      "topic": "4.3.5 本节习题精选",
+      "content": "【2024统考真题】对于题05中的计算机M，C语言程序P包含的语句“sum+=a[i;”在\nM中对应的指令序列S如下。\nslli r4, r2, 2 //R[r4]+R[r2]<<2\nadd r4, r3, r4 //R[r4]-R[r3]+R[r4]\nlw r5, O(r4) //R[r5]+M[R[r4]+0]\nadd rl, rl, r5 / /R[r1]←R[r1]+R[r5]\n已知变量i、sum和数组 a都为 int型，通用寄存器rl~r5 的编号为 01H~05H。请回答下列问题。\n1）根据指令序列S中每条指令的功能，写出存放数组a的首地址、变量i和 sum 的通用寄存器编号。\n2）已知M为小端方式计算机，采用页式存储管理方式，页大小为4KB。若执行到指令序列S中第1条指令时，i=5且rl和r3的内容分别为00001332H和0013DFF0H,\n从地址0013DFF0H开始的存储单元内容如下图所示，则执行“sum+=a[i];”语句后，\na[i的地址、a[i和 sum 的机器数分别是什么（用十六进制表示）？ali所在页的页号是多少？此次执行中，数组a至少存放在几页中?\n地址 0 1 2 3 4 5 6 7\n0013 DFF0 FF FF FF 7C 70 FE FF FF\n0013 DFF8 00 00 00 OC 3C 02 01 FF\n0013 E000 F0 F1 00 00 DC EC FF FF\n0013 E008 FF FF 01 02 00 00 01 02\n3）指令“sllir4,r2,2”的机器码是什么（用十六进制表示）？若数组a改为short类型，\n则指令序列S中slli指令的汇编形式应是什么?",
+      "options": [],
+      "answer": null,
+      "image": "crops/coa/page_191_A06.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/coa/page_191.jpg",
+      "bbox": [
+        170.0,
+        214.0,
+        971.0,
+        884.0
+      ],
+      "crop_box": [
+        348,
+        628,
+        792,
+        829
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "coa:191:A07:指令系统 · 程序的机器级代码表示 · 解答题",
+      "course": "coa",
+      "course_name": "计算机组成原理",
+      "chapter": "指令系统 · 程序的机器级代码表示 · 解答题",
+      "id": "A07",
+      "type": "解答题",
+      "page": 191,
+      "topic": "4.3.5 本节习题精选",
+      "content": "【2025统考真题】现有C语言程序P的部分代码如下所示。假定运行程序P的计算机\nM字长为32 位，按字节编址。假定P的部分机器级代码如图(a)所示，其中，R0～R4\n为通用寄存器，SEXT表示按符号扩展；M中补码除法器逻辑结构如图(b)所示。\nint x,d[2048],i;\nfor(i=0;i<2048;i++)\nd[i]=d[i]/x;\n除数寄存器Y\n//x在R2中，i在R4中 ALUop\n32位ALU\n//数组d的首地址在R3中\nmov R1,(R3+R4*4) //R1+d[i] 32\n左移\nscov R1 / {R0, R1}SEXT(R1) 余数寄存器R 余数/商寄存器Q 控制逻辑\nidiv R1, R2 //R1{R0,R1}/R2 32 32位 写使能时钟\n**\n(a) (b)\n请回答下列问题。\n\n1）若执行图(a)中 idiv指令的除运算时，d[ij=0x87654321、x= 0xf，则补码除法器中寄存器R、Q和Y的初始内容分别是什么(用十六进制表示)？图(b)中哪个部件包含计数器？\n在补码除法器执行过程中，由ALUop所控制的ALU运算有哪几种？\n2）假设idiv指令执行过程中会检测并触发除法异常，则执行idiv指令时，哪些情况下会发生除法异常(要求给出此时d[i和x的十六进制表示机器数)？发生除法异常时，\n在异常响应过程中CPU需要完成哪些操作？",
+      "options": [],
+      "answer": null,
+      "image": "crops/coa/page_191_A07.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/coa/page_191.jpg",
+      "bbox": [
+        171.0,
+        92.0,
+        972.0,
+        1372.0
+      ],
+      "crop_box": [
+        348,
+        628,
+        792,
+        829
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "coa:220:A01:中央处理器 · 数据通路的功能和基本结构 · 解答题",
+      "course": "coa",
+      "course_name": "计算机组成原理",
+      "chapter": "中央处理器 · 数据通路的功能和基本结构 · 解答题",
+      "id": "A01",
+      "type": "解答题",
+      "page": 220,
+      "topic": "5.3.6 本节习题精选",
+      "content": "某计算机的数据通路结构如下图所示，写出实现ADDR1,(R2)的微操作序列（取指令及指令执行的过程，包括PC自增的过程）。\nIR 移位器 MDR\nALU\nM\nLA LB",
+      "options": [],
+      "answer": null,
+      "image": "crops/coa/page_220_A01.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/coa/page_220.jpg",
+      "bbox": [
+        155.0,
+        216.0,
+        953.0,
+        1390.0
+      ],
+      "crop_box": [
+        64,
+        206,
+        1018,
+        1400
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "coa:221:A02:中央处理器 · 数据通路的功能和基本结构 · 解答题",
+      "course": "coa",
+      "course_name": "计算机组成原理",
+      "chapter": "中央处理器 · 数据通路的功能和基本结构 · 解答题",
+      "id": "A02",
+      "type": "解答题",
+      "page": 221,
+      "topic": "5.3.6 本节习题精选",
+      "content": "设CPU内部结构如下图所示，此外还设有B、C、D、E、H、L六个寄存器（图中未画出），\n它们各自的输入端和输出端都与内部总线相通，并分别受控制信号控制（如Bin受寄存器B\n的输入控制；Bout受寄存器B的输出控制），假设ALU的结果直接送入寄存器Z。要求从取指令开始，写出完成下列指令的微操作序列及所需的控制信号。\nADD B， C (B）+(C)→B\nSUBACC，H (ACC)-(H)→ACC\n控制信号时钟 CU\nCPU\n内部总线\nIRin\nIR\nPCin\nPC\nPCout\n地址线 MARin\nMAR\nMDRin\n数据线\nMDR IMDRout\nACCin\nACC\nACCout\nYin\nALUin\n控制信号 ALU\nZout",
+      "options": [],
+      "answer": null,
+      "image": "crops/coa/page_221_A02.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/coa/page_221.jpg",
+      "bbox": [
+        171.0,
+        580.0,
+        972.0,
+        1246.0
+      ],
+      "crop_box": [
+        200,
+        659,
+        770,
+        942
+      ],
+      "image_note": "题干含图，OCR空隙+墨迹自动重裁"
+    },
+    {
+      "uid": "coa:221:A03:中央处理器 · 数据通路的功能和基本结构 · 解答题",
+      "course": "coa",
+      "course_name": "计算机组成原理",
+      "chapter": "中央处理器 · 数据通路的功能和基本结构 · 解答题",
+      "id": "A03",
+      "type": "解答题",
+      "page": 221,
+      "topic": "5.3.6 本节习题精选",
+      "content": "设有如下图所示的单总线结构，分析指令ADD (R0),R1[即实现(RO)+(R1)→(RO)］的指令流程和控制信号。\n\n控制信号→ 指令译码/控制器总线\nIRin\nIR\nAdIRout\nPCin\nPC+1 PC\nPCout\nMARout MARin\nMemR- 主 MAR\n存 MDRoutE MDRin\nMemW MDR\nMDRinE MDRout\nROin\nRo\nR0out\n...\nR-1in\nRx-1\nRr-1out\nYin\nY\nALUin\n控制信号 ALU",
+      "options": [],
+      "answer": null,
+      "image": "crops/coa/page_221_A03.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/coa/page_221.jpg",
+      "bbox": [
+        169.0,
+        93.0,
+        971.0,
+        1346.0
+      ],
+      "crop_box": [
+        203,
+        695,
+        724,
+        1282
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "coa:222:A04:中央处理器 · 数据通路的功能和基本结构 · 解答题",
+      "course": "coa",
+      "course_name": "计算机组成原理",
+      "chapter": "中央处理器 · 数据通路的功能和基本结构 · 解答题",
+      "id": "A04",
+      "type": "解答题",
+      "page": 222,
+      "topic": "5.3.6 本节习题精选",
+      "content": "右图是一个简化的CPU与主存连接结构示意主存储器(M)\n图（图中省略了所有的多路选择器）。其中有一个累加寄存器（ACC）、一个状态寄存器和其他4个寄存器：存储器地址寄存器\n（MAR）、存储器数据寄存器（MDR）、程 ACC\n序计数器（PC）和指令寄存器（IR），各部\nP\n件及其之间的连线表示数据通路，箭头表示信\nALU\n息传递方向。\n要求：\n微操作信号\n1)请写出图中a、b、c、d四个寄存器的名称。 状态寄存器 发生器\n2）简述图中取指令的数据通路。\n3）简述数据在运算器和主存之间进行存/取访问的数据通路（假设地址已在MAR中）。\n4）简述完成指令LDAX的数据通路（X为主存地址，LDA的功能为(X)→ACC）。\n5）简述完成指令ADDY的数据通路（Y为主存地址，ADD的功能为(ACC）+\n(Y)→ACC)。\n6）简述完成指令STAZ的数据通路（Z为主存地址，STA的功能为(ACC)→Z）。",
+      "options": [],
+      "answer": null,
+      "image": "crops/coa/page_222_A04.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/coa/page_222.jpg",
+      "bbox": [
+        153.0,
+        629.0,
+        954.0,
+        1104.0
+      ],
+      "crop_box": [
+        64,
+        619,
+        1018,
+        1114
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "coa:222:A05:中央处理器 · 数据通路的功能和基本结构 · 解答题",
+      "course": "coa",
+      "course_name": "计算机组成原理",
+      "chapter": "中央处理器 · 数据通路的功能和基本结构 · 解答题",
+      "id": "A05",
+      "type": "解答题",
+      "page": 222,
+      "topic": "5.3.6 本节习题精选",
+      "content": "某机主要功能部件如下图所示，其中M为主存，MDR为存储器数据寄存器，MAR为存储器地址寄存器，IR为指令寄存器，PC为程序计数器（并假设当前指令地址在PC\n中），R0～R3为通用寄存器，C、D为暂存器。\n移位器 IR RO MDR\nALU PC R1\nM\nC R2\nD R3 MAR\n1）请补充各部件之间的主要连接线（总线自己画），并注明数据流动方向。\n数地址在R1中，目的操作数寻址方式为自增型寄存器间接寻址方式（先取地址后加\n1），并将相加结果写回R2寄存器。",
+      "options": [],
+      "answer": null,
+      "image": "crops/coa/page_222_A05.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/coa/page_222.jpg",
+      "bbox": [
+        154.0,
+        153.0,
+        971.0,
+        1385.0
+      ],
+      "crop_box": [
+        64,
+        143,
+        1018,
+        1395
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "coa:223:A06:中央处理器 · 数据通路的功能和基本结构 · 解答题",
+      "course": "coa",
+      "course_name": "计算机组成原理",
+      "chapter": "中央处理器 · 数据通路的功能和基本结构 · 解答题",
+      "id": "A06",
+      "type": "解答题",
+      "page": 223,
+      "topic": "5.3.6 本节习题精选",
+      "content": "已知单总线计算机结构如下图所示，其中M为主存，XR为变址寄存器，EAR为有效地址寄存器，LATCH为暂存器。假设指令地址已存在于PC中，请给出ADDX,D指令周期信息流程和相应的控制信号。说明：\n1）ADDX,D指令字中，X为变址寄存器XR，D为形式地址，指令的功能是将变址寻址得到的操作数和ACC中的操作数相加，结果送回ACC。\n2）寄存器的输入/输出均采用控制信号控制，如PC;表示PC的输入控制信号，MDR。\n表示MDR的输出控制信号。\n3）凡需要经过总线的传送，都需要注明，如(PC)→MAR，相应的控制信号为PC。和MARi。\nACC MO IR PC XR MAR MDR\n地址 M W/R\nALU Ki 加法器\nLATCH EAR",
+      "options": [],
+      "answer": null,
+      "image": "crops/coa/page_223_A06.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/coa/page_223.jpg",
+      "bbox": [
+        172.0,
+        276.0,
+        973.0,
+        698.0
+      ],
+      "crop_box": [
+        64,
+        266,
+        1018,
+        708
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "coa:223:A07:中央处理器 · 数据通路的功能和基本结构 · 解答题",
+      "course": "coa",
+      "course_name": "计算机组成原理",
+      "chapter": "中央处理器 · 数据通路的功能和基本结构 · 解答题",
+      "id": "A07",
+      "type": "解答题",
+      "page": 223,
+      "topic": "5.3.6 本节习题精选",
+      "content": "【2009统考真题】某计算机字长16位，采用16位定长指令字结构，部分数据通路结构如下图所示。图中所有控制信号为1时表示有效，为0时表示无效。例如，控制信号\nMDRinE为1表示允许数据从DB打入MDR,MDRin为1表示允许数据从总线打入MDR。\n假设MAR的输出一直处于使能状态。加法指令“ADD(R1),RO”的功能为(RO)+((R1))→\n(R1)，即将R0中的数据与R1的内容所指主存单元的数据相加，并将结果送入R1的内容所指主存单元中保存。\n存储器(M)\nMemR MemW Data ppv\nCB\nDB\nAB\nMDRoutE-\nMAR MARin MDR\nMDRin MDRinE\n-MDRout\nROout\nAin- -PCout\nROinRO\nPC —PCin\nR1out ADD-\nR1in-R1 PC+1\nACin AC\nR —IRin\nACout\n控制信号图例\n△一Xout三态门及其控制信号 至指令译码部件\n-Xin寄存器输入控制信号\n\n下表给出了上述指令取指和译码阶段每个节拍（时钟周期）的功能和有效控制信号，请按表中描述方式用表格列出指令执行阶段每个节拍的功能和有效控制信号。\n时钟 功能 有效控制信号\nC1 MAR-(PC) PCout, MARin\nMDR--M(MAR) MemR, MDRinE\nC2\nPC-(PC)+1 PC + 1\nC3 IR←(MDR) MDRout, IRin\n指令译码 无",
+      "options": [],
+      "answer": null,
+      "image": "crops/coa/page_223_A07.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/coa/page_223.jpg",
+      "bbox": [
+        171.0,
+        93.0,
+        970.0,
+        1371.0
+      ],
+      "crop_box": [
+        64,
+        83,
+        1018,
+        1381
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "coa:224:A08:中央处理器 · 数据通路的功能和基本结构 · 解答题",
+      "course": "coa",
+      "course_name": "计算机组成原理",
+      "chapter": "中央处理器 · 数据通路的功能和基本结构 · 解答题",
+      "id": "A08",
+      "type": "解答题",
+      "page": 224,
+      "topic": "5.3.6 本节习题精选",
+      "content": "【2015统考真题】某16位计算机的主存按字节编码，存取单位为16位；采用16位定长指令字格式；CPU采用单总线结构，主要部分如下图所示。图中RO～R3为通用寄存器；T\n为暂存器；SR为移位寄存器，可实现直送（mov）、左移一位（left）和右移一位（right）\n三种操作，控制信号为SRop，SR的输出由信号SRout控制；ALU可实现直送A（mova）、\nA加B（add）、A减B（sub）、A与B（and）、A或B（or）、非A（not）、A加1（inc）\n七种操作，控制信号为ALUop。\n回答下列问题：\n1）图中哪些寄存器是程序员可见的？为何要设置暂存器T?\n2）控制信号ALUop和SRop的位数至少各是多少?\n3）控制信号SRout所控制部件的名称或作用是什么？\n4）端点",
+      "options": [],
+      "answer": null,
+      "image": "crops/coa/page_224_A08.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/coa/page_224.jpg",
+      "bbox": [
+        155.0,
+        390.0,
+        956.0,
+        1228.0
+      ],
+      "crop_box": [
+        64,
+        380,
+        1018,
+        1238
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "coa:225:A10:中央处理器 · 数据通路的功能和基本结构 · 解答题",
+      "course": "coa",
+      "course_name": "计算机组成原理",
+      "chapter": "中央处理器 · 数据通路的功能和基本结构 · 解答题",
+      "id": "A10",
+      "type": "解答题",
+      "page": 225,
+      "topic": "5.3.6 本节习题精选",
+      "content": "【2022统考真题】某CPU中部分数据通路如下图所示，其中，GPRs为通用寄存器组;\nFR为标志寄存器，用于存放ALU产生的标志信息；带箭头虚线表示控制信号，如控制信号Read、Write分别表示主存读、主存写，MDRin表示内部总线上的数据写入MDR,\nMDRout表示MDR的内容送给内部总线。\n系统总线\nMDRMDRin PCin 送CU等部件\nMAR MARin Read\nPC\nMDRout PCout IRin Write\nIR\n主 内部总线存\nYin NA\nB GRRout\nALU rd GPRs\nALUop\nZout\nFRSFIOF.\nGPRin\n\n请回答下列问题。\n1）设ALU的输入端A、B及输出端F的最高位分别为Ai5、Bis及F15，FR中的符号标志和溢出标志分别为SF和OF，则SF的逻辑表达式是什么？A加B、A减B时OF的逻辑表达式分别是什么？要求逻辑表达式的输入变量为A15、B1s及F15。\n2）为什么要设置暂存器Y和Z?\n3）若GPRs的输入端rs、rd分别为所读、写的通用寄存器的编号，则GPRs中最多有多少个通用寄存器？rs和rd来自图中的哪个寄存器？已知GPRs内部有一个地址译码器和一个多路选择器，rd应连接地址译码器还是多路选择器？\n4）取指令阶段（不考虑PC增量操作）的控制信号序列是什么？若从发出主存读指令到主存读出数据并传送到MDR共需5个时钟周期，则取指令阶段至少需要几个时钟周期？\n5）图中控制信号由什么部件产生？图中哪些寄存器的输出信号会连到该部件的输入端？",
+      "options": [],
+      "answer": null,
+      "image": "crops/coa/page_225_A10.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/coa/page_225.jpg",
+      "bbox": [
+        152.0,
+        93.0,
+        971.0,
+        1371.0
+      ],
+      "crop_box": [
+        308,
+        471,
+        855,
+        554
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "coa:241:X20:中央处理器 · 控制器的功能和工作原理 · 选择题",
+      "course": "coa",
+      "course_name": "计算机组成原理",
+      "chapter": "中央处理器 · 控制器的功能和工作原理 · 选择题",
+      "id": "X20",
+      "type": "选择题",
+      "page": 241,
+      "topic": "5.4.4 本节习题精选",
+      "content": "下图是某微程序控制器的基本结构，μPC是一个8位寄存器，μlR是一个32位寄存器，-\n条机器指令平均由4条不同的微指令组成（不含取指部分），则下列描述中错误的是（）。\n微命令译码 来自主存\n↑\nμIR ... 转移控制 IR\n↑\n控制存储器 起始和转移一条件码\nCS 地址发生器\nCLK- μPC",
+      "options": [
+        {
+          "k": "A",
+          "v": "微指令的地址形成方式是增量法"
+        },
+        {
+          "k": "B",
+          "v": "条件码来自标志寄存器"
+        },
+        {
+          "k": "C",
+          "v": "最多有64条不同的机器指令"
+        },
+        {
+          "k": "D",
+          "v": "控制存储器的容量为1KB"
+        }
+      ],
+      "answer": "C",
+      "image": "crops/coa/page_241_X20.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/coa/page_241.jpg",
+      "bbox": [
+        171.0,
+        731.0,
+        969.0,
+        1118.0
+      ],
+      "crop_box": [
+        307,
+        786,
+        793,
+        1059
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "coa:243:A05:中央处理器 · 控制器的功能和工作原理 · 解答题",
+      "course": "coa",
+      "course_name": "计算机组成原理",
+      "chapter": "中央处理器 · 控制器的功能和工作原理 · 解答题",
+      "id": "A05",
+      "type": "解答题",
+      "page": 243,
+      "topic": "5.4.4 本节习题精选",
+      "content": "设CPU中各部件及其相互连接关系如下图所示，其中W是写控制标志；R是读控制标志；R1、R2是暂存器。\nW CPU\n微操作命令形成部件\nMAR IR\n存储器内部总线\nMDR ACC R 1 R2\n1）写出指令ADD#a（#为立即寻址特征，隐含的操作数在ACC寄存器中）在执行阶段所完成的微操作命令及节拍安排。\n2）假设要求在取指周期实现(PC)+1→PC，且由ALU完成此操作（ALU能对它的一个源操作数完成加1运算）。以最少的节拍写出取指周期全部微操作命令及节拍安排。",
+      "options": [],
+      "answer": null,
+      "image": "crops/coa/page_243_A05.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/coa/page_243.jpg",
+      "bbox": [
+        171.0,
+        153.0,
+        972.0,
+        548.0
+      ],
+      "crop_box": [
+        201,
+        177,
+        789,
+        433
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "coa:264:A01:中央处理器 · 指令流水线 · 解答题",
+      "course": "coa",
+      "course_name": "计算机组成原理",
+      "chapter": "中央处理器 · 指令流水线 · 解答题",
+      "id": "A01",
+      "type": "解答题",
+      "page": 264,
+      "topic": "5.6.6 本节习题精选",
+      "content": "【2012统考真题】某16位计算机中，有符号整数用补码表示，数据Cache和指令Cache\n分离。下表给出了指令系统中的部分指令格式，其中Rs和Rd表示寄存器，mem表示存储单元地址， (x)表示寄存器x或存储单元x的内容。\n表指令系统中部分指令格式名称 指令的汇编格式 指令功能加法指令 ADD Rs, Rd (Rs)+ (Rd)→Rd\n算术/逻辑左移 SHL Rd 2*(Rd)→Rd\n算术右移 SHRRd (Rd)/2→Rd\n取数指令 Load Rd, mem (mem)→Rd\n存数指令 Store Rs, mem (Rs)→mem\n该计算机采用5段流水方式执行指令，各流水段分别是取指（IF）、译码/读寄存器（ID）、\n执行/计算有效地址（EX）、访问存储器（M）和结果写回寄存器（WB），流水线采用\n“按序发射，按序完成”方式，未采用转发技术处理数据相关，且同一寄存器的读和写操作不能在同一个时钟周期内进行。请回答下列问题：\n1）若int型变量x的值为-513，存放在寄存器R1中，则执行“SHRR1”后，R1中的内容是多少（用十六进制表示）？\n2）若在某个时间段中，有连续的4条指令进入流水线，在其执行过程中未发生任何阻塞，则执行这4条指令所需的时钟周期数为多少？\n3）若高级语言程序中某赋值语句为x=a+b，x、a和b均为int型变量，它们的存储单元地址分别表示为[x]、[a]和[b]。该语句对应的指令序列及其在指令流中的执行过程如下所示。\nI1 LOAD Rl, [a]\nI2 LOAD R2，[b]\n13 ADD R1,R2\nI4  STORE R2，[x]\n时钟指令\n2 3 4 5 6 7 8 9 10 11 12 13 14\nI IF ID EX M WB\nI2 IF ID EX M WB\nI IF ID EX M WB\nL4 IF ID EX M WB\n则这4条指令执行过程中I3的ID段和I4的IF段被阻塞的原因各是什么？\n4）若高级语言程序中某赋值语句为x=x*2+a，x和a均为 unsigned int 类型的变量，它们的存储单元地址分别表示为[x]、[a]，则执行这条语句至少需要多少个时钟周期？要求模仿上图画出这条语句对应的指令序列及其在流水线中的执行过程示意图。",
+      "options": [],
+      "answer": null,
+      "image": "crops/coa/page_264_A01.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/coa/page_264.jpg",
+      "bbox": [
+        154.0,
+        341.0,
+        955.0,
+        1391.0
+      ],
+      "crop_box": [
+        64,
+        331,
+        1018,
+        1401
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "os:62:A01:进程与线程 · 进程与线程简介 · 解答题",
+      "course": "os",
+      "course_name": "操作系统",
+      "chapter": "进程与线程 · 进程与线程简介 · 解答题",
+      "id": "A01",
+      "type": "解答题",
+      "page": 62,
+      "topic": "2.1.9 本节习题精选",
+      "content": "【2025统考真题】某系统中进程的虚拟地址空间包括内核区、用户栈、运行时堆、可读/\n写数据段、只读代码段等区域，其布局如下图所示，图中阴影部分表示未占用区域。现有C语言程序的部分代码如下。\nnds re\n内核区\nvoid main()\n{\n用户栈\nint length;\nptr = (char *)malloc(100);\nscanf(\"%s\", ptr);\n运行时堆\nlength = strlen(ptr);\nprintf(\"length = %d\\n\", length); 可读写数据段\nfree(ptr); 只读代码段请回答下列问题。\n1）上述程序执行时，其进程控制块位于哪个区域？执行 scanf()等待键盘输入时，该进程处于什么状态？\n2）main(I函数的代码位于哪个区域？其直接调用的哪些函数的功能需通过执行驱动程序实现?\n3）变量ptr被分配在哪个区域？若变量length未被分配在寄存器中，则会被分配在哪个\n}\n区域？ptr指向的字符串位于哪个区域？",
+      "options": [],
+      "answer": null,
+      "image": "crops/os/page_062_A01.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/os/page_062.jpg",
+      "bbox": [
+        154.0,
+        153.0,
+        971.0,
+        1381.0
+      ],
+      "crop_box": [
+        143,
+        1215,
+        966,
+        1393
+      ],
+      "image_note": "题干含图，OCR空隙+墨迹自动重裁"
+    },
+    {
+      "uid": "os:89:A02:进程与线程 · CPU调度 · 解答题",
+      "course": "os",
+      "course_name": "操作系统",
+      "chapter": "进程与线程 · CPU调度 · 解答题",
+      "id": "A02",
+      "type": "解答题",
+      "page": 89,
+      "topic": "2.2.8 本节习题精选",
+      "content": "有三个作业A,B,C，它们分别单独运行时的CPU和I/O占用时间如下图所示。\n现在请考虑三个作业同时开始执行。系统中的资源有一个CPU和两台输入/输出设备\n（I/O和I/O2）同时运行。三个作业的优先级为A最高、B次之、C最低，一旦低优先级\n\n的进程开始占用CPU或I/O设备，高优先级进程也要等待到其结束后方可占用。\n1020 30 10 40 20 20\n作业A ms\nI/OCPU 10 CPU 10 CPU 1/0\n30 40 30 30 30\n作业B\nms\n1/0 CPU 1/02 CPU I/0\n40 20 20 70\n作业C 」ms\nCPU I/O CPU 1/02\n请回答下面的问题：\n1）最早结束的作业是哪个?\n2）最后结束的作业是哪个?\n3）计算这段时间CPU的利用率（三个作业全部结束为止）。",
+      "options": [],
+      "answer": null,
+      "image": "crops/os/page_089_A02.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/os/page_089.jpg",
+      "bbox": [
+        171.0,
+        94.0,
+        971.0,
+        1377.0
+      ],
+      "crop_box": [
+        64,
+        84,
+        1018,
+        1387
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "os:90:A03:进程与线程 · CPU调度 · 解答题",
+      "course": "os",
+      "course_name": "操作系统",
+      "chapter": "进程与线程 · CPU调度 · 解答题",
+      "id": "A03",
+      "type": "解答题",
+      "page": 90,
+      "topic": "2.2.8 本节习题精选",
+      "content": "某分时系统中的进程可能出现如下图所示的状态变化，请回答下列问题：\n1）根据图示，该系统应采用什么进程调度策略？\n2）将图中每个状态变化的可能原因填写在下表中。\n6 变化 原因运行等待磁盘读文件等待打印机输出",
+      "options": [],
+      "answer": null,
+      "image": "crops/os/page_090_A03.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/os/page_090.jpg",
+      "bbox": [
+        153.0,
+        521.0,
+        855.0,
+        825.0
+      ],
+      "crop_box": [
+        64,
+        511,
+        1018,
+        835
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "os:126:A06:进程与线程 · 同步与互斥 · 解答题",
+      "course": "os",
+      "course_name": "操作系统",
+      "chapter": "进程与线程 · 同步与互斥 · 解答题",
+      "id": "A06",
+      "type": "解答题",
+      "page": 126,
+      "topic": "2.3.8 本节习题精选",
+      "content": "如下图所示，三个合作进程Pi,P2,P3，它们都需要通过同一设备输入各自的数据a,b,c，该输入设备必须互斥地使用，而且其第一个数据必须由P进程读取，第二个数据必须由P2进程读取，第三个数据必须由P3进程读取。然后，三个进程分别对输入数据进行下列计算：\n打印机 P\nP2 非抢占式输入设备\nP3\nPr: x= a+ b;\nP2: y = a*b;\nP3:z=y+c-a,\n最后，P进程通过所连接的打印机将计算结果x,y,Z的值打印出来。请用信号量实现它们的同步。\n桥",
+      "options": [],
+      "answer": null,
+      "image": "crops/os/page_126_A06.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/os/page_126.jpg",
+      "bbox": [
+        154.0,
+        876.0,
+        954.0,
+        1252.0
+      ],
+      "crop_box": [
+        183,
+        958,
+        966,
+        1190
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "os:126:A07:进程与线程 · 同步与互斥 · 解答题",
+      "course": "os",
+      "course_name": "操作系统",
+      "chapter": "进程与线程 · 同步与互斥 · 解答题",
+      "id": "A07",
+      "type": "解答题",
+      "page": 126,
+      "topic": "2.3.8 本节习题精选",
+      "content": "有桥如右图所示。车流方向如箭头所示。回答如下问题：\n1）假设桥上每次只能有一辆车行驶，试用信号灯的P，V操作实现交通管理。\n2）假设桥上不允许两车交会，但允许同方向多辆车一次通过（桥上可有多辆同方向行驶的车）。试用信号灯的P,V操作实现桥上的交通管理。",
+      "options": [],
+      "answer": null,
+      "image": "crops/os/page_126_A07.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/os/page_126.jpg",
+      "bbox": [
+        155.0,
+        154.0,
+        905.0,
+        1370.0
+      ],
+      "crop_box": [
+        426,
+        177,
+        874,
+        552
+      ],
+      "image_note": "题干含图，OCR空隙+墨迹自动重裁"
+    },
+    {
+      "uid": "os:127:A13:进程与线程 · 同步与互斥 · 解答题",
+      "course": "os",
+      "course_name": "操作系统",
+      "chapter": "进程与线程 · 同步与互斥 · 解答题",
+      "id": "A13",
+      "type": "解答题",
+      "page": 127,
+      "topic": "2.3.8 本节习题精选",
+      "content": "设公共汽车上驾驶员和售票员的活动分别如下图所示。驾驶员的活动：启动车辆，正常行车，到站停车；售票员的活动：关车门，售票，开车门。在汽车不断地到站、停车、\n\n行驶的过程中，这两个活动有什么同步关系？用信号量和PV操作实现它们的同步。\n驾驶员 售票员启动车辆 关车门正常行车 售票到站停车 开车门",
+      "options": [],
+      "answer": null,
+      "image": "crops/os/page_127_A13.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/os/page_127.jpg",
+      "bbox": [
+        174.0,
+        94.0,
+        968.0,
+        1387.0
+      ],
+      "crop_box": [
+        64,
+        84,
+        1018,
+        1397
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "os:128:A14:进程与线程 · 同步与互斥 · 解答题",
+      "course": "os",
+      "course_name": "操作系统",
+      "chapter": "进程与线程 · 同步与互斥 · 解答题",
+      "id": "A14",
+      "type": "解答题",
+      "page": 128,
+      "topic": "2.3.8 本节习题精选",
+      "content": "一组进程的执行顺序如下图所示，圆圈 P1,P2,P3,P4,Ps,P6表示进程，弧上的字母 a,b,c,\nd,e,f,g,h表示同步信号量，请用 P,V操作实现进程的同步。",
+      "options": [],
+      "answer": null,
+      "image": "crops/os/page_128_A14.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/os/page_128.jpg",
+      "bbox": [
+        153.0,
+        404.0,
+        957.0,
+        464.0
+      ],
+      "crop_box": [
+        64,
+        394,
+        1018,
+        474
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "os:131:A26:进程与线程 · 同步与互斥 · 解答题",
+      "course": "os",
+      "course_name": "操作系统",
+      "chapter": "进程与线程 · 同步与互斥 · 解答题",
+      "id": "A26",
+      "type": "解答题",
+      "page": 131,
+      "topic": "2.3.8 本节习题精选",
+      "content": "【2022统考真题】某进程的两个线程T1和T2并发执行A、B、C、D、E和F共6个操作，其中T1执行A、E和F，T2执行B、C和D。下图表示上述6个操作的执行顺序所必须满足的约束：C在A和B完成后执行，D和E在C完成后执行，F在E完成后执行。请使用信号量的wait()、signal(操作描述T1和T2之间的同步关系，并说明所用信号量的作用及其初值。",
+      "options": [],
+      "answer": null,
+      "image": "crops/os/page_131_A26.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/os/page_131.jpg",
+      "bbox": [
+        172.0,
+        276.0,
+        971.0,
+        421.0
+      ],
+      "crop_box": [
+        64,
+        266,
+        1018,
+        431
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "os:131:A27:进程与线程 · 同步与互斥 · 解答题",
+      "course": "os",
+      "course_name": "操作系统",
+      "chapter": "进程与线程 · 同步与互斥 · 解答题",
+      "id": "A27",
+      "type": "解答题",
+      "page": 131,
+      "topic": "2.3.8 本节习题精选",
+      "content": "【2023 统考真题】现要求学生使用 swap 指令和布尔型变量lock 实现临界区互斥。lock\n为线程间共享的变量，当lock 的值为 TRUE时线程不能进入临界区，为FALSE 时线程能够进入临界区。某同学编写的实现临界区互斥的伪代码如下图所示。\n某同学编写的伪代码 newSwap()的代码\nbool lock =FALSE; //共享变量 void newSwap( bool *a, bool *b )\n; bool key = TRUE; 进入区 bool temp = *a;\nif (key ==TRUE) *a=*b;\nswap key,lock;I/交换key和lock的值 *b = temp;\n临界区；\nlock = TRUE; 退出区\n(a) (b)\n请回答下列问题。\n1）图(a)的伪代码中哪些语句存在错误？将其改为正确的语句(不增加语句的条数)。\n2）图(b)给出了交换两个变量值的函数 newSwap(的代码，是否可以用函数调用语句\n“newSwap(&key,&lock)”代替指令“swap key,lock”以实现临界区互斥？为什么？",
+      "options": [],
+      "answer": null,
+      "image": "crops/os/page_131_A27.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/os/page_131.jpg",
+      "bbox": [
+        170.0,
+        529.0,
+        972.0,
+        1021.0
+      ],
+      "crop_box": [
+        64,
+        519,
+        1018,
+        1031
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "os:197:X07:内存管理 · 内存管理概念 · 选择题",
+      "course": "os",
+      "course_name": "操作系统",
+      "chapter": "内存管理 · 内存管理概念 · 选择题",
+      "id": "X07",
+      "type": "选择题",
+      "page": 197,
+      "topic": "3.1.7 本节习题精选",
+      "content": "设内存的分配情况如右图所示。若要申请一块40KB的内存空间，采用最佳适应算法，则所得到的分区首址为（）。 操作系统\n100K",
+      "options": [
+        {
+          "k": "A",
+          "v": "100K"
+        },
+        {
+          "k": "B",
+          "v": "190K\n占用"
+        },
+        {
+          "k": "C",
+          "v": "330K"
+        },
+        {
+          "k": "D",
+          "v": "410K\n280K\n占用"
+        }
+      ],
+      "answer": "C",
+      "image": "crops/os/page_197_X07.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/os/page_197.jpg",
+      "bbox": [
+        171.0,
+        574.0,
+        958.0,
+        708.0
+      ],
+      "crop_box": [
+        64,
+        564,
+        1018,
+        700
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "os:203:A03:内存管理 · 内存管理概念 · 解答题",
+      "course": "os",
+      "course_name": "操作系统",
+      "chapter": "内存管理 · 内存管理概念 · 解答题",
+      "id": "A03",
+      "type": "解答题",
+      "page": 203,
+      "topic": "3.1.7 本节习题精选",
+      "content": "下图给出了页式和段式两种地址变换示意（假定段式变换对每段不进行段长越界检查，\n即段表中无段长信息)。\n控制寄存器 控制寄存器逻辑地址 逻辑地址\n15 1110 15 1110\n3 586 3 586\n10 1000\n15 7000\n7 物理地址 2500 物理地址\n12 4000\n20 8500\n1）指出这两种变换各属于何种存储管理。\n2）计算出这两种变换所对应的物理地址。",
+      "options": [],
+      "answer": null,
+      "image": "crops/os/page_203_A03.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/os/page_203.jpg",
+      "bbox": [
+        171.0,
+        946.0,
+        961.0,
+        1349.0
+      ],
+      "crop_box": [
+        203,
+        970,
+        973,
+        1287
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "os:204:A10:内存管理 · 内存管理概念 · 解答题",
+      "course": "os",
+      "course_name": "操作系统",
+      "chapter": "内存管理 · 内存管理概念 · 解答题",
+      "id": "A10",
+      "type": "解答题",
+      "page": 204,
+      "topic": "3.1.7 本节习题精选",
+      "content": "在一个分页存储管理系统中，地址空间分页（每页1KB)，物理空间分块，设主存总容量是256KB，描述主存分配情况的位示图如下图所示（0表示未分配，1表示已分配），\n此时作业调度程序选中一个长为5.2KB的作业投入内存。试问：\n1）为该作业分配内存后（分配内存时，首先分配低地址的内存空间），请填写该作业的页表内容。\n2）页式存储管理有无内存碎片存在？若有，会存在哪种内存碎片？为该作业分配内存后，会产生内存碎片吗？若产生，则大小为多少？\n3）假设一个64MB内存容量的计算机，采用页式存储管理（页面大小为4KB），内存分配采用位示图方式管理，请问位示图将占用多大的内存？\n1111111111111111\n页号 块号（从0开始编址）\n000000 00011\n100010\n1000000000000000\n011 11000000000",
+      "options": [],
+      "answer": null,
+      "image": "crops/os/page_204_A10.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/os/page_204.jpg",
+      "bbox": [
+        155.0,
+        152.0,
+        971.0,
+        1394.0
+      ],
+      "crop_box": [
+        64,
+        142,
+        1018,
+        1404
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "os:205:A11:内存管理 · 内存管理概念 · 解答题",
+      "course": "os",
+      "course_name": "操作系统",
+      "chapter": "内存管理 · 内存管理概念 · 解答题",
+      "id": "A11",
+      "type": "解答题",
+      "page": 205,
+      "topic": "3.1.7 本节习题精选",
+      "content": "【2013统考真题】某计算机主存按字节编址，逻辑地址和物理地址都是32位，页表项大小为4B。请回答下列问题：\n1）若使用一级页表的分页存储管理方式，逻辑地址结构为页号 (20位) 页内偏移量（12位)\n则页的大小是多少字节？页表最大占用多少字节？\n2）若使用二级页表的分页存储管理方式，逻辑地址结构为页目录号 (10位) 页表索引（10位) 页内偏移量(12位)\n设逻辑地址为LA，请分别给出其对应的页目录号和页表索引的表达式。\n3）采用1）中的分页存储管理方式，一个代码段的起始逻辑地址为00008000H，其长度为8KB，被装载到从物理地址00900000H开始的连续主存空间中。页表从主存\n00200000H开始的物理地址处连续存放，如下图所示（地址大小自下向上递增）。\n请计算出该代码段对应的两个页表项的物理地址、这两个页表项中的页框号，以及代码页面2的起始物理地址。\n页表代码页面2\n物理地址3\n物理地址2 页框号2\n物理地址1 页框号1 代码页面1\nH0000 0600\n0020 0000H",
+      "options": [],
+      "answer": null,
+      "image": "crops/os/page_205_A11.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/os/page_205.jpg",
+      "bbox": [
+        172.0,
+        611.0,
+        971.0,
+        1217.0
+      ],
+      "crop_box": [
+        64,
+        601,
+        1018,
+        1227
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "os:239:A16:内存管理 · 虚拟内存管理 · 解答题",
+      "course": "os",
+      "course_name": "操作系统",
+      "chapter": "内存管理 · 虚拟内存管理 · 解答题",
+      "id": "A16",
+      "type": "解答题",
+      "page": 239,
+      "topic": "3.2.11 本节习题精选",
+      "content": "【2010统考真题】设某计算机的逻辑地址空间和物理地址空间均为64KB，按字节编址。\n若某个进程最多需要6页（Page）数据存储空间，页的大小为1KB，则操作系统采用固定分配局部置换策略为此进程分配4个页框（PageFrame），见下表。在装入时刻260\n前，该进程的访问情况也见下表(访问位即使用位）。\n\n页号 页框号 装入时刻 访问位\n0 7 130 1\n1 4 230 1\n2 2 200 1\n3 9 160\n当该进程执行到时刻260时，要访问逻辑地址为17CAH的数据。回答下列问题：\n1）该逻辑地址对应的页号是多少?\n2）若采用先进先出（FIFO）置换算法，则该逻辑地址9号页框 2号页框对应的物理地址是多少？要求给出计算过程。若采 3号页 2号页用时钟（Clock）置换算法，则该逻辑地址对应的物理地址是多少？要求给出计算过程。设搜索下一页的指针沿顺时针方向移动，且当前指向2号页框，\n0号页 1号页4号页框如右图所示。\n7号页框",
+      "options": [],
+      "answer": null,
+      "image": "crops/os/page_239_A16.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/os/page_239.jpg",
+      "bbox": [
+        172.0,
+        94.0,
+        971.0,
+        1385.0
+      ],
+      "crop_box": [
+        426,
+        85,
+        986,
+        492
+      ],
+      "image_note": "题干含图，OCR空隙+墨迹自动重裁"
+    },
+    {
+      "uid": "os:241:A20:内存管理 · 虚拟内存管理 · 解答题",
+      "course": "os",
+      "course_name": "操作系统",
+      "chapter": "内存管理 · 虚拟内存管理 · 解答题",
+      "id": "A20",
+      "type": "解答题",
+      "page": 241,
+      "topic": "3.2.11 本节习题精选",
+      "content": "【2018统考真题】某计算机采用页式虚拟存储管理方式，按字节编址，CPU进行存储访问的过程如下图所示，回答下列问题。\n1）某虚拟地址对应的页目录号为6，在相应的页表中对应的页号为6，页内偏移量为8,\n该虚拟地址的十六进制表示是什么？\n2）寄存器PDBR用于保存当前进程的页目录始址，该地址是物理地址还是虚拟地址？\n进程切换时，PDBR的内容是否会变化？说明理由。同一进程的线程切换时，PDBR\n的内容是否会变化？说明理由。\n3）为了支持改进型CLOCK算法，需要在页表项中设置哪些字段?\nCPU 数据\nCache\n虚页号（20位） 页内地址（12位） 多路选择\nTLB Tag有效位实页号\n00324H F800H 比较器 比较器\n0008CH H0+00\n0160H F8000H F2840H\n8C040H\n008C0H 23008H\n：\n00400H H00910\nHO 04320H 0 0E80H\n比较器 ...\n有效位 Tag Data Data Tag有效位\nTLB缺失\n10位 10位 实页号 页内地址 20位 3位 5位\nPDBR\n页目录 页表",
+      "options": [],
+      "answer": null,
+      "image": "crops/os/page_241_A20.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/os/page_241.jpg",
+      "bbox": [
+        172.0,
+        216.0,
+        971.0,
+        901.0
+      ],
+      "crop_box": [
+        64,
+        206,
+        1018,
+        911
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "os:282:A03:文件管理 · 目录与文件 · 解答题",
+      "course": "os",
+      "course_name": "操作系统",
+      "chapter": "文件管理 · 目录与文件 · 解答题",
+      "id": "A03",
+      "type": "解答题",
+      "page": 282,
+      "topic": "4.2.11 本节习题精选",
+      "content": "有文件系统如下图所示，图中的框表示目录，圆圈表示普通文件。\n1）可否建立F与R的链接？试加以说明。\n2）能否删除R？为什么？\n3）能否删除N？为什么？\n根目录",
+      "options": [],
+      "answer": null,
+      "image": "crops/os/page_282_A03.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/os/page_282.jpg",
+      "bbox": [
+        154.0,
+        146.0,
+        768.0,
+        1392.0
+      ],
+      "crop_box": [
+        64,
+        136,
+        1018,
+        1402
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "os:283:A04:文件管理 · 目录与文件 · 解答题",
+      "course": "os",
+      "course_name": "操作系统",
+      "chapter": "文件管理 · 目录与文件 · 解答题",
+      "id": "A04",
+      "type": "解答题",
+      "page": 283,
+      "topic": "4.2.11 本节习题精选",
+      "content": "某树形目录结构的文件系统如下图所示。该图中的方框表示目录，圆圈表示文件。\n1）可否进行下列操作？",
+      "options": [],
+      "answer": null,
+      "image": "crops/os/page_283_A04.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/os/page_283.jpg",
+      "bbox": [
+        171.0,
+        507.0,
+        961.0,
+        759.0
+      ],
+      "crop_box": [
+        64,
+        497,
+        1018,
+        769
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "os:283:A05:文件管理 · 目录与文件 · 解答题",
+      "course": "os",
+      "course_name": "操作系统",
+      "chapter": "文件管理 · 目录与文件 · 解答题",
+      "id": "A05",
+      "type": "解答题",
+      "page": 283,
+      "topic": "4.2.11 本节习题精选",
+      "content": "有一个文件系统如图A所示。图中的方框表示目录，圆圈表示普通文件。根目录常驻内存，目录文件组织成链接文件，不设FCB，普通文件组织成索引文件。目录表指示下一级文件名及其磁盘地址（各占2B，共4B）。下级文件是目录文件时，指示其第一个磁盘块地址。下级文件是普通文件时，指示其FCB的磁盘地址。每个目录的文件磁盘块的最后4B供拉链使用。下级文件在上级目录文件中的次序在图中为从左至右。每个磁盘块有512B，与普通文件的一页等长。\n普通文件的FCB组织如图B所示。其中，每个磁盘地址占2B，前10个地址直接指示该文件前10页的地址。第11个地址指示一级索引表地址，一级索引表中的每个磁盘地址指示一个文件页地址；第12个地址指示二级索引表地址，二级索引表中的每个地址指示一个一级索引表地址；第13个地址指示三级索引表地址，三级索引表中的每个地址指示一个二级索引表地址。请问：\n\n根目录该文件的有关描述信息磁盘地址\n2 磁盘地址\n3 磁盘地址\nP\n11 磁盘地址\n12 磁盘地址\n13 磁盘地址图A某树形结构文件系统框图 图BFCB组织\n1）一个普通文件最多可有多少个文件页？\n2）若要读文件J中的某一页，最多启动磁盘多少次?\n3）若要读文件W中的某一页，最少启动磁盘多少次？\n4）根据3），为最大限度地减少启动磁盘的次数，可采用什么方法？此时，磁盘最多启动多少次？",
+      "options": [],
+      "answer": null,
+      "image": "crops/os/page_283_A05.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/os/page_283.jpg",
+      "bbox": [
+        172.0,
+        93.0,
+        973.0,
+        1393.0
+      ],
+      "crop_box": [
+        64,
+        83,
+        1018,
+        1403
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "os:284:A06:文件管理 · 目录与文件 · 解答题",
+      "course": "os",
+      "course_name": "操作系统",
+      "chapter": "文件管理 · 目录与文件 · 解答题",
+      "id": "A06",
+      "type": "解答题",
+      "page": 284,
+      "topic": "4.2.11 本节习题精选",
+      "content": "在某个文件系统中，外存为硬盘。物理块大小为512B，有文件A包含598条记录，每条记录占255B，每个物理块放2条记录。文件A所在的目录如下图所示。文件目录采用多级树形目录结构，由根目录节点、作为目录文件的中间节点和作为信息文件的树叶组成，\n每个目录项占127B，每个物理块放4个目录项，根目录的第一块常驻内存。试问：\n1）若文件的物理结构采用链式存储方式，链指针地址占2B，则要将文件A读入内存，\n至少需要存取几次硬盘？\n2）若文件为连续文件，则要读文件A的第487条记录至少要存取几次硬盘？\nroot\nbin dev etc boot usr tmp\nlike marg mik za you he\nfile1 dir2",
+      "options": [],
+      "answer": null,
+      "image": "crops/os/page_284_A06.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/os/page_284.jpg",
+      "bbox": [
+        155.0,
+        629.0,
+        954.0,
+        1066.0
+      ],
+      "crop_box": [
+        64,
+        619,
+        1018,
+        1076
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "os:284:A08:文件管理 · 目录与文件 · 解答题",
+      "course": "os",
+      "course_name": "操作系统",
+      "chapter": "文件管理 · 目录与文件 · 解答题",
+      "id": "A08",
+      "type": "解答题",
+      "page": 284,
+      "topic": "4.2.11 本节习题精选",
+      "content": "某文件系统采用混合索引分配方式，如下图所示。在索引节点中，有10个直接块，有1\n个一级间接块、1个二级间接块及1个三级间接块，间接块指向的是一个索引块，每个索引块和数据块的大小均为4KB，而系统中地址所占空间为4B（指针大小为4B），假设以下问题都建立在该索引节点已在内存中的前提下。\n现请回答：\n1）文件的大小为多大时可以只用到索引节点的直接块?\n2）该索引节点能访问到的地址空间大小总共为多大（小数点后保留2位）？\n3）若要读取一个文件的第10000B的内容，需要访问磁盘多少次？\n4）若要读取一个文件的第10MB的内容，需要访问磁盘多少次?\n模式所有者(2)\n时间戳(3)\n数据块大小计数 数据数据直接块数据数据 数据一级间址数据 数据二级间址三级间址 数据数据",
+      "options": [],
+      "answer": null,
+      "image": "crops/os/page_284_A08.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/os/page_284.jpg",
+      "bbox": [
+        155.0,
+        153.0,
+        955.0,
+        1374.0
+      ],
+      "crop_box": [
+        64,
+        143,
+        1018,
+        1384
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "os:285:A11:文件管理 · 目录与文件 · 解答题",
+      "course": "os",
+      "course_name": "操作系统",
+      "chapter": "文件管理 · 目录与文件 · 解答题",
+      "id": "A11",
+      "type": "解答题",
+      "page": 285,
+      "topic": "4.2.11 本节习题精选",
+      "content": "【2016统考真题】某磁盘文件系统使用链接分配方式组织文件，簇大小为4KB。目录文件的每个目录项包括文件名和文件的第一个簇号，其他簇号存放在文件分配表FAT中。\n1）假定目录树如下图所示，各文件占用的簇号及顺序如下表所示，其中dir、dir1是目录，filel、file2是用户文件。请给出所有目录文件的内容。\n文件名 簇号\nIIP\nfilel 100、106、108\nfile2 200、201、202\n2）若FAT的每个表项仅存放簇号，占2B，则FAT的最大长度为多少字节？该文件系统支持的文件长度最大是多少？\n3）系统通过目录文件和FAT实现对文件的按名存取，说明file1的106,108两个簇号分\n\n别存放在FAT的哪个表项中。\n4）假设仅FAT和dir目录文件已读入内存，若需要将文件dir/dir1/file1的第5000个字节读入内存，则要访问哪几个簇？",
+      "options": [],
+      "answer": null,
+      "image": "crops/os/page_285_A11.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/os/page_285.jpg",
+      "bbox": [
+        173.0,
+        93.0,
+        971.0,
+        1382.0
+      ],
+      "crop_box": [
+        349,
+        1118,
+        753,
+        1222
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "os:286:A15:文件管理 · 目录与文件 · 解答题",
+      "course": "os",
+      "course_name": "操作系统",
+      "chapter": "文件管理 · 目录与文件 · 解答题",
+      "id": "A15",
+      "type": "解答题",
+      "page": 286,
+      "topic": "4.2.11 本节习题精选",
+      "content": "【2022统考真题】某文件系统的磁盘块大小为4KB，目录项由文件名和索引节点号构成，每个索引节点占256字节，其中包含直接地址项10个，一级、二级和三级间接地址项各1个，每个地址项占4字节。该文件系统中子目录stu的结构如图(a)所示，stu包含子目录course和文件doc，course子目录包含文件coursel和course2。各文件的文件名、索引节点号、占用磁盘块的块号如图(b)所示。请回答下列问题。\n文件名 索引节点号 磁盘块号\nstu\nstu 1 10\ncourse\ncourse 2 20\ncoursel coursel 10 30\ncourse2 course2 100 40\ndoc 10 +\n(a) (b)\n1）目录文件stu中每个目录项的内容是什么？\n2）文件doc占用的磁盘块的块号x的值是多少？\n3）若目录文件course的内容已在内存，则打开文件coursel并将其读入内存，需要读几个磁盘块？说明理由。\n4）若文件course2的大小增长到6MB，则为了存取course2需要使用该文件索引节点的哪几级间接地址项？说明理由。",
+      "options": [],
+      "answer": null,
+      "image": "crops/os/page_286_A15.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/os/page_286.jpg",
+      "bbox": [
+        156.0,
+        153.0,
+        970.0,
+        1394.0
+      ],
+      "crop_box": [
+        213,
+        1063,
+        930,
+        1277
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "os:306:A01:文件管理 · 文件系统 · 解答题",
+      "course": "os",
+      "course_name": "操作系统",
+      "chapter": "文件管理 · 文件系统 · 解答题",
+      "id": "A01",
+      "type": "解答题",
+      "page": 306,
+      "topic": "4.3.6 本节习题精选",
+      "content": "一计算机系统利用位示图来管理磁盘文件空间。假定该磁盘组共有100个柱面，每个柱面有20个磁道，每个磁道分成8个盘块（扇区），每个盘块1KB，位示图如下图所示。\nyj 0 01 11 12 13 14 15\n0 1 一\n2 1 1\n3 1 0 0 0\n4 0\n1）试给出位示图中位置(i,j)与对应盘块所在的物理位置（柱面号，磁头号，扇区号）之间的计算公式。假定柱面号、磁头号、扇区号都从0开始编号。\n2）试说明分配和回收一个盘块的过程。",
+      "options": [],
+      "answer": null,
+      "image": "crops/os/page_306_A01.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/os/page_306.jpg",
+      "bbox": [
+        155.0,
+        151.0,
+        970.0,
+        1377.0
+      ],
+      "crop_box": [
+        143,
+        1150,
+        932,
+        1384
+      ],
+      "image_note": "题干含图，OCR空隙+墨迹自动重裁"
+    },
+    {
+      "uid": "os:337:X39:输入/输出管理 · 设备独立性软件 · 选择题",
+      "course": "os",
+      "course_name": "操作系统",
+      "chapter": "输入/输出管理 · 设备独立性软件 · 选择题",
+      "id": "X39",
+      "type": "选择题",
+      "page": 337,
+      "topic": "5.2.8 本节习题精选",
+      "content": "【2013统考真题】设系统缓冲区和用户工作区均采用单缓冲，从外 90\n设读入一块数据到系统缓冲区的时间为100,从系统缓冲区读入一块 用户工作区\n↑5\n数据到用户工作区的时间为5，对用户工作区中的一块数据进行分析系统缓冲区的时间为90（见右图）。进程从外设读入并分析2个数据块的最短\n↑100\n时间是（）。 外设",
+      "options": [
+        {
+          "k": "A",
+          "v": "200"
+        },
+        {
+          "k": "B",
+          "v": "295"
+        },
+        {
+          "k": "C",
+          "v": "300"
+        },
+        {
+          "k": "D",
+          "v": "390"
+        }
+      ],
+      "answer": "C",
+      "image": "crops/os/page_337_X39.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/os/page_337.jpg",
+      "bbox": [
+        171.0,
+        94.0,
+        946.0,
+        1395.0
+      ],
+      "crop_box": [
+        64,
+        1238,
+        1018,
+        1488
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "os:356:A05:输入/输出管理 · 磁盘和固态硬盘 · 解答题",
+      "course": "os",
+      "course_name": "操作系统",
+      "chapter": "输入/输出管理 · 磁盘和固态硬盘 · 解答题",
+      "id": "A05",
+      "type": "解答题",
+      "page": 356,
+      "topic": "5.3.6 本节习题精选",
+      "content": "有一个交叉存放信息的磁盘，信息在其上的存放方法如右图所示。每个磁道有8个扇区，每个扇区大小为512B，旋转速度为3000转/分，顺时针读扇区。假定磁头已在读取信息的磁道上，0扇区转到磁头下需要1/2\n转，且设备对应的控制器不能同时进行输入/输出，在数据从控制器传送至内存的这段时间内，从磁头下通过的扇区数为2，请回答：\n1）依次读取一个磁道上的所有扇区需要多少时间？\n2）该磁盘的数据传输速率是多少？",
+      "options": [],
+      "answer": null,
+      "image": "crops/os/page_356_A05.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/os/page_356.jpg",
+      "bbox": [
+        155.0,
+        1110.0,
+        800.0,
+        1314.0
+      ],
+      "crop_box": [
+        64,
+        1100,
+        1018,
+        1324
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "os:356:A06:输入/输出管理 · 磁盘和固态硬盘 · 解答题",
+      "course": "os",
+      "course_name": "操作系统",
+      "chapter": "输入/输出管理 · 磁盘和固态硬盘 · 解答题",
+      "id": "A06",
+      "type": "解答题",
+      "page": 356,
+      "topic": "5.3.6 本节习题精选",
+      "content": "【2010统考真题】如下图所示，假设计算机系统采用C-SCAN（循环扫描）磁盘调度策略，使用2KB的内存空间记录16384个磁盘块的空闲状态。\n0号磁道随机分布的某扇区磁头移动方向\n100号磁道\n1）请说明在上述条件下如何进行磁盘块空闲状态的管理。\n2）某单面磁盘的旋转速度为6000转/分，每个磁道有100个扇区，相邻磁道间的平均移动时间为1ms。若在某时刻，磁头位于100号磁道处，并沿着磁道号增大的方向移动（见上图），磁道号请求队列为50,90,30,120，对请求队列中的每个磁道需读取1\n个随机分布的扇区，则读完这4个扇区点共需要多少时间？要求给出计算过程。\n3）若将磁盘替换为随机访问的Flash半导体存储器（如U盘、固态硬盘等），是否有比\nC-SCAN更高效的磁盘调度策略？若有，给出磁盘调度策略的名称并说明理由；若无，说明理由。",
+      "options": [],
+      "answer": null,
+      "image": "crops/os/page_356_A06.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/os/page_356.jpg",
+      "bbox": [
+        155.0,
+        154.0,
+        971.0,
+        1378.0
+      ],
+      "crop_box": [
+        64,
+        144,
+        1018,
+        1388
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "net:15:X11:计算机网络体系结构 · 计算机网络概述 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "计算机网络体系结构 · 计算机网络概述 · 选择题",
+      "id": "X11",
+      "type": "选择题",
+      "page": 15,
+      "topic": "1.1.7 本节习题精选",
+      "content": "在下图所示的采用存储转发方式的分组交换网中，主机A向B发送两个长度为1000B的分组，路由器处理单个分组的时延为10ms（假设路由器同时最多只能处理一个分组，若在处理某个分组时有新的分组到达，则存入缓存区），忽略链路的传播时延，所有链路的数据传输速率为1IMb/s，则分组从A发送开始到B接收完为止，需要的时间至少是（）。\nA B",
+      "options": [
+        {
+          "k": "A",
+          "v": "34ms"
+        },
+        {
+          "k": "B",
+          "v": "36ms"
+        },
+        {
+          "k": "C",
+          "v": "38ms"
+        },
+        {
+          "k": "D",
+          "v": "52ms"
+        }
+      ],
+      "answer": "B",
+      "image": "crops/net/page_015_X11.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_015.jpg",
+      "bbox": [
+        174.0,
+        429.0,
+        970.0,
+        660.0
+      ],
+      "crop_box": [
+        348,
+        542,
+        753,
+        604
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:15:X12:计算机网络体系结构 · 计算机网络概述 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "计算机网络体系结构 · 计算机网络概述 · 选择题",
+      "id": "X12",
+      "type": "选择题",
+      "page": 15,
+      "topic": "1.1.7 本节习题精选",
+      "content": "如下图所示，主机H1和H2之间有三种可选的交换方式一一电路交换、报文交换和分组交换，其中电路交换建立电路连接的时间为2s，报文交换和分组交换都要经过由一个路由器连接的链路，分组大小为5kb。三种交换方式的数据传输速率均为2.5kb/s，忽略所有的传播时延、分组开销和不可预料的线路延迟，下列说法中正确的是（）。\nH1 H2 H1 路由器 H2\n电路交换 报文交换和分组交换",
+      "options": [
+        {
+          "k": "A",
+          "v": "若H1向H2发送5kb的数据，则电路交换最节省时间"
+        },
+        {
+          "k": "B",
+          "v": "若H1 向H2发送500kb 的数据，则电路交换和分组交换的时间相同"
+        },
+        {
+          "k": "C",
+          "v": "若H1向H2发送10kb的数据，则报文交换比分组交换更节省时间"
+        },
+        {
+          "k": "D",
+          "v": "若H1向H2发送15kb的数据，则报文交换比电路交换更节省时间"
+        }
+      ],
+      "answer": "B",
+      "image": "crops/net/page_015_X12.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_015.jpg",
+      "bbox": [
+        172.0,
+        666.0,
+        970.0,
+        1025.0
+      ],
+      "crop_box": [
+        198,
+        785,
+        901,
+        909
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:15:X13:计算机网络体系结构 · 计算机网络概述 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "计算机网络体系结构 · 计算机网络概述 · 选择题",
+      "id": "X13",
+      "type": "选择题",
+      "page": 15,
+      "topic": "1.1.7 本节习题精选",
+      "content": "【2010统考真题】在下图所示的采用“存储-转发”方式的分组交换网络中，所有链路的数据传输速率为100Mb/s，分组大小为1000B，其中分组头大小为20B。若主机H1\n向主机H2发送一个大小为980000B的文件，则在不考虑分组拆装时间和传播延迟的情况下，从H1发送开始到H2接收完为止，需要的时间至少是（）。\nH1 H2",
+      "options": [
+        {
+          "k": "A",
+          "v": "80ms"
+        },
+        {
+          "k": "B",
+          "v": "80.08ms"
+        },
+        {
+          "k": "C",
+          "v": "80.16ms"
+        },
+        {
+          "k": "D",
+          "v": "80.24ms"
+        }
+      ],
+      "answer": "C",
+      "image": "crops/net/page_015_X13.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_015.jpg",
+      "bbox": [
+        172.0,
+        1034.0,
+        970.0,
+        1304.0
+      ],
+      "crop_box": [
+        392,
+        1150,
+        709,
+        1275
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:16:X15:计算机网络体系结构 · 计算机网络概述 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "计算机网络体系结构 · 计算机网络概述 · 选择题",
+      "id": "X15",
+      "type": "选择题",
+      "page": 16,
+      "topic": "1.1.7 本节习题精选",
+      "content": "【2023统考真题】在下图所示的分组交换网络中，主机H1和H2通过路由器互连，2段链路的带宽均为100Mb/s，时延带宽积（单向传播时延x带宽）均为1000b。若H1向H2\n发送一个大小为1MB的文件，分组长度为1000B，则从H1开始发送的时刻起到H2收到文件全部数据时刻止，所需的时间至少是（）。（注：1M=10⁶。)\nH1 路由器 H2",
+      "options": [
+        {
+          "k": "A",
+          "v": "1Mb/s"
+        },
+        {
+          "k": "B",
+          "v": "10Mb/s"
+        },
+        {
+          "k": "C",
+          "v": "100Mb/s"
+        },
+        {
+          "k": "D",
+          "v": "1000Mb/s\n1000Mb/s\n甲\n10Mb/s 1Mb/s 10Mb/s\n100Mb/s 甲\nH1 H2\n路由器"
+        }
+      ],
+      "answer": "D",
+      "image": "crops/net/page_016_X15.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_016.jpg",
+      "bbox": [
+        155.0,
+        245.0,
+        954.0,
+        764.0
+      ],
+      "crop_box": [
+        332,
+        362,
+        734,
+        456
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:16:X17:计算机网络体系结构 · 计算机网络概述 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "计算机网络体系结构 · 计算机网络概述 · 选择题",
+      "id": "X17",
+      "type": "选择题",
+      "page": 16,
+      "topic": "1.1.7 本节习题精选",
+      "content": "【2025统考真题】某网络拓扑及各链路带宽如下图所示。网络按电路交换方式运行时，\n主机H1与H2建立一条带宽为10Mb/s的电路，建立电路时间为32us;按分组交换方式运行时，分组长度为400B，忽略分组首部开销。现H1向H2发送一个2MB（1M=10⁶）\n的文件，分别采用电路交换、报文交换、分组交换方式时，H2 至少需要Tcs、TMs、Tps\n时间才能接收到全部文件内容，则Tcs、TMs、Tps满足的关系是（）。\n10Mb/s 100Mb/s 1000Mb/s\nR1 R2\nH1 H2",
+      "options": [
+        {
+          "k": "A",
+          "v": "Tcs>Tms>Tps"
+        },
+        {
+          "k": "B",
+          "v": "Tms> Tps> Tcs"
+        },
+        {
+          "k": "C",
+          "v": "Tms>Tcs>Tps"
+        },
+        {
+          "k": "D",
+          "v": "Tps>Tms> Tcs"
+        }
+      ],
+      "answer": "B",
+      "image": "crops/net/page_016_X17.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_016.jpg",
+      "bbox": [
+        156.0,
+        777.0,
+        957.0,
+        1062.0
+      ],
+      "crop_box": [
+        236,
+        923,
+        831,
+        1026
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:28:X10:计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题",
+      "id": "X10",
+      "type": "选择题",
+      "page": 28,
+      "topic": "1.2.4 本节习题精选",
+      "content": "下图是TCP报文段的首部格式，它描述的是网络协议三要素中的（）。\n32位位0 16 24 31\n口 目的端口序号\n20B的确认号\nTCP 固定首部首部 数据 RCSSSE 窗口保留偏移检验和 紧急指针选项 (长度可变) 填充\nI.语法 II.语义 III.时序（同步）",
+      "options": [
+        {
+          "k": "A",
+          "v": "仅I"
+        },
+        {
+          "k": "B",
+          "v": "仅II"
+        },
+        {
+          "k": "C",
+          "v": "仅III"
+        },
+        {
+          "k": "D",
+          "v": "I、II和III"
+        }
+      ],
+      "answer": "A",
+      "image": "crops/net/page_028_X10.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_028.jpg",
+      "bbox": [
+        156.0,
+        548.0,
+        850.0,
+        873.0
+      ],
+      "crop_box": [
+        200,
+        573,
+        840,
+        843
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:30:X36:计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题",
+      "id": "X36",
+      "type": "选择题",
+      "page": 30,
+      "topic": "1.2.4 本节习题精选",
+      "content": "【2020统考真题】右图描述的协议要素是（）。 接收方发送方\nI.语法 II.语义 III.时序",
+      "options": [
+        {
+          "k": "A",
+          "v": "仅I"
+        },
+        {
+          "k": "B",
+          "v": "仅II"
+        },
+        {
+          "k": "C",
+          "v": "仅III"
+        },
+        {
+          "k": "D",
+          "v": "I、II和III"
+        }
+      ],
+      "answer": "C",
+      "image": "crops/net/page_030_X36.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_030.jpg",
+      "bbox": [
+        152.0,
+        700.0,
+        957.0,
+        816.0
+      ],
+      "crop_box": [
+        64,
+        690,
+        1018,
+        827
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "net:41:X08:物理层 · 通信基础 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "物理层 · 通信基础 · 选择题",
+      "id": "X08",
+      "type": "选择题",
+      "page": 41,
+      "topic": "2.1.4 本节习题精选",
+      "content": "下图是某比特串的曼彻斯特编码信号波形，则该比特串为（）。",
+      "options": [
+        {
+          "k": "A",
+          "v": "0011 0110"
+        },
+        {
+          "k": "B",
+          "v": "1010 1101"
+        },
+        {
+          "k": "C",
+          "v": "0101 0010"
+        },
+        {
+          "k": "D",
+          "v": "1100 0101"
+        }
+      ],
+      "answer": "A",
+      "image": "crops/net/page_041_X08.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_041.jpg",
+      "bbox": [
+        171.0,
+        732.0,
+        871.0,
+        865.0
+      ],
+      "crop_box": [
+        384,
+        756,
+        714,
+        837
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:42:X20:物理层 · 通信基础 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "物理层 · 通信基础 · 选择题",
+      "id": "X20",
+      "type": "选择题",
+      "page": 42,
+      "topic": "2.1.4 本节习题精选",
+      "content": "【2013统考真题】下图为10Base-T网卡接收到的信号波形，则该网卡收到的比特串是（）。",
+      "options": [
+        {
+          "k": "A",
+          "v": "0011 0110"
+        },
+        {
+          "k": "B",
+          "v": "1010 1101"
+        },
+        {
+          "k": "C",
+          "v": "01010010"
+        },
+        {
+          "k": "D",
+          "v": "1100 0101"
+        }
+      ],
+      "answer": "A",
+      "image": "crops/net/page_042_X20.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_042.jpg",
+      "bbox": [
+        154.0,
+        580.0,
+        951.0,
+        738.0
+      ],
+      "crop_box": [
+        362,
+        604,
+        700,
+        682
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:42:X22:物理层 · 通信基础 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "物理层 · 通信基础 · 选择题",
+      "id": "X22",
+      "type": "选择题",
+      "page": 42,
+      "topic": "2.1.4 本节习题精选",
+      "content": "【2015统考真题】使用两种编码方案对比特流01100111进行编码的结果如下图所示，\n编码1和编码2分别是（）。\n比特流编码1\n编码2",
+      "options": [
+        {
+          "k": "A",
+          "v": "NRZ编码和曼彻斯特编码"
+        },
+        {
+          "k": "B",
+          "v": "NRZ编码和差分曼彻斯特编码"
+        },
+        {
+          "k": "C",
+          "v": "NRZI编码和曼彻斯特编码"
+        },
+        {
+          "k": "D",
+          "v": "NRZI编码和差分曼彻斯特编码"
+        }
+      ],
+      "answer": "A",
+      "image": "crops/net/page_042_X22.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_042.jpg",
+      "bbox": [
+        155.0,
+        805.0,
+        941.0,
+        1111.0
+      ],
+      "crop_box": [
+        283,
+        859,
+        735,
+        1047
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:42:X23:物理层 · 通信基础 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "物理层 · 通信基础 · 选择题",
+      "id": "X23",
+      "type": "选择题",
+      "page": 42,
+      "topic": "2.1.4 本节习题精选",
+      "content": "【2016统考真题】如下图所示，若连接R2和R3链路的频带宽度为8kHz,信噪比为30dB,\n该链路实际数据传输速率约为理论最大数据传输速率的50%，则该链路的实际数据传输速率约为（）。\nR2 R3",
+      "options": [
+        {
+          "k": "A",
+          "v": "8kb/s"
+        },
+        {
+          "k": "B",
+          "v": "20kb/s"
+        },
+        {
+          "k": "C",
+          "v": "40kb/s"
+        },
+        {
+          "k": "D",
+          "v": "80kb/s"
+        }
+      ],
+      "answer": "C",
+      "image": "crops/net/page_042_X23.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_042.jpg",
+      "bbox": [
+        154.0,
+        1118.0,
+        952.0,
+        1299.0
+      ],
+      "crop_box": [
+        184,
+        1171,
+        656,
+        1273
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:43:A01:物理层 · 通信基础 · 解答题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "物理层 · 通信基础 · 解答题",
+      "id": "A01",
+      "type": "解答题",
+      "page": 43,
+      "topic": "2.1.4 本节习题精选",
+      "content": "如下图所示，主机A和B都通过10Mb/s 的链路连接到交换机S。\n每条链路上的传播时延都是 20us。S是一个存储转发设备，它在接收完一个分组35us\n后开始转发收到的分组。试计算将10000比特从A发送到B所需的总时间。\n1）作为单个分组。\n2）作为两个5000比特的分组一个紧接着另一个发送。",
+      "options": [],
+      "answer": null,
+      "image": "crops/net/page_043_A01.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_043.jpg",
+      "bbox": [
+        171.0,
+        564.0,
+        972.0,
+        755.0
+      ],
+      "crop_box": [
+        413,
+        589,
+        686,
+        638
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:43:X25:物理层 · 通信基础 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "物理层 · 通信基础 · 选择题",
+      "id": "X25",
+      "type": "选择题",
+      "page": 43,
+      "topic": "2.1.4 本节习题精选",
+      "content": "【2021统考真题】下图为一段差分曼彻斯特编码信号波形，该编码的二进制串是（）。\numum",
+      "options": [
+        {
+          "k": "A",
+          "v": "1011 1001"
+        },
+        {
+          "k": "B",
+          "v": "1101 0001"
+        },
+        {
+          "k": "C",
+          "v": "0010 1110"
+        },
+        {
+          "k": "D",
+          "v": "1011 0110"
+        }
+      ],
+      "answer": "A",
+      "image": "crops/net/page_043_X25.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_043.jpg",
+      "bbox": [
+        171.0,
+        153.0,
+        970.0,
+        270.0
+      ],
+      "crop_box": [
+        64,
+        143,
+        1018,
+        282
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "net:75:X31:数据链路层 · 流量控制与可靠传输机制 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "数据链路层 · 流量控制与可靠传输机制 · 选择题",
+      "id": "X31",
+      "type": "选择题",
+      "page": 75,
+      "topic": "3.4.3 本节习题精选",
+      "content": "【2024统考真题】主机甲通过选择重传（SR）滑动窗口协议向主机乙发送帧的部分过程如下图所示，Fx为数据帧，ACKx为确认帧，x是位数为3比特的序号。主机乙只对正确接收的数据帧进行独立确认，发送窗口与接收窗口大小相同且均为最大值。主机甲在t时刻和t2时刻发送的数据帧分别是（）。\n甲 乙\nFO\nF1\nF2 丢失\nACKO\nF3\n？ ACK2\nACK3\nF1超时 丢失时间",
+      "options": [
+        {
+          "k": "A",
+          "v": "F1,F3"
+        },
+        {
+          "k": "B",
+          "v": "F1,F4"
+        },
+        {
+          "k": "C",
+          "v": "F3, F1"
+        },
+        {
+          "k": "D",
+          "v": "F4, F1"
+        }
+      ],
+      "answer": "D",
+      "image": "crops/net/page_075_X31.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_075.jpg",
+      "bbox": [
+        171.0,
+        517.0,
+        970.0,
+        979.0
+      ],
+      "crop_box": [
+        369,
+        634,
+        726,
+        953
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:76:A08:数据链路层 · 流量控制与可靠传输机制 · 解答题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "数据链路层 · 流量控制与可靠传输机制 · 解答题",
+      "id": "A08",
+      "type": "解答题",
+      "page": 76,
+      "topic": "3.4.3 本节习题精选",
+      "content": "【2017统考真题】甲乙双方均采用后退N帧协议（GBN）进行持续的双向数据传输，\n且双方始终采用捐带确认，帧长均为1000B。Sx,和Rxy分别表示甲方和乙方发送的数据帧，其中x是发送序号，y是确认序号（表示希望接收对方的下一帧序号），数据帧的发送序号和确认序号字段均为3比特。信道传输速率为100Mb/s，RTT=0.96ms。下图给出了甲方发送数据帧和接收数据帧的两种场景，其中t为初始时刻，此时甲方的发送和确认序号均为0，t时刻甲方有足够多的数据待发送。\n请回答下列问题。\n1)对于图(a)，to时刻到t时刻期间，甲方可以断定乙方已正确接收的数据帧数是多少?\n正确接收的是哪几个帧（请用Sx,形式给出）？\n2）对于图(a)，从t时刻起，甲方在不出现超时且未收到乙方新的数据帧之前，最多还可以发送多少数据帧？其中第一个帧和最后一个帧分别是哪个（请用Sxy形式给出）?\n3）对于图(b)，从t时刻起，甲方在不出现新的超时且未收到乙方新的数据帧之前，需要重发多少数据帧？重发的第一个帧是哪个帧（请用Sx,形式给出）？\n4）甲方可以达到的最大信道利用率是多少？\n甲方 甲方\nto1 to 1\nSo.0 So.o\nS10 S1.0\nS2.0 S20\nS3.0 Ra\nRo.1 R2\nS4.1 Ss2\nS42\nR13\nR22\nR33\nS2.0超时\nt\n时间 时间\n(a) (b)",
+      "options": [],
+      "answer": null,
+      "image": "crops/net/page_076_A08.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_076.jpg",
+      "bbox": [
+        154.0,
+        497.0,
+        954.0,
+        1373.0
+      ],
+      "crop_box": [
+        64,
+        487,
+        1018,
+        1383
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "net:108:X31:数据链路层 · 局域网 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "数据链路层 · 局域网 · 选择题",
+      "id": "X31",
+      "type": "选择题",
+      "page": 108,
+      "topic": "3.6.5 本节习题精选",
+      "content": "在下图所示的网络中，假定主机A给主机B发送数据，在MAC帧从接入点AP2转发到目的主机B的这段链路上，MAC帧的地址1、地址2和地址3分别是（）。\nAP2\nAP1 MAC1\nMAC2\n地址MACA 地址MACB\n地址BSSID1 地址BSSID2",
+      "options": [
+        {
+          "k": "A",
+          "v": "BSSID2,BSSID1, MACB"
+        },
+        {
+          "k": "B",
+          "v": "MACB,BSSID2,BSSID1"
+        },
+        {
+          "k": "C",
+          "v": "BSSID2, MACB, MACA"
+        },
+        {
+          "k": "D",
+          "v": "MACB,BSSID2,MAC"
+        }
+      ],
+      "answer": "D",
+      "image": "crops/net/page_108_X31.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_108.jpg",
+      "bbox": [
+        154.0,
+        245.0,
+        953.0,
+        456.0
+      ],
+      "crop_box": [
+        208,
+        299,
+        858,
+        394
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:109:X41:数据链路层 · 局域网 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "数据链路层 · 局域网 · 选择题",
+      "id": "X41",
+      "type": "选择题",
+      "page": 109,
+      "topic": "3.6.5 本节习题精选",
+      "content": "【2016统考真题】如下图所示，在Hub再生比特流的过程中会产生1.535us的时延（Switch\n和Hub均为100Base-T设备），信号传播速率为200m/us，不考虑以太网帧的前导码，\n则H3和H4之间理论上可以相距的最远距离是（）。",
+      "options": [
+        {
+          "k": "A",
+          "v": "200m"
+        },
+        {
+          "k": "B",
+          "v": "205m"
+        },
+        {
+          "k": "C",
+          "v": "359m"
+        },
+        {
+          "k": "D",
+          "v": "512m\nSwitch Hub"
+        }
+      ],
+      "answer": "B",
+      "image": "crops/net/page_109_X41.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_109.jpg",
+      "bbox": [
+        172.0,
+        306.0,
+        971.0,
+        457.0
+      ],
+      "crop_box": [
+        64,
+        296,
+        1018,
+        605
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "net:109:X42:数据链路层 · 局域网 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "数据链路层 · 局域网 · 选择题",
+      "id": "X42",
+      "type": "选择题",
+      "page": 109,
+      "topic": "3.6.5 本节习题精选",
+      "content": "【2017统考真题】在下图所示的网络中，若主机H发送一个封装访问Internet的IP分组的IEEE802.11帧F，则帧F的地址1、地址2和地址3分别是（）。\n00-12-34-56-78-9c\nInternet\n00-12-34-56-78-9a 00-12-34-56-78-9b",
+      "options": [
+        {
+          "k": "A",
+          "v": "00-12-34-56-78-9a, 00-12-34-56-78-9b,00-12-34-56-78-9c"
+        },
+        {
+          "k": "B",
+          "v": "00-12-34-56-78-9b，00-12-34-56-78-9a,00-12-34-56-78-9c"
+        },
+        {
+          "k": "C",
+          "v": "00-12-34-56-78-9b，00-12-34-56-78-9c，00-12-34-56-78-9a"
+        },
+        {
+          "k": "D",
+          "v": "00-12-34-56-78-9a， 00-12-34-56-78-9c，00-12-34-56-78-9b"
+        }
+      ],
+      "answer": "B",
+      "image": "crops/net/page_109_X42.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_109.jpg",
+      "bbox": [
+        169.0,
+        600.0,
+        972.0,
+        947.0
+      ],
+      "crop_box": [
+        241,
+        665,
+        863,
+        812
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:109:X46:数据链路层 · 局域网 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "数据链路层 · 局域网 · 选择题",
+      "id": "X46",
+      "type": "选择题",
+      "page": 109,
+      "topic": "3.6.5 本节习题精选",
+      "content": "【2020统考真题】在某个IEEE802.11无线局域网中，主机H与AP之间发送或接收\nCSMA/CA帧的过程如下图所示。在H或AP发送帧前等待的帧间间隔时间（IFS）中，\n最长的是（）。\n\nH AP\n(p1)\nIFS1\nRTS\nIFS2\nT CTS\nIFS3\nDATA\nIFS4\n<ACK\n时间",
+      "options": [
+        {
+          "k": "A",
+          "v": "IFS1"
+        },
+        {
+          "k": "B",
+          "v": "IFS2"
+        },
+        {
+          "k": "C",
+          "v": "IFS3"
+        },
+        {
+          "k": "D",
+          "v": "IFS4"
+        }
+      ],
+      "answer": "A",
+      "image": "crops/net/page_109_X46.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_109.jpg",
+      "bbox": [
+        172.0,
+        93.0,
+        970.0,
+        1374.0
+      ],
+      "crop_box": [
+        385,
+        134,
+        681,
+        493
+      ],
+      "image_note": "题干含图，OCR空隙+墨迹自动重裁"
+    },
+    {
+      "uid": "net:126:X13:数据链路层 · 数据链路层设备 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "数据链路层 · 数据链路层设备 · 选择题",
+      "id": "X13",
+      "type": "选择题",
+      "page": 126,
+      "topic": "3.8.4 本节习题精选",
+      "content": "如下图所示，某学院的以太网交换机有3个接口分别和3个系的以太网相连，另外3个接口分别和万维网服务器、电子邮件服务器以及一个连接互联网的路由器相连，A、B\n和C都是100Mb/s 以太网交换机。假设所有链路的速率都是100Mb/s，且图中9台主机中的任何一台都可以与任何一台服务器或主机通信。这9台主机和2台服务器产生的总吞吐量最大为（）。若把3个系的以太网交换机都换成100Mb/s集线器，则这9台主机和2台服务器产生的总吞吐量最大为（）。若把所有以太网交换机都换成100Mb/s\n集线器，则这9台主机和2台服务器产生的总吞吐量最大为（）。\n路由器至互联网万维网 以太网服务器 交换机电子邮件服务器系",
+      "options": [
+        {
+          "k": "A",
+          "v": "1100Mb/s,500Mb/s,100Mb/s"
+        },
+        {
+          "k": "B",
+          "v": "500Mb/s,500Mb/s,100Mb/s"
+        },
+        {
+          "k": "C",
+          "v": "1100Mb/s,1100Mb/s, 500Mb/s"
+        },
+        {
+          "k": "D",
+          "v": "500Mb/s,1100Mb/s,500Mb/s"
+        }
+      ],
+      "answer": "A",
+      "image": "crops/net/page_126_X13.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_126.jpg",
+      "bbox": [
+        156.0,
+        153.0,
+        972.0,
+        1392.0
+      ],
+      "crop_box": [
+        319,
+        211,
+        782,
+        378
+      ],
+      "image_note": "题干含图，OCR空隙+墨迹自动重裁"
+    },
+    {
+      "uid": "net:127:X18:数据链路层 · 数据链路层设备 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "数据链路层 · 数据链路层设备 · 选择题",
+      "id": "X18",
+      "type": "选择题",
+      "page": 127,
+      "topic": "3.8.4 本节习题精选",
+      "content": "某以太网如下图所示，假设交换机1和交换机2的交换表初始为空，各主机之间依次进行以下通信：A→B、H→A、E→X、X→E，则关于上述通信过程叙述错误的是（）。\n交换机1 交换机2\n交换表 交换表地址接口 地址接口",
+      "options": [
+        {
+          "k": "A",
+          "v": "当A→B时，除A外的全部主机都能收到A发送的帧"
+        },
+        {
+          "k": "B",
+          "v": "当H→A时，仅A能收到H发送的帧"
+        },
+        {
+          "k": "C",
+          "v": "当E一X时，仅X能收到E发送的帧"
+        },
+        {
+          "k": "D",
+          "v": "当X→E时，交换机2收不到X发送的帧"
+        }
+      ],
+      "answer": "C",
+      "image": "crops/net/page_127_X18.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_127.jpg",
+      "bbox": [
+        173.0,
+        897.0,
+        971.0,
+        1270.0
+      ],
+      "crop_box": [
+        195,
+        952,
+        907,
+        1151
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:128:X21:数据链路层 · 数据链路层设备 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "数据链路层 · 数据链路层设备 · 选择题",
+      "id": "X21",
+      "type": "选择题",
+      "page": 128,
+      "topic": "3.8.4 本节习题精选",
+      "content": "【2014统考真题】某以太网拓扑及交换机的当前转发表如下图所示，主机00-e1-d5-00-23-al\n向主机00-el-d5-00-23-cl发送一个数据帧，主机00-el-d5-00-23-cl收到该帧后，向主机\n00-el-d5-00-23-al发送一个确认帧，交换机对这两个帧的转发端口分别是（）。\n交换机 目的地址 口裴\n3 00-e1-d5-00-23-b1\n00-e1-d5-00-23-a1 00-e1-d5-00-23-b1 00-e1-d5-00-23-c1",
+      "options": [
+        {
+          "k": "A",
+          "v": "{3}和{1}"
+        },
+        {
+          "k": "B",
+          "v": "{2,3}和{1}"
+        },
+        {
+          "k": "C",
+          "v": "{2,3}和{1,2}"
+        },
+        {
+          "k": "D",
+          "v": "{1,2,3}和{1}"
+        }
+      ],
+      "answer": "B",
+      "image": "crops/net/page_128_X21.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_128.jpg",
+      "bbox": [
+        154.0,
+        215.0,
+        956.0,
+        512.0
+      ],
+      "crop_box": [
+        206,
+        302,
+        922,
+        479
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:160:X45:网络层 · IPv4 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "网络层 · IPv4 · 选择题",
+      "id": "X45",
+      "type": "选择题",
+      "page": 160,
+      "topic": "4.2.8 本节习题精选",
+      "content": "某网络拓扑如下图所示，H1与H2的默认网关和子网掩码都分别配置为192.168.3.1和\n255.255.255.0，H3和H4的默认网关和子网掩码都分别配置为192.168.3.254和255.255.\n255.128，初始时所有设备的ARP缓存均为空。则下列说法中错误的是（）。\nSwitch Hub\nR2E1 192.168.3.252\nH3\n192.168.3.251",
+      "options": [
+        {
+          "k": "A",
+          "v": "若H1向H3发送数据，则H2、H3、H4都能收到H1发来的ARP请求报文"
+        },
+        {
+          "k": "B",
+          "v": "若H3向H1发送数据，则H3能收到H1发来的ARP响应报文"
+        },
+        {
+          "k": "C",
+          "v": "若H1 向 H2发送数据，则H2、H3、H4 都能收到H1发来的 ARP请求报文"
+        },
+        {
+          "k": "D",
+          "v": "若H3向H4发送数据，则H3能收到H4发来的ARP响应报文"
+        }
+      ],
+      "answer": "B",
+      "image": "crops/net/page_160_X45.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_160.jpg",
+      "bbox": [
+        156.0,
+        824.0,
+        951.0,
+        1180.0
+      ],
+      "crop_box": [
+        184,
+        842,
+        963,
+        1060
+      ],
+      "image_note": "题干含图，OCR空隙+墨迹自动重裁"
+    },
+    {
+      "uid": "net:161:X53:网络层 · IPv4 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "网络层 · IPv4 · 选择题",
+      "id": "X53",
+      "type": "选择题",
+      "page": 161,
+      "topic": "4.2.8 本节习题精选",
+      "content": "【2011统考真题】某网络拓扑如下图所示，路由器R1只有到达子网192.168.1.0/24的路由。为使R1可以将IP分组正确地路由到图中的所有子网，在R1中需要增加的一条路由（目的网络，子网掩码，下一跳）是（）。\nR1\n192.168.1.1\n192.168.1.0/24\n192.168.1.2\nR2\n192.168.2.0/25 192.168.2.128/25",
+      "options": [
+        {
+          "k": "A",
+          "v": "192.168.2.0，255.255.255.128，192.168.1.1"
+        },
+        {
+          "k": "B",
+          "v": "192.168.2.0，255.255.255.0，192.168.1.1"
+        },
+        {
+          "k": "C",
+          "v": "192.168.2.0，255.255.255.128，192.168.1.2"
+        },
+        {
+          "k": "D",
+          "v": "192.168.2.0，255.255.255.0，192.168.1.2"
+        }
+      ],
+      "answer": "D",
+      "image": "crops/net/page_161_X53.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_161.jpg",
+      "bbox": [
+        170.0,
+        762.0,
+        970.0,
+        1117.0
+      ],
+      "crop_box": [
+        64,
+        752,
+        1018,
+        1154
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "net:162:X58:网络层 · IPv4 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "网络层 · IPv4 · 选择题",
+      "id": "X58",
+      "type": "选择题",
+      "page": 162,
+      "topic": "4.2.8 本节习题精选",
+      "content": "【2016统考真题】如下图所示，假设H1与H2的默认网关和子网掩码均分别配置为192.\n168.3.1和255.255.255.128，H3和H4的默认网关和子网掩码均分别配置为192.168.3.254\n和255.255.255.128，则下列现象中可能发生的是（）。\n图中：\nInternet R1~R3为路由器；\nWeb服务器S 201.1.3.9 Hub为100Base-T集线器；\n主机H1~H3的默认域名服务器均配置为201.1.1.1。\nNAT LO\n201.1.3.1\n201.1.1.0/24 201.1.2.0/25\nR2 R3\nE1 192.168.3.254\nSwitch Hub\nH4\n192.168.3.252\nDNS服务器\n201.1.1.1\n192.168.3.251",
+      "options": [
+        {
+          "k": "A",
+          "v": "H1不能与H2进行正常IP通信"
+        },
+        {
+          "k": "B",
+          "v": "H2与H4均不能访问Internet"
+        },
+        {
+          "k": "C",
+          "v": "H1不能与H3 进行正常IP通信"
+        },
+        {
+          "k": "D",
+          "v": "H3不能与H4进行正常IP通信"
+        }
+      ],
+      "answer": "C",
+      "image": "crops/net/page_162_X58.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_162.jpg",
+      "bbox": [
+        154.0,
+        400.0,
+        955.0,
+        869.0
+      ],
+      "crop_box": [
+        64,
+        390,
+        1018,
+        883
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "net:162:X63:网络层 · IPv4 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "网络层 · IPv4 · 选择题",
+      "id": "X63",
+      "type": "选择题",
+      "page": 162,
+      "topic": "4.2.8 本节习题精选",
+      "content": "【2018统考真题】路由器R通过以太网交换机S1和S2连接两个网络，R的接口、主机HI和H2的IP地址与MAC地址如下图所示。若H1向H2发送一个IP分组P，则\nH1发出的封装P的以太网帧的目的MAC地址、H2收到的封装P的以太网帧的源MAC\n地址分别是（）。\n00-1a-2b-3c-4d-51 00-a1-b2-c3-d4-61\nH H2\n00-1a-2b-3c-4d-52 00-a1-b2-c3-d4-62",
+      "options": [
+        {
+          "k": "A",
+          "v": "00-al-b2-c3-d4-62，00-1a-2b-3c-4d-52"
+        },
+        {
+          "k": "B",
+          "v": "00-al-b2-c3-d4-62，00-a1-b2-c3-d4-61"
+        },
+        {
+          "k": "C",
+          "v": "00-1a-2b-3c-4d-51,00-1a-2b-3c-4d-52"
+        },
+        {
+          "k": "D",
+          "v": "00-1a-2b-3c-4d-51,00-al-b2-c3-d4-61"
+        }
+      ],
+      "answer": "D",
+      "image": "crops/net/page_162_X63.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_162.jpg",
+      "bbox": [
+        155.0,
+        153.0,
+        972.0,
+        1386.0
+      ],
+      "crop_box": [
+        197,
+        179,
+        859,
+        397
+      ],
+      "image_note": "题干含图，OCR空隙+墨迹自动重裁"
+    },
+    {
+      "uid": "net:163:X68:网络层 · IPv4 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "网络层 · IPv4 · 选择题",
+      "id": "X68",
+      "type": "选择题",
+      "page": 163,
+      "topic": "4.2.8 本节习题精选",
+      "content": "【2022统考真题】下图所示网络中的主机H的子网掩码与默认网关分别是（）。\n192.168.1.1/30\nInternet\n甲 192.168.1.62/27\n交换机\n192.168.1.60",
+      "options": [
+        {
+          "k": "A",
+          "v": "255.255.255.192,192.168.1.1"
+        },
+        {
+          "k": "B",
+          "v": "255.255.255.192,192.168.1.62"
+        },
+        {
+          "k": "C",
+          "v": "255.255.255.224,192.168.1.1"
+        },
+        {
+          "k": "D",
+          "v": "255.255.255.224,192.168.1.62"
+        }
+      ],
+      "answer": "D",
+      "image": "crops/net/page_163_X68.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_163.jpg",
+      "bbox": [
+        169.0,
+        884.0,
+        915.0,
+        1106.0
+      ],
+      "crop_box": [
+        64,
+        874,
+        1018,
+        1120
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "net:163:X69:网络层 · IPv4 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "网络层 · IPv4 · 选择题",
+      "id": "X69",
+      "type": "选择题",
+      "page": 163,
+      "topic": "4.2.8 本节习题精选",
+      "content": "【2023统考真题】某网络拓扑如下图所示，其中路由器R2实现NAT功能。若主机H\n向Intermet发送1个IP分组，则经过R2转发后，该IP分组的源IP地址是（）。\nNAT\n195.123.0.34/30 192.168.0.1\nInternet\nR1 R2\n192.168.0.3",
+      "options": [
+        {
+          "k": "A",
+          "v": "195.123.0.33"
+        },
+        {
+          "k": "B",
+          "v": "195.123.0.35"
+        },
+        {
+          "k": "C",
+          "v": "192.168.0.1"
+        },
+        {
+          "k": "D",
+          "v": "192.168.0.3"
+        }
+      ],
+      "answer": "A",
+      "image": "crops/net/page_163_X69.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_163.jpg",
+      "bbox": [
+        172.0,
+        1115.0,
+        972.0,
+        1309.0
+      ],
+      "crop_box": [
+        64,
+        1105,
+        1018,
+        1321
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "net:164:X71:网络层 · IPv4 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "网络层 · IPv4 · 选择题",
+      "id": "X71",
+      "type": "选择题",
+      "page": 164,
+      "topic": "4.2.8 本节习题精选",
+      "content": "【2024统考真题】如下图所示的支持VLAN划分的交换机，已按端口划分了3个VLAN，\n部分端口连接主机的IP地址和MAC地址如图中所示，ARP表结构为<IP地址，MAC\n地址，TTL>。下列选项中，不会出现在H4的ARP表中的是（）。\nVLAN1 VLAN2 VLAN3\nH1\n13 14 15 16 17!! 18 19 2021 22 23\n00-3E-C2-39-12-B5 中 中中\n凸 只\nH2\n2 3 4 5116 8ii 9 10 11 12\n192.168.3.81\n00-18-A2-3B-36-21\nH3 H4 H5 H6 H7\n00-E5-78-4A-09-B2 00-35-6A-B1-4C-92 00-1A-39-5B-E4-45 00-08-6E-05-A7-82 00-51-48-C9-63-A3",
+      "options": [
+        {
+          "k": "A",
+          "v": "192.168.3.81，00-18-A2-3B-36-21，14:32:00"
+        },
+        {
+          "k": "B",
+          "v": "192.168.3.91，00-3E-C2-39-12-B5,14:37:00"
+        },
+        {
+          "k": "C",
+          "v": "192.168.3.125,00-E5-78-4A-09-B2，14:45:00"
+        },
+        {
+          "k": "D",
+          "v": "192.168.3.129,00-08-6E-05-A7-82，14:52:00"
+        }
+      ],
+      "answer": "D",
+      "image": "crops/net/page_164_X71.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_164.jpg",
+      "bbox": [
+        154.0,
+        214.0,
+        952.0,
+        680.0
+      ],
+      "crop_box": [
+        241,
+        300,
+        816,
+        348
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:164:X72:网络层 · IPv4 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "网络层 · IPv4 · 选择题",
+      "id": "X72",
+      "type": "选择题",
+      "page": 164,
+      "topic": "4.2.8 本节习题精选",
+      "content": "【2025统考真题】一台新接入网络的主机H在通过DHCP服务器动态请求IP地址的过程中，与DHCP服务器交换DHCP报文的部分过程如下图所示。封装DHCPREQUEST\n报文的IP数据报的目的IP地址和源IP地址分别是（）。\nDHCP服务器\nH\n192.168.5.1\nDHCPOFFER\nyiacdr. 192.168.5.9\nDHCPREQUEST\nyiaddr: 192.168.5.9\n时间",
+      "options": [
+        {
+          "k": "A",
+          "v": "192.168.5.1, 0.0.0.0"
+        },
+        {
+          "k": "B",
+          "v": "192.168.5.1,192.168.5.9"
+        },
+        {
+          "k": "C",
+          "v": "255.255.255.255,0.0.0.0"
+        },
+        {
+          "k": "D",
+          "v": "255.255.255.255,192.168.5.9"
+        }
+      ],
+      "answer": "C",
+      "image": "crops/net/page_164_X72.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_164.jpg",
+      "bbox": [
+        154.0,
+        688.0,
+        954.0,
+        1057.0
+      ],
+      "crop_box": [
+        164,
+        1329,
+        960,
+        1390
+      ],
+      "image_note": "题干含图，OCR空隙+墨迹自动重裁"
+    },
+    {
+      "uid": "net:165:A09:网络层 · IPv4 · 解答题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "网络层 · IPv4 · 解答题",
+      "id": "A09",
+      "type": "解答题",
+      "page": 165,
+      "topic": "4.2.8 本节习题精选",
+      "content": "一个自治系统有5个局域网，如下图所示，LAN2至LAN5上的主机数分别为91、150、\n3和15，该自治系统分配到的IP地址块为30.138.118.0/23，试给出每个局域网的地址块\n（包括前缀）。\nLAN2，91台主机 LAN3，150台主机 LAN4，3台主机\nLAN5，15台主机\nLAN1",
+      "options": [],
+      "answer": null,
+      "image": "crops/net/page_165_A09.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_165.jpg",
+      "bbox": [
+        171.0,
+        933.0,
+        971.0,
+        1128.0
+      ],
+      "crop_box": [
+        64,
+        923,
+        1018,
+        1138
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "net:166:A11:网络层 · IPv4 · 解答题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "网络层 · IPv4 · 解答题",
+      "id": "A11",
+      "type": "解答题",
+      "page": 166,
+      "topic": "4.2.8 本节习题精选",
+      "content": "一个IPv4分组到达一个节点时，其首部信息（以十六进制表示）为：0x450000540003\n58502006FFF07C4E0302B40E0F02。IP分组的首部格式见图4.5。请回答：\n1）分组的源IP地址和目的IP地址各是什么（点分十进制表示法）？\n2）该分组数据部分的长度是多少？\n3）该分组是否已经分片？若有分片，则偏移量是多少？",
+      "options": [],
+      "answer": null,
+      "image": "crops/net/page_166_A11.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_166.jpg",
+      "bbox": [
+        156.0,
+        182.0,
+        955.0,
+        329.0
+      ],
+      "crop_box": [
+        64,
+        172,
+        1018,
+        339
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "net:166:A12:网络层 · IPv4 · 解答题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "网络层 · IPv4 · 解答题",
+      "id": "A12",
+      "type": "解答题",
+      "page": 166,
+      "topic": "4.2.8 本节习题精选",
+      "content": "某网络拓扑见下图，R1和R2为路由器，R2实现了NAT功能，Switch为交换机，\nHub为集线器，Web服务器S、主机Hl～H4和路由器各接口的IP地址配置见图中标注。\n203.10.3.2/24\nInternet E0\n213.48.226.31/24 R1\nWeb服务器S E1\n203.10.2.2/30\nSwitch E1 Hub\n172.18.1.126/25R2172.18.1.254/25\nNAT\nH2 H3\n172.18.1.33/25 172.18.1.11/25 172.18.1.211/25 172.18.1.233/25\n回答下列问题：\n1）R2的E1接口的IP地址是什么？H1配置的默认网关是什么？\n2）假设HI和R2的ARP缓存初始均为空，交换机的交换表初始也为空，HI向H3发送一个IP分组A，H3收到A后向H1发送一个响应IP分组B，则能收到封装A的以太网帧的主机有哪些？能收到封装B的以太网帧的主机有哪些？\n3）H1发出的封装有HTTP请求报文的IP分组C，首部中的源IP地址和目的IP地址分别是什么？当C从R2转发出去时，首部中的源IP地址和目的IP地址分别是什么？",
+      "options": [],
+      "answer": null,
+      "image": "crops/net/page_166_A12.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_166.jpg",
+      "bbox": [
+        157.0,
+        625.0,
+        953.0,
+        1223.0
+      ],
+      "crop_box": [
+        64,
+        615,
+        1018,
+        1233
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "net:166:A13:网络层 · IPv4 · 解答题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "网络层 · IPv4 · 解答题",
+      "id": "A13",
+      "type": "解答题",
+      "page": 166,
+      "topic": "4.2.8 本节习题精选",
+      "content": "【2009统考真题】某网络拓扑图如下图所示，路由器R1通过接口E1、E2分别连接局域网1、局域网2，通过接口L0连接路由器R2，并通过路由器R2连接域名服务器与互联网。R1的L0接口的IP地址是202.118.2.1；R2的L0接口的IP地址是202.118.2.2，\nL1接口的IP地址是130.11.120.1，E0接口的IP地址是202.118.3.1；域名服务器的IP\n地址是202.118.3.2。\nR2 R1\nLO 局域网1\n202.118.2.2\nLO E2 局域网2\n130.11.120.1\nE0 202.118.2.1\n202.118.3.1\n202.118.3.2\n域名服务器\nR1和R2的路由表结构如下：\n目的网络IP地址 子网掩码 下一跳IP地址 接口\n1）将IP地址空间202.118.1.0/24划分为两个子网，分别分配给局域网1和局域网2，每个局域网需分配的IP地址数不少于120个。请给出子网划分结果，说明理由或给出必要的计算过程。\n2)请给出R1的路由表，使其明确包括到局域网1的路由、到局域网2的路由、域名服务器的主机路由和互联网的路由。\n3）请采用路由聚合技术，给出R2到局域网1和局域网2的路由。",
+      "options": [],
+      "answer": null,
+      "image": "crops/net/page_166_A13.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_166.jpg",
+      "bbox": [
+        155.0,
+        171.0,
+        971.0,
+        1376.0
+      ],
+      "crop_box": [
+        64,
+        161,
+        1018,
+        1386
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "net:166:X73:网络层 · IPv4 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "网络层 · IPv4 · 选择题",
+      "id": "X73",
+      "type": "解答题",
+      "page": 166,
+      "topic": "4.2.8 本节习题精选",
+      "content": "主机A的IP地址为218.207.61.211，MAC地址为00:1d:72:98:1d:fc。A收到一个帧，该帧的前64个字节的十六进制形式和ASCII形式如下图所示。",
+      "options": [],
+      "answer": null,
+      "image": "crops/net/page_166_X73.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_166.jpg",
+      "bbox": [
+        156.0,
+        337.0,
+        953.0,
+        615.0
+      ],
+      "crop_box": [
+        64,
+        327,
+        1018,
+        625
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "net:167:A14:网络层 · IPv4 · 解答题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "网络层 · IPv4 · 解答题",
+      "id": "A14",
+      "type": "解答题",
+      "page": 167,
+      "topic": "4.2.8 本节习题精选",
+      "content": "【2015统考真题】某网络拓扑如下图所示，其中路由器内网接口、DHCP服务器、WWW\n服务器与主机1均采用静态IP地址配置，相关地址信息见图中标注；主机2～主机N通过DHCP服务器动态获取IP地址等配置信息。\nwww服务器 DHCP服务器\nInternet\n111.123.15.3/24 111.123.15.2/24\n00-b1-b1-b1-b1-b1\n以太网交换机 111.123.15.1/24\n00-al-al-al-al-al\n路由器主机1\n主机2 主机N\n111.123.15.4/24\n回答下列问题：\n1）DHCP服务器可为主机2～N动态分配IP地址的最大范围是什么？主机2使用DHCP\n获取IP地址的过程中，发送的封装DHCPDiscover报文的IP分组的源IP地址和目的\nIP地址分别是多少?\n2）若主机2的ARP表为空，则该主机访问Internet时，发出的第一个以太网帧的目的\nMAC地址是什么？封装主机2发往Internet的IP分组的以太网帧的目的MAC地址是什么？\n3）若主机1的子网掩码和默认网关分别配置为255.255.255.0和111.123.15.2，则该主机是否能访问WWW服务器？是否能访问Intermet？请说明理由。",
+      "options": [],
+      "answer": null,
+      "image": "crops/net/page_167_A14.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_167.jpg",
+      "bbox": [
+        174.0,
+        609.0,
+        971.0,
+        1284.0
+      ],
+      "crop_box": [
+        322,
+        692,
+        834,
+        799
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:167:A15:网络层 · IPv4 · 解答题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "网络层 · IPv4 · 解答题",
+      "id": "A15",
+      "type": "解答题",
+      "page": 167,
+      "topic": "4.2.8 本节习题精选",
+      "content": "【2018统考真题】某公司的网络如下图所示。IP地址空间192.168.1.0/24均分给销售部和技术部两个子网，并已分别为部分主机和路由器接口分配了IP地址，销售部子网的\nMTU=1500B，技术部子网的MTU=800B。\n\n销售部 技术部\nFO F1\n已分配地址 MTU-1500B MTU-800B\n已分配地址回答下列问题：\n1）销售部子网的广播地址是什么？技术部子网的子网地址是什么？若每台主机仅分配一个IP地址，则技术部子网还可以连接多少台主机？\n2）假设主机192.168.1.1向主机192.168.1.208发送一个总长度为1500B的IP分组，IP分组的首部长度为20B，路由器在通过接口F1转发该IP分组时进行了分片。若分片时尽可能分为最大片，则一个最大IP分片封装数据的字节数是多少？至少需要分为几个分片？每个分片的片偏移量是多少？",
+      "options": [],
+      "answer": null,
+      "image": "crops/net/page_167_A15.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_167.jpg",
+      "bbox": [
+        173.0,
+        94.0,
+        971.0,
+        1378.0
+      ],
+      "crop_box": [
+        322,
+        692,
+        834,
+        799
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:168:A16:网络层 · IPv4 · 解答题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "网络层 · IPv4 · 解答题",
+      "id": "A16",
+      "type": "解答题",
+      "page": 168,
+      "topic": "4.2.8 本节习题精选",
+      "content": "【2020统考真题】某校园网有两个局域网，通过路由器R1、R2和R3互连后接入Intermet,\nS1和S2为以太网交换机。局域网采用静态IP地址配置，路由器部分接口以及各主机的\nIP地址如下图所示。\nIntermet\n203.10.2.1/30 203.10.2.5/30\nR1\n203.10.2.2/30 203.10.2.6/30\nNAT S1 NAT\nR3\nWeb服务器 IH H2\n假设NAT转换表结构为外网 内网\nIP地址 端口号 IP地址 端口号请回答下列问题：\n1）为使H2和H3能够访问Web服务器（使用默认端口号），需要进行什么配置？\n2）若H2主动访问Web服务器时，将HTTP请求报文封装到IP数据报P中发送，则H2\n发送的P的源IP地址和目的IP地址分别是什么？经过R3转发后，P的源IP地址和目的IP地址分别是什么？经过R2转发后，P的源IP地址和目的IP地址分别是什么？",
+      "options": [],
+      "answer": null,
+      "image": "crops/net/page_168_A16.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_168.jpg",
+      "bbox": [
+        154.0,
+        524.0,
+        955.0,
+        1198.0
+      ],
+      "crop_box": [
+        216,
+        613,
+        465,
+        693
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:168:A17:网络层 · IPv4 · 解答题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "网络层 · IPv4 · 解答题",
+      "id": "A17",
+      "type": "解答题",
+      "page": 168,
+      "topic": "4.2.8 本节习题精选",
+      "content": "【2022统考真题】某网络拓扑如下图所示，R为路由器，S为以太网交换机，AP是802.11\n接入点，路由器的EO接口和DHCP服务器的IP地址配置如图中所示；HI与H2属于同一个广播域，但不属于同一个冲突域；H2和H3属于同一个冲突域；H4和H5已经接入网络，并通过DHCP动态获取了IP地址。现有路由器、100Base-T以太网交换机和\n100Base-T集线器（Hub）三类设备各若干。\n192.168.0.1/25\n00-11-11-11-11-A1\nInternet EO\nDHCP服务器\n192.168.0.2/25\n> 00-11-11-11-11-B1\n设备1 AP\n00-11-11-11-11-C1\nH5\nH1\n192.168.0.4/25\nH4 00-11-11-11-11-E1\n设备2\n192.168.0.3/25\nH3 00-11-11-11-11-D1\n请回答下列问题。\n1）设备1和设备2应该分别选择哪类设备？\n2）若信号传播速度为2x10m/s，以太网最小帧长为64B，信号通过设备2时会产生额外的1.5lus的时延，则H2与H3之间可以相距的最远距离是多少？\n3）在H4通过DHCP动态获取IP地址过程中，H4首先发送了DHCP报文M，M是哪种DHCP报文？路由器EO接口能否收到封装M的以太网帧？S向DHCP服务器转发的封装M的以太网帧的目的MAC地址是什么?\n4）若H4向H5发送一个IP分组P，则H5收到的封装P的802.11帧的地址1、地址2\n和地址3分别是什么？\n山区，工程部网络需要连接公司总部网络。假设综合考虑方案的技术可行性、安全性与经济成本等因素后，决定租用我国自主建设的天通一号卫星通信链路，连接工程部网络的路由器R1和公司总部网络的路由器R2，如下图所示。S1和S2为千兆以太网交换机;\nTR1和TR2是卫星信号地面收发设备，实现全双工调制解调。天通一号卫星轨道高度是\n36000km，电磁波信号传播速度为300000km/s。租用的卫星链路为R1和R2之间提供对称全双工信道，每个方向的数据传输速率为200kb/s。\n工程部网络 天通\nInterne\n作业区子网公司总部管理区子网 网络",
+      "options": [],
+      "answer": null,
+      "image": "crops/net/page_168_A17.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_168.jpg",
+      "bbox": [
+        157.0,
+        146.0,
+        971.0,
+        1353.0
+      ],
+      "crop_box": [
+        216,
+        613,
+        465,
+        693
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:204:X22:网络层 · 路由算法与路由协议 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "网络层 · 路由算法与路由协议 · 选择题",
+      "id": "X22",
+      "type": "选择题",
+      "page": 204,
+      "topic": "4.4.6 本节习题精选",
+      "content": "考虑如下图所示的子网，该子网使用了距离-向量算法，下面的向量刚刚到达路由器C:\n来自B的向量为(5,0,8,12,6,2)；来自D的向量为(16,12,6,0,9,10)；来自E的向量为\n(7,6,3,9,0,4)。经过测量，C到B、D和E的延迟分别为6、3和5，则C到达所有节点的最短路径是（）。",
+      "options": [
+        {
+          "k": "A",
+          "v": "(5,6,0,9,6,2)"
+        },
+        {
+          "k": "B",
+          "v": "(11,6,0,3,5,8)"
+        },
+        {
+          "k": "C",
+          "v": "(5,11,0,12,8,9)"
+        },
+        {
+          "k": "D",
+          "v": "(11,8,0,7,4,9)"
+        }
+      ],
+      "answer": "B",
+      "image": "crops/net/page_204_X22.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_204.jpg",
+      "bbox": [
+        154.0,
+        184.0,
+        953.0,
+        482.0
+      ],
+      "crop_box": [
+        64,
+        174,
+        1018,
+        494
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "net:204:X23:网络层 · 路由算法与路由协议 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "网络层 · 路由算法与路由协议 · 选择题",
+      "id": "X23",
+      "type": "选择题",
+      "page": 204,
+      "topic": "4.4.6 本节习题精选",
+      "content": "某分组交换网络的拓扑如下图所示，各路由器使用OSPF协议且均已收敛，各链路的度量已在图中标注。假设各段链路的带宽均为100Mb/s，分组长度为1000B，其中分组的首部长度为20B。若主机A向主机B发送一个大小为980000B的文件，忽略分组的传播时延和封装/解封时间，从A发送开始到B接收完毕为止，需要的时间是（）。",
+      "options": [
+        {
+          "k": "A",
+          "v": "80.08ms"
+        },
+        {
+          "k": "B",
+          "v": "80.16ms"
+        },
+        {
+          "k": "C",
+          "v": "80.32ms"
+        },
+        {
+          "k": "D",
+          "v": "80.64ms\n6 2\nA B"
+        }
+      ],
+      "answer": "C",
+      "image": "crops/net/page_204_X23.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_204.jpg",
+      "bbox": [
+        155.0,
+        489.0,
+        952.0,
+        696.0
+      ],
+      "crop_box": [
+        64,
+        479,
+        1018,
+        777
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "net:204:X25:网络层 · 路由算法与路由协议 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "网络层 · 路由算法与路由协议 · 选择题",
+      "id": "X25",
+      "type": "选择题",
+      "page": 204,
+      "topic": "4.4.6 本节习题精选",
+      "content": "【2016统考真题】假设下图中的R1、R2、R3采用RIP交换路由信息，且均已收敛。若\nR3检测到网络201.1.2.0/25不可达，并向R2通告一次新的距离向量，则R2更新后，其到达该网络的距离是（）。",
+      "options": [
+        {
+          "k": "A",
+          "v": "2"
+        },
+        {
+          "k": "B",
+          "v": "3"
+        },
+        {
+          "k": "C",
+          "v": "16"
+        },
+        {
+          "k": "D",
+          "v": "17\n图中：\nInternet R1~R3为路由器；"
+        }
+      ],
+      "answer": "B",
+      "image": "crops/net/page_204_X25.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_204.jpg",
+      "bbox": [
+        154.0,
+        955.0,
+        953.0,
+        1118.0
+      ],
+      "crop_box": [
+        64,
+        945,
+        1018,
+        1488
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "net:205:A03:网络层 · 路由算法与路由协议 · 解答题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "网络层 · 路由算法与路由协议 · 解答题",
+      "id": "A03",
+      "type": "解答题",
+      "page": 205,
+      "topic": "4.4.6 本节习题精选",
+      "content": "互联网中的一个自治系统的内部结构如下图所示。路由选择协议采用OSPF协议时，计算R6的关于网络N1、N2、N3、N4的路由表。\nR1\nR4 R5\nR2\nR3\nR6\n注：端口处的数字是该路由器向该链路转发分组的代价。",
+      "options": [],
+      "answer": null,
+      "image": "crops/net/page_205_A03.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_205.jpg",
+      "bbox": [
+        169.0,
+        989.0,
+        971.0,
+        1345.0
+      ],
+      "crop_box": [
+        327,
+        1045,
+        773,
+        1320
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:205:A04:网络层 · 路由算法与路由协议 · 解答题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "网络层 · 路由算法与路由协议 · 解答题",
+      "id": "A04",
+      "type": "解答题",
+      "page": 205,
+      "topic": "4.4.6 本节习题精选",
+      "content": "【2013统考真题】假设Internet的两个自治系统构成的网络如下图所示，自治系统AS1\n\n由路由器R1连接两个子网构成；自治系统AS2由路由器R2、R3互连并连接3个子网构成。各子网地址、R2的接口名、R1与R3的部分接口IP地址如下图所示。\nAS1\nR1\n153.14.5.0/25 153.14.5.128/25\n153.14.3.2\nR2 S0\nEO 194.17.20.128/25\nS1\nAS2\nR3 194.17.24.2\n194.17.20.0/25 194.17.21.0/24\n请回答下列问题：\n1）假设路由表结构如下表所示。利用路由聚合技术，给出R2的路由表，要求包括到达图中所有子网的路由，且路由表中的路由项尽可能少。\n目的网络 下一跳 接口\n2）若R2收到一个目的IP地址为194.17.20.200的IP分组，R2会通过哪个接口转发该IP分组?\n3）R1与R2之间利用哪个路由协议交换路由信息？该路由协议的报文被封装到哪个协议的分组中进行传输？",
+      "options": [],
+      "answer": null,
+      "image": "crops/net/page_205_A04.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_205.jpg",
+      "bbox": [
+        171.0,
+        93.0,
+        971.0,
+        1377.0
+      ],
+      "crop_box": [
+        327,
+        1045,
+        773,
+        1320
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:206:A05:网络层 · 路由算法与路由协议 · 解答题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "网络层 · 路由算法与路由协议 · 解答题",
+      "id": "A05",
+      "type": "解答题",
+      "page": 206,
+      "topic": "4.4.6 本节习题精选",
+      "content": "【2014统考真题】某网络中的路由器运行OSPF路由协议，下表是路由器R1维护的主要链路状态信息（LSI)，下图是根据该表及R1的接口名构造的网络拓扑。\nR1的LSI R2的LSI R3的LSI R4的LSI 备注\nRouter ID 10.1.1.1 10.1.1.2 10.1.1.5 10.1.1.6 标识路由器的IP地址\nID 10.1.1.2 10.1.1.1 10.1.1.6 10.1.1.5 所连路由器的Router ID\nLink1 IP 10.1.1.1 10.1.1.2 10.1.1.5 10.1.1.6 Linkl的本地IP地址\nMetric 3 3 6 6 Linkl的费用\nID 10.1.1.5 10.1.1.6 10.1.1.1 10.1.1.2 所连路由器的 Router ID\nLink2 IP 10.1.1.9 10.1.1.13 10.1.1.10 10.1.1.14 Link2的本地IP地址\nMetric 2 4 2 4 Link2的费用\nPrefix 192.1.1.0/24 192.1.6.0/24 192.1.5.0/24 192.1.7.0/24 直连网络Netl的网络前缀\nNet1\nMetric 到达直连网络Netl的费用\n1 1\nLO\nE0\n192.1.1.0/24 192.1.6.0/24\nR1 3 R2\nL1 10.1.1.13",
+      "options": [],
+      "answer": null,
+      "image": "crops/net/page_206_A05.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_206.jpg",
+      "bbox": [
+        156.0,
+        705.0,
+        954.0,
+        1167.0
+      ],
+      "crop_box": [
+        197,
+        761,
+        868,
+        809
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:207:A07:网络层 · 路由算法与路由协议 · 解答题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "网络层 · 路由算法与路由协议 · 解答题",
+      "id": "A07",
+      "type": "解答题",
+      "page": 207,
+      "topic": "4.4.6 本节习题精选",
+      "content": "【2024统考真题】网络空间是继陆海空天之后的“第五疆域”，网络技术是网络疆域建设与治理的基础。路由算法与协议是网络核心技术之一，对其准确认知、合理选择与应用，\n对于网络建设十分重要。假设现有互联网中的4个自治系统互连拓扑示意图如下图所示。\n其中，AS1运行内部网关协议RIP；AS3规模较小，自治系统内任意两个主机间通信，经过路由器的数量不超过15个；AS4规模较大，自治系统内任意两个主机间通信，经过路由器的数量可能超过20个。请回答下列问题。\n136.5.16.0/20\nAS3\nAS2 R33 AS4\nR22 R44\nR11\nAS1 R12\n210.2.3.0/24 210.2.4.0/24\nR14 R15 R16\n内部网关协议：RIP\n1）若仅有RIP和OSPF内部网关协议供选择，则AS4应该选择哪个协议？\n能够被正常接收，则该IP分组的初始TTL值应该至少设置为多少？\n3）假设AS1中的路由器同一时刻启动，启动后立即构建并交换初始距离向量，之后每隔30s交换一次最新的距离向量，则从交换初始距离向量时刻算起，R11～R16路由\n210.2.4.0/24的正确路由至少需要多长时间？\n4）R44向R13通告到达网络136.5.16.0/20路由时，由BGP哪类会话完成？通过哪个\nBGP报文通告？R13通过BGP的哪类会话将该网络可达性信息通告给R14和\nR15?\n5）若R14和R15均收到分别由R11、R12、R13通告的到达网络136.5.16.0/20的可达性信息如下。\n目的网络：136.5.16.0/20，AS路径：AS2AS8AS19，下一跳：R11\n目的网络：136.5.16.0/20，AS路径：AS3AS7AS11AS19，下一跳：R12\n目的网络：136.5.16.0/20，AS路径：AS4AS10AS19，下一跳：R13\n则在无策略约束情况下，R14和R15更新路由表后，各自路由表中到达网络\n136.5.16.0/20路由的下一跳分别是什么（用路由器名称表示）？",
+      "options": [],
+      "answer": null,
+      "image": "crops/net/page_207_A07.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_207.jpg",
+      "bbox": [
+        171.0,
+        94.0,
+        971.0,
+        1392.0
+      ],
+      "crop_box": [
+        64,
+        84,
+        1018,
+        1402
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "net:222:X18:网络层 · 网络层设备 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "网络层 · 网络层设备 · 选择题",
+      "id": "X18",
+      "type": "选择题",
+      "page": 222,
+      "topic": "4.7.4 本节习题精选",
+      "content": "如下图所示，用7个相同的路由器与8台主机相连。链路带宽分为三种，最上层的最快，\n最下层的最慢，都是全双工方式，图中标注了各层链路带宽的数值。所有路由器的处理速度都很快，远超链路带宽。下列关于网络拥塞分析的说法中，正确的是（）。\nR1\n链路带宽=4Mb/s\nR2\nR3\n链路带宽=2Mb/s\nR5 R6 R7\n链路带宽=1Mb/s",
+      "options": [
+        {
+          "k": "A",
+          "v": "R1-R2链路和R2-R4链路都不可能发生拥塞"
+        },
+        {
+          "k": "B",
+          "v": "R1-R2链路可能发生拥塞，R2-R4链路不可能发生拥塞"
+        },
+        {
+          "k": "C",
+          "v": "R1-R2链路不可能发生拥塞，R2-R4链路可能发生拥塞"
+        },
+        {
+          "k": "D",
+          "v": "R1-R2链路和 R2-R4 链路都可能发生拥塞"
+        }
+      ],
+      "answer": "C",
+      "image": "crops/net/page_222_X18.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_222.jpg",
+      "bbox": [
+        155.0,
+        944.0,
+        954.0,
+        1330.0
+      ],
+      "crop_box": [
+        261,
+        1034,
+        798,
+        1210
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:223:A01:网络层 · 网络层设备 · 解答题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "网络层 · 网络层设备 · 解答题",
+      "id": "A01",
+      "type": "解答题",
+      "page": 223,
+      "topic": "4.7.4 本节习题精选",
+      "content": "某个单位的网点由4个子网组成，结构如下图所示，其中主机H1、H2、H3和H4的IP\n地址和子网掩码见下表。\nH1\nNet1\n202.99.98.17\n202.99.98.34\nNet2 Net4\nR2\nNet3-\nH3\nIP地址 子网掩码\nH1 202.99.98.18 255.255.255.240\nH2 202.99.98.35 255.255.255.240\nH3 202.99.98.51 255.255.255.240\nH4 202.99.98.66 255.255.255.240\n1）请写出路由器R1到4个子网的路由表。\n2）描述主机H1发送一个IP数据报到主机H2 的过程（包括物理地址解析过程)。",
+      "options": [],
+      "answer": null,
+      "image": "crops/net/page_223_A01.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_223.jpg",
+      "bbox": [
+        171.0,
+        733.0,
+        973.0,
+        1301.0
+      ],
+      "crop_box": [
+        200,
+        757,
+        712,
+        855
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:223:A03:网络层 · 网络层设备 · 解答题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "网络层 · 网络层设备 · 解答题",
+      "id": "A03",
+      "type": "解答题",
+      "page": 223,
+      "topic": "4.7.4 本节习题精选",
+      "content": "【2019统考真题】某网络拓扑如下图所示，其中R为路由器，主机H1～H4的IP地址配置以及R的各接口IP地址配置如图中所示。现有若干以太网交换机（无VLAN功能）\n\n和路由器这两类网络互连设备可供选择。\n101.1.2.10\nInternet\nR\n192.168.1.253/30\nIF1\nIF2 IF3\n设备1\nIF1 IF1\nIF2 设备2 IF3 IF2 设备3 IF3\nIP地址：192.168.1.2./26IP地址：192.168.1.3./26 IP地址：192.168.1.66./26 IP地址：192.168.1.67./26\n默认网关：192.168.1.1 默认网关：192.168.1.1默认网关：192.168.1.65 默认网关：192.168.1.65\n请回答下列问题：\n1）设备1、设备2和设备3分别应选择什么类型的网络设备？\n2）设备1、设备2和设备3中，哪几个设备的接口需要配置IP地址？为对应的接口配置正确的IP地址。\n3）为确保主机Hl～H4能够访问Internet，R需要提供什么服务？\n4）若主机H3发送一个目的地址为192.168.1.127的IP数据报，网络中哪几个主机会接收该数据报？",
+      "options": [],
+      "answer": null,
+      "image": "crops/net/page_223_A03.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_223.jpg",
+      "bbox": [
+        172.0,
+        93.0,
+        973.0,
+        1391.0
+      ],
+      "crop_box": [
+        251,
+        421,
+        848,
+        654
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:223:X21:网络层 · 网络层设备 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "网络层 · 网络层设备 · 选择题",
+      "id": "X21",
+      "type": "选择题",
+      "page": 223,
+      "topic": "4.7.4 本节习题精选",
+      "content": "【2020统考真题】下图所示的网络中，冲突域和广播域的个数分别是（）。\n以太网交换机 甲端\n100Base-T集线器",
+      "options": [
+        {
+          "k": "A",
+          "v": "2,2"
+        },
+        {
+          "k": "B",
+          "v": "2，4"
+        },
+        {
+          "k": "C",
+          "v": "4，2"
+        },
+        {
+          "k": "D",
+          "v": "4，4"
+        }
+      ],
+      "answer": "C",
+      "image": "crops/net/page_223_X21.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_223.jpg",
+      "bbox": [
+        171.0,
+        397.0,
+        870.0,
+        680.0
+      ],
+      "crop_box": [
+        251,
+        421,
+        848,
+        654
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:238:A04:传输层 · UDP · 解答题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "传输层 · UDP · 解答题",
+      "id": "A04",
+      "type": "解答题",
+      "page": 238,
+      "topic": "5.2.3 本节习题精选",
+      "content": "一个UDP首部的信息（十六进制表示）为0xF7210045002CE827。UDP数据报的格式如下图所示。试问：\n0 15 16 31\n16位源端口号 16位目的端口号\n8B\n16位UDP长度 16位UDP检验和数据 (如果有)\n1）源端口、目的端口、数据报总长度、数据部分长度分别是什么？\n2）该UDP数据报是从客户发送给服务器还是从服务器发送给客户？使用该UDP服务的程序使用的是哪个应用层协议？",
+      "options": [],
+      "answer": null,
+      "image": "crops/net/page_238_A04.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_238.jpg",
+      "bbox": [
+        156.0,
+        443.0,
+        952.0,
+        766.0
+      ],
+      "crop_box": [
+        285,
+        496,
+        780,
+        681
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:256:X50:传输层 · TCP · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "传输层 · TCP · 选择题",
+      "id": "X50",
+      "type": "选择题",
+      "page": 256,
+      "topic": "5.3.7 本节习题精选",
+      "content": "【2019统考真题】某客户通过一个TCP连接向服务器发送数据的部分过程如下图所示。\n客户在 to时刻第一次收到确认序号 ack_seq=100 的段，并发送序号 seq=100 的段，但发生丢失。若TCP支持快速重传，则客户重新发送seq=100段的时刻是（）。",
+      "options": [
+        {
+          "k": "A",
+          "v": "t1"
+        },
+        {
+          "k": "B",
+          "v": "t2"
+        },
+        {
+          "k": "C",
+          "v": "t3"
+        },
+        {
+          "k": "D",
+          "v": "t4\n服务器客户\nack_seq=100\nseq=100\nseq=200 →丢失\nseq=300\nseq=400\nack_seq=100\nack_seq=100\nt2\n3\n4时刻seq=100段超时\n+1\n时间"
+        }
+      ],
+      "answer": "C",
+      "image": "crops/net/page_256_X50.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_256.jpg",
+      "bbox": [
+        154.0,
+        610.0,
+        954.0,
+        1066.0
+      ],
+      "crop_box": [
+        64,
+        600,
+        1018,
+        1083
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "net:257:X56:传输层 · TCP · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "传输层 · TCP · 选择题",
+      "id": "X56",
+      "type": "选择题",
+      "page": 257,
+      "topic": "5.3.7 本节习题精选",
+      "content": "【2021统考真题】设主机甲通过TCP向主机乙发送数据，部分过程如下图所示。甲在\nto时刻发送一个序号seq=501、封装200B数据的段，在t时刻收到乙发送的序号\nseq=601、确认序号 ack_seq=501、接收窗口rcvwnd=500B 的段，则甲在未收到新的确认段之前，可以继续向乙发送的数据序号范围是（）。\n甲 乙\nseq=501,200B数据\nseq=601,ack_seq=501,rcvwnd=500B\n时间V",
+      "options": [
+        {
+          "k": "A",
+          "v": "501~1000"
+        },
+        {
+          "k": "B",
+          "v": "601~1100"
+        },
+        {
+          "k": "C",
+          "v": "701~1000"
+        },
+        {
+          "k": "D",
+          "v": "801~1100"
+        }
+      ],
+      "answer": "C",
+      "image": "crops/net/page_257_X56.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_257.jpg",
+      "bbox": [
+        170.0,
+        398.0,
+        972.0,
+        769.0
+      ],
+      "crop_box": [
+        360,
+        512,
+        745,
+        622
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:257:X60:传输层 · TCP · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "传输层 · TCP · 选择题",
+      "id": "X60",
+      "type": "选择题",
+      "page": 257,
+      "topic": "5.3.7 本节习题精选",
+      "content": "【2025统考真题】主机甲通过TCP向主机乙发送数据的部分过程如下图所示，Seq为序号，ack_seq为确认序号，rcvwnd为接收窗口。甲在to时刻的拥塞窗口和发送窗口均为\n2000B，拥塞控制阀值为8000B，MSS=1000B，甲始终以MSS发送TCP段。若甲在t\n时刻收到如图所示的确认段，则甲在未收到新的确认段之前，还可继续向乙发送的TCP\n段数是（）。\n\n甲\nseq=2001，1000B数据\nseq=3001，1000B数据\nseq=4001，ack_seq=3001，rcvwnd=4000B\n时间V",
+      "options": [
+        {
+          "k": "A",
+          "v": "2"
+        },
+        {
+          "k": "B",
+          "v": "3"
+        },
+        {
+          "k": "C",
+          "v": "4"
+        },
+        {
+          "k": "D",
+          "v": "5"
+        }
+      ],
+      "answer": "A",
+      "image": "crops/net/page_257_X60.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_257.jpg",
+      "bbox": [
+        172.0,
+        94.0,
+        972.0,
+        1347.0
+      ],
+      "crop_box": [
+        342,
+        135,
+        768,
+        428
+      ],
+      "image_note": "题干含图，OCR空隙+墨迹自动重裁"
+    },
+    {
+      "uid": "net:259:A12:传输层 · TCP · 解答题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "传输层 · TCP · 解答题",
+      "id": "A12",
+      "type": "解答题",
+      "page": 259,
+      "topic": "5.3.7 本节习题精选",
+      "content": "一个TCP首部的数据信息（十六进制表示）为0x0D280015505FA9060000000070\n024000C0290000。TCP首部的格式如下图所示。请回答：\n1）源端口号和目的端口号各是多少？\n2）发送的序号是多少？确认序号是多少？\n3）TCP首部的长度是多少?\n4）这是一个使用什么协议的TCP连接？该TCP连接的状态是什么？\n32位位0 8 16 24 31\n源端口 目的端口序号\n20B的确认号\nTCP 固定首部首部 数据保留 窗口偏移检验和 紧急指针选项 (长度可变) 填充",
+      "options": [],
+      "answer": null,
+      "image": "crops/net/page_259_A12.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_259.jpg",
+      "bbox": [
+        172.0,
+        276.0,
+        972.0,
+        685.0
+      ],
+      "crop_box": [
+        64,
+        266,
+        1018,
+        695
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "net:259:A13:传输层 · TCP · 解答题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "传输层 · TCP · 解答题",
+      "id": "A13",
+      "type": "解答题",
+      "page": 259,
+      "topic": "5.3.7 本节习题精选",
+      "content": "【2012统考真题】主机H通过快速以太网连接Intemet，IP地址为192.168.0.8，服务器\nS的IP地址为211.68.71.80。H与S使用TCP通信时，在H上捕获的其中5个IP分组如表1所示。\n表1\n编 号 IP分组的前40B内容（十六进制）\n45 00 00 30 019b40 00 80 06 1d e8 c0 a8 00 08 d3 44 47 50\n0b d9 13 88 84 6b 41 c5 00 00:00 00 70 02 43 80 5d b0 00 00\n45 00 00 30 00004000 31 066e 83 d3 44 47 50 c0 a8 0008\n13 88 0b d9 e0599fef 84 6b 41 c6 70 12 16 d0 37el 00 00\n45 00 00 28 019c 40 00 80 06 1d ef c0 a8 00 08 d3 44 47 50\n0b d9 13 88 84 6b 41 c6 e0 59 9f f0 50 10 43 80 2b 32 00 00\n45 00 00 38 019d40 00 80 06 1d de c0 a8 00 08 d3 44 47 50\n0b d9 13 88 84 6b 41 c6 e0 59 9f f0 50 18 43 80 e6 55 00 00\n45 00 00 28 68 11 40 00 31 06 06 7a d3 44 47 50 c0 a8 00 08\n13 88 0b d9 e0 59 9ff0 84 6b 41 d6 50 10 16 d0 57 d2 00 00\n回答下列问题:\n1）表1中的IP分组中，哪几个是由H发送的？哪几个完成了TCP连接建立过程？哪几个在通过快速以太网传输时进行了填充?\n2）根据表1中的IP分组，分析S已经收到的应用层数据字节数是多少。\n3）若表1中的某个IP分组在S发出时的前40B如表2所示，则该IP分组到达H时经过了多少个路由器？\n表2\n45 00 00 28 68 11 40 00 40 06 ec ad d3 44 47 50 ca 76 01 06\n来自S的分组\n13 88 a1 08 e0 59 9f f0 84 6b 41 d6 50 10 16 d0 b7 d6 00 00\n\nIP分组头结构和TCP段头结构分别如图1和图2所示。\nbit 0 8 16 24 31\n版本 服务类型 总长度长度标识 标志 片偏移生存时间(TTL) 协议 首部检验和源IP地址目的IP地址图1IP分组头结构\n32位位 0 8 16 24 31\n源端口 目的端口序号\n20B的确认号\nTCP 固定首部首部 数据保留 窗口偏移检验和 紧急指针选项 (长度可变) 填充图2TCP段头结构",
+      "options": [],
+      "answer": null,
+      "image": "crops/net/page_259_A13.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_259.jpg",
+      "bbox": [
+        172.0,
+        93.0,
+        973.0,
+        1373.0
+      ],
+      "crop_box": [
+        64,
+        83,
+        1018,
+        1383
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "net:260:A14:传输层 · TCP · 解答题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "传输层 · TCP · 解答题",
+      "id": "A14",
+      "type": "解答题",
+      "page": 260,
+      "topic": "5.3.7 本节习题精选",
+      "content": "【2016统考真题】假设下图中的H3访问Web服务器S时，S为新建的TCP连接分配了20KB（K=1024）的接收缓存，最大段长MSS=1KB，平均往返时间RTT=200ms。\nH3建立连接时的初始序号为100，且持续以MSS大小的段向S发送数据，拥塞窗口初始阔值为32KB；S对收到的每个段进行确认，并通告新的接收窗口。假定TCP连接建立完成后，S端的TCP接收缓存仅有数据存入而无数据取出。请回答下列问题：\n图中：\nInternet R1~R3为路由器；\nWeb服务器S 201.1.3.9 Hub为100Base-T集线器；\n主机H1~H3的默认域名服务器均配置为201.1.1.1。\nNAT LO\nEO L1 201.1.3.1\n201.1.2.0/24 201.1.2.0/25\nR2 R3\nE1 192.168.3.254\nSwitch Hub\nH4\n192.168.3.252\nDNS服务器\nH3\n192.168.3.251\n1）在TCP连接建立过程中，H3收到的S发送过来的第二次握手TCP段的SYN和ACK\n标志位的值分别是多少？确认序号是多少?\n2）H3收到的第8个确认段所通告的接收窗口是多少？此时H3的拥塞窗口变为多少？\nH3的发送窗口变为多少？\n3）H3的发送窗口等于0时，下一个待发送的数据段序号是多少？H3从发送第1个数据段到发送窗口等于〇时刻为止，平均数据传输速率是多少？（忽略段的传输时延。）\n4）若H3与S之间的通信已经结束，在t时刻H3请求断开该连接，则从t时刻起，S\n释放该连接的最短时间是多少?",
+      "options": [],
+      "answer": null,
+      "image": "crops/net/page_260_A14.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_260.jpg",
+      "bbox": [
+        155.0,
+        153.0,
+        971.0,
+        1364.0
+      ],
+      "crop_box": [
+        233,
+        184,
+        855,
+        753
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:280:X14:应用层 · 域名系统 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "应用层 · 域名系统 · 选择题",
+      "id": "X14",
+      "type": "选择题",
+      "page": 280,
+      "topic": "6.2.4 本节习题精选",
+      "content": "【2020统考真题】假设下图所示网络中的本地域名服务器只提供递归查询服务，其他域名服务器都只提供选代查询服务；局域网内主机访问Intermet上各服务器的往返时间\n（RTT）均为10ms，忽略其他各种时延。若主机H通过超链接http://www.abc.com/index.\nhtml请求浏览纯文本Web页index.html,则从单击超链接开始到浏览器接收到index.html\n页面为止，所需的最短时间与最长时间分别是（）。\n本地域名服务器 根域名路由器\nInternet 服务器\ncom顶级域名服务器 abc.com\n域名服务器局域网 www.abc.com",
+      "options": [
+        {
+          "k": "A",
+          "v": "10ms,40ms"
+        },
+        {
+          "k": "B",
+          "v": "10ms,50ms"
+        },
+        {
+          "k": "C",
+          "v": "20ms, 40ms"
+        },
+        {
+          "k": "D",
+          "v": "20ms,50ms"
+        }
+      ],
+      "answer": "D",
+      "image": "crops/net/page_280_X14.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_280.jpg",
+      "bbox": [
+        154.0,
+        306.0,
+        954.0,
+        709.0
+      ],
+      "crop_box": [
+        280,
+        452,
+        834,
+        681
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:285:A04:应用层 · 文件传输协议 · 解答题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "应用层 · 文件传输协议 · 解答题",
+      "id": "A04",
+      "type": "解答题",
+      "page": 285,
+      "topic": "6.3.3 本节习题精选",
+      "content": "【2023统考真题】某网络拓扑如下图所示，主机H登录FTP服务器后，向服务器上传一个大小为18000B的文件F。假设H为传输F建立数据连接时，选择的初始序号为\n100，MSS=1000B，拥塞控制初始阀值为4MSS，RTT=10mS，忽略TCP段的传输时延；在F的传输过程中，H均以MSS段向服务器发送数据，且未发生差错、丢包和失序现象。\nInternet\nFTP服务器交换机 路由器请回答下列问题。\n1）FTP的控制连接是持久的还是非持久的？FTP的数据连接是持久的还是非持久的？\n当H登录FTP服务器时，建立的TCP连接是控制连接还是数据连接？\n2）当H通过数据连接发送F时，F的第一个字节的序号是多少？在断开数据连接过程中，FTP服务器发送的第二次挥手ACK段的确认序号是多少？\n3）在H通过数据连接发送F的过程中，当H收到确认序号为2101的确认段时，H的拥塞窗口调整为多少？收到确认序号为7101的确认段时，H的拥塞窗口调整为多少？\n4)H从请求建立数据连接开始，到确认F已被服务器全部接收为止，至少需要多长时间？\n期间应用层数据平均发送速率是多少？",
+      "options": [],
+      "answer": null,
+      "image": "crops/net/page_285_A04.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_285.jpg",
+      "bbox": [
+        171.0,
+        657.0,
+        970.0,
+        1205.0
+      ],
+      "crop_box": [
+        199,
+        772,
+        811,
+        967
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:292:A03:应用层 · 电子邮件 · 解答题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "应用层 · 电子邮件 · 解答题",
+      "id": "A03",
+      "type": "解答题",
+      "page": 292,
+      "topic": "6.4.4 本节习题精选",
+      "content": "用户主机上的电子邮件用户代理与邮件服务器建立了连接，现截获一个TCP报文段,\n如下图所示。图中显示了该报文段的前126个字节的十六进制数及ASCII码内容。TCP\n首部长度为20B。请回答：\n1）用户代理和服务器之间使用的应用层协议是什么？\n2）用户代理使用的端口号是多少？\n3）该邮件的发件人邮箱是什么？",
+      "options": [],
+      "answer": null,
+      "image": "crops/net/page_292_A03.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_292.jpg",
+      "bbox": [
+        154.0,
+        153.0,
+        955.0,
+        1365.0
+      ],
+      "crop_box": [
+        291,
+        480,
+        775,
+        593
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:292:X08:应用层 · 电子邮件 · 选择题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "应用层 · 电子邮件 · 选择题",
+      "id": "X08",
+      "type": "选择题",
+      "page": 292,
+      "topic": "6.4.4 本节习题精选",
+      "content": "【2012统考真题】若用户1与用户2之间发送和接收电子邮件的过程如下图所示，则图中①、②、③阶段分别使用的应用层协议可以是（）。\n用户1的 用户2的用户1 邮件服务器 邮件服务器 用户2",
+      "options": [
+        {
+          "k": "A",
+          "v": "SMTP、SMTP、SMTP"
+        },
+        {
+          "k": "B",
+          "v": "POP3、SMTP、POP3"
+        },
+        {
+          "k": "C",
+          "v": "POP3、SMTP、SMTP"
+        },
+        {
+          "k": "D",
+          "v": "SMTP、SMTP、POP3"
+        }
+      ],
+      "answer": "D",
+      "image": "crops/net/page_292_X08.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_292.jpg",
+      "bbox": [
+        154.0,
+        427.0,
+        953.0,
+        649.0
+      ],
+      "crop_box": [
+        291,
+        480,
+        775,
+        593
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    },
+    {
+      "uid": "net:302:A03:应用层 · 万维网 · 解答题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "应用层 · 万维网 · 解答题",
+      "id": "A03",
+      "type": "解答题",
+      "page": 302,
+      "topic": "6.5.3 本节习题精选",
+      "content": "【2011统考真题】某主机的MAC地址为00-15-C5-C1-5E-28，IP地址为10.2.128.100（私有地址）。图1是网络拓扑，图2是该主机进行Web请求的一个以太网数据帧前80B\n的十六进制数及ASCII码内容。\nMTU=1500B",
+      "options": [],
+      "answer": null,
+      "image": "crops/net/page_302_A03.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_302.jpg",
+      "bbox": [
+        154.0,
+        687.0,
+        954.0,
+        809.0
+      ],
+      "crop_box": [
+        64,
+        677,
+        1018,
+        819
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "net:302:A04:应用层 · 万维网 · 解答题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "应用层 · 万维网 · 解答题",
+      "id": "A04",
+      "type": "解答题",
+      "page": 302,
+      "topic": "6.5.3 本节习题精选",
+      "content": "2.128.10010.2.128.1 101.12.123.15\nInternet\n图1网络拓扑\n0010 ...@....d@..\n0030 fa f0 1ac4 00 0047 45 54 202f7266632e 68 GE T/rfc.h\ntml HTTP /1.1..Ac\n图2以太网数据帧（前80B)\n请参考图中的数据回答以下问题。\n1）Web服务器的IP地址是什么？该主机的默认网关的MAC地址是什么？\n2）该主机在构造图2的数据帧时，使用什么协议确定目的MAC地址？封装该协议请求报文的以太网帧的目的MAC地址是什么？\n3）假设HTTP/1.1协议以持续的非流水线方式工作，一次请求-响应时间为RTT，rfc.html\n页面引用了5幅JPEG小图像。问从发出图2中的Web请求开始到浏览器收到全部内容为止，需要多少RTT？\n4）该帧封装的IP分组经过路由器R转发时，需修改IP分组头中的哪些字段?\n注：以太网数据帧结构和IP分组头结构分别如图3和图4所示。\n6B 6B 2B 46~1500B 4B\n目的MAC地址 源MAC地址 类型 数据 CRC\n图3以太网帧结构比特0 8 16 24 31\n版本 首部 服务类型总长度长度标识 标志 片偏移生存时间(TTL) 协议 首部检验和源IP地址目的IP地址图4IP分组头结构",
+      "options": [],
+      "answer": null,
+      "image": "crops/net/page_302_A04.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_302.jpg",
+      "bbox": [
+        193.0,
+        151.0,
+        955.0,
+        1377.0
+      ],
+      "crop_box": [
+        64,
+        141,
+        1018,
+        1387
+      ],
+      "image_note": "题目区域保底裁图（避免错截到其他题）"
+    },
+    {
+      "uid": "net:303:A05:应用层 · 万维网 · 解答题",
+      "course": "net",
+      "course_name": "计算机网络",
+      "chapter": "应用层 · 万维网 · 解答题",
+      "id": "A05",
+      "type": "解答题",
+      "page": 303,
+      "topic": "6.5.3 本节习题精选",
+      "content": "【2021统考真题】某网络拓扑如下图所示，以太网交换机S通过路由器R与Intermet互连。路由器部分接口、本地域名服务器、H1、H2的IP地址和MAC地址如图中所示。\n在 to 时刻 H1 的 ARP 表和 S 的交换表均为空，Hl 在此刻利用浏览器通过域名\nwww.abc.com请求访问Web服务器，在t时刻（ti>to）S第一次收到了封装HTTP请求报文的以太网帧，假设从t到t期间网络未发生任何与此次Web访问无关的网络通信。\nInternet R\nWeb服务器\nwww.abc.com 192.168.1.1/25\n00-11-22-33-44-aa\n本地域名服务器\n192.168.1.126/25 192.168.1.3/25\n00-11-22-33-44-bb 00-11-22-33-44-dd\n192.168.1.2/25\n00-11-22-33-44-cc\n请回答下列问题。\n1）从to到t期间，H1除了HTTP，还运行了哪个应用层协议？从应用层到数据链路层，该应用层协议报文是通过哪些协议进行逐层封装的?\n2）若S的交换表结构为<MAC地址，端口>，则t时刻S交换表的内容是什么？\n3）从to到t期间，H2至少接收到几个与此次Web访问相关的帧？接收的是什么帧？\n帧的目的MAC地址是什么?",
+      "options": [],
+      "answer": null,
+      "image": "crops/net/page_303_A05.png",
+      "file_ok": true,
+      "pdf_ok": true,
+      "page_thumb": "fig-review-pages/net/page_303.jpg",
+      "bbox": [
+        171.0,
+        495.0,
+        973.0,
+        1139.0
+      ],
+      "crop_box": [
+        349,
+        641,
+        605,
+        711
+      ],
+      "image_note": "题目配图，按含图提示语自动定位"
+    }
+  ]
+}

@@ -8,6 +8,7 @@
 """
 import gzip
 import io
+import os
 import sys
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -17,6 +18,7 @@ sys.stdout.reconfigure(encoding='utf-8')
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 ROOT = PROJECT_ROOT / 'math-bank'
 COMPRESSIBLE = {'.html', '.css', '.js', '.json', '.svg'}
+ALLOWED_IMAGE_SUFFIXES = {'.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp', '.bmp'}
 
 
 class GzipStaticHandler(SimpleHTTPRequestHandler):
@@ -24,19 +26,34 @@ class GzipStaticHandler(SimpleHTTPRequestHandler):
         super().__init__(*args, directory=str(ROOT), **kwargs)
 
     def end_headers(self):
-        # 简单安全头
         self.send_header('Cache-Control', 'no-cache')
+        self.send_header('X-Content-Type-Options', 'nosniff')
+        self.send_header('X-Frame-Options', 'SAMEORIGIN')
+        self.send_header('Referrer-Policy', 'strict-origin-when-cross-origin')
         super().end_headers()
+
+    def _safe_path(self, rel_path: str) -> Path | None:
+        """Resolve relative path under PROJECT_ROOT and prevent path traversal."""
+        base = PROJECT_ROOT.resolve()
+        target = (base / rel_path).resolve()
+        try:
+            target.relative_to(base)
+        except ValueError:
+            return None
+        return target
 
     def _handle_image(self):
         """处理 /assets/pdf_images* 与 /crops* 请求：这些目录与 math-bank 同级，不在 ROOT 下。"""
         rel_path = self.path.lstrip('/').split('?')[0]
-        if rel_path.startswith('assets/pdf_images') or rel_path.startswith('crops'):
-            path = PROJECT_ROOT / rel_path
-            if path.is_file():
-                self.send_raw(path)
-                return True
-        return False
+        if not (rel_path.startswith('assets/pdf_images') or rel_path.startswith('crops')):
+            return False
+        path = self._safe_path(rel_path)
+        if path is None or not path.is_file():
+            return False
+        if path.suffix.lower() not in ALLOWED_IMAGE_SUFFIXES:
+            return False
+        self.send_raw(path)
+        return True
 
     def do_HEAD(self):
         if self._handle_image():
@@ -86,8 +103,12 @@ class GzipStaticHandler(SimpleHTTPRequestHandler):
         self.wfile.write(compressed)
 
     def log_message(self, format, *args):
-        # 把访问日志输出到 stderr，并标注传输大小
-        sys.stderr.write(f"[{self.log_date_time_string()}] {args[0]}\n")
+        # 把访问日志输出到 stderr；按 format % args 渲染完整的请求行
+        try:
+            line = format % args
+        except Exception:
+            line = str(args)
+        sys.stderr.write(f"[{self.log_date_time_string()}] {line}\n")
 
 
 def main():

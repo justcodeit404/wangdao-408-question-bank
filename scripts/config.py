@@ -12,10 +12,15 @@ from pathlib import Path
 sys.stdout.reconfigure(encoding='utf-8')
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
+REPO_ROOT = PROJECT_ROOT.parents[1]  # bank-408/ -> apps/ -> 考研根
 
 
 def _path(rel: str) -> Path:
     return PROJECT_ROOT / rel
+
+
+def _repo_path(rel: str) -> Path:
+    return REPO_ROOT / rel
 
 
 @dataclass(frozen=True)
@@ -37,10 +42,10 @@ COURSES = [
         key='ds',
         name='数据结构',
         short='数据结构',
-        pdf=_path('27王道《数据结构》高清带书签.pdf'),
+        pdf=_repo_path('资料/408/27王道《数据结构》高清带书签.pdf'),
         ocr_dir=_path('data/ocr/ds'),
-        qa_json=_path('data/qa/qa_pairs.json'),
-        toc_json=_path('data/toc/toc.json'),
+        qa_json=_path('data/qa/qa_pairs.json'),  # 历史文件名；其余三科为 {key}_qa_pairs.json
+        toc_json=_path('data/toc/toc.json'),  # 历史文件名；其余三科为 toc_{key}.json
         total_pages=397,
         out_json=_path('output/questions.json'),
         pdf_images_dir=_path('assets/pdf_images/ds'),
@@ -49,7 +54,7 @@ COURSES = [
         key='coa',
         name='计算机组成原理',
         short='组成原理',
-        pdf=_path('27王道《计算机组成原理》高清带书签.pdf'),
+        pdf=_repo_path('资料/408/27王道《计算机组成原理》高清带书签.pdf'),
         ocr_dir=_path('data/ocr/coa'),
         qa_json=_path('data/qa/coa_qa_pairs.json'),
         toc_json=_path('data/toc/toc_coa.json'),
@@ -61,7 +66,7 @@ COURSES = [
         key='net',
         name='计算机网络',
         short='计算机网络',
-        pdf=_path('27王道《计算机网络》高清带书签.pdf'),
+        pdf=_repo_path('资料/408/27王道《计算机网络》高清带书签.pdf'),
         ocr_dir=_path('data/ocr/net'),
         qa_json=_path('data/qa/net_qa_pairs.json'),
         toc_json=_path('data/toc/toc_net.json'),
@@ -73,7 +78,7 @@ COURSES = [
         key='os',
         name='操作系统',
         short='操作系统',
-        pdf=_path('27王道《操作系统》高清带书签.pdf'),
+        pdf=_repo_path('资料/408/27王道《操作系统》高清带书签.pdf'),
         ocr_dir=_path('data/ocr/os'),
         qa_json=_path('data/qa/os_qa_pairs.json'),
         toc_json=_path('data/toc/toc_os.json'),

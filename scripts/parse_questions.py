@@ -34,36 +34,40 @@ from parse_patterns import (
     APP_ANS_START_RE,
     TOPIC_HEADER_RE,
     SECTION_HEADER_RE,
+    clean_option_text,
     extract_answer_choice,
     section_start_re,
     answer_header_re,
     chapter_header_re,
     is_page_noise,
 )
+from utils import write_json_atomic
 
-OCR_DIR = Path('data/ocr/ds')
-QA_JSON = 'data/qa/qa_pairs.json'
-TOC_JSON = 'data/toc/toc.json'
-OUTPUT_JSON = 'output/questions.json'
-COURSE_TITLE = '27王道《数据结构》高清带书签题库'
+OCR_DIR = Path("data/ocr/ds")
+QA_JSON = "data/qa/qa_pairs.json"
+TOC_JSON = "data/toc/toc.json"
+OUTPUT_JSON = "output/questions.json"
+COURSE_TITLE = "27王道《数据结构》高清带书签题库"
 TOTAL_PAGES = 397
 
 
 def get_block_text(page_data):
     """提取 page_data 中的文本块，保留原始坐标用于后续裁剪。"""
-    blocks = page_data.get('blocks', [])
+    blocks = page_data.get("blocks", [])
     items = []
     for b in blocks:
-        items.append({
-            'y': b['y0'],
-            'x': b['x0'],
-            'text': b['text'],
-            'x0': b.get('x0', 0),
-            'y0': b.get('y0', 0),
-            'x1': b.get('x1', 0),
-            'y1': b.get('y1', 0),
-        })
-    items.sort(key=lambda t: (t['y'], t['x']))
+        items.append(
+            {
+                "y": b["y0"],
+                "x": b["x0"],
+                "text": b["text"],
+                "x0": b.get("x0", 0),
+                "y0": b.get("y0", 0),
+                "x1": b.get("x1", 0),
+                "y1": b.get("y1", 0),
+            }
+        )
+    items.sort(key=lambda t: (t["y"], t["x"]))
     return items
 
 
@@ -72,29 +76,29 @@ def group_to_lines(items, y_tol=6):
     lines = []
     cur = None
     for it in items:
-        y = it['y']
-        if cur is None or abs(y - cur['y']) > y_tol:
+        y = it["y"]
+        if cur is None or abs(y - cur["y"]) > y_tol:
             if cur is not None:
                 lines.append(cur)
-            cur = {'y': y, 'items': [it]}
+            cur = {"y": y, "items": [it]}
         else:
-            cur['items'].append(it)
+            cur["items"].append(it)
     if cur is not None:
         lines.append(cur)
     # 每行按 x 排序并聚合文本/坐标
     for ln in lines:
-        ln['items'].sort(key=lambda t: t['x'])
-        ln['texts'] = [it['text'] for it in ln['items']]
-        ln['x0'] = min(it['x0'] for it in ln['items'])
-        ln['y0'] = min(it['y0'] for it in ln['items'])
-        ln['x1'] = max(it['x1'] for it in ln['items'])
-        ln['y1'] = max(it['y1'] for it in ln['items'])
+        ln["items"].sort(key=lambda t: t["x"])
+        ln["texts"] = [it["text"] for it in ln["items"]]
+        ln["x0"] = min(it["x0"] for it in ln["items"])
+        ln["y0"] = min(it["y0"] for it in ln["items"])
+        ln["x1"] = max(it["x1"] for it in ln["items"])
+        ln["y1"] = max(it["y1"] for it in ln["items"])
     return lines
 
 
 def is_question_id(s):
     """判断是否是题号前缀：01. 或 02."""
-    return bool(re.match(r'^\s*0?\d{1,2}[\.．、]', s))
+    return bool(re.match(r"^\s*0?\d{1,2}[\.．、]", s))
 
 
 def parse_questions_page(page_data, page_w):
@@ -119,21 +123,23 @@ def parse_questions_span(page_data_list, page_w):
     all_items = []
     for page_idx, page_data in enumerate(page_data_list):
         y_offset = page_idx * 10000
-        page_num = page_data.get('page') or (page_idx + 1)
+        page_num = page_data.get("page") or (page_idx + 1)
         page_numbers.append(page_num)
         for it in get_block_text(page_data):
-            all_items.append({
-                **it,
-                'y': it['y'] + y_offset,
-                'page': page_num,
-            })
+            all_items.append(
+                {
+                    **it,
+                    "y": it["y"] + y_offset,
+                    "page": page_num,
+                }
+            )
     lines = group_to_lines(all_items)
 
     # 找到题目区起始位置：第一个「本节试题/习题精选」标题之后
     start_idx = 0
     _section_start_re = section_start_re()
     for i, ln in enumerate(lines):
-        joined = ' '.join(ln['texts']).strip()
+        joined = " ".join(ln["texts"]).strip()
         if _section_start_re.match(joined):
             start_idx = i + 1
             break
@@ -142,7 +148,7 @@ def parse_questions_span(page_data_list, page_w):
     end_idx = len(lines)
     _answer_header_re = answer_header_re()
     for i in range(start_idx, len(lines)):
-        joined = ' '.join(lines[i]['texts']).strip()
+        joined = " ".join(lines[i]["texts"]).strip()
         if _answer_header_re.match(joined):
             end_idx = i
             break
@@ -166,14 +172,14 @@ def parse_questions_span(page_data_list, page_w):
         # 但需要兼容全/半角点号
         if len(qid) == 1:
             ok = False
-            for sep in ('.', '．'):
-                if joined_stripped.startswith('0' + qid + sep):
+            for sep in (".", "．"):
+                if joined_stripped.startswith("0" + qid + sep):
                     ok = True
                     break
             if not ok:
                 return False
         # 多点形式 → 章节号
-        if not re.match(r'^\s*0?\d{1,2}[\.．]', joined):
+        if not re.match(r"^\s*0?\d{1,2}[\.．]", joined):
             return False
         if len(body) < 2:
             return False
@@ -186,23 +192,23 @@ def parse_questions_span(page_data_list, page_w):
         nonlocal cur
         if cur is not None:
             # 如果未识别到独立选项行，尝试从题干正文中提取内嵌选项
-            if not cur.get('options'):
-                inline_opts = extract_inline_options(cur['content'])
+            if not cur.get("options"):
+                inline_opts = extract_inline_options(cur["content"])
                 if inline_opts:
-                    cur['options'] = inline_opts
-                    cur['options_order'] = sorted(inline_opts.keys())
-            if cur.get('options'):
-                cur['type'] = '选择题'
+                    cur["options"] = inline_opts
+                    cur["options_order"] = sorted(inline_opts.keys())
+            if cur.get("options"):
+                cur["type"] = "选择题"
             else:
-                cur['type'] = '综合应用题'
+                cur["type"] = "综合应用题"
             # 根据归属文本块计算题目外接矩形，用于后续精准截图
-            blocks = cur.get('_blocks', [])
+            blocks = cur.get("_blocks", [])
             if blocks:
-                cur['bbox'] = [
-                    min(b['x0'] for b in blocks),
-                    min(b['y0'] for b in blocks),
-                    max(b['x1'] for b in blocks),
-                    max(b['y1'] for b in blocks),
+                cur["bbox"] = [
+                    min(b["x0"] for b in blocks),
+                    min(b["y0"] for b in blocks),
+                    max(b["x1"] for b in blocks),
+                    max(b["y1"] for b in blocks),
                 ]
             questions.append(cur)
             cur = None
@@ -210,7 +216,7 @@ def parse_questions_span(page_data_list, page_w):
     i = 0
     while i < len(lines):
         ln = lines[i]
-        joined = ' '.join(ln['texts']).strip()
+        joined = " ".join(ln["texts"]).strip()
         if not joined:
             i += 1
             continue
@@ -236,66 +242,78 @@ def parse_questions_span(page_data_list, page_w):
             qid = m.group(1).zfill(2)  # 补零
             body = m.group(2).strip()
             # 根据行 y 坐标反推该题头所在原始页码
-            page_idx = int(ln['y'] // 10000)
-            actual_page = page_numbers[page_idx] if page_idx < len(page_numbers) else page_numbers[-1]
+            page_idx = int(ln["y"] // 10000)
+            actual_page = (
+                page_numbers[page_idx]
+                if page_idx < len(page_numbers)
+                else page_numbers[-1]
+            )
             flush()
             cur = {
-                'id': qid,
-                'content': body,
-                'options': {},  # option_letter -> text
-                'options_order': [],  # 保持顺序
-                'page': actual_page,
-                '_blocks': [ln],
+                "id": qid,
+                "content": body,
+                "options": {},  # option_letter -> text
+                "options_order": [],  # 保持顺序
+                "page": actual_page,
+                "_blocks": [ln],
             }
             i += 1
             # 后续行：要么是选项（同行可能有多个），要么是题目延续
             while i < len(lines):
                 ln2 = lines[i]
-                joined2 = ' '.join(ln2['texts']).strip()
+                joined2 = " ".join(ln2["texts"]).strip()
                 if not joined2:
                     i += 1
                     continue
                 # 下一个真题号了
-                if QUESTION_HEADER_RE.match(joined2) and is_real_question_header(joined2):
+                if QUESTION_HEADER_RE.match(joined2) and is_real_question_header(
+                    joined2
+                ):
                     break
                 # 题目页里不该出现的章节标题或页眉页脚
-                if TOPIC_HEADER_RE.match(joined2) or SECTION_HEADER_RE.match(joined2) or is_page_noise(joined2):
+                if (
+                    TOPIC_HEADER_RE.match(joined2)
+                    or SECTION_HEADER_RE.match(joined2)
+                    or is_page_noise(joined2)
+                ):
                     break
                 # 把这行拆成 [A. xxx] [B. xxx] [C. xxx] [D. xxx]
-                cols = split_options_in_row(ln2['texts'])
+                cols = split_options_in_row(ln2["texts"])
                 if cols:
                     # 全部是选项
                     for letter, text in cols:
-                        cur['options'][letter.upper()] = text
-                        cur['options_order'].append(letter.upper())
-                    cur['_blocks'].append(ln2)
+                        cur["options"][letter.upper()] = text
+                        cur["options_order"].append(letter.upper())
+                    cur["_blocks"].append(ln2)
                     i += 1
                 else:
                     # 既不是题号也不是选项：
                     # 若已开始收集选项，则视为上一个选项的续行；否则为题文延续
-                    if cur['options']:
-                        last_letter = cur['options_order'][-1]
-                        cur['options'][last_letter] = (cur['options'][last_letter] + '\n' + joined2).strip()
+                    if cur["options"]:
+                        last_letter = cur["options_order"][-1]
+                        cur["options"][last_letter] = (
+                            cur["options"][last_letter] + "\n" + joined2
+                        ).strip()
                     else:
-                        cur['content'] += '\n' + joined2
-                    cur['_blocks'].append(ln2)
+                        cur["content"] += "\n" + joined2
+                    cur["_blocks"].append(ln2)
                     i += 1
             continue
 
         # 选项行（无题号开头）— 通常是单列/单选项
-        cols = split_options_in_row(ln['texts'])
+        cols = split_options_in_row(ln["texts"])
         if cols and cur is not None:
             for letter, text in cols:
-                cur['options'][letter.upper()] = text
-                cur['options_order'].append(letter.upper())
-            cur['_blocks'].append(ln)
+                cur["options"][letter.upper()] = text
+                cur["options_order"].append(letter.upper())
+            cur["_blocks"].append(ln)
             i += 1
             continue
 
         # 其他行：可能是题目的延续（无题号情况罕见）
-        if cur is not None and not cur['options']:
-            cur['content'] += '\n' + joined
-            cur['_blocks'].append(ln)
+        if cur is not None and not cur["options"]:
+            cur["content"] += "\n" + joined
+            cur["_blocks"].append(ln)
         i += 1
 
     flush()
@@ -312,25 +330,25 @@ def split_options_in_row(texts):
         t = texts[0]
         # 单文本块可能内嵌多个选项，如 "A. xxx B. xxx C. xxx D. xxx"
         if OPTION_LINE_RE.match(t):
-            parts = re.split(r'(?=[A-Da-d][\.．、])', t)
+            parts = re.split(r"(?=[A-Da-d][\.．、])", t)
             parts = [p.strip() for p in parts if p.strip()]
             if len(parts) >= 2:
                 cols = []
                 for p in parts:
                     m = OPTION_LINE_RE.match(p)
                     if m:
-                        cols.append((m.group(1).upper(), m.group(2)))
+                        cols.append((m.group(1).upper(), clean_option_text(m.group(2))))
                 if len(cols) >= 2:
                     return cols
             # 单个选项
             m = OPTION_LINE_RE.match(t)
-            return [(m.group(1).upper(), m.group(2))] if m else None
+            return [(m.group(1).upper(), clean_option_text(m.group(2)))] if m else None
         return None
     cols = []
     for t in texts:
         m = OPTION_LINE_RE.match(t)
         if m:
-            cols.append((m.group(1).upper(), m.group(2)))
+            cols.append((m.group(1).upper(), clean_option_text(m.group(2))))
         else:
             # 跨列文本/不带选项字母开头
             # 检查这个t是否是大块的延续文本，可忽略
@@ -351,19 +369,19 @@ def extract_inline_options(content):
     if not content:
         return None
     # 把全角点号统一为半角，便于匹配
-    text = content.replace('．', '.')
+    text = content.replace("．", ".")
     # 匹配 A. ... B. ... C. ... D. ...，允许换行
-    pattern = r'([A-Da-d])\.\s*(.*?)(?=\s*[A-Da-d]\.\s*|$)'
+    pattern = r"([A-Da-d])\.\s*(.*?)(?=\s*[A-Da-d]\.\s*|$)"
     matches = list(re.finditer(pattern, text, re.DOTALL))
     if len(matches) < 2:
         return None
     options = {}
     for m in matches:
         letter = m.group(1).upper()
-        opt_text = m.group(2).strip().replace('\n', ' ')
+        opt_text = clean_option_text(m.group(2).strip().replace("\n", " "))
         if letter not in options:
             options[letter] = opt_text
-    if 'A' in options and 'B' in options:
+    if "A" in options and "B" in options:
         return options
     return None
 
@@ -386,7 +404,7 @@ def parse_answer_page(page_data):
     ans_start_idx = 0
     _answer_header_re = answer_header_re()
     for i, ln in enumerate(lines):
-        joined = ' '.join(ln['texts']).strip()
+        joined = " ".join(ln["texts"]).strip()
         if _answer_header_re.match(joined):
             ans_start_idx = i
             break
@@ -395,7 +413,7 @@ def parse_answer_page(page_data):
 
     choice_answers = {}
     app_answers = {}
-    section = 'choice'  # 'choice' or 'app'
+    section = "choice"  # 'choice' or 'app'
     cur = None
     _chapter_header_re = chapter_header_re()
 
@@ -405,18 +423,18 @@ def parse_answer_page(page_data):
         避免章节标题漏识别时应用题答案被错存到选择题字典。"""
         nonlocal cur
         if cur is not None:
-            if cur['explanation']:
-                cur['explanation'] = cur['explanation'].strip()
-            target = choice_answers if cur.get('_section') == 'choice' else app_answers
+            if cur["explanation"]:
+                cur["explanation"] = cur["explanation"].strip()
+            target = choice_answers if cur.get("_section") == "choice" else app_answers
             # 不要覆盖同section的现有项（保留先遇到的，通常是选择题短答案）
-            if cur['id'] not in target:
-                target[cur['id']] = cur
+            if cur["id"] not in target:
+                target[cur["id"]] = cur
             cur = None
 
     i = 0
     while i < len(answer_lines):
         ln = answer_lines[i]
-        joined = ' '.join(ln['texts']).strip()
+        joined = " ".join(ln["texts"]).strip()
         if not joined:
             i += 1
             continue
@@ -425,7 +443,11 @@ def parse_answer_page(page_data):
         if m_header:
             sec_name = m_header.group(1)
             save_cur()  # 当前题入栈
-            section = 'app' if ('综合' in sec_name or '解答' in sec_name or '应用' in sec_name) else 'choice'
+            section = (
+                "app"
+                if ("综合" in sec_name or "解答" in sec_name or "应用" in sec_name)
+                else "choice"
+            )
             i += 1
             continue
 
@@ -439,13 +461,12 @@ def parse_answer_page(page_data):
         if ans_match:
             save_cur()
             qid, choice = ans_match
-            cur = {'id': qid, 'choice': choice,
-                   'explanation': '', '_section': section}
+            cur = {"id": qid, "choice": choice, "explanation": "", "_section": section}
             i += 1
             # 收集解析
             while i < len(answer_lines):
                 ln2 = answer_lines[i]
-                joined2 = ' '.join(ln2['texts']).strip()
+                joined2 = " ".join(ln2["texts"]).strip()
                 if not joined2:
                     i += 1
                     continue
@@ -457,7 +478,7 @@ def parse_answer_page(page_data):
                     break
                 if _answer_header_re.match(joined2):
                     break
-                cur['explanation'] += '\n' + joined2
+                cur["explanation"] += "\n" + joined2
                 i += 1
             continue
 
@@ -465,12 +486,16 @@ def parse_answer_page(page_data):
         m = ANS_HEADER_RE.match(joined)
         if m:
             save_cur()
-            cur = {'id': m.group(1).zfill(2), 'choice': None,
-                   'explanation': '【解答】', '_section': 'app'}
+            cur = {
+                "id": m.group(1).zfill(2),
+                "choice": None,
+                "explanation": "【解答】",
+                "_section": "app",
+            }
             i += 1
             while i < len(answer_lines):
                 ln2 = answer_lines[i]
-                joined2 = ' '.join(ln2['texts']).strip()
+                joined2 = " ".join(ln2["texts"]).strip()
                 if not joined2:
                     i += 1
                     continue
@@ -480,38 +505,51 @@ def parse_answer_page(page_data):
                     break
                 if _answer_header_re.match(joined2):
                     break
-                cur['explanation'] += '\n' + joined2
+                cur["explanation"] += "\n" + joined2
                 i += 1
             continue
 
         # 兼容没有 "【解答】" 的应用题答案，如 "01. 答案：..."
-        if section == 'app' and cur is None and APP_ANS_START_RE.match(joined) and not extract_answer_choice(joined):
+        if (
+            section == "app"
+            and cur is None
+            and APP_ANS_START_RE.match(joined)
+            and not extract_answer_choice(joined)
+        ):
             m = APP_ANS_START_RE.match(joined)
-            cur = {'id': m.group(1).zfill(2), 'choice': None,
-                   'explanation': m.group(2).strip(), '_section': 'app'}
+            cur = {
+                "id": m.group(1).zfill(2),
+                "choice": None,
+                "explanation": m.group(2).strip(),
+                "_section": "app",
+            }
             i += 1
             while i < len(answer_lines):
                 ln2 = answer_lines[i]
-                joined2 = ' '.join(ln2['texts']).strip()
+                joined2 = " ".join(ln2["texts"]).strip()
                 if not joined2:
                     i += 1
                     continue
-                if extract_answer_choice(joined2) or ANS_HEADER_RE.match(joined2) or APP_ANS_START_RE.match(joined2):
+                if (
+                    extract_answer_choice(joined2)
+                    or ANS_HEADER_RE.match(joined2)
+                    or APP_ANS_START_RE.match(joined2)
+                ):
                     break
                 if _chapter_header_re.match(joined2):
                     break
                 if _answer_header_re.match(joined2):
                     break
-                cur['explanation'] += '\n' + joined2
+                cur["explanation"] += "\n" + joined2
                 i += 1
             continue
 
-        if cur is not None and cur['explanation'] is not None:
-            cur['explanation'] += '\n' + joined
+        if cur is not None and cur["explanation"] is not None:
+            cur["explanation"] += "\n" + joined
         i += 1
 
     save_cur()
-    return {'choice': choice_answers, 'app': app_answers}
+    return {"choice": choice_answers, "app": app_answers}
 
 
 def main():
@@ -521,37 +559,45 @@ def main():
     i = 0
     while i < len(args):
         a = args[i]
-        if a == '--ocr-dir' and i + 1 < len(args):
-            OCR_DIR = Path(args[i+1]); i += 2
-        elif a == '--qa-json' and i + 1 < len(args):
-            QA_JSON = args[i+1]; i += 2
-        elif a == '--toc-json' and i + 1 < len(args):
-            TOC_JSON = args[i+1]; i += 2
-        elif a == '--output' and i + 1 < len(args):
-            OUTPUT_JSON = args[i+1]; i += 2
-        elif a == '--title' and i + 1 < len(args):
-            COURSE_TITLE = args[i+1]; i += 2
-        elif a == '--total-pages' and i + 1 < len(args):
-            TOTAL_PAGES = int(args[i+1]); i += 2
+        if a == "--ocr-dir" and i + 1 < len(args):
+            OCR_DIR = Path(args[i + 1])
+            i += 2
+        elif a == "--qa-json" and i + 1 < len(args):
+            QA_JSON = args[i + 1]
+            i += 2
+        elif a == "--toc-json" and i + 1 < len(args):
+            TOC_JSON = args[i + 1]
+            i += 2
+        elif a == "--output" and i + 1 < len(args):
+            OUTPUT_JSON = args[i + 1]
+            i += 2
+        elif a == "--title" and i + 1 < len(args):
+            COURSE_TITLE = args[i + 1]
+            i += 2
+        elif a == "--total-pages" and i + 1 < len(args):
+            TOTAL_PAGES = int(args[i + 1])
+            i += 2
         else:
             i += 1
-    qa_pairs_data = json.load(open(QA_JSON, encoding='utf-8'))
-    qa_pairs = qa_pairs_data['qa_pairs'] if isinstance(qa_pairs_data, dict) else qa_pairs_data
+    qa_pairs_data = json.load(open(QA_JSON, encoding="utf-8"))
+    qa_pairs = (
+        qa_pairs_data["qa_pairs"] if isinstance(qa_pairs_data, dict) else qa_pairs_data
+    )
 
     all_pages_text = {}
-    for f in OCR_DIR.glob('*.json'):
-        page_num = int(f.stem.split('_')[-1])
-        all_pages_text[page_num] = json.load(open(f, encoding='utf-8'))
+    for f in OCR_DIR.glob("*.json"):
+        page_num = int(f.stem.split("_")[-1])
+        all_pages_text[page_num] = json.load(open(f, encoding="utf-8"))
 
     final_chapters = []
     summary = []
-    toc = json.load(open(TOC_JSON, encoding='utf-8'))
+    toc = json.load(open(TOC_JSON, encoding="utf-8"))
 
     for idx, qa in enumerate(qa_pairs):
-        topic = qa['topic_title']
-        m = re.match(r'^(\d+\.\d+(?:\.\d+)?)', topic)
+        topic = qa["topic_title"]
+        m = re.match(r"^(\d+\.\d+(?:\.\d+)?)", topic)
         chap_num = m.group(1) if m else topic
-        q_start = qa['q_start']
+        q_start = qa["q_start"]
         l1_name = None
         l2_name = None
         for entry in toc:
@@ -561,21 +607,23 @@ def main():
                 l2_name = entry[1]
 
         # 题目区包含答案起始页中「答案与解析」标题之前的内容，防止题干/选项跨到该页时被截断
-        q_pages = list(range(qa['q_start'], max(qa['a_start'] + 1, qa['q_start']+1)))
+        q_pages = list(range(qa["q_start"], max(qa["a_start"] + 1, qa["q_start"] + 1)))
         if idx + 1 < len(qa_pairs):
-            next_q_start = qa_pairs[idx+1]['q_start']
-            a_pages = list(range(qa['a_start'], max(next_q_start, qa['a_start']+1)))
+            next_q_start = qa_pairs[idx + 1]["q_start"]
+            a_pages = list(range(qa["a_start"], max(next_q_start, qa["a_start"] + 1)))
         else:
-            a_pages = list(range(qa['a_start'], TOTAL_PAGES + 1))
+            a_pages = list(range(qa["a_start"], TOTAL_PAGES + 1))
 
         page_w = 600
         for p in q_pages:
             if p in all_pages_text:
-                for b in all_pages_text[p].get('blocks', []):
-                    page_w = max(page_w, b.get('x1', 0))
+                for b in all_pages_text[p].get("blocks", []):
+                    page_w = max(page_w, b.get("x1", 0))
 
         # 跨页连续解析题目，避免跨页选择题被拆分为综合应用题
-        question_pages_data = [all_pages_text[p] for p in q_pages if p in all_pages_text]
+        question_pages_data = [
+            all_pages_text[p] for p in q_pages if p in all_pages_text
+        ]
         questions = parse_questions_span(question_pages_data, page_w)
 
         # 应用题在答案区通常按独立小节重新编号（01, 02...），
@@ -583,54 +631,54 @@ def main():
         # 使其与答案区的 "01.【解答】" 等对齐。
         app_counter = 1
         for q in questions:
-            if q.get('type') != '选择题':
-                q['id'] = str(app_counter).zfill(2)
+            if q.get("type") != "选择题":
+                q["id"] = str(app_counter).zfill(2)
                 app_counter += 1
 
-        all_answers_by_section = {'choice': {}, 'app': {}}
+        all_answers_by_section = {"choice": {}, "app": {}}
         for p in a_pages:
             if p not in all_pages_text:
                 continue
             ans = parse_answer_page(all_pages_text[p])
-            for sec in ('choice', 'app'):
+            for sec in ("choice", "app"):
                 all_answers_by_section[sec].update(ans.get(sec, {}))
 
         # 合并到questions - 转换为 schema 格式
         for q in questions:
-            qid = q['id']
-            qtype = q.get('type', '选择题')
-            sec = 'choice' if qtype == '选择题' else 'app'
+            qid = q["id"]
+            qtype = q.get("type", "选择题")
+            sec = "choice" if qtype == "选择题" else "app"
             ans = all_answers_by_section.get(sec, {}).get(qid)
             # content 转 LaTeX-friendly 的简单形式
-            content_text = q['content'].strip()
+            content_text = q["content"].strip()
             # options 保留 {A: ..., B: ...}
-            options_dict = q.get('options', {})
+            options_dict = q.get("options", {})
             # sub_questions: 暂为 None
             sub_qs = None
             answer_dict = None
             if ans:
-                explanation = (ans.get('explanation') or '').strip()
+                explanation = (ans.get("explanation") or "").strip()
                 # 去除解释中开头的 "【解答】"
-                if explanation.startswith('【解答】'):
-                    explanation = explanation[len('【解答】'):].strip()
+                if explanation.startswith("【解答】"):
+                    explanation = explanation[len("【解答】") :].strip()
                 answer_dict = {
-                    'choice': ans.get('choice'),
-                    'explanation': explanation,
+                    "choice": ans.get("choice"),
+                    "explanation": explanation,
                 }
             q_out = {
-                'id': qid,
-                'type': qtype,
-                'content': content_text,
-                'options': options_dict if options_dict else None,
-                'sub_questions': sub_qs,
-                'page': q.get('page', qa['q_start']),
-                'bbox': q.get('bbox'),
-                'has_image': False,
-                'image_ref': None,
-                'topic_title': topic,
-                'answer': answer_dict,
-                'q_pages': q_pages,
-                'a_pages': a_pages,
+                "id": qid,
+                "type": qtype,
+                "content": content_text,
+                "options": options_dict if options_dict else None,
+                "sub_questions": sub_qs,
+                "page": q.get("page", qa["q_start"]),
+                "bbox": q.get("bbox"),
+                "has_image": False,
+                "image_ref": None,
+                "topic_title": topic,
+                "answer": answer_dict,
+                "q_pages": q_pages,
+                "a_pages": a_pages,
             }
             q.clear()
             q.update(q_out)
@@ -639,44 +687,56 @@ def main():
             print(f"[!] {topic}: 0 questions (q_pages={q_pages}, a_pages={a_pages})")
 
         chapter = {
-            'topic_title': topic,
-            'chap_num': chap_num,
-            'l1_name': l1_name,
-            'l2_name': l2_name,
-            'question_count': len(questions),
-            'questions': questions,
-            'q_pages': q_pages,
-            'a_pages': a_pages,
+            "topic_title": topic,
+            "chap_num": chap_num,
+            "l1_name": l1_name,
+            "l2_name": l2_name,
+            "question_count": len(questions),
+            "questions": questions,
+            "q_pages": q_pages,
+            "a_pages": a_pages,
         }
         final_chapters.append(chapter)
-        summary.append({
-            'topic': topic,
-            'q_count': len(questions),
-            'a_choice': len(all_answers_by_section.get('choice', {})),
-            'a_app': len(all_answers_by_section.get('app', {})),
-            'q_pages': q_pages,
-            'a_pages': a_pages,
-        })
-        print("[%d/%d] %s: %d题, 选择答案%d条, 应用答案%d条" % (
-            idx+1, len(qa_pairs), topic, len(questions),
-            len(all_answers_by_section.get('choice', {})),
-            len(all_answers_by_section.get('app', {}))))
+        summary.append(
+            {
+                "topic": topic,
+                "q_count": len(questions),
+                "a_choice": len(all_answers_by_section.get("choice", {})),
+                "a_app": len(all_answers_by_section.get("app", {})),
+                "q_pages": q_pages,
+                "a_pages": a_pages,
+            }
+        )
+        print(
+            "[%d/%d] %s: %d题, 选择答案%d条, 应用答案%d条"
+            % (
+                idx + 1,
+                len(qa_pairs),
+                topic,
+                len(questions),
+                len(all_answers_by_section.get("choice", {})),
+                len(all_answers_by_section.get("app", {})),
+            )
+        )
 
-    total_q = sum(c['question_count'] for c in final_chapters)
+    total_q = sum(c["question_count"] for c in final_chapters)
     out = {
-        'title': COURSE_TITLE,
-        'total_pages': TOTAL_PAGES,
-        'total_questions': total_q,
-        'chapters': final_chapters,
+        "title": COURSE_TITLE,
+        "total_pages": TOTAL_PAGES,
+        "total_questions": total_q,
+        "chapters": final_chapters,
     }
-    with open(OUTPUT_JSON, 'w', encoding='utf-8') as f:
-        json.dump(out, f, ensure_ascii=False, indent=2)
+    write_json_atomic(OUTPUT_JSON, out, indent=2, ensure_ascii=False)
     print(f"\n总题数: {total_q}")
-    summary_dir = Path('output/reports')
+    summary_dir = Path("output/reports")
     summary_dir.mkdir(parents=True, exist_ok=True)
-    with open(summary_dir / 'extraction_summary.json', 'w', encoding='utf-8') as f:
-        json.dump({'chapters': summary, 'total': total_q}, f, ensure_ascii=False, indent=2)
+    write_json_atomic(
+        summary_dir / "extraction_summary.json",
+        {"chapters": summary, "total": total_q},
+        indent=2,
+        ensure_ascii=False,
+    )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

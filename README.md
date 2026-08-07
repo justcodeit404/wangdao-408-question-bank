@@ -21,7 +21,7 @@
 ├── scripts/config.py         # 四门课程的统一配置
 ├── data/                     # 输入数据
 │   ├── ocr/{ds,coa,net,os}/  # OCR 原始输出
-│   ├── toc/{ds,coa,net,os}.json   # 目录 JSON
+│   ├── toc/toc_{ds,coa,net,os}.json  # 目录 JSON
 │   └── qa/{ds,coa,net,os}_qa_pairs.json  # 题目-答案页边界
 ├── output/                   # 构建输出
 │   ├── questions*.json       # 各科题库 JSON
@@ -38,7 +38,7 @@
 
 需要预先准备好：
 
-1. 四本 PDF 放在项目根目录
+1. 四本 PDF 放在 `资料/408/` 目录（`scripts/config.py` 已指向该位置）；若在其他位置可修改 `scripts/config.py` 中的 `_repo_path(...)`
 2. PDF 切页图片目录 `assets/pdf_images/ds/`、`assets/pdf_images/coa/`、`assets/pdf_images/net/`、`assets/pdf_images/os/`
 3. OCR 结果放在 `data/ocr/ds/`、`data/ocr/coa/` 等（可用 `scripts/run_ocr.py` 生成）
 4. 目录 JSON `data/toc/ds.json` 等（可用 `scripts/parse_toc.py` 生成）
@@ -48,6 +48,17 @@
 ```bash
 python scripts/build_all.py
 ```
+
+**单科重抽**（无 PDF 切页 → OCR → 解析 → 合并，适合某一门质量不满意时）：
+
+```bash
+# 例：计算机网络
+python scripts/rebuild_course.py net
+# 已有切页/OCR 时仅重解析
+python scripts/rebuild_course.py net --skip-render --skip-ocr
+```
+
+辅助脚本：`scripts/render_pdf_pages.py`（PDF→PNG）、`scripts/run_ocr.py`（PNG→OCR JSON）。
 
 构建完成后：
 

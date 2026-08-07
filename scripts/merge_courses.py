@@ -10,27 +10,30 @@
   net -> 计算机网络
   os  -> 操作系统
 """
-import gzip
 import json
 import sys
 from pathlib import Path
 
 from config import COURSES, MATH_BANK_DIR
+from utils import write_json_with_gz_atomic, write_text_atomic
 
 sys.stdout.reconfigure(encoding='utf-8')
 
 
 def write_json(dst, data):
-    """把 Python 字典写成紧凑 JSON 文件，并打印大小。
+    """把 Python 字典原子写入紧凑 JSON 文件，并打印大小。
 
-    同时生成 .gz 预压缩文件，供服务器直接返回，避免每次请求都实时压缩。
+    同时原子生成 .gz 预压缩文件，供服务器直接返回，避免每次请求都实时压缩。
     """
-    compact = json.dumps(data, ensure_ascii=False, separators=(',', ':'))
-    dst.write_text(compact, encoding='utf-8')
+    compact = write_json_with_gz_atomic(dst, data, ensure_ascii=False)
     gz_dst = Path(str(dst) + '.gz')
-    gz_dst.write_bytes(gzip.compress(compact.encode('utf-8'), compresslevel=9))
     print(f'  [write] {dst}: {dst.stat().st_size / 1024 / 1024:.2f} MB '
           f'({gz_dst.stat().st_size / 1024 / 1024:.2f} MB gz)')
+
+
+def escape_script_tag(s):
+    """对嵌入 <script> 标签的 JSON 文本转义 </script>，防止提前闭合脚本。"""
+    return s.replace('</script>', '<\\/script>')
 
 
 def main():
@@ -75,7 +78,7 @@ def main():
         'chapters': all_chapters,
     }
 
-    out_path.write_text(json.dumps(out, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
+    write_json_with_gz_atomic(out_path, out, ensure_ascii=False)
     print(f'\n已合并 {len(course_data)} 门课,共 {out["total_questions"]} 题')
     for c, n_ch, n_q in summary:
         print(f'  - {c}: {n_ch} 节, {n_q} 题')
@@ -104,10 +107,10 @@ def main():
 window.__COURSE_CACHE__ = window.__COURSE_CACHE__ || {{}};
 window.__COURSE_CACHE__[{course_name}] = {data};
 '''.format(
-            course_name=json.dumps(cd['course'], ensure_ascii=False),
-            data=json.dumps(course_obj, ensure_ascii=False, separators=(',', ':'))
+            course_name=escape_script_tag(json.dumps(cd['course'], ensure_ascii=False)),
+            data=escape_script_tag(json.dumps(course_obj, ensure_ascii=False, separators=(',', ':')))
         )
-        (bank_dir / js_file_name).write_text(js_wrapper, encoding='utf-8')
+        write_text_atomic(bank_dir / js_file_name, js_wrapper, encoding='utf-8')
         print(f'  [write] {bank_dir / js_file_name}')
 
         course_manifest.append({
@@ -158,8 +161,8 @@ window.loadCourseData = function(courseName) {{
 window.getCourseList = function() {{
   return window.__COURSE_MANIFEST__.map(c => ({{ name: c.name, short: c.short, question_count: c.question_count }}));
 }};
-'''.format(manifest=json.dumps(course_manifest, ensure_ascii=False, indent=2))
-    loader.write_text(loader_src, encoding='utf-8')
+'''.format(manifest=escape_script_tag(json.dumps(course_manifest, ensure_ascii=False, indent=2)))
+    write_text_atomic(loader, loader_src, encoding='utf-8')
     print(f'  [write] {loader}')
 
 

@@ -1,38 +1,98 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>王道 408·精选题题库</title>
+<script>
+(function () {
+  try {
+    var t = localStorage.getItem('mathbank_theme');
+    if (t !== 'light' && t !== 'dark') {
+      t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+    document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+})();
+</script>
+<title>考研题库 · 408</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0e100f">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<link rel="stylesheet" href="styles.css">
+<!-- 不用 Google Fonts：国内常被墙/超时，阻塞首屏导致白屏 -->
+<link rel="stylesheet" href="styles.css?v=32">
+<script>window.__BANK_DATA_VER__='29';</script>
+<script>
+(function () {
+  var base = (location.pathname || '').indexOf('/banks/') === 0
+    ? '/banks/common/'
+    : 'vendor/viewer-common/';
+  document.write('<script src="' + base + 'storage.js"><\/script>');
+  document.write('<script src="' + base + 'platform-sync.js"><\/script>');
+})();
+</script>
 </head>
 <body>
 <div class="app">
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
       <div class="brand">
-        <h1>王道 408·精选题题库</h1>
-        <p>27 王道考研复习指导</p>
+        <h1>408 · 王道精选</h1>
+        <p>考研题库一体 · 四科切换</p>
       </div>
       <button class="theme-toggle" id="themeToggle" aria-label="切换主题" title="切换主题">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
       </button>
+      <button class="theme-toggle" id="helpToggle" aria-label="快捷键帮助" title="快捷键帮助">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </button>
+      <button class="theme-toggle" id="dashboardToggle" aria-label="学习仪表盘" title="学习仪表盘">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      </button>
+      <button class="theme-toggle" id="wrongBookBtn" aria-label="错题本" title="错题本">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      </button>
+      <button class="theme-toggle" id="paperBtn" aria-label="生成试卷" title="生成试卷">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      </button>
     </div>
     <select id="mobileCourseSelect" class="mobile-course-select" aria-label="切换课程"></select>
+    <button class="sidebar-review-btn" id="btnDueReview" title="开始今日复习">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <span>今日复习</span>
+      <span class="review-badge" id="dueBadge" hidden>0</span>
+    </button>
     <div class="chapter-list" id="chapterList"></div>
   </aside>
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
   <div class="main">
+    <div class="app-header" id="bankShellHeader">
+      <div class="shell-left">
+        <a class="shell-brand" href="/banks/math/" title="考研题库">
+          <span class="shell-mark">KY</span>
+          <span>考研题库</span>
+        </a>
+        <nav class="shell-switch" aria-label="题库切换">
+          <a class="shell-tab" href="/banks/math/" data-bank="math">数学</a>
+          <a class="shell-tab active" href="/banks/408/" data-bank="408">408</a>
+        </nav>
+      </div>
+      <div class="shell-right">
+        <a class="shell-link" id="shellContinue" href="#" hidden>继续上次</a>
+        <a class="shell-link" href="/">学习平台</a>
+      </div>
+    </div>
     <div class="topbar">
       <button class="toggle-sidebar" id="toggleSidebar" aria-label="打开章节">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
       <div class="course-tabs" id="courseTabs"></div>
       <div class="search-box">
-        <input type="search" id="searchInput" placeholder="搜索题目内容、公式、章节...">
+        <input type="search" id="searchInput" placeholder="搜索题目内容、公式、章节...（按 / 聚焦）" autocomplete="off">
+        <div class="search-history-dropdown" id="searchHistoryDropdown" hidden></div>
       </div>
       <div class="topbar-actions">
         <select id="typeFilter" class="pill-select" aria-label="题型筛选">
@@ -45,6 +105,15 @@
           <option value="sub">有子问</option>
           <option value="image">有图片</option>
         </select>
+        <select id="sortSelect" class="pill-select" aria-label="排序方式">
+          <option value="default">默认排序</option>
+          <option value="id">按题号</option>
+          <option value="page">按页码</option>
+          <option value="chapter">按章节</option>
+        </select>
+        <button id="btnViewToggle" class="btn btn-secondary" title="切换紧凑/详细视图">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
         <button id="btnRandom" class="btn btn-secondary" title="随机一题">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18h1.4c1.3 0 2.5-.6 3.3-1.7l12.4-16.3"/><path d="M2 6h1.4c1.3 0 2.5.6 3.3 1.7l12.4 16.3"/><path d="m22 6-3 3-3-3"/><path d="m22 18-3-3-3 3"/></svg>
           <span>随机一题</span>
@@ -62,28 +131,219 @@
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m10 8 6 4-6 4V8z"/></svg>
               <span>当前筛选</span>
             </button>
-            <button class="split-menu-item" data-mode="wrong">
+            <button class="split-menu-item" data-mode="unknown">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              <span>只练不会</span>
+            </button>
+            <button class="split-menu-item" data-mode="familiar">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg>
+              <span>只练不熟</span>
+            </button>
+            <button class="split-menu-item" data-mode="unmarked">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/></svg>
+              <span>只练未标</span>
+            </button>
+            <button class="split-menu-item" data-mode="wrong">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
               <span>错题重练</span>
             </button>
             <button class="split-menu-item" data-mode="favorite">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
               <span>收藏复习</span>
             </button>
+            <div class="split-menu-sep"></div>
+            <button class="split-menu-item" data-mode="timed30">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span>限时 30 分钟</span>
+            </button>
+            <button class="split-menu-item" data-mode="timed60">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span>限时 60 分钟</span>
+            </button>
+            <button class="split-menu-item" data-mode="target50">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2"/></svg>
+              <span>目标 50 题</span>
+            </button>
+            <button class="split-menu-item" data-mode="mixed80">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v6H3zM3 15h18v6H3z"/></svg>
+              <span>四科混合 80 题</span>
+            </button>
           </div>
         </div>
+        <div class="split-btn-wrap" id="platformSyncWrap" style="position:relative;display:flex;align-items:center;gap:6px">
+          <button type="button" id="btnPlatformSync" class="btn btn-primary" title="批量把已标记题写入考研平台；单题标记会自动同步" aria-haspopup="true" aria-expanded="false">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+            <span>同步平台 ▾</span>
+          </button>
+          <span id="platformSyncHint" style="font-size:11px;opacity:.75;max-width:9rem;line-height:1.2;display:none"></span>
+          <div class="split-menu" id="platformSyncMenu" hidden style="right:0;left:auto;min-width:12rem">
+            <button type="button" class="split-menu-item" data-sync-scope="current">推送：当前筛选 → 平台</button>
+            <button type="button" class="split-menu-item" data-sync-scope="weak">推送：不熟+不会 → 平台</button>
+            <button type="button" class="split-menu-item" data-sync-scope="all">推送：全部已标记 → 平台</button>
+            <div class="split-menu-sep"></div>
+            <button type="button" class="split-menu-item" data-sync-pull="1">拉取：平台熟练度 → 本题库</button>
+            <div class="split-menu-sep"></div>
+            <div class="split-menu-item" style="opacity:.75;cursor:default;font-size:12px;pointer-events:none;white-space:normal">
+              标记自动推平台；打开时自动拉平台熟练度（会了/不熟/不会）
+            </div>
+          </div>
+        </div>
+        <button id="btnExport" class="btn btn-secondary" title="导出进度">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span>导出</span>
+        </button>
+        <button id="btnBackupNow" class="btn btn-secondary" title="立即备份全部数据">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><polyline points="21 3 21 8 16 8"/></svg>
+          <span>备份</span>
+        </button>
+        <button id="btnExportNotes" class="btn btn-secondary" title="导出笔记为 Markdown">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span>笔记</span>
+        </button>
+        <div class="mobile-more-wrap">
+          <button id="btnMoreMobile" class="btn btn-secondary" aria-label="更多" title="更多">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg>
+          </button>
+          <div class="mobile-more-menu" id="mobileMoreMenu" hidden>
+            <button type="button" class="split-menu-item" data-action="random">随机一题</button>
+            <button type="button" class="split-menu-item" data-action="view">切换视图</button>
+            <div class="split-menu-sep"></div>
+            <button type="button" class="split-menu-item" data-action="export">导出进度</button>
+            <button type="button" class="split-menu-item" data-action="import">导入进度</button>
+            <button type="button" class="split-menu-item" data-action="backup">立即备份</button>
+            <button type="button" class="split-menu-item" data-action="notes">导出笔记</button>
+          </div>
+        </div>
+        <button id="btnImport" class="btn btn-secondary" title="导入进度">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          <span>导入</span>
+        </button>
+        <input type="file" id="importFile" accept=".json" hidden>
       </div>
     </div>
 
     <div class="content" id="content">
+      <div class="resume-bar" id="resumeBar" hidden>
+        <div class="resume-bar-text" id="resumeText">上次练到：—</div>
+        <div class="resume-bar-actions">
+          <button type="button" class="btn-resume" id="btnResumePos">继续此题</button>
+          <button type="button" class="btn-dismiss" id="btnDismissResume">忽略</button>
+        </div>
+      </div>
       <div class="toolbar">
         <div class="stats-row" id="statsRow"></div>
       </div>
+      <div class="mark-dashboard" id="markDashboard" aria-label="做题统计"></div>
       <div class="result-info">
         <span class="label" id="resultText">加载中...</span>
+        <button type="button" class="btn btn-primary btn-sm" id="btnRandomInline" title="随机一题">随机一题</button>
       </div>
-      <div class="question-list" id="questionGrid"></div>
+      <div class="question-grid" id="questionGrid"></div>
       <div class="pagination" id="pagination"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Dashboard Modal -->
+<div class="modal-overlay" id="dashboardModal">
+  <div class="modal-box dashboard-modal">
+    <div class="modal-header">
+      <h3>📊 学习仪表盘</h3>
+      <button class="modal-close" onclick="closeDashboard()" aria-label="关闭">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div id="dashboardContent"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Wrong Book Modal -->
+<div class="modal-overlay" id="wrongBookModal">
+  <div class="modal-box wrongbook-modal">
+    <div class="modal-header">
+      <h3>📕 错题本</h3>
+      <div style="display:flex;gap:8px;align-items:center">
+        <select id="wrongBookGroupBy" class="pill-select" style="padding:4px 8px;font-size:0.78rem">
+          <option value="chapter">按章节</option>
+          <option value="time">按时间</option>
+        </select>
+        <button class="btn btn-secondary btn-sm" onclick="exportWrongBook()">📥 导出</button>
+        <button class="modal-close" onclick="closeWrongBook()" aria-label="关闭">&times;</button>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div id="wrongBookContent"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Paper Modal -->
+<div class="modal-overlay" id="paperModal">
+  <div class="modal-box paper-modal">
+    <div class="modal-header">
+      <h3>🖨 试卷生成</h3>
+      <button class="modal-close" onclick="closePaper()" aria-label="关闭">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="paper-config">
+        <label>课程：<select id="paperCourse"></select></label>
+        <label>章节：<select id="paperChapter"><option value="">全部章节</option></select></label>
+        <label>题型：
+          <select id="paperType">
+            <option value="">不限</option>
+            <option value="选择题">仅选择题</option>
+            <option value="解答题">仅解答题</option>
+          </select>
+        </label>
+        <label>题量：<input type="number" id="paperCount" min="1" max="200" value="20"></label>
+        <label><input type="checkbox" id="paperShuffle" checked> 乱序</label>
+      </div>
+      <div class="paper-preview" id="paperPreview"></div>
+      <div class="paper-actions">
+        <button class="btn btn-primary" onclick="downloadPaper()">📥 下载试卷（Markdown）</button>
+        <button class="btn btn-secondary" onclick="downloadAnswerSheet()">📥 下载答案卷</button>
+        <button class="btn btn-secondary" onclick="printPaper()">🖨 打印</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Help Modal -->
+<div class="modal-overlay" id="helpModal">
+  <div class="modal-box help-modal">
+    <div class="modal-header">
+      <h3>⌨️ 快捷键 & 使用技巧</h3>
+      <button class="modal-close" onclick="closeHelp()" aria-label="关闭">&times;</button>
+    </div>
+    <div class="modal-body">
+      <h4>全局</h4>
+      <table class="shortcut-table">
+        <tr><td><kbd>/</kbd></td><td>聚焦搜索框</td></tr>
+        <tr><td><kbd>Esc</kbd></td><td>关闭弹窗</td></tr>
+      </table>
+      <h4>题目详情</h4>
+      <table class="shortcut-table">
+        <tr><td><kbd>←</kbd> / <kbd>→</kbd></td><td>上一题 / 下一题</td></tr>
+        <tr><td><kbd>A</kbd>–<kbd>D</kbd></td><td>选择选项并判分</td></tr>
+        <tr><td><kbd>1</kbd></td><td>标记为「会了」</td></tr>
+        <tr><td><kbd>2</kbd></td><td>标记为「不熟」</td></tr>
+        <tr><td><kbd>3</kbd></td><td>标记为「不会」</td></tr>
+        <tr><td><kbd>F</kbd></td><td>收藏 / 取消收藏</td></tr>
+        <tr><td><kbd>C</kbd></td><td>复制题目到剪贴板</td></tr>
+      </table>
+      <h4>练习模式</h4>
+      <table class="shortcut-table">
+        <tr><td><kbd>←</kbd> / <kbd>→</kbd></td><td>上一题 / 下一题</td></tr>
+        <tr><td><kbd>A</kbd>–<kbd>D</kbd></td><td>选择选项</td></tr>
+        <tr><td><kbd>Space</kbd></td><td>显示答案（解答题）</td></tr>
+        <tr><td><kbd>1</kbd>/<kbd>2</kbd>/<kbd>3</kbd></td><td>作答后标记掌握度</td></tr>
+      </table>
+      <h4>学习模式</h4>
+      <p>收藏与掌握度可同时存在。标记掌握度会进入间隔重复队列（1 / 3 / 7 / 14 / 30 天）。导出与备份均为完整数据包，可互相导入。</p>
+      <h4>图片</h4>
+      <p>题干含「如下图」等配图时会<strong>直接显示在题干下方</strong>；点击图片可<strong>滚轮缩放</strong>，按住拖动可平移。</p>
+      <h4>数据</h4>
+      <p>所有进度数据（标记、笔记、纠错反馈）保存在本地浏览器（localStorage）。点击顶栏 <strong>导出</strong> 可下载备份；<strong>笔记</strong> 可导出为 Markdown。</p>
     </div>
   </div>
 </div>
@@ -94,6 +354,20 @@
     <div class="modal-header">
       <h3>题目详情</h3>
       <div class="modal-header-actions">
+        <div class="mastery-group" role="group" aria-label="掌握程度">
+          <button class="mastery-btn" id="detailMasteredBtn" onclick="setDetailMastery('mastered')" aria-label="会了" title="会了">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>会了</span>
+          </button>
+          <button class="mastery-btn" id="detailFamiliarBtn" onclick="setDetailMastery('familiar')" aria-label="不熟" title="不熟">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg>
+            <span>不熟</span>
+          </button>
+          <button class="mastery-btn" id="detailUnknownBtn" onclick="setDetailMastery('unknown')" aria-label="不会" title="不会">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            <span>不会</span>
+          </button>
+        </div>
         <button class="favorite-btn" id="detailFavoriteBtn" onclick="toggleDetailFavorite()" aria-label="收藏" title="收藏">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </button>
@@ -128,7 +402,11 @@
   </div>
 </div>
 
-<script src="data.js"></script>
-<script src="app.js"></script>
+<script src="data.js?v=30"></script>
+<script src="app.js?v=32"></script>
+<div id="platformSyncBar" class="platform-sync-bar" hidden aria-hidden="true">
+  <div class="platform-sync-bar-text" id="platformSyncBarText"></div>
+  <button type="button" class="btn btn-primary" id="platformSyncBarBtn" hidden>重试同步</button>
+</div>
 </body>
 </html>

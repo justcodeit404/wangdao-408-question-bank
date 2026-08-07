@@ -7,7 +7,7 @@
 流程（每门课）：
   parse_questions -> post_process -> reshape_by_l2 -> fix_questions
 最后：
-  merge_courses -> enhance_audit
+  merge_courses -> cross_validate_answers -> enhance_audit
 """
 import json
 import shutil
@@ -77,6 +77,7 @@ def main():
     run([sys.executable, 'scripts/merge_courses.py', OUTPUT_DIR / 'questions_all.json'])
 
     # 6. 生成质量报告
+    run([sys.executable, 'scripts/cross_validate_answers.py'])
     run([sys.executable, 'scripts/enhance_audit.py'])
 
     print('\n========== 构建完成 ==========')

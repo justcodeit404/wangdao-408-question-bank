@@ -11,6 +11,8 @@ from pathlib import Path
 
 import pytest
 
+from reshape_by_l2 import uniquify_ids
+
 
 @pytest.fixture
 def synthetic_course(tmp_path):
@@ -152,6 +154,19 @@ def test_build_pipeline(synthetic_course, tmp_path):
 
     app_qs = {q['id']: q for q in app_ch['questions']}
     assert '应用题答案' in app_qs['A01']['answer']['explanation']
+
+
+def test_reshape_uniquifies_ids_after_l3_merge():
+    questions = [
+        {'id': 'A01', 'content': '第一题'},
+        {'id': 'A02', 'content': '第二题'},
+        {'id': 'A01', 'content': '第三题'},
+        {'id': 'A01', 'content': '第四题'},
+    ]
+
+    uniquify_ids(questions)
+
+    assert [q['id'] for q in questions] == ['A01', 'A02', 'A01_2', 'A01_3']
 
 
 if __name__ == '__main__':

@@ -36,6 +36,10 @@ let currentChapters = [];
 let practiceResults = [];
 let practiceFinished = false;
 let isLoadingCourse = false;
+// 考试模式状态：timed = 限时倒计时秒；target = 目标题数；mixed = 跨科题数；null = 普通练习
+let practiceMode = null;
+let practiceTimer = null;       // setInterval 句柄
+let practiceDeadline = 0;       // 限时模式的截止时间戳
 
 async function loadBankData(courseName) {
   if (isLoadingCourse) return;
@@ -62,8 +66,20 @@ function retryLoadCourse() {
   if (course) loadBankData(course);
 }
 
+// statusMap[key] 新格式：{ mastery?: 'mastered'|'familiar'|'unknown', favorite?: true }
+// 旧格式字符串 'favorite'|'mastered'|... 在 loadStatus 时迁移
 const STATUS_KEY = 'mathbank_status_v1';
 let statusMap = {};
+
+const MASTERY_STATUSES = [
+  { key: 'mastered', label: '已掌握', cls: 'mastered' },
+  { key: 'familiar', label: '不熟', cls: 'familiar' },
+  { key: 'unknown', label: '不会', cls: 'unknown' }
+];
+const MASTERY_KEYS = new Set(MASTERY_STATUSES.map(m => m.key));
+
+// 详情弹窗：支持打开不在当前筛选列表中的题
+let currentModalQuestion = null;
 
 function questionKey(q) { return q.chapter + '::' + q.id; }
 function displayId(q) { return (q.id || '').replace(/^[XA]/, ''); }
@@ -71,6 +87,67 @@ function normalizeDisplayText(text) {
   if (!text) return text;
   // 修复 OCR 导致的括号左右不一致：如 （) 或 (） 统一为 （）
   return text.replace(/（\s*\)/g, '（）').replace(/\(\s*）/g, '（）');
+}
+
+/** 单反斜杠，避免源码里 \\\\ 被二次转义成 KaTeX 换行 */
+const TEX_BS = '\u005c';
+
+/** Big-O / log / 根号等复杂度记号 → KaTeX 可识别的 $...$ */
+function complexityInnerToLatex(inner) {
+  let s = String(inner || '').trim();
+  s = s.replace(/²/g, '^{2}').replace(/³/g, '^{3}').replace(/¹/g, '^{1}');
+  s = s.replace(/√\s*\{?\s*([A-Za-z0-9]+)\s*\}?/g, TEX_BS + 'sqrt{$1}');
+  s = s.replace(/√/g, TEX_BS + 'sqrt{}');
+  // nlog2n / log2n（先长后短）→ n\log_2 n；勿二次匹配已转义的 \log
+  if (!s.includes(TEX_BS + 'log')) {
+    s = s.replace(/n\s*log\s*_?\s*2\s*n/gi, 'n' + TEX_BS + 'log_2 n');
+    s = s.replace(/nlog2n/gi, 'n' + TEX_BS + 'log_2 n');
+    s = s.replace(/(?<![A-Za-z\\])log\s*_?\s*2\s*n/gi, TEX_BS + 'log_2 n');
+    s = s.replace(/(?<![A-Za-z\\])log2n/gi, TEX_BS + 'log_2 n');
+  }
+  // n^{1/3} 已是 LaTeX；n1/3 / nl/3 容错
+  s = s.replace(/\bn\s*\{\s*1\s*\/\s*3\s*\}/g, 'n^{1/3}');
+  s = s.replace(/\bn\s*1\s*\/\s*3\b/g, 'n^{1/3}');
+  s = s.replace(/\bn\s*l\s*\/\s*3\b/gi, 'n^{1/3}');
+  s = s.replace(/\bn\s*1\s*\/\s*2\b/g, 'n^{1/2}');
+  s = s.replace(/\bn\^2\b/g, 'n^{2}');
+  s = s.replace(/\bn\^3\b/g, 'n^{3}');
+  return s;
+}
+
+/**
+ * 选项/解析里的复杂度、上标等：包进 $...$，供 renderKatex 渲染。
+ * 已有 $ 或 \\( 的文本只处理定界符外片段，避免二次包裹。
+ */
+function prepareMathText(text) {
+  let t = normalizeDisplayText(text);
+  if (!t) return t;
+
+  t = t.replace(/²/g, '^{2}').replace(/³/g, '^{3}').replace(/¹/g, '^{1}');
+
+  // 先包 O(...)，内层一次性转成 LaTeX（勿再对 $...$ 内部做 n^{} 替换）
+  if (!/\$|\\\(|\\\[/.test(t)) {
+    t = t.replace(/\b([Oo])\s*\(\s*([^)]+?)\s*\)/g, (_, letter, inner) => {
+      return '$' + letter + '(' + complexityInnerToLatex(inner) + ')$';
+    });
+  }
+
+  // 仅处理 $...$ 之外的片段
+  const parts = t.split(/(\$[^$]*\$)/);
+  for (let i = 0; i < parts.length; i++) {
+    if (i % 2 === 1) continue; // 已在数学定界符内
+    let s = parts[i];
+    if (!s) continue;
+    s = s.replace(/\bnlog2n\b/gi, '$n' + TEX_BS + 'log_2 n$');
+    s = s.replace(/\blog2n\b/gi, '$' + TEX_BS + 'log_2 n$');
+    s = s.replace(/\bn\^\{2\}/g, '$n^{2}$');
+    s = s.replace(/\bn\^\{3\}/g, '$n^{3}$');
+    s = s.replace(/\bn\^\{1\/3\}/g, '$n^{1/3}$');
+    s = s.replace(/\bn\^\{1\/2\}/g, '$n^{1/2}$');
+    s = s.replace(/√\s*([A-Za-z0-9]+)/g, '$' + TEX_BS + 'sqrt{$1}$');
+    parts[i] = s;
+  }
+  return parts.join('');
 }
 function getTotalPages() { return Math.ceil(filteredQuestions.length / pageSize) || 1; }
 
@@ -88,6 +165,26 @@ function debounce(fn, ms) {
 }
 
 function resetAndFilter() { currentPage = 1; applyFilters(); }
+
+function resetAllFilters() {
+  document.getElementById('searchInput').value = '';
+  document.getElementById('typeFilter').value = '';
+  document.getElementById('featureFilter').value = '';
+  document.getElementById('sortSelect').value = 'default';
+  selectedChapter = '';
+  activeStat = 'all';
+  activeStatusFilter = '';
+  renderChapters();
+  resetAndFilter();
+}
+
+function toggleViewMode() {
+  viewMode = viewMode === 'compact' ? 'default' : 'compact';
+  localStorage.setItem(VIEW_KEY, viewMode);
+  document.body.classList.toggle('compact-view', viewMode === 'compact');
+  const search = document.getElementById('searchInput').value.trim().toLowerCase();
+  renderGrid(search);
+}
 
 function openModal(id) {
   document.getElementById(id).classList.add('active');
@@ -120,42 +217,632 @@ function getCurrentChapters() {
 }
 
 // ========================
-// Status (favorite / correct / wrong)
+// Status (favorite / mastery) & Practice result & Spaced Repetition
 // ========================
+const PRACTICE_KEY = 'mathbank_practice_v1';
+let practiceMap = {};
+
+// 间隔重复：每题记录「上次做答时间 / 答对累计次数 / 下次复习时间」
+// 间隔阶梯：第 1/2/3/4/N 次答对 → 1 / 3 / 7 / 14 / 30 天；答错 → 重置为 1 天
+const REVIEW_KEY = 'mathbank_review_v1';
+let reviewMap = {};
+const REVIEW_INTERVALS = [1, 3, 7, 14, 30];
+const MS_PER_DAY = 86400000;
+
+// 个人笔记：按题目 key 存到 localStorage
+const NOTES_KEY = 'mathbank_notes_v1';
+let notesMap = {};
+
+// 题目纠错反馈：按题目 key 累积 issue 字符串数组
+const ISSUES_KEY = 'mathbank_issues_v1';
+let issuesMap = {};
+
+// 错题日志：每次答错追加一条
+const WRONG_LOG_KEY = 'mathbank_wrong_log_v1';
+let wrongLog = [];  // 数组：{key, at, chapter, qid, type, page, userAnswer?, correctAnswer?}
+
+// 答题历史：每次答题追加（用于"今日做题数"等统计更准确）
+const ATTEMPT_LOG_KEY = 'mathbank_attempt_log_v1';
+let attemptLog = [];  // 数组：{key, at, isCorrect, course}
+
+// 搜索历史：最近 10 次搜索词
+const SEARCH_HISTORY_KEY = 'mathbank_search_history_v1';
+const SEARCH_HISTORY_MAX = 10;
+let searchHistory = [];
+
+// 列表视图模式：default | compact
+const VIEW_KEY = 'mathbank_view_v1';
+let viewMode = 'default';
+
+function safeSetItem(key, value) {
+  if (window.ViewerStorage && ViewerStorage.safeSetItem) {
+    const ok = ViewerStorage.safeSetItem(key, value);
+    if (!ok && typeof flashToast === 'function') {
+      flashToast('本地存储空间不足，请导出备份后清理');
+    }
+    return ok;
+  }
+  try {
+    localStorage.setItem(key, value);
+    return true;
+  } catch (e) {
+    if (typeof flashToast === 'function') {
+      flashToast('本地存储空间不足，请导出备份后清理');
+    }
+    return false;
+  }
+}
+
+// 分片 map 读取：loadShardedMap 自带旧单 key 兼容（无 __meta 时读 baseKey）
+function loadSharded(baseKey) {
+  if (window.ViewerStorage && ViewerStorage.loadShardedMap) {
+    return ViewerStorage.loadShardedMap(baseKey) || {};
+  }
+  try {
+    const raw = localStorage.getItem(baseKey);
+    return raw ? JSON.parse(raw) : {};
+  } catch (e) {
+    return {};
+  }
+}
+
+// 分片 map 写入：大对象拆 key，saveShardedMap 写成功后会清掉旧单 key
+function saveSharded(baseKey, map) {
+  if (window.ViewerStorage && ViewerStorage.saveShardedMap) {
+    return ViewerStorage.saveShardedMap(baseKey, map);
+  }
+  return safeSetItem(baseKey, JSON.stringify(map || {}));
+}
+
+function normalizeStatusEntry(val) {
+  // 新格式
+  if (val && typeof val === 'object' && !Array.isArray(val)) {
+    return {
+      mastery: MASTERY_KEYS.has(val.mastery) ? val.mastery : '',
+      favorite: !!val.favorite
+    };
+  }
+  // 旧格式：单一字符串
+  if (val === 'favorite') return { mastery: '', favorite: true };
+  if (MASTERY_KEYS.has(val)) return { mastery: val, favorite: false };
+  return { mastery: '', favorite: false };
+}
+
+function getStatusEntry(qOrKey) {
+  const key = typeof qOrKey === 'string' ? qOrKey : questionKey(qOrKey);
+  const raw = statusMap[key];
+  if (!raw) return { mastery: '', favorite: false };
+  return normalizeStatusEntry(raw);
+}
+
+function writeStatusEntry(key, entry) {
+  if (!entry.mastery && !entry.favorite) delete statusMap[key];
+  else statusMap[key] = { mastery: entry.mastery || '', favorite: !!entry.favorite };
+}
+
 function loadStatus() {
   try {
-    const raw = localStorage.getItem(STATUS_KEY);
-    statusMap = raw ? JSON.parse(raw) : {};
+    statusMap = loadSharded(STATUS_KEY);
+    const praw = localStorage.getItem(PRACTICE_KEY);
+    practiceMap = praw ? JSON.parse(praw) : {};
+    const rraw = localStorage.getItem(REVIEW_KEY);
+    reviewMap = rraw ? JSON.parse(rraw) : {};
+    notesMap = loadSharded(NOTES_KEY);
+    const iraw = localStorage.getItem(ISSUES_KEY);
+    issuesMap = iraw ? JSON.parse(iraw) : {};
+    const wraw = localStorage.getItem(WRONG_LOG_KEY);
+    wrongLog = wraw ? JSON.parse(wraw) : [];
+    const arraw = localStorage.getItem(ATTEMPT_LOG_KEY);
+    attemptLog = arraw ? JSON.parse(arraw) : [];
+    const shraw = localStorage.getItem(SEARCH_HISTORY_KEY);
+    searchHistory = shraw ? JSON.parse(shraw) : [];
+    viewMode = localStorage.getItem(VIEW_KEY) || 'default';
+    if (viewMode === 'compact') document.body.classList.add('compact-view');
+    // 迁移：correct/wrong → practiceMap；字符串 status → {mastery, favorite}
+    let migrated = false;
+    Object.entries(statusMap).forEach(([key, val]) => {
+      if (val === 'correct' || val === 'wrong') {
+        practiceMap[key] = val;
+        delete statusMap[key];
+        migrated = true;
+        return;
+      }
+      if (typeof val === 'string') {
+        const entry = normalizeStatusEntry(val);
+        writeStatusEntry(key, entry);
+        migrated = true;
+      } else if (val && typeof val === 'object') {
+        // 规范化字段
+        const entry = normalizeStatusEntry(val);
+        if (!entry.mastery && !entry.favorite) {
+          delete statusMap[key];
+          migrated = true;
+        } else if (val.mastery !== entry.mastery || !!val.favorite !== entry.favorite || Object.keys(val).some(k => k !== 'mastery' && k !== 'favorite')) {
+          writeStatusEntry(key, entry);
+          migrated = true;
+        }
+      }
+    });
+    if (migrated) {
+      saveStatus();
+      savePractice();
+    }
   } catch (e) {
     statusMap = {};
+    practiceMap = {};
+    reviewMap = {};
+    notesMap = {};
+    issuesMap = {};
+    wrongLog = [];
+    attemptLog = [];
   }
 }
 
 function saveStatus() {
-  try {
-    localStorage.setItem(STATUS_KEY, JSON.stringify(statusMap));
-  } catch (e) {}
+  saveSharded(STATUS_KEY, statusMap);
 }
 
-function getStatus(q) {
-  return statusMap[questionKey(q)] || '';
+function savePractice() {
+  safeSetItem(PRACTICE_KEY, JSON.stringify(practiceMap));
 }
 
-function setStatus(q, status) {
+function saveReview() {
+  safeSetItem(REVIEW_KEY, JSON.stringify(reviewMap));
+}
+
+function saveNotes() {
+  safeSetItem(NOTES_KEY, JSON.stringify(notesMap));
+}
+function saveIssues() {
+  safeSetItem(ISSUES_KEY, JSON.stringify(issuesMap));
+}
+
+function saveSearchHistory() {
+  safeSetItem(SEARCH_HISTORY_KEY, JSON.stringify(searchHistory));
+}
+function pushSearchHistory(term) {
+  if (!term) return;
+  // 去重，最新的放最前
+  searchHistory = [term, ...searchHistory.filter(t => t !== term)].slice(0, SEARCH_HISTORY_MAX);
+  saveSearchHistory();
+  renderSearchHistoryDropdown();
+}
+function renderSearchHistoryDropdown() {
+  const dd = document.getElementById('searchHistoryDropdown');
+  if (!dd) return;
+  if (!searchHistory.length) { dd.hidden = true; dd.innerHTML = ''; return; }
+  dd.hidden = false;
+  dd.innerHTML = `
+    <div class="search-history-head">
+      <span>最近搜索</span>
+      <button type="button" class="search-history-clear" id="searchHistoryClear">清空</button>
+    </div>
+    ${searchHistory.map(t => `<div class="search-history-item" data-term="${escapeHtml(t)}">${escapeHtml(t)}</div>`).join('')}
+  `;
+  dd.querySelectorAll('.search-history-item').forEach(el => {
+    el.onclick = () => {
+      const inp = document.getElementById('searchInput');
+      inp.value = el.dataset.term;
+      dd.hidden = true;
+      resetAndFilter();
+    };
+  });
+  const clr = document.getElementById('searchHistoryClear');
+  if (clr) clr.onclick = (e) => {
+    e.stopPropagation();
+    searchHistory = [];
+    saveSearchHistory();
+    renderSearchHistoryDropdown();
+  };
+}
+function getNote(q) { return notesMap[questionKey(q)] || ''; }
+function setNote(q, text) {
   const key = questionKey(q);
-  if (!status) delete statusMap[key];
-  else statusMap[key] = status;
+  if (text) notesMap[key] = text; else delete notesMap[key];
+  saveNotes();
+}
+
+// 取得题目的复习记录；若无记录则返回初始结构
+function getReview(q) {
+  const key = questionKey(q);
+  return reviewMap[key] || { lastSeenAt: null, lastResult: null, streak: 0, nextReviewAt: null, intervalDays: null };
+}
+
+// 根据最近答对次数返回间隔天数（按 REVIEW_INTERVALS 取值）
+function streakToInterval(streak) {
+  const idx = Math.max(0, Math.min(streak, REVIEW_INTERVALS.length) - 1);
+  return REVIEW_INTERVALS[idx === -1 ? 0 : idx];
+}
+
+// 答对 / 答错后更新该题的复习计划
+function updateReviewSchedule(q, isCorrect, now) {
+  const key = questionKey(q);
+  const ts = now || Date.now();
+  const prev = getReview(q);
+  let streak, intervalDays;
+  if (isCorrect) {
+    streak = (prev.streak || 0) + 1;
+    intervalDays = streakToInterval(streak);
+  } else {
+    // 答错：重置为第 1 次（明天再练）
+    streak = 0;
+    intervalDays = 1;
+  }
+  reviewMap[key] = {
+    lastSeenAt: ts,
+    lastResult: isCorrect ? 'correct' : 'wrong',
+    streak,
+    nextReviewAt: ts + intervalDays * MS_PER_DAY,
+    intervalDays
+  };
+  saveReview();
+}
+
+// 列出已到期（nextReviewAt <= now）的题目；遵循当前选中课程 + 章节过滤
+function getDueQuestions(now) {
+  const ts = now || Date.now();
+  const out = [];
+  for (const q of allQuestions) {
+    const r = reviewMap[questionKey(q)];
+    if (!r || !r.nextReviewAt) continue;
+    if (r.nextReviewAt <= ts) out.push(q);
+  }
+  return out;
+}
+
+// 当前已到期题目数（用于侧栏徽章）
+function dueCount(now) {
+  return getDueQuestions(now).length;
+}
+
+// 刷新侧栏今日复习徽章
+function refreshDueBadge() {
+  const badge = document.getElementById('dueBadge');
+  const btn = document.getElementById('btnDueReview');
+  if (!badge || !btn) return;
+  const n = dueCount();
+  badge.textContent = n;
+  badge.hidden = false;
+  badge.classList.toggle('zero', n === 0);
+  btn.title = n > 0 ? `今日复习：${n} 道题到期` : '今日复习：暂无到期题';
+}
+
+function buildFullExportPayload() {
+  return {
+    version: 2,
+    exportedAt: new Date().toISOString(),
+    status: statusMap,
+    practice: practiceMap,
+    review: reviewMap,
+    notes: notesMap,
+    issues: issuesMap,
+    wrongLog: wrongLog,
+    attemptLog: attemptLog,
+    searchHistory: searchHistory
+  };
+}
+
+function exportProgress() {
+  const data = buildFullExportPayload();
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `mathbank-progress-${new Date().toISOString().slice(0, 10)}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  flashToast('已导出完整进度（含笔记/复习/错题）');
+}
+
+function applyImportedStatus(rawStatus) {
+  if (!rawStatus || typeof rawStatus !== 'object') return;
+  const next = {};
+  Object.entries(rawStatus).forEach(([key, val]) => {
+    if (val === 'correct' || val === 'wrong') {
+      practiceMap[key] = val;
+      return;
+    }
+    const entry = normalizeStatusEntry(val);
+    if (entry.mastery || entry.favorite) next[key] = entry;
+  });
+  statusMap = next;
+}
+
+function importProgress(file) {
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      const data = JSON.parse(e.target.result);
+      if (data.status && typeof data.status === 'object') {
+        applyImportedStatus(data.status);
+        saveStatus();
+      }
+      if (data.practice && typeof data.practice === 'object') {
+        practiceMap = data.practice;
+        savePractice();
+      }
+      // v2 全量字段（备份 / 新导出）
+      if (data.review && typeof data.review === 'object') {
+        reviewMap = data.review;
+        saveReview();
+      }
+      if (data.notes && typeof data.notes === 'object') {
+        notesMap = data.notes;
+        saveNotes();
+      }
+      if (data.issues && typeof data.issues === 'object') {
+        issuesMap = data.issues;
+        saveIssues();
+      }
+      if (Array.isArray(data.wrongLog)) {
+        wrongLog = data.wrongLog;
+        safeSetItem(WRONG_LOG_KEY, JSON.stringify(wrongLog));
+      }
+      if (Array.isArray(data.attemptLog)) {
+        attemptLog = data.attemptLog;
+        safeSetItem(ATTEMPT_LOG_KEY, JSON.stringify(attemptLog));
+      }
+      if (Array.isArray(data.searchHistory)) {
+        searchHistory = data.searchHistory.slice(0, SEARCH_HISTORY_MAX);
+        saveSearchHistory();
+      }
+      renderStats();
+      refreshChapterMastery();
+      refreshDueBadge();
+      const search = document.getElementById('searchInput').value.trim().toLowerCase();
+      renderGrid(search);
+      flashToast(data.version >= 2 ? '完整进度已导入' : '进度已导入（旧版文件，仅含掌握/练习）');
+    } catch (err) {
+      alert('导入失败：文件格式不正确');
+    }
+  };
+  reader.readAsText(file);
+}
+
+/** 兼容旧调用：返回 mastery，若无 mastery 且收藏则 'favorite'（仅用于部分展示） */
+function getStatus(q) {
+  const e = getStatusEntry(q);
+  if (e.mastery) return e.mastery;
+  if (e.favorite) return 'favorite';
+  return '';
+}
+
+function getMastery(q) {
+  return getStatusEntry(q).mastery;
+}
+
+function isFavorite(q) {
+  return getStatusEntry(q).favorite;
+}
+
+function getPracticeResult(q) {
+  return practiceMap[questionKey(q)] || '';
+}
+
+function setMastery(q, status) {
+  const key = questionKey(q);
+  const entry = getStatusEntry(key);
+  // 再次点击同一掌握度 → 清除掌握度（保留收藏）
+  if (!status || entry.mastery === status) entry.mastery = '';
+  else entry.mastery = status;
+  writeStatusEntry(key, entry);
   saveStatus();
+  // 手动调整掌握度时同步刷新复习计划
+  if (entry.mastery === 'mastered') {
+    const ts = Date.now();
+    reviewMap[key] = { lastSeenAt: ts, lastResult: null, streak: 1, nextReviewAt: ts + 7 * MS_PER_DAY, intervalDays: 7 };
+  } else if (entry.mastery === 'familiar') {
+    const ts = Date.now();
+    reviewMap[key] = { lastSeenAt: ts, lastResult: null, streak: 0, nextReviewAt: ts + 2 * MS_PER_DAY, intervalDays: 2 };
+  } else if (entry.mastery === 'unknown') {
+    const ts = Date.now();
+    reviewMap[key] = { lastSeenAt: ts, lastResult: 'wrong', streak: 0, nextReviewAt: ts + MS_PER_DAY, intervalDays: 1 };
+  } else {
+    // 仅清除掌握度时不强制删 review（避免误伤练习产生的计划）；无掌握时若无 nextReview 可保留
+  }
+  saveReview();
+  renderStats();
+  renderMarkDashboard();
+  refreshChapterMastery();
+  refreshDueBadge();
+  const search = document.getElementById('searchInput').value.trim().toLowerCase();
+  renderGrid(search);
+  // 从平台打开时：标记后后台静默同步（无 UI）
+  if (typeof queueAutoSyncToPlatform === 'function' && entry.mastery) {
+    try { localStorage.removeItem('wd408_last_sync_sig'); } catch (e) {}
+    queueAutoSyncToPlatform(q);
+  }
 }
 
 function toggleFavorite(q) {
   const key = questionKey(q);
-  if (statusMap[key] === 'favorite') delete statusMap[key];
-  else statusMap[key] = 'favorite';
+  const entry = getStatusEntry(key);
+  entry.favorite = !entry.favorite;
+  writeStatusEntry(key, entry);
   saveStatus();
   renderStats();
   const search = document.getElementById('searchInput').value.trim().toLowerCase();
   renderGrid(search);
+}
+
+function setPracticeResult(q, isCorrect) {
+  const key = questionKey(q);
+  practiceMap[key] = isCorrect ? 'correct' : 'wrong';
+  savePractice();
+  // 写入答题历史
+  attemptLog.push({key, at: Date.now(), isCorrect, course: q.course || getCurrentCourse() || ''});
+  if (attemptLog.length > 2000) attemptLog = attemptLog.slice(-2000);
+  safeSetItem(ATTEMPT_LOG_KEY, JSON.stringify(attemptLog));
+  if (!isCorrect) {
+    wrongLog.push({
+      key,
+      at: Date.now(),
+      chapter: q.chapter || '',
+      qid: q.id || '',
+      type: q.type || '',
+      page: q.page || 0,
+      correctAnswer: q.answer && q.answer.choice
+    });
+    if (wrongLog.length > 2000) wrongLog = wrongLog.slice(-2000);
+    safeSetItem(WRONG_LOG_KEY, JSON.stringify(wrongLog));
+  }
+}
+
+// ========================
+// 继续上次（对齐数学题库：记录章节+题号，顶栏一键继续）
+// ========================
+let CURSOR_KEY = 'wd408_cursor_default';
+
+function refreshCursorKey() {
+  const course = getCurrentCourse() || 'default';
+  CURSOR_KEY = 'wd408_cursor_' + course;
+}
+
+function loadCursor() {
+  try {
+    const raw = localStorage.getItem(CURSOR_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch (e) {
+    return null;
+  }
+}
+
+function saveCursor(q) {
+  if (!q) return;
+  const course = q.course || getCurrentCourse() || '';
+  const payload = {
+    course: course,
+    chapter: q.chapter || '',
+    chapterKey: q.chapterKey || '',
+    questionId: String(q.id || ''),
+    type: q.type || '',
+    page: q.page || null,
+    at: Date.now(),
+  };
+  try {
+    localStorage.setItem(CURSOR_KEY, JSON.stringify(payload));
+  } catch (e) {}
+  // 供平台/首页「继续上次」读取（与数学 mathbank_last 并列）
+  try {
+    localStorage.setItem('wd408_last', JSON.stringify({
+      key: '408',
+      course: course,
+      title: '王道 408 · ' + (course || '精选'),
+      href: '/banks/408/?course=' + encodeURIComponent(course) + '&resume=1',
+      chapter: payload.chapter,
+      chapterKey: payload.chapterKey,
+      questionId: payload.questionId,
+      label: (payload.chapter ? payload.chapter + ' · ' : '') + payload.questionId,
+      at: payload.at,
+    }));
+  } catch (e) {}
+  updateResumeBar();
+  updateChapterCursorUI();
+}
+
+function clearCursor() {
+  try { localStorage.removeItem(CURSOR_KEY); } catch (e) {}
+  updateResumeBar();
+  updateChapterCursorUI();
+}
+
+function updateResumeBar() {
+  const bar = document.getElementById('resumeBar');
+  const textEl = document.getElementById('resumeText');
+  if (!bar || !textEl) return;
+  const pos = loadCursor();
+  if (!pos || !pos.questionId) {
+    bar.classList.remove('is-visible');
+    bar.hidden = true;
+    return;
+  }
+  const label = (pos.chapter ? pos.chapter + ' · ' : '') + pos.questionId;
+  textEl.innerHTML = '上次练到：<strong>' + escapeHtml(label) + '</strong>'
+    + (pos.type ? ' <span style="color:var(--text-tertiary)">· ' + escapeHtml(pos.type) + '</span>' : '');
+  bar.hidden = false;
+  bar.classList.add('is-visible');
+}
+
+function updateChapterCursorUI() {
+  const cursor = loadCursor();
+  document.querySelectorAll('#chapterList .tree-toggle').forEach(el => {
+    const key = el.dataset.key || '';
+    // 叶子章节 key 为 l1|l2|section；命中则高亮
+    const isCursor = !!(cursor && cursor.chapterKey && key === cursor.chapterKey);
+    el.classList.toggle('has-cursor', isCursor);
+    const labelSpan = el.querySelector('span:nth-child(2)') || el.querySelector('span');
+    if (!labelSpan) return;
+    let dot = el.querySelector('.cursor-dot');
+    if (isCursor && !dot) {
+      const arrow = el.querySelector('.arrow');
+      if (arrow) arrow.insertAdjacentHTML('afterend', '<span class="cursor-dot" title="上次练习章节"></span>');
+      else el.insertAdjacentHTML('afterbegin', '<span class="cursor-dot" title="上次练习章节"></span>');
+    } else if (!isCursor && dot) {
+      dot.remove();
+    }
+  });
+}
+
+function findQuestionByCursor(pos) {
+  if (!pos) return null;
+  // 优先 chapter + id
+  let q = allQuestions.find(x =>
+    String(x.id) === String(pos.questionId)
+    && (!pos.chapter || x.chapter === pos.chapter)
+  );
+  if (q) return q;
+  // 回退：仅 id（当前课程内）
+  q = allQuestions.find(x => String(x.id) === String(pos.questionId));
+  return q || null;
+}
+
+function resumeLastPosition() {
+  const pos = loadCursor();
+  if (!pos) {
+    flashToast('没有上次练习记录');
+    return;
+  }
+  // 切到对应课程
+  if (pos.course && pos.course !== getCurrentCourse()) {
+    switchCourse(pos.course).then(() => {
+      setTimeout(() => resumeLastPosition(), 50);
+    });
+    return;
+  }
+  // 按章节筛选，方便对照侧栏
+  if (pos.chapterKey) {
+    selectedChapter = pos.chapterKey;
+  } else {
+    selectedChapter = '';
+  }
+  document.getElementById('searchInput').value = '';
+  document.getElementById('typeFilter').value = '';
+  document.getElementById('featureFilter').value = '';
+  activeStatusFilter = '';
+  activeStat = 'all';
+  applyFilters();
+  renderChapters();
+
+  let q = findQuestionByCursor(pos);
+  let idx = q ? filteredQuestions.indexOf(q) : -1;
+  if (idx < 0 && pos.chapterKey) {
+    // 章节筛选下找不到则放宽到全部
+    selectedChapter = '';
+    applyFilters();
+    renderChapters();
+    q = findQuestionByCursor(pos);
+    idx = q ? filteredQuestions.indexOf(q) : -1;
+  }
+  if (idx < 0 || !q) {
+    flashToast('找不到上次的题目，可能数据已更新');
+    return;
+  }
+  currentPage = Math.floor(idx / pageSize) + 1;
+  renderGrid(document.getElementById('searchInput').value.trim().toLowerCase());
+  renderPagination();
+  openDetail(idx);
+  flashToast('已继续：' + (pos.chapter ? pos.chapter + ' · ' : '') + pos.questionId);
 }
 
 // ========================
@@ -248,8 +935,51 @@ async function init() {
 
   renderChapters();
   renderStats();
+  renderMarkDashboard();
   applyFilters();
+  refreshDueBadge();
   setupEvents();
+  refreshCursorKey();
+  updateResumeBar();
+  updateChapterCursorUI();
+  setupShellContinue();
+  const btnRandInline = document.getElementById('btnRandomInline');
+  if (btnRandInline) btnRandInline.addEventListener('click', randomQuestion);
+
+  // 打开、切回页面、重新联网及本地数据变化时自动双向同步。
+  if (typeof setupAutomaticPlatformSync === 'function') setupAutomaticPlatformSync();
+  // 主页/链接带 ?resume=1 时自动打开上次题目
+  try {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('resume') === '1' && loadCursor()) {
+      setTimeout(() => resumeLastPosition(), 120);
+    }
+  } catch (e) {}
+}
+
+/** 顶栏「继续上次」：本册 / 数学 / 408 统一入口 */
+function setupShellContinue() {
+  const cont = document.getElementById('shellContinue');
+  if (!cont) return;
+  const pos = typeof loadCursor === 'function' ? loadCursor() : null;
+  let lastMath = null;
+  try { lastMath = JSON.parse(localStorage.getItem('mathbank_last') || 'null'); } catch (e) {}
+  if (pos && pos.questionId) {
+    cont.hidden = false;
+    cont.textContent = '继续本册';
+    cont.href = '#';
+    cont.onclick = (e) => { e.preventDefault(); resumeLastPosition(); };
+  } else if (lastMath && lastMath.href) {
+    cont.hidden = false;
+    cont.textContent = '继续数学';
+    // mathbank_last.href 常为相对路径，平台下改绝对
+    let href = lastMath.href;
+    if (href.startsWith('./')) href = '/banks/math/' + href.replace(/^\.\//, '');
+    if (!href.includes('resume=1')) href += (href.includes('?') ? '&' : '?') + 'resume=1';
+    cont.href = href;
+  } else {
+    cont.hidden = true;
+  }
 }
 
 function renderCourseTabs() {
@@ -293,6 +1023,7 @@ async function switchCourse(course) {
 
   currentChapters = getCurrentChapters();
   buildAllQuestions();
+  refreshCursorKey();
 
   document.querySelectorAll('.course-tab').forEach(el => {
     el.classList.toggle('active', el.dataset.course === course);
@@ -303,6 +1034,8 @@ async function switchCourse(course) {
   renderChapters();
   renderStats();
   applyFilters();
+  updateResumeBar();
+  updateChapterCursorUI();
 }
 
 // ========================
@@ -336,7 +1069,7 @@ function makeToggle(text, count, extraClass, dataset, unsafe) {
   btn.className = 'tree-toggle ' + (extraClass || '');
   if (dataset) btn.dataset.key = dataset;
   const label = unsafe ? text : escapeHtml(text);
-  btn.innerHTML = '<span class="arrow"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></span><span style="flex:1">' + label + '</span><span class="count">' + count + '</span>';
+  btn.innerHTML = '<span class="arrow"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></span><span style="flex:1">' + label + '</span><span class="mastery-counts" data-role="masteryCounts"></span><span class="count">' + count + '</span>';
   return btn;
 }
 
@@ -345,7 +1078,7 @@ function renderChapters() {
   container.innerHTML = '';
 
   const allWrap = document.createElement('div');
-  const allItem = makeToggle('全部章节', allQuestions.length, 'tree-l1 all-item' + (selectedChapter ? '' : ' active'), '');
+  const allItem = makeToggle('全部章节', allQuestions.length, 'tree-l1 all-item' + (selectedChapter ? '' : ' active'), '__all__');
   allItem.onclick = (e) => {
     e.stopPropagation();
     selectChapter('', allItem);
@@ -357,7 +1090,7 @@ function renderChapters() {
 
   for (const [l1Name, l1Node] of tree.entries()) {
     const l1Wrap = document.createElement('div');
-    const l1Btn = makeToggle(l1Name, l1Node.total, 'tree-l1', '');
+    const l1Btn = makeToggle(l1Name, l1Node.total, 'tree-l1', l1Name);
     const l1Children = document.createElement('div');
     l1Children.className = 'tree-children';
 
@@ -370,7 +1103,7 @@ function renderChapters() {
     for (const [l2Name, l2Node] of l1Node.l2Map.entries()) {
       const l2Wrap = document.createElement('div');
       l2Wrap.className = 'tree-l2-wrap';
-      const l2Btn = makeToggle(l2Name, l2Node.total, 'tree-l2', '');
+      const l2Btn = makeToggle(l2Name, l2Node.total, 'tree-l2', l1Name + '|' + l2Name);
       const l2Children = document.createElement('div');
       l2Children.className = 'tree-children';
 
@@ -406,6 +1139,8 @@ function renderChapters() {
     container.appendChild(l1Wrap);
   }
 
+  updateChapterCursorUI();
+
   if (selectedChapter) {
     const buttons = container.querySelectorAll('.tree-l3');
     for (const btn of buttons) {
@@ -424,6 +1159,76 @@ function renderChapters() {
       }
     }
   }
+
+  refreshChapterMastery();
+}
+
+function computeChapterMastery() {
+  const map = new Map();
+  for (const q of allQuestions) {
+    const key = q.chapterKey || '';
+    if (!map.has(key)) {
+      map.set(key, { mastered: 0, familiar: 0, unknown: 0, unmarked: 0 });
+    }
+    const c = map.get(key);
+    const st = getMastery(q);
+    if (st === 'mastered') c.mastered++;
+    else if (st === 'familiar') c.familiar++;
+    else if (st === 'unknown') c.unknown++;
+    else c.unmarked++;
+  }
+  return map;
+}
+
+function addMasteryCounts(a, b) {
+  return {
+    mastered: a.mastered + b.mastered,
+    familiar: a.familiar + b.familiar,
+    unknown: a.unknown + b.unknown,
+    unmarked: a.unmarked + b.unmarked,
+  };
+}
+
+function zeroMastery() {
+  return { mastered: 0, familiar: 0, unknown: 0, unmarked: 0 };
+}
+
+function masteryCountsForKey(map, key) {
+  if (key === '__all__') {
+    let total = zeroMastery();
+    for (const c of map.values()) total = addMasteryCounts(total, c);
+    return total;
+  }
+  const parts = key.split('|');
+  if (parts.length >= 3) {
+    return map.get(key) || zeroMastery();
+  }
+  const prefix = key + '|';
+  let total = zeroMastery();
+  for (const [k, c] of map.entries()) {
+    if (k.startsWith(prefix)) total = addMasteryCounts(total, c);
+  }
+  return total;
+}
+
+function renderMasteryCounts(el, counts) {
+  const container = el.querySelector('[data-role="masteryCounts"]');
+  if (!container) return;
+  const pieces = [];
+  if (counts.mastered) pieces.push('<span class="mc-mastered">' + counts.mastered + '</span>');
+  if (counts.familiar) pieces.push('<span class="mc-familiar">' + counts.familiar + '</span>');
+  if (counts.unknown) pieces.push('<span class="mc-unknown">' + counts.unknown + '</span>');
+  container.innerHTML = pieces.join('');
+}
+
+function refreshChapterMastery() {
+  if (!allQuestions.length) return;
+  const map = computeChapterMastery();
+  document.querySelectorAll('#chapterList .tree-toggle').forEach(btn => {
+    const key = btn.dataset.key || '';
+    if (!key) return;
+    renderMasteryCounts(btn, masteryCountsForKey(map, key));
+  });
 }
 
 function selectChapter(key, btn) {
@@ -446,15 +1251,20 @@ let activeStatusFilter = '';
 function renderStats() {
   const types = {};
   const counts = {sub: 0, image: 0};
-  let favCount = 0, wrongCount = 0, doneCount = 0;
+  let favCount = 0, unmarkedCount = 0;
+  const masteryCounts = {mastered: 0, familiar: 0, unknown: 0};
+  let wrongCount = 0, doneCount = 0;
   allQuestions.forEach(q => {
     types[q.type] = (types[q.type] || 0) + 1;
     if (q.sub_questions) counts.sub++;
     if (q.has_image) counts.image++;
-    const st = getStatus(q);
-    if (st === 'favorite') favCount++;
-    else if (st === 'wrong') wrongCount++;
-    if (st === 'correct' || st === 'wrong') doneCount++;
+    if (isFavorite(q)) favCount++;
+    const mastery = getMastery(q);
+    if (masteryCounts[mastery] !== undefined) masteryCounts[mastery]++;
+    else unmarkedCount++;
+    const pr = getPracticeResult(q);
+    if (pr === 'wrong') wrongCount++;
+    if (pr === 'correct' || pr === 'wrong') doneCount++;
   });
 
   const stats = [
@@ -463,7 +1273,11 @@ function renderStats() {
     {label: '解答', value: types['解答题'] || 0, action: '解答题'},
     {label: '子问', value: counts.sub, action: 'sub'},
     {label: '图片', value: counts.image, action: 'image'},
+    {label: '未标', value: unmarkedCount, action: 'unmarked', kind: 'status'},
     {label: '收藏', value: favCount, action: 'favorite', kind: 'status'},
+    {label: '已掌握', value: masteryCounts.mastered, action: 'mastered', kind: 'status'},
+    {label: '不熟', value: masteryCounts.familiar, action: 'familiar', kind: 'status'},
+    {label: '不会', value: masteryCounts.unknown, action: 'unknown', kind: 'status'},
     {label: '错题', value: wrongCount, action: 'wrong', kind: 'status'},
     {label: '已做', value: doneCount, action: 'done', kind: 'status'},
   ];
@@ -525,9 +1339,19 @@ function filterQuestions(source, opts) {
     if (opts.feature === 'sub' && !q.sub_questions) return false;
     if (opts.feature === 'image' && !q.has_image) return false;
     if (opts.status) {
-      const st = getStatus(q);
-      if (opts.status === 'done' && st !== 'correct' && st !== 'wrong') return false;
-      if (opts.status !== 'done' && st !== opts.status) return false;
+      if (opts.status === 'unmarked') {
+        if (getMastery(q)) return false;
+      } else if (opts.status === 'favorite') {
+        if (!isFavorite(q)) return false;
+      } else if (opts.status === 'done' || opts.status === 'wrong') {
+        const pr = getPracticeResult(q);
+        if (opts.status === 'done' && pr !== 'correct' && pr !== 'wrong') return false;
+        if (opts.status === 'wrong' && pr !== 'wrong') return false;
+      } else if (MASTERY_KEYS.has(opts.status)) {
+        if (getMastery(q) !== opts.status) return false;
+      } else {
+        if (getStatus(q) !== opts.status) return false;
+      }
     }
     if (opts.search) {
       const term = opts.search;
@@ -556,6 +1380,21 @@ function applyFilters() {
 
   filteredQuestions = filterQuestions(allQuestions, {chapter: selectedChapter, type, feature, status: activeStatusFilter, search});
 
+  // 排序
+  const sortBy = document.getElementById('sortSelect') ? document.getElementById('sortSelect').value : 'default';
+  if (sortBy && sortBy !== 'default') {
+    filteredQuestions = [...filteredQuestions].sort((a, b) => {
+      if (sortBy === 'id') {
+        return displayId(a).localeCompare(displayId(b), 'zh', {numeric: true});
+      } else if (sortBy === 'page') {
+        return (a.page || 0) - (b.page || 0);
+      } else if (sortBy === 'chapter') {
+        return (a.chapterKey || '').localeCompare(b.chapterKey || '', 'zh');
+      }
+      return 0;
+    });
+  }
+
   const chapterLabel = selectedChapter ? selectedChapter.replace(/\|/g, ' · ') : '';
   document.getElementById('resultText').innerHTML =
     `共 <strong>${filteredQuestions.length}</strong> 道题目${chapterLabel ? ' · <span style="color:var(--text-secondary)">' + escapeHtml(chapterLabel) + '</span>' : ''}`;
@@ -568,18 +1407,55 @@ function applyFilters() {
 }
 
 // ========================
-// Grid Rendering (List View)
+// Grid Rendering（卡片网格，对齐数学题库）
 // ========================
-function statusIconsHtml(q) {
-  const st = getStatus(q);
-  if (!st) return '';
-  const star = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
-  const check = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
-  const cross = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
-  if (st === 'favorite') return `<span class="status-icon fav fav-btn" data-fav="1" title="取消收藏">${star}</span>`;
-  if (st === 'correct') return `<span class="status-icon ok" title="已做对">${check}</span>`;
-  if (st === 'wrong') return `<span class="status-icon bad" title="已做错">${cross}</span>`;
-  return '';
+function masteryBadgeHtml(q) {
+  const masteryKey = getMastery(q);
+  const m = MASTERY_STATUSES.find(x => x.key === masteryKey);
+  if (!m) return '';
+  return `<span class="card-mark mark-${m.cls}">${m.label}</span>`;
+}
+
+function renderMarkDashboard() {
+  const el = document.getElementById('markDashboard');
+  if (!el || !allQuestions.length) return;
+  const counts = { mastered: 0, familiar: 0, unknown: 0, none: 0 };
+  allQuestions.forEach(q => {
+    const st = getMastery(q);
+    if (st === 'mastered') counts.mastered++;
+    else if (st === 'familiar') counts.familiar++;
+    else if (st === 'unknown') counts.unknown++;
+    else counts.none++;
+  });
+  const total = allQuestions.length || 1;
+  const pct = (n) => Math.round((n / total) * 100);
+  const marked = counts.mastered + counts.familiar + counts.unknown;
+  el.innerHTML = `
+    <div class="mark-dash-head">
+      <span class="mark-dash-title">做题统计</span>
+      <span class="mark-dash-meta">已标记 ${marked} / ${allQuestions.length} · ${pct(marked)}%</span>
+    </div>
+    <div class="mark-dash-bar" aria-hidden="true">
+      <span class="seg mastered" style="width:${pct(counts.mastered)}%"></span>
+      <span class="seg familiar" style="width:${pct(counts.familiar)}%"></span>
+      <span class="seg unknown" style="width:${pct(counts.unknown)}%"></span>
+      <span class="seg none" style="width:${pct(counts.none)}%"></span>
+    </div>
+    <div class="mark-dash-legend">
+      <button type="button" class="mark-leg" data-status="mastered"><i class="dot mastered"></i>已掌握 <b>${counts.mastered}</b> <em>${pct(counts.mastered)}%</em></button>
+      <button type="button" class="mark-leg" data-status="familiar"><i class="dot familiar"></i>不熟 <b>${counts.familiar}</b> <em>${pct(counts.familiar)}%</em></button>
+      <button type="button" class="mark-leg" data-status="unknown"><i class="dot unknown"></i>不会 <b>${counts.unknown}</b> <em>${pct(counts.unknown)}%</em></button>
+      <button type="button" class="mark-leg" data-status="unmarked"><i class="dot none"></i>未标记 <b>${counts.none}</b> <em>${pct(counts.none)}%</em></button>
+    </div>
+  `;
+  el.querySelectorAll('.mark-leg').forEach(btn => {
+    btn.addEventListener('click', () => {
+      activeStatusFilter = btn.dataset.status === activeStatusFilter ? '' : btn.dataset.status;
+      activeStat = 'all';
+      currentPage = 1;
+      applyFilters();
+    });
+  });
 }
 
 function renderGrid(search) {
@@ -589,45 +1465,39 @@ function renderGrid(search) {
 
   if (pageQs.length === 0) {
     grid.innerHTML = `
-      <div class="empty-state">
+      <div class="empty-state" style="grid-column:1/-1">
         <h3>未找到题目</h3>
         <p>尝试调整筛选条件或搜索关键词</p>
+        <button type="button" class="btn btn-secondary btn-sm" onclick="resetAllFilters()">清空筛选</button>
       </div>`;
     return;
   }
 
   grid.innerHTML = pageQs.map((q, i) => {
     const typeClass = q.type === '选择题' ? 'choice' : 'nonchoice';
-    const typeShort = q.type === '选择题' ? '选择' : '解答';
     const tags = [];
     if (q.sub_questions) tags.push(`${q.sub_questions.length} 个子问`);
     if (q.has_image) tags.push('含图片');
-    const statusIcons = statusIconsHtml(q);
-
+    if (q.options) tags.push('有选项');
+    const chShort = (q.chapter || '').split('·')[0].trim() || q.chapter || '';
     return `
-      <div class="question-row" tabindex="0" role="button" aria-label="${displayId(q)} ${q.type}" data-index="${start + i}">
-        <span class="row-index">${start + i + 1}</span>
-        <span class="row-type ${typeClass}">${typeShort}</span>
-        <div class="row-body">
-          <div class="row-content" id="card-text-${start+i}"></div>
-          <div class="row-meta">
-            <span>${escapeHtml(displayId(q))}</span>
-            <span class="dot"></span>
-            <span>第 ${q.page} 页</span>
-            <span class="dot"></span>
-            <span>${escapeHtml(q.chapter)}</span>
+      <div class="question-card" tabindex="0" role="button" aria-label="${displayId(q)} ${q.type}" data-index="${start + i}">
+        <div class="card-header">
+          <span class="card-id">${escapeHtml(chShort)} · ${escapeHtml(displayId(q))}</span>
+          <div class="card-badges">
+            ${masteryBadgeHtml(q)}
+            <span class="card-type ${typeClass}">${escapeHtml(q.type || '')}</span>
           </div>
         </div>
-        <div class="row-tags">
-          ${statusIcons ? `<div class="row-status">${statusIcons}</div>` : ''}
-          ${tags.map(t => `<span class="row-tag">${t}</span>`).join('')}
-        </div>
+        <div class="card-chapter">第 ${q.page || '—'} 页</div>
+        <div class="card-content" id="card-text-${start + i}"></div>
+        <div class="card-tags">${tags.map(t => `<span class="card-tag">${escapeHtml(t)}</span>`).join('')}</div>
       </div>
     `;
   }).join('');
 
   pageQs.forEach((q, i) => {
-    const el = document.getElementById(`card-text-${start+i}`);
+    const el = document.getElementById(`card-text-${start + i}`);
     if (el) {
       const preview = (!q.content || q.content.startsWith('（本题无主题干') || q.content.trim() === '')
         && q.sub_questions && q.sub_questions.length > 0
@@ -637,17 +1507,6 @@ function renderGrid(search) {
       renderKatex(el);
       if (search) highlightText(el, search);
     }
-  });
-
-  grid.querySelectorAll('[data-fav="1"]').forEach(icon => {
-    icon.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const card = icon.closest('.question-row');
-      if (!card) return;
-      const idx = Number(card.dataset.index);
-      const q = filteredQuestions[idx];
-      if (q) toggleFavorite(q);
-    });
   });
 }
 
@@ -678,9 +1537,15 @@ function changePage(p) {
 // ========================
 // Shared Rendering
 // ========================
+/** 选项按 A/B/C/D 字母序展开。OCR/双栏解析可能导致 JSON 键序为 A,C,D,B。 */
+function sortedOptionEntries(options) {
+  if (!options) return [];
+  return Object.entries(options).sort(([a], [b]) => String(a).localeCompare(String(b)));
+}
+
 function renderOptionsHtml(q) {
   if (!q.options) return '';
-  const opts = Object.entries(q.options).map(([k, v]) => `
+  const opts = sortedOptionEntries(q.options).map(([k, v]) => `
     <div class="option-item" data-key="${k}">
       <span class="option-key">${k}.</span>
       <span class="opt-math"></span>
@@ -690,11 +1555,11 @@ function renderOptionsHtml(q) {
 }
 
 function renderSubHtml(q) {
-  if (!q.sub_questions) return '';
+  if (!q.sub_questions || !q.sub_questions.length) return '';
   return `
     <div class="q-sub">
       <div class="sub-label">子问题</div>
-      ${q.sub_questions.map((s, i) => `<div class="sub-item" data-role="sub"></div>`).join('')}
+      ${q.sub_questions.map((s, i) => `<div class="sub-item" data-role="sub">${escapeHtml(s)}</div>`).join('')}
     </div>
   `;
 }
@@ -716,6 +1581,19 @@ function answerHtml(q) {
   `;
 }
 
+function practiceMasteryHtml() {
+  return `
+    <div class="practice-mastery" data-role="practiceMastery" hidden>
+      <div class="practice-mastery-label">这道题掌握得怎么样？</div>
+      <div class="practice-mastery-btns">
+        <button type="button" class="btn btn-mastery mastered" data-role="masteryBtn" data-mastery="mastered">已掌握</button>
+        <button type="button" class="btn btn-mastery familiar" data-role="masteryBtn" data-mastery="familiar">不熟</button>
+        <button type="button" class="btn btn-mastery unknown" data-role="masteryBtn" data-mastery="unknown">不会</button>
+      </div>
+    </div>
+  `;
+}
+
 function practiceAnswerHtml(q) {
   const isChoice = q.type === '选择题';
   if (isChoice) {
@@ -724,6 +1602,7 @@ function practiceAnswerHtml(q) {
         <div class="feedback-result" data-role="feedbackResult"></div>
         <div class="q-answer-explain" data-role="feedbackExplain"></div>
       </div>
+      ${practiceMasteryHtml()}
     `;
   }
   return answerHtml(q) + `
@@ -731,46 +1610,150 @@ function practiceAnswerHtml(q) {
       <button type="button" class="btn btn-secondary" data-role="markCorrect">我做对了</button>
       <button type="button" class="btn" style="border:1px solid var(--danger);color:var(--danger)" data-role="markWrong">我做错了</button>
     </div>
+    ${practiceMasteryHtml()}
   `;
 }
 
 function bindRevealAnswer(container) {
   const btn = container.querySelector('[data-role="revealBtn"]');
   if (!btn) return;
-  btn.onclick = () => {
-    const ansBox = container.querySelector('[data-role="ans"]');
-    const ansText = container.querySelector('[data-role="qans"]');
-    if (!ansBox) return;
-    const q = container._q;
-    if (q && q.answer) {
-      if (ansText && q.answer.explanation) {
-        ansText.textContent = normalizeDisplayText(q.answer.explanation);
-        renderKatex(ansText);
-      }
-      ansBox.hidden = false;
-      btn.parentElement.style.display = 'none';
+  btn.onclick = () => revealAnswerBox(container, container._q);
+}
+
+function judgeChoice(container, q, selectedKey) {
+  if (container._submitted) return null;
+  container._submitted = true;
+  const correct = q.answer && q.answer.choice;
+  const isCorrect = selectedKey === correct;
+
+  const opts = container.querySelectorAll('.option-item');
+  opts.forEach(o => {
+    o.classList.add('disabled');
+    const key = o.dataset.key;
+    if (key === correct) o.classList.add('correct');
+    if (key === selectedKey && !isCorrect) o.classList.add('wrong');
+  });
+
+  recordPracticeResult(q, isCorrect);
+  return isCorrect;
+}
+
+/** 连续多空题：答案为 2+ 个字母（如 CD），需按空序依次点击选项 */
+function isOrderedChoice(q) {
+  return orderedCorrect(q).length > 1;
+}
+
+function orderedCorrect(q) {
+  return ((q.answer && q.answer.choice) || '').replace(/[^A-F]/gi, '').toUpperCase();
+}
+
+function showChoiceFeedback(container, q, isCorrect, seq) {
+  const fb = container.querySelector('[data-role="practiceFeedback"]');
+  if (fb) {
+    fb.hidden = false;
+    fb.classList.remove('correct', 'wrong');
+    fb.classList.add(isCorrect ? 'correct' : 'wrong');
+    const res = fb.querySelector('[data-role="feedbackResult"]');
+    if (res) {
+      let text = isCorrect ? '回答正确' : '回答错误';
+      if (!isCorrect && seq) text += `（你的答案：${seq}，正确答案：${orderedCorrect(q)}）`;
+      res.textContent = text;
+      res.className = 'feedback-result ' + (isCorrect ? 'correct' : 'wrong');
     }
+    const expl = fb.querySelector('[data-role="feedbackExplain"]');
+    if (expl && q.answer && q.answer.explanation) {
+      expl.textContent = '解析：' + prepareMathText(q.answer.explanation);
+      renderKatex(expl);
+    }
+  }
+  showPracticeMastery(container);
+}
+
+function bindOrderedChoice(container, q, onJudged) {
+  const correct = orderedCorrect(q);
+  let seqBar = container.querySelector('[data-role="seqBar"]');
+  if (!seqBar) {
+    seqBar = document.createElement('div');
+    seqBar.className = 'practice-seq';
+    seqBar.dataset.role = 'seqBar';
+    seqBar.innerHTML = '<span data-role="seqHint"></span>：<strong data-role="seqText"></strong> <button type="button" class="btn btn-secondary seq-undo" data-role="seqUndo">↩ 撤销</button>';
+    const optsBox = container.querySelector('.q-options');
+    if (optsBox && optsBox.parentNode) optsBox.parentNode.insertBefore(seqBar, optsBox.nextSibling);
+    else container.appendChild(seqBar);
+  }
+  const seqText = seqBar.querySelector('[data-role="seqText"]');
+  const undoBtn = seqBar.querySelector('[data-role="seqUndo"]');
+  seqBar.hidden = false;
+  const hint = seqBar.querySelector('[data-role="seqHint"]');
+  if (hint) hint.textContent = `本题 ${correct.length} 个空，请按顺序点击选项`;
+  container._seq = '';
+  const syncSeq = () => { if (seqText) seqText.textContent = container._seq.split('').join(' → '); };
+
+  container.querySelectorAll('.option-item').forEach(opt => {
+    opt.addEventListener('click', () => {
+      if (container._submitted) return;
+      container._seq += opt.dataset.key;
+      opt.classList.add('picked');
+      syncSeq();
+      if (container._seq.length < correct.length) return;
+      container._submitted = true;
+      const isCorrect = container._seq === correct;
+      container.querySelectorAll('.option-item').forEach(o => {
+        o.classList.add('disabled');
+        o.classList.remove('picked');
+        if (correct.includes(o.dataset.key)) o.classList.add('correct');
+      });
+      seqBar.hidden = true;
+      recordPracticeResult(q, isCorrect);
+      onJudged(isCorrect, container._seq);
+    });
+  });
+  if (undoBtn) undoBtn.onclick = () => {
+    if (container._submitted || !container._seq) return;
+    container._seq = container._seq.slice(0, -1);
+    syncSeq();
   };
+}
+
+function recordPracticeResult(q, isCorrect) {
+  setPracticeResult(q, isCorrect);
+  updateReviewSchedule(q, isCorrect);
+  const key = questionKey(q);
+  const existing = practiceResults.find(r => questionKey(r.q) === key);
+  if (existing) existing.correct = isCorrect;
+  else practiceResults.push({q, correct: isCorrect});
+  refreshDueBadge();
+  saveProgress();
+}
+
+function revealAnswerBox(container, q) {
+  const ansBox = container.querySelector('[data-role="ans"]');
+  const ansText = container.querySelector('[data-role="qans"]');
+  const toggle = container.querySelector('[data-role="ansToggle"]');
+  if (!ansBox) return;
+  if (q && q.answer) {
+    if (ansText && q.answer.explanation) {
+      ansText.textContent = prepareMathText(q.answer.explanation);
+      renderKatex(ansText);
+    }
+    ansBox.hidden = false;
+    if (toggle) toggle.style.display = 'none';
+  }
 }
 
 function bindPracticeInteractions(container, q) {
   const isChoice = q.type === '选择题';
+  if (isChoice && isOrderedChoice(q)) {
+    bindOrderedChoice(container, q, (ok, seq) => showChoiceFeedback(container, q, ok, seq));
+    return;
+  }
   if (isChoice) {
     const opts = container.querySelectorAll('.option-item');
     opts.forEach(opt => {
       opt.addEventListener('click', () => {
-        if (container._submitted) return;
-        container._submitted = true;
         const selected = opt.dataset.key;
-        const correct = q.answer && q.answer.choice;
-        const isCorrect = selected === correct;
-
-        opts.forEach(o => {
-          o.classList.add('disabled');
-          const key = o.dataset.key;
-          if (key === correct) o.classList.add('correct');
-          if (key === selected && !isCorrect) o.classList.add('wrong');
-        });
+        const isCorrect = judgeChoice(container, q, selected);
+        if (isCorrect === null) return;
 
         const fb = container.querySelector('[data-role="practiceFeedback"]');
         if (fb) {
@@ -784,12 +1767,12 @@ function bindPracticeInteractions(container, q) {
           }
           const expl = fb.querySelector('[data-role="feedbackExplain"]');
           if (expl && q.answer && q.answer.explanation) {
-            expl.textContent = '解析：' + normalizeDisplayText(q.answer.explanation);
+            expl.textContent = '解析：' + prepareMathText(q.answer.explanation);
             renderKatex(expl);
           }
         }
 
-        recordPracticeResult(q, isCorrect);
+        showPracticeMastery(container);
       });
     });
   } else {
@@ -806,17 +1789,21 @@ function bindPracticeInteractions(container, q) {
     }
     const markCorrect = container.querySelector('[data-role="markCorrect"]');
     const markWrong = container.querySelector('[data-role="markWrong"]');
-    if (markCorrect) markCorrect.onclick = () => { recordPracticeResult(q, true); selfGrade.hidden = true; };
-    if (markWrong) markWrong.onclick = () => { recordPracticeResult(q, false); selfGrade.hidden = true; };
+    if (markCorrect) markCorrect.onclick = () => { recordPracticeResult(q, true); selfGrade.hidden = true; showPracticeMastery(container); };
+    if (markWrong) markWrong.onclick = () => { recordPracticeResult(q, false); selfGrade.hidden = true; showPracticeMastery(container); };
   }
 }
 
-function recordPracticeResult(q, isCorrect) {
-  setStatus(q, isCorrect ? 'correct' : 'wrong');
-  const key = questionKey(q);
-  const existing = practiceResults.find(r => questionKey(r.q) === key);
-  if (existing) existing.correct = isCorrect;
-  else practiceResults.push({q, correct: isCorrect});
+function showPracticeMastery(container) {
+  const box = container.querySelector('[data-role="practiceMastery"]');
+  if (!box) return;
+  box.hidden = false;
+  box.querySelectorAll('[data-role="masteryBtn"]').forEach(btn => {
+    btn.onclick = () => {
+      setMastery(container._q, btn.dataset.mastery);
+      box.hidden = true;
+    };
+  });
 }
 
 function restorePracticeState(container, q) {
@@ -824,13 +1811,17 @@ function restorePracticeState(container, q) {
   const record = practiceResults.find(r => questionKey(r.q) === key);
   if (!record) return;
 
+  const masteryBox = container.querySelector('[data-role="practiceMastery"]');
+  if (masteryBox && getMastery(q)) masteryBox.hidden = true;
+
   if (q.type === '选择题') {
     container._submitted = true;
-    const correct = q.answer && q.answer.choice;
+    const correct = orderedCorrect(q) || (q.answer && q.answer.choice);
+    const correctLetters = new Set(String(correct || '').split(''));
     const opts = container.querySelectorAll('.option-item');
     opts.forEach(o => {
       o.classList.add('disabled');
-      if (o.dataset.key === correct) o.classList.add('correct');
+      if (correctLetters.has(o.dataset.key)) o.classList.add('correct');
     });
     const fb = container.querySelector('[data-role="practiceFeedback"]');
     if (fb) {
@@ -843,7 +1834,7 @@ function restorePracticeState(container, q) {
       }
       const expl = fb.querySelector('[data-role="feedbackExplain"]');
       if (expl && q.answer && q.answer.explanation) {
-        expl.textContent = '解析：' + normalizeDisplayText(q.answer.explanation);
+        expl.textContent = '解析：' + prepareMathText(q.answer.explanation);
         renderKatex(expl);
       }
     }
@@ -854,17 +1845,50 @@ function restorePracticeState(container, q) {
     if (btn) { btn.disabled = true; btn.parentElement.style.display = 'none'; }
     if (ansBox) ansBox.hidden = false;
     if (ansText && q.answer && q.answer.explanation) {
-      ansText.textContent = normalizeDisplayText(q.answer.explanation);
+      ansText.textContent = prepareMathText(q.answer.explanation);
       renderKatex(ansText);
     }
   }
 }
 
+/** 裁剪图文件名里的页码须与题目页接近，避免同题号（如 X10）串到别章的图 */
+function cropPageMatchesQuestion(cropped, qPage) {
+  if (qPage == null || qPage === '') return true;
+  const m = String(cropped || '').match(/page_(\d+)_/i);
+  if (!m) return true;
+  return Math.abs(parseInt(m[1], 10) - Number(qPage)) <= 1;
+}
+
+/** 从 image_ref 或解析里的「题目图片：crops/...」解析可显示的题图 */
+function resolveQuestionImageRef(q) {
+  if (q && q.image_ref && (q.image_ref.cropped || q.image_ref.page)) {
+    const cropped = q.image_ref.cropped || '';
+    if (!cropped || cropPageMatchesQuestion(cropped, q.page)) {
+      return q.image_ref;
+    }
+  }
+  const expl = (q && q.answer && q.answer.explanation) || '';
+  const m = String(expl).match(/题目图片\s*[：:]\s*(\S+)/);
+  if (m) {
+    const cropped = m[1].trim();
+    if (cropPageMatchesQuestion(cropped, q && q.page)) {
+      return {
+        page: (q && q.page) || '',
+        note: '题目配图',
+        cropped,
+      };
+    }
+  }
+  return null;
+}
+
 function questionBodyHtml(q, mode) {
   const isPractice = mode === 'practice';
+  const imgRef = resolveQuestionImageRef(q);
+  // 配图放在题干下方：题干写「如下图」时直接看到图，无需再点「查看原图」
   return `
-    ${q.has_image && q.image_ref ? imageHtml(q.image_ref) : ''}
     <div class="q-text" data-role="qtext"></div>
+    ${imgRef ? imageHtml(imgRef) : ''}
     ${renderOptionsHtml(q)}
     ${renderSubHtml(q)}
     ${isPractice ? practiceAnswerHtml(q) : answerHtml(q)}
@@ -872,27 +1896,74 @@ function questionBodyHtml(q, mode) {
 }
 
 function renderQuestionBody(container, q, mode) {
+  container._submitted = false;
   const qtext = container.querySelector('[data-role="qtext"]');
-  if (qtext) { qtext.textContent = normalizeDisplayText(q.content); renderKatex(qtext); }
+  if (qtext) { qtext.textContent = prepareMathText(q.content); renderKatex(qtext); }
 
   if (q.options) {
     const optMathEls = container.querySelectorAll('.opt-math');
-    const entries = Object.entries(q.options);
+    const entries = sortedOptionEntries(q.options);
     optMathEls.forEach((el, i) => {
-      if (entries[i]) { el.textContent = normalizeDisplayText(entries[i][1]); renderKatex(el); }
+      if (entries[i]) { el.textContent = prepareMathText(entries[i][1]); renderKatex(el); }
     });
   }
 
   if (q.sub_questions) {
     const subEls = container.querySelectorAll('[data-role="sub"]');
     q.sub_questions.forEach((s, i) => {
-      if (subEls[i]) { subEls[i].textContent = normalizeDisplayText(s); renderKatex(subEls[i]); }
+      if (subEls[i]) { subEls[i].textContent = prepareMathText(s); renderKatex(subEls[i]); }
     });
   }
 
   container._q = q;
   if (mode === 'practice') bindPracticeInteractions(container, q);
-  else bindRevealAnswer(container);
+  else bindDetailInteractions(container, q);
+}
+
+function bindDetailInteractions(container, q) {
+  if (q.type === '选择题' && isOrderedChoice(q)) {
+    bindOrderedChoice(container, q, (isCorrect, seq) => {
+      revealAnswerBox(container, q);
+      const ansBox = container.querySelector('[data-role="ans"]');
+      if (ansBox) {
+        let result = ansBox.querySelector('.detail-feedback-result');
+        if (!result) {
+          result = document.createElement('div');
+          result.className = 'detail-feedback-result';
+          ansBox.insertBefore(result, ansBox.firstChild);
+        }
+        result.classList.remove('correct', 'wrong');
+        result.classList.add(isCorrect ? 'correct' : 'wrong');
+        result.textContent = isCorrect
+          ? '回答正确'
+          : `回答错误（你的答案：${seq}，正确答案：${orderedCorrect(q)}）`;
+      }
+    });
+    return;
+  }
+  if (q.type === '选择题') {
+    container.querySelectorAll('.option-item').forEach(opt => {
+      opt.addEventListener('click', () => {
+        const isCorrect = judgeChoice(container, q, opt.dataset.key);
+        if (isCorrect === null) return;
+        revealAnswerBox(container, q);
+        const ansBox = container.querySelector('[data-role="ans"]');
+        if (ansBox) {
+          let result = ansBox.querySelector('.detail-feedback-result');
+          if (!result) {
+            result = document.createElement('div');
+            result.className = 'detail-feedback-result';
+            ansBox.insertBefore(result, ansBox.firstChild);
+          }
+          result.classList.remove('correct', 'wrong');
+          result.classList.add(isCorrect ? 'correct' : 'wrong');
+          result.textContent = isCorrect ? '回答正确' : '回答错误';
+        }
+      });
+    });
+  } else {
+    bindRevealAnswer(container);
+  }
 }
 
 // ========================
@@ -900,108 +1971,869 @@ function renderQuestionBody(container, q, mode) {
 // ========================
 function renderModalContent(q) {
   const container = document.getElementById('modalContent');
+  // 刷题时不展示「相似题」，减少干扰（findSimilarQuestions 仍保留供以后开关）
   container.innerHTML = `
     <div class="q-chapter">${escapeHtml(q.chapter)} · 第 ${q.page} 页</div>
     <div class="q-id">${escapeHtml(displayId(q))} <span class="row-type ${q.type === '选择题' ? 'choice' : 'nonchoice'}">${q.type}</span></div>
     ${questionBodyHtml(q)}
+    <details class="q-notes" id="detailNotes">
+      <summary>📝 我的笔记 <span class="notes-status" id="notesStatus"></span></summary>
+      <textarea id="notesTextarea" placeholder="记录你的思路、记忆口诀、易错点..." rows="6"></textarea>
+      <div class="q-notes-actions">
+        <button type="button" class="btn btn-secondary btn-sm" id="btnCopyQ">📋 复制题目</button>
+        <button type="button" class="btn btn-secondary btn-sm" id="btnReportIssue">⚠ 报告错误</button>
+      </div>
+    </details>
   `;
   renderQuestionBody(container, q);
-  updateDetailFavoriteButton(q);
+  updateDetailStatusButtons(q);
+  bindNotesUI(q);
 }
 
-function updateDetailFavoriteButton(q) {
-  const btn = document.getElementById('detailFavoriteBtn');
-  if (!btn) return;
-  const isFav = getStatus(q) === 'favorite';
-  btn.classList.toggle('active', isFav);
-  btn.setAttribute('aria-label', isFav ? '取消收藏' : '收藏');
+function bindNotesUI(q) {
+  const ta = document.getElementById('notesTextarea');
+  const status = document.getElementById('notesStatus');
+  const notesDetails = document.getElementById('detailNotes');
+  if (!ta) return;
+  const existing = getNote(q);
+  ta.value = existing;
+  if (existing) notesDetails.open = true;
+  const updateStatus = () => {
+    status.textContent = ta.value ? '（已保存）' : '';
+  };
+  updateStatus();
+  let saveTimer;
+  ta.addEventListener('input', () => {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(() => {
+      setNote(q, ta.value);
+      updateStatus();
+    }, 400);
+  });
+  ta.addEventListener('blur', () => {
+    setNote(q, ta.value);
+    updateStatus();
+  });
+
+  const copyBtn = document.getElementById('btnCopyQ');
+  if (copyBtn) copyBtn.onclick = () => copyQuestionToClipboard(q);
+
+  const issueBtn = document.getElementById('btnReportIssue');
+  if (issueBtn) issueBtn.onclick = () => reportQuestionIssue(q);
+}
+
+function copyQuestionToClipboard(q) {
+  const lines = [];
+  lines.push(`【${q.type}】${displayId(q)} · 第 ${q.page} 页 · ${q.chapter}`);
+  if (q.content) lines.push('', q.content);
+  if (q.options) {
+    lines.push('');
+    sortedOptionEntries(q.options).forEach(([k, v]) => lines.push(`${k}. ${v}`));
+  }
+  if (q.sub_questions) {
+    lines.push('', '子问题：');
+    q.sub_questions.forEach((s, i) => lines.push(`(${i + 1}) ${s}`));
+  }
+  if (q.answer && q.answer.choice) lines.push('', `答案：${q.answer.choice}`);
+  if (q.answer && q.answer.explanation) lines.push(`解析：${q.answer.explanation}`);
+  const note = getNote(q);
+  if (note) lines.push('', `笔记：${note}`);
+  const text = lines.join('\n');
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(() => flashToast('已复制到剪贴板'), () => fallbackCopy(text));
+  } else {
+    fallbackCopy(text);
+  }
+}
+
+function fallbackCopy(text) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); flashToast('已复制到剪贴板'); } catch(e) { flashToast('复制失败，请手动复制'); }
+  document.body.removeChild(ta);
+}
+
+function reportQuestionIssue(q) {
+  const key = questionKey(q);
+  const cur = (issuesMap[key] || []).slice();
+  const choice = prompt('请简要描述该题的错误（例如：题干 OCR 多字 / 选项错位 / 答案有误）：', '');
+  if (!choice) return;
+  cur.push({at: new Date().toISOString(), text: choice});
+  issuesMap[key] = cur;
+  saveIssues();
+  flashToast('已记录错误反馈');
+  exportIssues();
+}
+
+function exportIssues() {
+  const keys = Object.keys(issuesMap);
+  if (!keys.length) return;
+  const lines = ['# 题目纠错反馈', '', `生成时间：${new Date().toLocaleString()}`, ''];
+  keys.forEach(k => {
+    const q = allQuestions.find(x => questionKey(x) === k);
+    const title = q ? `${displayId(q)} · ${q.chapter}` : k;
+    lines.push(`## ${title}`);
+    (issuesMap[k] || []).forEach(it => lines.push(`- [${it.at}] ${it.text}`));
+    lines.push('');
+  });
+  downloadText(lines.join('\n'), `mathbank-issues-${new Date().toISOString().slice(0,10)}.md`);
+}
+
+function downloadText(text, filename) {
+  const blob = new Blob([text], {type: 'text/markdown;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function exportNotesAsMarkdown() {
+  const keys = Object.keys(notesMap);
+  if (!keys.length) {
+    alert('暂无笔记可导出');
+    return;
+  }
+  // 按章节聚合
+  const byChapter = new Map();
+  keys.forEach(k => {
+    const q = allQuestions.find(x => questionKey(x) === k);
+    if (!q) return;
+    const ch = q.chapter || '未分类';
+    if (!byChapter.has(ch)) byChapter.set(ch, []);
+    byChapter.get(ch).push(q);
+  });
+  const lines = ['# 我的 408 笔记', '', `生成时间：${new Date().toLocaleString()}`, ''];
+  for (const [ch, qs] of byChapter.entries()) {
+    lines.push(`## ${ch}`);
+    qs.sort((a, b) => (a.page || 0) - (b.page || 0));
+    qs.forEach(q => {
+      lines.push(`### ${displayId(q)} · 第 ${q.page} 页`);
+      if (q.content) lines.push('', '> ' + q.content.replace(/\n/g, '\n> '));
+      lines.push('', '**笔记：**', '');
+      lines.push(notesMap[questionKey(q)]);
+      lines.push('');
+    });
+  }
+  downloadText(lines.join('\n'), `mathbank-notes-${new Date().toISOString().slice(0,10)}.md`);
+}
+
+// 顶部轻提示
+let toastTimer = null;
+function flashToast(msg) {
+  let el = document.getElementById('flashToast');
+  if (!el) {
+    el = document.createElement('div');
+    el.id = 'flashToast';
+    el.className = 'flash-toast';
+    document.body.appendChild(el);
+  }
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 1800);
+}
+
+function updateDetailStatusButtons(q) {
+  const favBtn = document.getElementById('detailFavoriteBtn');
+  if (favBtn) {
+    const fav = isFavorite(q);
+    favBtn.classList.toggle('active', fav);
+    favBtn.setAttribute('aria-label', fav ? '取消收藏' : '收藏');
+  }
+  const st = getMastery(q);
+  MASTERY_STATUSES.forEach(m => {
+    const btn = document.getElementById('detail' + m.key[0].toUpperCase() + m.key.slice(1) + 'Btn');
+    if (!btn) return;
+    btn.classList.toggle('active', st === m.key);
+  });
+}
+
+function getCurrentDetailQuestion() {
+  if (currentModalIndex >= 0 && currentModalIndex < filteredQuestions.length) {
+    return filteredQuestions[currentModalIndex];
+  }
+  return currentModalQuestion;
 }
 
 function toggleDetailFavorite() {
-  if (currentModalIndex < 0 || currentModalIndex >= filteredQuestions.length) return;
-  const q = filteredQuestions[currentModalIndex];
+  const q = getCurrentDetailQuestion();
+  if (!q) return;
   toggleFavorite(q);
-  updateDetailFavoriteButton(q);
+  updateDetailStatusButtons(q);
 }
 
-function openDetail(index) {
+function setDetailMastery(status) {
+  const q = getCurrentDetailQuestion();
+  if (!q) return;
+  setMastery(q, status);
+  updateDetailStatusButtons(q);
+}
+
+/** 打开详情：支持 filteredQuestions 下标，或直接传题目对象 */
+function openDetail(indexOrQ) {
+  let q = null;
+  let index = -1;
+  if (indexOrQ && typeof indexOrQ === 'object') {
+    q = indexOrQ;
+    index = filteredQuestions.indexOf(q);
+  } else {
+    index = Number(indexOrQ);
+    if (Number.isFinite(index) && index >= 0 && index < filteredQuestions.length) {
+      q = filteredQuestions[index];
+    }
+  }
+  if (!q) return;
   currentModalIndex = index;
-  renderModalContent(filteredQuestions[index]);
+  currentModalQuestion = q;
+  renderModalContent(q);
+  saveCursor(q);
   openModal('detailModal');
 }
 
-function closeModal() { closeModalById('detailModal'); }
+function closeModal() {
+  closeModalById('detailModal');
+  currentModalQuestion = null;
+}
 
 function prevQuestion() {
   if (currentModalIndex > 0) {
     currentModalIndex--;
-    renderModalContent(filteredQuestions[currentModalIndex]);
+    currentModalQuestion = filteredQuestions[currentModalIndex];
+    renderModalContent(currentModalQuestion);
+    saveCursor(currentModalQuestion);
     document.querySelector('#detailModal .modal-body').scrollTop = 0;
+    return;
+  }
+  // 不在筛选列表中：在 allQuestions 中前后翻
+  if (currentModalQuestion) {
+    const aIdx = allQuestions.indexOf(currentModalQuestion);
+    if (aIdx > 0) {
+      currentModalQuestion = allQuestions[aIdx - 1];
+      currentModalIndex = filteredQuestions.indexOf(currentModalQuestion);
+      renderModalContent(currentModalQuestion);
+      saveCursor(currentModalQuestion);
+      document.querySelector('#detailModal .modal-body').scrollTop = 0;
+    }
   }
 }
 
 function nextQuestion() {
-  if (currentModalIndex < filteredQuestions.length - 1) {
+  if (currentModalIndex >= 0 && currentModalIndex < filteredQuestions.length - 1) {
     currentModalIndex++;
-    renderModalContent(filteredQuestions[currentModalIndex]);
+    currentModalQuestion = filteredQuestions[currentModalIndex];
+    renderModalContent(currentModalQuestion);
+    saveCursor(currentModalQuestion);
     document.querySelector('#detailModal .modal-body').scrollTop = 0;
+    return;
   }
+  if (currentModalQuestion) {
+    const aIdx = allQuestions.indexOf(currentModalQuestion);
+    if (aIdx >= 0 && aIdx < allQuestions.length - 1) {
+      currentModalQuestion = allQuestions[aIdx + 1];
+      currentModalIndex = filteredQuestions.indexOf(currentModalQuestion);
+      renderModalContent(currentModalQuestion);
+      saveCursor(currentModalQuestion);
+      document.querySelector('#detailModal .modal-body').scrollTop = 0;
+    }
+  }
+}
+
+/** 题图路径：相对当前页，兼容 /banks/408/ 挂载与本地根路径 */
+function resolveImageSrc(imageRef) {
+  if (!imageRef) return '';
+  if (imageRef.cropped) {
+    const rel = String(imageRef.cropped).replace(/^\/+/, '');
+    // 平台挂载下用绝对路径，避免相对路径在子路由失效
+    if (typeof location !== 'undefined' && (location.pathname || '').indexOf('/banks/408') === 0) {
+      return '/banks/408/' + rel;
+    }
+    return rel;
+  }
+  const page = String(imageRef.page).padStart(3, '0');
+  if (typeof location !== 'undefined' && (location.pathname || '').indexOf('/banks/408') === 0) {
+    return `/banks/408/../pdf_images/page_${page}.png`;
+  }
+  return `../pdf_images/page_${page}.png`;
 }
 
 function imageHtml(imageRef) {
   if (!imageRef) return '';
-  const imgPath = imageRef.cropped
-    ? imageRef.cropped
-    : `../pdf_images/page_${String(imageRef.page).padStart(3, '0')}.png`;
-  const note = escapeHtml(imageRef.note);
+  const imgPath = resolveImageSrc(imageRef);
+  if (!imgPath) return '';
+  const pageLabel = imageRef.page != null && imageRef.page !== ''
+    ? `第 ${imageRef.page} 页`
+    : '题目配图';
+  // 默认直接展开配图：题干「如下图」时打开即见，无需点击「查看原图」
   return `
-    <details class="q-image">
-      <summary>查看原图（第 ${imageRef.page} 页）</summary>
-      <div class="q-image-content">
-        <img src="${imgPath}" alt="第 ${imageRef.page} 页原图" loading="lazy" onerror="this.parentNode.parentNode.style.display='none'" onclick="zoomImage(this.src)">
-        <div class="q-image-note">${note} <span style="color:var(--accent)">（点击图片放大）</span></div>
-      </div>
-    </details>
+    <figure class="q-image q-image-inline" data-role="qimage">
+      <img src="${imgPath}" alt="${escapeHtml(pageLabel)}" loading="eager" decoding="async"
+        onerror="this.closest('.q-image').classList.add('is-broken')"
+        onclick="zoomImage(this.src)">
+      <figcaption class="q-image-note">题目配图 · ${escapeHtml(pageLabel)} <span class="q-image-hint">（点击放大）</span></figcaption>
+    </figure>
   `;
 }
 
 function zoomImage(src) {
   const overlay = document.createElement('div');
   overlay.className = 'zoom-overlay';
-  overlay.onclick = () => overlay.remove();
   const img = document.createElement('img');
   img.src = src;
+  img.draggable = false;
+  let scale = 1, tx = 0, ty = 0;
+  let dragging = false, startX = 0, startY = 0;
+  function apply() {
+    img.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+  }
   overlay.appendChild(img);
+  overlay.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    const delta = e.deltaY > 0 ? 0.9 : 1.1;
+    scale = Math.min(8, Math.max(1, scale * delta));
+    if (scale === 1) { tx = 0; ty = 0; }
+    apply();
+  }, {passive: false});
+  img.addEventListener('mousedown', (e) => {
+    if (scale <= 1) return;
+    dragging = true;
+    startX = e.clientX - tx;
+    startY = e.clientY - ty;
+    img.style.cursor = 'grabbing';
+  });
+  window.addEventListener('mousemove', (e) => {
+    if (!dragging) return;
+    tx = e.clientX - startX;
+    ty = e.clientY - startY;
+    apply();
+  });
+  window.addEventListener('mouseup', () => {
+    if (!dragging) return;
+    dragging = false;
+    img.style.cursor = 'grab';
+  });
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) overlay.remove();
+  });
   document.body.appendChild(overlay);
+  img.style.cursor = 'grab';
+}
+
+function openHelp() { openModal('helpModal'); }
+function closeHelp() { closeModalById('helpModal'); }
+function openDashboard() { renderDashboard(); openModal('dashboardModal'); }
+function closeDashboard() { closeModalById('dashboardModal'); }
+
+// ========================
+// 相似题推荐（基于 searchTokens 重叠度）
+// ========================
+function findSimilarQuestions(q, topN) {
+  topN = topN || 5;
+  const qKey = questionKey(q);
+  const qTokens = q._searchTokens;
+  if (!qTokens || qTokens.size === 0) return [];
+  const candidates = [];
+  for (const other of allQuestions) {
+    if (questionKey(other) === qKey) continue;
+    if (!other._searchTokens) continue;
+    // 简单 Jaccard：交集 / 并集
+    let inter = 0;
+    qTokens.forEach(t => { if (other._searchTokens.has(t)) inter++; });
+    if (inter === 0) continue;
+    const union = qTokens.size + other._searchTokens.size - inter;
+    const score = inter / union;
+    // 同章节加权
+    const sameChapter = (q.chapterKey || '') === (other.chapterKey || '') ? 0.2 : 0;
+    candidates.push({q: other, score: score + sameChapter, inter});
+  }
+  candidates.sort((a, b) => b.score - a.score || b.inter - a.inter);
+  return candidates.slice(0, topN).map(c => c.q);
+}
+
+// ========================
+// 试卷生成
+// ========================
+let currentPaper = null;
+function openPaper() {
+  // 加载课程下拉
+  const sel = document.getElementById('paperCourse');
+  sel.innerHTML = '';
+  getAvailableCourses().forEach(c => {
+    const opt = document.createElement('option');
+    opt.value = c.name;
+    opt.textContent = c.short || c.name;
+    if (c.name === getCurrentCourse()) opt.selected = true;
+    sel.appendChild(opt);
+  });
+  updatePaperChapters();
+  generatePaper();
+  openModal('paperModal');
+}
+function closePaper() { closeModalById('paperModal'); }
+function updatePaperChapters() {
+  const courseName = document.getElementById('paperCourse').value;
+  const chSel = document.getElementById('paperChapter');
+  chSel.innerHTML = '<option value="">全部章节</option>';
+  currentChapters.filter(ch => (ch.course || (bank && bank.courses && bank.courses[0] ? bank.courses[0].name : '')) === courseName || courseName === getCurrentCourse()).forEach(ch => {
+    const opt = document.createElement('option');
+    opt.value = ch.name;
+    opt.textContent = ch.name + ' (' + ch.question_count + ')';
+    chSel.appendChild(opt);
+  });
+}
+function generatePaper() {
+  const courseName = document.getElementById('paperCourse').value;
+  const chapter = document.getElementById('paperChapter').value;
+  const type = document.getElementById('paperType').value;
+  const count = Math.max(1, Math.min(200, parseInt(document.getElementById('paperCount').value) || 20));
+  const shuffle = document.getElementById('paperShuffle').checked;
+  let pool = allQuestions.filter(q => (q.course || getCurrentCourse()) === courseName);
+  if (chapter) pool = pool.filter(q => q.chapter === chapter);
+  if (type) pool = pool.filter(q => q.type === type);
+  if (shuffle) pool = shuffleArray([...pool]);
+  currentPaper = pool.slice(0, count);
+  // 渲染预览
+  const prev = document.getElementById('paperPreview');
+  if (currentPaper.length === 0) {
+    prev.innerHTML = '<p style="color:var(--text-tertiary);text-align:center;padding:20px">当前条件下没有题目</p>';
+    return;
+  }
+  prev.innerHTML = `<h3>试卷预览（${currentPaper.length} 道）</h3>` +
+    currentPaper.map((q, i) => {
+      const opts = q.options ? sortedOptionEntries(q.options).map(([k, v]) => `<div>${k}. ${escapeHtml(v)}</div>`).join('') : '';
+      const subs = q.sub_questions ? q.sub_questions.map((s, j) => `<div>(${j+1}) ${escapeHtml(s)}</div>`).join('') : '';
+      return `<div class="paper-q"><strong>${i+1}. (${escapeHtml(displayId(q))} · ${escapeHtml(q.type)} · 第 ${q.page} 页)</strong><div>${escapeHtml(q.content || '')}</div>${opts ? '<div style="margin-top:6px">' + opts + '</div>' : ''}${subs ? '<div style="margin-top:6px">' + subs + '</div>' : ''}<div style="margin-top:8px;height:1.4em"></div></div>`;
+    }).join('');
+}
+function buildPaperMarkdown(includeAnswer) {
+  if (!currentPaper || !currentPaper.length) return '';
+  const title = '王道 408 真题精选试卷';
+  const date = new Date().toLocaleDateString();
+  const lines = [`# ${title}`, '', `日期：${date}　|　题量：${currentPaper.length}　|　科目：${document.getElementById('paperCourse').value}`, '', '---', '', '姓名：_____________　　学号：_____________　　得分：_____________', ''];
+  currentPaper.forEach((q, i) => {
+    lines.push(`## ${i+1}. （${displayId(q)} · ${q.type} · 第 ${q.page} 页）`);
+    if (q.content) lines.push('', q.content);
+    if (q.options) {
+      lines.push('');
+      for (const [k, v] of sortedOptionEntries(q.options)) lines.push(`- **${k}**. ${v}`);
+    }
+    if (q.sub_questions) {
+      lines.push('', '子问题：');
+      q.sub_questions.forEach((s, j) => lines.push(`${j+1}. ${s}`));
+    }
+    if (includeAnswer) {
+      lines.push('');
+      if (q.answer && q.answer.choice) lines.push(`> ✅ 答案：${q.answer.choice}`);
+      if (q.answer && q.answer.explanation) lines.push(`> 解析：${q.answer.explanation}`);
+    } else {
+      lines.push('', '**作答：** ______________________________________');
+    }
+    lines.push('', '');
+  });
+  return lines.join('\n');
+}
+function downloadPaper() {
+  if (!currentPaper || !currentPaper.length) { alert('请先生成试卷'); return; }
+  downloadText(buildPaperMarkdown(false), `mathbank-paper-${new Date().toISOString().slice(0,10)}.md`);
+}
+function downloadAnswerSheet() {
+  if (!currentPaper || !currentPaper.length) { alert('请先生成试卷'); return; }
+  downloadText(buildPaperMarkdown(true), `mathbank-paper-answers-${new Date().toISOString().slice(0,10)}.md`);
+}
+function printPaper() {
+  if (!currentPaper || !currentPaper.length) { alert('请先生成试卷'); return; }
+  // 简单实现：弹一个新窗口供打印
+  const html = `<!doctype html><html><head><meta charset="utf-8"><title>试卷</title>
+  <style>body{font-family:"Microsoft YaHei",serif;max-width:720px;margin:30px auto;padding:0 20px;line-height:1.7;color:#222}
+  h1{text-align:center}h2{margin-top:24px}.paper-q{margin-bottom:18px;page-break-inside:avoid}
+  .opts{margin:6px 0}@media print{body{margin:0}}</style></head><body>
+  ${document.getElementById('paperPreview').innerHTML}
+  <script>setTimeout(()=>window.print(),200)</script>
+  </body></html>`;
+  const w = window.open('', '_blank');
+  w.document.write(html);
+  w.document.close();
+}
+
+// ========================
+// 错题本
+// ========================
+function openWrongBook() { renderWrongBook(); openModal('wrongBookModal'); }
+function closeWrongBook() { closeModalById('wrongBookModal'); }
+
+function wrongBookStats() {
+  // 统计每道题：错题次数 / 上次错时间
+  const map = new Map();
+  for (const e of wrongLog) {
+    if (!map.has(e.key)) map.set(e.key, {count: 0, lastAt: 0, firstAt: Infinity, chapter: e.chapter, qid: e.qid, type: e.type, page: e.page, correctAnswer: e.correctAnswer});
+    const v = map.get(e.key);
+    v.count++;
+    v.lastAt = Math.max(v.lastAt, e.at);
+    v.firstAt = Math.min(v.firstAt, e.at);
+  }
+  return map;
+}
+
+function renderWrongBook() {
+  const stats = wrongBookStats();
+  if (stats.size === 0) {
+    document.getElementById('wrongBookContent').innerHTML = `
+      <div class="empty-state">
+        <h3>暂无错题</h3>
+        <p>去练习模式做几道题，错题会自动汇总到这里</p>
+      </div>`;
+    return;
+  }
+  const groupBy = document.getElementById('wrongBookGroupBy').value;
+  // 把 Map 转成数组并按规则排序
+  let arr = Array.from(stats.entries()).map(([key, v]) => ({key, ...v}));
+  arr.sort((a, b) => b.lastAt - a.lastAt);
+
+  let html = '';
+  if (groupBy === 'chapter') {
+    const byCh = new Map();
+    arr.forEach(it => {
+      const ch = it.chapter || '未分类';
+      if (!byCh.has(ch)) byCh.set(ch, []);
+      byCh.get(ch).push(it);
+    });
+    for (const [ch, items] of byCh.entries()) {
+      html += `<h4>${escapeHtml(ch)} <span style="color:var(--text-tertiary);font-size:0.78rem;font-weight:400">（${items.length} 道）</span></h4>`;
+      html += items.map(it => wrongBookItemHtml(it)).join('');
+    }
+  } else {
+    // 按时间分：今天 / 昨天 / 本周 / 更早
+    const now = Date.now();
+    const todayStart = new Date(); todayStart.setHours(0,0,0,0);
+    const yesterday = todayStart.getTime() - 86400000;
+    const weekAgo = todayStart.getTime() - 7 * 86400000;
+    const groups = {今日: [], 昨日: [], 本周: [], 更早: []};
+    arr.forEach(it => {
+      if (it.lastAt >= todayStart.getTime()) groups['今日'].push(it);
+      else if (it.lastAt >= yesterday) groups['昨日'].push(it);
+      else if (it.lastAt >= weekAgo) groups['本周'].push(it);
+      else groups['更早'].push(it);
+    });
+    for (const [k, items] of Object.entries(groups)) {
+      if (!items.length) continue;
+      html += `<h4>${k} <span style="color:var(--text-tertiary);font-size:0.78rem;font-weight:400">（${items.length} 道）</span></h4>`;
+      html += items.map(it => wrongBookItemHtml(it)).join('');
+    }
+  }
+  document.getElementById('wrongBookContent').innerHTML = `
+    <div class="wrongbook-summary">共 <strong>${stats.size}</strong> 道错题，累计 <strong>${wrongLog.length}</strong> 次答错</div>
+    ${html}
+  `;
+  // 绑定点击跳转
+  document.querySelectorAll('.wrongbook-item').forEach(el => {
+    el.addEventListener('click', () => {
+      const q = allQuestions.find(x => questionKey(x) === el.dataset.key);
+      if (!q) {
+        flashToast('该题不在当前课程，请先切换到对应科目');
+        return;
+      }
+      closeWrongBook();
+      openDetail(q);
+    });
+  });
+}
+
+function wrongBookItemHtml(it) {
+  const q = allQuestions.find(x => questionKey(x) === it.key);
+  const preview = q ? (q.content ? q.content.slice(0, 60) : (q.sub_questions && q.sub_questions[0] || '（无题干）')) : '（题目已不在当前课程）';
+  const last = new Date(it.lastAt);
+  const dateStr = `${last.getMonth()+1}/${last.getDate()}`;
+  return `
+    <div class="wrongbook-item" data-key="${escapeHtml(it.key)}" data-index="${allQuestions.indexOf(q)}">
+      <div class="wb-main">
+        <div class="wb-id">${escapeHtml(it.qid || '')} · ${escapeHtml(it.type || '')} · 第 ${it.page} 页</div>
+        <div class="wb-text">${escapeHtml(preview).replace(/\$([^$]+)\$/g, '$1')}</div>
+        <div class="wb-meta">${escapeHtml(it.chapter || '')}${it.correctAnswer ? ' · 答案：<span style="color:var(--accent)">' + escapeHtml(it.correctAnswer) + '</span>' : ''}</div>
+      </div>
+      <div class="wb-stats">
+        <div class="wb-count" title="错题次数">${it.count}×</div>
+        <div class="wb-date">${dateStr}</div>
+      </div>
+    </div>
+  `;
+}
+
+function exportWrongBook() {
+  const stats = wrongBookStats();
+  if (stats.size === 0) {
+    alert('暂无错题可导出');
+    return;
+  }
+  // 按章节聚合
+  const byCh = new Map();
+  for (const [key, v] of stats.entries()) {
+    const ch = v.chapter || '未分类';
+    if (!byCh.has(ch)) byCh.set(ch, []);
+    byCh.get(ch).push({key, ...v});
+  }
+  const lines = ['# 我的 408 错题本', '', `生成时间：${new Date().toLocaleString()}`, '', `总计 ${stats.size} 道错题，累计 ${wrongLog.length} 次答错`, ''];
+  for (const [ch, items] of byCh.entries()) {
+    lines.push(`## ${ch}`);
+    lines.push('');
+    items.sort((a, b) => b.count - a.count);
+    for (const it of items) {
+      const q = allQuestions.find(x => questionKey(x) === it.key);
+      lines.push(`### ${it.qid || ''} · 第 ${it.page} 页 · ${it.type || ''}`);
+      if (q && q.content) lines.push('', '> ' + q.content.replace(/\n/g, '\n> '));
+      if (q && q.options) {
+        lines.push('');
+        for (const [k, v] of sortedOptionEntries(q.options)) lines.push(`- **${k}**. ${v}`);
+      }
+      if (q && q.answer && q.answer.choice) lines.push('', `**答案**：${q.answer.choice}`);
+      if (q && q.answer && q.answer.explanation) lines.push(`**解析**：${q.answer.explanation}`);
+      lines.push('', `> ❌ 错题次数：${it.count}　|　上次：${new Date(it.lastAt).toLocaleString()}`);
+      const note = notesMap[it.key];
+      if (note) lines.push('', `> 📝 笔记：${note}`);
+      lines.push('', '---', '');
+    }
+  }
+  downloadText(lines.join('\n'), `mathbank-wrongbook-${new Date().toISOString().slice(0,10)}.md`);
+}
+
+// 学习仪表盘：基于 attemptLog 统计做题；review 仅作复习参考
+function renderDashboard() {
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const todayTs = today.getTime();
+  const dayMs = 86400000;
+  const dayKey = (ts) => {
+    const d = new Date(ts);
+    d.setHours(0, 0, 0, 0);
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  };
+
+  // 按自然日聚合 attemptLog（最近 60 天用于 streak，最近 7 天用于图表）
+  const dailyDone = {}; // YYYY-MM-DD → {done, wrong, correct}
+  for (let i = 0; i < 60; i++) {
+    dailyDone[dayKey(todayTs - i * dayMs)] = { done: 0, wrong: 0, correct: 0 };
+  }
+  let totalDone = 0, totalCorrect = 0;
+  const courseStats = {};
+  attemptLog.forEach(a => {
+    if (!a || !a.at) return;
+    const k = dayKey(a.at);
+    totalDone++;
+    if (a.isCorrect) totalCorrect++;
+    if (dailyDone[k]) {
+      dailyDone[k].done++;
+      if (a.isCorrect) dailyDone[k].correct++;
+      else dailyDone[k].wrong++;
+    }
+    const c = a.course || '未知';
+    if (!courseStats[c]) courseStats[c] = { done: 0, correct: 0 };
+    courseStats[c].done++;
+    if (a.isCorrect) courseStats[c].correct++;
+  });
+
+  const todayKey = dayKey(todayTs);
+  const todayStats = dailyDone[todayKey] || { done: 0, wrong: 0, correct: 0 };
+  const overallRate = totalDone ? Math.round(totalCorrect / totalDone * 100) : 0;
+
+  // Streak：从今天往前，允许今天为 0 不打断
+  let streak = 0;
+  for (let i = 0; i < 60; i++) {
+    const k = dayKey(todayTs - i * dayMs);
+    const n = (dailyDone[k] && dailyDone[k].done) || 0;
+    if (n > 0) streak++;
+    else if (i === 0) continue;
+    else break;
+  }
+
+  // 7 天趋势
+  const days = [];
+  for (let i = 6; i >= 0; i--) {
+    const ts = todayTs - i * dayMs;
+    const d = new Date(ts);
+    const k = dayKey(ts);
+    const s = dailyDone[k] || { done: 0, wrong: 0 };
+    days.push({ k, label: (d.getMonth() + 1) + '/' + d.getDate(), done: s.done, wrong: s.wrong });
+  }
+  const maxBar = Math.max(1, ...days.map(d => d.done));
+  const barW = 50, gap = 14, baseY = 130, chartH = 110;
+  const chartW = days.length * (barW + gap) + 20;
+  let svg = `<svg viewBox="0 0 ${chartW} ${baseY + 20}" width="100%" style="max-width:${chartW}px;display:block">`;
+  days.forEach((d, i) => {
+    const x = 10 + i * (barW + gap);
+    const h = Math.round((d.done / maxBar) * chartH);
+    const wrongH = Math.round((d.wrong / Math.max(1, d.done)) * h);
+    const y = baseY - h;
+    svg += `<rect x="${x}" y="${y}" width="${barW}" height="${h}" rx="4" fill="var(--text-primary)" opacity="${d.done ? 0.75 : 0.12}"/>`;
+    if (wrongH > 0) {
+      svg += `<rect x="${x}" y="${y}" width="${barW}" height="${wrongH}" rx="4" fill="var(--danger)"/>`;
+    }
+    svg += `<text x="${x + barW / 2}" y="${baseY + 14}" text-anchor="middle" font-size="10" fill="var(--text-tertiary)">${d.label}</text>`;
+    if (d.done) svg += `<text x="${x + barW / 2}" y="${y - 4}" text-anchor="middle" font-size="10" font-weight="600" fill="var(--text-primary)">${d.done}</text>`;
+  });
+  svg += `</svg>`;
+
+  const courseEntries = Object.entries(courseStats).filter(([_, v]) => v.done > 0)
+    .sort((a, b) => b[1].done - a[1].done);
+  let courseHtml = '';
+  if (courseEntries.length) {
+    const maxCourse = Math.max(1, ...courseEntries.map(([_, v]) => v.done));
+    courseHtml = courseEntries.map(([name, v]) => {
+      const rate = v.done ? Math.round(v.correct / v.done * 100) : 0;
+      const w = Math.round((v.done / maxCourse) * 200);
+      const color = rate >= 80 ? 'var(--success)' : rate >= 60 ? 'var(--warning)' : 'var(--danger)';
+      return `<div class="course-row">
+        <div class="course-name">${escapeHtml(name)}</div>
+        <div class="course-bar"><div class="course-bar-fill" style="width:${w}px;background:${color}"></div></div>
+        <div class="course-meta">${v.done} 题 · ${rate}%</div>
+      </div>`;
+    }).join('');
+  } else {
+    courseHtml = '<p style="color:var(--text-tertiary);font-size:0.88rem">还没有做题数据，去做几道试试吧</p>';
+  }
+
+  const due = dueCount();
+  let masteredCount = 0;
+  Object.values(statusMap).forEach(v => {
+    if (normalizeStatusEntry(v).mastery === 'mastered') masteredCount++;
+  });
+
+  document.getElementById('dashboardContent').innerHTML = `
+    <div class="dash-grid">
+      <div class="dash-card"><div class="dash-label">今日做题</div><div class="dash-value">${todayStats.done}</div></div>
+      <div class="dash-card"><div class="dash-label">今日错题</div><div class="dash-value" style="color:var(--danger)">${todayStats.wrong}</div></div>
+      <div class="dash-card"><div class="dash-label">累计正确率</div><div class="dash-value">${overallRate}%</div></div>
+      <div class="dash-card"><div class="dash-label">连续打卡</div><div class="dash-value">${streak}<small>天</small></div></div>
+      <div class="dash-card"><div class="dash-label">待复习</div><div class="dash-value">${due}</div></div>
+      <div class="dash-card"><div class="dash-label">已掌握</div><div class="dash-value">${masteredCount}</div></div>
+    </div>
+    <h4>最近 7 天</h4>
+    ${svg}
+    <p style="font-size:0.78rem;color:var(--text-tertiary);margin-top:4px">深色柱=作答次数 · 红色=其中错误次数（基于答题记录）</p>
+    <h4>各科正确率</h4>
+    ${courseHtml}
+  `;
 }
 
 // ========================
 // Practice Mode
 // ========================
-function startPractice(status) {
+/** 把某课程 JSON 展平成可练习的题目列表（含 chapter / course） */
+function flattenCourseQuestions(courseData, courseName) {
+  const out = [];
+  if (!courseData || !courseData.chapters) return out;
+  const tokenSplitRe = /[\s,.;:!?。，；：！？、（）()\[\]"'"]+/;
+  courseData.chapters.forEach(ch => {
+    const chapterKey = (ch.l1_name || '?') + '|' + (ch.l2_name || '?') + '|' + (ch.section_type || '?');
+    (ch.questions || []).forEach(q => {
+      const entry = { ...q, chapter: ch.name, chapterKey, course: ch.course || courseName || '' };
+      const parts = [entry.content || '', entry.chapter || '', entry.id || ''];
+      if (entry.options) Object.values(entry.options).forEach(v => parts.push(v));
+      if (entry.sub_questions) entry.sub_questions.forEach(s => parts.push(s));
+      if (entry.answer) {
+        if (entry.answer.choice) parts.push(entry.answer.choice);
+        if (entry.answer.explanation) parts.push(entry.answer.explanation);
+      }
+      entry._searchText = parts.join(' ').toLowerCase();
+      const tokens = new Set();
+      entry._searchText.split(tokenSplitRe).forEach(t => { if (t.length > 1) tokens.add(t); });
+      entry._searchTokens = tokens;
+      out.push(entry);
+    });
+  });
+  return out;
+}
+
+async function loadMixedPool(count) {
+  const courses = getAvailableCourses();
+  const pools = await Promise.all(courses.map(async c => {
+    try {
+      const data = await window.loadCourseData(c.name);
+      return flattenCourseQuestions(data, c.name);
+    } catch (e) {
+      console.warn('mixed load failed', c.name, e);
+      return [];
+    }
+  }));
+  const merged = pools.flat();
+  // 按科目尽量均衡抽样
+  const byCourse = new Map();
+  merged.forEach(q => {
+    const c = q.course || '未知';
+    if (!byCourse.has(c)) byCourse.set(c, []);
+    byCourse.get(c).push(q);
+  });
+  byCourse.forEach((arr, k) => byCourse.set(k, shuffleArray(arr)));
+  const per = Math.max(1, Math.floor(count / Math.max(1, byCourse.size)));
+  let picked = [];
+  byCourse.forEach(arr => { picked = picked.concat(arr.slice(0, per)); });
+  if (picked.length < count) {
+    const rest = shuffleArray(merged.filter(q => !picked.includes(q)));
+    picked = picked.concat(rest.slice(0, count - picked.length));
+  }
+  return shuffleArray(picked).slice(0, count);
+}
+
+async function startPractice(status) {
   const saved = loadProgress();
   if (saved && saved.ids && saved.ids.length > 0) {
     const choice = confirm(`发现上次未完成的练习（${saved.ids.length} 道题，进度 ${saved.index + 1}/${saved.ids.length}）。\n\n确定 = 继续上次练习\n取消 = 开始新练习`);
     if (choice) {
-      if (resumePractice(saved)) return;
+      if (await resumePractice(saved)) return;
     } else {
       clearProgress();
     }
   }
 
-  const type = document.getElementById('typeFilter').value;
-  const feature = document.getElementById('featureFilter').value;
-  const pool = filterQuestions(allQuestions, {chapter: selectedChapter, type, feature, status: status || activeStatusFilter});
+  // 解析考试模式：timed30 / timed60 / target50 / mixed80
+  practiceMode = null;
+  practiceDeadline = 0;
+  if (status === 'timed30') { practiceMode = 'timed'; practiceDeadline = Date.now() + 30 * 60 * 1000; }
+  else if (status === 'timed60') { practiceMode = 'timed'; practiceDeadline = Date.now() + 60 * 60 * 1000; }
+  else if (status === 'target50') { practiceMode = 'target'; }
+  else if (status === 'mixed80') { practiceMode = 'mixed'; }
+
+  let pool;
+  if (status === 'review') {
+    pool = getDueQuestions();
+  } else if (practiceMode === 'mixed') {
+    flashToast('正在加载四科题目…');
+    pool = await loadMixedPool(80);
+  } else if (practiceMode === 'target') {
+    const type = document.getElementById('typeFilter').value;
+    const feature = document.getElementById('featureFilter').value;
+    pool = filterQuestions(allQuestions, { chapter: selectedChapter, type, feature });
+  } else {
+    const type = document.getElementById('typeFilter').value;
+    const feature = document.getElementById('featureFilter').value;
+    // status 可能是 unknown/favorite 等练习入口，或 timed 模式
+    const statusFilter = (status && !['timed30', 'timed60', 'target50', 'mixed80', 'review', 'current'].includes(status))
+      ? status
+      : activeStatusFilter;
+    pool = filterQuestions(allQuestions, { chapter: selectedChapter, type, feature, status: statusFilter });
+  }
 
   if (pool.length === 0) {
-    const msg = status === 'wrong' ? '还没有错题，先去练习吧' :
-                status === 'favorite' ? '还没有收藏题目' :
-                '当前筛选条件下没有题目，请先调整筛选条件';
+    const statusMsgs = {
+      wrong: '还没有错题，先去练习吧',
+      favorite: '还没有收藏题目',
+      unknown: '还没有标记为「不会」的题目',
+      familiar: '还没有标记为「不熟」的题目',
+      unmarked: '当前筛选下没有未标记的题目',
+      review: '今天没有需要复习的题目，先去刷题吧',
+      timed30: '当前筛选下没有题目，无法开始限时练习',
+      timed60: '当前筛选下没有题目，无法开始限时练习',
+      target50: '当前筛选下没有题目',
+      mixed80: '跨科题目加载失败或为空'
+    };
+    const msg = statusMsgs[status] || '当前筛选条件下没有题目，请先调整筛选条件';
     alert(msg);
     return;
   }
 
   practiceQueue = shuffleArray([...pool]);
+  if (practiceMode === 'target') practiceQueue = practiceQueue.slice(0, 50);
+  if (practiceMode === 'mixed') practiceQueue = practiceQueue.slice(0, 80);
   practiceIndex = 0;
   practiceResults = [];
   practiceFinished = false;
@@ -1009,6 +2841,9 @@ function startPractice(status) {
   saveProgress();
   renderPractice();
   openModal('practiceModal');
+
+  stopPracticeTimer();
+  if (practiceMode === 'timed') startPracticeTimer();
 }
 
 function setPracticeFooter(visible) {
@@ -1021,7 +2856,13 @@ function renderPractice() {
   const container = document.getElementById('practiceContent');
   const progress = `${practiceIndex + 1} / ${practiceQueue.length}`;
 
+  let timerHtml = '';
+  if (practiceMode === 'timed') {
+    timerHtml = `<div class="practice-timer" id="practiceTimer"><span class="practice-timer-label">⏱ 剩余时间</span><span class="practice-timer-value" id="practiceTimerValue">--:--</span></div>`;
+  }
+
   container.innerHTML = `
+    ${timerHtml}
     <div class="practice-progress">${escapeHtml(q.chapter)} · ${escapeHtml(displayId(q))} · ${progress}</div>
     <div class="practice-question">
       <div class="q-id" style="margin-bottom:14px;font-size:0.95rem;color:var(--text-tertiary);font-weight:600;">${q.type} · 第 ${q.page} 页</div>
@@ -1031,7 +2872,33 @@ function renderPractice() {
 
   renderQuestionBody(container, q, 'practice');
   restorePracticeState(container, q);
+  if (practiceMode === 'timed') updateTimerDisplay();
   saveProgress();
+}
+
+// 倒计时相关
+function startPracticeTimer() {
+  practiceTimer = setInterval(() => {
+    updateTimerDisplay();
+    if (Date.now() >= practiceDeadline) {
+      stopPracticeTimer();
+      alert('⏰ 时间到，自动交卷！');
+      finishPractice();
+    }
+  }, 1000);
+}
+function stopPracticeTimer() {
+  if (practiceTimer) { clearInterval(practiceTimer); practiceTimer = null; }
+}
+function updateTimerDisplay() {
+  const el = document.getElementById('practiceTimerValue');
+  const box = document.getElementById('practiceTimer');
+  if (!el || !box) return;
+  const remain = Math.max(0, practiceDeadline - Date.now());
+  const m = Math.floor(remain / 60000);
+  const s = Math.floor((remain % 60000) / 1000);
+  el.textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+  box.classList.toggle('warn', remain < 5 * 60 * 1000);
 }
 
 function nextPractice() {
@@ -1041,26 +2908,40 @@ function nextPractice() {
   } else {
     finishPractice();
   }
+  // 限时模式：到点自动交卷
+  if (practiceMode === 'timed' && Date.now() >= practiceDeadline) {
+    stopPracticeTimer();
+    alert('⏰ 时间到，自动交卷！');
+    finishPractice();
+  }
 }
 
 function finishPractice() {
   practiceFinished = true;
+  stopPracticeTimer();
+  practiceMode = null;
   clearProgress();
-  const total = practiceResults.length;
+  const answered = practiceResults.length;
   const correct = practiceResults.filter(r => r.correct).length;
-  const wrong = total - correct;
-  const rate = total ? Math.round(correct / total * 100) : 0;
+  const wrong = answered - correct;
+  const rate = answered ? Math.round(correct / answered * 100) : 0;
+  const skipped = Math.max(0, practiceQueue.length - answered);
 
   const container = document.getElementById('practiceContent');
   container.innerHTML = `
     <div class="practice-summary">
       <h2>练习完成</h2>
       <div class="summary-stats">
-        <div class="summary-item"><span>${practiceQueue.length}</span><label>总题数</label></div>
+        <div class="summary-item"><span>${practiceQueue.length}</span><label>队列题数</label></div>
+        <div class="summary-item"><span>${answered}</span><label>已作答</label></div>
         <div class="summary-item correct"><span>${correct}</span><label>正确</label></div>
         <div class="summary-item wrong"><span>${wrong}</span><label>错误</label></div>
-        <div class="summary-item"><span>${rate}%</span><label>正确率</label></div>
       </div>
+      <p style="color:var(--text-tertiary);font-size:0.85rem;margin:8px 0 18px">
+        正确率 <strong style="color:var(--text-primary)">${rate}%</strong>
+        ${skipped ? ` · 跳过 ${skipped} 题` : ''}
+        （按已作答题计算）
+      </p>
       <div class="summary-actions">
         <button class="btn btn-primary" onclick="restartPractice()">重新练习</button>
         <button class="btn btn-secondary" onclick="closePractice()">退出</button>
@@ -1080,7 +2961,12 @@ function restartPractice() {
   renderPractice();
 }
 
-function closePractice() { closeModalById('practiceModal'); }
+function closePractice() {
+  stopPracticeTimer();
+  // 未完成时保留进度，便于下次续做；已完成则已 clearProgress
+  if (!practiceFinished) saveProgress();
+  closeModalById('practiceModal');
+}
 
 function prevPractice() {
   if (practiceFinished) return;
@@ -1090,31 +2976,98 @@ function prevPractice() {
   }
 }
 
-function resumePractice(saved) {
-  const idMap = new Map(allQuestions.map(q => [questionKey(q), q]));
-  practiceQueue = saved.ids.map(k => idMap.get(k)).filter(Boolean);
+async function resumePractice(saved) {
+  // 尽量从缓存/当前课恢复；跨科进度需加载各科
+  let idMap = new Map(allQuestions.map(q => [questionKey(q), q]));
+  const missing = (saved.ids || []).filter(k => !idMap.has(k));
+  if (missing.length && window.loadCourseData) {
+    try {
+      const courses = getAvailableCourses();
+      for (const c of courses) {
+        const data = await window.loadCourseData(c.name);
+        flattenCourseQuestions(data, c.name).forEach(q => idMap.set(questionKey(q), q));
+      }
+    } catch (e) { console.warn(e); }
+  }
+  practiceQueue = (saved.ids || []).map(k => idMap.get(k)).filter(Boolean);
   if (practiceQueue.length === 0) return false;
-  practiceIndex = Math.min(saved.index, practiceQueue.length - 1);
+  practiceIndex = Math.min(saved.index || 0, practiceQueue.length - 1);
+  // 恢复已作答结果
   practiceResults = [];
+  if (Array.isArray(saved.results)) {
+    saved.results.forEach(r => {
+      const q = idMap.get(r.key);
+      if (q) practiceResults.push({ q, correct: !!r.correct });
+    });
+  }
   practiceFinished = false;
+  practiceMode = saved.mode || null;
+  practiceDeadline = saved.deadline || 0;
+  // 限时：若已过期则直接交卷；否则续跑
+  stopPracticeTimer();
+  if (practiceMode === 'timed') {
+    if (practiceDeadline && Date.now() >= practiceDeadline) {
+      openModal('practiceModal');
+      finishPractice();
+      return true;
+    }
+    if (!practiceDeadline) practiceDeadline = Date.now() + 30 * 60 * 1000;
+    startPracticeTimer();
+  }
   setPracticeFooter(true);
   renderPractice();
   openModal('practiceModal');
   return true;
 }
 
-function practiceKey(courseName) {
-  // 使用固定前缀 + 课程名，避免 document.title 变化导致进度丢失，同时按课程隔离进度
-  return 'mathbank_practice_v1_' + (courseName || getCurrentCourse() || 'default');
+function practiceKey() {
+  return 'mathbank_practice_progress_v2';
 }
-function saveProgress() { try { localStorage.setItem(practiceKey(), JSON.stringify({ids: practiceQueue.map(questionKey), index: practiceIndex})); } catch(e) {} }
-function loadProgress() { try { const r = localStorage.getItem(practiceKey()); return r ? JSON.parse(r) : null; } catch(e) { return null; } }
-function clearProgress() { try { localStorage.removeItem(practiceKey()); } catch(e) {} }
+function saveProgress() {
+  if (practiceFinished || !practiceQueue.length) return;
+  const payload = {
+    version: 2,
+    ids: practiceQueue.map(questionKey),
+    index: practiceIndex,
+    results: practiceResults.map(r => ({ key: questionKey(r.q), correct: !!r.correct })),
+    mode: practiceMode,
+    deadline: practiceDeadline || 0,
+    savedAt: Date.now()
+  };
+  safeSetItem(practiceKey(), JSON.stringify(payload));
+  // 清理旧键
+  try { localStorage.removeItem('mathbank_practice_progress_v1'); } catch (e) {}
+}
+function loadProgress() {
+  try {
+    let r = localStorage.getItem(practiceKey());
+    if (!r) r = localStorage.getItem('mathbank_practice_progress_v1');
+    return r ? JSON.parse(r) : null;
+  } catch (e) { return null; }
+}
+function clearProgress() {
+  try {
+    localStorage.removeItem(practiceKey());
+    localStorage.removeItem('mathbank_practice_progress_v1');
+  } catch (e) {}
+}
 
 function randomQuestion() {
   if (filteredQuestions.length === 0) return;
-  let idx = Math.floor(Math.random() * filteredQuestions.length);
-  if (filteredQuestions.length > 1 && idx === lastRandomIdx) idx = (idx + 1) % filteredQuestions.length;
+  const tiers = [[], [], [], []];
+  filteredQuestions.forEach((q, i) => {
+    const st = getMastery(q);
+    if (st === 'unknown') tiers[0].push(i);
+    else if (st === 'familiar') tiers[1].push(i);
+    else if (!st) tiers[2].push(i);
+    else tiers[3].push(i);
+  });
+  const pool = tiers.find(t => t.length > 0) || [];
+  let idx = pool[Math.floor(Math.random() * pool.length)];
+  if (pool.length > 1 && idx === lastRandomIdx) {
+    const alt = pool.filter(i => i !== lastRandomIdx);
+    idx = alt[Math.floor(Math.random() * alt.length)];
+  }
   lastRandomIdx = idx;
   openDetail(idx);
 }
@@ -1359,12 +3312,80 @@ function escapeHtml(str) {
 // Events
 // ========================
 function setupEvents() {
-  document.getElementById('searchInput').addEventListener('input', debounce(resetAndFilter, 200));
+  const searchInput = document.getElementById('searchInput');
+  searchInput.addEventListener('input', debounce(() => {
+    resetAndFilter();
+  }, 200));
+  // 搜索历史：仅 Enter / 失焦 且长度≥2 时写入
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const term = searchInput.value.trim();
+      if (term.length >= 2) pushSearchHistory(term);
+      const dd = document.getElementById('searchHistoryDropdown');
+      if (dd) dd.hidden = true;
+      searchInput.blur();
+    }
+  });
+  searchInput.addEventListener('blur', () => {
+    const term = searchInput.value.trim();
+    if (term.length >= 2) pushSearchHistory(term);
+  });
+  searchInput.addEventListener('focus', renderSearchHistoryDropdown);
   document.getElementById('typeFilter').addEventListener('change', resetAndFilter);
   document.getElementById('featureFilter').addEventListener('change', resetAndFilter);
+  const sortSel = document.getElementById('sortSelect');
+  if (sortSel) sortSel.addEventListener('change', () => { currentPage = 1; applyFilters(); });
 
   document.getElementById('btnPractice').addEventListener('click', () => startPractice());
   document.getElementById('btnRandom').addEventListener('click', randomQuestion);
+  document.getElementById('btnExport').addEventListener('click', exportProgress);
+  const btnResume = document.getElementById('btnResumePos');
+  const btnDismiss = document.getElementById('btnDismissResume');
+  if (btnResume) btnResume.addEventListener('click', resumeLastPosition);
+  if (btnDismiss) btnDismiss.addEventListener('click', clearCursor);
+  setupPlatformSyncEvents();
+  document.getElementById('btnImport').addEventListener('click', () => document.getElementById('importFile').click());
+  document.getElementById('btnExportNotes').addEventListener('click', exportNotesAsMarkdown);
+  document.getElementById('btnBackupNow').addEventListener('click', () => triggerBackup(false));
+  document.getElementById('importFile').addEventListener('change', (e) => {
+    importProgress(e.target.files[0]);
+    e.target.value = '';
+  });
+  document.getElementById('helpToggle').addEventListener('click', openHelp);
+  document.getElementById('dashboardToggle').addEventListener('click', openDashboard);
+  document.getElementById('wrongBookBtn').addEventListener('click', openWrongBook);
+  document.getElementById('paperBtn').addEventListener('click', openPaper);
+  const viewBtn = document.getElementById('btnViewToggle');
+  if (viewBtn) viewBtn.addEventListener('click', toggleViewMode);
+  const wbGroup = document.getElementById('wrongBookGroupBy');
+  if (wbGroup) wbGroup.addEventListener('change', renderWrongBook);
+  // 试卷配置 change
+  ['paperCourse','paperChapter','paperType','paperCount','paperShuffle'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('change', () => { if (id === 'paperCourse') updatePaperChapters(); generatePaper(); });
+  });
+  const moreBtn = document.getElementById('btnMoreMobile');
+  const moreMenu = document.getElementById('mobileMoreMenu');
+  if (moreBtn && moreMenu) {
+    moreBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      moreMenu.hidden = !moreMenu.hidden;
+    });
+    moreMenu.addEventListener('click', (e) => {
+      const item = e.target.closest('[data-action]');
+      if (!item) return;
+      moreMenu.hidden = true;
+      const act = item.dataset.action;
+      if (act === 'export') exportProgress();
+      else if (act === 'import') document.getElementById('importFile').click();
+      else if (act === 'notes') exportNotesAsMarkdown();
+      else if (act === 'backup') triggerBackup(false);
+      else if (act === 'view') toggleViewMode();
+      else if (act === 'random') randomQuestion();
+    });
+    document.addEventListener('click', () => { moreMenu.hidden = true; });
+  }
 
   const practiceArrow = document.getElementById('btnPracticeArrow');
   const practiceMenu = document.getElementById('practiceMenu');
@@ -1378,14 +3399,18 @@ function setupEvents() {
       if (!item) return;
       practiceMenu.hidden = true;
       const mode = item.dataset.mode;
-      if (mode === 'wrong') startPractice('wrong');
-      else if (mode === 'favorite') startPractice('favorite');
-      else startPractice();
+      if (mode === 'current' || !mode) startPractice();
+      else startPractice(mode);
     });
     document.addEventListener('click', () => { practiceMenu.hidden = true; });
   }
   document.getElementById('toggleSidebar').addEventListener('click', () => {
     document.getElementById('sidebar').classList.toggle('open');
+  });
+  const dueBtn = document.getElementById('btnDueReview');
+  if (dueBtn) dueBtn.addEventListener('click', () => {
+    if (window.innerWidth <= 768) document.getElementById('sidebar').classList.remove('open');
+    startPractice('review');
   });
   document.getElementById('sidebarOverlay').addEventListener('click', () => {
     document.getElementById('sidebar').classList.remove('open');
@@ -1396,49 +3421,665 @@ function setupEvents() {
 
   function handleCardActivation(e) {
     if (e.type === 'keydown' && e.key !== 'Enter') return;
-    const card = e.target.closest('.question-row');
+    const card = e.target.closest('.question-card') || e.target.closest('.question-row');
     if (card) openDetail(Number(card.dataset.index));
   }
   document.getElementById('questionGrid').addEventListener('click', handleCardActivation);
   document.getElementById('questionGrid').addEventListener('keydown', handleCardActivation);
 
-  ['detailModal', 'practiceModal'].forEach(id => {
-    document.getElementById(id).addEventListener('click', (e) => {
-      const opt = e.target.closest('.option-item');
-      if (opt) {
-        if (opt.closest('#practiceModal')) return;
-        const container = opt.closest('.q-options');
-        if (container) {
-          container.querySelectorAll('.option-item').forEach(o => o.classList.remove('selected'));
-          opt.classList.add('selected');
-        }
-      }
-    });
-  });
-
-  ['detailModal', 'practiceModal'].forEach(id => {
+  ['detailModal', 'practiceModal', 'helpModal', 'dashboardModal', 'wrongBookModal', 'paperModal'].forEach(id => {
     document.getElementById(id).addEventListener('click', (e) => {
       if (e.target === e.currentTarget) closeModalById(id);
     });
   });
 
   document.addEventListener('keydown', (e) => {
+    const inEditable = e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable);
     if (e.key === 'Escape') {
+      if (inEditable && e.target.id === 'searchInput') {
+        e.target.blur();
+        const dd = document.getElementById('searchHistoryDropdown');
+        if (dd) dd.hidden = true;
+        return;
+      }
       closeModalById('detailModal');
       closeModalById('practiceModal');
+      closeModalById('helpModal');
+      closeModalById('dashboardModal');
+      closeModalById('wrongBookModal');
+      closeModalById('paperModal');
+      const dd = document.getElementById('searchHistoryDropdown');
+      if (dd) dd.hidden = true;
+    }
+    if (inEditable) return;
+    if (e.key === '?' && !document.querySelector('.modal-overlay.active')) {
+      e.preventDefault();
+      openHelp();
+    }
+    if (e.key === '/' && !document.querySelector('.modal-overlay.active')) {
+      e.preventDefault();
+      const inp = document.getElementById('searchInput');
+      inp.focus();
+      inp.select();
+      renderSearchHistoryDropdown();
     }
     const detailActive = document.getElementById('detailModal').classList.contains('active');
     if (detailActive) {
       if (e.key === 'ArrowLeft') { e.preventDefault(); prevQuestion(); }
       if (e.key === 'ArrowRight') { e.preventDefault(); nextQuestion(); }
+      if (e.key === '1') { e.preventDefault(); setDetailMastery('mastered'); }
+      if (e.key === '2') { e.preventDefault(); setDetailMastery('familiar'); }
+      if (e.key === '3') { e.preventDefault(); setDetailMastery('unknown'); }
+      if (e.key === 'f' || e.key === 'F') { e.preventDefault(); toggleDetailFavorite(); }
+      if (e.key === 'c' || e.key === 'C') {
+        const q = getCurrentDetailQuestion();
+        if (q) copyQuestionToClipboard(q);
+      }
+      const optKey = e.key.toUpperCase();
+      if (['A', 'B', 'C', 'D'].includes(optKey)) {
+        const container = document.getElementById('modalContent');
+        const opt = container && container.querySelector(`.option-item[data-key="${optKey}"]`);
+        if (opt && !container._submitted) { e.preventDefault(); opt.click(); }
+      }
     }
     const practiceActive = document.getElementById('practiceModal').classList.contains('active');
     if (practiceActive && !practiceFinished) {
       if (e.key === 'ArrowLeft') { e.preventDefault(); prevPractice(); }
       if (e.key === 'ArrowRight') { e.preventDefault(); nextPractice(); }
+      const container = document.getElementById('practiceContent');
+      const optKey = e.key.toUpperCase();
+      if (['A', 'B', 'C', 'D'].includes(optKey)) {
+        const opt = container && container.querySelector(`.option-item[data-key="${optKey}"]`);
+        if (opt && !container._submitted) { e.preventDefault(); opt.click(); }
+      }
+      if (e.key === ' ' || e.key === 'Enter') {
+        const reveal = container && container.querySelector('[data-role="revealBtn"]');
+        if (reveal && !reveal.disabled) { e.preventDefault(); reveal.click(); }
+      }
+      if (e.key === '1' || e.key === '2' || e.key === '3') {
+        const map = { '1': 'mastered', '2': 'familiar', '3': 'unknown' };
+        const box = container && container.querySelector('[data-role="practiceMastery"]');
+        if (box && !box.hidden && container._q) {
+          e.preventDefault();
+          setMastery(container._q, map[e.key]);
+          box.hidden = true;
+        }
+      }
     }
+  });
+  // 点击外部关闭搜索历史下拉
+  document.addEventListener('click', (e) => {
+    const dd = document.getElementById('searchHistoryDropdown');
+    const box = document.querySelector('.search-box');
+    if (dd && box && !box.contains(e.target)) dd.hidden = true;
   });
 }
 
 // Initialize
+// ========================
+// 同步掌握度 → 考研平台（StudyRecord / 错题本）
+// 须从 http://127.0.0.1:8000/banks/408/ 打开（同源 API）
+// uid: 408:{cs408-*}::{chapter.name}::{qid}
+// 标记「会了/不熟/不会」后会自动同步；也可用顶栏「同步平台」批量补同步
+// ========================
+const COURSE_TO_SUBJECT = {
+  '数据结构': 'cs408-ds',
+  '计算机组成原理': 'cs408-coa',
+  '操作系统': 'cs408-os',
+  '计算机网络': 'cs408-net',
+};
+
+function isPlatformHost() {
+  try {
+    const host = String(location.host || '');
+    const path = String(location.pathname || '');
+    // 平台挂载：:8000/banks/408/… ；兼容 localhost / 127.0.0.1
+    if (/:8000$/i.test(host)) return true;
+    if (path.indexOf('/banks/408') === 0) return true;
+    return false;
+  } catch (e) {
+    return false;
+  }
+}
+
+function platformBankCode(q) {
+  const course = (q && q.course) || getCurrentCourse() || '';
+  return COURSE_TO_SUBJECT[course] || 'cs408-ds';
+}
+
+function platformSourceUid(q) {
+  if (!q) return '';
+  const code = platformBankCode(q);
+  const ch = q.chapter || '';
+  const id = q.id || '';
+  if (!ch || !id) return '';
+  return '408:' + code + '::' + ch + '::' + id;
+}
+
+function masteryToPlatformMark(mastery) {
+  if (mastery === 'mastered') return 'mastered';
+  if (mastery === 'familiar') return 'familiar';
+  if (mastery === 'unknown') return 'unknown';
+  return null;
+}
+
+/** 平台 mark → 408 mastery（兼容 math 词表） */
+function platformMarkToMastery(mark) {
+  const m = String(mark || '');
+  if (m === 'mastered') return 'mastered';
+  if (m === 'familiar' || m === 'fuzzy') return 'familiar';
+  if (m === 'unknown' || m === 'forgot') return 'unknown';
+  return '';
+}
+
+/**
+ * 平台 → 本地：按 source_uid 合并熟练度。
+ * mode: fill | overwrite | prefer_weaker（默认）
+ */
+async function pullMasteryFromPlatform(opts) {
+  opts = opts || {};
+  if (!isPlatformHost()) {
+    if (!opts.silent) platformSyncToast('请从平台打开本题库后再拉取', 4000);
+    return { applied: 0, skipped: 0 };
+  }
+  if (!window.ViewerPlatformSync || !ViewerPlatformSync.pullMasteryFromPlatform) {
+    if (!opts.silent) platformSyncToast('同步脚本未加载', 3000);
+    return { applied: 0, skipped: 0 };
+  }
+  if (!opts.silent) platformSyncToast('正在从平台拉取熟练度…', 2000);
+
+  // 一次拉全 408（四科 source_uid 均以 408: 开头）
+  const out = await ViewerPlatformSync.pullMasteryFromPlatform('408', { scheme: '408' });
+  if (!out.ok) {
+    if (!opts.silent) platformSyncToast('拉取失败：' + (out.error || '未知错误'), 5000);
+    return { applied: 0, skipped: 0 };
+  }
+  const items = (out.data && out.data.items) || [];
+  if (!items.length) {
+    if (!opts.silent) platformSyncToast('平台暂无本库答题记录', 3000);
+    return { applied: 0, skipped: 0 };
+  }
+
+  // 建 uid → question 索引
+  const byUid = new Map();
+  (allQuestions || []).forEach(q => {
+    const uid = platformSourceUid(q);
+    if (uid) byUid.set(uid, q);
+  });
+
+  const mode = opts.mode || 'prefer_weaker';
+  let applied = 0;
+  let skipped = 0;
+  items.forEach(it => {
+    const q = byUid.get(it.uid);
+    if (!q) {
+      skipped++;
+      return;
+    }
+    const remote = platformMarkToMastery(it.mark);
+    if (!remote) {
+      skipped++;
+      return;
+    }
+    const local = getMastery(q) || '';
+    const localEmpty = !local;
+    let take = false;
+    if (mode === 'overwrite') take = local !== remote;
+    else if (mode === 'fill') take = localEmpty;
+    else {
+      // prefer_weaker
+      if (localEmpty) take = true;
+      else if (ViewerPlatformSync.markRank(remote) > ViewerPlatformSync.markRank(local)) take = true;
+    }
+    if (!take) {
+      skipped++;
+      return;
+    }
+    // 直接写 statusMap，避免 setMastery 触发回推形成循环
+    const key = questionKey(q);
+    const entry = getStatusEntry(key);
+    entry.mastery = remote;
+    writeStatusEntry(key, entry);
+    applied++;
+  });
+  if (applied > 0) {
+    saveStatus();
+    try {
+      renderStats();
+      renderMarkDashboard();
+      refreshChapterMastery();
+      const searchEl = document.getElementById('searchInput');
+      const search = searchEl ? searchEl.value.trim().toLowerCase() : '';
+      renderGrid(search);
+    } catch (e) {}
+  }
+  if (!opts.silent) {
+    platformSyncToast(
+      '已从平台拉取：更新 ' + applied + (skipped ? '，跳过 ' + skipped : '') + ' · 会了/不熟/不会',
+      4500
+    );
+  }
+  return { applied, skipped };
+}
+
+function platformSyncToast(msg, ms) {
+  // 同步结果展示久一点，避免用户看不到
+  let el = document.getElementById('flashToast');
+  if (!el) {
+    el = document.createElement('div');
+    el.id = 'flashToast';
+    el.className = 'flash-toast';
+    document.body.appendChild(el);
+  }
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(platformSyncToast._t);
+  platformSyncToast._t = setTimeout(() => el.classList.remove('show'), ms || 3500);
+}
+
+async function ensurePlatformToken() {
+  if (window.ViewerPlatformSync && ViewerPlatformSync.ensureAuth) {
+    const auth = await ViewerPlatformSync.ensureAuth();
+    if (auth.ok) return auth.token || true; // true = cookie session
+    return null;
+  }
+  // viewer-common 未加载：只认旧 localStorage token，不再 POST auto-login（公网必 401/404）
+  try { return localStorage.getItem('token'); } catch (e) {}
+  return null;
+}
+
+function gatherPlatformSyncItems(scope) {
+  let pool = allQuestions;
+  if (scope === 'current') pool = filteredQuestions;
+  const items = [];
+  pool.forEach(q => {
+    if (q.type && q.type !== '选择题') return;
+    const mark = masteryToPlatformMark(getMastery(q));
+    if (!mark) return;
+    if (scope === 'weak' && mark === 'mastered') return;
+    const uid = platformSourceUid(q);
+    if (!uid) return;
+    items.push({
+      uid: uid,
+      mark: mark,
+      title: q.content || '',
+      chapter: q.chapter || '',
+      bank: platformBankCode(q),
+    });
+  });
+  return items;
+}
+
+async function postSyncToPlatform(items, opts) {
+  opts = opts || {};
+  if (!isPlatformHost()) {
+    platformSyncToast('请从平台打开本题库：http://127.0.0.1:8000/banks/408/', 5000);
+    return { ok: 0, fail: items.length || 0 };
+  }
+  if (!items || !items.length) {
+    if (!opts.silentEmpty) platformSyncToast('没有可同步的标记（会了/不熟/不会）');
+    return { ok: 0, fail: 0 };
+  }
+  const token = await ensurePlatformToken();
+  if (!token) {
+    platformSyncToast('未登录：请先打开平台首页 http://127.0.0.1:8000/', 5000);
+    return { ok: 0, fail: items.length };
+  }
+  if (!opts.silent) platformSyncToast('正在同步 ' + items.length + ' 题到平台…', 2000);
+
+  const byBank = {};
+  items.forEach(it => {
+    const code = it.bank || (it.uid.split('::')[0] || '').replace(/^408:/, '') || 'cs408-ds';
+    if (!byBank[code]) byBank[code] = [];
+    byBank[code].push({ uid: it.uid, mark: it.mark, title: it.title, chapter: it.chapter });
+  });
+
+  let ok = 0, fail = 0;
+  const failSamples = [];
+  const bearer = typeof token === 'string' ? token : null;
+  for (const [bank, list] of Object.entries(byBank)) {
+    try {
+      const headers = { 'Content-Type': 'application/json' };
+      if (bearer) headers.Authorization = 'Bearer ' + bearer;
+      const r = await fetch('/api/study-records/sync-from-bank', {
+        method: 'POST',
+        credentials: 'include',
+        headers: headers,
+        body: JSON.stringify({ bank: bank, items: list }),
+      });
+      let data = {};
+      try { data = await r.json(); } catch (e) {}
+      if (!r.ok) {
+        fail += list.length;
+        const detail = data.detail;
+        failSamples.push(typeof detail === 'string' ? detail : ('HTTP ' + r.status));
+        continue;
+      }
+      ok += data.ok_count || 0;
+      fail += data.failed_count || 0;
+      (data.failed || []).slice(0, 3).forEach(f => {
+        failSamples.push((f.uid || '').split('::').slice(-1)[0] + ':' + (f.reason || '?'));
+      });
+    } catch (e) {
+      fail += list.length;
+      failSamples.push(String(e.message || e));
+    }
+  }
+  if (!(opts.quietSuccess && ok && !fail)) {
+    let msg = '已写入平台：成功 ' + ok + (fail ? '，失败 ' + fail : '');
+    if (failSamples.length) msg += '（' + failSamples.slice(0, 2).join('；') + '）';
+    if (ok && !fail) msg += ' · 回首页刷新可看进度';
+    platformSyncToast(msg, fail ? 6000 : 4000);
+  }
+  return { ok: ok, fail: fail };
+}
+
+async function syncMasteryToPlatform(scope) {
+  const items = gatherPlatformSyncItems(scope || 'all');
+  return postSyncToPlatform(items, { silent: false });
+}
+
+/** 单题自动同步（标记后触发） */
+const _autoSyncQueue = [];
+let _autoSyncTimer = null;
+let _autoSyncInFlight = false;
+let _autoSyncRetryCount = 0;
+let _platformSyncBarHideTimer = null;
+
+const AUTO_SYNC_RETRY_DELAYS = [1500, 5000, 15000, 30000];
+
+function upsertAutoSyncItem(item) {
+  const idx = _autoSyncQueue.findIndex(x => x.uid === item.uid);
+  if (idx >= 0) _autoSyncQueue[idx] = item;
+  else _autoSyncQueue.push(item);
+}
+
+function scheduleAutoSyncFlush(delay) {
+  clearTimeout(_autoSyncTimer);
+  _autoSyncTimer = setTimeout(() => {
+    _autoSyncTimer = null;
+    flushAutoSyncQueue();
+  }, delay == null ? 300 : delay);
+}
+
+async function flushAutoSyncQueue() {
+  if (_autoSyncInFlight || !_autoSyncQueue.length) return;
+  _autoSyncInFlight = true;
+  const batch = _autoSyncQueue.splice(0, _autoSyncQueue.length);
+  try {
+    const result = await postSyncToPlatform(batch, { silent: true, quietSuccess: true });
+    if (result && result.ok > 0 && result.fail === 0) {
+      _autoSyncRetryCount = 0;
+      try { localStorage.setItem('wd408_last_sync_sig', masterySignature()); } catch (e) {}
+    } else {
+      // 请求失败时重新入队；相同 uid 仍以用户最新一次标记为准。
+      batch.forEach(item => {
+        if (!_autoSyncQueue.some(x => x.uid === item.uid)) upsertAutoSyncItem(item);
+      });
+      const idx = Math.min(_autoSyncRetryCount, AUTO_SYNC_RETRY_DELAYS.length - 1);
+      _autoSyncRetryCount++;
+      scheduleAutoSyncFlush(AUTO_SYNC_RETRY_DELAYS[idx]);
+    }
+  } catch (e) {
+    batch.forEach(item => {
+      if (!_autoSyncQueue.some(x => x.uid === item.uid)) upsertAutoSyncItem(item);
+    });
+    const idx = Math.min(_autoSyncRetryCount, AUTO_SYNC_RETRY_DELAYS.length - 1);
+    _autoSyncRetryCount++;
+    scheduleAutoSyncFlush(AUTO_SYNC_RETRY_DELAYS[idx]);
+  } finally {
+    _autoSyncInFlight = false;
+    if (_autoSyncQueue.length && !_autoSyncTimer) scheduleAutoSyncFlush();
+    hidePlatformSyncBar();
+  }
+}
+
+function queueAutoSyncToPlatform(q) {
+  if (!isPlatformHost() || !q) return;
+  if (q.type && q.type !== '选择题') return;
+  const mark = masteryToPlatformMark(getMastery(q));
+  if (!mark) return;
+  const uid = platformSourceUid(q);
+  if (!uid) return;
+  const item = {
+    uid: uid,
+    mark: mark,
+    title: q.content || '',
+    chapter: q.chapter || '',
+    bank: platformBankCode(q),
+  };
+  // 同 uid 覆盖为最新 mark；失败时由 flushAutoSyncQueue 自动重试。
+  upsertAutoSyncItem(item);
+  _autoSyncRetryCount = 0;
+  scheduleAutoSyncFlush(250);
+}
+
+function setupPlatformSyncEvents() {
+  const btn = document.getElementById('btnPlatformSync');
+  const menu = document.getElementById('platformSyncMenu');
+  const hint = document.getElementById('platformSyncHint');
+  if (hint) {
+    hint.style.display = '';
+    hint.textContent = isPlatformHost()
+      ? '已自动同步 · 手动按钮仅作备用'
+      : '请从学习平台打开本题库才能同步';
+  }
+  if (!btn || !menu) return;
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (!isPlatformHost()) {
+      platformSyncToast('请从 http://127.0.0.1:8000/banks/408/ 打开本题库', 5000);
+      return;
+    }
+    const open = menu.hidden;
+    menu.hidden = !open;
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  menu.querySelectorAll('[data-sync-scope]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.stopPropagation();
+      menu.hidden = true;
+      btn.setAttribute('aria-expanded', 'false');
+      syncMasteryToPlatform(el.getAttribute('data-sync-scope'));
+    });
+  });
+  menu.querySelectorAll('[data-sync-pull]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.stopPropagation();
+      menu.hidden = true;
+      btn.setAttribute('aria-expanded', 'false');
+      pullMasteryFromPlatform({ silent: false, mode: 'prefer_weaker' });
+    });
+  });
+  document.addEventListener('click', () => {
+    if (!menu.hidden) {
+      menu.hidden = true;
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
+/** 本地掌握标记签名：变化则需要再推平台 */
+function masterySignature() {
+  const parts = [];
+  try {
+    Object.keys(statusMap || {}).forEach(k => {
+      const e = normalizeStatusEntry(statusMap[k]);
+      if (e.mastery) parts.push(k + '=' + e.mastery);
+    });
+  } catch (e) {}
+  parts.sort();
+  return parts.join('|');
+}
+
+function localMarkedChoiceCount() {
+  return gatherPlatformSyncItems('all').length;
+}
+
+/** 自动同步不展示 UI；底部条默认隐藏 */
+function hidePlatformSyncBar() {
+  const bar = document.getElementById('platformSyncBar');
+  if (!bar) return;
+  clearTimeout(_platformSyncBarHideTimer);
+  bar.hidden = true;
+}
+
+function updatePlatformSyncBar(/* state */) {
+  // 后台自动同步：不显示底部提示条
+  hidePlatformSyncBar();
+}
+
+/**
+ * 打开题库 / 标记变化：
+ * 1) 先从平台拉取熟练度（反向，补本地）
+ * 2) 再把本地掌握度推到平台（静默）
+ */
+async function maybeAutoPushMasteryToPlatform(force) {
+  hidePlatformSyncBar();
+  if (!isPlatformHost()) return;
+
+  // 每会话自动拉一次平台 → 本地
+  let pulled = false;
+  try {
+    pulled = sessionStorage.getItem('wd408_pull_session') === '1';
+  } catch (e) {}
+  if (!pulled || force) {
+    try {
+      // 自动拉取只补本地空白，避免平台旧状态覆盖刚在本地修改但尚未上传的标记。
+      await pullMasteryFromPlatform({ silent: true, mode: 'fill' });
+      sessionStorage.setItem('wd408_pull_session', '1');
+    } catch (e) {}
+  }
+
+  const items = gatherPlatformSyncItems('all');
+  if (!items.length) return;
+
+  // 每个浏览器会话强制全量推一次：平台重导题库后 question_id 会变
+  let sessionForced = false;
+  try {
+    sessionForced = sessionStorage.getItem('wd408_force_sync_session') === '1';
+  } catch (e) {}
+  if (!force && !sessionForced) {
+    force = true;
+    try { sessionStorage.setItem('wd408_force_sync_session', '1'); } catch (e) {}
+  }
+
+  const sig = masterySignature();
+  let lastSig = '';
+  try { lastSig = localStorage.getItem('wd408_last_sync_sig') || ''; } catch (e) {}
+  if (!force && sig && sig === lastSig) return;
+
+  const result = await postSyncToPlatform(items, { silent: true, quietSuccess: true });
+  if (result && result.ok > 0 && result.fail === 0) {
+    try { localStorage.setItem('wd408_last_sync_sig', sig); } catch (e) {}
+  } else {
+    // 部分/全部失败：清签名，下次打开或 3s 重试时再推
+    try { localStorage.setItem('wd408_last_sync_sig', ''); } catch (e) {}
+  }
+  hidePlatformSyncBar();
+}
+
+let _automaticPlatformSyncReady = false;
+let _automaticPlatformSyncRunning = false;
+let _automaticPlatformSyncInterval = null;
+
+/**
+ * 自动同步总控：
+ * - 打开题库立即双向同步；
+ * - 每 30 秒检查本地标记变化并补推；
+ * - 切回页面、恢复网络、其他标签页修改本地进度时立即补同步。
+ */
+function setupAutomaticPlatformSync() {
+  if (_automaticPlatformSyncReady || !isPlatformHost()) return;
+  _automaticPlatformSyncReady = true;
+
+  const run = async (force) => {
+    if (_automaticPlatformSyncRunning) return;
+    _automaticPlatformSyncRunning = true;
+    try {
+      await maybeAutoPushMasteryToPlatform(!!force);
+      if (_autoSyncQueue.length) scheduleAutoSyncFlush(0);
+    } finally {
+      _automaticPlatformSyncRunning = false;
+    }
+  };
+
+  setTimeout(() => run(true), 350);
+  _automaticPlatformSyncInterval = setInterval(() => run(false), 30000);
+  window.addEventListener('online', () => run(true));
+  window.addEventListener('focus', () => run(true));
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) run(true);
+  });
+  window.addEventListener('storage', (e) => {
+    if (e.key === STATUS_KEY) run(false);
+  });
+}
+
+// 覆盖 setup 里对同步条按钮的绑定
+function setupPlatformSyncBarBtn() {
+  const btn = document.getElementById('platformSyncBarBtn');
+  if (!btn) return;
+  btn.addEventListener('click', async () => {
+    btn.disabled = true;
+    try {
+      await maybeAutoPushMasteryToPlatform(true);
+    } finally {
+      btn.disabled = false;
+    }
+  });
+}
+
+const _origSetupPlatformSyncEvents = setupPlatformSyncEvents;
+setupPlatformSyncEvents = function () {
+  _origSetupPlatformSyncEvents();
+  setupPlatformSyncBarBtn();
+};
+
 init();
+
+// PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js?v=30').then((reg) => {
+      reg.update().catch(() => {});
+      console.log('[SW] registered, scope:', reg.scope);
+    }).catch((err) => {
+      console.warn('[SW] registration failed:', err);
+    });
+  });
+}
+
+// ========================
+// 自动备份：每周一次下载 JSON 备份到本地
+// ========================
+const BACKUP_KEY = 'mathbank_last_backup_at';
+const BACKUP_INTERVAL = 7 * 86400000;  // 7 天
+function maybeAutoBackup() {
+  try {
+    const last = parseInt(localStorage.getItem(BACKUP_KEY) || '0', 10);
+    if (Date.now() - last < BACKUP_INTERVAL) return false;
+    return triggerBackup(false);
+  } catch(e) { return false; }
+}
+function triggerBackup(silent) {
+  try {
+    const data = buildFullExportPayload();
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `mathbank-backup-${new Date().toISOString().slice(0,10)}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    safeSetItem(BACKUP_KEY, String(Date.now()));
+    if (!silent) flashToast('已下载完整备份');
+    return true;
+  } catch(e) {
+    if (!silent) flashToast('备份失败：' + e.message);
+    return false;
+  }
+}
+
+// 直接在启动后异步检查（避免阻塞 init）
+setTimeout(maybeAutoBackup, 3000);

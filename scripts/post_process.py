@@ -9,6 +9,8 @@ Final post-processing on questions.json:
 import json, sys
 from collections import Counter
 
+from utils import write_json_atomic
+
 sys.stdout.reconfigure(encoding='utf-8')
 
 INPUT_JSON = sys.argv[1] if len(sys.argv) > 1 else 'output/questions.json'
@@ -53,6 +55,5 @@ for ch in new_chapters:
 data['chapters'] = new_chapters
 data['total_questions'] = sum(ch['question_count'] for ch in new_chapters)
 
-with open(OUTPUT_JSON, 'w', encoding='utf-8') as f:
-    json.dump(data, f, ensure_ascii=False, indent=2)
+write_json_atomic(OUTPUT_JSON, data, indent=2, ensure_ascii=False)
 print(f'Post-processed {INPUT_JSON} -> {OUTPUT_JSON}: {len(new_chapters)} sub-chapters, {data["total_questions"]} questions')

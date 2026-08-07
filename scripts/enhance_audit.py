@@ -1,141 +1,323 @@
 #!/usr/bin/env python3
-"""题库质量审计增强版：输出 JSON 质量报告，便于定位问题题。"""
+"""408 题库发布门禁：审计源 JSON、图片资源及平台实际读取的数据。"""
+
+from __future__ import annotations
+
 import json
+import hashlib
 import re
 import sys
-from pathlib import Path
 from collections import defaultdict
+from pathlib import Path
+from typing import Any
 
-from config import COURSES
+from config import COURSES, MATH_BANK_DIR, REPORTS_DIR
+from parse_patterns import has_real_image_ref
 
-sys.stdout.reconfigure(encoding='utf-8')
+sys.stdout.reconfigure(encoding="utf-8")
 
-# 与 fix_questions.py 保持一致的附图检测规则
-IMAGE_MARKERS = [
-    '如图', '见下图', '如下图所示', '如图所示', '图中所示',
-    '右图', '左图', '下图', '上图', '给出下图', '给出上图',
-]
-IMAGE_FALSE_POSITIVES = [
-    '图的基本概念', '图论', '并查集涉及图', '涉及图', '图的相关', '图的存储',
-    '图的遍历', '图的拓扑', '图的最短', '图的最小生成', '图的应用',
-    '有向图', '无向图', '连通图', '强连通图', '生成树', '森林',
-]
+OPTION_LETTERS = set("ABCDEF")
+CRITICAL_ISSUES = {
+    "declared_total_mismatch",
+    "empty_content",
+    "no_answer",
+    "missing_option_letters",
+    "empty_option",
+    "duplicate_option",
+    "answer_outside_options",
+    "duplicate_question_id",
+    "missing_image_file",
+    "published_missing",
+    "published_content_mismatch",
+    "suspected_misclassified_choice",
+    "choice_ocr_noise",
+    "cross_validation_manifest_missing",
+    "cross_validation_stale",
+    "seq_gap",
+    "trunc_stem_scan",
+}
 
 
-def has_real_image_ref(content):
-    if not content:
-        return False
-    for fp in IMAGE_FALSE_POSITIVES:
-        if fp in content:
-            return False
-    return any(m in content for m in IMAGE_MARKERS)
+def _questions(data: dict[str, Any]):
+    for chapter in data.get("chapters", []):
+        chapter_name = chapter.get("name") or chapter.get("topic_title") or "未知章节"
+        for question in chapter.get("questions", []):
+            yield chapter_name, question
 
 
-def audit_file(path):
-    d = json.load(open(path, encoding='utf-8'))
-    chapters = d.get('chapters', [])
-    total = d.get('total_questions', 0)
+def _sha256(path: Path) -> str:
+    h = hashlib.sha256()
+    with path.open("rb") as f:
+        for chunk in iter(lambda: f.read(1024 * 1024), b""):
+            h.update(chunk)
+    return h.hexdigest()
 
-    issues = defaultdict(list)
-    counts = {
-        'no_answer': 0,
-        'no_options': 0,
-        'empty_content': 0,
-        'choice_without_choice': 0,
-        'app_with_choice': 0,
-        'has_subquestion_markers': 0,
-        'has_image_markers': 0,
-        'no_image_ref': 0,
-    }
 
-    for ch in chapters:
-        ch_name = ch.get('name') or ch.get('topic_title', '未知章节')
-        for q in ch.get('questions', []):
-            ans = q.get('answer') or {}
-            content = (q.get('content') or '').strip()
-            options = q.get('options')
-            qtype = q.get('type')
-            qid = q.get('id', '?')
-            record = {
-                'id': qid,
-                'type': qtype,
-                'content_preview': content[:80],
-                'page': q.get('page'),
+def _answer_obj(question: dict[str, Any]) -> dict[str, Any]:
+    answer = question.get("answer")
+    return answer if isinstance(answer, dict) else {}
+
+
+def _image_path(question: dict[str, Any]) -> str:
+    ref = question.get("image_ref")
+    if isinstance(ref, dict):
+        return str(ref.get("cropped") or "").strip()
+    return str(ref or "").strip()
+
+
+def _question_signature(data: dict[str, Any]) -> list[tuple[Any, ...]]:
+    """只比较平台会消费的题目内容；忽略 merge_courses 注入的章节 course 字段。"""
+    return [
+        (
+            chapter,
+            q.get("id"),
+            q.get("type"),
+            q.get("content"),
+            q.get("options"),
+            q.get("answer"),
+            q.get("image_ref"),
+        )
+        for chapter, q in _questions(data)
+    ]
+
+
+def audit_file(course) -> dict[str, Any]:
+    path = Path(course.out_json)
+    pub = MATH_BANK_DIR / f"data-{course.key}.json"
+    # 门禁以平台实际读取的 published 为准；out_json 仅作对照
+    primary = pub if pub.is_file() else path
+    data = json.loads(primary.read_text(encoding="utf-8"))
+    rows = list(_questions(data))
+    issues: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    seen_ids: set[tuple[str, str]] = set()
+    ordered_choice_count = 0
+    image_count = 0
+
+    hold_path = MATH_BANK_DIR / "quality-hold.json"
+    if not hold_path.is_file():
+        issues["cross_validation_manifest_missing"].append({"path": str(hold_path)})
+    else:
+        try:
+            hold = json.loads(hold_path.read_text(encoding="utf-8"))
+            actual_hash = _sha256(primary)
+            hashes = hold.get("source_hashes") or {}
+            files = hold.get("files") or {}
+            expected_hash = (
+                hashes.get(course.key)
+                or files.get(primary.name)
+                or files.get(path.name)
+            )
+            if not expected_hash or expected_hash != actual_hash:
+                issues["cross_validation_stale"].append(
+                    {
+                        "expected": expected_hash,
+                        "actual": actual_hash,
+                        "checked": str(primary),
+                    }
+                )
+        except Exception as exc:
+            issues["cross_validation_manifest_missing"].append(
+                {"path": str(hold_path), "error": str(exc)}
+            )
+
+    def add(kind: str, chapter: str, q: dict[str, Any], **extra):
+        issues[kind].append(
+            {
+                "chapter": chapter,
+                "id": q.get("id", "?"),
+                "type": q.get("type"),
+                "page": q.get("page"),
+                "content_preview": (q.get("content") or "").strip()[:100],
+                **extra,
             }
+        )
 
-            if not content:
-                counts['empty_content'] += 1
-                issues['empty_content'].append({'chapter': ch_name, **record})
+    declared = int(data.get("total_questions") or 0)
+    if declared != len(rows):
+        issues["declared_total_mismatch"].append(
+            {"declared": declared, "actual": len(rows)}
+        )
 
-            if not ans or not (ans.get('choice') or ans.get('explanation')):
-                counts['no_answer'] += 1
-                issues['no_answer'].append({'chapter': ch_name, **record})
+    # 每章 X/A 题号连续性（子题 X06_1 不参与主序号空洞判定）
+    chapter_nums: dict[str, dict[str, list[int]]] = defaultdict(
+        lambda: defaultdict(list)
+    )
+    for chapter, q in rows:
+        qid = str(q.get("id") or "").strip()
+        m = re.fullmatch(r"([XA])(\d+)$", qid)
+        if m:
+            chapter_nums[chapter][m.group(1)].append(int(m.group(2)))
 
-            if qtype == '选择题' and not options:
-                counts['no_options'] += 1
-                issues['no_options'].append({'chapter': ch_name, **record})
+    for chapter, by_prefix in chapter_nums.items():
+        for prefix, nums in by_prefix.items():
+            if len(nums) < 3:
+                continue
+            nums_u = sorted(set(nums))
+            missing = sorted(set(range(min(nums_u), max(nums_u) + 1)) - set(nums_u))
+            if missing:
+                issues["seq_gap"].append(
+                    {
+                        "chapter": chapter,
+                        "prefix": prefix,
+                        "missing": missing,
+                        "range": [min(nums_u), max(nums_u)],
+                        "count": len(nums_u),
+                    }
+                )
 
-            if qtype == '选择题' and not ans.get('choice'):
-                counts['choice_without_choice'] += 1
-                issues['choice_without_choice'].append({'chapter': ch_name, **record})
+    for chapter, q in rows:
+        content = (q.get("content") or "").strip()
+        answer = _answer_obj(q)
+        qid = str(q.get("id") or "").strip()
+        key = (chapter, qid)
 
-            if qtype != '选择题' and ans.get('choice'):
-                counts['app_with_choice'] += 1
-                issues['app_with_choice'].append({'chapter': ch_name, **record})
+        if not content:
+            add("empty_content", chapter, q)
+        if re.search(r"当扫描到时", content) and not re.search(
+            r"当扫描到\s+\S+\s*时", content
+        ):
+            add("trunc_stem_scan", chapter, q)
+        if not answer or not (answer.get("choice") or answer.get("explanation")):
+            add("no_answer", chapter, q)
+        if not qid or key in seen_ids:
+            add("duplicate_question_id", chapter, q)
+        seen_ids.add(key)
 
-            # 仅把全角中文括号 （1）（2）... 视为子问题标记，避免 O(1)、P1() 等半角场景误报，
-            # 也避免函数调用如 func（5）中的括号被误报。
-            if re.search(r'(?<![A-Za-z0-9_])（[1-9]\d*）(?![A-Za-z0-9_])', content):
-                counts['has_subquestion_markers'] += 1
-                issues['has_subquestion_markers'].append({'chapter': ch_name, **record})
+        if q.get("type") == "选择题":
+            options = q.get("options") if isinstance(q.get("options"), dict) else {}
+            keys = {str(k).strip().upper() for k in options}
+            missing = sorted(set("ABCD") - keys)
+            if missing:
+                add("missing_option_letters", chapter, q, missing=missing)
+            empty = sorted(
+                k for k, value in options.items() if not str(value or "").strip()
+            )
+            if empty:
+                add("empty_option", chapter, q, letters=empty)
+            bodies = [
+                str(value).strip()
+                for value in options.values()
+                if str(value or "").strip()
+            ]
+            if len(bodies) != len(set(bodies)):
+                add("duplicate_option", chapter, q)
 
-            if has_real_image_ref(content):
-                counts['has_image_markers'] += 1
-                if not q.get('has_image') or not q.get('image_ref'):
-                    counts['no_image_ref'] += 1
-                    issues['no_image_ref'].append({'chapter': ch_name, **record})
+            choice = str(answer.get("choice") or "").strip().upper()
+            answer_letters = [c for c in choice if c.isalpha()]
+            if len(answer_letters) > 1:
+                ordered_choice_count += 1
+            invalid = sorted(
+                {c for c in answer_letters if c not in keys or c not in OPTION_LETTERS}
+            )
+            if not choice or invalid:
+                add(
+                    "answer_outside_options", chapter, q, answer=choice, invalid=invalid
+                )
 
+            choice_text = "\n".join(
+                [
+                    content,
+                    *[str(v or "") for v in options.values()],
+                    str(answer.get("explanation") or ""),
+                ]
+            )
+            if re.search(
+                r"2027年.{0,25}考研复习指导|(?<![A-Za-z])(?:IIL|IIl)(?![A-Za-z])|é|[=:]{4,}",
+                choice_text,
+            ):
+                add("choice_ocr_noise", chapter, q)
+        elif (
+            not q.get("options")
+            and not q.get("sub_questions")
+            and len(content) < 320
+            and re.search(r"(?<![A-Za-z0-9_])[（(]\s*[）)]", content)
+        ):
+            add("suspected_misclassified_choice", chapter, q)
+
+        image_path = _image_path(q)
+        if image_path:
+            image_count += 1
+            if (
+                ".." in Path(image_path).parts
+                or not (MATH_BANK_DIR / image_path).is_file()
+            ):
+                add("missing_image_file", chapter, q, image_ref=image_path)
+        elif has_real_image_ref(content):
+            add("missing_image_file", chapter, q, image_ref="")
+
+    published_path = MATH_BANK_DIR / f"data-{course.key}.json"
+    if not published_path.is_file():
+        issues["published_missing"].append({"path": str(published_path)})
+    else:
+        published = json.loads(published_path.read_text(encoding="utf-8"))
+        if _question_signature(data) != _question_signature(published):
+            issues["published_content_mismatch"].append(
+                {
+                    "source_questions": len(rows),
+                    "published_questions": len(list(_questions(published))),
+                }
+            )
+
+    issue_totals = {kind: len(items) for kind, items in issues.items()}
     return {
-        'total': total,
-        'chapters': len(chapters),
-        'counts': counts,
-        'issues': {k: v[:200] for k, v in issues.items()},
-        'issue_totals': {k: len(v) for k, v in issues.items()},
+        "total": len(rows),
+        "declared_total": declared,
+        "chapters": len(data.get("chapters", [])),
+        "ordered_choice_questions": ordered_choice_count,
+        "image_questions": image_count,
+        "issue_totals": issue_totals,
+        "issues": {kind: items[:200] for kind, items in issues.items()},
+        "critical_count": sum(
+            count for kind, count in issue_totals.items() if kind in CRITICAL_ISSUES
+        ),
     }
 
 
-def main():
-    report = {'courses': {}, 'summary': {}}
-    for c in COURSES:
-        if not Path(c.out_json).exists():
-            report['courses'][c.name] = {'error': f'文件不存在 {c.out_json}'}
+def build_report() -> dict[str, Any]:
+    report: dict[str, Any] = {"courses": {}, "summary": {}}
+    for course in COURSES:
+        if not Path(course.out_json).exists():
+            report["courses"][course.name] = {
+                "critical_count": 1,
+                "issues": {"source_missing": [{"path": str(course.out_json)}]},
+                "issue_totals": {"source_missing": 1},
+            }
             continue
-        r = audit_file(c.out_json)
-        report['courses'][c.name] = r
+        report["courses"][course.name] = audit_file(course)
 
-    # 汇总
-    total_questions = sum(r['total'] for r in report['courses'].values() if 'total' in r)
-    sample_counts = next((r['counts'] for r in report['courses'].values() if 'counts' in r), {})
-    total_issues = {k: 0 for k in sample_counts}
-    for r in report['courses'].values():
-        if 'counts' not in r:
-            continue
-        for k in total_issues:
-            total_issues[k] += r['counts'].get(k, 0)
-
-    report['summary'] = {
-        'total_questions': total_questions,
-        'total_issues': total_issues,
+    courses = list(report["courses"].values())
+    report["summary"] = {
+        "total_questions": sum(int(r.get("total") or 0) for r in courses),
+        "ordered_choice_questions": sum(
+            int(r.get("ordered_choice_questions") or 0) for r in courses
+        ),
+        "image_questions": sum(int(r.get("image_questions") or 0) for r in courses),
+        "critical_count": sum(int(r.get("critical_count") or 0) for r in courses),
     }
-
-    out_path = Path('output/reports/quality_report.json')
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding='utf-8')
-    print(f'质量报告已保存: {out_path}')
-    print(f'总题数: {total_questions}')
-    for k, v in total_issues.items():
-        print(f'  {k}: {v}')
+    return report
 
 
-if __name__ == '__main__':
-    main()
+def main() -> int:
+    report = build_report()
+    REPORTS_DIR.mkdir(parents=True, exist_ok=True)
+    out_path = REPORTS_DIR / "quality_report.json"
+    out_path.write_text(
+        json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+
+    summary = report["summary"]
+    print(f"质量报告已保存: {out_path}")
+    print(f"总题数: {summary['total_questions']}")
+    print(f"连续选项题: {summary['ordered_choice_questions']}")
+    print(f"图片题: {summary['image_questions']}")
+    print(f"阻断问题: {summary['critical_count']}")
+    for name, result in report["courses"].items():
+        print(f"  {name}: {result.get('critical_count', 0)} 个阻断问题")
+        for kind, count in result.get("issue_totals", {}).items():
+            if count:
+                print(f"    {kind}: {count}")
+    return 1 if summary["critical_count"] else 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
