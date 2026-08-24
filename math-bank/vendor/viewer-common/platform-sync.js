@@ -83,6 +83,67 @@
     }
   }
 
+  var ISSUE_QUEUE_KEY = 'politics:question-issues:pending';
+
+  function readIssueQueue() {
+    try { return JSON.parse(localStorage.getItem(ISSUE_QUEUE_KEY) || '[]') || []; } catch (_) { return []; }
+  }
+
+  function writeIssueQueue(items) {
+    try { localStorage.setItem(ISSUE_QUEUE_KEY, JSON.stringify(items.slice(-100))); } catch (_) {}
+  }
+
+  async function submitQuestionIssue(payload, opts) {
+    opts = opts || {};
+    var item = Object.assign({ bank: 'politics' }, payload || {});
+    if (!item.source_uid || !item.issue_type || !item.description) {
+      return { ok: false, error: '缺少题目 UID、问题类型或说明' };
+    }
+    if (!onPlatformHost()) {
+      var queued = readIssueQueue();
+      queued.push(item);
+      writeIssueQueue(queued);
+      return { ok: true, queued: true, message: '当前为独立题库，已暂存本地；从平台打开后会自动补交。' };
+    }
+    var auth = opts.auth || (await ensureAuth());
+    if (!auth.ok) {
+      var pending = readIssueQueue();
+      pending.push(item);
+      writeIssueQueue(pending);
+      return { ok: true, queued: true, message: '未登录，已暂存本地；登录平台后会自动补交。' };
+    }
+    try {
+      var r = await fetch('/api/study-records/question-issues', {
+        method: 'POST', credentials: 'include', headers: authHeaders(auth), body: JSON.stringify(item),
+      });
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return { ok: true, data: await r.json() };
+    } catch (e) {
+      var retry = readIssueQueue(); retry.push(item); writeIssueQueue(retry);
+      return { ok: true, queued: true, message: '网络暂时不可用，已暂存本地。' };
+    }
+  }
+
+  async function flushQuestionIssueQueue() {
+    if (!onPlatformHost()) return { ok: false, sent: 0 };
+    var auth = await ensureAuth();
+    if (!auth.ok) return { ok: false, sent: 0 };
+    var queue = readIssueQueue();
+    if (!queue.length) return { ok: true, sent: 0 };
+    var remain = [], sent = 0;
+    for (var i = 0; i < queue.length; i++) {
+      try {
+        var r = await fetch('/api/study-records/question-issues', {
+          method: 'POST', credentials: 'include', headers: authHeaders(auth), body: JSON.stringify(queue[i]),
+        });
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        sent++;
+      } catch (_) { remain.push(queue[i]); }
+    }
+    writeIssueQueue(remain);
+    return { ok: remain.length === 0, sent: sent, pending: remain.length };
+  }
+
   /**
    * 从平台拉取熟练度标记（反向同步）。
    * @param {string} bank - 1000 / 880 / 660 / 大学深埋 / cs408-ds / 408 …
@@ -195,8 +256,47 @@
     onPlatformHost: onPlatformHost,
     ensureAuth: ensureAuth,
     syncFromBank: syncFromBank,
+    submitQuestionIssue: submitQuestionIssue,
+    flushQuestionIssueQueue: flushQuestionIssueQueue,
     pullMasteryFromPlatform: pullMasteryFromPlatform,
     mergeMasteryMarks: mergeMasteryMarks,
     markRank: markRank,
   };
+  // 平台挂载模式打开时自动补交独立端口期间暂存的反馈。
+  try { if (onPlatformHost()) setTimeout(function () { flushQuestionIssueQueue(); }, 300); } catch (_) {}
+
+  function loadScratchAssets() {
+    if (global.ViewerScratchPad) return;
+    var scripts = document.getElementsByTagName('script');
+    var source = '';
+    for (var i = 0; i < scripts.length; i++) {
+      if ((scripts[i].src || '').indexOf('platform-sync.js') >= 0) source = scripts[i].src;
+    }
+    var base = source.replace(/platform-sync\.js(?:[?#].*)?$/, '');
+    if (!document.getElementById('viewer-scratch-pad-css')) {
+      var link = document.createElement('link');
+      link.id = 'viewer-scratch-pad-css';
+      link.rel = 'stylesheet';
+      link.href = base + 'scratch-pad.css?v=1';
+      document.head.appendChild(link);
+    }
+    function loadPad() {
+      if (global.ViewerScratchPad || document.getElementById('viewer-scratch-pad-js')) return;
+      var pad = document.createElement('script');
+      pad.id = 'viewer-scratch-pad-js';
+      pad.src = base + 'scratch-pad.js?v=1';
+      document.head.appendChild(pad);
+    }
+    if (global.ViewerScratchInk) return loadPad();
+    var existing = document.getElementById('viewer-scratch-ink-js');
+    if (existing) return existing.addEventListener('load', loadPad, { once: true });
+    var inkScript = document.createElement('script');
+    inkScript.id = 'viewer-scratch-ink-js';
+    inkScript.src = base + 'scratch-ink.js?v=1';
+    inkScript.addEventListener('load', loadPad, { once: true });
+    document.head.appendChild(inkScript);
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', loadScratchAssets, { once: true });
+  else loadScratchAssets();
 })(typeof window !== 'undefined' ? window : globalThis);
