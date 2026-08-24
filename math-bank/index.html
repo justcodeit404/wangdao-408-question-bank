@@ -22,15 +22,18 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <!-- 不用 Google Fonts：国内常被墙/超时，阻塞首屏导致白屏 -->
-<link rel="stylesheet" href="styles.css?v=32">
-<script>window.__BANK_DATA_VER__='29';</script>
+<link rel="stylesheet" href="styles.css?v=38">
+<script>window.__BANK_DATA_VER__='38';</script>
 <script>
 (function () {
   var base = (location.pathname || '').indexOf('/banks/') === 0
     ? '/banks/common/'
     : 'vendor/viewer-common/';
   document.write('<script src="' + base + 'storage.js"><\/script>');
-  document.write('<script src="' + base + 'platform-sync.js"><\/script>');
+  document.write('<script src="' + base + 'platform-sync.js?v=38"><\/script>');
+  document.write('<link rel="stylesheet" href="' + base + 'scratch-pad.css">');
+  document.write('<script src="' + base + 'scratch-ink.js"><\/script>');
+  document.write('<script src="' + base + 'scratch-pad.js"><\/script>');
 })();
 </script>
 </head>
@@ -97,8 +100,7 @@
       <div class="topbar-actions">
         <select id="typeFilter" class="pill-select" aria-label="题型筛选">
           <option value="">全部题型</option>
-          <option value="选择题">选择题</option>
-          <option value="解答题">解答题</option>
+          <!-- 选项由 app.js 按当前可见题型动态填充；choice-only 下仅选择题 -->
         </select>
         <select id="featureFilter" class="pill-select" aria-label="题目特征">
           <option value="">全部题目</option>
@@ -291,8 +293,7 @@
         <label>题型：
           <select id="paperType">
             <option value="">不限</option>
-            <option value="选择题">仅选择题</option>
-            <option value="解答题">仅解答题</option>
+            <!-- 动态填充可见题型 -->
           </select>
         </label>
         <label>题量：<input type="number" id="paperCount" min="1" max="200" value="20"></label>
@@ -335,7 +336,7 @@
       <table class="shortcut-table">
         <tr><td><kbd>←</kbd> / <kbd>→</kbd></td><td>上一题 / 下一题</td></tr>
         <tr><td><kbd>A</kbd>–<kbd>D</kbd></td><td>选择选项</td></tr>
-        <tr><td><kbd>Space</kbd></td><td>显示答案（解答题）</td></tr>
+        <tr><td><kbd>Space</kbd></td><td>显示答案 / 解析</td></tr>
         <tr><td><kbd>1</kbd>/<kbd>2</kbd>/<kbd>3</kbd></td><td>作答后标记掌握度</td></tr>
       </table>
       <h4>学习模式</h4>
@@ -402,8 +403,9 @@
   </div>
 </div>
 
-<script src="data.js?v=30"></script>
-<script src="app.js?v=32"></script>
+<script src="data.js?v=38"></script>
+<script src="choice-only.js?v=38"></script>
+<script src="app.js?v=38"></script>
 <div id="platformSyncBar" class="platform-sync-bar" hidden aria-hidden="true">
   <div class="platform-sync-bar-text" id="platformSyncBarText"></div>
   <button type="button" class="btn btn-primary" id="platformSyncBarBtn" hidden>重试同步</button>
