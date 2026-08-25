@@ -97,6 +97,12 @@
         liveStroke = null;
         return finished;
       },
+      abort: function () {
+        liveStroke = null;
+      },
+      live: function () {
+        return liveStroke;
+      },
       undo: function () {
         liveStroke = null;
         session.strokes = dropLastStroke(session.strokes);
@@ -126,8 +132,107 @@
     return session;
   }
 
+  var PALM_CONTACT_PX = 28;
+  var MIN_SCALE = 0.5;
+  var MAX_SCALE = 4;
+  var IDENTITY_VIEWPORT = { scale: 1, x: 0, y: 0 };
+
+  function clampScale(scale) {
+    if (scale < MIN_SCALE) return MIN_SCALE;
+    if (scale > MAX_SCALE) return MAX_SCALE;
+    return scale;
+  }
+
+  function midpoint(a, b) {
+    return { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+  }
+
+  function screenToNorm(sx, sy, width, height, vp) {
+    return toNormPoint((sx - vp.x) / vp.scale, (sy - vp.y) / vp.scale, width, height);
+  }
+
+  function normToScreen(point, width, height, vp) {
+    var css = toCssPoint(point, width, height);
+    return { x: css.x * vp.scale + vp.x, y: css.y * vp.scale + vp.y };
+  }
+
+  function pinchViewport(vp, prevA, prevB, nextA, nextB) {
+    var prevMid = midpoint(prevA, prevB);
+    var nextMid = midpoint(nextA, nextB);
+    var prevDist = Math.hypot(prevA.x - prevB.x, prevA.y - prevB.y);
+    var nextDist = Math.hypot(nextA.x - nextB.x, nextA.y - nextB.y);
+    var factor = prevDist > 0 ? nextDist / prevDist : 1;
+    var scale = clampScale(vp.scale * factor);
+    var used = vp.scale === 0 ? 1 : scale / vp.scale;
+    return {
+      scale: scale,
+      x: nextMid.x - (prevMid.x - vp.x) * used,
+      y: nextMid.y - (prevMid.y - vp.y) * used,
+    };
+  }
+
+  function smoothControlPoints(points) {
+    if (points.length < 3) return [];
+    var segments = [];
+    var from = points[0];
+    for (var index = 1; index < points.length - 1; index++) {
+      var control = points[index];
+      var to = midpoint(control, points[index + 1]);
+      segments.push({ from: from, control: control, to: to });
+      from = to;
+    }
+    return segments;
+  }
+
+  function parsePointerKind(pointerType) {
+    if (pointerType === 'pen' || pointerType === 'touch') return pointerType;
+    return 'mouse';
+  }
+
+  function commitStrokeOnEnd(kind, end) {
+    if (end === 'up') return true;
+    return kind !== 'pen';
+  }
+
+  function resumeLiveStroke(kind, hasLive) {
+    return !!hasLive && kind === 'pen';
+  }
+
+  var PEN_RESUME_MAX_NORM = 0.08;
+
+  function shouldJoinPenStroke(last, next) {
+    if (!last) return false;
+    return Math.hypot(last.x - next.x, last.y - next.y) <= PEN_RESUME_MAX_NORM;
+  }
+
+  function acceptDrawPointer(pointer, stylusPreferred) {
+    if (pointer.kind === 'pen' || pointer.kind === 'mouse') return true;
+    return !stylusPreferred && pointer.primary && pointer.contactPx < PALM_CONTACT_PX;
+  }
+
+  function prefersStylusByDevice(device) {
+    if (/iPad/i.test(device.userAgent)) return true;
+    return device.platform === 'MacIntel' && device.maxTouchPoints > 1;
+  }
+
+  function parseFingerWriteFlag(raw) {
+    if (raw === '1') return true;
+    if (raw === '0') return false;
+    return null;
+  }
+
+  function initialStylusPreferred(device, fingerWrite) {
+    if (fingerWrite === true) return false;
+    if (fingerWrite === false) return true;
+    return prefersStylusByDevice(device);
+  }
+
   return {
     INK_TOOLS: INK_TOOLS,
+    PALM_CONTACT_PX: PALM_CONTACT_PX,
+    MIN_SCALE: MIN_SCALE,
+    MAX_SCALE: MAX_SCALE,
+    IDENTITY_VIEWPORT: IDENTITY_VIEWPORT,
     isInkTool: isInkTool,
     inkStyle: inkStyle,
     beginStroke: beginStroke,
@@ -136,6 +241,20 @@
     toNormPoint: toNormPoint,
     toCssPoint: toCssPoint,
     splitRatio: splitRatio,
+    parsePointerKind: parsePointerKind,
+    commitStrokeOnEnd: commitStrokeOnEnd,
+    resumeLiveStroke: resumeLiveStroke,
+    shouldJoinPenStroke: shouldJoinPenStroke,
+    acceptDrawPointer: acceptDrawPointer,
+    prefersStylusByDevice: prefersStylusByDevice,
+    parseFingerWriteFlag: parseFingerWriteFlag,
+    initialStylusPreferred: initialStylusPreferred,
+    clampScale: clampScale,
+    midpoint: midpoint,
+    screenToNorm: screenToNorm,
+    normToScreen: normToScreen,
+    pinchViewport: pinchViewport,
+    smoothControlPoints: smoothControlPoints,
     createSession: createSession,
   };
 });

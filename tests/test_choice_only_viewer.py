@@ -343,6 +343,66 @@ def test_app_js_no_hardcoded_essay_stat():
     assert "selectChapter(filterKey, l2Btn)" in text
 
 
+def test_choice_detail_binds_reveal_answer():
+    """选择题详情也要绑「显示答案」，不能只靠点选项才揭晓。"""
+    text = APP_JS.read_text(encoding="utf-8")
+    fn = text.split("function bindDetailInteractions")[1].split(
+        "function renderModalContent"
+    )[0]
+    assert "bindRevealAnswer(container)" in fn
+    ordered, _, rest = fn.partition("if (q.type === '选择题' && isOrderedChoice(q))")
+    assert "bindRevealAnswer(container)" in ordered
+    assert (
+        "bindRevealAnswer(container)" not in rest.split("if (q.type === '选择题')")[-1]
+    )
+
+
+def test_ds_x22_ternary_tree_explanation_not_ocr_garbage():
+    path = DATA_FILES["数据结构"]
+    if not path.is_file():
+        pytest.skip(f"missing {path.name}")
+    data = json.loads(path.read_text(encoding="utf-8"))
+    hits = [
+        q
+        for ch in data.get("chapters") or []
+        for q in ch.get("questions") or []
+        if q.get("id") == "X22" and "三叉树" in (q.get("content") or "")
+    ]
+    assert hits, "expected 二叉树的概念 X22 三叉树高度"
+    expl = (hits[0].get("answer") or {}).get("explanation") or ""
+    assert r"3^{i-1}" in expl
+    assert r"\lceil\log_3 101\rceil" in expl
+    assert r"\dfrac{3^h-1}{2}" in expl
+    assert "3°" not in expl
+    assert "log3101" not in expl.replace("log_3 101", "")
+
+
+def test_flagged_choice_explanations_use_latex_not_ocr_junk():
+    cases = [
+        ("数据结构", "X15", 139, r"$2^6-1=63$", "2°-1"),
+        ("数据结构", "X24", 139, r"$n=2^0+2^1+\cdots+2^{h-1}=2^h-1$", "2°+2'"),
+        ("数据结构", "X05", 132, r"$1+4+4^2+\cdots+4^{h-1}$", "4²+…"),
+        ("计算机组成原理", "X07", 32, r"$2^8=256$", "2°=256"),
+        ("计算机网络", "X18", 106, r"$2^i-1$", "2'-1"),
+        ("计算机网络", "X27", 43, r"$V=2^6=64$", "2°=64"),
+        ("计算机组成原理", "X09", 18, r"$500\times10^6\div(2.5\times10^6)=200$", "10°"),
+        ("计算机组成原理", "X20", 20, r"$5\times10^5\times1.2=6\times10^5$", "10°"),
+    ]
+    for course_name, qid, page, needle, junk in cases:
+        path = DATA_FILES[course_name]
+        data = json.loads(path.read_text(encoding="utf-8"))
+        hits = [
+            q
+            for ch in data.get("chapters") or []
+            for q in ch.get("questions") or []
+            if q.get("id") == qid and q.get("page") == page
+        ]
+        assert hits, f"missing {course_name} {qid} p{page}"
+        expl = (hits[0].get("answer") or {}).get("explanation") or ""
+        assert needle in expl, f"{course_name} {qid}: missing {needle}"
+        assert junk not in expl, f"{course_name} {qid}: still has {junk}"
+
+
 def test_index_html_version_and_assets():
     html = INDEX_HTML.read_text(encoding="utf-8")
     assert "choice-only.js?v=" in html

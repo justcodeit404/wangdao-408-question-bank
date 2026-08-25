@@ -121,6 +121,57 @@ let isLoadingCourse = false;
 let practiceMode = null;
 let practiceTimer = null;       // setInterval 句柄
 let practiceDeadline = 0;       // 限时模式的截止时间戳
+let qualityLedger = null;
+
+async function loadQualityLedger() {
+  if (qualityLedger) return qualityLedger;
+  if (window.__QUALITY_LEDGER__) {
+    qualityLedger = window.__QUALITY_LEDGER__;
+    return qualityLedger;
+  }
+  try {
+    if (window.location.protocol === 'file:') {
+      await new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = 'quality-ledger.js';
+        script.onload = resolve;
+        script.onerror = reject;
+        document.head.appendChild(script);
+      });
+      qualityLedger = window.__QUALITY_LEDGER__ || null;
+    } else {
+      const response = await fetch('quality-ledger.json', { cache: 'no-store' });
+      if (response.ok) qualityLedger = await response.json();
+    }
+  } catch (e) {
+    console.warn('[bank-408] quality ledger unavailable; keeping progressive view', e);
+  }
+  return qualityLedger;
+}
+
+function qualityForQuestion(q) {
+  const uid = platformSourceUid(q);
+  return qualityLedger && uid ? ((qualityLedger.items || {})[uid] || null) : null;
+}
+
+function qualityVisible(q) {
+  const item = qualityForQuestion(q);
+  if (!item) return true;
+  if (item.overall === 'hold') return false;
+  const course = (qualityLedger.courses || {})[item.course_key];
+  return !(course && course.mode === 'strict' && item.overall !== 'certified');
+}
+
+function qualityBadgeHtml(q) {
+  const item = qualityForQuestion(q);
+  if (!item) return '';
+  const badges = [];
+  if (item.source_fidelity === 'verified') badges.push('<span class="quality-badge quality-source">原书已核对</span>');
+  if (item.answer_validation === 'verified') badges.push('<span class="quality-badge quality-answer">答案已验算</span>');
+  if (item.overall === 'pending') badges.push('<span class="quality-badge quality-pending">待核验</span>');
+  if (item.overall === 'hold') badges.push('<span class="quality-badge quality-hold">质量隔离</span>');
+  return badges.join(' ');
+}
 
 async function loadBankData(courseName) {
   if (isLoadingCourse) return;
@@ -164,8 +215,56 @@ let currentModalQuestion = null;
 
 function questionKey(q) { return q.chapter + '::' + q.id; }
 function displayId(q) { return (q.id || '').replace(/^[XA]/, ''); }
+
+const OCR_CODE_LINE_RE = /\b(?:void|int|char|float|double|for|while|if|else|return|printf|scanf|typedef|struct)\b|[{};]|\+\+|--/;
+const OCR_STRUCTURAL_START_RE = /^(?:[①-⑳]|[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ]+[.．、]?|I{1,4}[.．、]|V?I{0,3}[.．、]|[（(]?\d+[)）.．、]|[A-D][.．、]|题目图片：|答案图片：|解析图片：)/;
+const OCR_TABLE_HINT_RE = /(?:如下表|下表|表所示|如下图|下图|图所示)/;
+
+function looksLikeOcrCodeLine(line) {
+  return OCR_CODE_LINE_RE.test(String(line || ''));
+}
+
+function isOcrStructuralBreak(lines, index, hasTableOrFigure) {
+  const left = String(lines[index] || '').trim();
+  const right = String(lines[index + 1] || '').trim();
+  if (!left || !right) return true;
+  if (looksLikeOcrCodeLine(left) || looksLikeOcrCodeLine(right)) return true;
+  if (OCR_STRUCTURAL_START_RE.test(right)) return true;
+  if (/^(?:\||表头|指令类型|项目|名称|地址|序号|时间|操作)/.test(right)) return true;
+  if (left.endsWith('：') || left.endsWith(':')) return true;
+  // 题干明确引出图表时，保留后续短行，避免把表格/拓扑图拼成一段。
+  if (hasTableOrFigure && (OCR_TABLE_HINT_RE.test(left) || left.length < 18 || right.length < 18)) return true;
+  // OCR 纸面换行通常发生在一行已经接近版心宽度之后；短行换行更可能是结构换行。
+  return left.length < 18;
+}
+
+function joinOcrWrappedLines(left, right) {
+  const a = String(left || '').trimEnd();
+  const b = String(right || '').trimStart();
+  if (!a) return b;
+  if (!b) return a;
+  // 英文/数字跨行时补一个词间空格；中文及中英混排不额外插空格。
+  if (/[A-Za-z0-9]$/.test(a) && /^[A-Za-z0-9]/.test(b) && !a.endsWith('-')) return a + ' ' + b;
+  return a + b;
+}
+
+function reflowOcrSoftWraps(text) {
+  const normalized = String(text || '').replace(/\r\n?/g, '\n');
+  if (!normalized.includes('\n')) return normalized;
+  const lines = normalized.split('\n');
+  const hasTableOrFigure = OCR_TABLE_HINT_RE.test(normalized);
+  const out = [lines[0]];
+  for (let index = 0; index < lines.length - 1; index += 1) {
+    const next = lines[index + 1];
+    if (isOcrStructuralBreak(lines, index, hasTableOrFigure)) out.push(next);
+    else out[out.length - 1] = joinOcrWrappedLines(out[out.length - 1], next);
+  }
+  return out.join('\n');
+}
+
 function normalizeDisplayText(text) {
   if (!text) return text;
+  text = reflowOcrSoftWraps(text);
   // 修复 OCR 导致的括号左右不一致：如 （) 或 (） 统一为 （）
   return text.replace(/（\s*\)/g, '（）').replace(/\(\s*）/g, '（）');
 }
@@ -204,7 +303,8 @@ function prepareMathText(text) {
   let t = normalizeDisplayText(text);
   if (!t) return t;
 
-  t = t.replace(/²/g, '^{2}').replace(/³/g, '^{3}').replace(/¹/g, '^{1}');
+  // ¹²³ 只在 O(...) 内层转成 ^{}（complexityInnerToLatex）。
+  // 这里若全局替换，解析里 3ⁱ⁻¹ 会变成裸 ^{1}，KaTeX 吃不到。
 
   // 先包 O(...)，内层一次性转成 LaTeX（勿再对 $...$ 内部做 n^{} 替换）
   if (!/\$|\\\(|\\\[/.test(t)) {
@@ -221,10 +321,18 @@ function prepareMathText(text) {
     if (!s) continue;
     s = s.replace(/\bnlog2n\b/gi, '$n' + TEX_BS + 'log_2 n$');
     s = s.replace(/\blog2n\b/gi, '$' + TEX_BS + 'log_2 n$');
+    s = s.replace(/1og\s*2/gi, 'log2');
+    s = s.replace(/(?<![\\$])log\s*2\s*\(\s*([^)]+?)\s*\)/gi, (_, inner) => '$' + TEX_BS + 'log_2(' + inner + ')$');
+    s = s.replace(/(?<![\\$])log\s*2\s*(\d+[A-Za-z]?)/gi, (_, n) => '$' + TEX_BS + 'log_2 ' + n + '$');
+    s = s.replace(/(?<![\\$])log\s*2\s*([Vv])/g, (_, v) => '$' + TEX_BS + 'log_2 ' + v + '$');
+    s = s.replace(/n²/g, '$n^{2}$');
+    s = s.replace(/n³/g, '$n^{3}$');
     s = s.replace(/\bn\^\{2\}/g, '$n^{2}$');
     s = s.replace(/\bn\^\{3\}/g, '$n^{3}$');
     s = s.replace(/\bn\^\{1\/3\}/g, '$n^{1/3}$');
     s = s.replace(/\bn\^\{1\/2\}/g, '$n^{1/2}$');
+    s = s.replace(/(?<![$\w\\])(\d+)\^\{([^}]+)\}/g, (_, a, b) => '$' + a + '^{' + b + '}$');
+    s = s.replace(/(?<![$\w\\])(\d+)\^([A-Za-z])(-1)?/g, (_, a, b, c) => '$' + a + '^' + b + (c || '') + '$');
     s = s.replace(/√\s*([A-Za-z0-9]+)/g, '$' + TEX_BS + 'sqrt{$1}$');
     parts[i] = s;
   }
@@ -1036,6 +1144,7 @@ function buildAllQuestions() {
 }
 
 async function init() {
+  await loadQualityLedger();
   loadStatus();
   restoreFromUrl();
   renderCourseTabs();
@@ -1509,6 +1618,7 @@ function renderStats() {
 function filterQuestions(source, opts) {
   const tokenSplitRe = /[\s,.;:!?。，；：！？、（）()\[\]"'"]+/;
   return source.filter(q => {
+    if (!qualityVisible(q)) return false;
     if (opts.chapter && q.chapterKey !== opts.chapter) return false;
     if (opts.type && q.type !== opts.type) return false;
     if (opts.feature === 'sub' && !q.sub_questions) return false;
@@ -2102,6 +2212,8 @@ function renderQuestionBody(container, q, mode) {
 }
 
 function bindDetailInteractions(container, q) {
+  // 选择题也要能点「显示答案」；先前只绑了选项点击，按钮是死的
+  bindRevealAnswer(container);
   if (q.type === '选择题' && isOrderedChoice(q)) {
     bindOrderedChoice(container, q, (isCorrect, seq) => {
       revealAnswerBox(container, q);
@@ -2142,8 +2254,6 @@ function bindDetailInteractions(container, q) {
         }
       });
     });
-  } else {
-    bindRevealAnswer(container);
   }
 }
 
@@ -2155,7 +2265,7 @@ function renderModalContent(q) {
   // 刷题时不展示「相似题」，减少干扰（findSimilarQuestions 仍保留供以后开关）
   container.innerHTML = `
     <div class="q-chapter">${escapeHtml(q.chapter)} · 第 ${q.page} 页</div>
-    <div class="q-id">${escapeHtml(displayId(q))} <span class="row-type ${q.type === '选择题' ? 'choice' : 'nonchoice'}">${q.type}</span></div>
+    <div class="q-id">${escapeHtml(displayId(q))} <span class="row-type ${q.type === '选择题' ? 'choice' : 'nonchoice'}">${q.type}</span> ${qualityBadgeHtml(q)}</div>
     ${questionBodyHtml(q)}
     <details class="q-notes" id="detailNotes">
       <summary>📝 我的笔记 <span class="notes-status" id="notesStatus"></span></summary>
@@ -3039,7 +3149,7 @@ function flattenCourseQuestions(courseData, courseName) {
       const tokens = new Set();
       entry._searchText.split(tokenSplitRe).forEach(t => { if (t.length > 1) tokens.add(t); });
       entry._searchTokens = tokens;
-      out.push(entry);
+      if (qualityVisible(entry)) out.push(entry);
     });
   });
   return out;
@@ -4343,7 +4453,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=39').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=43').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {

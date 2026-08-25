@@ -1,12 +1,55 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "status": "published",
-  "round_id": "claude-local-r3",
-  "per_chapter": 5,
-  "models": [
-    "claude-local-vision"
-  ],
-  "base_url": "local",
+  "generated_at": "2026-08-25T15:00:54+00:00",
+  "round_id": "ledger",
+  "summary": {
+    "total": 2441,
+    "certified": 0,
+    "pending": 2383,
+    "held": 58
+  },
+  "published_hashes": {
+    "ds": "bbe9865c2fae621c57ae326f876bd876fa42d91677e66c2832323dd7dce26029",
+    "coa": "15fc71b1a3f5b6f132fe65330b91738a4eacdfed58a9d786b44af8c6606561ce",
+    "net": "fe612f88f114a32b2b9daddf26fd9598ec50c5c4a07fa2593b3bd521b5313e14",
+    "os": "23c3b64f7db15f660f4e1e0c3ccc6683b962af62d173529834ba011247d774b4"
+  },
+  "ledger_sha256": "06e6eda11e94be82dc81407a6b98aa5c8e34bfd6a667f4365e3e45e803d8f2bb",
+  "courses": {
+    "ds": {
+      "name": "数据结构",
+      "mode": "progressive",
+      "total": 637,
+      "certified": 0,
+      "pending": 614,
+      "held": 23
+    },
+    "coa": {
+      "name": "计算机组成原理",
+      "mode": "progressive",
+      "total": 597,
+      "certified": 0,
+      "pending": 582,
+      "held": 15
+    },
+    "net": {
+      "name": "计算机网络",
+      "mode": "progressive",
+      "total": 558,
+      "certified": 0,
+      "pending": 549,
+      "held": 9
+    },
+    "os": {
+      "name": "操作系统",
+      "mode": "progressive",
+      "total": 649,
+      "certified": 0,
+      "pending": 638,
+      "held": 11
+    }
+  },
   "records": [
     {
       "source_uid": "408:cs408-ds::绪论 · 数据结构的基本概念 · 选择题::X01",
@@ -3783,71 +3826,5 @@
         }
       }
     }
-  ],
-  "round_history": [
-    {
-      "round_id": "coding-k26-408-accuracy-r1",
-      "sample_accuracy": 0.1984,
-      "sample_passed": 25,
-      "sample_total": 126,
-      "accuracy": 0.1852,
-      "total": 189
-    },
-    {
-      "round_id": "coding-k26-408-samples-r1",
-      "sample_accuracy": 0.2154,
-      "sample_passed": 28,
-      "sample_total": 130,
-      "accuracy": 0.2154,
-      "total": 130
-    },
-    {
-      "round_id": "coding-k26-408-batch-r1",
-      "sample_accuracy": 0.5781,
-      "sample_passed": 74,
-      "sample_total": 128,
-      "accuracy": 0.5781,
-      "total": 128
-    },
-    {
-      "round_id": "coding-k26-408-batch2-r1",
-      "sample_accuracy": 0.5748,
-      "sample_passed": 73,
-      "sample_total": 127,
-      "accuracy": 0.5748,
-      "total": 127
-    },
-    {
-      "round_id": "claude-local-r3",
-      "sample_accuracy": 1.0,
-      "sample_passed": 127,
-      "sample_total": 127,
-      "accuracy": 1.0,
-      "total": 127
-    }
-  ],
-  "summary": {
-    "total": 127,
-    "verified": 15,
-    "auto_fixed": 112,
-    "held": 0,
-    "accuracy": 1.0,
-    "sample_accuracy": 1.0,
-    "sample_passed": 127,
-    "sample_total": 127,
-    "timing": {
-      "setup_s": 0.1,
-      "api_s": 1085.7,
-      "crop_s": 18.0,
-      "retry_batches": 8,
-      "api_calls": 68,
-      "wall_s": 1103.8
-    }
-  },
-  "published_hashes": {
-    "ds": "cd2a50c298049c45f7688c8be2423e648e118a8de5e01a10b82b7364e4bee3b6",
-    "coa": "2995e14d16d3b18f6435d3b8a41b4c432848072499dfe547e9c4cd26ba70edc9",
-    "net": "ca597a4cefc3dd76df57fca3ef25a6a582c2da4bfc9cdb62a6340d793801e9f0",
-    "os": "53a0aeb589b50a808ac7582a4fb546d405ea1e4771549562fa4fdf288221417e"
-  }
+  ]
 }

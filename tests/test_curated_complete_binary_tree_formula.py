@@ -61,3 +61,25 @@ def test_same_level_floor_log_is_correct_in_generated_bank():
     assert "⌊log₂p⌋=⌊log₂q⌋" in explanation
     assert "Llog" not in explanation
     assert "[log2p" not in str(question["options"])
+
+
+def test_full_binary_tree_exponent_patch_is_registered():
+    assert ("ds", 139, "X24") in fq.CURATED_OPTION_PATCHES
+    assert ("ds", 139, "X24") in fq.CURATED_TEXT_PATCHES
+    assert fq.CURATED_OPTION_PATCHES[("ds", 139, "X24")]["D"] == "$n=2^h-1$"
+
+
+def test_full_binary_tree_n_equals_two_to_the_h():
+    question = _find(_load_ds(), 139, "X24")
+    assert question is not None
+    assert question["options"] == {
+        "A": "n=h+m",
+        "B": "n+m=2h",
+        "C": "m=h-1",
+        "D": "$n=2^h-1$",
+    }
+    assert question["answer"]["choice"] == "D"
+    explanation = question["answer"]["explanation"]
+    assert "2^h-1" in explanation
+    assert "2^{h-1}" in explanation
+    assert question["options"]["D"] != "n=2h-1"

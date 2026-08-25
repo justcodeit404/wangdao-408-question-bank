@@ -660,10 +660,12 @@ def build_manifest(records: list[dict[str, Any]], state: dict[str, Any], status:
     }
 
 
-def run_gate(*, per_chapter: int = DEFAULT_PER_CHAPTER, round_id: str | None = None, client_factory: Callable[[], Any] | None = None, fresh_ocr: bool = False, course_keys: set[str] | None = None, include_priority: bool = True, batch_size: int = DEFAULT_BATCH_SIZE) -> dict[str, Any]:
+def run_gate(*, per_chapter: int = DEFAULT_PER_CHAPTER, round_id: str | None = None, client_factory: Callable[[], Any] | None = None, fresh_ocr: bool = False, course_keys: set[str] | None = None, include_priority: bool = True, batch_size: int = DEFAULT_BATCH_SIZE, full: bool = False) -> dict[str, Any]:
     api_key, base_url, models = _api_config()
     if not api_key and client_factory is None:
         raise VisionInfrastructureError("未配置 KIMI_CODE_API_KEY 或 MOONSHOT_API_KEY，拒绝生成未核验发布包")
+    if full and models[0] == models[1]:
+        raise VisionInfrastructureError("全量原书核对必须配置两个不同视觉模型（KIMI_CODE_MODEL_B 不能等于模型 A）")
     client = client_factory() if client_factory else OpenAI(api_key=api_key, base_url=base_url)
     t_round = time.perf_counter()
     # 每次 OCR 重建后先把已确认补丁重新套回源 JSON，避免 merge 覆盖修复。
@@ -683,13 +685,24 @@ def run_gate(*, per_chapter: int = DEFAULT_PER_CHAPTER, round_id: str | None = N
         data = json.loads(path.read_text(encoding="utf-8"))
         grouped = _rows(course.key, data)
         for major_rows in grouped.values():
+            if full:
+                verified_state = state.setdefault("verified", {})
+                selected.extend(
+                    row for row in major_rows
+                    if verified_state.get(row["source_uid"]) != source_hash(row["question"])
+                )
+                continue
             rotation_rows = major_rows if include_priority else [row for row in major_rows if row["source_uid"] not in priority]
             if rotation_rows:
                 selected.extend(select_rotating(rotation_rows, state, per_chapter, state["round_id"]))
-        if include_priority:
+        if include_priority and not full:
             for rows in grouped.values():
                 selected.extend(row for row in rows if row["source_uid"] in priority and row not in selected)
     if not selected:
+        if full:
+            existing = _load_json(MANIFEST_PATH, {})
+            if isinstance(existing, dict) and existing.get("status") in {"published", "verified", "verified_with_holds"}:
+                return existing
         raise VisionInfrastructureError("没有可抽检题目")
     answer_choices: dict[str, str] = {}
     if fresh_ocr:
@@ -778,13 +791,19 @@ def run_gate(*, per_chapter: int = DEFAULT_PER_CHAPTER, round_id: str | None = N
                 record = {"source_uid": uid, "course_key": row["course_key"], "chapter": row["major_chapter"], "question_id": row["question"].get("id"), "source_hash": source_hash(row["question"]), "status": "held", "selection": "priority" if uid in priority else "rotation", "reason": str(last_conflicts.get(uid) or "双模型无法确认")}
             else:
                 crops = crops_used[uid]
-                record = {"source_uid": uid, "course_key": row["course_key"], "chapter": row["major_chapter"], "question_id": row["question"].get("id"), "source_hash": source_hash(row["question"]), "status": decision["status"], "selection": "priority" if uid in priority else "rotation", "models": list(models), "evidence_sha256": [crop.sha256 for crop in crops], "fields": decision["consensus"]}
+                patched_question = apply_patch_to_question(row["question"], decision.get("patch"))
+                record = {"source_uid": uid, "course_key": row["course_key"], "chapter": row["major_chapter"], "question_id": row["question"].get("id"), "source_hash": source_hash(row["question"]), "verified_hash": source_hash(patched_question), "status": decision["status"], "selection": "priority" if uid in priority else "rotation", "models": list(models), "evidence_sha256": [crop.sha256 for crop in crops], "fields": decision["consensus"]}
                 if decision["patch"]:
                     fixed.append({**record, "patch": decision["patch"]})
                 state.setdefault("verified", {})[uid] = source_hash(apply_patch_to_question(row["question"], decision.get("patch")))
             records.append(record)
             completed += 1
             print(f"[vision] {completed}/{total_selected} {uid} -> {record['status']}", flush=True)
+        # 全量模式按批次落盘，API 中断后从上一批继续；running 状态不参与发布。
+        if full:
+            state["last_records"] = records
+            STATE_PATH.parent.mkdir(parents=True, exist_ok=True)
+            write_json_atomic(STATE_PATH, state, indent=2, ensure_ascii=False)
     pair_pool.shutdown(wait=True)
     timing["crop_s"] = round(timing["crop_s"], 1)
     timing["api_s"] = round(timing["api_s"], 1)
@@ -988,6 +1007,7 @@ def main() -> int:
     parser.add_argument("--accuracy-threshold", type=float, default=0.9)
     parser.add_argument("--max-rounds", type=int, default=10)
     parser.add_argument("--rotation-only", action="store_true", help="只抽每章轮换样本；高风险题保留既有隔离，不重复计入本轮")
+    parser.add_argument("--full", action="store_true", help="全量核对所有选择题，断点状态仍写入原有 manifest")
     args = parser.parse_args()
     try:
         if args.finalize:
@@ -1035,7 +1055,7 @@ def main() -> int:
                 result["stop_reason"] = "max_rounds_reached"
                 result["accuracy_threshold"] = args.accuracy_threshold
         else:
-            result = run_gate(per_chapter=args.per_chapter, round_id=args.round_id, fresh_ocr=args.fresh_ocr and not args.no_fresh_ocr, course_keys=set(args.course or []), include_priority=not args.rotation_only, batch_size=args.batch_size)
+            result = run_gate(per_chapter=args.per_chapter, round_id=args.round_id, fresh_ocr=args.fresh_ocr and not args.no_fresh_ocr, course_keys=set(args.course or []), include_priority=not args.rotation_only, batch_size=args.batch_size, full=args.full)
     except VisionInfrastructureError as exc:
         print(f"[vision-gate] BLOCKED: {exc}", file=sys.stderr)
         return 2

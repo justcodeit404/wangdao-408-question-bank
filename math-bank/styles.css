@@ -1600,6 +1600,19 @@ body.compact-view .question-row .row-tags .row-tag { display: none; }
 
 .row-type.choice { background: var(--success-soft); color: var(--success); }
 .row-type.nonchoice { background: var(--warning-soft); color: var(--warning); }
+.quality-badge {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 1px 6px;
+  margin-left: 4px;
+  font-size: 0.72rem;
+  line-height: 1.35;
+}
+.quality-source, .quality-answer { color: var(--success); background: var(--success-soft); }
+.quality-pending { color: var(--warning); background: var(--warning-soft); }
+.quality-hold { color: var(--danger, #b42318); background: var(--danger-soft, #fff1f0); }
 
 .row-body {
   min-width: 0;

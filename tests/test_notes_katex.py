@@ -14,7 +14,7 @@ STYLES = ROOT / "math-bank" / "styles.css"
 
 def _eval_prepare(cases: list[str]) -> list[str]:
     src = APP_JS.read_text(encoding="utf-8")
-    start = src.index("function normalizeDisplayText")
+    start = src.index("const OCR_CODE_LINE_RE")
     end = src.index("function getTotalPages")
     slice_js = src[start:end]
     script = (
@@ -62,9 +62,9 @@ def test_notes_preview_wired_in_viewer():
     assert ".q-notes-preview" in css
     assert ".q-notes.has-note-preview .q-notes-preview" in css
     html = (ROOT / "math-bank" / "index.html").read_text(encoding="utf-8")
-    assert "app.js?v=39" in html
+    assert "app.js?v=" in html
     sw = (ROOT / "math-bank" / "sw.js").read_text(encoding="utf-8")
-    assert "wd408-ui-v39" in sw
+    assert "wd408-ui-v43" in sw
 
 
 def test_prepare_note_math_bare_log_and_delimited():
@@ -85,3 +85,46 @@ def test_prepare_note_math_bare_log_and_delimited():
     assert dialog == "dialog_box"
     assert paren.startswith(r"\(")
     assert r"\rfloor" in paren
+
+
+def test_prepare_math_reflows_prose_but_preserves_structure():
+    prose, code, numbered, table = _eval_prepare(
+        [
+            "【2020统考真题】对于任意一棵高度为5且有10个结点的二叉树，若采用顺序存储结\n"
+            "构保存，每个结点占1个存储单元，则存放该二叉树需要\n的存储单元数量至少是（）。",
+            "下列算法的时间复杂度为（）。\nfor(i=0;i<n;i++)\n    sum++;",
+            "下列说法正确的是（）。\nI．第一项\nII．第二项",
+            "某程序如下表所示。\nA 1 2\nB 3 4",
+        ]
+    )
+    assert "结\n构" not in prose
+    assert "需要\n的" not in prose
+    assert "for(i=0;i<n;i++)" in code and "\n" in code
+    assert "I．第一项\nII．第二项" in numbered
+    assert "某程序如下表所示。\nA 1 2" in table
+
+
+def test_prepare_math_keeps_unicode_superscripts_out_of_bare_tex():
+    """¹ 不得变成裸 ^{1}，否则解析里 3ⁱ⁻¹ 会显示成 3ⁱ⁻^{1}。"""
+    out = _eval_prepare(
+        ["这棵树的第i（i≥1）层最多有3ⁱ⁻¹个结点。则3⁰+3¹+…+3ʰ⁻¹=(3ʰ-1)/2"]
+    )[0]
+    assert "^{1}" not in out
+    assert "^{0}" not in out
+    assert "ⁱ" in out
+    assert "¹" in out
+
+
+def test_prepare_math_wraps_bare_caret_and_log2():
+    series, pow_n, log_n, log_paren = _eval_prepare(
+        [
+            r"最多为1+4+4^{h-1}",
+            r"结点数最多为2^n-1-16=111",
+            "地址线应为log24M=22根",
+            "Wlog2(1+127)=28000",
+        ]
+    )
+    assert r"$4^{h-1}$" in series
+    assert r"$2^n-1$" in pow_n
+    assert r"\log_2 4M" in log_n
+    assert r"\log_2(1+127)" in log_paren

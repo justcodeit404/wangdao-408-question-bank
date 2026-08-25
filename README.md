@@ -76,6 +76,33 @@ python scripts/build_all.py --skip-vision-audit
 视觉门禁记录在
 `math-bank/quality-verification.json`，部署打包只接受 `status=published`。
 
+质量状态以 `math-bank/quality-ledger.json` 为唯一来源。完整可信化分两步：
+
+```bash
+# 全量原书读图核对（需要两个不同视觉模型）
+python scripts/vision_quality_gate.py --full
+python scripts/vision_quality_gate.py --finalize
+python scripts/quality_ledger.py
+
+# 全量独立盲解（需要两个不同答案模型；可按 --course 断点执行）
+python scripts/blind_answer_gate.py --course ds
+python scripts/blind_answer_gate.py --course coa
+python scripts/blind_answer_gate.py --course os
+python scripts/blind_answer_gate.py --course net
+```
+
+`quality-hold.json` 与 `quality-verification.json` 都由 ledger 派生；题目内容哈希
+变化会自动退回待核验。全量盲解冲突只进入隔离清单，不会自动改官方答案。
+
+人工裁决必须显式写入 `action` 后再导入：
+
+```bash
+python scripts/ingest_quality_decisions.py temp/quality-decisions.json
+```
+
+可用动作：`certify`、`hold`、`source_verified`、`answer_verified`；缺少动作的旧回归
+导出会被拒绝，避免把“修复了 OCR”误当成“答案已验算”。
+
 **单科重抽**（无 PDF 切页 → OCR → 解析 → 合并，适合某一门质量不满意时）：
 
 ```bash

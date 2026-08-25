@@ -31,6 +31,10 @@ def main():
         '--skip-vision-audit', action='store_true',
         help='仅供本地开发预览：标记为 unverified，发布打包和 enhance_audit 会拒绝',
     )
+    parser.add_argument(
+        '--skip-blind-audit', action='store_true',
+        help='仅供无模型环境预览；正式发布必须完成独立答案盲解',
+    )
     args = parser.parse_args()
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -89,7 +93,7 @@ def main():
         )
         print('[vision-gate] 已显式跳过，产物标记为 unverified（不可发布）')
     else:
-        run([sys.executable, 'scripts/vision_quality_gate.py'])
+        run([sys.executable, 'scripts/vision_quality_gate.py', '--full'])
 
     # 6. 合并并生成 math-bank 懒加载数据
     run([sys.executable, 'scripts/merge_courses.py', OUTPUT_DIR / 'questions_all.json'])
@@ -101,6 +105,12 @@ def main():
     run([sys.executable, 'scripts/cross_validate_answers.py'])
     if not args.skip_vision_audit:
         run([sys.executable, 'scripts/vision_quality_gate.py', '--finalize'])
+        # 统一从当前发布数据重算 ledger 和兼容清单，避免旧 hold 只增不减。
+        run([sys.executable, 'scripts/quality_ledger.py'])
+        if not args.skip_blind_audit:
+            run([sys.executable, 'scripts/blind_answer_gate.py'])
+        else:
+            print('[blind-gate] 已显式跳过，ledger 保持 pending（不可宣称答案已验算）')
     run([sys.executable, 'scripts/enhance_audit.py'])
 
     print('\n========== 构建完成 ==========')
