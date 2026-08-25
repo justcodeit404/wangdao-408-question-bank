@@ -131,9 +131,15 @@ def main():
     raw.unlink(missing_ok=True)
     post.unlink(missing_ok=True)
 
-    # 4. 合并 + 审计
+    # 4. 原书视觉门禁 + 合并 + 审计
     if not args.skip_merge:
+        run([sys.executable, "scripts/vision_quality_gate.py"])
         run([sys.executable, "scripts/merge_courses.py", OUTPUT_DIR / "questions_all.json"])
+        # 有图题精准重裁 + 题干图区碎片清理。merge 会从 output json 重新生成
+        # 四科 math-bank 数据（冲掉此前的重裁结果），所以必须全量跑而不是只跑本科。
+        run([sys.executable, "scripts/auto_recrop_figs.py"])
+        run([sys.executable, "scripts/cross_validate_answers.py"])
+        run([sys.executable, "scripts/vision_quality_gate.py", "--finalize"])
         run([sys.executable, "scripts/enhance_audit.py"])
 
     data = json.loads(c.out_json.read_text(encoding="utf-8"))

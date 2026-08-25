@@ -8,7 +8,6 @@
 from __future__ import annotations
 
 import copy
-import hashlib
 import json
 import re
 import sys
@@ -664,34 +663,10 @@ def rebuild_questions_all(stats: dict) -> None:
 
 
 def write_quality_hold(stats: dict) -> None:
-    """双格式：source_hashes（按课）+ files（data-*.json sha256）+ source_sha256 兼容单文件导入。"""
-    source_hashes = {}
-    files = {}
-    for c in COURSES:
-        pub = MATH_BANK_DIR / f"data-{c.key}.json"
-        h = hashlib.sha256(pub.read_bytes()).hexdigest()
-        source_hashes[c.key] = h
-        files[pub.name] = h
-        # also hash out_json
-        outp = Path(c.out_json)
-        if outp.exists():
-            files[outp.name] = hashlib.sha256(outp.read_bytes()).hexdigest()
+    """按发布 JSON 重算哈希，并隔离结构性残题 UID（勿再写空 source_uids）。"""
+    from quality_hold import write_manifest
 
-    # 为平台 import 兼容：对每个 data-*.json 单独不写单 source_sha256，
-    # 改由 bank_import_service 认 files/source_hashes。此处保留空 held。
-    hold = {
-        "schema_version": 2,
-        "source_hashes": source_hashes,
-        "files": files,
-        "source_uids": [],
-        "summary": {
-            "note": "qa_pass_c regenerated; held empty after structural recovery",
-            "courses": list(source_hashes.keys()),
-        },
-    }
-    write_json_atomic(
-        MATH_BANK_DIR / "quality-hold.json", hold, indent=2, ensure_ascii=False
-    )
+    write_manifest()
     stats["hold"] = "ok"
 
 

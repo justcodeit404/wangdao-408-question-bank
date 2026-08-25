@@ -286,20 +286,33 @@ def main() -> int:
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
     write_json_atomic(REPORT_PATH, report, indent=2, ensure_ascii=False)
     write_json_atomic(REVIEW_PATH, held, indent=2, ensure_ascii=False)
-    write_json_atomic(
-        HOLD_PATH,
-        {
-            "schema_version": 1,
-            "source_hashes": {
-                result["course_key"]: published_hash(result["course_key"])
-                for result in results
-            },
-            "source_uids": sorted({record["source_uid"] for record in held}),
-            "summary": summary,
-        },
-        indent=2,
-        ensure_ascii=False,
+    # 保留视觉门禁在 merge 前写入的题目级隔离项；本脚本只追加答案冲突，
+    # 不能因为重新生成 cross-validation 报告而放行视觉冲突题。
+    existing_hold: dict[str, Any] = {}
+    if HOLD_PATH.is_file():
+        try:
+            raw_hold = json.loads(HOLD_PATH.read_text(encoding="utf-8"))
+            if isinstance(raw_hold, dict):
+                existing_hold = raw_hold
+        except (OSError, json.JSONDecodeError):
+            existing_hold = {}
+    merged_uids = sorted(
+        {str(uid) for uid in existing_hold.get("source_uids", []) if str(uid).strip()}
+        | {record["source_uid"] for record in held}
     )
+    hold_payload = {
+        "schema_version": 1,
+        "source_hashes": {
+            result["course_key"]: published_hash(result["course_key"])
+            for result in results
+        },
+        "source_uids": merged_uids,
+        "summary": summary,
+    }
+    for key in ("vision_reason", "vision_records"):
+        if key in existing_hold:
+            hold_payload[key] = existing_hold[key]
+    write_json_atomic(HOLD_PATH, hold_payload, indent=2, ensure_ascii=False)
     print(json.dumps(summary, ensure_ascii=False, indent=2))
     print(f"报告: {REPORT_PATH}")
     print(f"复核清单: {REVIEW_PATH}")

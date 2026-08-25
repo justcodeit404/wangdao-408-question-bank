@@ -116,6 +116,19 @@ try {
     assert.deepEqual(session.strokes, []);
   });
 
+  test('splitRatio measures far-edge share with clamping', function () {
+    // Given a 1000px split container with the scratch area at the far edge
+    // When the divider sits at various pointer positions
+    // Then the scratch share is clamped to [0.3, 0.85]
+    assert.equal(ink.splitRatio(1000, 500, 0.3, 0.85), 0.5);
+    assert.equal(ink.splitRatio(1000, 900, 0.3, 0.85), 0.3);
+    assert.equal(ink.splitRatio(1000, 50, 0.3, 0.85), 0.85);
+    assert.equal(ink.splitRatio(1000, 0, 0.3, 0.85), 0.85);
+    assert.equal(ink.splitRatio(0, 500, 0.3, 0.85), null);
+    assert.equal(ink.splitRatio(-10, 500, 0.3, 0.85), null);
+    assert.equal(ink.splitRatio(800, 400), 0.5);
+  });
+
   test('initOnce is idempotent across sessions', function () {
     // Given
     const flag = '__viewerScratchInkTestReady';

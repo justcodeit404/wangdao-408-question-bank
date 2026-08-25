@@ -630,6 +630,27 @@ img, svg { display: block; }
   line-height: 1.55;
 }
 .q-notes textarea:focus { outline: none; border-color: var(--accent); }
+.q-notes-preview {
+  display: none;
+  width: calc(100% - 28px);
+  margin: 0 14px 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  min-height: 40px;
+  line-height: 1.55;
+  word-break: break-word;
+}
+.q-notes.has-note-preview .q-notes-preview { display: block; }
+.q-notes-hint {
+  margin: 0 14px 8px;
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  line-height: 1.4;
+}
 .q-notes-actions {
   display: flex;
   gap: 8px;
@@ -657,6 +678,43 @@ img, svg { display: block; }
   z-index: 9999;
 }
 .flash-toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* 备份提醒条（非强制，需用户点击） */
+.backup-reminder {
+  position: fixed;
+  left: 50%;
+  bottom: 60px;
+  transform: translate(-50%, 10px);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: var(--surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+  opacity: 0;
+  transition: opacity 0.18s, transform 0.18s;
+  z-index: 9999;
+}
+.backup-reminder.show { opacity: 1; transform: translate(-50%, 0); }
+.backup-reminder button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+#backupReminderGo {
+  background: var(--accent);
+  color: #fff;
+  padding: 4px 12px;
+}
+#backupReminderClose { color: var(--text-secondary); font-size: 1rem; line-height: 1; }
 
 /* 搜索历史下拉 */
 .search-box { position: relative; }
@@ -1006,17 +1064,25 @@ body.compact-view .question-row .row-tags .row-tag { display: none; }
   padding: 7px 10px 7px 22px;
 }
 
-.tree-l3-wrap { padding-left: 0; }
-.tree-l3 {
-  font-weight: 500;
-  font-size: 0.8rem;
-  color: var(--text-tertiary);
-  padding: 6px 10px 6px 36px;
+/* 二级小节为叶子：直接点选筛选，无展开箭头 / 无第三级「选择题」 */
+.tree-l2.leaf {
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+.tree-l2.leaf .arrow.leaf-spacer {
+  width: 10px;
+  margin-right: 6px;
+  flex-shrink: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.tree-l2.leaf.active {
+  color: var(--text-primary);
 }
 
-.tree-l3 .arrow { width: 14px; margin-right: 2px; }
-.tree-l3.choice .arrow { color: var(--success); }
-.tree-l3.nonchoice .arrow { color: var(--warning); }
+/* 旧三级节点样式保留类名以免历史缓存报错，但不再渲染 */
+.tree-l3-wrap { padding-left: 0; display: none; }
+.tree-l3 { display: none; }
 
 .tree-children { display: none; }
 .tree-children.show { display: block; }

@@ -2,13 +2,13 @@
 // JS/CSS/HTML + 题库数据 JSON：Network-First（避免题干修了仍显示旧缓存）
 // 其它同源静态：Stale-While-Revalidate
 
-const CACHE_NAME = 'wd408-ui-v35';
+const CACHE_NAME = 'wd408-ui-v39';
 const APP_SHELL = [
   './',
   './index.html',
-  './styles.css?v=31',
-  './app.js?v=31',
-  './data.js?v=31',
+  './styles.css?v=39',
+  './app.js?v=39',
+  './data.js?v=39',
   './manifest.json'
 ];
 
@@ -47,6 +47,18 @@ self.addEventListener('fetch', (event) => {
   if (url.pathname.startsWith('/api/')) return;
 
   if (url.origin === location.origin) {
+    const p = url.pathname || '';
+    // 题库 JSON/JS 数据包：只走网络、不写入 Cache，避免 OCR 修题后仍显示旧题干
+    if (
+      /data-(ds|coa|net|os)\.(json|js)$/.test(p) ||
+      p.endsWith('/data.js') ||
+      p.endsWith('/data.json')
+    ) {
+      event.respondWith(
+        fetch(req, { cache: 'no-store' }).catch(() => caches.match(req))
+      );
+      return;
+    }
     if (isCodeOrShell(url) || url.searchParams.has('v')) {
       // Network first for app code
       event.respondWith(

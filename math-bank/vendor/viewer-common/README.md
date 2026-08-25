@@ -7,8 +7,8 @@
 | `storage.js` | `safeSetItem`、JSON 读写、**分片 map**（marks 等大对象拆 key） |
 | `platform-sync.js` | 平台登录探测（httpOnly cookie）、`sync-from-bank` |
 | `scratch-ink.js` | Canvas 笔迹纯逻辑、归一化坐标与内存会话 |
-| `scratch-pad.css` | 草稿板响应式分屏、主题与触控隔离样式 |
-| `scratch-pad.js` | 题库宿主自动发现、Canvas 草稿板与生命周期管理 |
+| `scratch-pad.css` | 草稿板响应式分屏（可拖拽分隔条 + 一键放大）、主题与触控隔离样式 |
+| `scratch-pad.js` | 题库宿主自动发现、Canvas 草稿板、分屏拖拽/比例记忆与生命周期管理 |
 | `scratch-ink.test.js` | `scratch-ink.js` 的零依赖 Node assert 测试 |
 > 注：政治移动端逻辑由生成脚本内联产出（各 `app.html` 内联），`politics-mobile.js` / `.css` 不再分发（历史文件已删除）。
 

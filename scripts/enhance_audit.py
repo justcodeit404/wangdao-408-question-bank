@@ -35,7 +35,14 @@ CRITICAL_ISSUES = {
     "cross_validation_stale",
     "seq_gap",
     "trunc_stem_scan",
+    "regression_mismatch",
+    "regression_target_missing",
+    "vision_verification_manifest_missing",
+    "vision_verification_unverified",
+    "vision_verification_stale",
 }
+
+REGRESSIONS_PATH = MATH_BANK_DIR / "quality_regressions.json"
 
 
 def _questions(data: dict[str, Any]):
@@ -81,6 +88,41 @@ def _question_signature(data: dict[str, Any]) -> list[tuple[Any, ...]]:
     ]
 
 
+def _load_regressions() -> list[dict[str, Any]]:
+    if not REGRESSIONS_PATH.is_file():
+        return []
+    try:
+        raw = json.loads(REGRESSIONS_PATH.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return []
+    return raw if isinstance(raw, list) else (raw.get("items") or []) if isinstance(raw, dict) else []
+
+
+def _regression_matches(course, chapter: str, q: dict[str, Any], expected: dict[str, Any]) -> tuple[bool, str]:
+    """只比较回归样例声明的字段，避免把无关 OCR 排版变化锁死。"""
+    if "content" in expected and q.get("content") != expected["content"]:
+        return False, "content"
+    if "options" in expected:
+        actual = q.get("options") if isinstance(q.get("options"), dict) else {}
+        for key, value in (expected["options"] or {}).items():
+            if actual.get(key) != value:
+                return False, f"options.{key}"
+    answer = q.get("answer") if isinstance(q.get("answer"), dict) else {}
+    exp_answer = expected.get("answer") or {}
+    if "choice" in exp_answer and answer.get("choice") != exp_answer["choice"]:
+        return False, "answer.choice"
+    if "explanation" in exp_answer and answer.get("explanation") != exp_answer["explanation"]:
+        return False, "answer.explanation"
+    if "explanation_contains" in exp_answer and str(exp_answer["explanation_contains"]) not in str(answer.get("explanation") or ""):
+        return False, "answer.explanation_contains"
+    if "image_ref" in expected:
+        actual_ref = q.get("image_ref")
+        actual_ref = actual_ref.get("cropped") if isinstance(actual_ref, dict) else actual_ref
+        if actual_ref != expected["image_ref"]:
+            return False, "image_ref"
+    return True, ""
+
+
 def audit_file(course) -> dict[str, Any]:
     path = Path(course.out_json)
     pub = MATH_BANK_DIR / f"data-{course.key}.json"
@@ -92,6 +134,45 @@ def audit_file(course) -> dict[str, Any]:
     seen_ids: set[tuple[str, str]] = set()
     ordered_choice_count = 0
     image_count = 0
+
+    # 发布门禁必须由本次视觉抽检 manifest 锁定实际读取的 data-*.json 哈希。
+    verification_path = MATH_BANK_DIR / "quality-verification.json"
+    if not verification_path.is_file():
+        issues["vision_verification_manifest_missing"].append({"path": str(verification_path)})
+    else:
+        try:
+            verification = json.loads(verification_path.read_text(encoding="utf-8"))
+            status = str(verification.get("status") or "")
+            expected = (verification.get("published_hashes") or {}).get(course.key)
+            actual = _sha256(primary)
+            if status != "published":
+                issues["vision_verification_unverified"].append({"status": status})
+            elif not expected or expected != actual:
+                issues["vision_verification_stale"].append({"expected": expected, "actual": actual})
+        except (OSError, json.JSONDecodeError, AttributeError):
+            issues["vision_verification_manifest_missing"].append({"path": str(verification_path), "error": "invalid JSON"})
+
+    # 已修复问题的回归样例：只校验声明过的字段，且必须能定位到发布题目。
+    course_regressions = [
+        r for r in _load_regressions()
+        if str(r.get("source_uid") or "").startswith(f"408:cs408-{course.key}::")
+    ]
+    row_by_uid = {
+        f"408:cs408-{course.key}::{chapter}::{q.get('id')}": (chapter, q)
+        for chapter, q in rows
+    }
+    for regression in course_regressions:
+        uid = str(regression.get("source_uid") or "")
+        target = row_by_uid.get(uid)
+        if not target:
+            issues["regression_target_missing"].append({"source_uid": uid})
+            continue
+        expected = regression.get("expected") or {}
+        ok, field = _regression_matches(course, target[0], target[1], expected)
+        if not ok:
+            issues["regression_mismatch"].append(
+                {"source_uid": uid, "field": field, "expected": expected}
+            )
 
     hold_path = MATH_BANK_DIR / "quality-hold.json"
     if not hold_path.is_file():
@@ -120,7 +201,33 @@ def audit_file(course) -> dict[str, Any]:
                 {"path": str(hold_path), "error": str(exc)}
             )
 
+    held_uids: set[str] = set()
+    if hold_path.is_file():
+        try:
+            held_uids = {
+                str(uid)
+                for uid in (
+                    json.loads(hold_path.read_text(encoding="utf-8")).get("source_uids")
+                    or []
+                )
+                if str(uid).strip()
+            }
+        except (OSError, json.JSONDecodeError, TypeError, AttributeError):
+            held_uids = set()
+
     def add(kind: str, chapter: str, q: dict[str, Any], **extra):
+        qid = str(q.get("id") or "?")
+        uid = f"408:cs408-{course.key}::{chapter}::{qid}"
+        if kind in CRITICAL_ISSUES and uid in held_uids:
+            issues["held_acknowledged"].append(
+                {
+                    "chapter": chapter,
+                    "id": qid,
+                    "type": q.get("type"),
+                    "held_as": kind,
+                }
+            )
+            return
         issues[kind].append(
             {
                 "chapter": chapter,

@@ -1,0 +1,4492 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "source_uid": "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X04",
+      "expected": {
+        "content": "若某算法的空间复杂度为O(1),则表示该算法( )。",
+        "answer": {
+          "explanation": "算法的空间复杂度为O(1)，表示执行该算法所需的辅助空间大小相比输入数据的规模来说是一个常量，而不表示该算法执行时不需要任何空间或辅助空间。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "f3c9ce3b7b1240dfed8d583945a287da3bfbb5ec372b88ebfea0267b33139cba",
+        "0231a56f7193fc9a6ec93d7b89f93741a9e0bfdd34339f08832946a6249dc916"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::线性表 · 线性表的链式表示 · 选择题::X29",
+      "expected": {
+        "content": "一个链表最常用的操作是在最后一个元素后插入一个元素和删除第一个元素,则选用( )最节省时间。",
+        "answer": {
+          "explanation": "对于选项 A，在最后一个元素之后插入元素的情况与普通单链表相同，时间复杂度为 O(n)；而删除第一个元素时，为保持循环单链表的性质（尾结点指向第一个结点），要先遍历整个链表找到尾结点，再做删除操作，时间复杂度为 O(n)。对于选项 B，双链表的情况与单链表的相同，一个是 O(n)，一个是 O(1)。对于选项 C，在最后一个元素之后插入一个元素，要遍历整个链表才能找到插入位置，时间复杂度为 O(n)；删除第一个元素的时间复杂度为 O(1)。对于选项 D，与选项 A 的分析对比，有"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "5247533bd6fe39562f70f9276b92954401a2bf0d3fee0b608d394aa9f9db72ef",
+        "18b0c52e26e95b2eb26a2f1861aae3e04149c265dc22c7d51215d621191fd254"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题::X37",
+      "expected": {
+        "content": "若对右图所示的二叉树进行中序线索化,则结点X的左右线索指向的结点分别是( )。",
+        "options": {
+          "A": "e, c",
+          "B": "e, a",
+          "C": "d, c",
+          "D": "b, a"
+        },
+        "answer": {
+          "explanation": "线索二叉树的线索实际上指向的是相应遍历序列特定结点的前驱结点和后继结点，所以先写出二叉树的中序遍历序列debxac，中序遍历中在x左边和右边的字符，就是它在中序线索化的左右线索，即b,a。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "9cdadc7b5ebfe91f902e7df7162d1bd4777eb69be939290c24b7aa4ae30a63ac",
+        "9c4014a2e79d59c625fbaedd104014d06d101eef334a2256ee0c8eb91a7fcfdf"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X08",
+      "expected": {
+        "content": "某个程序段如下: for(i=n-1;i>1;i--) for(j=1;j<i;j++) if(A[j]>A[j+1]) A[j]与A[j+1]对换; 其中n为正整数,则最后一行语句的频度在最坏情况下是( )。",
+        "options": {
+          "A": "O(n)",
+          "B": "O(nlog₂n)",
+          "C": "O(n³)",
+          "D": "O(n²)"
+        },
+        "answer": {
+          "explanation": "这是冒泡排序的算法代码，考查最坏情况下的元素交换次数（若觉得理解起来有困难，则可在学完第8章后再回顾）。当所有相邻元素都为逆序时，最后一行的语句每次都会执行。此时，\nT(n)=∑ᵢ₌₂ⁿ⁻¹∑ⱼ₌₁ⁱ⁻¹1=∑ᵢ₌₂ⁿ⁻¹i-1=(n-2)(n-1)/2=O(n²)"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "32942ff3b58cfc129b21a5b9c3462caf25583277c31aa4a72acfc40ef27a706e",
+        "f4727215316cf2d802d73199a09f4c92eea337c4a3fba6f9c128bcba8b42d47f"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X12",
+      "expected": {
+        "content": "设n是描述问题规模的非负整数,下列程序段的时间复杂度是( )。 x=2; while(x<n/2) x=2*x;",
+        "options": {
+          "A": "O(log₂n)",
+          "B": "O(n)",
+          "C": "O(nlog₂n)",
+          "D": "O(n²)"
+        },
+        "answer": {
+          "explanation": "基本运算（执行频率最高的语句）为x=2*x，每执行一次，x乘以2，设执行次数为t，则有2^(t+1)<n/2，所以t<log₂(n/2)-1=log₂n-2，得T(n)=O(log₂n)。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "994dea5513a67cde4affa8d58d164df75f6e0c2a0e2939c642aa926c267c30cf",
+        "d57a2fc0189d572f42094e157c535080785c377dcffa429683cdf4a7f118778c"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::线性表 · 线性表的链式表示 · 选择题::X22",
+      "expected": {
+        "content": "对于一个带头结点的循环双链表L,判断该表为空表的条件是( )。",
+        "options": {
+          "A": "L->prior==L&&L->next==NULL",
+          "B": "L->prior==NULL&&L->next==NULL",
+          "C": "L->prior==NULL&&L->next==L",
+          "D": "L->prior==L&&L->next==L"
+        },
+        "answer": {
+          "explanation": "循环双链表L判空的条件是头结点（头指针）的prior和next域都指向它自身。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "1d6c586b5f6cd256adac4543329e722fa6423d2c62c6286604be344a53a4a899",
+        "7deeac5ebe4eeff8fbf8b0b9d195eb1f3ad2c39b89e99f32a1420bd9b0ecda37"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::绪论 · 数据结构的基本概念 · 选择题::X04",
+      "expected": {
+        "content": "下列关于数据结构的说法中,正确的是( )。",
+        "answer": {
+          "explanation": "数据的逻辑结构是从面向实际问题的角度出发的，只采用抽象表达方式，独立于存储结构，数据的存储方式有多种不同的选择；而数据的存储结构是逻辑结构在计算机上的映射，它不能独立于逻辑结构而存在。数据结构包括三个要素，缺一不可。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "93063889dcada1daacb373fedcde57c14f63564f0de987486fb88f1ea11eeb11",
+        "fe722fa4e76eb4f95b8b84098469c296223f176bd05b0b59eafb01da8bbefe10"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X03",
+      "expected": {
+        "content": "某算法的时间复杂度为O(n2),则表示该算法的( )。",
+        "options": {
+          "A": "问题规模是n²",
+          "B": "执行时间等于n²",
+          "C": "执行时间与n²成正比",
+          "D": "问题规模与n²成正比"
+        },
+        "answer": {
+          "explanation": "时间复杂度为O(n²)，说明算法的时间复杂度T(n)满足T(n)≤cn²（其中c为比例常数），即T(n)=O(n²)，时间复杂度T(n)是问题规模n的函数，其问题规模仍然是n而不是n²。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "d039cd1d12d905c3c5fa2bbcddf51dabc5eff5cb0756099fdd9197e89b66a0b0",
+        "25eb74867ca00806d3f2844deca3c89c133d270ce119f34abb1e783e7cecb8cf"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X11",
+      "expected": {
+        "content": "下列函数代码的时间复杂度是( )。 int Func(int n){ if(n==1) return 1; else return 2*Func(n/2)+n; }",
+        "options": {
+          "A": "O(n)",
+          "B": "O(nlog₂n)",
+          "C": "O(log₂n)",
+          "D": "O(n²)"
+        },
+        "answer": {
+          "explanation": "本题求的是递归调用的时间复杂度，递归调用可视为多重循环，每次递归执行的基本语句是if(n==1) return 1;，因此可以认为单层循环的执行次数为1，设递归次数为t，2ᵗ≤n，即t≤log₂n，共执行了log₂n次递归调用，总执行次数T=log₂n×1，所以时间复杂度为O(log₂n)。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "851338f0f86521efe8f999c04368fdc8fb0472a5500e4ed2aadd4954ed29c934",
+        "90c6dfc977b3ecd1084d51d743e4cd165911a05a396754e97f3baa5435ac1811"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::线性表 · 线性表的定义和基本操作 · 选择题::X01",
+      "expected": {
+        "content": "线性表是具有 n 个( )的有限序列。"
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "4b84bdfd6610c61322cb09f0ffe412eaacc69960ade57d7ff55bba76da6fbbd0",
+        "ae12f764705eb859603b0f14a582d6afe4a65c0b0df1d29783281cd682cdc9b5"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::线性表 · 线性表的顺序表示 · 选择题::X11",
+      "expected": {
+        "content": "对于顺序存储的线性表,其算法时间复杂度为O(1)的运算应该是( )。",
+        "answer": {
+          "explanation": "对n个元素进行排序的时间复杂度最小也要O(n)（初始有序时），通常为O(nlog₂n)或O(n²)，通过第8章学习后会更容易理解。选项B和D显然错误。顺序表支持按序号的随机存取方式。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "6c02ffc78e0175fb0c7acd27232655875a4099e4367dcdf8c7b0ffe558e0154b",
+        "ca084e7c192f16557a3670bba534e0080dc22a76fdf08f048da9e26ac291f87e"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::线性表 · 线性表的链式表示 · 选择题::X28",
+      "expected": {
+        "content": "有两个长度都为n的双链表,若以h1为头指针的双链表是非循环的,以h2为头指针的双链表是循环的,则下列叙述中正确的是( )。",
+        "options": {
+          "A": "对于双链表h1，删除首结点的时间复杂度是O(n)",
+          "B": "对于双链表h2，删除首结点的时间复杂度是O(n)",
+          "C": "对于双链表h1，删除尾结点的时间复杂度是O(1)",
+          "D": "对于双链表h2，删除尾结点的时间复杂度是O(1)"
+        },
+        "answer": {
+          "explanation": "对于两种双链表，删除首结点的时间复杂度都是O(1)。对于非循环双链表，删除尾结点的时"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "d3dddfa4f6f484b060f4547975793d6d8e5245b83ccc777433666230a0c60695",
+        "8fd5d9faca93ae636972fbdf9a6ac96fdc3a214010ac5e08f46d7fc38e16b7cd"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X11",
+      "expected": {
+        "content": "设二叉树只有度为0和2的结点,其结点数为15,则该二叉树的最大深度为( )",
+        "options": {
+          "A": "4",
+          "B": "5",
+          "C": "8",
+          "D": "9"
+        },
+        "answer": {
+          "explanation": "建议画图，第一层有1个结点，其余h-1层各有2个结点，总结点数=1+2(h-1)=15，h=8。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "f4115fa1e197816a4eb1476b9f39e3709b128afa7bc5c44000a588286a0982c6",
+        "8403cb98495a5edf3dfe18a2ed0e9a51e67e9bbd43679e576832bf12d179a261"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X18",
+      "expected": {
+        "content": "一棵有n个结点的二叉树采用二叉链存储结点,其中空指针数为( )。",
+        "answer": {
+          "explanation": "非空指针数=总分支数=n-1，空指针数=2×结点总数-非空指针数=2n-(n-1)=n+1。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "4687aeca13d83adc9e627cb28b248cc4ac40442bdbe793d2fe116e1c988b812c",
+        "abe7e65398bfa89553c4e39199d45558a1ab926aad260030c275cea3acd449d3"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::图 · 图的存储及基本操作 · 选择题::X11",
+      "expected": {
+        "content": "在有向图的邻接表存储结构中,顶点v在边表中出现的次数是( )。",
+        "answer": {
+          "explanation": "题中的边表是不包括顶点表的。因为任何顶点u对应的边表中存放的都是以u为起点的边所对应的另一个顶点v。从而v在边表中出现的次数也就是它的入度。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "1328775744c694a938613929750f53e98e08ae0a1cc541e1abfc10da86519451",
+        "03ec1273961e6ade8341c65de0f1bc98cd5cc77dd3bec670654d13786783eeb8"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::排序 · 插入排序 · 选择题::X10",
+      "expected": {
+        "content": "对序列{98, 36, -9, 0, 47, 23, 1, 8, 10, 7}采用希尔排序,下列序列( )是增量为4的一趟排序结果。",
+        "options": {
+          "A": "{10, 7, -9, 0, 47, 23, 1, 8, 98, 36}",
+          "B": "{-9, 0, 36, 98, 1, 8, 23, 47, 7, 10}",
+          "C": "{36, 98, -9, 0, 23, 47, 1, 8, 7, 10}",
+          "D": "以上都不对"
+        },
+        "answer": {
+          "explanation": "增量为4意味着所有相距为4的记录构成一组，然后在组内进行直接插入排序，经观察，只有选项A满足要求。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "6d34094a02269691a05a1d1d38b73ba41a549d4ae24630fa8ed5bf8fbcf5c6e8",
+        "62347bbc4c50ce6f1aac2f4868b48f9e1fe015852ac24dafc69d463ca7cfa0ee"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::查找 · 散列（Hash）表 · 选择题::X22",
+      "expected": {
+        "content": "下列因素中,影响散列(哈希)方法平均查找长度的是( )。",
+        "options": {
+          "A": "I",
+          "B": "II",
+          "C": "III",
+          "D": "I、II、III"
+        },
+        "answer": {
+          "explanation": "原题再现。填装因子越大，说明哈希表中存储的元素越满，发生冲突的可能性就越高，导致平均查找长度越大。散列函数、冲突解决策略也会影响发生冲突的可能性。说法 I、II、III 都正确。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "fc1243540ae8363bce56a45063cd3cb83b626af7b2967a56a5deaf7bd1a33719",
+        "6e7789ffcb49154abb3b3a158c6ba0c492bc7126f934f0a5265ce29922ab77de"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::计算机系统概述 · 计算机系统层次结构 · 选择题::X04",
+      "expected": {
+        "content": "以下关于计算机各部件功能的叙述中,错误的是( )。",
+        "answer": {
+          "explanation": "运算器（ALU）不仅负责算术运算，还承担逻辑运算（如与、或、非、移位等），因此选项A限定为“算术运算”是片面的，表述错误。选项B、C和D的描述明显正确。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "d954f7e73aa9f507b7d6b5a10667e03479227b3f39516e31aa451c3975ba69e1",
+        "a74416d76039a595a735e37a6d77c89d5860738fbe022b0b9437cc4fbcac9065"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X04",
+      "expected": {
+        "content": "计算机中,CPU的CPI与下列( )因素无关。",
+        "answer": {
+          "explanation": "CPI是执行一条指令所需的时钟周期数，系统结构、指令集、计算机组织都会影响CPI，而时钟频率并不会影响CPI，但可加快指令的执行速度。例如，执行一条指令需要10个时钟周期，则一台主频为1GHz的CPU，执行这条指令要比一台主频为100MHz的CPU快。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "a42ea19ee6b734829494a75f368d3949d7cb4ede98c42bd17282658dc2291446",
+        "ff2371ed765c4f9578d955da99336e0d45eb557c1bbe7d74431f17e35925d9a2"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X07",
+      "expected": {
+        "content": "8位原码能表示的不同数据有( )个。",
+        "answer": {
+          "explanation": "8个二进制位有2^8=256种不同表示。原码中0有两种表示，因此原码能表示的不同数据为2^8-1=255个。0在反码中也有两种表示，因此若题目改为反码，答案也为选项C。0在补码与移码中只有一种表示，因此题目若改为补码或移码，答案为选项D。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "e3fe4cf57f2b64a9d25e4ecaf742210545d25eeb84f7e24f18118d4453c111ee",
+        "64c537096a2342ac3aac888238f85a47f8d89242f017636b31c5bf2b2040a28d"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::指令系统 · 寻址方式 · 选择题::X02",
+      "expected": {
+        "content": "采用直接转移的无条件转移指令的功能是将指令中的地址码送入( )。",
+        "answer": {
+          "explanation": "转移指令有条件/无条件、直接/间接、相对/绝对三种属性。条件转移是指需要先判断条件是否成立，才决定是否转移；无条件转移是指不用判断条件就可以转移，典型的是函数调用和返回。直接转移是指转移目标地址直接放在指令中，执行时直接将地址码送入 PC；间接转移是指转移目标地址存放在寄存器或内存单元中。相对转移是指转移目标地址为当前 PC 值加上偏移量，偏移量一般在指令中；绝对转移是指转移目标地址直接由指令或寄存器给出。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "1a9863d9c0d040b1d19ca4623a316acc908598be1e236abdcc308fbd879c29e8",
+        "cecf35738c031de1e275b69b0b185445642fd670372f4dea96418792ad5858c0"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 控制器的功能和工作原理 · 选择题::X08",
+      "expected": {
+        "content": "下列说法中,正确的是( )。",
+        "options": {
+          "A": "采用微程序控制器是为了提高速度",
+          "B": "控制存储器由高速 RAM 电路组成",
+          "C": "微指令计数器决定指令执行顺序",
+          "D": "一条微指令存放在控制器的一个控制存储器单元中"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "cefc06f71a07e13a4fed6fc2131914013d62bca20afd3648a9f2e081127a85bb",
+        "d5d1043ebf87657652ffa2ebcd4d519fe816583337533f43a6366e50bcb543fd"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::输入/输出系统 · I/O方式 · 选择题::X06",
+      "expected": {
+        "content": "在具有中断向量表的计算机中,中断向量地址是( )。",
+        "answer": {
+          "explanation": "中断向量地址是中断向量表的地址，因为中断向量表保存着中断服务程序的入口地址，所以中断向量地址是中断服务程序入口地址的地址。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "887fc8278245d7199e8598911263fdd71839ad3de8f15f309c4bf596693df91f",
+        "775709d926075e3bbfd20908792b5198225c02e740782608466dc0407a6e2574"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::计算机系统概述 · 计算机系统层次结构 · 选择题::X05",
+      "expected": {
+        "content": "计算机系统采用层次化结构,从最上层的应用程序到最底层的硬件,其典型层次自上而下依次为( )。",
+        "options": {
+          "A": "高级语言虚拟机→操作系统虚拟机→汇编语言虚拟机→机器语言机器",
+          "B": "高级语言虚拟机→汇编语言虚拟机→机器语言机器→操作系统虚拟机",
+          "C": "高级语言虚拟机→汇编语言虚拟机→操作系统虚拟机→机器语言机器",
+          "D": "操作系统虚拟机→高级语言虚拟机→汇编语言虚拟机→机器语言机器"
+        },
+        "answer": {
+          "explanation": "计算机系统通常被抽象为多层虚拟机结构。用户程序以高级语言编写，在高级语言虚拟机上运行；经编译后生成汇编代码，在汇编语言虚拟机上抽象执行；但实际指令需要由操作系统加载、调度并管理资源，因此操作系统构成操作系统虚拟机层；最终，所有操作由机器语言机器执行。该层次自上而下为“高级语言虚拟机→汇编语言虚拟机→操作系统虚拟机→机器语言机器”。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "73bd386d1cd478f1d847bb30fcfdbc258e4babac3587fe819eb21a4becf3062c",
+        "58ce062f8d09aaf0963277e10b5a8b99a2fc1c2037dfb35b13d7719bf2194dc5"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X08",
+      "expected": {
+        "content": "一个 n+1 位整数 x 原码的数值范围是( )。",
+        "options": {
+          "A": "-2^n+1 < x < 2^n-1",
+          "B": "-2^n+1 ≤ x < 2^n-1",
+          "C": "-2^n+1 < x ≤ 2^n-1",
+          "D": "-2^n+1 ≤ x ≤ 2^n-1"
+        },
+        "answer": {
+          "explanation": "n+1 位整数原码的表示范围为 -2^n+1 ≤ x ≤ 2^n-1。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "b429904d7f6c63fec836f776f55515606b950848d941a22c4862fe70da953de3",
+        "0a22d889ecc20a8180124495fdf10d06cb71a9a480ea7605c67d8c8f5f1234bc"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::输入/输出系统 · I/O方式 · 选择题::X20",
+      "expected": {
+        "content": "下列关于程序查询方式及其工作过程的叙述中,正确的是( )。",
+        "options": {
+          "A": "按启动查询方式的不同，可分为软件查询方式和硬件查询方式",
+          "B": "CPU主要负责启动外设和查询其状态，不参与数据传送",
+          "C": "每完成一次数据传送后，会修改主存地址和计数值",
+          "D": "CPU需要一直查询外设的状态，直到外设准备就绪时才可去执行其他程序"
+        },
+        "answer": {
+          "explanation": "按启动查询方式的不同，程序查询方式可分为定时查询方式和独占查询方式。在程序查询方式中，由CPU负责数据的传送。每完成一次数据传送后，将主存地址加1，计数值减1。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "e01d5aa15650cb26856ce7e9a8a2f47b5d680fc5406b0913a8368e8ebbc50eda",
+        "f1455882db963c1d43c6aea109d1fd018a0982c456dff1c6c9de4dd7855ce724"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::计算机网络体系结构 · 计算机网络概述 · 选择题::X13",
+      "expected": {
+        "content": "在下图所示的采用“存储-转发”方式的分组交换网络中,所有链路的数据传输速率为100Mb/s,分组大小为1000B,其中分组头大小为20B。若主机H1向主机H2发送一个大小为980000B的文件,则在不考虑分组拆装时间和传播延迟的情况下,从H1发送开始到H2接收完为止,需要的时间至少是( )。",
+        "answer": {
+          "explanation": "分组大小为1000B，其中首部占20B，故每个分组携带的有效数据为980B。文件总长为980000B，需划分为1000个分组；每个分组含首部共1000B，因此共需传输的数据量为10^6B。由于所有链路的传输速率相同，沿最短路径传输时延最小，而最短路径经过2个交换机（共3段链路）。H1发送完所有分组的时间为10^6×8b÷100Mb/s=80ms，此时最后一个分组刚离开H1，该分组还需依次经过2个交换机（再通过2段链路）才能到达H2，每段链路的传输时延为r=1000×8b÷100Mb/s=0.08ms。因此，H2接收完全部数据的时间为80ms+2r=80.16ms。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "28dc2064f9a58cdb146504a8145baf77a5eaf041e7fe029d256bddc9a6b4d640",
+        "dfed88ef2fbcf72d7cf14efba1e0101dfb24bba10eb409b65cfbec7e9f6a693a"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题::X10",
+      "expected": {
+        "content": "下图是TCP报文段的首部格式,它描述的是网络协议三要素中的( )。",
+        "options": {
+          "A": "仅 I",
+          "B": "仅 II",
+          "C": "仅 III",
+          "D": "I、II和III"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "3028e173116b0a24f7b85224e9f246c465f5fef5f62f1bb446a94a2c44ecafe1",
+        "4285db18ef34a219c88341135827bf68bb7c49cbd090da5b3c8ed4f05d0f3a87"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::物理层 · 通信基础 · 选择题::X21",
+      "expected": {
+        "content": "在下列因素中,不影响信道数据传输速率的是( )。",
+        "answer": {
+          "explanation": "由香农定理可知，信道极限数据传输速率受信噪比和频率带宽限制；调制速率（波特率）也直接影响数据速率。而信号传播速率仅决定传播时延，与传输速率无关，不影响信道数据传输速率。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "ec54353b7d6d37e92ba56cec24e9af9c434fd7240265af4718dea879576e6b60",
+        "0a96f9080d6c2b04b58a07a23c0a8231554942f47f8e1abe0d42e1aa4b281634"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X61",
+      "expected": {
+        "content": "下列IP地址中,只能作为IP分组的源IP地址但不能作为目的IP地址的是( )。",
+        "answer": {
+          "explanation": "0.0.0.0/32可以作为本主机在本网络上的源地址。127.0.0.1是回送地址，以它为目的IP地址"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "e450efe40f1a541e54a9b43f79b881f4fa2c9984fba39adb48563314326d9a13",
+        "53f90895cf0da73441a3fdfeb820f1018f0fc4aa9820127b584d35843e003962"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::数据链路层 · 介质访问控制 · 选择题::X18",
+      "expected": {
+        "content": "一条广播信道上连有4个站点a、b、c、d,采用码分复用技术,当a、b、c要向d发送数据时,设a的码片序列为(1,-1,1,-1),则b和c的码片序列可以为( )。",
+        "options": {
+          "A": "(-1,1,1,1)和(-1,-1,-1,1)",
+          "B": "(-1,-1,1,1)和(-1,1,-1,1)",
+          "C": "(-1,1,1,-1)和(1,1,-1,-1)",
+          "D": "(-1,-1,-1,-1)和(1,1,1,1)"
+        },
+        "answer": {
+          "explanation": "要实现码分复用，a、b、c三个站点的码片序列必须满足正交性，即两两之间的规格化内积等于0，分别计算各选项与(1,-1,1,-1)两两之间的规格化内积，只有选项C满足要求。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "a75e748d35cf212fa4a9a8316b73602ea1a998a07023d7c827be6e6e839dedfb",
+        "862e860dd5164eda3094f521fa86e1899347eab379093a992492e847b94fe27f"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X53",
+      "expected": {
+        "content": "某网络拓扑如下图所示,路由器R1只有到达子网192.168.1.0/24的路由。为使R1可以将IP分组正确地路由到图中的所有子网,在R1中需要增加的一条路由(目的网络,子网掩码,下一跳)是( )。",
+        "options": {
+          "A": "192.168.2.0，255.255.255.128，192.168.1.1",
+          "B": "192.168.2.0，255.255.255.0，192.168.1.1",
+          "C": "192.168.2.0，255.255.255.128，192.168.1.2",
+          "D": "192.168.2.0，255.255.255.0，192.168.1.2"
+        },
+        "answer": {
+          "explanation": "要使R1能正确地将分组路由到所有子网，R1中需要有到192.168.2.0/25和192.168.2.128/25"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "df43c70d0181ccb340eb8be21e1bbfc731c3e4a4c6b38d6bd3a7433eca4e4cae",
+        "71de86e31df5d2b49a34596aae301a16b0789ccbafd20e424670057a694f4d7b"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的基本概念 · 选择题::X08",
+      "expected": {
+        "content": "系统调用的目的是( )。",
+        "answer": {
+          "explanation": "操作系统不允许用户直接操作各种硬件资源，因此用户程序只能通过系统调用的方式来请求内核为其服务，间接地使用各种资源。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "d876a4eec17eb0f942d3e40767736e3758fff8e7b777cc2b4a660584237caf8d",
+        "73e63b6a388340c75c8e627c03b376cf7698bab044658e150eb8f3ce49dfe319"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X13",
+      "expected": {
+        "content": "操作系统有多种类型。允许多个用户以交互的方式使用计算机的操作系统,称为( );允许多个用户将若干作业提交给计算机系统集中处理的操作系统,称为( );在( )的控制下,计算机系统能及时处理由过程控制反馈的数据,并及时做出响应;在 IBM-PC 中,操作系统称为( )。"
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "c95a00894cef41ef55f6f3d05502c280f6e026e346b5144623d2988820aa24b2",
+        "4b6d857b0e9ed2e7ff215741db63ecc06cb66ba916fb80224c1dd656afe208e8"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X21",
+      "expected": {
+        "content": "处理外中断时,应该由操作系统保存的是( )。",
+        "answer": {
+          "explanation": "外中断处理过程，PC 值由中断隐指令自动保存，而通用寄存器内容由操作系统保存。快表（TLB）和 Cache 中的内容在外中断处理过程中通常无须保存，直接置有效位为 0 即可。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "a4866eb55f91feec1b8876890ac1076037457d49e7f5c2916152d8e5ae423e10",
+        "cb5946a838b004fab95d1c619bbe67ca54918fa61a931bab725f4818e70a770b"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::进程与线程 · 进程与线程简介 · 选择题::X62",
+      "expected": {
+        "content": "下列关于管道(Pipe)通信的叙述中,正确的是( )。",
+        "answer": {
+          "explanation": "普通管道只允许单向通信，数据只能往一个方向流动，要实现双向数据传输，就需要定义两个方向相反的管道，选项 A 错误。管道是一种存储在内存中的、固定大小的缓冲区，管道的大小通常为内存的一页，其大小并不是受磁盘容量大小的限制，选项 B 错误。由于管道的读/写操作都可能遇到缓冲区满或空的情况，当管道满时，写操作会被阻塞，直到有数据读出；而当管道空时，读操作会被阻塞，直到有数据写入，因此选项 C 正确。一个管道可以有多个读进程或多个写进程对其进行操作，但是这会增加数据竞争和混乱的风险，为了避免这种情况，应使用互斥锁或信号量等同步机制来保证每次只有一个进程对管道进行读或写操作，选项 D 错误。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "536b41b927bbb0c640ba17239b5d52680387e7f1bf3a70044003f258c9de9a9c",
+        "ef1e0c1c314c2ef91f1319bcbdea7aaffde3369444bcf0d52548475a39b98570"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 内存管理概念 · 选择题::X07",
+      "expected": {
+        "content": "设内存的分配情况如右图所示。若要申请一块 40KB 的内存空间,采用最佳适应算法,则所得到的分区首址为( )。",
+        "options": {
+          "A": "100K",
+          "B": "190K",
+          "C": "330K",
+          "D": "410K"
+        },
+        "answer": {
+          "explanation": "最佳适配算法是指，每次为作业分配内存空间时，总是找到能满足空间大小需要的最小空闲分区给作业，可以产生最小的内存空闲分区。从图中可以看出应选择大小为 60KB 的空闲分区，其首地址为 330K。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "70de5bc0070755b79a26ebef599c752c121f127dbc944a0657c0967bbd706b83",
+        "f8aee333b932dfc2027ee0ae092f54cf413d9e09f454010400d51efadb34fa7b"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::输入/输出管理 · 磁盘和固态硬盘 · 选择题::X20",
+      "expected": {
+        "content": "设一个磁道访问请求序列为 55, 58, 39, 18, 90, 160, 150, 38, 184,磁头的起始位置为 100,若采用 SSTF(最短寻道时间优先)算法,则磁头移动( )个磁道。",
+        "answer": {
+          "explanation": "对于 SSTF 算法，寻道序列应为 100, 90, 58, 55, 39, 38, 18, 150, 160, 184；移动磁道次数分别为 10, 32, 3, 16, 1, 20, 132, 10, 24，所以磁头移动总次数为 248。另外也可以画出草图来解答，从 100 寻道到 18 需要 82 次，然后加上从 18 到 184 需要的 184-18=166 次，共移动 166+82=248 次。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "a4ef143008da200fc11016c2adef4c1425b4cc988d0e6a2c397f0b016b5e8185",
+        "a9fb21cca4ec4d4f37335c1ecb1a4833596f345450b9e3c987d5dfffb520e2f6"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::绪论 · 数据结构的基本概念 · 选择题::X03",
+      "expected": {
+        "content": "下列选项中,属于逻辑结构的是( )。",
+        "answer": {
+          "explanation": "顺序表、哈希表和单链表是三种不同的数据结构，既描述逻辑结构，又描述存储结构和数据运算。而有序表是指关键字有序的线性表，仅描述元素之间的逻辑关系，它既可链式存储，又可顺序存储，所以属于逻辑结构。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "6fe4aba0dba6bff6550e7e78dab90f082ccc605cff18dc9b8cf5f0903af7ca53",
+        "b6e152b668ef2203653ca361eaf48b20866cee37f743d8f10ebe2a7024b25b35"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::线性表 · 线性表的链式表示 · 选择题::X31",
+      "expected": {
+        "content": "下列关于静态链表的说法中,正确的是( )。 I. 静态链表兼具顺序表和单链表的优点,因此存取表中第 i 个元素的时间与 i 无关 II. 静态链表能容纳的最大元素个数在表定义时就确定了,以后不能增加 III. 静态链表与动态链表在元素的插入、删除上类似,不需要移动元素 IV. 相比动态链表,静态链表可能浪费较多的存储空间",
+        "answer": {
+          "explanation": "静态链表的存储空间虽然是顺序分配的，但元素的存储不是顺序的，查找时仍然需要按链依次进行，而插入、删除都不需要移动元素。静态链表的存储空间是一次性申请的，能容纳的最大元素个数在定义时就已确定。并非每个空间都存储了元素，因此会造成存储空间的浪费。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "de643225831403fc2fc627207f03c4563977be0173a2e604d206491e97c4f336",
+        "62ea016e8f67f9ab6cdb67f1bd2be2d35f745e844f3f3d6d307906a14d89563d"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::串 · 串的模式匹配 · 选择题::X01",
+      "expected": {
+        "content": "设有两个串S1和S2,求S2在S1中首次出现的位置的运算称为( )。",
+        "answer": {
+          "explanation": "求子串操作是从串S中截取第i个字符起长度为l的子串，选项A错误。选项B、D明显错误。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "e545da81c1a1bc82cd9066bb3f4f802435bf2442c06d02167a9fd1800c4a47c6",
+        "780cb711828230ef915d88fccaafb77d7449f6af0f6424db056ce193f512e7d8"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::查找 · 树形查找 · 选择题::X01",
+      "expected": {
+        "content": "对于二叉排序树,下面的说法中,( )是正确的。",
+        "answer": {
+          "explanation": "二叉排序树插入新结点时不会引起树的分裂组合。对二叉排序树进行中序遍历可得到有序序列。当插入的关键字有序时，二叉排序树会形成一个长链，此时深度最大。在此种情况下进行查找，有可能需要比较每个结点的关键字，超过总结点数的1/2。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "7405931d1b4aae791466de4cb3432130d0a66396e16f15d7f3eb8cf73b510f3b",
+        "d43fbee57420583ee008db98b2de3816dfbb2c5c9cbd3517f1d3a0449d77259d"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::查找 · 树形查找 · 选择题::X33",
+      "expected": {
+        "content": "给定平衡二叉树如右图所示,插入关键字 23 后,根中的关键字是( )。",
+        "answer": {
+          "explanation": "关键字 23 的插入位置为 25 的左孩子，此时破坏了平衡的性质，需要对平衡二叉树进行调整。最小不平衡子树就是该树本身，插入位置在根结点的右子树的左子树上，因此需要进行 RL 旋转，RL 旋转过程如下图所示，旋转完成后根结点的关键字为 25，所以选择选项 D。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "fcfd64f919f1c7dfe3458ec8787158ddf2b4d83af56eaa2d126d42fb40b3a57d",
+        "b01a57aa68aa2138af20f34594edfac3fdaf3a6b63ea9e9ea91f1d7f338e5f28"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::计算机系统概述 · 计算机系统层次结构 · 选择题::X01",
+      "expected": {
+        "content": "完整的计算机系统应包括( )。"
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "98346b75480c57875994557e68feb8b08b3ef70f485ba0ab463f7706e51898a3",
+        "2a4944e0e065e1e8410e6d984481d75a1bbee720f39c4bdfa8d0accddd9fe473"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X08",
+      "expected": {
+        "content": "计算机的机器字长与下列( )指标最密切相关。",
+        "answer": {
+          "explanation": "机器字长越长，数据的位数越多，定点数或浮点数所表示及运算的精度就越高，选项 D 正确。机器字长与运算速度的关系不大，机器字长与存取速度和内存容量基本没有关系。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "587fb7fbc41193a61e04f1a325e06f6ad3a731d8ed34e42d4c77c5ce8358b9df",
+        "d761a3aea329c56180100113ec87891aed7f2e0fd5cc90c5570c0da63d1f1edb"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X15",
+      "expected": {
+        "content": "某计算机的主频为1.2GHz,其指令分为4类,它们在基准程序中所占比例及CPI如下表所示。 | 指令类型 | 所占比例 | CPI | 指令类型 | 所占比例 | CPI | | A | 50% | 2 | C | 10% | 4 | | B | 20% | 3 | D | 20% | 5 | 该机的MIPS数是( )。",
+        "answer": {
+          "explanation": "基准程序的CPI=2×0.5+3×0.2+4×0.1+5×0.2=3。计算机的主频为1.2GHz，即1200MHz，因"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "ac6ba07a725ba78b64a9381b31536d4a96fba8520d87f97a8fa058b8a3843c68",
+        "2c61753be970e0c920801dc9f8802e9c6f4d63151680f14eb6750764a1cc1923"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 运算方法和运算电路 · 选择题::X25",
+      "expected": {
+        "content": "一个C语言程序在一台32位机器上运行。程序中定义了三个变量x,y,z,其中x和z为int型,y为short型。当x=127,y=-9时,执行赋值语句z=x+y后,x,y,z的值分别是( )。",
+        "options": {
+          "A": "x=0000007FH, y=FFF9H, z=00000076H",
+          "B": "x=0000007FH, y=FFF9H, z=FFFF0076H",
+          "C": "x=0000007FH, y=FFF7H, z=FFFF0076H",
+          "D": "x=0000007FH, y=FFF7H, z=00000076H"
+        },
+        "answer": {
+          "explanation": "C语言中的整型数据为补码形式，int型为32位，short型为16位，因此x、y的机器数写为0000 007FH、FFF7H。执行z=x+y时，x为int型，y为short型，因此需将y的类型强制转换为int型，在机器中通过符号位扩展实现，y的符号位为1，因此在y的前面添加16个1，即可将y强制转换为int型，其十六进制形式为FFFF FFF7H。然后执行加法，即0000 007FH + FFFF FFF7H = 0000 0076H，其中最高位的进位1自然丢弃。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "b436432fed852ee64ca7af3fc54f5d1bf764a28c7f4bbdc6c858f146481d32bf",
+        "20c997f1b35d2dca9ab136e363f8c5844c374598585022878abab3b571d4a4b6"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 浮点数的表示与运算 · 选择题::X38",
+      "expected": {
+        "content": "已知有符号整数用补码表示,float 型数据用 IEEE 754 标准表示,假定变量 x 的类型只可能是 int 或 float,当 x 的机器数为 C800 0000H 时,x 的值可能是( )。",
+        "options": {
+          "A": "-7×2^27",
+          "B": "-2^16",
+          "C": "2^17",
+          "D": "25×2^27"
+        },
+        "answer": {
+          "explanation": "C800 0000H = 1100 1000 0000 0000 0000 0000 0000 0000。\n将其转换为对应的 float 型或 int 型。\n1）若为 float 型，则尾数隐藏最高位 1，符号为 1 表示负数，阶码 1001 0000 = 2^7 + 2^4 = 128 + 16，再减去偏置值 127 得到 17，算出 x 值为 -2^17。\n2）若为 int 型，则有符号补码，为负数，数值部分取反加 1，得 011 1000 0000 0000 0000 0000 0000 0000，算出 x 值为 -7×2^27。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "fef592969bde88686306d1d1d052b93b09f6ea2fa17118ca3d7d518b1fc8f18e",
+        "68d003a96a357c300f064ce25c4dd06d27047fb3b28d0e51d0d63c2de604682d"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::指令系统 · 寻址方式 · 选择题::X18",
+      "expected": {
+        "content": "设相对寻址的转移指令占3B,第1字节为操作码,第2、3字节为相对位移量(补码表示),数据在存储器中采用以低字节为字地址的存放方式。每当CPU从存储器取出一字节时,即自动完成(PC)+1→PC。若PC的当前值为240(十进制),要求转移到290(十进制),则转移指令的第2、3字节的机器代码是( );若PC的当前值为240(十进制),要求转移到200(十进制),则转移指令的第2、3字节的机器代码是( )。",
+        "answer": {
+          "choice": "D",
+          "explanation": "首先需要讲解一下补码扩充的问题。补码的扩充只需使用符号位补足即可，也就是说正数补码的扩充只要补0，负数补码的扩充只需补1（这是由补码的性质决定的）。理解了该性质，这道题就变成了十进制数转换为十六进制数的简单问题。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "ee5a4102bb01eb8cf57c4400de25b61448874294e191900de9458512fac90905",
+        "512a804f5e10024805840a9a3bd8b19ad89dad119216ed9a66674fbcc8d2d2eb"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 指令流水线 · 选择题::X10",
+      "expected": {
+        "content": "指令流水线中出现数据相关时流水线将受阻,( )可部分解决数据相关问题。",
+        "answer": {
+          "explanation": "处理数据相关问题有两种方法：一种是暂停相关指令的执行，即暂停流水线，直到能够正确读出寄存器操作数为止；另一种是采用专门的数据通路，直接把结果送到 ALU 的输入端，这种方法称为旁路技术。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "f67755f63923e7430fccf6fbf06eeb1e78f45c14116072e2dd30ecf87d9c5b97",
+        "b9f6c8ad24a0a9f29ba51e2b8de1f523c114c07a56deb5072c67ca26c7aa6b72"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X12",
+      "expected": {
+        "content": "某总线有104根信号线,其中数据线(DB)为32根,若总线工作频率为33MHz,则其理论最大传输速率为( )。",
+        "answer": {
+          "explanation": "数据总线32根，因此每次传输32位，即4B数据，总线工作频率为33MHz，因此理论最大传输速率为33×4=132MB/s。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "ec5b00bd6b3e1ebe1f27b894ca708443ba360d6bc872f8d1a651b83be4cdc2fd",
+        "ddf2af8ed3add38f063c42111c60d51ff0932fca2000687d0446eef3826950ed"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::输入/输出系统 · I/O方式 · 选择题::X48",
+      "expected": {
+        "content": "下列是关于多重中断系统中CPU响应中断的叙述,错误的是( )。",
+        "answer": {
+          "explanation": "中断服务程序在内核态下执行，若只能在用户态下检测和响应中断，则显然无法实现多重中断（中断嵌套），选项A错误。在多重中断中，CPU只有在检测到中断请求信号后（中断处理优先级更低的中断请求信号是检测不到的），才会进入中断响应周期。进入中断响应周期时，说明此时CPU一定处于中断允许状态，否则无法响应该中断。若所有中断源都被屏蔽（说明该中断的处理优先级最高），则CPU不会检测到任何中断请求信号。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "1fc3e6e63b56b1e1f79c001e290a4a9f50aa59372bf367145511a61f78a6d5a3",
+        "5689e4f44e9be57b56527b4a8f9a765de28c02b6986fb75d26be230a0a1cfdfe"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::计算机网络体系结构 · 计算机网络概述 · 选择题::X11",
+      "expected": {
+        "content": "在下图所示的采用存储转发方式的分组交换网中,主机A向B发送两个长度为1000B的分组,路由器处理单个分组的时延为10ms(假设路由器同时最多只能处理一个分组,若在处理某个分组时有新的分组到达,则存入缓存区),忽略链路的传播时延,所有链路的数据传输速率为1Mb/s,则分组从A发送开始到B接收完为止,需要的时间至少是( )。",
+        "answer": {
+          "explanation": "分组长度为1000B，所有链路的数据传输速率为1Mb/s，因此，每段链路的发送时延为1000B÷1Mb/s=8ms，第一个分组从A到达B的时间为8+10+8=26ms，此后又经过10ms，第二个分组才到达B，所以总时间为26+10=36ms，下图是传送过程的时空图。注意，此题还可扩展为发送更多分组的情况，请读者自行分析。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "b58e4ba419b4e0c1c332b27c7684f146abe54663202d5cf8e86ce285569b29e2",
+        "2bacb2dddb9b2f0745058c9dd348a5c22adda9720a19f4105db77154cee78981"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题::X07",
+      "expected": {
+        "content": "( )是计算机网络中OSI参考模型的3个主要概念。",
+        "answer": {
+          "explanation": "计算机网络要做到有条不紊地交换数据，就必须遵守一些事先约定的原则，这些原则就是协议。在协议的控制下，两个对等实体之间的通信使得本层能够向上一层提供服务。要实现本层协议，还要使用下一层提供的服务，而提供服务就是交换信息，交换信息就需要通过接口，所以说服务、接口、协议是OSI参考模型的3个主要概念。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "ea572cc3b9a7bcddefad18362fd8eb3d981e4541a98c3f684905e5870f7c8190",
+        "1bfa52966b5532ed308656e2923594a253b35cd123b38c0cea39d1063513c639"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题::X25",
+      "expected": {
+        "content": "互联网采用的核心技术是( )。",
+        "answer": {
+          "explanation": "协议是网络上计算机之间进行信息交换和资源共享时共同遵守的约定，没有协议的存在，网络的作用也就无从谈起。在互联网中应用的网络协议是采用分组交换技术的 TCP/IP，它是互联网的核心技术。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "2129b132cd7202eb7b3d82d1576d1e672653c2d7cc7afcb2e70578ee76463fa8",
+        "7610b7366e5763d53f5df654e2599bc2e32f6bc3ced35920154444139db6ccf0"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::物理层 · 通信基础 · 选择题::X16",
+      "expected": {
+        "content": "一个信道每1/8s采样一次,传输信号共有16种变化状态,最大数据传输速率是( )。",
+        "answer": {
+          "explanation": "由题意知采样率为8Hz。有16种变化状态的信号可携带4比特的数据，因此最大数据传输速率为8×4=32b/s。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "277c238f5f32fefada084a61095ded4ec7ebe7ca40cef83efe64d1e653a7d608",
+        "9cc2bdbf1d53f224876ce5ecb61597ee93958d8af663bfcaf4066ff85f31d773"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X36",
+      "expected": {
+        "content": "下列关于 TCP 的拥塞控制机制的描述中,错误的是( )。"
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "a8773a04581f0e24b5d1bb274ba26d441a0c465dfb4b5dfd07900a3ffd22552a",
+        "f996d2dbf69032142d0df5da6cbd392a6b8738a04b34b34cd2911cea1d42b77c"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::应用层 · 电子邮件 · 选择题::X03",
+      "expected": {
+        "content": "SMTP 服务器使用的端口号是( )。",
+        "answer": {
+          "explanation": "SMTP 和 POP3 都是基于 TCP 的协议，提供可靠的邮件通信。\nSMTP 服务器使用的熟知端口号是 25。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "bcbec76f379e3cea0a17b7ab28f4f8facc923e251750b8018263198deb070c67",
+        "bc7a98cfff082c0fa2aa801a47d9c0cad174a99a710fe48f9376a64af656aab2"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X11",
+      "expected": {
+        "content": "若浏览器支持并行 TCP 连接,使用非持久的 HTTP/1.0 协议请求浏览 1 个 Web 页,该页中引用同一网站上的 7 个小图像文件,则从浏览器为传输 Web 页请求建立 TCP 连接开始,到接收完所有内容为止,所需的往返时间 RTT 数至少是( )。",
+        "answer": {
+          "explanation": "建立第一个 TCP 连接需要 1RTT，请求并接收 Web 页需要 1RTT。浏览器支持并行 TCP 连接，因此在收到 Web 页后可同时建立 7 个并行的 TCP 连接，以请求和接收 7 个小图像文件。因此，总往返时间 RTT 数 = 1RTT（建立第一个 TCP 连接）+ 1RTT（请求 Web 页）+ 1RTT（建立 7 个并行的 TCP 连接）+ 1RTT（请求 7 个小图像文件）= 4RTT。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "d69ee0bfdf63e155c47e2cfa4e00549b4b0c0b24873561024c2ba6be90339797",
+        "d55b048cb93ddb8873ed025fc01e91894efe7f2fb119d17a1f49f1808af20672"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::计算机系统概述 · 虚拟机 · 选择题::X10",
+      "expected": {
+        "content": "下列关于操作系统外核(exokernel)的说法中,错误的是( )。",
+        "answer": {
+          "explanation": "在拥有外核的操作系统中，外核只负责硬件资源的分配、回收、保护等，进程管理相关的工作仍然由内核负责。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "0363b90985ebacadc52d89c40eb08f62108abee47b0c2affc91086be5819e4c2",
+        "13031ce1c0feeccb00fe2597b74252e8ef2ad2d129122dbb7da319abccd8f588"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::进程与线程 · 死锁 · 选择题::X11",
+      "expected": {
+        "content": "若系统中有5个某类资源供若干进程共享,则不会引起死锁的情况是( )。",
+        "answer": {
+          "explanation": "A项的每个进程只申请一个资源，破坏了请求并保持条件，必然不会发生死锁。或者，根据死锁公式，假设系统共有m个资源，n个进程，每个进程需要k个资源，若满足m>n(k-1)，则系统一定不会发生死锁，代入公式可知选项B、C、D均可能发生死锁。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "b3174201bb39d2763be9d8dc03d0026360b8e1a602b587007da230145bf36398",
+        "ad8c0af62e770d2208075e623e21503f0a38278afd0eb945969b5a0834dffd6a"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::文件管理 · 文件系统基础 · 选择题::X03",
+      "expected": {
+        "content": "下列说法中,( )属于文件的逻辑结构的范畴。",
+        "options": {
+          "A": "连续文件",
+          "B": "系统文件",
+          "C": "链接文件",
+          "D": "流式文件"
+        },
+        "answer": {
+          "explanation": "逻辑文件有两种：无结构文件（流式文件）和有结构式文件。连续文件和链接文件都属于文件的物理结构，而系统文件是按文件用途分类的。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "147f52be285a27daa6d1f5e7b3d2c74065f23c484ef655281dd6af9de5090a45",
+        "384f91f90769f06489a8c8e8c9c6d1d7f01ea6ef3911fc5b97016177c4b0e3c0"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::输入/输出管理 · 设备独立性软件 · 选择题::X06",
+      "expected": {
+        "content": "下列关于缓冲区的描述中,正确的是( )。",
+        "options": {
+          "A": "缓冲区是一种专门的硬件缓冲器，不能用内存来实现",
+          "B": "缓冲区的作用是提高 CPU 和 I/O 设备之间的速度匹配",
+          "C": "缓冲区只能用于输入设备，不能用于输出设备",
+          "D": "缓冲区只能用于块设备，不能用于字符设备"
+        },
+        "answer": {
+          "explanation": "缓冲区是一个存储区域，可由专门的硬件寄存器组成，也可利用内存来实现。缓冲区的作用是提高 CPU 和 I/O 设备之间的速度匹配，因为 CPU 的速度远高于 I/O 设备的速度，若没有缓冲区，则 CPU 就要等待 I/O 设备完成操作，造成资源浪费。缓冲区可用于输入设备和输出设备，如键盘、打印机等。缓冲区也可用于块设备和字符设备，如磁盘、串口等。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "d69c11f59d3ea38aea026b0ed242b95f8b55940792871bd89db19d90d532c058",
+        "ba05a5332b58683ee1059b865a56d67b3a76cf405b781042969070d3355146f2"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::绪论 · 数据结构的基本概念 · 选择题::X02",
+      "expected": {
+        "content": "下列四种数据结构中,( )是非线性数据结构。"
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "aed859feaeaba65f56b891c3d59774ca3325095b3feae08bde73912cb770fa6c",
+        "f369c9de6d350236f4c28f5718c8ec645be603736d2c4aeb7a7f598d1b01c79d"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X01",
+      "expected": {
+        "content": "一个算法应该具有( )等重要特性。",
+        "answer": {
+          "explanation": "一个算法应具有五个重要特性：有穷性、确定性、可行性、输入和输出。选项 A、C 和 D 中"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "4f72bc23fd2a67005a65a2c728facd24bfba6a68e3bcb3b03ae36f94dbebff91",
+        "c2e1afc36aa1122cd15d8385ac4f3a5cb08826b6cf83c702db664c1887bf8399"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X02",
+      "expected": {
+        "content": "下列关于算法的说法中,正确的是( )。",
+        "options": {
+          "A": "算法的时间效率取决于算法执行所花的 CPU 时间",
+          "B": "在算法设计中不允许用牺牲空间效率的方式来换取好的时间效率",
+          "C": "算法必须具备有穷性、确定性等五个特性",
+          "D": "通常用时间效率和空间效率来衡量算法的优劣"
+        },
+        "answer": {
+          "explanation": "算法的时间效率是指算法的时间复杂度，即执行算法所需的计算工作量，选项 A 错误。算法设计会综合考虑时间效率和空间效率两个方面，若某些应用场景对时间效率要求很高，而对空间效率要求不高，则可用牺牲空间效率的方式来换取好的时间效率，选项 B 错误。评价一个算法的\"优劣\"不仅要考虑算法的时空效率，还要从正确性、可读性、健壮性等方面来综合评价。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "3144fec5d0d601491e59132e83471c5596734e79ee10d95a231b1208dff35b90",
+        "997ea258080846fd707fc6e0091b6183c1bafa8280e3056c342f9eedc60e14b2"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X09",
+      "expected": {
+        "content": "下列程序段的时间复杂度为( )。 if(n>=0){ for(int i=0;i<n;i++) for(int j=0;j<n;j++) printf(\"输入数据大于或等于零\\n\") } else{ for(int j=0;j<n;j++) printf(\"输入数据小于零\\n\") }"
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "a051132b81b2054a05f40ca0a46c5bd3c8d9083c2c982b5b3dd33bfdfb1b9d03",
+        "c0b9b9b80e62bfc25f6be847f63b044f2ba0f5eff90ba817e2a5c7060877102b"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::线性表 · 线性表的顺序表示 · 选择题::X02",
+      "expected": {
+        "content": "下列关于顺序表的叙述中,正确的是( )。",
+        "answer": {
+          "explanation": "顺序表是顺序存储的线性表，表中所有元素的类型必须相同，且必须连续存放。一维数组中的元素可以不连续存放；此外，栈、队列和树等逻辑结构也可利用一维数组表示，但它与顺序表不属于相同的逻辑结构。在顺序表中，逻辑上相邻的元素物理位置上也相邻。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "f373d0f13c0c49e3a279cf5a7a9bd7afe637e70622e47a46bbdf797900e961fc",
+        "3d097f30934ea087b5a5c01b65234085e00f4f38423849df6b5eff76fc6e150e"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::线性表 · 线性表的链式表示 · 选择题::X02",
+      "expected": {
+        "content": "对于一个线性表,既要求能进行较快速地插入和删除,又要求存储结构能反映数据之间的逻辑关系,则应该用( )。",
+        "answer": {
+          "explanation": "首先直接排除选项 A 和 D。散列存储通过散列函数映射到物理空间，不能反映数据之间的逻辑关系，排除选项 C。链式存储能方便地表示各种逻辑关系，且插入和删除操作的时间复杂度为 O(1)。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "879b1840e7eef4d7f9c9dcdaecb07deb90ba25970e84e822298b81863f1cb5bf",
+        "3d4d48da2e1d84055a20c1af863b3c92ff20022bbba78eb3311c23efcf988d29"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::线性表 · 线性表的链式表示 · 选择题::X07",
+      "expected": {
+        "content": "给定有 n 个元素的一维数组,建立一个有序单链表的最低时间复杂度是( )。",
+        "answer": {
+          "explanation": "若先建立链表，然后依次插入建立有序表，则每插入一个元素就需遍历链表寻找插入位置，即直接插入排序，时间复杂度为 O(n²)。若先将数组排好序，然后建立链表，建立链表的时间复杂度为 O(n)，数组排序的最好时间复杂度为 O(nlog₂n)，总时间复杂度为 O(nlog₂n)。故选择选项 D。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "4d719d3153a21f02d80d5240798362e34f01de3294468ed91bab487f2ebd3545",
+        "fbec62967f7b118b7fff4135df8dcccb65be3a7ef37658c317b7756b77aa381c"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::线性表 · 线性表的链式表示 · 选择题::X14",
+      "expected": {
+        "content": "下面关于线性表的一些说法中,正确的是( )。",
+        "options": {
+          "A": "对一个设有头指针和尾指针的单链表执行删除最后一个元素的操作与链表长度无关",
+          "B": "线性表中每个元素都有一个直接前驱和一个直接后继",
+          "C": "为了方便插入和删除数据，可以使用双链表存放数据",
+          "D": "取线性表第 i 个元素的时间与 i 的大小有关"
+        },
+        "answer": {
+          "explanation": "选项 A 显然错误。选项 B 中第一个元素和最后一个元素不满足题设要求。双链表能很方便地访问前驱和后继，故删除和插入数据较为方便，选项 C 正确。选项 D 未考虑顺序存储的情况。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "5177e89f9a4d837e06a5df3bb3b824bb42432e0cf58c267c4b94c3e2e089752c",
+        "c1e44c19bfb0d52effe13086e30478049331bdfbadabda40d553bf74dd043437"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::线性表 · 线性表的链式表示 · 选择题::X34",
+      "expected": {
+        "content": "【2021 统考真题】已知头指针 h 指向一个带头结点的非空循环单链表,结点结构为 data next,其中 next 是指向直接后继结点的指针,p 是尾指针,q 是临时指针。现要删除该链表的第一个元素,正确的语句序列是( )。",
+        "options": {
+          "A": "h->next=h->next->next; q=h->next; free(q);",
+          "B": "q=h->next; h->next=h->next->next; free(q);",
+          "C": "q=h->next; h->next=q->next; if (p!=q) p=h; free(q);",
+          "D": "q=h->next; h->next=q->next; if (p==q) p=h; free(q);"
+        },
+        "answer": {
+          "explanation": "如图 1 所示，要删除带头结点的非空循环单链表中的第一个元素，就要先用临时指针 q 指向待"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "3b9ee71de0ec190c489951e2c312a33aff07e9dd315d33010ae5fd59157644f1",
+        "4e82110517c49f2c1401afbc483e0db61239d2d60977d3d9d96baf7952cfb210"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X14",
+      "expected": {
+        "content": "设 a, b, c, d, e, f 以所给的次序入栈,若在入栈操作时,允许出栈操作,则下面不会出现的出栈序列为( )。 A. fedcba B. bcafed C. dcefba D. cabdef",
+        "answer": {
+          "explanation": "根据栈“先进后出”的特点，且在入栈操作的同时允许出栈操作，显然选项 D 中 c 最先出栈，则此时栈内必定为 a 和 b，但因为 a 先于 b 入栈，所以要晚出栈。对于某个出栈的元素，在它之前入栈却晚出栈的元素必定是按逆序出栈的，其余答案均是可能出现的情况。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "17ecf4ea2130c870e5cb8e2c6a65872041189904382a3fdc134fd3755cd2ec4d",
+        "38912fc23bf60918e6f9871bbbaf020ff7c5f69203993c3113ef1f659b1270cd"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X19",
+      "expected": {
+        "content": "某栈的输入序列为 a, b, c, d,下面的 4 个序列中,不可能为其输出序列的是( )。 A. a, b, c, d B. c, b, d, a C. d, c, a, b D. a, c, b, d",
+        "options": {
+          "A": "a, b, c, d",
+          "B": "c, b, d, a",
+          "C": "d, c, a, b",
+          "D": "a, c, b, d"
+        },
+        "answer": {
+          "explanation": "对于选项 A，可能的顺序是 a 入，a 出，b 入，b 出，c 入，c 出，d 入，d 出。对于选项 B，可能的顺序是 a 入，b 入，c 入，c 出，b 出，d 入，d 出，a 出。对于选项 D，可能的顺序是 a 入，a 出，b 入，c 入，c 出，b 出，d 入，d 出。选项 C 没有对应的序列。\n【另解】若出栈序列的第一个元素为 d，则出栈序列只能是 dcba。该思想通常也适用于出栈序列的局部分析：如 12345 入栈，问出栈序列 34152 是否正确？如何分析？若第一个出栈元素是 3，则此时 12 必停留在栈中，它们出栈的相对顺序只能是 21，所以 34152 错误。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "0043d828c980d74931d7d31ccb8aeeda58272343b1b2243d5814ed4ef5367f49",
+        "d310fbf42443dee6219f9ef3532c13dbfdfc5b8e2abe655cb11b615fa06f2150"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X03",
+      "expected": {
+        "content": "下面( )用到了队列。 A. 括号匹配 B. 表达式求值 C. 递归 D. FIFO 页面替换算法",
+        "options": {
+          "A": "括号匹配",
+          "B": "表达式求值",
+          "C": "递归",
+          "D": "FIFO 页面替换算法"
+        },
+        "answer": {
+          "explanation": "FIFO 页面替换算法用到了队列。其余的都只用到了栈。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "9b7f2534158c71283dccf68f76ed789f29d09643ebf1f92c505cbb134dd57e24",
+        "314ff9b66c6b8d520e3d2852499240aee91504a621ded551a16cbc7e3da26cd4"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::串 · 串的模式匹配 · 选择题::X01",
+      "expected": {
+        "content": "设有两个串 S1 和 S2,求 S2 在 S1 中首次出现的位置的运算称为( )。",
+        "answer": {
+          "explanation": "求子串操作是从串 S 中截取第 i 个字符起长度为 l 的子串，选项 A 错误。选项 B、D 明显错误。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "76f597394850da1a8a9d18165cd6cb693651a88c147ee99079770003a1a7ebfd",
+        "49036196eae15d22c29d17fc0c04caf5b32e97ce98671ce845d551762ee1cb8a"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::串 · 串的模式匹配 · 选择题::X05",
+      "expected": {
+        "content": "在 KMP 算法中,用 next 数组存放模式串的部分匹配信息,当模式串位 j 与主串位 i 比较时,两个字符不相等,则 i 的位移方式是( )。",
+        "options": {
+          "A": "i=next[i]",
+          "B": "i 不变",
+          "C": "i=0",
+          "D": "i=i+1"
+        },
+        "answer": {
+          "explanation": "在 KMP 算法中，当主串的第 i 个字符和模式串的第 j 个字符失配时，主串指针 i 不回溯。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "6e9c17405586b0eda09a77e2b141b699581ba6f4cfa42141bd58c03be42a46b2",
+        "f8292ebf9bffd500bf3e3943755607b949f87dd87af2beb1e8e6b480dd0a6e85"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题::X02",
+      "expected": {
+        "content": "在任何一棵二叉树中,若结点 a 有左孩子 b、右孩子 c,则在结点的先序序列、中序序列、后序序列中,( )。",
+        "options": {
+          "A": "结点 b 一定在结点 a 的前面",
+          "B": "结点 a 一定在结点 c 的前面",
+          "C": "结点 b 一定在结点 c 的前面",
+          "D": "结点 a 一定在结点 b 的前面"
+        },
+        "answer": {
+          "explanation": "三种遍历方式中，都先遍历左子树，再遍历右子树，因此 b 一定在 c 的前面访问。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "63c49fbb85583b14b2e9857d20f7f9ddc96667cee187196637bc9c0998e2bd74",
+        "1ca12fbc4a6621511141c11dee2ec38260f136af97ea09c0545834d7d253bfc5"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::树与二叉树 · 树与二叉树的应用 · 选择题::X10",
+      "expected": {
+        "content": "并查集的结构是一种( )。",
+        "answer": {
+          "explanation": "10. B\n并查集的存储结构是用双亲表示法存储的树，主要是为了方便两个重要的操作。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "2d749aa27a66412fa217f1343fc4508e4b92942c6dbb7989e62e310faa932ed1",
+        "e6168ce8e42be15f5e8821221671177355f61efba8e1ada066030756a36f40c2"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::图 · 图的基本概念 · 选择题::X08",
+      "expected": {
+        "content": "在有 n 个顶点的有向图中,顶点的度最大可达( )。",
+        "answer": {
+          "explanation": "08. D\n在有向图中，顶点的度等于入度与出度之和。n 个顶点的有向图中，任意一个顶点最多还可以与其他 n-1 个顶点有一对指向相反的边相连。注意，数据结构中仅讨论简单图。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "c4c351f543eee1495d37deff6bcb60a922bc4e7e31714f7024f6aeeb20345c43",
+        "ab90e48e4a315248f8c8860582be16d6a649d895b65565108438742684085d25"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::图 · 图的存储及基本操作 · 选择题::X09",
+      "expected": {
+        "content": "用邻接表法存储图所用的空间大小( )。",
+        "answer": {
+          "explanation": "09. A\n邻接表存储时，顶点数 n 决定了顶点表的大小，边数 e 决定了边表结点的个数，且无向图的"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "04e76e2164bf5f9bd7286a82aaa706c853a411e5adaf54b6c9730ba4391a5ee2",
+        "deb52045874e4ed5cc137edd3cc84044ffe4169af745789b9f9bdec1a3eb442b"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::图 · 图的应用 · 选择题::X05",
+      "expected": {
+        "content": "用 Prim 算法求一个带权连通图的最小生成树,在算法执行的某个时刻,已选取的顶点集合 U = {1, 2, 3},已选取的边集合 TE = {(1, 2), (2, 3)},要选取下一条权值最小的边,应当从( )组中选取。",
+        "options": {
+          "A": "{(1, 4), (3, 4), (3, 5), (2, 5)}",
+          "B": "{(3, 4), (3, 5), (4, 5), (1, 4)}",
+          "C": "{(1, 2), (2, 3), (3, 5)}",
+          "D": "{(4, 5), (1, 3), (3, 5)}"
+        },
+        "answer": {
+          "explanation": "U = {1, 2, 3}，V-U = {4, 5, …}，候选边只能是这两个顶点集之间的边，只有选项 A 符合题意。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "55ea9ff5771ffd4ccc2cbea9f336401be7560edfdefc7a0e37533dbad117d7fd",
+        "8305fb5cdc42c52cd77818620e34a9333c0e45a8ee8a267d5e5c875abd879bc5"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::查找 · 顺序查找和折半查找 · 选择题::X01",
+      "expected": {
+        "content": "顺序查找适合于存储结构为( )的线性表。",
+        "answer": {
+          "explanation": "顺序查找是指从表的一端开始向另一端查找。它不要求查找表具有随机存取的特性，可以是顺序存储结构或链式存储结构。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "dd91e11ed8690af14e3d5e0393ed70edbb1742b1a5559637e4ef2ca116932986",
+        "8d5d4549e309b704ba436350be71db1ed6eefc1682819f0a1353cebeeaf7a376"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X24",
+      "expected": {
+        "content": "计算机内部的定点数大多用补码表示,以下是一些关于补码特点的叙述: I. 零的表示是唯一的 II. 符号位可以和数值部分一起参加运算 III. 和其真值的对应关系简单、直观 IV. 减法可用加法来实现 在以上叙述中,( )是补码表示的特点。",
+        "options": {
+          "A": "I 和 II",
+          "B": "I 和 III",
+          "C": "I 和 II 和 III",
+          "D": "I 和 II 和 IV"
+        },
+        "answer": {
+          "explanation": "[+0]补和[-0]补是相同的，所以说法 I 正确。在进行补码定点数的加减运算时，符号位作为数的一部分参加运算，说法 II 正确，[A]补 - [B]补 = [A]补 + [-B]补，即将减法采用加法实现，说法 IV 正确。实际上，补码和其真值的对应关系远不如原码和其真值的对应关系简单直观，说法 III 错误。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "e80ea376375cf05dac15a25c29145bb821e4ecec91e86928b4fd85fc06e8c62b",
+        "a66d2a5e4f9e6f592ec049ff1506338ce345b3f7b1e56b3ee04fbffeb24208e7"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 运算方法和运算电路 · 选择题::X30",
+      "expected": {
+        "content": "【2018统考真题】整数x的机器数为1101 1000,分别对x进行逻辑右移1位和算术右移1位操作,得到的机器数各是( )。",
+        "options": {
+          "A": "1110 1100、1110 1100",
+          "B": "0110 1100、1110 1100",
+          "C": "1110 1100、0110 1100",
+          "D": "0110 1100、 0110 1100"
+        },
+        "answer": {
+          "explanation": "逻辑移位：左移和右移空位都补0，且所有数字参与移动；补码算术移位：仍然是所有数字参与移动，右移空位补符号位，左移空位补0。根据该规则，轻松选取选项B。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "64c46a3702464a0c6d70d0a4e5099c864972dfd83cf6802614cd4a7d1a4f2c62",
+        "1b8219266884ca5dc23b7cfd250df279e57d8dd4f4700dd371e771884b1a2283"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 浮点数的表示与运算 · 选择题::X12",
+      "expected": {
+        "content": "假定采用 IEEE 754 标准中的单精度浮点数格式表示一个数为 45100000H,则该数的值是( )。",
+        "options": {
+          "A": "",
+          "B": "",
+          "C": "",
+          "D": ""
+        },
+        "answer": {
+          "explanation": "写成二进制表示为 0100 0101 0001 0000 0000 0000 0000 0000，第一位为符号位，0 表示正数，随后 8 位（float 型）1000 1010 是用移码表示的阶码，因此减去 0111 1111 后得十进制数 11，而 IEEE 754 标准中单精度浮点数在阶码不为 0 时隐藏 1，因此尾数为(1.0010)B=(1.125)D，因此该数值为(+1.125)10×2^11。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "b84d6cb4b12f886e94ba6dd0f532d47266f53fa5d743ecdd457f11e4bc554155",
+        "79cfce45ea6ce034983a66834b4184d7eb4c959f50e02c03a4479047ffc2ae1d"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::存储系统 · 主存储器 · 选择题::X27",
+      "expected": {
+        "content": "多模块存储器之所以能提高存储器的访问速度,是因为( )。 A. 采用了高速元器件 B. 各模块有独立的读/写电路 C. 采用了信息预读技术 D. 模块内各单元地址连续",
+        "answer": {
+          "explanation": "27. B\n多模块存储器各模块有独立的读/写电路，可以实现并行操作，所以多模块存储器能进行高速的读/写操作。采用低位交叉编址的多模块存储器各单元地址不连续。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "5fcb1242b04a3cf21a1dec3b1c3dce873ca876d703d1a9c575bb25c223764fa5",
+        "633645c664aaf947110a5dc8d38cbe0aebb3cfe96de775f4b8e493ccdd34f369"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::存储系统 · 外部存储器 · 选择题::X09",
+      "expected": {
+        "content": "【2013统考真题】某磁盘的转速为10000转/分,平均寻道时间是6ms,磁盘传输速率是20MB/s,磁盘控制器延迟为0.2ms,读取一个4KB的扇区所需的平均时间约为( )。",
+        "answer": {
+          "explanation": "磁盘转速是10000转/分，转一圈的时间为6ms，因此平均查询扇区的时间为3ms，平均寻道时间为6ms，读取4KB扇区信息的时间为4KB÷20MB/s=0.2ms，磁盘控制器延迟为0.2ms，总时间为3+6+0.2+0.2=9.4ms。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "ced64dc9a7f9f7be972c7be09fc4d840a4cacd623376620b0bab42d0549a8859",
+        "98b6472584c4d789c6ba03b177a480732e2829e3b5c0e6d3f06673d7d0acb978"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X16",
+      "expected": {
+        "content": "某个主存-Cache层的存储器,按字节编址,主存容量为1MB,Cache容量为16KB,每块有8个字,每字32位,采用直接映射方式,Cache起始字块为第0块,若主存地址为35301H,且CPU访问Cache命中,则在Cache的第( )(十进制表示)字块中。",
+        "answer": {
+          "explanation": "先写出主存地址的二进制形式，然后分析Cache块内地址、Cache字块地址和主存字块标记。主存地址的二进制数0011 0101 0011 0000 0001，根据直接映射的地址结构，字块内地址为低5位（每个字块32B，2^5=32，因此为5位），主存字块标记为高6位（1MB/16KB=64，2^6=64，因此为6位），其余01 0011 000即为Cache字块地址，转换为十进制数152。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "fd48d7e02a0b31d39eef5ef2b75991bfb83d9db8b24ec5877d9b70e943334579",
+        "37ca8259a94a2a46cba1eb9305417530685a285a01a5032307fb41fa11e954a0"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X34",
+      "expected": {
+        "content": "【2021统考真题】若计算机主存地址为32位,按字节编址,Cache数据区大小为32KB,主存块大小为32B,采用直接映射方式和回写法(Write Back),则Cache行的位数至少是( )。",
+        "answer": {
+          "explanation": "Cache数据区大小为32KB，主存块的大小为32B，于是Cache中共有1K个Cache行，物理地址中偏移量部分的长度为5bit。因为采用直接映射方式，所以1K个Cache行映射到1K个分组，物理地址中组号部分的长度为10bit。32bit的主存地址除去5bit的偏移量和10bit的组号后，还剩17bit的标记部分。又因为Cache采用回写法，所以Cache行的总位数应为32B（数据位）+17bit（标记位）+1bit（脏位）+1bit（有效位）=275bit。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "c5b950e8792a4e49d217c84a2a752edc7b4fbc1d9fef3dffdf34fa3be7ce4a15",
+        "f549b16883aa89c7baa52aa461ddbd9f81e5139d5108bcf899a7e82551c774ce"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::指令系统 · 指令系统 · 选择题::X10",
+      "expected": {
+        "content": "假设系统采用16位定长指令字格式,操作码使用扩展编码方式,地址码为4位,三地址、二地址、一地址指令各有15、8、127条,则零地址指令最多有( )条。",
+        "answer": {
+          "explanation": "指令长16位，地址码各4位。三地址指令：操作码4位，最多16种，用15种，剩1种（1111）用于扩展，所有非三地址指令的操作码的高4位均为1111，共2^12=4096个编码。二地址指令：8条，每条占2^8=256个编码（因有8位地址），共占8×256=2048个，剩余编码为4096-2048=2048个。一地址指令：127条，每条占2^4=16个编码，共占127×16=2032个，剩余编码为2048-2032=16个。这些编码无地址字段，每条对应一条零地址指令，故最多16条。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "328c29dea1c478e056bd63198db5047179b62c19590b5d614a70ecd908746b3b",
+        "28ae0baaee217360eafb6bbe90d9092077138448df03bf280b4aeb3819743dd4"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::指令系统 · 寻址方式 · 选择题::X01",
+      "expected": {
+        "content": "指令系统中采用不同寻址方式的目的是( )。",
+        "answer": {
+          "explanation": "采用不同寻址方式的目的是为了缩短指令字长，扩大寻址空间，提高编程的灵活性，但这也提高了指令译码的复杂度。程序控制是靠转移指令而非寻址方式实现的。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "21fe6e1cca942e1b8dfbaf2b304640aabc2ebd8b4ce46d676c97ac398059f407",
+        "68d9ea0fcba31d806b2f8ab4f67890d512d1a9e80d6d7e56ed80e926c57c096c"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::指令系统 · 寻址方式 · 选择题::X10",
+      "expected": {
+        "content": "指令寻址方式有顺序和跳跃两种,采用跳跃寻址方式可以实现( )。"
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "dc9005b44d1693de944f369e73672eb3be8ca590bed721b557af36fcb5f99f5c",
+        "f8ac5bbb0d96cb9c61bc3552004d9929ed9a504f0ecba706b7de89611614999b"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::指令系统 · 寻址方式 · 选择题::X33",
+      "expected": {
+        "content": "【2023 统考真题】某运算类指令中有一个地址码为通用寄存器编号,对应通用寄存器中存放的是操作数或操作数的地址,CPU 区分两者的依据是( )。",
+        "answer": {
+          "explanation": "指令字由操作码、寻址特征和地址码三个字段组成，寻址特征字段用来指明指令属于哪种寻址方式。若寻址方式是寄存器直接寻址，则地址码所指的通用寄存器中存放的是操作数，若寻址方式是寄存器间接寻址，则对应通用寄存器中存放的是操作数的地址。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "a6b0cbd2d5d2add7889e64245a93a30e7987d5069dee9329abcb855f69c45cfd",
+        "dba6ef0190ee4f9852ad2933383190fea54ba4ac6fcfc7be6b759b40a685a400"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 选择题::X08",
+      "expected": {
+        "content": "子程序调用指令执行时,必须完成的操作是( )。",
+        "answer": {
+          "explanation": "子程序调用指令属于控制转移类指令，其执行时必须完成两个关键操作：一是保存返回地址（调用指令的下一条指令地址），通常压入主存中的栈；二是将子程序的入口地址送入 PC，以实现转移。选项 A 仅完成转移，缺失返回地址保存，无法正确返回。选项 C 和 D 的描述不准确或不完整。因此，选项 B 正确且完整地描述了子程序调用的本质功能。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "d546548ddfc6073d2ea500bef86187d34dff65e73ee7accb4afd2f36acd62de3",
+        "f77db47179bf3c579e8f9e397987ec3e5c0ef77ecd3c65d0dbc10bed10b4c979"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X13",
+      "expected": {
+        "content": "CPU 中通用寄存器的位数取决于( )。"
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "3bf21ad8a2ce38d09e606fa33074ebfbf4af1a9534a91353091258b92ca68b68",
+        "27de3fe55a1f6f5a8199108ff4316ca8b0719eda204f5669d26a7301dcb78010"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 指令执行过程 · 选择题::X05",
+      "expected": {
+        "content": "下列关于指令执行的叙述中,错误的是( )。"
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "1bdcdf0fa4191eb8d568c8a4cd3cec6722e74fd5dbdebad7349c04b8e12b5e1d",
+        "2c105d7fc18baf652a90eafcf54ccad7d7accd240b8b7a5a1d417a13b72e5eb7"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 控制器的功能和工作原理 · 选择题::X14",
+      "expected": {
+        "content": "下列关于微命令的描述中,正确的是( )。",
+        "answer": {
+          "explanation": "在同一个 CPU 周期中，可以同时出现的微命令叫相容性微命令，不允许同时出现的微命令叫互斥性微命令。不允许同时出现的原因有可能是会引起总线冲突，也有可能是其他原因。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "073cc0724b81ae932ee2226df007e7b1e0551af845fb966468caf8679d46b6ba",
+        "10148bbd26a320c51eabdc78f8769cf4b6411065e7b8cd0b41edaa07eeac3b18"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 指令流水线 · 选择题::X18",
+      "expected": {
+        "content": "关于流水线技术的说法中,错误的是( )。",
+        "options": {
+          "A": "超标量技术需要配置多个功能部件和指令译码电路等",
+          "B": "与超标量技术和超流水线技术相比，超长指令字技术对优化编译器要求更高，而无其他硬件要求",
+          "C": "在按序流动的流水线中，只可能出现 RAW 相关",
+          "D": "超流水线技术相当于将流水线再分段，从而提高每个周期内功能部件的使用次数"
+        },
+        "answer": {
+          "explanation": "要实现超标量技术，要求 CPU 中配置多个功能部件和指令译码电路，以及多个寄存器和总线，以便实现同时执行多个操作，选项 A 正确。超长指令字技术不仅对优化编译器要求更高，还需要更多的硬件资源，如寄存器、功能部件、指令译码电路等，选项 B 错误。流水线按序流动，肯定不会出现读后写（WAR）相关和写后写（WAW）相关；只可能出现没等到上一条指令写入而当前指令就读寄存器的错误，选项 C 正确。由超流水线技术的定义可知选项 D 正确。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "9b37c02c85d76ec64cfc605815009f4f8ab7a998328642542b31a43d49b195d0",
+        "ade2a717aff663b7fa38c504d96f69dd834e1877cbfbc341211cff1651d1d1f2"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X09",
+      "expected": {
+        "content": "主存通过( )来识别信息是地址还是数据。",
+        "answer": {
+          "explanation": "地址和数据在不同的总线上传输，根据总线传输信息的内容进行区分，地址在地址总线上传输，数据在数据总线上传输。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "b1ec5cb7b42703bb73772fe6f67547b590eaec87c93fe24cf42742509632545b",
+        "9daf822aeea52da9e76fa87dd2b3fe377a9f95b159631d7713278855755b6e05"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X17",
+      "expected": {
+        "content": "【2010 统考真题】*下列选项中的英文缩写均为总线标准的是( )。",
+        "options": {
+          "A": "PCI、CRT、USB、EISA",
+          "B": "ISA、CPI、VESA、EISA",
+          "C": "ISA、SCSI、RAM、MIPS",
+          "D": "ISA、EISA、PCI、PCI-Express"
+        },
+        "answer": {
+          "explanation": "选项 A 中的 CRT 表示阴极射线管显示器；选项 B 中的 CPI 表示每条指令的时钟周期数；选项 C 中的 RAM 表示半导体随机存储器、MIPS 表示每秒执行多少百万条指令数。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "7fe7e91d48238fa167caf079ae85594effaa75be7acd9ebb3a5d9a23061a16bd",
+        "cb3acb53f1909981086c5f619b8ab24676458af0482d91796de378824790451b"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X01",
+      "expected": {
+        "content": "下列有关同步总线事务的描述中,错误的是( )。",
+        "answer": {
+          "explanation": "同步总线事务通常包括地址/命令阶段和数据阶段，需要多个时钟周期完成；事务开始时，主设备先将地址和读/写命令发送到总线；地址与数据一般分时传输，不会同时出现在总线上。现代同步总线支持突发传输，允许一次总线事务连续传输多个数据单元，因此选项 D 错误。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "3582c3d6c4d5bbab48fd27bebe56228e0883197505bd75ffe0d8fa0c8c1048e0",
+        "4c717d85127d84a192772d93510f2bf244dcdc1da08ab15c242168120eff3f9f"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X05",
+      "expected": {
+        "content": "下列选项中,属于同步传输特点的是( )。"
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "8ebac36804a190ad147355202b6b880e088948f82a1670417f97f8b73bddea4a",
+        "8edb966549d10c41bb530686bc462f70ff8ab1fc11991a3933486fcb21eebabe"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X13",
+      "expected": {
+        "content": "【2012 统考真题】某同步总线的时钟频率为 100MHz,宽度为 32 位,地址/数据线复用,每传输一个地址或数据占用一个时钟周期。若该总线支持突发(猝发)传输方式,则一次“主存写”总线事务传输 128 位数据所需要的时间至少是( )。",
+        "answer": {
+          "explanation": "因为总线频率为 100MHz，所以时钟周期为 10ns。总线位宽与存储字长都是 32 位，因此每个时钟周期可传送一个 32 位存储字。猝发传输可以连续传送地址连续的数据，因此总传送时间为：传送地址 10ns，传送 128 位数据 40ns，共需 50ns。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "4ac52fb2cbcac2a73f7bb1b33d370ecc06f9ffb35a6f7c01860677a8b7ba1843",
+        "4e9e8c92945776999a1bc0b872aff4d42d8d2bdcc2800a4051e96dd062f93053"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X02",
+      "expected": {
+        "content": "下列功能中,属于 I/O 接口的功能的是( )。 I. 数据格式的转换 II. I/O 过程中错误与状态检测 III. I/O 操作的控制与定时 IV. 与主机和外设通信",
+        "answer": {
+          "explanation": "I/O 接口的功能有：①选址功能、②传送命令功能、③传送数据功能、④反映 I/O 设备工作状态的功能。选项Ⅰ可参考唐朔飞老师的《计算机组成原理》教材，为设置接口的原因之一，也是接口应具有的功能；说法Ⅱ属于④；说法Ⅲ属于②；说法Ⅳ属于③。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "aa64b8c739612cfe26acd5415879af9bb9d3981e4a2a3b276c9b92a99668b826",
+        "954dc60e87c3e94dfcb0cfb698903141b91105cb4ec2607971b88c732eac9292"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::计算机网络体系结构 · 计算机网络概述 · 选择题::X05",
+      "expected": {
+        "content": "下列( )是分组交换网络的缺点。",
+        "answer": {
+          "explanation": "分组交换要求将数据分成等长的小数据段，每段都要加上控制信息（如目的地址），因此传送数据的总开销较大。相比其他交换方式，分组交换信道利用率高。传播时延取决于传播介质及收发双方的距离。对各种交换方式，不同规格的终端都很难相互通信，因此不是分组交换的缺点。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "833dee9020de0fbb0816c0e6076401086ac4a67ab56064d571d75e991be2dd99",
+        "484052f6ccf6dc019decc9d773ece1a662fa82c40bd977b4b377b64eee1f62a0"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::物理层 · 通信基础 · 选择题::X02",
+      "expected": {
+        "content": "影响信道最大传输速率的因素主要有( )。 03. ( )被用于计算机内部的数据传输。",
+        "options": {
+          "02": {
+            "A": "信道带宽和信噪比",
+            "B": "码元传输速率和噪声功率",
+            "C": "频率特性和带宽",
+            "D": "发送功率和噪声功率"
+          },
+          "03": {
+            "A": "串行传输",
+            "B": "并行传输",
+            "C": "同步传输",
+            "D": "异步传输"
+          }
+        },
+        "answer": {
+          "choice": "AB",
+          "explanation": "02. A\n根据香农定理，影响信道最大传输速率的因素主要有信道带宽和信噪比，而信噪比与信道内所传输的平均信号功率和噪声功率有关，数值上等于二者之比。\n03. B\n并行传输的特点：距离短、速度快。串行传输的特点：距离长、速度慢。因此，在计算机内"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "bb43c2579e39bda47a9b885609a69f7f6d8c51a3ab8693dffacaea3a68614618",
+        "a9cb41ce69dffa31fe92d9b9a7252c28b73ecdaf289a3ded23271eafcb94b3eb"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::物理层 · 传输介质 · 选择题::X02",
+      "expected": {
+        "content": "在电缆中采用屏蔽技术带来的好处主要是( )。"
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "eead8b53303fe7e9fdaa3ab99035c37ffb2147733dab522b8e4cc1b4e730b593",
+        "3fcd09400b4f56f944ebee83b5d6e64bbfc62ad69e891525808d8e9890699824"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::物理层 · 物理层设备 · 选择题::X01",
+      "expected": {
+        "content": "下列关于物理层设备的叙述中,错误的是( )。"
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "4c936abf28b8f74fbd9dd0a3a3561700e458419a95f42df20a071e0722571d89",
+        "543e6b80a335249d2aa6c0dda9837b7a09d20240d8375bb41dc75c6caf3a8536"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::数据链路层 · 介质访问控制 · 选择题::X11",
+      "expected": {
+        "content": "在CSMA的非坚持协议中,当站点监听到总线信道空闲时,它( )。",
+        "answer": {
+          "explanation": "非坚持CSMA协议：站点在发送数据前先监听信道，若信道忙则放弃监听，等待一个随机时间后再监听，若信道空闲，则发送数据。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "181cbee9b8bc907d7978624e5b70b8e596bea5a714cd3564edbaf3917577ca93",
+        "275e2589bee04b2ece71b71b2e1edbf5ccb8e8b2fc91c460791812f0e66fe7c7"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::数据链路层 · 局域网 · 选择题::X28",
+      "expected": {
+        "content": "CSMA/CA协议的主要特点是( )。 29. 在CSMA/CA协议中,有三种不同的时间参数:短帧间间隔SIFS、分布式协调帧间间隔DIFS和点协调帧间间隔PIFS。它们之间的长度关系是( )。",
+        "answer": {
+          "explanation": "28. D\n若检测到信道空闲，则CSMA/CA协议规定还必须等待DIFS的时间才能开始发送。CSMA/CA协议不会进行冲突检测。预约信道并不是CSMA/CA协议的强制规定，在普通模式下不进行预约信道。\n29. A\nSIFS最短，网络中的控制帧和确认帧都采用SIFS作为发送之前的等待时延。DIFS最长，所"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "4b3a224b4d80b2f89054cc575b5691219581bf65aee76f1b02a1205e5ca59c2f",
+        "ecbb6ce879d08eb831f171d6089a4b21221345e7732c18bced146aff7b9be239"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X26",
+      "expected": {
+        "content": "某网络的一台主机的IP地址是200.15.10.6/29,其配置的默认网关地址是200.15.10.7,这样配置后发现主机无法PING通任何远程设备,原因是( )。 27. CIDR地址块192.168.10.0/20所包含的IP地址范围是(1)。与地址192.16.0.19/28同属于一个子网的主机地址是(2)。",
+        "answer": {
+          "explanation": "26. B\n200.15.10.7的最后一个字节展开成二进制为0000 0111，该地址是200.15.10.6/29所在地址块的广播地址，不能使用。若将默认网关设置为广播地址，则导致无法识别网关，而被当作一个广播"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "1d5c77cc20546aee214cbbcac2dbf4775f1d7f9e25764f78b029e4fefcdb786f",
+        "1a48ddd7fb4dd156d97990380d27c359ad71b87f580abb0867b7a4e22a7687ed"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X48",
+      "expected": {
+        "content": "下列关于 ICMP 报文的说法中,错误的是( )。",
+        "options": {
+          "A": "ICMP 报文封装在数据链路层帧中发送",
+          "B": "ICMP 报文可以用于报告 IP 数据报发送错误",
+          "C": "ICMP 报文封装在 IP 数据报中发送",
+          "D": "对于已经携带 ICMP 差错报文的分组，不再产生 ICMP 差错报文"
+        },
+        "answer": {
+          "explanation": "ICMP 属于网络层协议，ICMP 报文被封装在 IP 数据报中发送，但 ICMP 不是高层协议。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "747b205eb554a4087452ac6f34e0bd3a25a1bb597094d89e68b0a1186c7e3557",
+        "572ff277795830885a162d7971bf032f684b1c5411b9c24c4beeac2c269f2085"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::网络层 · 路由算法与路由协议 · 选择题::X13",
+      "expected": {
+        "content": "对路由选择协议的一个要求是必须能够快速收敛,所谓“路由收敛”是指( )。",
+        "answer": {
+          "explanation": "所谓收敛，是指当路由环境发生变化后，各路由器调整自己的路由表以适应网络拓扑结构的变化，最终达到稳定状态（路由表与网络拓扑状态保持一致）。收敛越快，路由器就能越快适应网络拓扑结构的变化。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "31158ab95ceba199147da3fb7d1e92c3e2c93c091b5b22e6b8035b048d61cf8c",
+        "d6d2789390d7665377cb3d345e974537ccd0ef3db180f95c84bac8b754c3bcc0"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::网络层 · 网络层设备 · 选择题::X10",
+      "expected": {
+        "content": "路由器中计算路由信息的是( )。",
+        "answer": {
+          "explanation": "路由选择处理机的任务是根据所选定的路由选择协议构造路由表，同时经常或定期地与相邻路由器交换路由信息而不断地更新和维护路由表。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "a66a485dec1b964bb728419d9015a2064c900fcb9a3f0277f4d8b1c09f0149dd",
+        "f8da065016b696f54bb3bb70a1adbdbe6ac91f0c2ea89ab1341d2d749628cc52"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::传输层 · 传输层提供的服务 · 选择题::X02",
+      "expected": {
+        "content": "传输层为( )之间提供逻辑通信。"
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "feb358ba2ac55ee28b25af9a13ee6964e35012e99bc826044477d6ea1ecca27d",
+        "f4dac0ab8394332a25d03724cadb699f5be1564fb9ede4e558aa2ffbb46150e2"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::传输层 · UDP · 选择题::X17",
+      "expected": {
+        "content": "假设路由器实现 NAT 功能,内网中主机 H 的 IP 地址为 192.168.1.5/24。若 H 运行某应用向 Internet 发送了一个 UDP 报文段,则路由器在转发封装该 UDP 报文段的 IP 数据报的过程中,UDP 报文段的首部字段会被修改的是( )。 I. 源端口号 II. 目的端口号 III. 总长度 IV. 检验和",
+        "options": {
+          "A": "I",
+          "B": "I、IV",
+          "C": "II、III",
+          "D": "III、IV"
+        },
+        "answer": {
+          "explanation": "NAT 在转发内网主机 H 的 UDP 报文时，会修改 IP 数据报的源 IP 地址和 UDP 首部的源端口号（I 被修改），而目的端口号（II）保持不变。UDP 首部中的总长度（III）仅由 UDP 数据自身决定，未发生变化。但由于 UDP 检验和（IV）的计算包含伪首部（含源 IP 地址），当源 IP 被 NAT 替换后，必须重新计算检验和，因此 IV 被修改。综上，仅 I 和 IV 被修改。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "227e8fe5119dbfd3d677718c2f0d94327043d32dd367f869e46818cfa95ffc84",
+        "3a9cd1ed468d6234de111bac83fe322a1f8c09581e246763e40a28b70f2377af"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X04",
+      "expected": {
+        "content": "操作系统的基本类型主要有( )。"
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "9e768c46adf56e5b264bcd766d769756687091afdb02a7b6f4152ca65a53b8fc",
+        "4e76037ea2c9554b625392b2a3567b1f6d5ced4235429f479d551eae223ddb93"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X12",
+      "expected": {
+        "content": "下列中断事件中,能引起外中断的事件是( )。 I. 时钟中断 II. 访管中断 III. 缺页中断",
+        "options": {
+          "A": "I",
+          "B": "III",
+          "C": "I 和 II",
+          "D": "II 和 III"
+        },
+        "answer": {
+          "explanation": "外中断是由 CPU 外部的事件引起的，如 I/O 设备的请求、时钟信号等。内部中断（也称异常）是由 CPU 内部的事件引起的，如访管指令（Trap 指令）、缺页异常等。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "0cf0a391b8ef7744b0328ad7735c655a653c049c27b7b3164e27c10bd9bb7cad",
+        "af9099b3cb03ef3b999147f9cf724108a4bccca2e8e0f8719e3d003fe84bed25"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::计算机系统概述 · 虚拟机 · 选择题::X18",
+      "expected": {
+        "content": "虚拟机的实现离不开虚拟机管理程序(VMM),下列关于 VMM 的说法中正确的是( )。 I. 第一类 VMM 直接运行在硬件上,其效率通常高于第二类 VMM II. VMM 的上层需要支持操作系统的运行、应用程序的运行,因此实现 VMM 的代码量通常大于实现一个完整操作系统的代码量 III. VMM 可将一台物理机器虚拟化为多台虚拟机器 IV. 为了支持客户操作系统的运行,第二类 VMM 需要完全运行在最高特权级",
+        "options": {
+          "A": "I、II 和 III",
+          "B": "I 和 III",
+          "C": "I、III 和 IV",
+          "D": "I、II、III 和 IV"
+        },
+        "answer": {
+          "explanation": "第一类 VMM 直接运行在硬件上；第二类 VMM 运行在宿主操作系统上，不能直接和硬件打交道，因此第一类 VMM 的效率通常更高。VMM 的功能没有操作系统的功能复杂，其代码量少于一个完整的操作系统。说法 III 是基本概念。第一类 VMM 运行在最高特权级（内核态），而第二类 VMM 和普通应用程序的地位相同，通常运行在较低特权级（用户态）。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "619efa5c3e0a5d7bc5277ee5511f30fe4751f55cb8eb89fc6555ae8ec18671d5",
+        "5c92bf7772cac0823841f3f078932e20553279b2257d5f918f97efcc93cd9669"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::进程与线程 · 进程与线程简介 · 选择题::X06",
+      "expected": {
+        "content": "下列关于进程的叙述中,正确的是( )。 A. 进程获得处理器运行是通过调度得到的 B. 优先级是进程调度的重要依据,一旦确定就不能改动 C. 在单处理器系统中,任何时刻都只有一个进程处于运行态 D. 进程申请处理器而得不到满足时,其状态变为阻塞态",
+        "answer": {
+          "explanation": "选项 B 错在优先级分静态和动态两种，动态优先级是根据运行情况而随时调整的。选项 C"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "8e59a77deabed78cc30e62c211f26185e10bf7de27e4317848c51657ec2e62a8",
+        "608cd6799c24e2393f4d85f10030a552ca04595c198e1352c76ab2c528829390"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::进程与线程 · 进程与线程简介 · 选择题::X58",
+      "expected": {
+        "content": "【2010 统考真题】下列选项中,导致创建新进程的操作是( )。 I. 用户登录成功 II. 设备分配 III. 启动程序执行",
+        "options": {
+          "A": "仅 I 和 II",
+          "B": "仅 II 和 III",
+          "C": "仅 I 和 III",
+          "D": "I、II、III"
+        },
+        "answer": {
+          "explanation": "创建进程的原因主要有：① 用户登录；② 高级调度；③ 系统处理用户程序的请求；④ 用户程序的应用请求。对于说法 I，用户登录成功后，系统要为此创建一个用户管理的进程，包括用户桌面、环境等，所有用户进程都会在该进程下创建和管理。对于说法 II，设备分配是通过在系统中设置相应的数据结构实现的，不需要创建进程，这是操作系统中 I/O 核心子系统的内容。对于说法 III，启动程序执行是引起创建进程的典型事件，启动程序执行属于③或④。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "4a0c61018bf5809803b68c7232b3ee3e9452a1874d809d4ac1a723582d625ce5",
+        "ce9683dec7d938d589520bc4d630e2b1c538c654de0cb3fe8d55b6fd71189f76"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::进程与线程 · 同步与互斥 · 选择题::X24",
+      "expected": {
+        "content": "对于两个并发进程,设互斥信号量为mutex(初值为1),若mutex=0,则表示( )。",
+        "answer": {
+          "explanation": "互斥信号量mutex初值为1，表示临界区初始可用。当mutex=0时，说明一个进程已执行P操作并进入临界区，且因信号量非负，无其他进程在等待；只有当mutex=-1时，才表示一个进程在临界区内，另一个在等待。因此，mutex=0对应有且仅有一个进程进入临界区。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "4c8b2be0d4be8519e2b00e64e2d1fc042fcf90847b25de6db15da177450ef565",
+        "77f8eb0925ef12bcd1bced7f50d500247060401fcd9bbb60db6a19401ba8e7df"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 内存管理概念 · 选择题::X14",
+      "expected": {
+        "content": "对重定位存储管理方式,应( )。",
+        "options": {
+          "A": "在整个系统中设置一个重定位寄存器",
+          "B": "",
+          "C": "",
+          "D": ""
+        },
+        "answer": {
+          "explanation": "为使地址转换不影响到指令的执行速度，必须有硬件地址变换结构的支持，即需在系统中增设一个重定位寄存器，用它来存放程序（数据）在内存中的始址。在执行程序或访问数据时，真正访问的内存地址由相对地址与重定位寄存器中的地址相加而成，这时将始址存入重定位寄存器，之后的地址访问即可通过硬件变换实现。因为系统处理器在同一时刻只能执行一条指令或访问数据，所以为每道程序（数据）设置一个寄存器没有必要（同时也不现实，因为寄存器是很昂贵的硬件，而且程序的道数是无法预估的），而只需在切换程序执行时重置寄存器内容。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "f78db2f0b1f327f5d180378cbd21341b1561603705eaf9f76ce91432d3064551",
+        "7ca3b437a0ea672f974a4881f55795822ece8768712315babece130ca1d537d2"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 内存管理概念 · 选择题::X27",
+      "expected": {
+        "content": "在段式存储管理中,若一个进程有n个段,则该进程需要( )个段表。"
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "ff5839250e8970ccfb53f03cd228d8b5baa242f54a382c941536f196a7848066",
+        "cf6f98266850eff5628c68a2383320197eb1a209a7d04bfb5bcbb9bee566c250"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X07",
+      "expected": {
+        "content": "为使虚存系统有效地发挥其预期的作用,所运行的程序应具有的特性是( )。",
+        "options": {
+          "A": "该程序不应含有过多的 I/O 操作",
+          "B": "该程序的大小不应超过实际的内存容量",
+          "C": "该程序应具有较好的局部性",
+          "D": "该程序的指令相关性不应过多"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "6d476d1606254ea45a2041ba7d89cc5a08d5b5bb2b2dcd99be9f21161b2e4792",
+        "1263dc456f72a24d729de17021b9568de993a5d571bfc11f31aad83bdbbaf39e"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X50",
+      "expected": {
+        "content": "【2015 统考真题】系统为某进程分配了 4 个页框,该进程已访问的页号序列为 2, 0, 2, 9, 3, 4, 2, 8, 2, 4, 8, 4, 5。若进程要访问的下一页的页号为 7,则依据 LRU 算法,应淘汰页的页号是( )。",
+        "answer": {
+          "explanation": "可以采用书中常规的解法思路，也可以采用便捷法。对页号序列从后往前计数，直到数到 4（页框数）个不同的数字为止，这个停止的数字就是要淘汰的页号（最近最久未使用的页），题中为页号 2。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "cdee0bfacece8d066a2970211d1ba8f73b68f37c05ea7b7e58d93020baa5ed7a",
+        "466a0a1bff322aad7f44cba029a20b5de9f0a06b495eb2fb099be20d10309050"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X03",
+      "expected": {
+        "content": "FAT32 的文件目录项不包括( )。",
+        "answer": {
+          "explanation": "文件目录项即 FCB，通常由文件基本信息、存取控制信息和使用信息组成。基本信息包括文件物理位置。文件目录项显然不包括 FCB 的物理位置信息。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "38bcfe9695e6b7c3b54bee80fdb1de037c164bf08a7e54ccd58320679fa35575",
+        "5a0be4a884375788e50425b781e1b4a362281734e988e962603a8b9b7e88d1a1"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X40",
+      "expected": {
+        "content": "读文件操作的正确次序应该是( )。 I. 向设备驱动程序发出 I/O 请求,完成数据交换工作 II. 按存取控制说明检查访问的合法性 III. 根据目录项中该文件的逻辑和物理组织形式,将逻辑记录号转换成物理块号 IV. 按文件描述符在打开文件表中找到该文件的目录项",
+        "options": {
+          "A": "II、IV、III、I",
+          "B": "IV、II、III、I",
+          "C": "IV、III、II、I",
+          "D": "II、IV、I、III"
+        },
+        "answer": {
+          "explanation": "读文件操作的正确次序是：按文件描述符在打开文件表中找到该文件的目录项；按存取控制说明检查访问的合法性；根据目录项中该文件的逻辑和物理组织形式，将逻辑记录号转换成物理块号；向设备驱动程序发出 I/O 请求，完成数据交换工作。因此答案是说法 IV、II、III、I。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "971bbe8712e10a76075bc8047a08341495bc9bf62c2e542cc8503372c47a3856",
+        "50e978cf3ac1798455e1cf92e420de69696b30eff7d0747ca4f130cf55761e49"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X50",
+      "expected": {
+        "content": "【2009 统考真题】下列文件物理结构中,适合随机访问且易于文件扩展的是( )。",
+        "answer": {
+          "explanation": "文件的物理结构包括连续、链式、索引三种，其中链式结构不能实现随机访问，连续结构的文件不易于扩展。因此随机访问且易于扩展是索引结构的特性。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "7e449cc2a4fa8291f3dc4b158c4d61ae8f84c452c607fb2f0f755eea69aad424",
+        "52b9023a6010de1c5c825e2a48e6043c4c15b9df3e68202b51336ed07081b553"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::文件管理 · 文件系统 · 选择题::X14",
+      "expected": {
+        "content": "【2015 统考真题】文件系统用位图法表示磁盘空间的分配情况,位图存于磁盘的 32 ~ 127 号块中,每个盘块占 1024B,盘块和块内字节均从 0 开始编号。假设要释放的盘块号为 409612,则位图中要修改的位所在的盘块号和块内字节序号分别是( )。",
+        "options": {
+          "A": "81，1",
+          "B": "81，2",
+          "C": "82，1",
+          "D": "82，2"
+        },
+        "answer": {
+          "explanation": "盘块号 = 起始块号 + ⌊盘块号/(1024×8)⌋ = 32 + ⌊409612/(1024×8)⌋ = 32 + 50 = 82，这里问的是"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "c7fc0ca92ac367a56994f430cd287c20b86dafd09e0b035f4dba0dd228a0724f",
+        "c3782838d10fc7150dc387f0f6219a5bcbcb7172f82046920ab21df0b5c325ab"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::输入/输出管理 · I/O管理概述 · 选择题::X10",
+      "expected": {
+        "content": "计算机系统中,不属于 DMA 控制器的是( )。",
+        "answer": {
+          "explanation": "命令/状态寄存器控制 DMA 的工作模式并给 CPU 反映它当前的状态，地址寄存器存放 DMA 作业时的源地址和目标地址，数据寄存器存放需要 DMA 转移的数据，只有堆栈指针寄存器不需要在 DMA 控制器中存放。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "33874c62e4128647255184641c1e9b2b31897e63f64284b1889875941c6e9e91",
+        "82c96e5bfb3a14e5b843e03ebd9c67fde7d8a7524ef22d562634c7d12c5e54dd"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::输入/输出管理 · 设备独立性软件 · 选择题::X11",
+      "expected": {
+        "content": "若 I/O 所花费的时间比 CPU 的处理时间短得多,则缓冲区( )。",
+        "answer": {
+          "explanation": "缓冲区主要解决输入/输出速度比 CPU 处理的速度慢而造成数据积压的矛盾。所以当 I/O 花费的时间比 CPU 处理时间短很多时，缓冲区没有必要设置。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "82a640f654977649ce41cd66064e520b3acb2f87636bae9180a792cb06cef4fa",
+        "99b95e2878811f09636560d1672ec9214618b3ef717306451374b3d3137f06bc"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::输入/输出管理 · 设备独立性软件 · 选择题::X30",
+      "expected": {
+        "content": "当用户要求使用打印机打印某文件时,用户的要求是由操作系统的( )实现的。"
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "73b03536a6486065780195a2547602397816ce933463392212304523cfb73c41",
+        "f7f1eab57af8153b6e10e43d45013bf366f3302334e614abd1d8a2833e84de1f"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::输入/输出管理 · 磁盘和固态硬盘 · 选择题::X13",
+      "expected": {
+        "content": "以下算法中,( )可能出现“饥饿”现象。",
+        "answer": {
+          "explanation": "最短寻道时间优先算法中，当新的距离磁头比较近的磁盘访问请求不断被满足时，可能导致较远的磁盘访问请求被无限延迟，从而导致“饥饿”现象。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "5597dd950d55fdd377c2676745919555663466b0616f32b74ebcdca37425d023",
+        "5f2c64023fd3171337b0b0b672d57f185b8abde0e3319f61e862221b77ad2774"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::输入/输出管理 · 磁盘和固态硬盘 · 选择题::X29",
+      "expected": {
+        "content": "【2015统考真题】某硬盘有200个磁道(最外侧磁道号为0),磁道访问请求序列为130, 42, 180, 15, 199,当前磁头位于第58号磁道并从外侧向内侧移动。按照SCAN调度方法处理完上述请求后,磁头移过的磁道数是( )。",
+        "answer": {
+          "explanation": "SCAN算法就是电梯调度算法。顾名思义，若开始时磁头向外移动，就一直要到最外侧，然后返回向内侧移动，就像电梯若往下，则一直要下到底层才会再上升一样。当前磁头位于58号并从外侧向内侧移动，先依次访问130、180和199，然后返回向外侧移动，依次访问42和15，因此磁头移过的磁道数是(199-58)+(199-15)=325。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "f39ec66cc63c3592b79b5b9403d1c0cfd88b1b6148bfff1f0995d8d3cf09b707",
+        "75545ab23d183a41463989aaa8962293ecfa140c5169d32a6cb2cc30b1522a40"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::线性表 · 线性表的顺序表示 · 选择题::X06",
+      "expected": {
+        "content": "一个线性表最常用的操作是存取任意一个指定序号的元素并在最后进行插入、删除操作,则利用( )存储方式可以节省时间。"
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "b522bde5680378e07625ba8a8d2efefaee135d487b8c20a60e2381dec6c888a6",
+        "f55b365b0c87e8f4704157f8249b833f966e93e2f8cab70ba597499da6e03daf"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::线性表 · 线性表的链式表示 · 选择题::X09",
+      "expected": {
+        "content": "单链表中,增加一个头结点的目的是( )。",
+        "answer": {
+          "explanation": "单链表设置头结点的目的是方便运算的实现，主要好处体现在：第一，有头结点后，插入和删除数据元素的算法就统一了，不再需要判断是否在第一个元素之前插入或删除第一个元素；第二，不论链表是否为空，其头指针是指向头结点的非空指针，链表的头指针不变，因此空表和非空表的处理也就统一了。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "f44cdda34a722da26d165a817b0bbcd7eb990101cea4e1380802eec186cc301d",
+        "ce91eb13e5c3b2ba4f5d5026bfe3cd53579da193939548baf556baf6de78356b"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::线性表 · 线性表的链式表示 · 选择题::X23",
+      "expected": {
+        "content": "一个链表最常用的操作是在末尾插入结点和删除结点,则选用( )最节省时间。",
+        "answer": {
+          "explanation": "在链表的末尾插入和删除一个结点时，需要修改其相邻结点的指针域。而寻找尾结点及尾结点的前驱结点时，只有带头结点的循环双链表所需要的时间最少。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "c0e67233b151025491729848ae19c328efa851cc22993ae1b4889880e5c5e45f",
+        "d8315bbb7587bd34163c112b7b54032b399991ff4ed409cf4bb2862add249e1f"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X01",
+      "expected": {
+        "content": "栈和队列具有相同的( )。"
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "cc3b449931885e0b901d68fe8b3ee6e313d440d51509f9ef8d0cbda405179cd4",
+        "6a27b25cc1568f4faa12d49dcf07860c5c6649aa2973af0e3065d05221ca44c4"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 队列 · 选择题::X01",
+      "expected": {
+        "content": "栈和队列的主要区别在于( )。",
+        "answer": {
+          "explanation": "栈和队列的逻辑结构都是线性结构，都可以采用顺序存储或链式存储，选项 A 和 B 错误，"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "d8e750e8e1ab6da7e791524e4a8e28fcf2706dc7fcd0a2440379615f86e3ff03",
+        "1f35191133cf539610635b234f8fdb7d74ede8726f5b3c12551712cb87f43c62"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 队列 · 选择题::X11",
+      "expected": {
+        "content": "与顺序队列相比,链式队列的( )。",
+        "answer": {
+          "explanation": "虽然链式队列采用动态分配方式，但其长度也受内存空间的限制，不能无限制增长。顺序队列和链式队列的入队和出队时间复杂度均为 O(1)。顺序队列和链式队列都可以进行顺序访问。对"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "d1e568cd7ce702c050701696e3f47079ef55d93f92b26dc9468b47a087b66bb0",
+        "5044ca42b94cc1edfe7185a4f63959ffca069674990c5bb245c1c8e244622884"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X11",
+      "expected": {
+        "content": "下列说法中,正确的是( )。",
+        "answer": {
+          "explanation": "使用栈可以模拟递归的过程，以此来消除递归，但对于单向递归和尾递归而言，可以用迭代的方式来消除递归，选项 A 正确。不同的入栈和出栈组合操作，会产生许多不同的输出序列，B"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "41bd0c98c816481f3bb9dda446722c9c0e8464dc880e003a79fc2ea4a06ab70c",
+        "5dea83fa84f5dd51156a5a53b1767fa2a90962e7393a6f01bb7f4feb63519fe3"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X08",
+      "expected": {
+        "content": "设二叉树有 2n 个结点,且 m<n,则不可能存在( )的结点。",
+        "options": {
+          "A": "n 个度为 0",
+          "B": "2m 个度为 0",
+          "C": "2m 个度为 1",
+          "D": "2m 个度为 2"
+        },
+        "answer": {
+          "explanation": "由二叉树的性质 1 可知 n₀=n₂+1，结点总数=2n=n₀+n₁+n₂=n₁+2n₂+1，则 n₁=2(n-n₂)-1，"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "70281739e8883ebd3c876adeaf64c3e5c3c78832466be39462ad32753dc0a85e",
+        "dd80f4a4a122a1bc7abc33e34e304521b6d026965c2b504129dfdfd293aca138"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X28",
+      "expected": {
+        "content": "【2020 统考真题】对于任意一棵高度为 5 且有 10 个结点的二叉树,若采用顺序存储结构保存,每个结点占 1 个存储单元(仅存放结点的数据信息),则存放该二叉树需要的存储单元数量至少是( )。",
+        "answer": {
+          "explanation": "二叉树采用顺序存储时，用数组下标来表示结点之间的父子关系。对于一棵高度为 5 的二叉树，为了满足任意性，其 1~5 层的所有结点都要被存储起来，即考虑为一棵高度为 5 的满二叉树，共需要存储单元的数量为 1+2+4+8+16=31。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "007106be8d689a9ad8d14d900826a3ff93af93ace9519de2e26a2ed843a953b4",
+        "b2441c9689a2207729d08ff477f050e6b1288c3f272d52e1313ced29e67a7a31"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题::X28",
+      "expected": {
+        "content": "若 X 是二叉中序线索树中一个有左孩子的结点,且 X 不为根,则 X 的前驱为( )。",
+        "options": {
+          "A": "X 的双亲",
+          "B": "X 的右子树中最左的结点",
+          "C": "X 的左子树中最右的结点",
+          "D": "X 的左子树中最右的叶结点"
+        },
+        "answer": {
+          "explanation": "在二叉中序线索树中，某结点若有左孩子，则按照中序“左根右”的顺序，该结点的前驱结点为左子树中最右的一个结点（注意，并不一定是最右叶结点）。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "e7d110d1902e1ed57931499b3856c5ab77d20497e2c03bec17f9a0bd7fc563e6",
+        "02a88bfb4d2fb27071c0cafea490cbb38da3d4b0d6d088ba3d52f4deed974539"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::树与二叉树 · 树与二叉树的应用 · 选择题::X12",
+      "expected": {
+        "content": "下列关于并查集的说法中,正确的是( )(注,本题涉及图的考点)。",
+        "answer": {
+          "explanation": "依次探测图的各条边，用并查集检查该边依附的两个顶点是否已属于同一集合（两个顶点的根结点是否相同）。若是，则说明图中存在环路，选项A错误。经过路径优化后，并查集在最坏情况下的高度远小于O(n)，选项B错误。Find操作总返回当前根结点作为集合的标志，选项C错误。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "cf9cebace2928ddfd409a8e1f97a50bc9bccb12ef0866b47aed9e43e8a66a551",
+        "18e033fd3e9eaafd838ceaacf687c0d3efd77fea8f536974a9e89aeea10ec1f4"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::图 · 图的基本概念 · 选择题::X04",
+      "expected": {
+        "content": "以下关于图的叙述中,正确的是( )。",
+        "answer": {
+          "explanation": "强连通有向图的任何顶点到其他所有顶点都有路径，但未必有弧；无向图任意顶点的入度等于出度，但有向图未必满足；若边集中的某条边对应的某个顶点不在对应的顶点集中，则有向图的边集的子集和顶点集的子集无法构成子图。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "6dcf7e3f47c046c710f2d199a7241b5be21086cef59e5a27696535182f802e9c",
+        "e4d8f6148c0fb886cc22f532f7f95eaa04bb178fe3a92c9e44fad5de277a7958"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::图 · 图的存储及基本操作 · 选择题::X10",
+      "expected": {
+        "content": "若邻接表中有奇数个边表结点,则( )。",
+        "answer": {
+          "explanation": "无向图采用邻接表表示时，每条边存储两次，所以其边表结点的个数为偶数。题中边表结点为奇数个，所以必然是有向图，且有奇数条边。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "b3e6302c671f4c685c962ca9b562f74d390f8b874e4f657701181b3a091b9b2b",
+        "6f87a0f140419eaad61a25fd155df20d6c378a5ba093a90b90318cb46b2dcbd9"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::图 · 图的遍历 · 选择题::X06",
+      "expected": {
+        "content": "对有n个顶点、e条边的图采用邻接矩阵表示时,进行DFS遍历的时间复杂度为( ),进行BFS遍历的时间复杂度为( )。",
+        "answer": {
+          "explanation": "采用邻接矩阵表示时，查找一个顶点所有出边的时间复杂度为O(n)，共有n个顶点，所以时间复杂度均为O(n²)。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "14796a2dc68f291d7b588fbe3599973a5a90c0fc44ec1e154e635b1155d0a676",
+        "8110d8bef73297b32d225cf9948a2dd6b3a4f04b30feaba30999c3208c4cc7fa"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::图 · 图的应用 · 选择题::X07",
+      "expected": {
+        "content": "下列关于图的最短路径的相关叙述中,正确的是( )。 A. 最短路径一定是简单路径 B. Dijkstra 算法不适合求有回路的带权图的最短路径 C. Dijkstra 算法不适合求任意两个顶点的最短路径",
+        "options": {
+          "A": "最短路径一定是简单路径",
+          "B": "Dijkstra 算法不适合求有回路的带权图的最短路径",
+          "C": "Dijkstra 算法不适合求任意两个顶点的最短路径"
+        },
+        "answer": {
+          "explanation": "选项 A 正确，见严蔚敏老师的教材。Dijkstra 算法适合求解有回路的带权图的最短路径，也可以求任意两个顶点的最短路径，不适合求带负权值的最短路径问题。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "e46c1b1605aa18272ef50d8a6c342f3054b983b0d5673734f1f435c8380668fc",
+        "b0f57d8181546808ee0f1aa239b87616f7b3b39bab9c96c61f52d939bc249f26"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::查找 · 顺序查找和折半查找 · 选择题::X10",
+      "expected": {
+        "content": "已知有序表(13, 18, 24, 35, 47, 50, 62, 83, 90, 115, 134),当二分查找值为 90 的元素时,查找成功的元素比较次数为( )。 A. 1 B. 2 C. 4 D. 6",
+        "answer": {
+          "explanation": "开始时 low 指向 13，high 指向 134，mid 指向 50，比较第一次 90 > 50，所以将 low 指向 62，high 指向 134，mid 指向 90，第二次比较找到 90。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "845042df715d9fd646bedf1509c92ce75f05683c5d1bce1648e58164101f9fc5",
+        "c61e29220f06b484e131fd10fd79ba17d109b8226a01694df0ab3305c7168a29"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::计算机系统概述 · 计算机系统层次结构 · 选择题::X02",
+      "expected": {
+        "content": "冯·诺依曼机的基本工作方式是( )。",
+        "answer": {
+          "explanation": "冯·诺依曼机的基本工作方式是控制流驱动方式，也就是按照指令的执行序列，依次读取指令，然后根据指令所含的控制信息，调用数据信息进行处理。因此，在执行程序的过程中，始终"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "91ff8a701e0c9040b079a444681586312c949bd04348b5ea1ecfeb73c4f55b25",
+        "ae8fe7d073b5e43f38e0eab07b996bee53daf5a2fd5dd0cd4431b00174917b3b"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X02",
+      "expected": {
+        "content": "一个16位无符号二进制数的表示范围是( )。"
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "a003d5c4627da878e3ca7db5d53523d17477a7f3fc4df250a3c87a2cb0e776d8",
+        "c79400d42aed2688b757aa6de742d5b35dd277e840d480f213006967bfdf0b42"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 浮点数的表示与运算 · 选择题::X19",
+      "expected": {
+        "content": "计算机中的信息按边界对齐方式存储的含义是( )。",
+        "answer": {
+          "explanation": "信息在存储器中按边界对齐方式存储的含义是信息单元的存储地址是其字节长度的整数倍。这样可以保证对一个字长数据的读/写只需要一次存储器访问，提高了访存效率，但有时会导致存储空间的浪费。因此，这是一种以空间换时间的办法。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "5dc941c3cdd76641fa513529192e7a0b27e4e5b48f1aeaf6c9df9a6f5a7cb6a4",
+        "0acbb3271f249a61aa2928ed149ad823345079367807f9e47f35ca697e06f28b"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::存储系统 · 主存储器 · 选择题::X12",
+      "expected": {
+        "content": "下面有关 ROM 和 RAM 的叙述中,错误的是( )。",
+        "options": {
+          "A": "RAM 是可读可写存储器，ROM 是只读存储器",
+          "B": "ROM 和 RAM 都采用随机访问方式进行读/写",
+          "C": "系统的主存由 RAM 和 ROM 组成",
+          "D": "系统的主存都用 DRAM 芯片实现"
+        },
+        "answer": {
+          "explanation": "系统主存主要由 DRAM 构成，但通常也包含用于存放 BIOS 或固件的 ROM（如 Flash），因此并非全部由 DRAM 实现，D 选项的说法错误。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "22e8d85a1ac72e79287e85ac5b54e8fc7bed4b0ff57895845fc3f5413d1a2bdd",
+        "972ab94ce2deb34774e3ba05625c0641d4ed457c1cbdd96d79dad7fd48908bd0"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::存储系统 · 外部存储器 · 选择题::X02",
+      "expected": {
+        "content": "下列关于磁盘驱动器的叙述中,错误的是( )。",
+        "answer": {
+          "explanation": "因为每个盘面对应一个磁头，所以盘面号和磁头号是同一个概念，显然 A 的说法是错误的，磁盘地址应该由磁道号（柱面号）、磁头号（盘面号）和扇区号组成。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "86f9b1357ef7ca2526c50fe08a75378f5d0fa79ec92838d347a0458032185bf1",
+        "bcaca088ddb55dce0d64bcb825432d3302285ff2f3a0a236c12f06d214e3e1d6"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::指令系统 · CISC和RISC的基本概念 · 选择题::X06",
+      "expected": {
+        "content": "下列关于 RISC 的叙述中,错误的是( )。",
+        "options": {
+          "A": "多采用硬连线方式实现控制器",
+          "B": "通常采用 LOAD/STORE 指令设计风格",
+          "C": "难以采用流水线数据通路实现微架构",
+          "D": "多采用寄存器传递过程调用时的参数"
+        },
+        "answer": {
+          "explanation": "RISC 指令集具有格式规整、数量少、寻址简单、采用 LOAD/STOR 访存、通用寄存器数量多及硬连线控制器等特点，指令执行周期均匀，非常适合流水线实现。相反，CISC 因指令复杂、长度可变而难以采用流水线。因此，选项 C 错误，其余选项均符合 RISC 特征。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "83e2797b3e9ce74d6292dd11e20322c1f397daaa66b6200ea0528943302d1b3e",
+        "a56273023c59d140b940e6b844e78ba27504ff34eb9916848c9de92926beb15f"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 数据通路的功能和基本结构 · 选择题::X17",
+      "expected": {
+        "content": "下列关于数据通路的叙述中,错误的是( )。",
+        "options": {
+          "A": "数据通路包含 ALU 等组合逻辑（操作）元件",
+          "B": "数据通路包含寄存器等时序逻辑（状态）元件",
+          "C": "数据通路不包含用于异常事件检测及响应的电路",
+          "D": "数据通路中的数据流动路径由控制信号进行控制"
+        },
+        "answer": {
+          "explanation": "指令执行过程中数据所经过的路径，包括路径上的部件，称为数据通路。ALU、通用寄存器、状态寄存器、Cache、MMU、浮点运算逻辑、异常和中断处理逻辑等，都是指令执行过程中数据流经的部件，都属于数据通路的一部分。数据通路中的数据流动路径由控制部件控制，控制部件根据每条指令功能的不同，生成对数据通路的控制信号。选项 C 错误。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "45a2e4785c7575131a7c4050809dad7d671a4a5b4465ba93786a2253a3c94eb3",
+        "f5d66481f0496d7725d2c999c190197418b1811e071d3ef79d09b0c05ffe8cba"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 控制器的功能和工作原理 · 选择题::X07",
+      "expected": {
+        "content": "微程序控制存储器属于( )的一部分。",
+        "answer": {
+          "explanation": "微程序控制存储器用来存放微程序，是微程序控制器的核心部件，属于 CPU 的一部分，而不属于主存。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "e19a30ffdf82e1d08ecc3355b89b0539ef21a5dc0fe099f1f3ed3a6c95ef0b34",
+        "87fc1eb9eddf16583b47f24c777116fa8c4468d586e1f49893ec1a24a907e3b6"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 指令流水线 · 选择题::X04",
+      "expected": {
+        "content": "设指令由取指、分析、执行3个子部件完成,并且每个子部件的时间均为Δt,若采用度为4的超标量流水线处理机,连续执行20条指令,只需( )。",
+        "options": {
+          "A": "3Δt",
+          "B": "5Δt",
+          "C": "7Δt",
+          "D": "9Δt"
+        },
+        "answer": {
+          "explanation": "这个超标量流水线处理机可以发送4条指令，所以执行指令的时间为(3+(20-4)/4)Δt=7Δt。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "bb503ec0a28c31fa44cbc3cca51d69ef0d4945ee360125607d0604860efb2b50",
+        "804a4a82122f69fa73f8c832dc935810cc2777d71801f69e575b345884beb105"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 指令流水线 · 选择题::X29",
+      "expected": {
+        "content": "【2020统考真题】下列给出的处理器类型中,理想情况下,CPI为1的是( )。 I. 单周期CPU II. 多周期CPU III. 基本流水线CPU IV. 超标量流水线CPU",
+        "answer": {
+          "explanation": "CPI表示执行指令所需的时钟周期数。对于一个程序或一台机器来说，其CPI是指执行该程序或机器指令集中的所有指令所需的平均时钟周期数。对于单周期CPU，令指令周期=时钟周期，CPI=1，说法I正确。对于多周期CPU，CPU的执行过程分成几个阶段，每个阶段用一个时钟完成，每种指令所用的时钟数可以不同，CPI>1，说法II错误。对于基本流水线CPU，让每个时钟周期流出一条指令，CPI=1，说法III正确。超标量流水线CPU在每个时钟周期内并发执行多条独立的指令，每个时钟周期流出多条指令，CPI<1，说法IV错误。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "e5becb09574b2c7ba6f1c586084d725070dd62847a3fae4f62a3ab7d503d0954",
+        "65ec48669344d98c94838f20b18d9b49ee846eea0d28fcb16f62d0732952f539"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X17",
+      "expected": {
+        "content": "【2010统考真题】*下列选项中的英文缩写均为总线标准的是( )。",
+        "answer": {
+          "explanation": "选项A中的CRT表示阴极射线管显示器；选项B中的CPI表示每条指令的时钟周期数；选项C中的RAM表示半导体随机存储器、MIPS表示每秒执行多少百万条指令数。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "7fe7e91d48238fa167caf079ae85594effaa75be7acd9ebb3a5d9a23061a16bd",
+        "cb3acb53f1909981086c5f619b8ab24676458af0482d91796de378824790451b"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X07",
+      "expected": {
+        "content": "总线的异步通信方式是( )。",
+        "answer": {
+          "explanation": "异步通信方式也称应答方式，没有公用的时钟信号，也没有固定的时间间隔，完全依靠传送双方相互制约的“握手”信号来实现定时控制。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "bda463a6417403627f8a78fab57859f9eea4124451776ce48aa96d90b7334cb7",
+        "eb3ad2305c2d0126036c59d5a67132310235ae73c1b9dcc94a39ae3dc46198c5"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X16",
+      "expected": {
+        "content": "【2016统考真题】下列关于总线设计的叙述中,错误的是( )。",
+        "answer": {
+          "explanation": "并行总线通常比串行总线传输速率快，但这不是绝对的。在时钟频率较低的情况下，并行总线因为可以同时传输若干比特，速率确实比串行总线快。但是，随着技术的发展，时钟频率越来越高，并行总线之间的相互干扰越来越严重，当时钟频率提高到一定程度时，传输的数据已无法恢复。而串行总线因为线少，线间干扰容易控制，反而可通过不断提高时钟频率来提高传输速率，选项A错误。总线复用是指一种信号线在不同的时间传输不同的信息，它可使用较少的线路传输更多的信息，从而节省空间和成本，选项B正确。突发传输是指在一个总线周期中，可以传输多个存储地址连续的数据，即一次传输一个地址和一批地址连续的数据，选项C正确。分离事务通信是总线复用的一种，相比单一的传输线路可以提高总线的利用率，选项D正确。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "1c58ca78f3dc45bf395958beeb0dc4654afed868621aa33b922b4f0dce28cdb9",
+        "89388a4329cf62b93cfe84738bdd1ebf52b3265be953ef9f3b04708d1857c2e6"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::输入/输出系统 · I/O方式 · 选择题::X04",
+      "expected": {
+        "content": "下列关于程序中断方式和DMA方式的说法中,错误的是( )。 I. 程序中断过程是由硬件和中断服务程序共同完成的 II. 在每条指令的执行过程中,每个总线周期要检查一次有无中断请求 III. 检测有无DMA请求,一般安排在一条指令执行过程的末尾 IV. 中断服务程序的最后指令是无条件转移指令 V. 中断响应判优是根据中断屏蔽字来确定中断的优先级",
+        "answer": {
+          "explanation": "程序中断过程是由硬件（称为中断隐指令）和中断服务程序共同完成的，说法I正确。在每条指令执行结束时（而不是执行过程中），CPU统一扫描各个中断源，检查有无中断请求，说法II错误。CPU会在每个存储周期（总线周期）结束后检查是否有DMA请求，而不是在一条指令执行过程的末尾，说法III错误。中断服务程序的最后指令通常是中断返回指令，与无条件转移指令不同的是，它不仅要修改PC值，而且要将CPU中的所有寄存器都恢复到中断前的状态，说法IV错误。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "49eb2b5b26a119563887375af399b6a14286024a2ffa260e35b2f994300ef274",
+        "8627df4d110f72de2ff2d4d30196d0330967a842d7bd366e0fb55267d60bcccd"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-coa::输入/输出系统 · I/O方式 · 选择题::X24",
+      "expected": {
+        "content": "当某五级流水线CPU正在执行某条指令的第二级流水段时,外部设备产生了一个DMA请求,则CPU对该DMA请求响应的时机是( )。",
+        "answer": {
+          "explanation": "DMA请求的是总线的使用权，因此CPU对DMA请求的响应时机是一个总线周期结束时。在流水线CPU中，流水段的长度以最复杂的操作所花的时间为准，总线周期（访存时间）通常是耗时最长的，因此通常可认为总线周期、存储周期和流水段长度是等价的。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "2cd05969e93a2bb924ed93ca7ac87c8023b1e2130610c05190c5a29cb509d33c",
+        "71f81fd5bb00867d23855ef9cc6d35cfd6c7872196d4d4616225ced88ec3972f"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题::X21",
+      "expected": {
+        "content": "OSI 参考模型中( )通过设置检验点,使通信双方在通信失效时可从检验点恢复通信。",
+        "answer": {
+          "explanation": "会话层的主要功能是建立、管理和终止进程间的会话，以及使用检查点（或称检验点）使会话在通信失效时从检验点继续恢复通信，实现数据同步。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "3168456d65624ca640175322ef0f192ec01fd34fef0f22bc83d98e9a68c62d98",
+        "7b122c5be214dea475d53176f2b26d03ac2cb0c730953748c6b28366ad4c59a6"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题::X37",
+      "expected": {
+        "content": "【2021 统考真题】在 TCP/IP 模型中,由传输层相邻的下一层实现的主要功能是( )。",
+        "answer": {
+          "explanation": "37. B"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "483715d4523c3b4d0fc66b176590e9cd952464bada77ec41147446dbb1ccb7e7",
+        "e52033131fe387955a25666b163eae65ebc07b5b9c953bf4ba18f1608d5dd699"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::物理层 · 通信基础 · 选择题::X03",
+      "expected": {
+        "content": "( )被用于计算机内部的数据传输。",
+        "answer": {
+          "explanation": "并行传输的特点：距离短、速度快。串行传输的特点：距离长、速度慢。因此，在计算机内部（距离短）传输时应选择并行传输。同步、异步传输是通信方式，而不是传输方式。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "bc85405bf08a7d20bf1356c4ea6967b1b404d02d460f9277a2bc2e161b73da59",
+        "db72e1229cab6af08b06e90d3614a082e29812c2e1395868a608689ff91e2a75"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::物理层 · 通信基础 · 选择题::X16",
+      "expected": {
+        "content": "一个信道每 1/8s 采样一次,传输信号共有 16 种变化状态,最大数据传输速率是( )。",
+        "answer": {
+          "explanation": "由题意知采样率为 8Hz。有 16 种变化状态的信号可携带 4 比特的数据，因此最大数据传输速率为 8×4＝32b/s。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "277c238f5f32fefada084a61095ded4ec7ebe7ca40cef83efe64d1e653a7d608",
+        "9cc2bdbf1d53f224876ce5ecb61597ee93958d8af663bfcaf4066ff85f31d773"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::物理层 · 通信基础 · 选择题::X22",
+      "expected": {
+        "content": "【2015 统考真题】使用两种编码方案对比特流 01100111 进行编码的结果如下图所示,编码 1 和编码 2 分别是( )。",
+        "options": {
+          "A": "NRZ 编码和曼彻斯特编码",
+          "B": "NRZ 编码和差分曼彻斯特编码",
+          "C": "NRZI 编码和曼彻斯特编码",
+          "D": "NRZI 编码和差分曼彻斯特编码"
+        },
+        "answer": {
+          "explanation": "编码 1 为典型的 NRZ 编码：高电平表示 1，低电平表示 0，无跳变。编码 2 在每个比特周期中间均有跳变，高-低表示 1，低-高表示 0，符合曼彻斯特编码特征。差分曼彻斯特编码在比特周期起始处有跳变表示 0，无跳变表示 1，与图不符。因此，编码 1 和编码 2 分别为 NRZ 编码和曼彻斯特编码。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "0369eb01fa19ac9ae954bfaf0eac25a271b2832e93578cea25a08c822eaff1d4",
+        "b880c9ff902589d17eeef5f3a294d6a80af78f07315405a6e84bfd5b0a136d4e"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::物理层 · 传输介质 · 选择题::X07",
+      "expected": {
+        "content": "以下关于单模光纤的说法中,正确的是( )。",
+        "answer": {
+          "explanation": "光纤的直径减小到与光线的一个波长相同时，光纤就如同一个波导，光在其中没有反射，而沿直线传播，这就是单模光纤。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "4a5736ff5a6b7d39a615de35b4072e48addd9d9c7cf82df5e4ec134e871fc0e8",
+        "d3553d3d2fd7336e5971140438046ca6501ab2d4190b77fc60fedf2c909c998b"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::数据链路层 · 局域网 · 选择题::X15",
+      "expected": {
+        "content": "以太网中若发生信道访问冲突,则按照二进制指数退避算法决定下一次重发的时间。使用二进制指数退避算法的理由是( )。",
+        "answer": {
+          "explanation": "以太网采用 CSMA/CD 协议技术，网络上的流量越大、负载越多时，发生冲突的概率也越大。当工作站发送的数据帧因冲突而传输失败时，将采用二进制指数退避算法后退一段时间再重新发送数据帧。二进制指数退避算法可以动态地适应发送站点的数量，后退时延的取值范围与重发次数 n 形成二进制指数关系。当网络负载小时，后退时延的取值范围也小；当网络负载大时，后退时延的取值范围也随着增大。二进制指数退避算法的优点是，它将后退时延的平均取值与负载的大小联系起来了。因此，二进制指数退避算法考虑了负载对冲突的影响。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "f699ec9fbe3480160b67c52e352ddd297b01d3563a5e66bfa178ad4d361ff7c2",
+        "8548eb81271e5986c43be7be431b131e398da6e60403bc69b0f5747c4213bd37"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::数据链路层 · 局域网 · 选择题::X37",
+      "expected": {
+        "content": "【2009 统考真题】在一个采用 CSMA/CD 协议的网络中,传输介质是一根完整的电缆,传输速率为 1Gb/s,电缆中的信号传播速率是 200000km/s。若最小数据帧长减少 800 比特,则最远的两个站点之间的距离至少需要( )。",
+        "options": {
+          "A": "增加 160m",
+          "B": "增加 80m",
+          "C": "减少 160m",
+          "D": "减少 80m"
+        },
+        "answer": {
+          "explanation": "37. D"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "f2287b6786541b7508f1e40e556b09e8a1ca77024c29246d46505a87e23343b0",
+        "842d702a3d3eb3664a0259048bc34da8b9fabfccc9ad654b1ddca501b5aee730"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::数据链路层 · 数据链路层设备 · 选择题::X03",
+      "expected": {
+        "content": "下列( )不是使用交换机分割网络所带来的好处。",
+        "answer": {
+          "explanation": "03. D\n交换机可以隔离信息，将网络划分成多个网段，隔离出安全网段，防止其他网段内的用户非法访问。因为网络分段，各网段相对独立，所以一个网段的故障不影响另一个网段的运行。因此 B、C 正确。根据交换机的特点可知 A 正确，D 错误。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "4fdbc8407bc8a3337059eed03f78e732af37f1fe1dbd34f18041123460ad2120",
+        "50fc2cb2470698607cb575da9d8f243be9123e14f700d901b769afffb9d4011b"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X03",
+      "expected": {
+        "content": "IPv4 分组首部中有两个有关长度的字段:首部长度和总长度,其中( )。",
+        "options": {
+          "A": "首部长度字段和总长度字段都以 8 比特为计数单位",
+          "B": "首部长度字段以 8 比特为计数单位，总长度字段以 32 比特为计数单位",
+          "C": "首部长度字段以 32 比特为计数单位，总长度字段以 8 比特为计数单位",
+          "D": "首部长度字段和总长度字段都以 32 比特为计数单位"
+        },
+        "answer": {
+          "explanation": "03. C\n在首部中有三个关于长度的标记：首部长度、总长度和片偏移，基本单位分别为 4B、1B 和 8B。IP 分组的首部长度必须是 4B 的整数倍，取值范围是 5～15（默认值是 5）。因为 IP 分组的首部长度是可变的，所以首部长度字段必不可少。总长度字段给出 IP 分组的总长度，单位是字节，包括分组首部和数据部分的长度。数据部分的长度可以从总长度减去分组首部长度计算。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "951ce014f504bef48661bbdc4a57dc2b8929df10c7c665dffe742ce7839a458b",
+        "7bf4118c86ee742e01477869f83e2dbe167ad9642016a458e9329aea78e2fb14"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X39",
+      "expected": {
+        "content": "某主机的 IP 地址是 166.66.66.66,子网掩码为 255.255.192.0,若该主机向其所在子网发送广播分组,则目的 IP 地址应该是( )。",
+        "answer": {
+          "explanation": "39. D\n由子网掩码 255.255.192.0，可知网络号占 18 位，主机号占 14 位，置 166.66.66.66 的后 14"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "f8d84002b06f91e9d05abf9ac6dd8a3ffbcef2b3945efa8cbf12521be888fc4d",
+        "a0c66b9051947f16b5c04fd2a9f3b6661bad2b8567791fb45b6c99edbf399292"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X26",
+      "expected": {
+        "content": "假设 TCP 客户与 TCP 服务器的通信已结束,端到端的往返时间为 RTT。t 时刻 TCP 客户请求断开连接,则从 t 时刻起 TCP 服务器释放该连接的最短时间是( )。",
+        "answer": {
+          "explanation": "t 时刻 TCP 客户请求断开连接，发出连接释放 FIN 报文段；题目问的是最短时间，所以当 TCP 服务器收到 TCP 客户发来的 FIN 报文段后不再发送数据，因此同时发出确认 ACK 报文段和连接释放 FIN 报文段，即直接跳过 CLOSE-WAIT 状态；TCP 客户收到 FIN 报文段后必须发出确认；TCP 服务器收到确认后就进入 CLOSED 状态，共经历 1.5RTT。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "7014d0f4a37e268046bfd4da9615823e17f5088745da7072e8c8dfb5b28cb3eb",
+        "77007a73e9f4eba0086ef94a4a1692588d4d2ba349209d9fc09329f046738631"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X47",
+      "expected": {
+        "content": "【2014 统考真题】主机甲和乙建立了 TCP 连接,甲始终以 MSS=1KB 大小的段发送数据,并一直有数据发送;乙每收到一个数据段都会发出一个接收窗口为 10KB 的确认段。若甲在 t 时刻发生超时的时候拥塞窗口为 8KB,则从 t 时刻起,不再发生超时的情况下,经过 10RTT 后,甲的发送窗口的大小为( )。",
+        "options": {
+          "A": "10KB",
+          "B": "12KB",
+          "C": "14KB",
+          "D": "15KB"
+        },
+        "answer": {
+          "explanation": "t 时刻发生超时，将慢开始门限 ssthresh 设为 8KB/2=4KB，并将拥塞窗口 cwnd 重置为 1KB。接收窗口恒为 10KB，因此发送窗口=min{cwnd, 10KB}。经历 10RTT 后，拥塞窗口的大小（单位为 KB）依次为 2, 4, 5, 6, 7, 8, 9, 10, 11, 12。由于接收窗口限制为 10KB，最终发送窗口为 10KB。实际上，由于发送窗口必然总小于或等于 10KB，四个选项中只有选项 A 符合条件。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "78d79f4ff07501cf8a27dfe0f496e2dd277517c8d91cadad8ec75736c9512ea4",
+        "4c857afb18af4fd75cfdbdf34ba1af565b130db42a645e044e643cfd4e09593f"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::应用层 · 域名系统 · 选择题::X05",
+      "expected": {
+        "content": "互联网中域名解析依赖于由域名服务器组成的逻辑树。在域名解析过程中,主机上请求域名解析的软件不需要知道( )信息。 I. 本地域名服务器的 IP II. 本地域名服务器父节点的 IP III. 域名服务器树根节点的 IP",
+        "options": {
+          "A": "I 和 II",
+          "B": "I 和 III",
+          "C": "II 和 III",
+          "D": "I、II 和 III"
+        },
+        "answer": {
+          "explanation": "正常情况下，客户只需把域名解析请求发往本地域名服务器，其他事情都由本地域名服务器完成，并把最后结果返回给客户。所以主机只需要知道本地域名服务器的 IP。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "9d90f936d0f0db8ebbf4afa124b6d20e0a1f75f3c5caf5c3e889b0714ac7e303",
+        "ac9379be00d6d9cf1d0e9a4bc7018321ec255ceccaf6e1ba62b212fd6d443fc0"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::应用层 · 电子邮件 · 选择题::X01",
+      "expected": {
+        "content": "互联网用户的电子邮件地址格式必须是( )。",
+        "answer": {
+          "explanation": "电子邮件是互联网最基本、最常用的服务功能。要使用电子邮件服务，首先要拥有自己的电子邮件地址，其格式为：用户名@邮箱所在主机的域名。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "e60fb4a98e1b372371fc4036bcb008ea37eef169162cee8cb209fb9b9ce3aec7",
+        "388e055a396827543531a166abee48cbad7092b636b0c4780f9bf20501fbe093"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X03",
+      "expected": {
+        "content": "TCP和UDP的一些端口保留给一些特定的应用使用。为HTTP保留的端口号为( )。",
+        "options": {
+          "A": "TCP的80端口",
+          "B": "UDP的80端口",
+          "C": "TCP的25端口",
+          "D": "UDP的25端口"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "3883236c2c705c730630cc43f9a6d78e6b4d7b013cd7f1bffc20b574a94b2ddb",
+        "222bff3c309a546437ec6606af7574fe14f63cdc9800af89302241ee7d8d4bd0"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的基本概念 · 选择题::X05",
+      "expected": {
+        "content": "下列关于并发性的叙述中,正确的是( )。"
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "5ad3084b25f93543e1885ec65bd1d39f67e68f38207987708d8dcd8cb3cc085c",
+        "40763d0e7d08f3f11de20c8731fcac7b42c0fc129422b39da4cf277febaff064"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X15",
+      "expected": {
+        "content": "下列关于操作系统的叙述中,正确的是( )。",
+        "answer": {
+          "explanation": "实时操作系统要求能在规定时间内完成特定的功能。批处理操作系统不需要在响应时间内处理完一个任务。分时操作系统不要求在周转时间或调度时间内处理完外部事件。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "5c6bfca75367b02cc31bd8d0e3c6f2293057ec281bd4f3c5cc27b1d6eb7e7608",
+        "8525950381a2481148d26661582b26d341e144fa4bd803fc3bb331f29e09ac5a"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X11",
+      "expected": {
+        "content": "当CPU处于内核态时,它可以执行的指令是( )。",
+        "answer": {
+          "explanation": "访管指令（Trap指令）是一条在用户态下执行的指令。用户程序在用户态下要请求操作系统内核提供服务，就有意识地使用访管指令来引起访管中断，从而将控制权交给内核。在内核态，CPU可以执行除访管指令之外的任何指令。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "8c9d84fc7e9686ca8219710cc8ab232c0735950e16cd5e86058ba539f7fdc1c3",
+        "5041d6b258abea1868240cee41fd76f3e85d838bfee9307230aa1ff8a8c90480"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::进程与线程 · 进程与线程简介 · 选择题::X66",
+      "expected": {
+        "content": "【2019统考真题】下列关于线程的描述中,错误的是( )。",
+        "answer": {
+          "explanation": "应用程序没有进行内核级线程管理的代码，只有一个到内核级线程的编程接口，内核为进程及其内部的每个线程维护上下文信息，调度也是在内核中由操作系统完成的，选项A正确。用户级线程的控制块是由用户空间的库函数维护的，操作系统并不知道用户级线程的存在，用户级线程的控制块一般存放在用户空间的数据结构中，如链表或数组，由用户空间的线程库来管理。操作系统只负责为每个进程建立一个进程控制块，操作系统只能看到进程，而看不到用户级线程，所以不会为每个用户级线程建立一个线程控制块。但是，内核级线程的线程控制块是由操作系统创建的，当一个进程创建一个内核级线程时，操作系统会为该线程分配一个线程控制块，并将其加入内核的线程管理数据结构，选项B错误。用户级线程的切换可以在用户空间完成，内核级线程的切换需要操作系统帮助进行调度，因此用户级线程的切换效率更高，选项C正确。用户级线程的管理工作可以只在用户空间中进行，因此可以在不支持内核级线程的操作系统上实现，选项D正确。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "cb6fbe7517d78b4fb45dd4115c51e1ec6a7d12c83142b7b9eef4406a76c92366",
+        "0ecb8f418ffe489eb9f253f24614a99ccd58e9cf947a184bfb48bebda3913fcf"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::进程与线程 · 同步与互斥 · 选择题::X27",
+      "expected": {
+        "content": "一个系统中共有5个并发进程涉及某个相同的变量A,变量A的相关临界区是由( )个临界区构成的。",
+        "answer": {
+          "explanation": "这里的临界区是指访问临界资源A的那段代码（临界区的定义）。那么5个并发进程共有5个操作共享变量A的代码段。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "65c367af304e5bb04e068b03bd5e5d5e80fb6d3ea5d20383338eb5087272963e",
+        "7eb59ab685eb5066a887bedbbcb226e5e0b81d57c8b1b466f37e701bfc55b588"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::进程与线程 · 死锁 · 选择题::X13",
+      "expected": {
+        "content": "采用资源剥夺法可以解除死锁,还可以采用( )方法解除死锁。",
+        "answer": {
+          "explanation": "资源剥夺法允许一个进程强行剥夺其他进程所占有的系统资源。而撤销进程强行释放一个进程已占有的系统资源，与资源剥夺法同理，都通过破坏死锁的\"请求和保持\"条件来解除死锁。拒绝分配新资源只能维持死锁的现状，无法解除死锁。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "05ec85f0e106b06b7dccc2ab97a1771dd25ff03d26d2b0ee9b576e2004c6a1c7",
+        "848199f875b5b2c963219cc0a3335dc457dd8f770d92526f93e9c02a17504f88"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 内存管理概念 · 选择题::X03",
+      "expected": {
+        "content": "内存保护需要由( )完成,以保证进程空间不被非法访问。",
+        "answer": {
+          "explanation": "内存保护是内存管理的一部分，是操作系统的任务，但是出于安全性和效率考虑，必须由硬件实现，所以需要操作系统和硬件机构的合作来完成。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "b56638dad6d8d5320dc1bd082cbf8a6e5c53cb9b0cd28df651fac7d8df256e7d",
+        "220ccd98672d298c41bb641703aa674cd10437eaa006b0424b308a301773b082"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 内存管理概念 · 选择题::X29",
+      "expected": {
+        "content": "分页系统中的页面是为( )。"
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "304e8b9713ddfd6d164f2c991f7a7a68a28194eddab7f64735ebcbccc1427aa3",
+        "ba12f543e04a0c0a18689fe361de7cc7dcf544c4f93211b030839658b742cade"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 内存管理概念 · 选择题::X54",
+      "expected": {
+        "content": "在某分页存储管理系统中,地址结构长18位,其中11~17位为页号,0~10位为页内偏移量,则主存的最大容量为( )KB,主存可分为( )个页。若有一作业依次放入2、3、7号物理块,相对地址1500处有一条指令\"store r1, 2500\",该指令地址所在页的页号为0,则指令的物理地址为( ),指令数据的存储地址所在页的页框号为( )。",
+        "answer": {
+          "explanation": "地址结构长18位，所以主存的最大容量为2^18=256KB；页内偏移量占11位，所以页面大小为2^11=2048B；页号占7位，所以主存页数为2^7=128个。该指令的相对地址为1500，小于一个页面的大小，所以该指令存放在2号物理块中，物理地址为2×2048+1500=5596，指令数据的存放地址为2500，大于一个页面的大小，所以指令数据存放在3号物理块中。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "1451e3e0e26e1ebf619b440d98ab5b56a7b941a239b349f50f303907506c35e1",
+        "0d73371a6e64d974e703666275c9df3a48a2fcbf0c91e3e38c2423fba476fe6d"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X18",
+      "expected": {
+        "content": "设主存容量为1MB,外存容量为400MB,计算机系统的地址寄存器有32位,那么虚拟存储器的最大容量是( )。",
+        "options": {
+          "A": "1MB",
+          "B": "401MB",
+          "C": "1MB+2^32MB",
+          "D": "2^32B"
+        },
+        "answer": {
+          "explanation": "进程的虚拟地址空间寻址由系统的地址结构决定，这就决定了虚拟存储器的最大容量，而与主存和外存的容量没有必然联系，因此虚拟地址空间为2^32B。比如，在64位系统环境下，虚拟存储技术使得进程可用地址空间达2^64B，但外存显然是达不到这个大小的。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "7ede5abccfbadef8027aad88c5acf60d2d7cdc355b7f1ba6dcbdd4d5b75b7f9f",
+        "8bae3b728258b235cb2da103d01dcebbff89030953b7fed57ffdb92468160846"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X54",
+      "expected": {
+        "content": "【2020统考真题】下列因素中,影响请求分页系统有效(平均)访存时间的是( )。 I. 缺页率 II. 磁盘读/写时间 III. 内存访问时间 IV. 执行缺页处理程序的CPU时间",
+        "answer": {
+          "explanation": "说法I影响缺页中断的频率，缺页率越高，平均访存时间越长；说法II和IV影响缺页中断的处理时间，中断处理时间越长，平均访存时间越长；说法III影响访问页表和访问目标物理地址的时间，所以说法I、II、III和IV均正确。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "5dfc485f30ffb105adcc021cff5ebde9d6717acfcd2ce1b8e1ad0c49972ebc16",
+        "fef43357c81d5c145e0cf9768c892339496ac9c6f4ef0467987a026881dc38b4"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X25",
+      "expected": {
+        "content": "设有一个记录文件,采用隐式链接分配方式,逻辑记录的固定长度为100B,在磁盘上存储时采用记录成组分解技术。盘块长度为512B。若该文件的目录项已经读入内存,则对第22个逻辑记录完成修改后,共启动了磁盘( )次。",
+        "answer": {
+          "explanation": "记录成组分解技术是指将若干逻辑记录存入一个块，一个逻辑记录不能跨越两个块。逻辑记录的固定长度为100B，盘块长度为512B，采用成组分解技术，因此每个盘块可以存放5个逻辑记录，剩下12B的空间可用于存放指向下一个盘块的指针。每个盘块存放5个逻辑记录，因此第22个逻辑记录在第5个物理块中（⌈22/5⌉=5）。采用链接分配方式，要找到第5个物理块，需要从第1个物理块开始按指针顺序查找，因此需要启动磁盘5次。修改完后还要写回磁盘，因为此前已获得该块的磁盘地址，所以只需启动磁盘1次，共需启动磁盘6次。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "3d7b1901546e4d0c01a5e36d3ffcc0c8520d9f47b246a3f957db9e6fbb6015c8",
+        "0d047ca732404a573ec95b07f5a6d095e3964bd03a154063802f9d856d371ab4"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X46",
+      "expected": {
+        "content": "在文件系统中,以下不属于文件保护的方法是( )。"
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "9635931d6c2a2a8ba3cfa723acb3d1b28773a962f41e9d7c646ce370cbf1d7e2",
+        "fa6327cb57599548da82ce881f751065031d92adef6f564d53daf92b076a88fa"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X53",
+      "expected": {
+        "content": "【2010统考真题】设文件索引节点中有7个地址项,其中4个地址项是直接地址索引,2个地址项是一级间接地址索引,1个地址项是二级间接地址索引,每个地址项大小为4B,若磁盘索引块和磁盘数据块大小均为256B,则可表示的单个文件最大长度是( )。",
+        "answer": {
+          "explanation": "每个磁盘索引块和磁盘数据块大小均为256B，每个磁盘索引块有256/4=64个地址项。因此，4个直接地址索引指向的数据块大小为4×256B；2个一级间接索引包含的直接地址索引数为2×(256/4)，即其指向的数据块大小为2×(256/4)×256B。1个二级间接索引所包含的直接地址索引数为"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "11f94026f07ce6f55f0cb08dd9b279962972b080a7e1ddc8865e66f8f37c7ba8",
+        "6c61a6bfef6f5f297341774cba2a9a45962d56957a04621473226ac009dcdf14"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::输入/输出管理 · I/O管理概述 · 选择题::X03",
+      "expected": {
+        "content": "磁盘设备的I/O控制主要采取( )方式。",
+        "answer": {
+          "explanation": "DMA方式主要用于块设备，磁盘是典型的块设备。这道题也要求读者了解什么是I/O控制方式，选项A、B、C显然都不是I/O控制方式。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "3dc1a1ccec3b8c917ba007858200c40c02cab8e6055085d92a8883a7fe5ced4c",
+        "fbdc79ed3c0a8497207ae432a6795c8dea09f7a87d64e3af6423adfcf22e79b6"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::输入/输出管理 · 设备独立性软件 · 选择题::X01",
+      "expected": {
+        "content": "设备的独立性是指( )。"
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "1c0ca6698d7a88ad7a9f21ba93299897f46278607eea507bb10d12bf47c81b09",
+        "4b89253b5ed8d8c9d74f4625a0bc034257dcf4e1e98ca242ef016dcf18d41713"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-os::输入/输出管理 · 设备独立性软件 · 选择题::X26",
+      "expected": {
+        "content": "下面关于SPOOLing的叙述中,不正确的是( )。",
+        "options": {
+          "A": "SPOOLing系统中不需要独占设备",
+          "B": "SPOOLing系统加快了作业执行的速度",
+          "C": "SPOOLing系统使独占设备变成共享设备",
+          "D": "SPOOLing系统提高了独占设备的利用率"
+        },
+        "answer": {
+          "explanation": "SPOOLing技术将独占设备虚拟成共享设备，因此必须先有独占设备才行。下面说明SPOOLing技术如何加快作业执行的速度，提高独占设备的利用率。进程不需要等待打印机空闲，只需将输出数据送到输出井，然后继续执行其他操作，这样就提高了进程的效率。打印机不需要空闲等待进程的输出，只需从输出井中读取数据进行打印，然后读取下一个数据，这样就提高了打印机的效率。输出进程可以根据输出井中的数据量和优先级来安排打印顺序，从而平衡各个进程的等待时间和响应时间，这样就提高了系统的性能。输出进程可以减少对打印机的切换次数，从而减少系统的开销，进而提高打印机的利用率。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": [
+        "bbbb04d067b71cf9e2d29b364026542e8a190488383965647df77dd4bec63fe0",
+        "edd288d169b56e490413bcf1f5ce51373e79e04b6686bf82fd5cd5a2e0ed5933"
+      ]
+    },
+    {
+      "source_uid": "408:cs408-ds::绪论 · 数据结构的基本概念 · 选择题::X01",
+      "expected": {
+        "content": "一个完整的数据结构通常应包含以下哪些要素（ ）？",
+        "answer": {
+          "explanation": "一个完整的数据结构由三部分组成：逻辑结构（如线性、树形等）、存储结构（物理表示）以及在其上定义的基本操作（如插入、删除等）。只有选项 C 同时包含这三个核心要素。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-ds::绪论 · 数据结构的基本概念 · 选择题::X05",
+      "expected": {
+        "content": "在存储数据时，通常不仅要存储各数据元素的值，还要存储（ ）。"
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X05",
+      "expected": {
+        "content": "下列关于时间复杂度的函数中，时间复杂度最小的是（ ）。",
+        "options": {
+          "A": "T₁(n) = nlog₂n + 5000n",
+          "B": "T₂(n) = n² - 8000n",
+          "C": "T₃(n) = nlog₂n - 6000n",
+          "D": "T₄(n) = 20000log₂n"
+        },
+        "answer": {
+          "explanation": "选项 A 的最高阶是 nlog₂n，时间复杂度是 O(nlog₂n)。选项 B 的最高阶是 n²，时间复杂度是 O(n²)。选项 C 的最高阶是 nlog₂n，时间复杂度是 O(nlog₂n)。选项 D 的最高阶是 log₂n，时间复杂度是 O(log₂n)。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X16",
+      "expected": {
+        "answer": {
+          "explanation": "假设第k次循环终止，则第k次执行时，(x+1)²>n，x的初始值为0，第k次判断时，x=k-1，即k²>n，k>√n，因此该程序段的时间复杂度为O(n^{1/2})。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X10",
+      "expected": {
+        "content": "下列算法中加下划线的语句的执行次数为（ ）。\nint m=0,i,j;\nfor(i=1;i<=n;i++)\n    for(j=1;j<=2*i;j++)\n        m++;",
+        "answer": {
+          "explanation": "m++语句的执行次数为\n∑_{i=1}^{n} ∑_{j=1}^{2i} 1 = ∑_{i=1}^{n} 2i = 2∑_{i=1}^{n} i = n(n+1)"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-ds::线性表 · 线性表的顺序表示 · 选择题::X08",
+      "expected": {
+        "content": "设线性表有 n 个元素，严格说来，以下操作中，（ ）在顺序表上实现要比在链表上实现的效率高。\nI. 输出第 i（1≤i≤n）个元素值\nII. 交换第 3 个元素与第 4 个元素的值\nIII. 顺序输出这 n 个元素的值",
+        "options": {
+          "A": "I",
+          "B": "I、III",
+          "C": "I、II",
+          "D": "II、III"
+        },
+        "answer": {
+          "explanation": "对说法 II，顺序表只需 3 次交换操作；链表需要分别找到两个结点前驱，第 4 个结点断链后再插入到第 2 个结点后，效率较低。对说法 III，需要依次顺序访问每个元素，时间复杂度相同。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-ds::线性表 · 线性表的链式表示 · 选择题::X12",
+      "expected": {
+        "content": "在线性表 a₀, a₁, …, a₁₀₀ 中，删除元素 a₅₀ 需要移动（ ）个元素。",
+        "options": {
+          "A": "0",
+          "B": "50",
+          "C": "51",
+          "D": "0 或 50"
+        },
+        "answer": {
+          "explanation": "线性表有顺序存储和链式存储两种存储结构。若采用链式存储结构，则删除元素 a₅₀ 不需要移动元素；若采用顺序存储结构，则需要依次移动 50 个元素。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-ds::线性表 · 线性表的链式表示 · 选择题::X27",
+      "expected": {
+        "content": "某线性表用带头结点的循环单链表存储，头指针为 head，当 head->next->next==head 成立时，线性表的长度可能是（ ）。",
+        "options": {
+          "A": "0",
+          "B": "1",
+          "C": "2",
+          "D": "可能为 0 或 1"
+        },
+        "answer": {
+          "explanation": "对一个空循环单链表，有 head->next==head，推理 head->next->next==head->next==head。对含有一个元素的循环单链表，头结点（头指针 head 指示）的 next 域指向这个唯一的元素结点，该元素结点的 next 域指向头结点，因此也有 head->next->next=head。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X10",
+      "expected": {
+        "content": "向一个栈顶指针为 top 的链栈（不带头结点）中插入一个 x 结点，则执行（ ）。",
+        "answer": {
+          "explanation": "链栈采用不带头结点的单链表表示时，入栈操作在首部插入一个结点 x（x->next=top），插入完后需将 top 指向该插入的结点 x。请思考当链栈存在头结点时的情况。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X18",
+      "expected": {
+        "content": "若栈的输入序列是 1, 2, 3, …, n，输出序列的第一个元素是 i，则第 j 个输出元素是（ ）。",
+        "answer": {
+          "explanation": "当第 i 个元素第一个出栈时，则 i 之前的元素可以依次排在 i 之后出栈，但剩余的元素可以在此时入栈，并且排在 i 之前的元素出栈，所以第 j 个出栈的元素是不确定的。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 队列 · 选择题::X06",
+      "expected": {
+        "content": "已知循环队列的存储空间为数组 A[21]，front 指向队首元素的前一个位置，rear 指向队尾元素，假设当前 front 和 rear 的值分别为 8 和 3，则该队列的长度为（ ）。",
+        "answer": {
+          "explanation": "队列的长度为(rear-front+maxsize)%maxsize=(rear-front+21)%21=16。这种情况和 front 指向当前元素，rear 指向队尾元素的下一个元素的计算是相同的。\n注意：数组 A[n] 的下标范围为 0～n-1。若写成 A[0...n]，则说明下标范围为 0～n。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X10",
+      "expected": {
+        "content": "执行（ ）操作时，需要使用队列作为辅助存储空间。",
+        "answer": {
+          "explanation": "本题涉及第 5 章和第 6 章的内容，图的广度优先搜索类似于树的层序遍历，都要借助于队列。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 数组和特殊矩阵 · 选择题::X04",
+      "expected": {
+        "content": "在二维数组 A 中，假设每个数组元素的长度为 3 个存储单元，行下标 i 为 0～8，列下标 j 为 0～9，从首地址 SA 开始连续存放。在这种情况下，元素 A[8][5] 的起始地址为（ ）。",
+        "options": {
+          "A": "SA + 141",
+          "B": "SA + 144",
+          "C": "SA + 222",
+          "D": "SA + 255"
+        },
+        "answer": {
+          "explanation": "二维数组计算地址（按行优先顺序）的公式为\nLOC(i,j)=LOC(0,0)+(im+j)L"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-ds::串 · 串的模式匹配 · 选择题::X05",
+      "expected": {
+        "content": "在 KMP 算法中，用 next 数组存放模式串的部分匹配信息，当模式串位 j 与主串位 i 比较时，两个字符不相等，则 i 的位移方式是（）。"
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-ds::树与二叉树 · 树的基本概念 · 选择题::X08",
+      "expected": {
+        "content": "设一棵m叉树中有N₁个度数为1的结点，N₂个度数为2的结点……Nₘ个度数为m的结点，则该树中共有（）个叶结点。",
+        "options": {
+          "A": "∑_{i=1}^{m}(i-1)N_i",
+          "B": "∑_{i=1}^{m}N_i",
+          "C": "∑_{i=2}^{m}(i-1)N_i",
+          "D": "∑_{i=2}^{m}(i-1)N_i+1"
+        },
+        "answer": {
+          "explanation": "设叶结点数为N₀，总结点数为N，则N=N₁+2N₂+3N₃+⋯+mNₘ+1，又因为N=N₀+N₁+N₂+⋯+Nₘ，所以N₀=N₂+2N₃+⋯+(m-1)Nₘ+1=∑_{i=2}^{m}(i-1)N_i+1。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题::X09",
+      "expected": {
+        "content": "先序序列为 A, B, C，后序序列为 C, B, A 的二叉树共有（）。",
+        "options": {
+          "A": "1 棵",
+          "B": "2 棵",
+          "C": "3 棵",
+          "D": "4 棵"
+        },
+        "answer": {
+          "explanation": "先序为 A、B、C 的不同二叉树共有 5 种，其中后序为 C、B、A 的有 4 种（前 4 种），都是单支树，如下图所示。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题::X29",
+      "expected": {
+        "content": "若 X 是后序线索二叉树中的叶结点，且 X 存在左兄弟 Y，则 X 的右线索指向的是（）。",
+        "options": {
+          "A": "X 的双亲",
+          "B": "以 Y 为根的子树的最左下结点",
+          "C": "X 的左兄弟 Y",
+          "D": "以 Y 为根的子树的最右下结点"
+        },
+        "answer": {
+          "explanation": "在二叉树的后序遍历中，叶结点 X 的后继是其双亲，因此 X 的右线索应指向该结点。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题::X40",
+      "expected": {
+        "content": "【2017 统考真题】要使一棵非空二叉树的先序序列与中序序列相同，其所有非叶结点须满足的条件是（）。",
+        "options": {
+          "A": "只有左子树",
+          "B": "只有右子树",
+          "C": "结点的度均为 1",
+          "D": "结点的度均为 2"
+        },
+        "answer": {
+          "explanation": "先序序列先访问父结点，接着访问左子树，然后访问右子树。中序序列先访问左子树，接着访问父结点，然后访问右子树，递归进行。若所有非叶结点只有右子树，则先序序列和中序序列都先访问父结点，后访问右子树，递归进行。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-ds::图 · 图的存储及基本操作 · 选择题::X01",
+      "expected": {
+        "options": {
+          "A": "使用邻接矩阵存储一个图时，在不考虑压缩存储的情况下，所占用的存储空间大小只与图中的顶点数有关，与边数无关",
+          "B": "邻接表只用于有向图的存储，邻接矩阵适用于有向图和无向图",
+          "C": "若一个有向图的邻接矩阵的对角线以下的元素为 0，则该图的拓扑序列必定存在",
+          "D": "存储无向图的邻接矩阵是对称的，所以只需存储邻接矩阵的下（或上）三角部分"
+        },
+        "answer": {
+          "explanation": "对于有 n 个顶点的图，若采用邻接矩阵表示，不考虑压缩存储，则存储空间大小为 O(n²)，选项 A 正确。邻接表可用于存储无向图，只是把每条边都视为两条方向相反的有向边，因此需要存储两次，选项 B 错误。因为邻接矩阵中对角线以下的元素全为 0，所以若存在 <i, j>，则必有 i < j，由传递性可知图中路径的顶点编号是依次递增的，假设存在环 k→…→j→k，由题设可知 k<j<k，矛盾，所以不存在环，拓扑序列必定存在，选项 C 正确。选项 D 显然正确。\n注意\n若邻接矩阵对角线以下（或以上）的元素全为 0，则图中必然不存在环，即拓扑序列一定存在，但这并不能说明拓扑序列是唯一的。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-ds::图 · 图的存储及基本操作 · 选择题::X04",
+      "expected": {
+        "content": "带权有向图 G 用邻接矩阵存储，则 vᵢ 的入度等于邻接矩阵中（）。",
+        "options": {
+          "A": "第 i 行非∞的元素个数",
+          "B": "第 i 列非∞的元素个数",
+          "C": "第 i 行非∞且非 0 的元素个数",
+          "D": "第 i 列非∞且非 0 的元素个数"
+        },
+        "answer": {
+          "explanation": "带权有向图的邻接矩阵中，0 和 ∞ 表示的都不是有向边，而入度是由邻接矩阵的列中元素计算出来的；出度是由邻接矩阵的行中元素计算出来的。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-ds::图 · 图的遍历 · 选择题::X14",
+      "expected": {
+        "answer": {
+          "explanation": "对于无向图的广度优先搜索生成树，起点到其他顶点的路径是图中对应的最短路径，即所有生成树中树高最小。此外，深度优先总是尽可能“深”地搜索图，因此其路径也尽可能长，所以深度优先生成树的树高总是大于或等于广度优先生成树的树高。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-ds::图 · 图的应用 · 选择题::X21",
+      "expected": {
+        "content": "下列关于图的说法中，正确的是（）。\nI. 有向图中顶点 V 的度等于其邻接矩阵中第 V 行中 1 的个数\nII. 无向图的邻接矩阵一定是对称矩阵，有向图的邻接矩阵一定是非对称矩阵\nIII. 在带权图 G 的最小生成树 G₁ 中，某条边的权值可能会超过未选边的权值\nIV. 若有向无环图的拓扑序列唯一，则可以唯一确定该图",
+        "options": {
+          "A": "I、II 和 III",
+          "B": "III 和 IV",
+          "C": "III",
+          "D": "IV"
+        },
+        "answer": {
+          "explanation": "有向图邻接矩阵的第 V 行中 1 的个数是顶点 V 的出度，而有向图中顶点的度为入度与出度之和，说法 I 错。无向图的邻接矩阵一定是对称矩阵，但当有向图中任意两个顶点之间有边相连，且是两条方向相反的有向边时，有向图的邻接矩阵也是一个对称矩阵，说法 II 错。最小生成树中的 n−1 条边不能保证是图中权值最小的 n−1 条边，因为权值最小的 n−1 条边并不一定能使图连通。在下图中，左图的最小生成树如下图所示，权值为 3 的边不在其最小生成树中。\n有向无环图的拓扑序列唯一并不能唯一确定该图。在下图所示的两个有向无环图中，拓扑序列都为 V₁, V₂, V₃, V₄，IV 错。注意，很多辅导书对该命题的判断是错误的。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-ds::查找 · 顺序查找和折半查找 · 选择题::X12",
+      "expected": {
+        "content": "对表长为 n 的有序表进行折半查找，其判定树的高度为（）。",
+        "options": {
+          "A": "⌈log₂(n+1)⌉",
+          "B": "⌊log₂(n+1)⌋−1",
+          "C": "⌈log₂n⌉",
+          "D": "⌊log₂n⌋−1"
+        },
+        "answer": {
+          "explanation": "对 n 个结点的判定树，设结点总数 n=2ʰ−1，则 h=⌈log₂(n+1)⌉。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-ds::查找 · 树形查找 · 选择题::X14",
+      "expected": {
+        "answer": {
+          "explanation": "插入和删除结点都有可能引起 LR 平衡旋转或者 RL 平衡旋转，发生两次旋转操作。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-ds::查找 · B树 和B+树 · 选择题::X01",
+      "expected": {
+        "content": "右图所示是一棵（）。",
+        "options": {
+          "A": "4 阶 B 树",
+          "B": "3 阶 B 树",
+          "C": "4 阶 B+树",
+          "D": "无法确定"
+        },
+        "answer": {
+          "explanation": "关键字数目比子树数目少 1，首先可排除 B+树。对于 4 阶 B 树，根结点至少有 2 棵子树（关键字数至少为 1），其他非叶结点至少有 ⌈n/2⌉=2 棵子树（关键字数至少为 1）、至多有 4 棵子树（关键字数至多为 3）。5 阶 B 树和 6 阶 B 树的分析也类似。题目所示的 B 树，同时满足 4 阶 B 树、5 阶 B 树和 6 阶 B 树的要求，因此不能确定是哪种类型的 B 树。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-ds::查找 · B树 和B+树 · 选择题::X25",
+      "expected": {
+        "answer": {
+          "explanation": "对于4阶B树，每个结点包含1～3个关键字（根结点可为1～3个，非根结点至少1个）。给定7个不同关键字，按树高分类讨论：①当树为2层时，若根含1个关键字，则其2个子结点需要分配6个关键字，唯一合法的分配为(3,3)，对应1种；若根含2个关键字，则3个子结点分配5个关键字，合法分配为(3,1,1)和(2,2,1)"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-ds::查找 · 散列（Hash）表 · 选择题::X21",
+      "expected": {
+        "content": "【2019 统考真题】现有长度为 11 且初始为空的散列表 HT，散列函数是 H(key)=key%7，采用线性探查（线性探测再散列）法解决冲突。将关键字序列 87, 40, 30, 6, 11, 22, 98, 20 依次插入 HT 后，HT 查找失败的平均查找长度是（）。",
+        "answer": {
+          "explanation": "采用线性探查法计算每个关键字的存放情况如下表所示。\n散列地址：0 1 2 3 4 5 6 7 8 9 10\n关键字：98 22 30 87 11 40 6 20（8、9、10 为空）\n由于 H(key)=0～6，查找失败时可能对应的地址有 7 个，对于计算出地址为 0 的关键字 key0，只有比较完 0～8 号地址后才能确定该关键字不在表中，比较次数为 9；对于计算出地址为 1 的关键字 key1，只有比较完 1～8 号地址后才能确定该关键字不在表中，比较次数为 8；以此类推。需要特别注意的是，散列函数不可能计算出地址 7，因此有 ASL失败=(9+8+7+6+5+4+3)/7=6"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-ds::排序 · 插入排序 · 选择题::X12",
+      "expected": {
+        "content": "已知输入序列{13, 24, 7, 1, 8, 9, 11, 56, 34, 51, 2, 77, 5}，增量序列 d = 5, 3, 1，采用希尔排序算法进行排序，则两趟排序后的结果为（）。",
+        "options": {
+          "A": "1, 7, 8, 9, 13, 24, 11, 34, 51, 2, 5, 56, 77",
+          "B": "1, 7, 5, 2, 8, 9, 24, 11, 34, 51, 13, 77, 56",
+          "C": "2, 11, 5, 1, 8, 9, 24, 7, 34, 51, 13, 77, 56",
+          "D": "2, 5, 11, 1, 8, 9, 7, 24, 34, 13, 51, 77, 56"
+        },
+        "answer": {
+          "explanation": "第一趟增量 d = 5，第一趟排序后，结果为 2, 11, 5, 1, 8, 9, 24, 7, 34, 51, 13, 77, 56。第二趟增量 d = 3，第二趟排序后，结果为 1, 7, 5, 2, 8, 9, 24, 11, 34, 51, 13, 77, 56。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-ds::排序 · 选择排序 · 选择题::X20",
+      "expected": {
+        "content": "【2021统考真题】将关键字 6,9,1,5,8,4,7 依次插入初始为空的大根堆 H，得到的 H 是（）。",
+        "answer": {
+          "explanation": "要熟练掌握调整堆的方法，建堆的过程如下图所示，所以选择选项 B。\n（解析配有依次插入并调整大根堆的过程图：6 → 6/9 调整为 9/6 → 9/6,1 → 9/6,1 左插入5 → 9/6,1 右插入8并调整为 9/8,1 /5,6 → 再插入4得 9/8,1 /5,6,4 → 调整后插入7得 9/8,4 /5,6,1,7 → 再调整为 9/8,7 /5,6,1,4。）\n注意，给定序列依次插入空堆的结果与给定序列直接调整成堆的结果是不同的，最终得到的堆的形式也不同。若对序列 6, 9, 1, 5, 8, 4, 7 直接调整成堆，则会误选选项 C。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-ds::排序 · 归并排序、基数排序和计数排序 · 选择题::X07",
+      "expected": {
+        "content": "将两个各有 N 个元素的有序表合并成一个有序表，最少的比较次数是（），最多的比较次数是（）。",
+        "options": {
+          "A": "N",
+          "B": "2N−1",
+          "C": "2N",
+          "D": "N−1"
+        },
+        "answer": {
+          "explanation": "注意，当一个表中的最小元素比另一个表中的最大元素还大时，比较的次数是最少的，仅比较 N 次；而当两个表中的元素依次间隔地比较时，即 a₁ < b₁ < a₂ < b₂ < ⋯ < aₙ < bₙ 时，比较的次数是最多的，为 2N−1 次。\n建议读者对此举一反三：若将本题中的两个有序表的长度分别设为 M 和 N，则最多（或最少）的比较次数是多少？时间复杂度又是多少？"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X18",
+      "expected": {
+        "content": "【2019统考真题】选择一个排序算法时，除算法的时空效率外，下列因素中，还需要考虑的是（）。\nI. 数据的规模    II. 数据的存储方式    III. 算法的稳定性    IV. 数据的初始状态",
+        "options": {
+          "A": "仅 III",
+          "B": "仅 I、II",
+          "C": "仅 II、III、IV",
+          "D": "I、II、III、IV"
+        },
+        "answer": {
+          "explanation": "当数据规模较小时可选择复杂度为 O(n²) 的简单排序算法，当数据规模较大时应选择复杂度为 O(n log₂ n) 的排序算法，当数据规模大到内存无法放下时需选择外部排序算法，说法 I 正确。数据的存储方式主要分为顺序存储和链式存储，有些排序算法（如堆排序）只能用于顺序存储方式，说法 II 正确。若对数据稳定性有要求，则不能选择不稳定的排序算法，说法 III 显然正确。当数据初始基本有序时，直接插入排序的效率最高，冒泡排序和直接插入排序的时间复杂度都为 O(n)，而归并排序的时间复杂度仍然为 O(n log₂ n)，说法 IV 正确。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-coa::计算机系统概述 · 计算机系统层次结构 · 选择题::X03",
+      "expected": {
+        "options": {
+          "A": "程序一边被输入计算机一边被执行",
+          "B": "程序直接从磁盘读到 CPU 执行",
+          "C": "按地址访问指令并自动按序执行程序",
+          "D": "程序自动执行而数据手工输入"
+        },
+        "answer": {
+          "explanation": "冯·诺依曼机的核心特征包括“存储程序”、程序和数据统一存储、按地址访问，以及指令的自动顺序执行。其基本工作方式是：程序以二进制形式预先存入主存储器，CPU 依据程序计数器（PC）提供的地址逐条取出指令，并自动按序执行，无须人工干预。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-coa::计算机系统概述 · 计算机系统层次结构 · 选择题::X11",
+      "expected": {
+        "content": "【2015统考真题】计算机硬件能够直接执行的是（）。\nI. 机器语言程序    II. 汇编语言程序    III. 硬件描述语言程序",
+        "answer": {
+          "explanation": "硬件能直接执行的只能是机器语言（二进制编码），汇编语言是增强机器语言的可读性和记忆性的语言，经过汇编后才能被执行。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X05",
+      "expected": {
+        "content": "某基准程序在机器 A 上运行的时间是 20s，而在机器 B 上运行的时间是 16s，那么相对来说，下列给出的结论中，（）是正确的。",
+        "options": {
+          "A": "所有程序在机器 A 上都比在机器 B 上运行速度慢",
+          "B": "机器 B 的速度是机器 A 的 1.25 倍",
+          "C": "机器 A 的速度是机器 B 的 1.25 倍",
+          "D": "机器 A 比机器 B 慢 1.25 倍"
+        },
+        "answer": {
+          "explanation": "机器的速度与基准程序在该机器上的运行时间呈相反关系，因此可知：机器 B 的速度/机器 A 的速度 = 基准程序在机器 A 上的运行时间/基准程序在机器 B 上的运行时间 = 20s÷16s = 1.25。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X19",
+      "expected": {
+        "content": "【2022统考真题】某计算机主频为1GHz，程序P运行过程中，共执行了10000条指令，其中，80%的指令执行平均需1个时钟周期，20%的指令执行平均需10个时钟周期。程序P的平均CPI和CPU执行时间分别是（）。",
+        "answer": {
+          "explanation": "CPI指平均每条指令的执行需要多少个时钟周期。80%的指令执行平均需要1个时钟周期，20%的指令执行平均需要10个时钟周期，因此CPI=80%×1+20%×10=2.8。计算机主频为1GHz，程序P共执行10000条指令，平均每条指令需要2.8个时钟周期，因此CPU执行时"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X06",
+      "expected": {
+        "content": "若 X 为负数，则由[X]补求[-X]补是将（）。",
+        "options": {
+          "A": "[X]补各值保持不变",
+          "B": "[X]补符号位变反，其他各位不变",
+          "C": "[X]补除符号位外，各位变反，末位加 1",
+          "D": "[X]补连同符号位一起变反，末位加 1"
+        },
+        "answer": {
+          "explanation": "不论 X 是正数还是负数，由[X]补求[-X]补的方法是连同符号位一起，每位取反，末位加 1。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X27",
+      "expected": {
+        "content": "【2012统考真题】假定编译器规定int型和short型长度分别为32位和16位，执行下列C语言语句：\nunsigned short x=65530;\nunsigned int y=x;\n得到y的机器数为（）。",
+        "answer": {
+          "explanation": "将一个16位unsigned short型数转换为32位unsigned int型数时，因为都是无符号数，新表示形式的高位用0填充。16位无符号整数所能表示的最大值为65535，其十六进制表示为FFFFH，因此x的十六进制表示为FFFFH－5H=FFFAH，所以y的十六进制表示为0000 FFFAH。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 运算方法和运算电路 · 选择题::X33",
+      "expected": {
+        "answer": {
+          "explanation": "2¹⁵ = 32768，i = 32768 + 9 = 8000H + 9H = 8009H，32 位有符号数 i 的机器数为 0000 8009H。将 32 位有符号数 i 强制转换为 16 位有符号数 si，直接保留机器数的末 16 位即可，因此 si 的机器数为 8009H，真值为 −2¹⁵ + 9 = −32759。将 16 位有符号数 si 强制转换为 32 位有符号数 j，采用符号扩展（si"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 浮点数的表示与运算 · 选择题::X45",
+      "expected": {
+        "content": "【2025统考真题】某32位计算机按字节编址，采用小端方式存放数据，编译器按边界对齐方式为下列C语言结构型数组变量 employee 分配存储空间。\nstruct record {\n    int id;\n    char name[10];\n    int salary;\n}employee[200];\n若 employee 的首地址为 0000 A0B0H，employee[1].id 的机器数为 1234 5678H，则该机器数中的 56H 所在存储单元的地址是（）。",
+        "options": {
+          "A": "0000 A0C3H",
+          "B": "0000 A0C4H",
+          "C": "0000 A0C5H",
+          "D": "0000 A0C6H"
+        },
+        "answer": {
+          "explanation": "首先分析结构体 record 的内存布局：int id 占 4 字节；char name[10] 占 10 字节，为使后续 int salary 对齐到 4 字节边界，需要在 name 后填充 2 字节，使 salary 从 4 的整数倍偏移处开始。因此结构体总大小为 4 + 10 + 2 + 4 = 20 字节。employee[1] 的首地址为 0000 A0B0H + 20 = 0000 A0C4H，id 为其第一个成员，起始地址即为 0000 A0C4H。已知 id 的值为 12345678H，在小端方式下，字节按 78H、56H、34H、12H 的顺序存放，故 56H 位于 0000 A0C5H。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-coa::存储系统 · 存储器概述 · 选择题::X10",
+      "expected": {
+        "content": "下列关于多级存储系统的说法中，正确的有（）。\nI. 多级存储系统是为了降低存储成本\nII. 虚拟存储器中主存和辅存之间的数据调动对任何程序员是透明的\nIII. CPU只能与Cache直接交换信息，CPU与主存交换信息也需要经过Cache",
+        "answer": {
+          "explanation": "主存和辅存之间的数据调动是由硬件和操作系统共同完成的，仅对应用级程序员透明。CPU与主存可直接交换信息。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-coa::存储系统 · 主存储器 · 选择题::X16",
+      "expected": {
+        "content": "下列关于 Flash 存储器特性与应用的说法中，正确的是（）。",
+        "options": {
+          "A": "读写速度一致，均接近 DRAM 的访问速率",
+          "B": "属于易失性存储器，断电后数据丢失",
+          "C": "写操作前需先擦除目标块，故写速慢于读速",
+          "D": "仅能用作辅助存储器（如 U 盘）"
+        },
+        "answer": {
+          "explanation": "Flash 存储器是非易失性存储器，断电后数据不会丢失。其读操作速度较快（接近 RAM），但写入和擦除必须以块为单位进行，且需要先擦除再写入，因此写速显著慢于读速，选项 C 正确。此外，Flash 存储器广泛应用于电脑、手机、智能手表等设备的内部存储，而非限于 U 盘等辅助存储器。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-coa::存储系统 · 主存储器与CPU的连接 · 选择题::X11",
+      "expected": {
+        "content": "【2010统考真题】假定用若干2K×4位的芯片组成一个8K×8位的存储器，则地址0B1FH所在芯片的最小地址是（）。",
+        "answer": {
+          "explanation": "用2K×4位的芯片组成一个8K×8位的存储器，共需8片2K×4位的芯片，分为4组，每组由2片2K×4位的芯片并联组成2K×8位的芯片，各组芯片的地址分配如下：\n第一组（两个芯片并联）：0000H～07FFH。\n第二组（两个芯片并联）：0800H～0FFFH。\n第三组（两个芯片并联）：1000H～17FFH。\n第四组（两个芯片并联）：1800H～1FFFH。\n地址0B1FH所在的芯片属于第二组，所以其所在芯片的最小地址为0800H。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-coa::存储系统 · 虚拟存储器 · 选择题::X01",
+      "expected": {
+        "options": {
+          "A": "不应含有过多的 I/O 操作",
+          "B": "大小不应小于实际的内存容量",
+          "C": "应具有较好的局部性",
+          "D": "顺序执行的指令不应过多"
+        },
+        "answer": {
+          "explanation": "虚拟存储系统利用的是局部性原理，程序应当具有较好的局部性，选项 C 正确。而含有输入、输出操作产生中断，与虚拟存储器无关，选项 A 错误。大小较小但可以多个程序并发执行，也可以发挥虚拟存储器的作用，选项 B 错误。顺序执行的指令应当占较大比重为宜，这样可增强程序的局部性，选项 D 错误。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-coa::指令系统 · 指令系统 · 选择题::X01",
+      "expected": {
+        "answer": {
+          "explanation": "指令集体系结构（ISA）完整定义了软件和硬件之间的接口，是机器语言或汇编语言程序员所应熟悉的。指令系统是计算机硬件的语言系统，这显然和机器语言有关。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-coa::指令系统 · 寻址方式 · 选择题::X12",
+      "expected": {
+        "content": "某计算机的字长为 16 位，主存按字编址。转移指令由两个字节组成，采用相对寻址，第一个字节为操作码字段，第二个字节为相对偏移量字段。若某转移指令所在的主存地址为 4000H，相对偏移量字段的内容为 06H，则该转移指令执行后的 PC 值为（）。",
+        "answer": {
+          "explanation": "主存按字编址，指令字长为 1 个字（2 字节），因此取出该指令后，PC 自动加 1，相对偏移量为 06H，所以该转移指令执行后的 PC 值为 4000H + 06H + 1H = 4007H。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 选择题::X09",
+      "expected": {
+        "content": "下列关于选择结构语句“if(comp_A) then statement_B; else statement_C”对应的机器级代码表示的叙述中，错误的是（）。",
+        "options": {
+          "A": "一定包含一条无条件转移指令",
+          "B": "一定包含一条条件转移指令（分支指令）",
+          "C": "计算 comp_A 的代码段一定在条件转移指令之前",
+          "D": "对应 statement_B 的代码一定在对应 statement_C 的代码之前"
+        },
+        "answer": {
+          "explanation": "在 if 语句的机器级代码中，comp_A 后面紧接着有一个条件转移指令，条件成立则转移到 statement_B，statement_B 中有一个无条件转移指令，会转移到 if-else 的下一条语句，选项 A、B 和 C 正确。statement_B 不一定在 statement_C 之前，这取决于条件转移指令的类型和方向，选项 D 错误。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 控制器的功能和工作原理 · 选择题::X03",
+      "expected": {
+        "answer": {
+          "explanation": "执行公用的取指微程序从主存中取出机器指令后，由机器指令的操作码字段指出各个微程序的入口地址（初始微地址）。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 异常和中断机制 · 选择题::X10",
+      "expected": {
+        "content": "【2015统考真题】内部异常（内中断）可分为故障（fault）、陷阱（trap）和终止（abort）三类。下列有关内部异常的叙述中，错误的是（）。",
+        "answer": {
+          "explanation": "内部异常是指来自CPU内部产生的中断，如非法指令、地址非法、校验错、页面失效、运算溢出和除数为零等，以上都是在指令的执行过程中产生的，选项A正确。内部异常的检测是由CPU自身完成的，不必通过外部的某个信号通知CPU，选项B正确。内部异常不能被屏蔽，一旦出现应立即处理，选项C正确。对于非法指令、除数为零等异常，无法通过异常处理程序恢复故障，因此不能回到原断点执行，必须终止进程的执行，选项D错误。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 指令流水线 · 选择题::X19",
+      "expected": {
+        "content": "【2009 统考真题】某计算机的指令流水线由 4 个功能段组成，指令流经各功能段的时间（忽略各功能段之间的缓存时间）分别为 90ns、80ns、70ns 和 60ns，则该计算机的 CPU 周期至少是（）。"
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X14",
+      "expected": {
+        "content": "下列信号中，可在系统总线中的控制总线上传输的有（）。\nI. 存储器和 I/O 设备的地址信息\nII. 存储器和 I/O 设备的时序信号、控制信号\nIII. 存储器和 I/O 设备的响应信号\nIV. 存储器中存放的数据",
+        "options": {
+          "A": "I 和 IV",
+          "B": "II 和 III",
+          "C": "I、II 和 III",
+          "D": "II、III 和 IV"
+        },
+        "answer": {
+          "explanation": "控制总线主要用来传输计算机内各种控制信号，控制信号包括存储器和 I/O 设备的时序信号和响应信号，说法 II、III 正确。存储器和 I/O 设备的地址信息通过地址总线传输，说法 I 错误。存储器中存放的数据通过数据总线传输，说法 IV 错误。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X22",
+      "expected": {
+        "content": "【2019统考真题】某计算机采用3通道存储器总线，配套的内存条型号为DDR3-1333，即内存条所接插的存储器总线的工作频率为1333MHz，总线宽度为64位，则存储器总线的总带宽大约是（）。",
+        "answer": {
+          "explanation": "由题目可知，计算机采用3通道存储器总线，存储器总线的工作频率为1333MHz，即1s内传送1333M次数据，总线宽度为64位即单条总线工作一次可传输8字节，因此存储器总线的总带宽为3×8×1333MB/s，约为32GB/s。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X08",
+      "expected": {
+        "answer": {
+          "explanation": "在全互锁、半互锁和不互锁三种“握手”方式中，只有不互锁方式的请求信号和回答信号没有相互的制约关系，主设备发出请求信号后，不必等待回答信号的到来，便自己撤销了请求信号，所以速度最快。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X09",
+      "expected": {
+        "content": "在统一编址的情况下，就I/O设备而言，其对应的I/O地址不可取的是（）。",
+        "answer": {
+          "explanation": "在统一编址方式下，指令靠地址码区分内存和I/O设备，若随意在地址的任何地方编址，则会给编程造成极大的混乱，选项D错误。选项A、B、C的做法都是可取的。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-coa::输入/输出系统 · I/O方式 · 选择题::X01",
+      "expected": {
+        "answer": {
+          "explanation": "当有多个中断请求同时出现时，中断服务程序必须能从中选出当前最需要给予响应的且最重要的中断请求，这就需要预先对所有的中断进行优先级排队，这个工作可由中断判优逻辑来完成，排队的规则可由软件通过对中断屏蔽寄存器进行设置来确定。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-coa::输入/输出系统 · I/O方式 · 选择题::X21",
+      "expected": {
+        "answer": {
+          "explanation": "在DMA方式中，由外部设备向DMA控制器发出DMA请求信号，然后由DMA控制器向CPU发出总线请求信号。DMA控制器在传送期间有总线控制权，此时CPU不能响应I/O中断。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-coa::输入/输出系统 · I/O方式 · 选择题::X31",
+      "expected": {
+        "answer": {
+          "explanation": "DMA方式主要用于磁盘等高速设备的成批数据传送，这类高速设备的记录方式多采用数据块组织方式，因此每启动一次DMA传送，外设和主机之间就完成一个数据块的数据传送。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-coa::输入/输出系统 · I/O方式 · 选择题::X49",
+      "expected": {
+        "answer": {
+          "explanation": "中断I/O方式适用于字符型设备，此类设备的特点是数据传输速率慢，以字符或字为单位进行传输，选项A正确。若采用中断I/O方式，当外设准备好数据后，向CPU发出中断请求，CPU暂时中止现行程序，转去运行中断服务程序，由中断服务程序完成数据传送，选项B正确。若外设准备数据的时间小于中断处理时间，则可能导致数据丢失，以输入设备为例，设备为进程准备的数据会先写入设备控制器的缓冲区（缓冲区大小有限），缓冲区每写满一次，就向CPU发出一次中断请求，CPU响应并处理中断的过程，就是将缓冲区中的数据“取走”的过程，因此若外设准备数据的时间小于中断处理时间，则可能导致外设往缓冲区写入数据的速度快于CPU从缓冲区取走数据的速度，从而导致缓冲区的数据被覆盖，进而导致数据丢失，选项C错误。若采用中断I/O方式，则外设为某进程准备数据时，可令该进程阻塞，CPU运行其他进程，选项D正确。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-net::计算机网络体系结构 · 计算机网络概述 · 选择题::X01",
+      "expected": {
+        "answer": {
+          "explanation": "计算机网络是由自治计算机互连起来的集合体，其中包含三个关键点：自治计算机、互连、集合体。自治计算机由软件和硬件两部分组成，能完整地实现计算机的各种功能；互连是指计算机之间能实现相互通信；集合体是指所有使用通信线路及互联设备连接起来的自治计算机的集合。选项C和D分别指多机系统和分布式系统。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-net::计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题::X02",
+      "expected": {
+        "answer": {
+          "explanation": "将用户数据分成一个个数据块传输，因为每块均需加入控制信息，所以实际上会使有效数据在PDU中所占的比例更小。其他各项均为其优点。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-net::计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题::X15",
+      "expected": {
+        "answer": {
+          "explanation": "OSI参考模型的数据链路层向上提供可靠的传输服务，在差错检测的基础上，增加了帧编号、确认和重传机制，因此保证了数据正确的顺序和完整性。选项A是应用层的功能，选项B是物理层的功能，选项C是网络层的功能。学习3.1节后，对本题的理解将更深刻。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-net::计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题::X22",
+      "expected": {
+        "answer": {
+          "explanation": "数据链路层在分组上除增加源和目的物理地址外，也增加控制信息；传输层的PDU不称为帧；表示层不负责将高层协议产生的数据分割成数据段，负责增加相应源和目的端口信息的应是传输层。选项B正确描述了OSI参考模型中数据的封装过程，数据经过网络层后，只是增加了第三层PCI。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-net::计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题::X27",
+      "expected": {
+        "answer": {
+          "explanation": "在同一系统中，相邻两层的实体交换信息的逻辑接口称为服务访问点（SAP），N层的SAP是N+1层可以访问N层服务的地方。SAP用于区分不同的服务类型。在5层体系结构中，数据链路层的服务访问点为帧的“类型”字段，网络层的服务访问点为IP数据报的“协议”字段，传输层的服务访问点为“端口号”字段，应用层的服务访问点为“用户接口”。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-net::物理层 · 通信基础 · 选择题::X10",
+      "expected": {
+        "content": "有一个无噪声的8kHz信道，每个信号包含8级，每秒采样24k次，那么可以获得的最大传输速率是（）。",
+        "answer": {
+          "explanation": "无噪声的信号应该满足奈奎斯特定理，即最大数据传输速率=2W log₂V 比特/秒。将题中的数据代入，得到答案是48kb/s。注意题中给出的每秒采样24kHz是无意义的，因为超过了波特率的上限2W=16kBaud，所以选项D是错误答案。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-net::物理层 · 通信基础 · 选择题::X12",
+      "expected": {
+        "answer": {
+          "explanation": "根据香农定理，最大数据率=W log₂(1+S/N)=4000×log₂(1+127)=28000b/s，容易误选A。注意"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-net::物理层 · 传输介质 · 选择题::X09",
+      "expected": {
+        "content": "某网络在物理层规定，信号的电平用+10V～+15V 表示二进制 0，用-10V～-15V 表示二进制 1，电线长度限于 15m 以内，这体现了物理层接口的（）。",
+        "answer": {
+          "explanation": "本题易误选功能特性。规定各条线上的电压范围，以及电缆长度的限制，属于电气特性。而功能特性指明某条线上出现的某一电平的电压表示何种意义，以及每条线的功能（数据线、控制线、时钟线）。例如，数据线上的电压+11V 表示二进制 1，就属于功能特性。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-net::数据链路层 · 流量控制与可靠传输机制 · 选择题::X03",
+      "expected": {
+        "content": "在简单的停止-等待协议中，当帧出现丢失时，发送方会永远等待下去，解决这种死锁现象的办法是（）。",
+        "options": {
+          "A": "差错检验",
+          "B": "帧序号",
+          "C": "NAK 机制",
+          "D": "超时机制"
+        },
+        "answer": {
+          "explanation": "在停止-等待协议中，发送方设置了计时器，在发送一个帧后，发送方等待确认，若在计时器计满时仍未收到确认，则再次发送相同的帧，以免陷入永久的等待。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-net::数据链路层 · 介质访问控制 · 选择题::X04",
+      "expected": {
+        "content": "TDM 所用传输介质的性质是（）。（注，本题选项中的带宽是指信号的频率范围。）",
+        "answer": {
+          "explanation": "本题的关键是理解 TDM（时分复用）的原理和特点。TDM 在发送端将不同用户的信号相互交织在不同的时间片内，沿同一个信道传输，在接收端再将各个时间片内的信号提取出来，还原成原始信号。为了实现 TDM，必须满足如下条件：① 介质的位速率（每秒传输的二进制位数）大于单个信号的位速率；② 介质的带宽（所能传输信号的最高频率与最低频率之差）大于结合信号的带宽（所有信号经过调制后形成的复合信号的带宽）。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-net::数据链路层 · 介质访问控制 · 选择题::X16",
+      "expected": {
+        "answer": {
+          "explanation": "在令牌环网络中，一个站点收到自己发出去的数据帧后，不再转发该帧，而重新产生一个令牌，然后将该令牌发送给下一个站点。这样可以回收数据帧，避免环路上的冗余，并释放传输权限。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-net::数据链路层 · 局域网 · 选择题::X39",
+      "expected": {
+        "content": "【2012统考真题】以太网的 MAC 协议提供的是（）。",
+        "answer": {
+          "explanation": "考虑到局域网信道质量好，以太网采取了两项重要的措施来使通信更简单：① 采用无连接的工作方式；② 不对发送的数据帧进行编号，也不要求对方发回确认。因此，以太网提供的服务是不可靠的服务，即尽最大努力的交付。差错的纠正由高层完成。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-net::数据链路层 · 数据链路层设备 · 选择题::X16",
+      "expected": {
+        "options": {
+          "A": "记录帧的源 MAC 地址与该帧进入交换机的接口号",
+          "B": "记录帧的目的 MAC 地址与该帧进入交换机的接口号",
+          "C": "记录分组的源 IP 地址与该分组进入交换机的接口号",
+          "D": "记录分组的目的 IP 地址与该分组进入交换机的接口号"
+        },
+        "answer": {
+          "explanation": "以太网交换机的自学习功能是指记录帧的源 MAC 地址与该帧进入交换机的接口号，并将这些信息存储在交换机的交换表中，以便于后续的转发决策。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-net::网络层 · 网络层的功能 · 选择题::X04",
+      "expected": {
+        "options": {
+          "A": "目的网络和到达目的网络的完整路径",
+          "B": "所有目的主机和到达该目的主机的完整路径",
+          "C": "目的网络和到达该目的网络路径上的下一个路由器的 IP 地址",
+          "D": "目的网络和到达该目的网络路径上的下一个路由器的 MAC 地址"
+        },
+        "answer": {
+          "explanation": "路由器是网络层设备，其任务是转发分组。每个路由器都维护一个路由表以决定分组的转发。为了提高路由器的查询效率并减少路由表维护的内容，路由表只保留到达目的地址的下一个路由器的地址，而不保留整个传输路径的信息。另外，采用目的网络可使每个路由表项包含很多目的主机 IP 地址，这样可减少路由表中的项目。因此，路由表通常包含目的网络和到达该目的网络路径上的下一个路由器的 IP 地址。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X35",
+      "expected": {
+        "content": "设有 4 条路由 172.18.129.0/24、172.18.130.0/24、172.18.132.0/24 和 172.18.133.0/24，若进行路由聚合，则能覆盖这 4 条路由的地址是（）。",
+        "answer": {
+          "explanation": "4 条路由的前 24 位（3 个字节）为网络前缀，前 2 个字节都一样，因此只需要比较第 3 个字节即可，129＝10000001，130＝10000010，132＝10000100，133＝10000101。前 5 位是完全相同的，因此聚合后的网络的掩码中，1 的数量应该是 8＋8＋5＝21，聚合后的网络的第 3 个字节应该"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X65",
+      "expected": {
+        "content": "【2021统考真题】现将一个 IP 网络划分为 3 个子网，若其中一个子网是 192.168.9.128/26，则下列网络中不可能是另外两个子网之一的是（）。",
+        "answer": {
+          "explanation": "划分子网的原则是要求划分出来的子网的 IP 地址空间互不重叠，且原来的 IP 地址空间不遗漏，求解本题最好的方法是代入选项，观察是否可将原 IP 地址空间分割为 3 个互不重叠的子网。根据题意，将 IP 网络划分为 3 个子网。其中一个是 192.168.9.128/26。可简写成 10/26（省略前面"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-net::网络层 · 路由算法与路由协议 · 选择题::X23",
+      "expected": {
+        "content": "某分组交换网络的拓扑如下图所示，各路由器使用 OSPF 协议且均已收敛，各链路的度量已在图中标注。假设各段链路的带宽均为 100Mb/s，分组长度为 1000B，其中分组的首部长度为 20B。若主机 A 向主机 B 发送一个大小为 980000B 的文件，忽略分组的传播时延和封装/解封时间，从 A 发送开始到 B 接收完毕为止，需要的时间是（）。",
+        "options": {
+          "A": "80.08ms",
+          "B": "80.16ms",
+          "C": "80.32ms",
+          "D": "80.64ms"
+        },
+        "answer": {
+          "explanation": "根据 OSPF 算法，从 A 到 B 转发经过的链路代价依次为 2、3、1、1、2，一共经过 4 个路由"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-net::网络层 · IP多播 · 选择题::X03",
+      "expected": {
+        "content": "以太网多播 IP 地址 224.215.145.230 应该映射到的多播 MAC 地址是（）。",
+        "answer": {
+          "explanation": "以太网多播地址块的范围是 01-00-5E-00-00-00～01-00-5E-7F-FF-FF，而且在每个地址中，只有后 23 位可用多播。这样，只能和 D 类 IP 地址中的后 23 位有一一对应关系。D 类 IP 地址可供分配的有 28 位，可见这 28 位中的前 5 位不能用来构成以太网硬件地址。215 的二进制为 11010111，其中，在映射过程中最高位为 0，因此 215.145.230 映射的二进制为 01010111.10010001.11100110，"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-net::传输层 · UDP · 选择题::X04",
+      "expected": {
+        "content": "UDP 数据报中的长度字段（）。",
+        "answer": {
+          "explanation": "长度字段记录 UDP 数据报的长度（包括首部和数据部分），以字节为单位。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-net::传输层 · UDP · 选择题::X14",
+      "expected": {
+        "content": "【2014统考真题】下列关于 UDP 的叙述中，正确的是（）。\nI. 提供无连接服务  II. 提供复用/分用服务  III. 通过差错检验，保障可靠数据传输",
+        "options": {
+          "A": "仅 I",
+          "B": "仅 I、II",
+          "C": "仅 II、III",
+          "D": "I、II、III"
+        },
+        "answer": {
+          "explanation": "UDP 提供无连接服务（说法 I 正确），并在发送/接收时通过端口号实现复用与分用功能（说法 II 正确）。虽然 UDP 首部包含检验和字段用于差错检测，但其仅能发现传输错误并丢弃出错报文，不具备重传、确认等机制，无法保障可靠数据传输，可靠性需由应用层实现。因此，说法 III 错误。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X20",
+      "expected": {
+        "content": "TCP 采用三报文握手建立连接，其中第三个报文是（）。",
+        "options": {
+          "A": "TCP 连接请求",
+          "B": "对 TCP 连接请求的确认",
+          "C": "对 TCP 连接请求确认的确认",
+          "D": "TCP 普通数据"
+        },
+        "answer": {
+          "explanation": "TCP 采用三报文握手建立连接，其中第一个报文是 TCP 连接请求，第二个报文是对 TCP 连接请求的确认，第三个报文是对 TCP 连接请求确认的确认。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X29",
+      "expected": {
+        "content": "一个 TCP 连接的数据传输阶段，若发送端的发送窗口值由 2000 变为 3000，则意味着发送端可以（）。",
+        "options": {
+          "A": "在收到一个确认之前可以发送 3000 个 TCP 报文段",
+          "B": "在收到一个确认之前可以发送 1000B",
+          "C": "在收到一个确认之前可以发送 3000B",
+          "D": "在收到一个确认之前可以发送 2000 个 TCP 报文段"
+        },
+        "answer": {
+          "explanation": "TCP 提供的是可靠的字节流传输服务，使用窗口机制进行流量控制与拥塞控制。TCP 的滑动窗口机制是面向字节的，因此窗口大小的单位为字节。假设发送窗口的大小为 N，这意味着发送端可以在没有收到确认的情况下连续发送 N 字节。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X51",
+      "expected": {
+        "content": "【2019 统考真题】若主机甲主动发起一个与主机乙的 TCP 连接，甲、乙选择的初始序号分别为 2018 和 2046，则第三次握手 TCP 段的确认序号是（）。",
+        "answer": {
+          "explanation": "三次握手过程：甲发 SYN(seq = 2018)；乙回 SYN + ACK(seq = 2046, ack = 2019)；甲再发 ACK。第三次握手的确认序号应为乙的初始序号加 1，即 2046 + 1 = 2047。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-net::应用层 · 网络应用模型 · 选择题::X03",
+      "expected": {
+        "content": "下面关于客户/服务器模型的描述，（）存在错误。\nI. 客户端必须提前知道服务器的地址，而服务器则不需要提前知道客户端的地址\nII. 客户端主要实现如何显示信息与收集用户的输入，而服务器主要实现数据的处理\nIII. 浏览器显示的内容来自服务器\nIV. 客户端是请求方，即使连接建立后，服务器也不能主动发送数据",
+        "options": {
+          "A": "I、IV",
+          "B": "III、IV",
+          "C": "仅 IV",
+          "D": "仅 III"
+        },
+        "answer": {
+          "explanation": "在连接未建立前，服务器在某一个端口上监听。客户端是连接的请求方，客户端必须事先知道服务器的地址才能发出连接请求，而服务器则从客户端发来的数据包中获取客户端的地址。一旦连接建立，服务器就能响应客户端请求的内容，服务器也能主动发送数据给客户端，用于一些消息的通知，如一些错误的通知。所以只有说法 IV 错误。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X13",
+      "expected": {
+        "content": "主机通过超链接 http://www.cskaoyan.com/index.html 请求浏览 Web 页 index.html，浏览器使用流水线方式的 HTTP/1.1 协议，该 Web 页引用了同一网站上的 7 个小图像文件，假设主机到本地域名服务器和互联网上各服务器的往返时延均为 1RTT。本地域名服务器只提供递归查询服务，其他域名服务器只提供迭代查询服务，忽略其他所有时延，则从点击超链接开始到浏览器接收到所有内容为止，所需的往返时间 RTT 数最多是（）。",
+        "answer": {
+          "explanation": "主机点击超链接获取 html 页面，大致分为以下过程：① 向本地域名服务器发送递归查询请求，若本地域名服务器中有相应的 IP 地址缓存，则直接向主机返回相应的 IP 地址，只需 1RTT。否则，本地域名服务器还需要依次向根域名服务器、com 顶级域名服务器、cskaoyan.com 域名服务器发送迭代查询请求，查询到相应的 IP 地址最多需要 4RTT。② 建立初始 TCP 连接需要 1RTT，请求并接收 Web 页需要 1RTT，支持流水线传输方式，因此在收到 Web 页后可以同时发送 7 个小图像文件的请求，第②步的总往返时间是 1RTT（建立连接）+ 1RTT（请求 Web 页）+ 1RTT（请求 7 个小"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X03",
+      "expected": {
+        "answer": {
+          "explanation": "多道程序的运行环境比单道程序的运行环境更加复杂。引入多道程序后，程序的执行就失去了封闭性和顺序性。程序执行因为共享资源及相互协同的原因产生了竞争，相互制约。考虑到竞争的公平性，程序的执行是断续的。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X15",
+      "expected": {
+        "content": "用户在程序中试图读某文件的第 100 个逻辑块，使用操作系统提供的（）接口。",
+        "answer": {
+          "explanation": "操作系统通过系统调用向用户程序提供服务，文件 I/O 需要在内核态运行。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X23",
+      "expected": {
+        "content": "【2016 统考真题】异常是指令执行过程中在处理器内部发生的特殊事件，中断是来自处理器外部的请求事件。下列关于中断或异常情况的叙述中，错误的是（）。",
+        "options": {
+          "A": "“访存时缺页”属于中断",
+          "B": "“整数除以零”属于异常",
+          "C": "“DMA 传送结束”属于中断",
+          "D": "“存储保护错”属于异常"
+        },
+        "answer": {
+          "explanation": "中断是指来自 CPU 执行指令以外事件，如设备发出的 I/O 结束中断，表示设备输入/输出已完成，希望处理机能够向设备发出下一个输入/输出请求，同时让完成输入/输出后的程序继续运行。异常也称内中断，指源自 CPU 执行指令内部的事件。选项 A 错误。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-os::计算机系统概述 · 虚拟机 · 选择题::X19",
+      "expected": {
+        "content": "【2013 统考真题】计算机开机后，操作系统最终被加载到（）。",
+        "answer": {
+          "explanation": "系统开机后，操作系统的程序会被自动加载到内存中的系统区，这段区域是 RAM。部分未复习计组的读者对该内容可能不太熟悉，但熟悉了各类存储介质后，解答本题并不难。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-os::进程与线程 · 进程与线程简介 · 选择题::X35",
+      "expected": {
+        "answer": {
+          "explanation": "线程是进程内一个相对独立的执行单元，但不能脱离进程单独运行，只能在进程中运行。引入线程是为了减少程序执行时的时空开销。一个进程可包含一个或多个线程。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-os::进程与线程 · 进程与线程简介 · 选择题::X59",
+      "expected": {
+        "content": "【2011 统考真题】在支持多线程的系统中，进程 P 创建的若干线程不能共享的是（）。",
+        "options": {
+          "A": "进程 P 的代码段",
+          "B": "进程 P 中打开的文件",
+          "C": "进程 P 的全局变量",
+          "D": "进程 P 中某线程的栈指针"
+        },
+        "answer": {
+          "explanation": "进程是资源分配的基本单位，线程是 CPU 调度的基本单位。进程的代码段、进程打开的文件、进程的全局变量等都是进程的资源，唯有进程中某线程的栈指针（包含在线程 TCB 中）是属于线程的，属于进程的资源可以共享，属于线程的栈指针是独享的，对其他线程透明。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-os::进程与线程 · 同步与互斥 · 选择题::X16",
+      "expected": {
+        "content": "用 V 操作唤醒一个等待进程时，被唤醒进程变为（）态。"
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-os::进程与线程 · 死锁 · 选择题::X34",
+      "expected": {
+        "content": "【2009 统考真题】某计算机系统中有 8 台打印机，由 K 个进程竞争使用，每个进程最多需要 3 台打印机。该系统可能发生死锁的 K 的最小值是（）。",
+        "answer": {
+          "explanation": "这类题可用到组合数学中鸽巢原理的思想。考虑最极端的情况，因为每个进程最多需要 3 台打印机，若每个进程已经占有了 2 台打印机，则只要还有多的打印机，总能满足一个进程达到 3 台的条件，然后顺利执行，所以将 8 台打印机分给 K 个进程，每个进程有 2 台打印机，这个情况就是极端情况，K 为 4。或者，假设 M 是打印机的数量，K 是进程的数量，R 是每个进程最多需要打印机的数量。根据死锁公式逆推可得，若 M≤K(R-1)，则系统可能发生死锁。将本题的数"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 内存管理概念 · 选择题::X46",
+      "expected": {
+        "answer": {
+          "explanation": "虽然段页式存储管理的内存地址结构分为段号、段内页号和页内地址三部分，但分页是操作系统的行为，用户不用指出页内偏移量的位数；而分段之间是独立的，且段长不定长，需指出段号所占的位数。因此，当采用段页式存储管理时，内存地址结构仍然是二维的。而在分页存储管理中，作业地址空间是一维的，即单一的线性地址空间，程序员只需要一个整数来表示地址。简言之，确定一个地址需要几个参数，作业地址空间就是几维的。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X03",
+      "expected": {
+        "answer": {
+          "explanation": "缺页中断是访存指令引起的，说明所要访问的页面不在内存中，进行缺页中断处理并调入所要访问的页后，访存指令显然应该重新执行。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X13",
+      "expected": {
+        "content": "假设某个进程分配有4个页框，每个页框大小为128个字（一个整数占一个字）。进程的代码段正好可以存放在一页中，而且总是占用0号页框。数据会在其他3个页框中换进或换出。数组X为按行优先存储，则执行该进程会发生（）次缺页中断。\nint X[64][64];\nfor(int j=0;j<64;j++)\n    for(int i=0;i<64;i++)\n        X[i][j]=0;",
+        "answer": {
+          "explanation": "数组大小为64×64，一个页框可以存放两行数据。当访问X[0][0]时，发生第一次缺页中断，此时调入前两行数据，之后访问X[1][0]，不发生缺页中断，因为已被调入内存；当访问X[2][0]时，又发生缺页中断；同理，访问X[3][0]时不发生缺页中断。不难发现，每访问两个元素就发生一次缺页中断，共有64×64=4096个元素，因此共发生2048次缺页中断。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X44",
+      "expected": {
+        "content": "【2011统考真题】当系统发生抖动时，可以采取的有效措施是（）。\nI. 撤销部分进程    II. 增加磁盘交换区的容量\nIII. 提高用户进程的优先级",
+        "answer": {
+          "explanation": "在具有对换功能的操作系统中，通常把外存分为文件区（用于存放文件）和对换区（用于存放从内存换出的进程）。抖动是指刚刚被换出的页很快又要被访问，为此又要换出其他页，而该页又很快被访问，如此频繁地置换页面，以致大部分时间都花在页面置换上，导致系统性能下降。撤销部分进程可以减少所要用到的页面数，防止抖动。对换区大小和进程优先级都与抖动无关。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X07",
+      "expected": {
+        "answer": {
+          "explanation": "A、B和C项的同名文件都有不同的路径名，因此不会造成文件名重名问题。在同一个磁盘的同一目录下，若两个文件名重名，则它们具有相同的路径名，因此无法区别。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X20",
+      "expected": {
+        "answer": {
+          "explanation": "通常用户可以根据需要来确定文件的逻辑结构，而文件的物理结构是由操作系统的设计者根据文件存储器的特性来确定的，一旦确定，就由操作系统管理。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X47",
+      "expected": {
+        "answer": {
+          "explanation": "对于这道题，只要能区分用户的访问权限和用户优先级，就能得到正确的答案。用户访问权限是指用户有没有权限访问该文件，而用户优先级是指在多个用户同时请求该文件时应该先满足谁。比如，图书馆的用户排队借一本书，某用户可能有更高的优先级，即他排在队伍的前面，但有可能轮到他时被告知他没有借阅那本书的权限。\n文件的属性包括保存在FCB中对文件访问的控制信息。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X57",
+      "expected": {
+        "content": "【2013统考真题】为支持CD-ROM中视频文件的快速随机播放，播放性能最好的文件数据块组织方式是（）。",
+        "answer": {
+          "explanation": "为了实现快速随机播放，要保证最短的查询时间，即不能选取链表和索引结构，因此连续结构最优。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-os::文件管理 · 文件系统 · 选择题::X10",
+      "expected": {
+        "content": "若用8个字（字长32位）组成的位示图管理内存，即位示图有8行、32列，行号和列号均从1开始，则块号为100的内存块所对应位示图的位置是（）。",
+        "answer": {
+          "explanation": "首先求出块号100所在的行号，1～32在行号1中，33～64在行号2中，65～96在行号3中，97～128在行号4中，所以块号100在行号4中；然后求出块号100在行号4中的哪列，行号4的第1列是块号97，以此类推，块号100在行号4中的第4列。另解，行号row和列号col分别为\nrow=(100-1)DIV 32+1=4"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-os::输入/输出管理 · I/O管理概述 · 选择题::X06",
+      "expected": {
+        "answer": {
+          "explanation": "DMA是一种不经过CPU而直接从主存存取数据的数据交换模式，它在I/O设备和主存之间建立了一条直接数据通路，如磁盘。当然，这条数据通路只是逻辑上的，实际并未直接建立一条"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-os::输入/输出管理 · 设备独立性软件 · 选择题::X05",
+      "expected": {
+        "answer": {
+          "explanation": "支持双向发送和接收数据的设备（如网卡等）应使用双缓冲区，双缓冲区可以实现同一时刻的双向数据传输，提高设备的效率和利用率。单缓冲区只能实现单向数据传输。多缓冲区和缓冲池用于提高I/O性能的技术，但不是必需的，也不一定适合所有的双向设备。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-os::输入/输出管理 · 设备独立性软件 · 选择题::X32",
+      "expected": {
+        "content": "下列关于设备驱动程序的说法中，正确的是（）。\nI. 设备驱动程序负责处理与设备相关的中断处理过程\nII. 驱动程序全部使用汇编语言编写，没有使用高级语言编写\nIII. 设备驱动程序负责处理磁盘调度\nIV. 设备驱动程序与设备密切相关，可以在任意操作系统运行",
+        "options": {
+          "A": "II、III、IV",
+          "B": "I、III",
+          "C": "III、IV",
+          "D": "I、II、III"
+        },
+        "answer": {
+          "explanation": "不同厂家的设备通常提供不同的驱动程序，对应不同的中断处理，因此需要驱动程序来完成，说法I正确。驱动程序仅有一部分需要用汇编语言编写，其余部分可用高级语言编写，说法II错误。不同型号的磁盘的调度方式不一定相同，磁盘调度由磁盘驱动程序完成，说法III正确。不同的操作系统有不同的驱动程序接口，因此驱动程序要根据操作系统的要求进行定制，说法IV错误。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-os::输入/输出管理 · 磁盘和固态硬盘 · 选择题::X02",
+      "expected": {
+        "answer": {
+          "explanation": "磁盘是可共享设备（分时共享），是指某段时间内可以有多个用户进行访问。但某一时刻只能有一个作业可以访问。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-os::输入/输出管理 · 磁盘和固态硬盘 · 选择题::X16",
+      "expected": {
+        "content": "假设磁盘有100个柱面，每个柱面上有8个磁道，每个磁道有8个扇区。文件A含有6400个逻辑记录，逻辑记录大小与扇区大小一致，该文件以顺序结构的形式存放在磁盘上。文件的第0个逻辑记录存放在磁盘地址（0号柱面、0号盘面、0号扇区）中，则磁盘地址（78号柱面、6号盘面、6号扇区）中存放了该文件的第（）个逻辑记录。",
+        "answer": {
+          "explanation": "每个柱面上有8个磁道（表示有8个磁头），每个磁道有8个扇区，因此每个柱面有8×8=64个扇区。由题意可知，柱面号、盘面号、扇区号和逻辑记录编号都是从0开始的，因此78号柱面的6号磁道的6号扇区存放的是文件的第78×64+6×8+6=5046个逻辑记录。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-ds::线性表 · 线性表的链式表示 · 选择题::X13",
+      "expected": {
+        "content": "通过含有n（n>1）个元素的数组a，采用头插法建立单链表L，则L中的元素次序（）。",
+        "answer": {
+          "explanation": "当采用头插法建立单链表时，数组后面的元素插入到单链表L的最前端，所以L中的元素次序与数组a的元素次序相反。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-ds::树与二叉树 · 树与二叉树的应用 · 选择题::X22",
+      "expected": {
+        "content": "【2023统考真题】在由6个字符组成的字符集S中，各字符出现的频次分别为3,4,5,6,8,10，为S构造的哈夫曼编码的加权平均长度为（）。",
+        "answer": {
+          "explanation": "构建哈夫曼树的过程如下图所示。先将权值3与4合并为7，序列变为5,6,7,8,10；再将5与6合并为11，序列变为7,8,10,11；再将7与8合并为15，序列变为10,11,15。其后合并步骤与加权平均长度算式被裁出图外。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-ds::排序 · 交换排序 · 选择题::X11",
+      "expected": {
+        "content": "对下列4个序列，以第一个关键字为基准用快速排序算法进行排序，在第一趟过程中移动记录次数最多的是（）。",
+        "answer": {
+          "explanation": "对各序列分别执行一趟快速排序，可做如下分析（以选项A为例）：枢轴值为92，因此35移动到第一个位置，96移动到第六个位置，30移动到第二个位置，再将枢轴值移动到30所在的单元，即第五个位置，所以选项A中序列移动的次数为4。同样，可以分析出选项B中序列的移动次数为8，选项C中序列的移动次数为4，选项D中序列的移动次数为2。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X19",
+      "expected": {
+        "answer": {
+          "explanation": "组相联映射的主存地址结构为：标记 +Cache 组号+块内地址。Cache 块大小增加一倍，\n则字块内地址的位数增加1位。Cache 组数=(Cache总容量/Cache块大小)/n，所以Cache 组数减\n少一半；Cache 组号=主存块号MODCache 组数，所以Cache 组号也减少1位。主存总容量不\n变，则主存地址总长度不变，字块内地址和Cache"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-net::应用层 · 文件传输协议 · 选择题::X11",
+      "expected": {
+        "content": "FTP支持两种方式的传输：ASCII方式和Binary（二进制）方式。通常文本文件的传输采用（）方式，而图像、声音等非文本文件采用（）方式传输。",
+        "answer": {
+          "explanation": "FTP支持ASCII和Binary两种方式的传输，非加密文本文件通常采用ASCII方式传输，而图像、声音等非文本文件采用Binary方式传输。本题可能有所超纲，了解即可。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-net::应用层 · 电子邮件 · 选择题::X05",
+      "expected": {
+        "answer": {
+          "explanation": "用户代理使用POP3协议接收邮件。通常用户在配置电子邮件用户代理时需要设置邮件服务器的POP3地址（如pop3.gmail.com），若这个地址设置错误，则会导致用户无法接收邮件。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-os::进程与线程 · CPU调度 · 选择题::X37",
+      "expected": {
+        "answer": {
+          "explanation": "响应比=(等待时间+执行时间)/执行时间。它综合考虑了每个进程的等待时间和执行时间，对于同时到达的长进程和短进程，短进程会优先执行，以提高系统吞吐量；而长进程的响应比可以随等待时间的增加而提高，不会产生进程无法调度的情况。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 内存管理概念 · 选择题::X16",
+      "expected": {
+        "content": "某页式存储管理系统中，按字节编址，页表内容如下表所示。若页的大小为4KB，则地址转换机构将逻辑地址4097转换成的物理地址为（）。（地址均用十进制表示。）\n页号 页框号\n0 2\n1 1\n3 0\n4 5",
+        "answer": {
+          "explanation": "逻辑地址4097对应的页号为4097/4096=1，页内偏移量为4097%4096=1。由页表可知，页号1对应的页框号也是1，页大小为4KB，因此转换成的物理地址为1×4K+1=4097。"
+        }
+      },
+      "reason": "vision_dual_consensus",
+      "evidence_sha256": null
+    }
+  ]
+}

@@ -5,6 +5,9 @@
   var ink = global.ViewerScratchInk;
   if (!ink) return;
   var controllers = [];
+  var SPLIT_KEY = 'vsp:split';
+  var MIN_RATIO = 0.3;
+  var MAX_RATIO = 0.85;
 
   function button(label, className) {
     var element = document.createElement('button');
@@ -19,6 +22,107 @@
     var theme = document.documentElement.getAttribute('data-theme');
     if (theme) return theme === 'dark';
     return global.matchMedia && global.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+
+  function stacked() {
+    return global.matchMedia && global.matchMedia('(max-width: 767px) and (orientation: portrait)').matches;
+  }
+
+  function questionBody(controller) {
+    if (controller.kind === 'politics') return document.getElementById('pracBody');
+    return controller.split.querySelector('.modal-body');
+  }
+
+  function storedRatio() {
+    try {
+      var raw = global.localStorage.getItem(SPLIT_KEY);
+      if (!raw) return null;
+      var value = parseFloat(raw);
+      if (!isFinite(value)) return null;
+      return Math.min(MAX_RATIO, Math.max(MIN_RATIO, value));
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function storeRatio(ratio) {
+    try {
+      global.localStorage.setItem(SPLIT_KEY, String(ratio));
+    } catch (error) { /* storage full/blocked: 草稿比例不记忆也不影响使用 */ }
+  }
+
+  function clearSplitInline(controller) {
+    controller.split.style.gridTemplateColumns = '';
+    controller.split.style.gridTemplateRows = '';
+    var body = questionBody(controller);
+    if (body) body.style.maxHeight = '';
+  }
+
+  function applyRatio(controller, ratio) {
+    if (ratio == null) return;
+    var question = Math.round((1 - ratio) * 1000) / 1000;
+    var scratch = Math.round(ratio * 1000) / 1000;
+    var body = questionBody(controller);
+    if (stacked()) {
+      // 竖屏堆叠：改行模板让草稿拿到对应份额，并放开题目区 42dvh 的 CSS 上限。
+      controller.split.style.gridTemplateColumns = '';
+      if (body) body.style.maxHeight = 'none';
+      controller.split.style.gridTemplateRows = controller.kind === 'politics'
+        ? 'auto auto minmax(0,' + question + 'fr) auto 8px minmax(140px,' + scratch + 'fr)'
+        : 'auto minmax(0,' + question + 'fr) auto 8px minmax(140px,' + scratch + 'fr)';
+      return;
+    }
+    if (body) body.style.maxHeight = '';
+    controller.split.style.gridTemplateRows = '';
+    controller.split.style.gridTemplateColumns = 'minmax(0,' + question + 'fr) 8px minmax(280px,' + scratch + 'fr)';
+  }
+
+  function applyStoredRatio(controller) {
+    var ratio = storedRatio();
+    if (ratio == null) return;
+    applyRatio(controller, ratio);
+  }
+
+  function setMaxed(controller, maxed) {
+    controller.split.classList.toggle('vsp-max', maxed);
+    if (controller.maxBtn) {
+      var label = maxed ? '还原' : '放大';
+      controller.maxBtn.textContent = label;
+      controller.maxBtn.setAttribute('aria-label', label);
+      controller.maxBtn.setAttribute('aria-pressed', String(maxed));
+    }
+  }
+
+  function wireDivider(controller) {
+    controller.divider.addEventListener('pointerdown', function (event) {
+      if (event.button !== 0) return;
+      event.preventDefault();
+      var dragging = event.pointerId;
+      var lastRatio = null;
+      controller.divider.setPointerCapture(dragging);
+      controller.divider.classList.add('vsp-dragging');
+      var move = function (moveEvent) {
+        if (moveEvent.pointerId !== dragging) return;
+        moveEvent.preventDefault();
+        var rect = controller.split.getBoundingClientRect();
+        var vertical = stacked();
+        var pos = vertical ? moveEvent.clientY - rect.top : moveEvent.clientX - rect.left;
+        var size = vertical ? rect.height : rect.width;
+        lastRatio = ink.splitRatio(size, pos, MIN_RATIO, MAX_RATIO);
+        applyRatio(controller, lastRatio);
+      };
+      var up = function (upEvent) {
+        if (upEvent.pointerId !== dragging) return;
+        controller.divider.classList.remove('vsp-dragging');
+        controller.divider.removeEventListener('pointermove', move);
+        controller.divider.removeEventListener('pointerup', up);
+        controller.divider.removeEventListener('pointercancel', up);
+        if (lastRatio != null) storeRatio(lastRatio);
+      };
+      controller.divider.addEventListener('pointermove', move);
+      controller.divider.addEventListener('pointerup', up);
+      controller.divider.addEventListener('pointercancel', up);
+    });
   }
 
   function questionId(controller) {
@@ -81,6 +185,8 @@
   function close(controller) {
     controller.session.closePad();
     if (controller.split.classList.contains('vsp-split')) controller.split.classList.remove('vsp-split');
+    setMaxed(controller, false);
+    clearSplitInline(controller);
     if (!controller.panel.hidden) controller.panel.hidden = true;
   }
 
@@ -147,8 +253,10 @@
     controller.eraser = button('橡皮', 'vsp-tool-btn');
     var undo = button('撤销', 'vsp-tool-btn');
     var clear = button('清空', 'vsp-tool-btn');
+    controller.maxBtn = button('放大', 'vsp-tool-btn');
+    controller.maxBtn.setAttribute('aria-pressed', 'false');
     var collapse = button('收起', 'vsp-tool-btn');
-    toolbar.append(controller.pencil, controller.eraser, undo, clear, collapse);
+    toolbar.append(controller.pencil, controller.eraser, undo, clear, controller.maxBtn, collapse);
     var surface = document.createElement('div');
     surface.className = 'vsp-surface';
     controller.canvas = document.createElement('canvas');
@@ -162,6 +270,10 @@
     controller.eraser.addEventListener('click', function () { setTool(controller, 'eraser'); });
     undo.addEventListener('click', function () { controller.session.undo(); repaint(controller); });
     clear.addEventListener('click', function () { controller.session.clear(); repaint(controller); });
+    controller.maxBtn.addEventListener('click', function () {
+      setMaxed(controller, !controller.split.classList.contains('vsp-max'));
+      repaint(controller);
+    });
     collapse.addEventListener('click', function () { close(controller); });
     controller.surface = surface;
     setTool(controller, 'pencil');
@@ -173,7 +285,13 @@
     if (!host || !content || !header || host.querySelector('.vsp-open-btn')) return;
     var controller = { kind: kind, host: host, content: content, split: split, session: ink.createSession(), wasActive: false };
     controller.panel = panelFor(controller);
+    controller.divider = document.createElement('div');
+    controller.divider.className = 'vsp-divider';
+    controller.divider.setAttribute('role', 'separator');
+    controller.divider.setAttribute('aria-label', '拖拽调整题目与草稿区域比例');
+    split.appendChild(controller.divider);
     split.appendChild(controller.panel);
+    wireDivider(controller);
     var open = button('草稿', 'vsp-open-btn');
     var anchor = kind === 'politics' ? document.getElementById('pracFav') : header.querySelector('.modal-close');
     header.insertBefore(open, anchor || null);
@@ -182,6 +300,7 @@
       controller.session.openPad();
       controller.panel.hidden = false;
       controller.split.classList.add('vsp-split');
+      applyStoredRatio(controller);
       repaint(controller);
     });
     new MutationObserver(function () { sync(controller); }).observe(host, { attributes: true, attributeFilter: ['class'] });
@@ -193,7 +312,10 @@
   function syncAll() {
     controllers.forEach(function (controller) {
       sync(controller);
-      if (controller.session.open) repaint(controller);
+      if (controller.session.open) {
+        applyStoredRatio(controller);
+        repaint(controller);
+      }
     });
   }
 

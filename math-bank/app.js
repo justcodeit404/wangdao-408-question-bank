@@ -18,6 +18,87 @@ function toggleTheme() {
 document.getElementById('themeToggle').addEventListener('click', toggleTheme);
 
 // ========================
+// 408 现阶段只展示选择题（不删源数据，在数据加载层过滤）
+// 纯逻辑见 choice-only.js（ChoiceOnlyView）；契约：platform-v2 test_choice_type_contract
+// ========================
+const CHOICE_ONLY_MODE = true;
+const _COV = (typeof window !== 'undefined' && window.ChoiceOnlyView) ? window.ChoiceOnlyView : null;
+if (!_COV) {
+  console.error('[bank-408] choice-only.js 未加载，选择题过滤不可用');
+}
+const CHOICE_QUESTION_TYPES = _COV
+  ? _COV.CHOICE_QUESTION_TYPES
+  : new Set(['single_choice', 'multiple_choice', 'ordered_choice', '选择题', 'multiple', 'multi', 'single', '单选', '多选']);
+function isChoiceQuestionType(type) {
+  return _COV ? _COV.isChoiceQuestionType(type) : false;
+}
+function filterCourseDataToChoices(courseData) {
+  if (!_COV) return courseData;
+  const filtered = _COV.filterCourseDataToChoices(courseData);
+  // 同步回 manifest：选择题数量 + 非空章节数
+  const courses = filtered.courses || [];
+  (window.__COURSE_MANIFEST__ || []).forEach(function(m) {
+    const cc = courses.find(function(c) { return c.name === m.name; });
+    if (cc) {
+      m.question_count = cc.question_count;
+      m.chapter_count = (filtered.chapters || []).filter(function(ch) {
+        return (ch.course || cc.name) === m.name;
+      }).length;
+    }
+  });
+  return filtered;
+}
+/** URL/本地状态指向已隐藏章节或题型时回退，避免空白页/幽灵选中 */
+function sanitizeChoiceOnlySelection() {
+  if (!_COV || !CHOICE_ONLY_MODE) return;
+  const chRes = _COV.sanitizeSelectedChapter(selectedChapter, currentChapters, true);
+  if (chRes.cleared) selectedChapter = '';
+  else selectedChapter = chRes.selectedChapter;
+
+  const types = {};
+  allQuestions.forEach(q => { types[q.type] = (types[q.type] || 0) + 1; });
+  const typeEl = document.getElementById('typeFilter');
+  if (typeEl) {
+    const tRes = _COV.sanitizeTypeFilter(typeEl.value, types);
+    if (tRes.cleared) typeEl.value = '';
+    // 动态题型选项：仅可见题型
+    refreshTypeFilterOptions(types, typeEl.value);
+  }
+  if (activeStat && activeStat !== 'all' && activeStat !== 'sub' && activeStat !== 'image') {
+    if (!types[activeStat]) activeStat = 'all';
+  }
+}
+function refreshTypeFilterOptions(types, currentValue) {
+  const typeEl = document.getElementById('typeFilter');
+  if (!typeEl || !_COV) return;
+  const items = _COV.buildTypeStatItems(types || {});
+  const prev = currentValue != null ? currentValue : typeEl.value;
+  typeEl.innerHTML = '';
+  const allOpt = document.createElement('option');
+  allOpt.value = '';
+  allOpt.textContent = items.length <= 1 ? '全部题型' : '全部题型';
+  typeEl.appendChild(allOpt);
+  items.forEach(function(it) {
+    const opt = document.createElement('option');
+    opt.value = it.action;
+    opt.textContent = it.action;
+    typeEl.appendChild(opt);
+  });
+  // 仅一种题型时也可隐藏下拉噪音：仍保留「全部/该题型」以便筛选语义一致
+  if (prev && types[prev]) typeEl.value = prev;
+  else typeEl.value = '';
+}
+// 对 data.js 提供的加载器做包装，使所有使用方拿到的都是选择题数据
+if (typeof window.loadCourseData === 'function') {
+  const _originalLoadCourseData = window.loadCourseData;
+  window.loadCourseData = function(courseName) {
+    return _originalLoadCourseData(courseName).then(function(data) {
+      return filterCourseDataToChoices(data);
+    });
+  };
+}
+
+// ========================
 // Data & State
 // ========================
 let bank = null;
@@ -149,6 +230,14 @@ function prepareMathText(text) {
   }
   return parts.join('');
 }
+
+/** 笔记预览：复用题干预处理，并把裸 log_{2} / log_2 收成 \log，供 renderKatex 吃掉。 */
+function prepareNoteMath(text) {
+  let t = prepareMathText(text);
+  if (!t) return t;
+  return t.replace(/(?<![\\A-Za-z$])log\s*(?=_|\{)/g, TEX_BS + 'log');
+}
+
 function getTotalPages() { return Math.ceil(filteredQuestions.length / pageSize) || 1; }
 
 function shuffleArray(arr) {
@@ -197,10 +286,15 @@ function closeModalById(id) {
 }
 
 function getAvailableCourses() {
-  if (bank && bank.courses) return bank.courses;
-  if (window.__COURSE_MANIFEST__) {
-    return window.__COURSE_MANIFEST__.map(c => ({name: c.name, short: c.short, question_count: c.question_count}));
+  // 优先 manifest：单科 data-*.json 的 courses 只有当前科，不能用来画四科标签
+  if (window.__COURSE_MANIFEST__ && window.__COURSE_MANIFEST__.length) {
+    return window.__COURSE_MANIFEST__.map(c => ({
+      name: c.name,
+      short: c.short,
+      question_count: c.question_count,
+    }));
   }
+  if (bank && bank.courses) return bank.courses;
   return [];
 }
 
@@ -236,6 +330,8 @@ let notesMap = {};
 // 题目纠错反馈：按题目 key 累积 issue 字符串数组
 const ISSUES_KEY = 'mathbank_issues_v1';
 let issuesMap = {};
+const ISSUE_QUEUE_KEY = 'mathbank_issue_queue_v1';
+let issueQueue = [];
 
 // 错题日志：每次答错追加一条
 const WRONG_LOG_KEY = 'mathbank_wrong_log_v1';
@@ -330,6 +426,8 @@ function loadStatus() {
     notesMap = loadSharded(NOTES_KEY);
     const iraw = localStorage.getItem(ISSUES_KEY);
     issuesMap = iraw ? JSON.parse(iraw) : {};
+    const qraw = localStorage.getItem(ISSUE_QUEUE_KEY);
+    issueQueue = qraw ? JSON.parse(qraw) : [];
     const wraw = localStorage.getItem(WRONG_LOG_KEY);
     wrongLog = wraw ? JSON.parse(wraw) : [];
     const arraw = localStorage.getItem(ATTEMPT_LOG_KEY);
@@ -373,6 +471,7 @@ function loadStatus() {
     reviewMap = {};
     notesMap = {};
     issuesMap = {};
+    issueQueue = [];
     wrongLog = [];
     attemptLog = [];
   }
@@ -395,6 +494,9 @@ function saveNotes() {
 }
 function saveIssues() {
   safeSetItem(ISSUES_KEY, JSON.stringify(issuesMap));
+}
+function saveIssueQueue() {
+  safeSetItem(ISSUE_QUEUE_KEY, JSON.stringify(issueQueue || []));
 }
 
 function saveSearchHistory() {
@@ -516,6 +618,7 @@ function buildFullExportPayload() {
     review: reviewMap,
     notes: notesMap,
     issues: issuesMap,
+    issueQueue: issueQueue,
     wrongLog: wrongLog,
     attemptLog: attemptLog,
     searchHistory: searchHistory
@@ -574,6 +677,10 @@ function importProgress(file) {
       if (data.issues && typeof data.issues === 'object') {
         issuesMap = data.issues;
         saveIssues();
+      }
+      if (Array.isArray(data.issueQueue)) {
+        issueQueue = data.issueQueue;
+        saveIssueQueue();
       }
       if (Array.isArray(data.wrongLog)) {
         wrongLog = data.wrongLog;
@@ -768,8 +875,18 @@ function updateChapterCursorUI() {
   const cursor = loadCursor();
   document.querySelectorAll('#chapterList .tree-toggle').forEach(el => {
     const key = el.dataset.key || '';
-    // 叶子章节 key 为 l1|l2|section；命中则高亮
-    const isCursor = !!(cursor && cursor.chapterKey && key === cursor.chapterKey);
+    // 叶子为二级小节：dataset.key = l1|l2|选择题；兼容旧 cursor
+    let isCursor = false;
+    if (cursor && cursor.chapterKey) {
+      if (key === cursor.chapterKey) isCursor = true;
+      else if (el.classList.contains('leaf')) {
+        isCursor = l2NodeMatchesSelected({
+          filterKey: el.dataset.filterKey || key,
+          key,
+          l2Key: el.dataset.l2Key || '',
+        }, cursor.chapterKey);
+      }
+    }
     el.classList.toggle('has-cursor', isCursor);
     const labelSpan = el.querySelector('span:nth-child(2)') || el.querySelector('span');
     if (!labelSpan) return;
@@ -932,7 +1049,11 @@ async function init() {
 
   currentChapters = getCurrentChapters();
   buildAllQuestions();
+  sanitizeChoiceOnlySelection();
 
+  // 过滤后刷新课程标签数量（manifest 已在 filter 中写回选择题数）
+  renderCourseTabs();
+  renderMobileCourseSelect();
   renderChapters();
   renderStats();
   renderMarkDashboard();
@@ -1023,13 +1144,11 @@ async function switchCourse(course) {
 
   currentChapters = getCurrentChapters();
   buildAllQuestions();
+  sanitizeChoiceOnlySelection();
   refreshCursorKey();
 
-  document.querySelectorAll('.course-tab').forEach(el => {
-    el.classList.toggle('active', el.dataset.course === course);
-  });
-  const sel = document.getElementById('mobileCourseSelect');
-  if (sel) sel.value = course;
+  renderCourseTabs();
+  renderMobileCourseSelect();
   currentPage = 1;
   renderChapters();
   renderStats();
@@ -1039,38 +1158,83 @@ async function switchCourse(course) {
 }
 
 // ========================
-// Sidebar - 三级折叠树
+// Sidebar - 两级折叠树（大章 → 小节；无第三级「选择题」节点）
+// 内部筛选键仍为 l1|l2|选择题，兼容旧 URL
 // ========================
 function buildChapterTree() {
+  if (_COV) {
+    return _COV.buildChapterTreeMap(currentChapters, CHOICE_ONLY_MODE);
+  }
   const l1Map = new Map();
   for (const ch of currentChapters) {
+    const count = ch.question_count || (ch.questions && ch.questions.length) || 0;
+    if (count <= 0) continue;
     const l1 = ch.l1_name || '?';
-    const l2 = ch.l2_name || '';
-    const sec = ch.section_type || '';
+    const l2 = ch.l2_name || '?';
+    const sec = ch.section_type || '?';
+    if (CHOICE_ONLY_MODE && sec && String(sec).includes('解答')) continue;
+    if (CHOICE_ONLY_MODE && sec && !isChoiceQuestionType(sec) && !String(sec).includes('选择')) continue;
     if (!l1Map.has(l1)) l1Map.set(l1, { name: l1, total: 0, l2Map: new Map() });
     const l1Node = l1Map.get(l1);
-    l1Node.total += ch.question_count;
-    const l2Key = l2;
-    if (!l1Node.l2Map.has(l2Key)) l1Node.l2Map.set(l2Key, { name: l2, total: 0, sections: [] });
-    const l2Node = l1Node.l2Map.get(l2Key);
-    l2Node.total += ch.question_count;
-    l2Node.sections.push({
-      name: ch.name,
-      section_type: sec,
-      question_count: ch.question_count,
-      key: l1 + '|' + l2 + '|' + sec
-    });
+    l1Node.total += count;
+    if (!l1Node.l2Map.has(l2)) {
+      l1Node.l2Map.set(l2, {
+        name: l2,
+        total: 0,
+        sections: [],
+        l2Key: l1 + '|' + l2,
+        filterKey: '',
+        key: '',
+      });
+    }
+    const l2Node = l1Node.l2Map.get(l2);
+    l2Node.total += count;
+    const secKey = l1 + '|' + l2 + '|' + sec;
+    l2Node.sections.push({ name: ch.name, section_type: sec, question_count: count, key: secKey });
+    if (!l2Node.filterKey || sec === '选择题') {
+      l2Node.filterKey = secKey;
+      l2Node.key = secKey;
+    }
+  }
+  for (const [l1Name, l1Node] of [...l1Map.entries()]) {
+    for (const [l2Key, l2Node] of [...l1Node.l2Map.entries()]) {
+      if (!l2Node.sections.length || l2Node.total <= 0) l1Node.l2Map.delete(l2Key);
+      else if (!l2Node.filterKey) {
+        l2Node.filterKey = l2Node.sections[0].key;
+        l2Node.key = l2Node.filterKey;
+      }
+    }
+    if (!l1Node.l2Map.size || l1Node.total <= 0) l1Map.delete(l1Name);
   }
   return l1Map;
 }
 
 function makeToggle(text, count, extraClass, dataset, unsafe) {
   const btn = document.createElement('button');
-  btn.className = 'tree-toggle ' + (extraClass || '');
+  const cls = extraClass || '';
+  btn.className = 'tree-toggle ' + cls;
   if (dataset) btn.dataset.key = dataset;
   const label = unsafe ? text : escapeHtml(text);
-  btn.innerHTML = '<span class="arrow"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></span><span style="flex:1">' + label + '</span><span class="mastery-counts" data-role="masteryCounts"></span><span class="count">' + count + '</span>';
+  const isLeaf = /\bleaf\b/.test(cls);
+  // 叶子（二级小节）无展开箭头；一级保留 chevron
+  const arrowHtml = isLeaf
+    ? '<span class="arrow leaf-spacer" aria-hidden="true"></span>'
+    : '<span class="arrow"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></span>';
+  btn.innerHTML = arrowHtml + '<span style="flex:1">' + label + '</span><span class="mastery-counts" data-role="masteryCounts"></span><span class="count">' + count + '</span>';
   return btn;
+}
+
+function l2NodeMatchesSelected(l2Node, selected) {
+  if (!selected || !l2Node) return false;
+  if (_COV && typeof _COV.l2MatchesSelection === 'function') {
+    return _COV.l2MatchesSelection(l2Node, selected);
+  }
+  if (String(selected).includes('解答')) return false;
+  const fk = l2Node.filterKey || l2Node.key || '';
+  if (selected === fk) return true;
+  const l2k = l2Node.l2Key || '';
+  if (l2k && (selected === l2k || selected.indexOf(l2k + '|') === 0)) return true;
+  return false;
 }
 
 function renderChapters() {
@@ -1101,36 +1265,22 @@ function renderChapters() {
     };
 
     for (const [l2Name, l2Node] of l1Node.l2Map.entries()) {
+      if (!l2Node.total) continue;
+      const filterKey = l2Node.filterKey || l2Node.key || (l1Name + '|' + l2Name + '|选择题');
       const l2Wrap = document.createElement('div');
       l2Wrap.className = 'tree-l2-wrap';
-      const l2Btn = makeToggle(l2Name, l2Node.total, 'tree-l2', l1Name + '|' + l2Name);
-      const l2Children = document.createElement('div');
-      l2Children.className = 'tree-children';
-
+      // 二级即叶子：直接筛选该小节全部选择题，不再渲染「选择题」第三级
+      const l2Btn = makeToggle(l2Name, l2Node.total, 'tree-l2 leaf', filterKey);
+      l2Btn.dataset.l2Key = l2Node.l2Key || (l1Name + '|' + l2Name);
+      l2Btn.dataset.filterKey = filterKey;
+      l2Btn.setAttribute('aria-label', l2Name + '，' + l2Node.total + ' 题');
       l2Btn.onclick = (e) => {
         e.stopPropagation();
-        const exp = l2Btn.classList.toggle('expanded');
-        l2Children.classList.toggle('show', exp);
+        l1Btn.classList.add('expanded');
+        l1Children.classList.add('show');
+        selectChapter(filterKey, l2Btn);
       };
-
-      for (const sec of l2Node.sections) {
-        const icon = sec.section_type === '选择题' ? '<svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>' : '<svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 22,22 2,22"/></svg>';
-        const cls = 'tree-l3 ' + (sec.section_type === '选择题' ? 'choice' : 'nonchoice');
-        const l3Btn = makeToggle(sec.section_type, sec.question_count, cls, sec.key);
-        l3Btn.querySelector('.arrow').innerHTML = icon;
-        l3Btn.onclick = (e) => {
-          e.stopPropagation();
-          l1Btn.classList.add('expanded');
-          l1Children.classList.add('show');
-          l2Btn.classList.add('expanded');
-          l2Children.classList.add('show');
-          selectChapter(sec.key, l3Btn);
-        };
-        l2Children.appendChild(l3Btn);
-      }
-
       l2Wrap.appendChild(l2Btn);
-      l2Wrap.appendChild(l2Children);
       l1Children.appendChild(l2Wrap);
     }
 
@@ -1141,10 +1291,21 @@ function renderChapters() {
 
   updateChapterCursorUI();
 
+  let matchedSelected = !selectedChapter;
   if (selectedChapter) {
-    const buttons = container.querySelectorAll('.tree-l3');
+    const buttons = container.querySelectorAll('.tree-l2.leaf');
     for (const btn of buttons) {
-      if (btn.dataset.key === selectedChapter) {
+      const l2Meta = {
+        filterKey: btn.dataset.filterKey || btn.dataset.key || '',
+        key: btn.dataset.key || '',
+        l2Key: btn.dataset.l2Key || '',
+      };
+      if (l2NodeMatchesSelected(l2Meta, selectedChapter)) {
+        matchedSelected = true;
+        // 规范为内部 filterKey，保证筛选精确
+        if (l2Meta.filterKey && selectedChapter !== l2Meta.filterKey) {
+          selectedChapter = l2Meta.filterKey;
+        }
         btn.classList.add('active');
         let parent = btn.parentElement;
         while (parent) {
@@ -1157,6 +1318,11 @@ function renderChapters() {
         }
         break;
       }
+    }
+    // 幽灵选中：旧解答题章节等已不可见 → 回退全部章节
+    if (!matchedSelected) {
+      selectedChapter = '';
+      allItem.classList.add('active');
     }
   }
 
@@ -1267,12 +1433,21 @@ function renderStats() {
     if (pr === 'correct' || pr === 'wrong') doneCount++;
   });
 
+  // 题型 pill：仅实际可见且 count>0；绝不硬编码「解答 0」
+  const typeStats = _COV
+    ? _COV.buildTypeStatItems(types)
+    : Object.keys(types).filter(t => types[t] > 0).map(t => ({
+        label: t === '选择题' ? '选择' : t.replace(/题$/, ''),
+        value: types[t],
+        action: t,
+      }));
+
   const stats = [
     {label: '总题数', value: allQuestions.length, action: 'all'},
-    {label: '选择', value: types['选择题'] || 0, action: '选择题'},
-    {label: '解答', value: types['解答题'] || 0, action: '解答题'},
+    ...typeStats,
     {label: '子问', value: counts.sub, action: 'sub'},
     {label: '图片', value: counts.image, action: 'image'},
+    // 状态统计即使为 0 也保留
     {label: '未标', value: unmarkedCount, action: 'unmarked', kind: 'status'},
     {label: '收藏', value: favCount, action: 'favorite', kind: 'status'},
     {label: '已掌握', value: masteryCounts.mastered, action: 'mastered', kind: 'status'},
@@ -1395,7 +1570,13 @@ function applyFilters() {
     });
   }
 
-  const chapterLabel = selectedChapter ? selectedChapter.replace(/\|/g, ' · ') : '';
+  // 展示用：去掉末尾「|选择题」，避免结果栏再出现题型层
+  let chapterLabel = '';
+  if (selectedChapter) {
+    chapterLabel = selectedChapter
+      .replace(/\|选择题$/u, '')
+      .replace(/\|/g, ' · ');
+  }
   document.getElementById('resultText').innerHTML =
     `共 <strong>${filteredQuestions.length}</strong> 道题目${chapterLabel ? ' · <span style="color:var(--text-secondary)">' + escapeHtml(chapterLabel) + '</span>' : ''}`;
 
@@ -1978,7 +2159,9 @@ function renderModalContent(q) {
     ${questionBodyHtml(q)}
     <details class="q-notes" id="detailNotes">
       <summary>📝 我的笔记 <span class="notes-status" id="notesStatus"></span></summary>
-      <textarea id="notesTextarea" placeholder="记录你的思路、记忆口诀、易错点..." rows="6"></textarea>
+      <textarea id="notesTextarea" placeholder="记录思路、口诀、易错点。公式：$h=\\log_2 n$ 或 \\(h=\\log_2 n\\)" rows="6"></textarea>
+      <p class="q-notes-hint">公式用 $...$ / $$...$$ / \\(...\\)。下方实时预览。</p>
+      <div class="q-notes-preview" id="notesPreview" hidden></div>
       <div class="q-notes-actions">
         <button type="button" class="btn btn-secondary btn-sm" id="btnCopyQ">📋 复制题目</button>
         <button type="button" class="btn btn-secondary btn-sm" id="btnReportIssue">⚠ 报告错误</button>
@@ -1988,10 +2171,22 @@ function renderModalContent(q) {
   renderQuestionBody(container, q);
   updateDetailStatusButtons(q);
   bindNotesUI(q);
+  if (window.ViewerPlatformSync && ViewerPlatformSync.attachNoteReminderButton) {
+    ViewerPlatformSync.attachNoteReminderButton(
+      document.querySelector('#detailModal .modal-header-actions'),
+      {
+        bank: '408',
+        uid: platformSourceUid(q),
+        title: q.content || '',
+        chapter: q.chapter || '',
+      },
+    );
+  }
 }
 
 function bindNotesUI(q) {
   const ta = document.getElementById('notesTextarea');
+  const preview = document.getElementById('notesPreview');
   const status = document.getElementById('notesStatus');
   const notesDetails = document.getElementById('detailNotes');
   if (!ta) return;
@@ -2001,9 +2196,25 @@ function bindNotesUI(q) {
   const updateStatus = () => {
     status.textContent = ta.value ? '（已保存）' : '';
   };
+  const updatePreview = () => {
+    if (!preview || !notesDetails) return;
+    const text = ta.value;
+    if (!text.trim()) {
+      preview.hidden = true;
+      preview.innerHTML = '';
+      notesDetails.classList.remove('has-note-preview');
+      return;
+    }
+    preview.textContent = prepareNoteMath(text);
+    renderKatex(preview);
+    preview.hidden = false;
+    notesDetails.classList.add('has-note-preview');
+  };
   updateStatus();
+  updatePreview();
   let saveTimer;
   ta.addEventListener('input', () => {
+    updatePreview();
     clearTimeout(saveTimer);
     saveTimer = setTimeout(() => {
       setNote(q, ta.value);
@@ -2013,6 +2224,7 @@ function bindNotesUI(q) {
   ta.addEventListener('blur', () => {
     setNote(q, ta.value);
     updateStatus();
+    updatePreview();
   });
 
   const copyBtn = document.getElementById('btnCopyQ');
@@ -2058,13 +2270,71 @@ function fallbackCopy(text) {
 function reportQuestionIssue(q) {
   const key = questionKey(q);
   const cur = (issuesMap[key] || []).slice();
-  const choice = prompt('请简要描述该题的错误（例如：题干 OCR 多字 / 选项错位 / 答案有误）：', '');
+  const kindRaw = prompt('错误类型：stem=题干/OCR，options=选项，answer=答案，explanation=解析，image=图片，other=其他', 'stem');
+  const kind = ['stem', 'options', 'answer', 'explanation', 'image', 'other'].includes(String(kindRaw || '').trim())
+    ? String(kindRaw).trim() : 'other';
+  const choice = prompt('请简要描述该题的错误（将同步到平台质检队列）：', '');
   if (!choice) return;
-  cur.push({at: new Date().toISOString(), text: choice});
+  const at = new Date().toISOString();
+  cur.push({at, text: choice, type: kind});
   issuesMap[key] = cur;
   saveIssues();
-  flashToast('已记录错误反馈');
-  exportIssues();
+  const payload = buildQuestionIssuePayload(q, kind, choice, at);
+  issueQueue = (issueQueue || []).filter(x => !(x.source_uid === payload.source_uid && x.issue_type === payload.issue_type));
+  issueQueue.push(payload);
+  saveIssueQueue();
+  submitQuestionIssueQueue({silent: false});
+  flashToast(isPlatformHost() ? '已提交错误反馈' : '已保存反馈；从平台打开题库后自动补传');
+}
+
+function buildQuestionIssuePayload(q, issueType, description, at) {
+  const options = q && q.options && typeof q.options === 'object'
+    ? Object.entries(q.options).map(([k, v]) => `${k}. ${v || ''}`)
+    : [];
+  const answer = q && q.answer && typeof q.answer === 'object' ? q.answer : {};
+  return {
+    bank: '408',
+    source_uid: platformSourceUid(q) || `408:local::${questionKey(q)}`,
+    course: q.course || getCurrentCourse() || '',
+    chapter: q.chapter || '',
+    question_id: q.id || '',
+    page: q.page || null,
+    issue_type: issueType,
+    description,
+    snapshot: {
+      title: q.content || '',
+      options,
+      answer: answer.choice || '',
+      explanation: answer.explanation || '',
+      image_ref: typeof q.image_ref === 'string' ? q.image_ref : (q.image_ref && q.image_ref.cropped) || null,
+      version: q.version || q.data_version || at,
+    },
+  };
+}
+
+async function submitQuestionIssueQueue(opts) {
+  opts = opts || {};
+  if (!issueQueue || !issueQueue.length || !isPlatformHost()) return {ok: 0, fail: issueQueue ? issueQueue.length : 0};
+  const token = await ensurePlatformToken();
+  if (!token) return {ok: 0, fail: issueQueue.length};
+  const pending = issueQueue.slice();
+  const keep = [];
+  let ok = 0;
+  for (const item of pending) {
+    try {
+      const headers = {'Content-Type': 'application/json'};
+      if (typeof token === 'string') headers.Authorization = 'Bearer ' + token;
+      const r = await fetch('/api/study-records/question-issues', {
+        method: 'POST', credentials: 'include', headers, body: JSON.stringify(item),
+      });
+      if (r.ok) ok++;
+      else keep.push(item);
+    } catch (e) { keep.push(item); }
+  }
+  issueQueue = keep;
+  saveIssueQueue();
+  if (!opts.silent && ok) flashToast(`已提交 ${ok} 条纠错反馈`);
+  return {ok, fail: keep.length};
 }
 
 function exportIssues() {
@@ -2377,12 +2647,43 @@ function updatePaperChapters() {
   const courseName = document.getElementById('paperCourse').value;
   const chSel = document.getElementById('paperChapter');
   chSel.innerHTML = '<option value="">全部章节</option>';
-  currentChapters.filter(ch => (ch.course || (bank && bank.courses && bank.courses[0] ? bank.courses[0].name : '')) === courseName || courseName === getCurrentCourse()).forEach(ch => {
-    const opt = document.createElement('option');
-    opt.value = ch.name;
-    opt.textContent = ch.name + ' (' + ch.question_count + ')';
-    chSel.appendChild(opt);
-  });
+  currentChapters
+    .filter(ch => (ch.course || (bank && bank.courses && bank.courses[0] ? bank.courses[0].name : '')) === courseName || courseName === getCurrentCourse())
+    .filter(ch => (ch.question_count || (ch.questions && ch.questions.length) || 0) > 0)
+    .filter(ch => {
+      if (!CHOICE_ONLY_MODE) return true;
+      const sec = ch.section_type || '';
+      if (sec && String(sec).includes('解答')) return false;
+      if (sec && !isChoiceQuestionType(sec) && !String(sec).includes('选择')) return false;
+      return true;
+    })
+    .forEach(ch => {
+      const opt = document.createElement('option');
+      opt.value = ch.name;
+      opt.textContent = ch.name + ' (' + ch.question_count + ')';
+      chSel.appendChild(opt);
+    });
+  // 试卷题型下拉：仅可见题型
+  const typeSel = document.getElementById('paperType');
+  if (typeSel && _COV) {
+    const types = {};
+    allQuestions.forEach(q => { types[q.type] = (types[q.type] || 0) + 1; });
+    const items = _COV.buildTypeStatItems(types);
+    const prev = typeSel.value;
+    typeSel.innerHTML = '';
+    const any = document.createElement('option');
+    any.value = '';
+    any.textContent = '不限';
+    typeSel.appendChild(any);
+    items.forEach(function(it) {
+      const opt = document.createElement('option');
+      opt.value = it.action;
+      opt.textContent = '仅' + it.action;
+      typeSel.appendChild(opt);
+    });
+    if (prev && types[prev]) typeSel.value = prev;
+    else typeSel.value = '';
+  }
 }
 function generatePaper() {
   const courseName = document.getElementById('paperCourse').value;
@@ -3998,6 +4299,7 @@ function setupAutomaticPlatformSync() {
     _automaticPlatformSyncRunning = true;
     try {
       await maybeAutoPushMasteryToPlatform(!!force);
+      await submitQuestionIssueQueue({silent: true});
       if (_autoSyncQueue.length) scheduleAutoSyncFlush(0);
     } finally {
       _automaticPlatformSyncRunning = false;
@@ -4041,7 +4343,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=30').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=39').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {
@@ -4051,16 +4353,42 @@ if ('serviceWorker' in navigator) {
 }
 
 // ========================
-// 自动备份：每周一次下载 JSON 备份到本地
+// 备份提醒：超过 30 天未备份时显示非强制提示，用户点击后才下载
 // ========================
 const BACKUP_KEY = 'mathbank_last_backup_at';
-const BACKUP_INTERVAL = 7 * 86400000;  // 7 天
-function maybeAutoBackup() {
+const BACKUP_REMIND_KEY = 'mathbank_backup_reminded_at';
+const BACKUP_INTERVAL = 30 * 86400000;  // 30 天
+function maybeShowBackupReminder() {
   try {
-    const last = parseInt(localStorage.getItem(BACKUP_KEY) || '0', 10);
-    if (Date.now() - last < BACKUP_INTERVAL) return false;
-    return triggerBackup(false);
-  } catch(e) { return false; }
+    const now = Date.now();
+    const lastBackup = parseInt(localStorage.getItem(BACKUP_KEY) || '0', 10);
+    const lastRemind = parseInt(localStorage.getItem(BACKUP_REMIND_KEY) || '0', 10);
+    // 全新用户首次使用不提醒（还没有进度可备份），只播种提醒时间
+    if (!lastBackup && !lastRemind) {
+      safeSetItem(BACKUP_REMIND_KEY, String(now));
+      return;
+    }
+    if (now - Math.max(lastBackup, lastRemind) < BACKUP_INTERVAL) return;
+    // 先记录提醒时间，保证最多每 30 天提示一次（无论用户点不点）
+    safeSetItem(BACKUP_REMIND_KEY, String(now));
+    showBackupReminder();
+  } catch(e) {}
+}
+function showBackupReminder() {
+  if (document.getElementById('backupReminder')) return;
+  const el = document.createElement('div');
+  el.id = 'backupReminder';
+  el.className = 'backup-reminder';
+  el.innerHTML = '<span>进度已 30 天未备份，建议导出一份</span>' +
+    '<button type="button" id="backupReminderGo">立即备份</button>' +
+    '<button type="button" id="backupReminderClose" aria-label="关闭">×</button>';
+  document.body.appendChild(el);
+  el.querySelector('#backupReminderGo').addEventListener('click', () => {
+    triggerBackup(false);
+    el.remove();
+  });
+  el.querySelector('#backupReminderClose').addEventListener('click', () => el.remove());
+  requestAnimationFrame(() => el.classList.add('show'));
 }
 function triggerBackup(silent) {
   try {
@@ -4081,5 +4409,5 @@ function triggerBackup(silent) {
   }
 }
 
-// 直接在启动后异步检查（避免阻塞 init）
-setTimeout(maybeAutoBackup, 3000);
+// 启动后异步检查是否该提醒（只显示提示，绝不自动下载）
+setTimeout(maybeShowBackupReminder, 3000);

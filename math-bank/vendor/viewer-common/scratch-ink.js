@@ -38,6 +38,17 @@
     return { x: point.x * width, y: point.y * height };
   }
 
+  // 草稿区分屏占比：草稿位于远端（右/下），占比 = 指针到远端的距离比例，clamp 到 [min, max]。
+  function splitRatio(containerSize, pointerPos, min, max) {
+    if (!containerSize || containerSize <= 0) return null;
+    var lo = typeof min === 'number' ? min : 0.3;
+    var hi = typeof max === 'number' ? max : 0.85;
+    var ratio = 1 - pointerPos / containerSize;
+    if (ratio < lo) return lo;
+    if (ratio > hi) return hi;
+    return ratio;
+  }
+
   function createSession() {
     var liveStroke = null;
     // Mutable by design: one session accumulates pointer input without replacing UI references.
@@ -124,6 +135,7 @@
     dropLastStroke: dropLastStroke,
     toNormPoint: toNormPoint,
     toCssPoint: toCssPoint,
+    splitRatio: splitRatio,
     createSession: createSession,
   };
 });

@@ -10,12 +10,13 @@
   merge_courses -> cross_validate_answers -> enhance_audit
 """
 import json
+import argparse
 import shutil
 import subprocess
 import sys
 from pathlib import Path
 
-from config import COURSES, OUTPUT_DIR
+from config import COURSES, OUTPUT_DIR, MATH_BANK_DIR
 
 
 def run(cmd):
@@ -25,6 +26,12 @@ def run(cmd):
 
 
 def main():
+    parser = argparse.ArgumentParser(description='构建 408 题库并执行质量门禁')
+    parser.add_argument(
+        '--skip-vision-audit', action='store_true',
+        help='仅供本地开发预览：标记为 unverified，发布打包和 enhance_audit 会拒绝',
+    )
+    args = parser.parse_args()
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
     # 备份旧数据
@@ -73,11 +80,27 @@ def main():
         Path(raw).unlink(missing_ok=True)
         Path(post).unlink(missing_ok=True)
 
-    # 5. 合并并生成 math-bank 懒加载数据
+    # 5. 原书视觉抽检门禁；必须在 merge 前应用持久化补丁，避免 OCR 重建覆盖修复。
+    if args.skip_vision_audit:
+        MATH_BANK_DIR.mkdir(parents=True, exist_ok=True)
+        (MATH_BANK_DIR / 'quality-verification.json').write_text(
+            json.dumps({'schema_version': 1, 'status': 'unverified', 'reason': 'explicit_skip'}, ensure_ascii=False, indent=2),
+            encoding='utf-8',
+        )
+        print('[vision-gate] 已显式跳过，产物标记为 unverified（不可发布）')
+    else:
+        run([sys.executable, 'scripts/vision_quality_gate.py'])
+
+    # 6. 合并并生成 math-bank 懒加载数据
     run([sys.executable, 'scripts/merge_courses.py', OUTPUT_DIR / 'questions_all.json'])
 
-    # 6. 生成质量报告
+    # 6.5 有图题精准重裁 + 题干图区碎片清理（必须在 merge 后跑，否则被天真裁图覆盖）
+    run([sys.executable, 'scripts/auto_recrop_figs.py'])
+
+    # 7. 交叉验证后锁定本次发布文件哈希，再跑最终审计。
     run([sys.executable, 'scripts/cross_validate_answers.py'])
+    if not args.skip_vision_audit:
+        run([sys.executable, 'scripts/vision_quality_gate.py', '--finalize'])
     run([sys.executable, 'scripts/enhance_audit.py'])
 
     print('\n========== 构建完成 ==========')

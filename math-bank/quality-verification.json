@@ -1,0 +1,3853 @@
+{
+  "schema_version": 1,
+  "status": "published",
+  "round_id": "claude-local-r3",
+  "per_chapter": 5,
+  "models": [
+    "claude-local-vision"
+  ],
+  "base_url": "local",
+  "records": [
+    {
+      "source_uid": "408:cs408-ds::绪论 · 数据结构的基本概念 · 选择题::X01",
+      "course_key": "ds",
+      "chapter": "绪论",
+      "question_id": "X01",
+      "source_hash": "5c0a483ab7234b85330abb8fb001a140818410c7da272e6152a5c419ef94ac47",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "一个完整的数据结构通常应包含以下哪些要素（ ）？",
+        "options": {
+          "A": "数据元素及其存储方式",
+          "B": "数据的逻辑结构和物理结构",
+          "C": "数据的逻辑结构、存储结构以及在其上定义的基本操作",
+          "D": "数据对象和数据元素之间的关系"
+        },
+        "answer.choice": "C",
+        "explanation": "一个完整的数据结构由三部分组成：逻辑结构（如线性、树形等）、存储结构（物理表示）以及在其上定义的基本操作（如插入、删除等）。只有选项 C 同时包含这三个核心要素。"
+      },
+      "patch": {
+        "content": "一个完整的数据结构通常应包含以下哪些要素（ ）？",
+        "answer": {
+          "explanation": "一个完整的数据结构由三部分组成：逻辑结构（如线性、树形等）、存储结构（物理表示）以及在其上定义的基本操作（如插入、删除等）。只有选项 C 同时包含这三个核心要素。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-ds::绪论 · 数据结构的基本概念 · 选择题::X05",
+      "course_key": "ds",
+      "chapter": "绪论",
+      "question_id": "X05",
+      "source_hash": "c416c200564b6067d692477c1439bea0f07f3c338b1d152bde94d49479419cd9",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "在存储数据时，通常不仅要存储各数据元素的值，还要存储（ ）。",
+        "options": {
+          "A": "数据的操作方法",
+          "B": "数据元素的类型",
+          "C": "数据元素之间的关系",
+          "D": "数据的存取方法"
+        },
+        "answer.choice": "C",
+        "explanation": "在存储数据时，不仅要存储数据元素的值，而且要存储数据元素之间的关系。"
+      },
+      "patch": {
+        "content": "在存储数据时，通常不仅要存储各数据元素的值，还要存储（ ）。"
+      }
+    },
+    {
+      "source_uid": "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X05",
+      "course_key": "ds",
+      "chapter": "绪论",
+      "question_id": "X05",
+      "source_hash": "65a34a2260e34b078ff2e2be3af0e2e722c6fa6e939c5cbb4639e4cebc993bcd",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "下列关于时间复杂度的函数中，时间复杂度最小的是（ ）。",
+        "options": {
+          "A": "T₁(n) = nlog₂n + 5000n",
+          "B": "T₂(n) = n² - 8000n",
+          "C": "T₃(n) = nlog₂n - 6000n",
+          "D": "T₄(n) = 20000log₂n"
+        },
+        "answer.choice": "D",
+        "explanation": "选项 A 的最高阶是 nlog₂n，时间复杂度是 O(nlog₂n)。选项 B 的最高阶是 n²，时间复杂度是 O(n²)。选项 C 的最高阶是 nlog₂n，时间复杂度是 O(nlog₂n)。选项 D 的最高阶是 log₂n，时间复杂度是 O(log₂n)。"
+      },
+      "patch": {
+        "content": "下列关于时间复杂度的函数中，时间复杂度最小的是（ ）。",
+        "options": {
+          "A": "T₁(n) = nlog₂n + 5000n",
+          "B": "T₂(n) = n² - 8000n",
+          "C": "T₃(n) = nlog₂n - 6000n",
+          "D": "T₄(n) = 20000log₂n"
+        },
+        "answer": {
+          "explanation": "选项 A 的最高阶是 nlog₂n，时间复杂度是 O(nlog₂n)。选项 B 的最高阶是 n²，时间复杂度是 O(n²)。选项 C 的最高阶是 nlog₂n，时间复杂度是 O(nlog₂n)。选项 D 的最高阶是 log₂n，时间复杂度是 O(log₂n)。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X16",
+      "course_key": "ds",
+      "chapter": "绪论",
+      "question_id": "X16",
+      "source_hash": "9b77f9ca68a36170d63098a2d42f4e65234d16bfa504931fe1f4d9293e65042a",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "【2019统考真题】设n是描述问题规模的非负整数，下列程序段的时间复杂度是（）。\nx=0;\nwhile (n>=(x+1)*(x+1))\n    x=x+1;",
+        "options": {
+          "A": "O(log₂n)",
+          "B": "O(n^{1/2})",
+          "C": "O(n)",
+          "D": "O(n²)"
+        },
+        "answer.choice": "B",
+        "explanation": "假设第k次循环终止，则第k次执行时，(x+1)²>n，x的初始值为0，第k次判断时，x=k-1，即k²>n，k>√n，因此该程序段的时间复杂度为O(n^{1/2})。"
+      },
+      "patch": {
+        "answer": {
+          "explanation": "假设第k次循环终止，则第k次执行时，(x+1)²>n，x的初始值为0，第k次判断时，x=k-1，即k²>n，k>√n，因此该程序段的时间复杂度为O(n^{1/2})。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X10",
+      "course_key": "ds",
+      "chapter": "绪论",
+      "question_id": "X10",
+      "source_hash": "d48bf5ed78eeec7eefc640c5660d5e49dfcb5f830ecad27ed7833433be1fc814",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "下列算法中加下划线的语句的执行次数为（ ）。\nint m=0,i,j;\nfor(i=1;i<=n;i++)\n    for(j=1;j<=2*i;j++)\n        m++;",
+        "options": {
+          "A": "n(n+1)",
+          "B": "n",
+          "C": "n+1",
+          "D": "n²"
+        },
+        "answer.choice": "A",
+        "explanation": "m++语句的执行次数为\n∑_{i=1}^{n} ∑_{j=1}^{2i} 1 = ∑_{i=1}^{n} 2i = 2∑_{i=1}^{n} i = n(n+1)"
+      },
+      "patch": {
+        "content": "下列算法中加下划线的语句的执行次数为（ ）。\nint m=0,i,j;\nfor(i=1;i<=n;i++)\n    for(j=1;j<=2*i;j++)\n        m++;",
+        "answer": {
+          "explanation": "m++语句的执行次数为\n∑_{i=1}^{n} ∑_{j=1}^{2i} 1 = ∑_{i=1}^{n} 2i = 2∑_{i=1}^{n} i = n(n+1)"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-ds::线性表 · 线性表的顺序表示 · 选择题::X03",
+      "course_key": "ds",
+      "chapter": "线性表",
+      "question_id": "X03",
+      "source_hash": "b3d02ec57a1e661d8f5b95ae70b1fc1be3c6e7faea60db63a61399bb7337035e",
+      "status": "verified",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "通常说顺序表具有随机存取的特性，指的是（）。",
+        "options": {
+          "A": "查找值为x的元素的时间与顺序表中元素个数n无关",
+          "B": "查找值为x的元素的时间与顺序表中元素个数n有关",
+          "C": "查找序号为i的元素的时间与顺序表中元素个数n无关",
+          "D": "查找序号为i的元素的时间与顺序表中元素个数n有关"
+        },
+        "answer.choice": "C",
+        "explanation": "随机存取是指在O(1)的时间访问下标为i的元素，所需时间与顺序表中的元素个数n无关。"
+      },
+      "patch": null
+    },
+    {
+      "source_uid": "408:cs408-ds::线性表 · 线性表的顺序表示 · 选择题::X08",
+      "course_key": "ds",
+      "chapter": "线性表",
+      "question_id": "X08",
+      "source_hash": "c69989e3dd5735266e5ce233d0eaabb9f662dc1f4e6fbec4ee5fa083869dc8a9",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "设线性表有 n 个元素，严格说来，以下操作中，（ ）在顺序表上实现要比在链表上实现的效率高。\nI. 输出第 i（1≤i≤n）个元素值\nII. 交换第 3 个元素与第 4 个元素的值\nIII. 顺序输出这 n 个元素的值",
+        "options": {
+          "A": "I",
+          "B": "I、III",
+          "C": "I、II",
+          "D": "II、III"
+        },
+        "answer.choice": "C",
+        "explanation": "对说法 II，顺序表只需 3 次交换操作；链表需要分别找到两个结点前驱，第 4 个结点断链后再插入到第 2 个结点后，效率较低。对说法 III，需要依次顺序访问每个元素，时间复杂度相同。"
+      },
+      "patch": {
+        "content": "设线性表有 n 个元素，严格说来，以下操作中，（ ）在顺序表上实现要比在链表上实现的效率高。\nI. 输出第 i（1≤i≤n）个元素值\nII. 交换第 3 个元素与第 4 个元素的值\nIII. 顺序输出这 n 个元素的值",
+        "options": {
+          "A": "I",
+          "B": "I、III",
+          "C": "I、II",
+          "D": "II、III"
+        },
+        "answer": {
+          "explanation": "对说法 II，顺序表只需 3 次交换操作；链表需要分别找到两个结点前驱，第 4 个结点断链后再插入到第 2 个结点后，效率较低。对说法 III，需要依次顺序访问每个元素，时间复杂度相同。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-ds::线性表 · 线性表的链式表示 · 选择题::X12",
+      "course_key": "ds",
+      "chapter": "线性表",
+      "question_id": "X12",
+      "source_hash": "9de61d68cdc03eab7023f27ad1a609023f8887279cc731f2c6bc73f1d67b4261",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "在线性表 a₀, a₁, …, a₁₀₀ 中，删除元素 a₅₀ 需要移动（ ）个元素。",
+        "options": {
+          "A": "0",
+          "B": "50",
+          "C": "51",
+          "D": "0 或 50"
+        },
+        "answer.choice": "D",
+        "explanation": "线性表有顺序存储和链式存储两种存储结构。若采用链式存储结构，则删除元素 a₅₀ 不需要移动元素；若采用顺序存储结构，则需要依次移动 50 个元素。"
+      },
+      "patch": {
+        "content": "在线性表 a₀, a₁, …, a₁₀₀ 中，删除元素 a₅₀ 需要移动（ ）个元素。",
+        "options": {
+          "A": "0",
+          "B": "50",
+          "C": "51",
+          "D": "0 或 50"
+        },
+        "answer": {
+          "explanation": "线性表有顺序存储和链式存储两种存储结构。若采用链式存储结构，则删除元素 a₅₀ 不需要移动元素；若采用顺序存储结构，则需要依次移动 50 个元素。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-ds::线性表 · 线性表的链式表示 · 选择题::X13",
+      "course_key": "ds",
+      "chapter": "线性表",
+      "question_id": "X13",
+      "source_hash": "d1ce4ffd03341697dcc79d447e91286bde195c79afd6389ac9035b7dca170e6c",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "通过含有n（n>1）个元素的数组a，采用头插法建立单链表L，则L中的元素次序（）。",
+        "options": {
+          "A": "与数组a的元素次序相同",
+          "B": "与数组a的元素次序相反",
+          "C": "与数组a的元素次序无关",
+          "D": "以上都错误"
+        },
+        "answer.choice": "B",
+        "explanation": "当采用头插法建立单链表时，数组后面的元素插入到单链表L的最前端，所以L中的元素次序与数组a的元素次序相反。"
+      },
+      "patch": {
+        "content": "通过含有n（n>1）个元素的数组a，采用头插法建立单链表L，则L中的元素次序（）。",
+        "answer": {
+          "explanation": "当采用头插法建立单链表时，数组后面的元素插入到单链表L的最前端，所以L中的元素次序与数组a的元素次序相反。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-ds::线性表 · 线性表的链式表示 · 选择题::X27",
+      "course_key": "ds",
+      "chapter": "线性表",
+      "question_id": "X27",
+      "source_hash": "145278e4ca5a2a02b561cd2ad5dc8b4f6a8634676b8ac4902678c19504cbbd0b",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "某线性表用带头结点的循环单链表存储，头指针为 head，当 head->next->next==head 成立时，线性表的长度可能是（ ）。",
+        "options": {
+          "A": "0",
+          "B": "1",
+          "C": "2",
+          "D": "可能为 0 或 1"
+        },
+        "answer.choice": "D",
+        "explanation": "对一个空循环单链表，有 head->next==head，推理 head->next->next==head->next==head。对含有一个元素的循环单链表，头结点（头指针 head 指示）的 next 域指向这个唯一的元素结点，该元素结点的 next 域指向头结点，因此也有 head->next->next=head。"
+      },
+      "patch": {
+        "content": "某线性表用带头结点的循环单链表存储，头指针为 head，当 head->next->next==head 成立时，线性表的长度可能是（ ）。",
+        "options": {
+          "A": "0",
+          "B": "1",
+          "C": "2",
+          "D": "可能为 0 或 1"
+        },
+        "answer": {
+          "explanation": "对一个空循环单链表，有 head->next==head，推理 head->next->next==head->next==head。对含有一个元素的循环单链表，头结点（头指针 head 指示）的 next 域指向这个唯一的元素结点，该元素结点的 next 域指向头结点，因此也有 head->next->next=head。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X10",
+      "course_key": "ds",
+      "chapter": "栈、队列和数组",
+      "question_id": "X10",
+      "source_hash": "9374ed41afe9cafdf95fa823ae3bffd73f1d5b5ffd0bf45f64ad1e935c43c955",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "向一个栈顶指针为 top 的链栈（不带头结点）中插入一个 x 结点，则执行（ ）。",
+        "options": {
+          "A": "top->next=x",
+          "B": "x->next=top->next; top->next=x",
+          "C": "x->next=top; top=x",
+          "D": "x->next=top; top=top->next"
+        },
+        "answer.choice": "C",
+        "explanation": "链栈采用不带头结点的单链表表示时，入栈操作在首部插入一个结点 x（x->next=top），插入完后需将 top 指向该插入的结点 x。请思考当链栈存在头结点时的情况。"
+      },
+      "patch": {
+        "content": "向一个栈顶指针为 top 的链栈（不带头结点）中插入一个 x 结点，则执行（ ）。",
+        "answer": {
+          "explanation": "链栈采用不带头结点的单链表表示时，入栈操作在首部插入一个结点 x（x->next=top），插入完后需将 top 指向该插入的结点 x。请思考当链栈存在头结点时的情况。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X18",
+      "course_key": "ds",
+      "chapter": "栈、队列和数组",
+      "question_id": "X18",
+      "source_hash": "e4c0c306a9dca40251b8115baaec222b70863715bf841f22d87e9b6ffa808317",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "若栈的输入序列是 1, 2, 3, …, n，输出序列的第一个元素是 i，则第 j 个输出元素是（ ）。",
+        "options": {
+          "A": "i-j-1",
+          "B": "i-j",
+          "C": "j-i+1",
+          "D": "不确定"
+        },
+        "answer.choice": "D",
+        "explanation": "当第 i 个元素第一个出栈时，则 i 之前的元素可以依次排在 i 之后出栈，但剩余的元素可以在此时入栈，并且排在 i 之前的元素出栈，所以第 j 个出栈的元素是不确定的。"
+      },
+      "patch": {
+        "content": "若栈的输入序列是 1, 2, 3, …, n，输出序列的第一个元素是 i，则第 j 个输出元素是（ ）。",
+        "answer": {
+          "explanation": "当第 i 个元素第一个出栈时，则 i 之前的元素可以依次排在 i 之后出栈，但剩余的元素可以在此时入栈，并且排在 i 之前的元素出栈，所以第 j 个出栈的元素是不确定的。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 队列 · 选择题::X06",
+      "course_key": "ds",
+      "chapter": "栈、队列和数组",
+      "question_id": "X06",
+      "source_hash": "f662ce28f4866146c75448ddaea946f61a75c1a267ba1626071b4952d0695f53",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "已知循环队列的存储空间为数组 A[21]，front 指向队首元素的前一个位置，rear 指向队尾元素，假设当前 front 和 rear 的值分别为 8 和 3，则该队列的长度为（ ）。",
+        "options": {
+          "A": "5",
+          "B": "6",
+          "C": "16",
+          "D": "17"
+        },
+        "answer.choice": "C",
+        "explanation": "队列的长度为(rear-front+maxsize)%maxsize=(rear-front+21)%21=16。这种情况和 front 指向当前元素，rear 指向队尾元素的下一个元素的计算是相同的。\n注意：数组 A[n] 的下标范围为 0～n-1。若写成 A[0...n]，则说明下标范围为 0～n。"
+      },
+      "patch": {
+        "content": "已知循环队列的存储空间为数组 A[21]，front 指向队首元素的前一个位置，rear 指向队尾元素，假设当前 front 和 rear 的值分别为 8 和 3，则该队列的长度为（ ）。",
+        "answer": {
+          "explanation": "队列的长度为(rear-front+maxsize)%maxsize=(rear-front+21)%21=16。这种情况和 front 指向当前元素，rear 指向队尾元素的下一个元素的计算是相同的。\n注意：数组 A[n] 的下标范围为 0～n-1。若写成 A[0...n]，则说明下标范围为 0～n。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X10",
+      "course_key": "ds",
+      "chapter": "栈、队列和数组",
+      "question_id": "X10",
+      "source_hash": "c17f5f729c059ed5258c9ef6259f180599585797108e8f6c81c2b0ea051dd685",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "执行（ ）操作时，需要使用队列作为辅助存储空间。",
+        "options": {
+          "A": "查找散列（哈希）表",
+          "B": "广度优先搜索图",
+          "C": "前序（根）遍历二叉树",
+          "D": "深度优先搜索图"
+        },
+        "answer.choice": "B",
+        "explanation": "本题涉及第 5 章和第 6 章的内容，图的广度优先搜索类似于树的层序遍历，都要借助于队列。"
+      },
+      "patch": {
+        "content": "执行（ ）操作时，需要使用队列作为辅助存储空间。",
+        "answer": {
+          "explanation": "本题涉及第 5 章和第 6 章的内容，图的广度优先搜索类似于树的层序遍历，都要借助于队列。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 数组和特殊矩阵 · 选择题::X04",
+      "course_key": "ds",
+      "chapter": "栈、队列和数组",
+      "question_id": "X04",
+      "source_hash": "40508620480c35805352b2ece9af8c466f65406c2fa4219ad0d3e1e4e6d4edc9",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "在二维数组 A 中，假设每个数组元素的长度为 3 个存储单元，行下标 i 为 0～8，列下标 j 为 0～9，从首地址 SA 开始连续存放。在这种情况下，元素 A[8][5] 的起始地址为（ ）。",
+        "options": {
+          "A": "SA + 141",
+          "B": "SA + 144",
+          "C": "SA + 222",
+          "D": "SA + 255"
+        },
+        "answer.choice": "D",
+        "explanation": "二维数组计算地址（按行优先顺序）的公式为\nLOC(i,j)=LOC(0,0)+(im+j)L"
+      },
+      "patch": {
+        "content": "在二维数组 A 中，假设每个数组元素的长度为 3 个存储单元，行下标 i 为 0～8，列下标 j 为 0～9，从首地址 SA 开始连续存放。在这种情况下，元素 A[8][5] 的起始地址为（ ）。",
+        "options": {
+          "A": "SA + 141",
+          "B": "SA + 144",
+          "C": "SA + 222",
+          "D": "SA + 255"
+        },
+        "answer": {
+          "explanation": "二维数组计算地址（按行优先顺序）的公式为\nLOC(i,j)=LOC(0,0)+(im+j)L"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-ds::串 · 串的模式匹配 · 选择题::X01",
+      "course_key": "ds",
+      "chapter": "串",
+      "question_id": "X01",
+      "source_hash": "6569dc928d33112bde03e31b23aa805d658d2379aa699b17040e768814126ce4",
+      "status": "verified",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "设有两个串 S₁ 和 S₂，求 S₂ 在 S₁ 中首次出现的位置的运算称为（ ）。",
+        "options": {
+          "A": "求子串",
+          "B": "判断是否相等",
+          "C": "模式匹配",
+          "D": "连接"
+        },
+        "answer.choice": "C",
+        "explanation": "求子串操作是从串 S 中截取第 i 个字符起长度为 l 的子串，选项 A 错误。选项 B、D 明显错误。"
+      },
+      "patch": null
+    },
+    {
+      "source_uid": "408:cs408-ds::串 · 串的模式匹配 · 选择题::X05",
+      "course_key": "ds",
+      "chapter": "串",
+      "question_id": "X05",
+      "source_hash": "28f6214f36185718228dfc890792a08a68b5bdcfeec96a35ab329076f00300ed",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "在 KMP 算法中，用 next 数组存放模式串的部分匹配信息，当模式串位 j 与主串位 i 比较时，两个字符不相等，则 i 的位移方式是（）。",
+        "options": {
+          "A": "i=next[i]",
+          "B": "i 不变",
+          "C": "i=0",
+          "D": "i=i+1"
+        },
+        "answer.choice": "B",
+        "explanation": "在 KMP 算法中，当主串的第 i 个字符和模式串的第 j 个字符失配时，主串指针 i 不回溯。"
+      },
+      "patch": {
+        "content": "在 KMP 算法中，用 next 数组存放模式串的部分匹配信息，当模式串位 j 与主串位 i 比较时，两个字符不相等，则 i 的位移方式是（）。"
+      }
+    },
+    {
+      "source_uid": "408:cs408-ds::树与二叉树 · 树的基本概念 · 选择题::X08",
+      "course_key": "ds",
+      "chapter": "树与二叉树",
+      "question_id": "X08",
+      "source_hash": "6573a8c37f6a15c5d49b4d768b9b5b7fc5017de117e62096d9fdde53594d55ad",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "设一棵m叉树中有N₁个度数为1的结点，N₂个度数为2的结点……Nₘ个度数为m的结点，则该树中共有（）个叶结点。",
+        "options": {
+          "A": "∑_{i=1}^{m}(i-1)N_i",
+          "B": "∑_{i=1}^{m}N_i",
+          "C": "∑_{i=2}^{m}(i-1)N_i",
+          "D": "∑_{i=2}^{m}(i-1)N_i+1"
+        },
+        "answer.choice": "D",
+        "explanation": "设叶结点数为N₀，总结点数为N，则N=N₁+2N₂+3N₃+⋯+mNₘ+1，又因为N=N₀+N₁+N₂+⋯+Nₘ，所以N₀=N₂+2N₃+⋯+(m-1)Nₘ+1=∑_{i=2}^{m}(i-1)N_i+1。"
+      },
+      "patch": {
+        "content": "设一棵m叉树中有N₁个度数为1的结点，N₂个度数为2的结点……Nₘ个度数为m的结点，则该树中共有（）个叶结点。",
+        "options": {
+          "A": "∑_{i=1}^{m}(i-1)N_i",
+          "B": "∑_{i=1}^{m}N_i",
+          "C": "∑_{i=2}^{m}(i-1)N_i",
+          "D": "∑_{i=2}^{m}(i-1)N_i+1"
+        },
+        "answer": {
+          "explanation": "设叶结点数为N₀，总结点数为N，则N=N₁+2N₂+3N₃+⋯+mNₘ+1，又因为N=N₀+N₁+N₂+⋯+Nₘ，所以N₀=N₂+2N₃+⋯+(m-1)Nₘ+1=∑_{i=2}^{m}(i-1)N_i+1。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题::X09",
+      "course_key": "ds",
+      "chapter": "树与二叉树",
+      "question_id": "X09",
+      "source_hash": "20773616e9fd4725686b23823dd41ffc23c3606288ad06fd985c32460ddc91bb",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "先序序列为 A, B, C，后序序列为 C, B, A 的二叉树共有（）。",
+        "options": {
+          "A": "1 棵",
+          "B": "2 棵",
+          "C": "3 棵",
+          "D": "4 棵"
+        },
+        "answer.choice": "D",
+        "explanation": "先序为 A、B、C 的不同二叉树共有 5 种，其中后序为 C、B、A 的有 4 种（前 4 种），都是单支树，如下图所示。"
+      },
+      "patch": {
+        "content": "先序序列为 A, B, C，后序序列为 C, B, A 的二叉树共有（）。",
+        "options": {
+          "A": "1 棵",
+          "B": "2 棵",
+          "C": "3 棵",
+          "D": "4 棵"
+        },
+        "answer": {
+          "explanation": "先序为 A、B、C 的不同二叉树共有 5 种，其中后序为 C、B、A 的有 4 种（前 4 种），都是单支树，如下图所示。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题::X29",
+      "course_key": "ds",
+      "chapter": "树与二叉树",
+      "question_id": "X29",
+      "source_hash": "17d55b6f9de182d27d4388fd9e6079eb8a0e815b6d02875d700f834eaddb45f5",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "若 X 是后序线索二叉树中的叶结点，且 X 存在左兄弟 Y，则 X 的右线索指向的是（）。",
+        "options": {
+          "A": "X 的双亲",
+          "B": "以 Y 为根的子树的最左下结点",
+          "C": "X 的左兄弟 Y",
+          "D": "以 Y 为根的子树的最右下结点"
+        },
+        "answer.choice": "A",
+        "explanation": "在二叉树的后序遍历中，叶结点 X 的后继是其双亲，因此 X 的右线索应指向该结点。"
+      },
+      "patch": {
+        "content": "若 X 是后序线索二叉树中的叶结点，且 X 存在左兄弟 Y，则 X 的右线索指向的是（）。",
+        "options": {
+          "A": "X 的双亲",
+          "B": "以 Y 为根的子树的最左下结点",
+          "C": "X 的左兄弟 Y",
+          "D": "以 Y 为根的子树的最右下结点"
+        },
+        "answer": {
+          "explanation": "在二叉树的后序遍历中，叶结点 X 的后继是其双亲，因此 X 的右线索应指向该结点。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题::X40",
+      "course_key": "ds",
+      "chapter": "树与二叉树",
+      "question_id": "X40",
+      "source_hash": "c514c51d694d498f5a10db79d4f2dc5850cb0f27ff303258bb3dbc0a33673752",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "【2017 统考真题】要使一棵非空二叉树的先序序列与中序序列相同，其所有非叶结点须满足的条件是（）。",
+        "options": {
+          "A": "只有左子树",
+          "B": "只有右子树",
+          "C": "结点的度均为 1",
+          "D": "结点的度均为 2"
+        },
+        "answer.choice": "B",
+        "explanation": "先序序列先访问父结点，接着访问左子树，然后访问右子树。中序序列先访问左子树，接着访问父结点，然后访问右子树，递归进行。若所有非叶结点只有右子树，则先序序列和中序序列都先访问父结点，后访问右子树，递归进行。"
+      },
+      "patch": {
+        "content": "【2017 统考真题】要使一棵非空二叉树的先序序列与中序序列相同，其所有非叶结点须满足的条件是（）。",
+        "options": {
+          "A": "只有左子树",
+          "B": "只有右子树",
+          "C": "结点的度均为 1",
+          "D": "结点的度均为 2"
+        },
+        "answer": {
+          "explanation": "先序序列先访问父结点，接着访问左子树，然后访问右子树。中序序列先访问左子树，接着访问父结点，然后访问右子树，递归进行。若所有非叶结点只有右子树，则先序序列和中序序列都先访问父结点，后访问右子树，递归进行。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-ds::树与二叉树 · 树与二叉树的应用 · 选择题::X22",
+      "course_key": "ds",
+      "chapter": "树与二叉树",
+      "question_id": "X22",
+      "source_hash": "5cc7f5173f3c1129cb1b59a45e09b40d576c59c44f4d7a2173c63dd7f0e59403",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "【2023统考真题】在由6个字符组成的字符集S中，各字符出现的频次分别为3,4,5,6,8,10，为S构造的哈夫曼编码的加权平均长度为（）。",
+        "options": {
+          "A": "2.4",
+          "B": "2.5",
+          "C": "2.67",
+          "D": "2.75"
+        },
+        "answer.choice": "B",
+        "explanation": "构建哈夫曼树的过程如下图所示。先将权值3与4合并为7，序列变为5,6,7,8,10；再将5与6合并为11，序列变为7,8,10,11；再将7与8合并为15，序列变为10,11,15。其后合并步骤与加权平均长度算式被裁出图外。"
+      },
+      "patch": {
+        "content": "【2023统考真题】在由6个字符组成的字符集S中，各字符出现的频次分别为3,4,5,6,8,10，为S构造的哈夫曼编码的加权平均长度为（）。",
+        "answer": {
+          "explanation": "构建哈夫曼树的过程如下图所示。先将权值3与4合并为7，序列变为5,6,7,8,10；再将5与6合并为11，序列变为7,8,10,11；再将7与8合并为15，序列变为10,11,15。其后合并步骤与加权平均长度算式被裁出图外。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-ds::图 · 图的存储及基本操作 · 选择题::X01",
+      "course_key": "ds",
+      "chapter": "图",
+      "question_id": "X01",
+      "source_hash": "76f6c3783e38d6154708725bf925a0a753406818d1f52013d5c77360d5e67b12",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "下列关于图的存储结构的说法中，错误的是（）。",
+        "options": {
+          "A": "使用邻接矩阵存储一个图时，在不考虑压缩存储的情况下，所占用的存储空间大小只与图中的顶点数有关，与边数无关",
+          "B": "邻接表只用于有向图的存储，邻接矩阵适用于有向图和无向图",
+          "C": "若一个有向图的邻接矩阵的对角线以下的元素为 0，则该图的拓扑序列必定存在",
+          "D": "存储无向图的邻接矩阵是对称的，所以只需存储邻接矩阵的下（或上）三角部分"
+        },
+        "answer.choice": "B",
+        "explanation": "对于有 n 个顶点的图，若采用邻接矩阵表示，不考虑压缩存储，则存储空间大小为 O(n²)，选项 A 正确。邻接表可用于存储无向图，只是把每条边都视为两条方向相反的有向边，因此需要存储两次，选项 B 错误。因为邻接矩阵中对角线以下的元素全为 0，所以若存在 <i, j>，则必有 i < j，由传递性可知图中路径的顶点编号是依次递增的，假设存在环 k→…→j→k，由题设可知 k<j<k，矛盾，所以不存在环，拓扑序列必定存在，选项 C 正确。选项 D 显然正确。\n注意\n若邻接矩阵对角线以下（或以上）的元素全为 0，则图中必然不存在环，即拓扑序列一定存在，但这并不能说明拓扑序列是唯一的。"
+      },
+      "patch": {
+        "options": {
+          "A": "使用邻接矩阵存储一个图时，在不考虑压缩存储的情况下，所占用的存储空间大小只与图中的顶点数有关，与边数无关",
+          "B": "邻接表只用于有向图的存储，邻接矩阵适用于有向图和无向图",
+          "C": "若一个有向图的邻接矩阵的对角线以下的元素为 0，则该图的拓扑序列必定存在",
+          "D": "存储无向图的邻接矩阵是对称的，所以只需存储邻接矩阵的下（或上）三角部分"
+        },
+        "answer": {
+          "explanation": "对于有 n 个顶点的图，若采用邻接矩阵表示，不考虑压缩存储，则存储空间大小为 O(n²)，选项 A 正确。邻接表可用于存储无向图，只是把每条边都视为两条方向相反的有向边，因此需要存储两次，选项 B 错误。因为邻接矩阵中对角线以下的元素全为 0，所以若存在 <i, j>，则必有 i < j，由传递性可知图中路径的顶点编号是依次递增的，假设存在环 k→…→j→k，由题设可知 k<j<k，矛盾，所以不存在环，拓扑序列必定存在，选项 C 正确。选项 D 显然正确。\n注意\n若邻接矩阵对角线以下（或以上）的元素全为 0，则图中必然不存在环，即拓扑序列一定存在，但这并不能说明拓扑序列是唯一的。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-ds::图 · 图的存储及基本操作 · 选择题::X04",
+      "course_key": "ds",
+      "chapter": "图",
+      "question_id": "X04",
+      "source_hash": "40c813b26f96d8f7d80e1d064d710f9001914b779fbe9a8c621798d7052736c9",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "带权有向图 G 用邻接矩阵存储，则 vᵢ 的入度等于邻接矩阵中（）。",
+        "options": {
+          "A": "第 i 行非∞的元素个数",
+          "B": "第 i 列非∞的元素个数",
+          "C": "第 i 行非∞且非 0 的元素个数",
+          "D": "第 i 列非∞且非 0 的元素个数"
+        },
+        "answer.choice": "D",
+        "explanation": "带权有向图的邻接矩阵中，0 和 ∞ 表示的都不是有向边，而入度是由邻接矩阵的列中元素计算出来的；出度是由邻接矩阵的行中元素计算出来的。"
+      },
+      "patch": {
+        "content": "带权有向图 G 用邻接矩阵存储，则 vᵢ 的入度等于邻接矩阵中（）。",
+        "options": {
+          "A": "第 i 行非∞的元素个数",
+          "B": "第 i 列非∞的元素个数",
+          "C": "第 i 行非∞且非 0 的元素个数",
+          "D": "第 i 列非∞且非 0 的元素个数"
+        },
+        "answer": {
+          "explanation": "带权有向图的邻接矩阵中，0 和 ∞ 表示的都不是有向边，而入度是由邻接矩阵的列中元素计算出来的；出度是由邻接矩阵的行中元素计算出来的。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-ds::图 · 图的遍历 · 选择题::X14",
+      "course_key": "ds",
+      "chapter": "图",
+      "question_id": "X14",
+      "source_hash": "4bb4e954d55e9d9f223a3b4f2780ea33b84aba0997bc3dfe329c8b27acb72724",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "图的广度优先生成树的树高比深度优先生成树的树高（）。",
+        "options": {
+          "A": "小或相等",
+          "B": "小",
+          "C": "大或相等",
+          "D": "大"
+        },
+        "answer.choice": "A",
+        "explanation": "对于无向图的广度优先搜索生成树，起点到其他顶点的路径是图中对应的最短路径，即所有生成树中树高最小。此外，深度优先总是尽可能“深”地搜索图，因此其路径也尽可能长，所以深度优先生成树的树高总是大于或等于广度优先生成树的树高。"
+      },
+      "patch": {
+        "answer": {
+          "explanation": "对于无向图的广度优先搜索生成树，起点到其他顶点的路径是图中对应的最短路径，即所有生成树中树高最小。此外，深度优先总是尽可能“深”地搜索图，因此其路径也尽可能长，所以深度优先生成树的树高总是大于或等于广度优先生成树的树高。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-ds::图 · 图的应用 · 选择题::X21",
+      "course_key": "ds",
+      "chapter": "图",
+      "question_id": "X21",
+      "source_hash": "ede9d05ca515d2954347fb26685cd9df6865ba26e2bb74613ccb28d85eeb326c",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "下列关于图的说法中，正确的是（）。\nI. 有向图中顶点 V 的度等于其邻接矩阵中第 V 行中 1 的个数\nII. 无向图的邻接矩阵一定是对称矩阵，有向图的邻接矩阵一定是非对称矩阵\nIII. 在带权图 G 的最小生成树 G₁ 中，某条边的权值可能会超过未选边的权值\nIV. 若有向无环图的拓扑序列唯一，则可以唯一确定该图",
+        "options": {
+          "A": "I、II 和 III",
+          "B": "III 和 IV",
+          "C": "III",
+          "D": "IV"
+        },
+        "answer.choice": "C",
+        "explanation": "有向图邻接矩阵的第 V 行中 1 的个数是顶点 V 的出度，而有向图中顶点的度为入度与出度之和，说法 I 错。无向图的邻接矩阵一定是对称矩阵，但当有向图中任意两个顶点之间有边相连，且是两条方向相反的有向边时，有向图的邻接矩阵也是一个对称矩阵，说法 II 错。最小生成树中的 n−1 条边不能保证是图中权值最小的 n−1 条边，因为权值最小的 n−1 条边并不一定能使图连通。在下图中，左图的最小生成树如下图所示，权值为 3 的边不在其最小生成树中。\n有向无环图的拓扑序列唯一并不能唯一确定该图。在下图所示的两个有向无环图中，拓扑序列都为 V₁, V₂, V₃, V₄，IV 错。注意，很多辅导书对该命题的判断是错误的。"
+      },
+      "patch": {
+        "content": "下列关于图的说法中，正确的是（）。\nI. 有向图中顶点 V 的度等于其邻接矩阵中第 V 行中 1 的个数\nII. 无向图的邻接矩阵一定是对称矩阵，有向图的邻接矩阵一定是非对称矩阵\nIII. 在带权图 G 的最小生成树 G₁ 中，某条边的权值可能会超过未选边的权值\nIV. 若有向无环图的拓扑序列唯一，则可以唯一确定该图",
+        "options": {
+          "A": "I、II 和 III",
+          "B": "III 和 IV",
+          "C": "III",
+          "D": "IV"
+        },
+        "answer": {
+          "explanation": "有向图邻接矩阵的第 V 行中 1 的个数是顶点 V 的出度，而有向图中顶点的度为入度与出度之和，说法 I 错。无向图的邻接矩阵一定是对称矩阵，但当有向图中任意两个顶点之间有边相连，且是两条方向相反的有向边时，有向图的邻接矩阵也是一个对称矩阵，说法 II 错。最小生成树中的 n−1 条边不能保证是图中权值最小的 n−1 条边，因为权值最小的 n−1 条边并不一定能使图连通。在下图中，左图的最小生成树如下图所示，权值为 3 的边不在其最小生成树中。\n有向无环图的拓扑序列唯一并不能唯一确定该图。在下图所示的两个有向无环图中，拓扑序列都为 V₁, V₂, V₃, V₄，IV 错。注意，很多辅导书对该命题的判断是错误的。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-ds::图 · 图的应用 · 选择题::X37",
+      "course_key": "ds",
+      "chapter": "图",
+      "question_id": "X37",
+      "source_hash": "d5a6c7b36599f641b56d18a373b91edfcd1a643c8d76f17b6b3dbaa6b54dcab1",
+      "status": "verified",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "【2018统考真题】下列选项中，不是右侧有向图的拓\n扑序列的是（）。",
+        "options": {
+          "A": "1,5,2,3,6,4",
+          "B": "5,1,2,6,3,4",
+          "C": "5,1,2,3,6,4",
+          "D": "5,2,1,6,3,4"
+        },
+        "answer.choice": "D",
+        "explanation": "拓扑排序每次选取入度为0的顶点输出，经观察不难发现拓扑序列前两位一定是1,5 或 5,1\n（因为只有1和5的入度均为0，且其他顶点都不满足仅有1或仅有5作为前驱）。"
+      },
+      "patch": null
+    },
+    {
+      "source_uid": "408:cs408-ds::查找 · 顺序查找和折半查找 · 选择题::X12",
+      "course_key": "ds",
+      "chapter": "查找",
+      "question_id": "X12",
+      "source_hash": "f630a27516829bd54d1d7fdb0d09d931be89767bf75375f69e5b4ef53e800408",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "对表长为 n 的有序表进行折半查找，其判定树的高度为（）。",
+        "options": {
+          "A": "⌈log₂(n+1)⌉",
+          "B": "⌊log₂(n+1)⌋−1",
+          "C": "⌈log₂n⌉",
+          "D": "⌊log₂n⌋−1"
+        },
+        "answer.choice": "A",
+        "explanation": "对 n 个结点的判定树，设结点总数 n=2ʰ−1，则 h=⌈log₂(n+1)⌉。"
+      },
+      "patch": {
+        "content": "对表长为 n 的有序表进行折半查找，其判定树的高度为（）。",
+        "options": {
+          "A": "⌈log₂(n+1)⌉",
+          "B": "⌊log₂(n+1)⌋−1",
+          "C": "⌈log₂n⌉",
+          "D": "⌊log₂n⌋−1"
+        },
+        "answer": {
+          "explanation": "对 n 个结点的判定树，设结点总数 n=2ʰ−1，则 h=⌈log₂(n+1)⌉。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-ds::查找 · 树形查找 · 选择题::X14",
+      "course_key": "ds",
+      "chapter": "查找",
+      "question_id": "X14",
+      "source_hash": "92a3a201e9c276efb076a7157ff94f53e5cb59919e15403c8fe23844b258b4be",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "在平衡二叉树的基本操作中，可能发生两次旋转的操作是（）。",
+        "options": {
+          "A": "添加、删除结点",
+          "B": "仅删除结点",
+          "C": "仅添加结点",
+          "D": "都不会"
+        },
+        "answer.choice": "A",
+        "explanation": "插入和删除结点都有可能引起 LR 平衡旋转或者 RL 平衡旋转，发生两次旋转操作。"
+      },
+      "patch": {
+        "answer": {
+          "explanation": "插入和删除结点都有可能引起 LR 平衡旋转或者 RL 平衡旋转，发生两次旋转操作。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-ds::查找 · B树 和B+树 · 选择题::X01",
+      "course_key": "ds",
+      "chapter": "查找",
+      "question_id": "X01",
+      "source_hash": "e7a6f1d4506b9d6dfd629983e389812119bab1d6f6b8009a81d560e6bd53b1a6",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "右图所示是一棵（）。",
+        "options": {
+          "A": "4 阶 B 树",
+          "B": "3 阶 B 树",
+          "C": "4 阶 B+树",
+          "D": "无法确定"
+        },
+        "answer.choice": "D",
+        "explanation": "关键字数目比子树数目少 1，首先可排除 B+树。对于 4 阶 B 树，根结点至少有 2 棵子树（关键字数至少为 1），其他非叶结点至少有 ⌈n/2⌉=2 棵子树（关键字数至少为 1）、至多有 4 棵子树（关键字数至多为 3）。5 阶 B 树和 6 阶 B 树的分析也类似。题目所示的 B 树，同时满足 4 阶 B 树、5 阶 B 树和 6 阶 B 树的要求，因此不能确定是哪种类型的 B 树。"
+      },
+      "patch": {
+        "content": "右图所示是一棵（）。",
+        "options": {
+          "A": "4 阶 B 树",
+          "B": "3 阶 B 树",
+          "C": "4 阶 B+树",
+          "D": "无法确定"
+        },
+        "answer": {
+          "explanation": "关键字数目比子树数目少 1，首先可排除 B+树。对于 4 阶 B 树，根结点至少有 2 棵子树（关键字数至少为 1），其他非叶结点至少有 ⌈n/2⌉=2 棵子树（关键字数至少为 1）、至多有 4 棵子树（关键字数至多为 3）。5 阶 B 树和 6 阶 B 树的分析也类似。题目所示的 B 树，同时满足 4 阶 B 树、5 阶 B 树和 6 阶 B 树的要求，因此不能确定是哪种类型的 B 树。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-ds::查找 · B树 和B+树 · 选择题::X25",
+      "course_key": "ds",
+      "chapter": "查找",
+      "question_id": "X25",
+      "source_hash": "01dfada9f09601b1a9a6654cf5d6a691f1e3603c62c77caabde7eef7026beac9",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "【2025统考真题】给定7个不同的关键字，能构造的不同4阶B树的个数最多是（）。",
+        "options": {
+          "A": "7",
+          "B": "8",
+          "C": "9",
+          "D": "10"
+        },
+        "answer.choice": "C",
+        "explanation": "对于4阶B树，每个结点包含1～3个关键字（根结点可为1～3个，非根结点至少1个）。给定7个不同关键字，按树高分类讨论：①当树为2层时，若根含1个关键字，则其2个子结点需要分配6个关键字，唯一合法的分配为(3,3)，对应1种；若根含2个关键字，则3个子结点分配5个关键字，合法分配为(3,1,1)和(2,2,1)"
+      },
+      "patch": {
+        "answer": {
+          "explanation": "对于4阶B树，每个结点包含1～3个关键字（根结点可为1～3个，非根结点至少1个）。给定7个不同关键字，按树高分类讨论：①当树为2层时，若根含1个关键字，则其2个子结点需要分配6个关键字，唯一合法的分配为(3,3)，对应1种；若根含2个关键字，则3个子结点分配5个关键字，合法分配为(3,1,1)和(2,2,1)"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-ds::查找 · 散列（Hash）表 · 选择题::X21",
+      "course_key": "ds",
+      "chapter": "查找",
+      "question_id": "X21",
+      "source_hash": "7dd70900de7b7415e7826b9aed410156e256d83e156df4c8e65c965bf22cbe78",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "【2019 统考真题】现有长度为 11 且初始为空的散列表 HT，散列函数是 H(key)=key%7，采用线性探查（线性探测再散列）法解决冲突。将关键字序列 87, 40, 30, 6, 11, 22, 98, 20 依次插入 HT 后，HT 查找失败的平均查找长度是（）。",
+        "options": {
+          "A": "4",
+          "B": "5.25",
+          "C": "6",
+          "D": "6.29"
+        },
+        "answer.choice": "C",
+        "explanation": "采用线性探查法计算每个关键字的存放情况如下表所示。\n散列地址：0 1 2 3 4 5 6 7 8 9 10\n关键字：98 22 30 87 11 40 6 20（8、9、10 为空）\n由于 H(key)=0～6，查找失败时可能对应的地址有 7 个，对于计算出地址为 0 的关键字 key0，只有比较完 0～8 号地址后才能确定该关键字不在表中，比较次数为 9；对于计算出地址为 1 的关键字 key1，只有比较完 1～8 号地址后才能确定该关键字不在表中，比较次数为 8；以此类推。需要特别注意的是，散列函数不可能计算出地址 7，因此有 ASL失败=(9+8+7+6+5+4+3)/7=6"
+      },
+      "patch": {
+        "content": "【2019 统考真题】现有长度为 11 且初始为空的散列表 HT，散列函数是 H(key)=key%7，采用线性探查（线性探测再散列）法解决冲突。将关键字序列 87, 40, 30, 6, 11, 22, 98, 20 依次插入 HT 后，HT 查找失败的平均查找长度是（）。",
+        "answer": {
+          "explanation": "采用线性探查法计算每个关键字的存放情况如下表所示。\n散列地址：0 1 2 3 4 5 6 7 8 9 10\n关键字：98 22 30 87 11 40 6 20（8、9、10 为空）\n由于 H(key)=0～6，查找失败时可能对应的地址有 7 个，对于计算出地址为 0 的关键字 key0，只有比较完 0～8 号地址后才能确定该关键字不在表中，比较次数为 9；对于计算出地址为 1 的关键字 key1，只有比较完 1～8 号地址后才能确定该关键字不在表中，比较次数为 8；以此类推。需要特别注意的是，散列函数不可能计算出地址 7，因此有 ASL失败=(9+8+7+6+5+4+3)/7=6"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-ds::排序 · 插入排序 · 选择题::X12",
+      "course_key": "ds",
+      "chapter": "排序",
+      "question_id": "X12",
+      "source_hash": "551b8e1201ca2369dc23b9618756d09994b09e55e40bc01921cd27484b0f39c1",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "已知输入序列{13, 24, 7, 1, 8, 9, 11, 56, 34, 51, 2, 77, 5}，增量序列 d = 5, 3, 1，采用希尔排序算法进行排序，则两趟排序后的结果为（）。",
+        "options": {
+          "A": "1, 7, 8, 9, 13, 24, 11, 34, 51, 2, 5, 56, 77",
+          "B": "1, 7, 5, 2, 8, 9, 24, 11, 34, 51, 13, 77, 56",
+          "C": "2, 11, 5, 1, 8, 9, 24, 7, 34, 51, 13, 77, 56",
+          "D": "2, 5, 11, 1, 8, 9, 7, 24, 34, 13, 51, 77, 56"
+        },
+        "answer.choice": "B",
+        "explanation": "第一趟增量 d = 5，第一趟排序后，结果为 2, 11, 5, 1, 8, 9, 24, 7, 34, 51, 13, 77, 56。第二趟增量 d = 3，第二趟排序后，结果为 1, 7, 5, 2, 8, 9, 24, 11, 34, 51, 13, 77, 56。"
+      },
+      "patch": {
+        "content": "已知输入序列{13, 24, 7, 1, 8, 9, 11, 56, 34, 51, 2, 77, 5}，增量序列 d = 5, 3, 1，采用希尔排序算法进行排序，则两趟排序后的结果为（）。",
+        "options": {
+          "A": "1, 7, 8, 9, 13, 24, 11, 34, 51, 2, 5, 56, 77",
+          "B": "1, 7, 5, 2, 8, 9, 24, 11, 34, 51, 13, 77, 56",
+          "C": "2, 11, 5, 1, 8, 9, 24, 7, 34, 51, 13, 77, 56",
+          "D": "2, 5, 11, 1, 8, 9, 7, 24, 34, 13, 51, 77, 56"
+        },
+        "answer": {
+          "explanation": "第一趟增量 d = 5，第一趟排序后，结果为 2, 11, 5, 1, 8, 9, 24, 7, 34, 51, 13, 77, 56。第二趟增量 d = 3，第二趟排序后，结果为 1, 7, 5, 2, 8, 9, 24, 11, 34, 51, 13, 77, 56。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-ds::排序 · 交换排序 · 选择题::X11",
+      "course_key": "ds",
+      "chapter": "排序",
+      "question_id": "X11",
+      "source_hash": "679e9a7d08bdfa63863a296a27634746de41640345bde8e1986bd0c873d970a8",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "对下列4个序列，以第一个关键字为基准用快速排序算法进行排序，在第一趟过程中移动记录次数最多的是（）。",
+        "options": {
+          "A": "92,96,88,42,30,35,110,100",
+          "B": "92,96,100,110,42,35,30,88",
+          "C": "100, 96, 92,35, 30,110,88,42",
+          "D": "42,30,35,92,100,96,88, 110"
+        },
+        "answer.choice": "B",
+        "explanation": "对各序列分别执行一趟快速排序，可做如下分析（以选项A为例）：枢轴值为92，因此35移动到第一个位置，96移动到第六个位置，30移动到第二个位置，再将枢轴值移动到30所在的单元，即第五个位置，所以选项A中序列移动的次数为4。同样，可以分析出选项B中序列的移动次数为8，选项C中序列的移动次数为4，选项D中序列的移动次数为2。"
+      },
+      "patch": {
+        "content": "对下列4个序列，以第一个关键字为基准用快速排序算法进行排序，在第一趟过程中移动记录次数最多的是（）。",
+        "answer": {
+          "explanation": "对各序列分别执行一趟快速排序，可做如下分析（以选项A为例）：枢轴值为92，因此35移动到第一个位置，96移动到第六个位置，30移动到第二个位置，再将枢轴值移动到30所在的单元，即第五个位置，所以选项A中序列移动的次数为4。同样，可以分析出选项B中序列的移动次数为8，选项C中序列的移动次数为4，选项D中序列的移动次数为2。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-ds::排序 · 选择排序 · 选择题::X20",
+      "course_key": "ds",
+      "chapter": "排序",
+      "question_id": "X20",
+      "source_hash": "c5e9152a8b30c5f9be4369ff1baac3433a821a924b2e23dbbe8efb9cc3d79758",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "【2021统考真题】将关键字 6,9,1,5,8,4,7 依次插入初始为空的大根堆 H，得到的 H 是（）。",
+        "options": {
+          "A": "9,8,7,6,5,4,1",
+          "B": "9,8,7,5,6,1,4",
+          "C": "9,8,7,5,6,4,1",
+          "D": "9,6,7,5,8,4,1"
+        },
+        "answer.choice": "B",
+        "explanation": "要熟练掌握调整堆的方法，建堆的过程如下图所示，所以选择选项 B。\n（解析配有依次插入并调整大根堆的过程图：6 → 6/9 调整为 9/6 → 9/6,1 → 9/6,1 左插入5 → 9/6,1 右插入8并调整为 9/8,1 /5,6 → 再插入4得 9/8,1 /5,6,4 → 调整后插入7得 9/8,4 /5,6,1,7 → 再调整为 9/8,7 /5,6,1,4。）\n注意，给定序列依次插入空堆的结果与给定序列直接调整成堆的结果是不同的，最终得到的堆的形式也不同。若对序列 6, 9, 1, 5, 8, 4, 7 直接调整成堆，则会误选选项 C。"
+      },
+      "patch": {
+        "content": "【2021统考真题】将关键字 6,9,1,5,8,4,7 依次插入初始为空的大根堆 H，得到的 H 是（）。",
+        "answer": {
+          "explanation": "要熟练掌握调整堆的方法，建堆的过程如下图所示，所以选择选项 B。\n（解析配有依次插入并调整大根堆的过程图：6 → 6/9 调整为 9/6 → 9/6,1 → 9/6,1 左插入5 → 9/6,1 右插入8并调整为 9/8,1 /5,6 → 再插入4得 9/8,1 /5,6,4 → 调整后插入7得 9/8,4 /5,6,1,7 → 再调整为 9/8,7 /5,6,1,4。）\n注意，给定序列依次插入空堆的结果与给定序列直接调整成堆的结果是不同的，最终得到的堆的形式也不同。若对序列 6, 9, 1, 5, 8, 4, 7 直接调整成堆，则会误选选项 C。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-ds::排序 · 归并排序、基数排序和计数排序 · 选择题::X07",
+      "course_key": "ds",
+      "chapter": "排序",
+      "question_id": "X07",
+      "source_hash": "b6b0885cce8f59842a753cba26f64af1e69197faca8daadafa918f111015b95d",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "将两个各有 N 个元素的有序表合并成一个有序表，最少的比较次数是（），最多的比较次数是（）。",
+        "options": {
+          "A": "N",
+          "B": "2N−1",
+          "C": "2N",
+          "D": "N−1"
+        },
+        "answer.choice": "AB",
+        "explanation": "注意，当一个表中的最小元素比另一个表中的最大元素还大时，比较的次数是最少的，仅比较 N 次；而当两个表中的元素依次间隔地比较时，即 a₁ < b₁ < a₂ < b₂ < ⋯ < aₙ < bₙ 时，比较的次数是最多的，为 2N−1 次。\n建议读者对此举一反三：若将本题中的两个有序表的长度分别设为 M 和 N，则最多（或最少）的比较次数是多少？时间复杂度又是多少？"
+      },
+      "patch": {
+        "content": "将两个各有 N 个元素的有序表合并成一个有序表，最少的比较次数是（），最多的比较次数是（）。",
+        "options": {
+          "A": "N",
+          "B": "2N−1",
+          "C": "2N",
+          "D": "N−1"
+        },
+        "answer": {
+          "explanation": "注意，当一个表中的最小元素比另一个表中的最大元素还大时，比较的次数是最少的，仅比较 N 次；而当两个表中的元素依次间隔地比较时，即 a₁ < b₁ < a₂ < b₂ < ⋯ < aₙ < bₙ 时，比较的次数是最多的，为 2N−1 次。\n建议读者对此举一反三：若将本题中的两个有序表的长度分别设为 M 和 N，则最多（或最少）的比较次数是多少？时间复杂度又是多少？"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X18",
+      "course_key": "ds",
+      "chapter": "排序",
+      "question_id": "X18",
+      "source_hash": "aa3b28087a10db6e93a4c4e556b515ac5cc7395f7db21f932bd2940b6ed0adac",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "【2019统考真题】选择一个排序算法时，除算法的时空效率外，下列因素中，还需要考虑的是（）。\nI. 数据的规模    II. 数据的存储方式    III. 算法的稳定性    IV. 数据的初始状态",
+        "options": {
+          "A": "仅 III",
+          "B": "仅 I、II",
+          "C": "仅 II、III、IV",
+          "D": "I、II、III、IV"
+        },
+        "answer.choice": "D",
+        "explanation": "当数据规模较小时可选择复杂度为 O(n²) 的简单排序算法，当数据规模较大时应选择复杂度为 O(n log₂ n) 的排序算法，当数据规模大到内存无法放下时需选择外部排序算法，说法 I 正确。数据的存储方式主要分为顺序存储和链式存储，有些排序算法（如堆排序）只能用于顺序存储方式，说法 II 正确。若对数据稳定性有要求，则不能选择不稳定的排序算法，说法 III 显然正确。当数据初始基本有序时，直接插入排序的效率最高，冒泡排序和直接插入排序的时间复杂度都为 O(n)，而归并排序的时间复杂度仍然为 O(n log₂ n)，说法 IV 正确。"
+      },
+      "patch": {
+        "content": "【2019统考真题】选择一个排序算法时，除算法的时空效率外，下列因素中，还需要考虑的是（）。\nI. 数据的规模    II. 数据的存储方式    III. 算法的稳定性    IV. 数据的初始状态",
+        "options": {
+          "A": "仅 III",
+          "B": "仅 I、II",
+          "C": "仅 II、III、IV",
+          "D": "I、II、III、IV"
+        },
+        "answer": {
+          "explanation": "当数据规模较小时可选择复杂度为 O(n²) 的简单排序算法，当数据规模较大时应选择复杂度为 O(n log₂ n) 的排序算法，当数据规模大到内存无法放下时需选择外部排序算法，说法 I 正确。数据的存储方式主要分为顺序存储和链式存储，有些排序算法（如堆排序）只能用于顺序存储方式，说法 II 正确。若对数据稳定性有要求，则不能选择不稳定的排序算法，说法 III 显然正确。当数据初始基本有序时，直接插入排序的效率最高，冒泡排序和直接插入排序的时间复杂度都为 O(n)，而归并排序的时间复杂度仍然为 O(n log₂ n)，说法 IV 正确。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-coa::计算机系统概述 · 计算机系统层次结构 · 选择题::X03",
+      "course_key": "coa",
+      "chapter": "计算机系统概述",
+      "question_id": "X03",
+      "source_hash": "4de268dcbdc2b8893ca06257c72892062c134c58bebd0b4432f0b4593e97d2fe",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "冯．诺依曼机工作方式的基本特点是（）。",
+        "options": {
+          "A": "程序一边被输入计算机一边被执行",
+          "B": "程序直接从磁盘读到 CPU 执行",
+          "C": "按地址访问指令并自动按序执行程序",
+          "D": "程序自动执行而数据手工输入"
+        },
+        "answer.choice": "C",
+        "explanation": "冯·诺依曼机的核心特征包括“存储程序”、程序和数据统一存储、按地址访问，以及指令的自动顺序执行。其基本工作方式是：程序以二进制形式预先存入主存储器，CPU 依据程序计数器（PC）提供的地址逐条取出指令，并自动按序执行，无须人工干预。"
+      },
+      "patch": {
+        "options": {
+          "A": "程序一边被输入计算机一边被执行",
+          "B": "程序直接从磁盘读到 CPU 执行",
+          "C": "按地址访问指令并自动按序执行程序",
+          "D": "程序自动执行而数据手工输入"
+        },
+        "answer": {
+          "explanation": "冯·诺依曼机的核心特征包括“存储程序”、程序和数据统一存储、按地址访问，以及指令的自动顺序执行。其基本工作方式是：程序以二进制形式预先存入主存储器，CPU 依据程序计数器（PC）提供的地址逐条取出指令，并自动按序执行，无须人工干预。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-coa::计算机系统概述 · 计算机系统层次结构 · 选择题::X11",
+      "course_key": "coa",
+      "chapter": "计算机系统概述",
+      "question_id": "X11",
+      "source_hash": "4b7538dfb790bda1b2aea836f56736caad15249347f828fffafc940cdbaa90d7",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "【2015统考真题】计算机硬件能够直接执行的是（）。\nI. 机器语言程序    II. 汇编语言程序    III. 硬件描述语言程序",
+        "options": {
+          "A": "仅I",
+          "B": "仅I、II",
+          "C": "仅I、III",
+          "D": "I、II、III"
+        },
+        "answer.choice": "A",
+        "explanation": "硬件能直接执行的只能是机器语言（二进制编码），汇编语言是增强机器语言的可读性和记忆性的语言，经过汇编后才能被执行。"
+      },
+      "patch": {
+        "content": "【2015统考真题】计算机硬件能够直接执行的是（）。\nI. 机器语言程序    II. 汇编语言程序    III. 硬件描述语言程序",
+        "answer": {
+          "explanation": "硬件能直接执行的只能是机器语言（二进制编码），汇编语言是增强机器语言的可读性和记忆性的语言，经过汇编后才能被执行。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X05",
+      "course_key": "coa",
+      "chapter": "计算机系统概述",
+      "question_id": "X05",
+      "source_hash": "a1cbd541d404333a0d7a0261a4d0ca1179dba5d92f7d892f9534fbee878ea3bd",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "某基准程序在机器 A 上运行的时间是 20s，而在机器 B 上运行的时间是 16s，那么相对来说，下列给出的结论中，（）是正确的。",
+        "options": {
+          "A": "所有程序在机器 A 上都比在机器 B 上运行速度慢",
+          "B": "机器 B 的速度是机器 A 的 1.25 倍",
+          "C": "机器 A 的速度是机器 B 的 1.25 倍",
+          "D": "机器 A 比机器 B 慢 1.25 倍"
+        },
+        "answer.choice": "B",
+        "explanation": "机器的速度与基准程序在该机器上的运行时间呈相反关系，因此可知：机器 B 的速度/机器 A 的速度 = 基准程序在机器 A 上的运行时间/基准程序在机器 B 上的运行时间 = 20s÷16s = 1.25。"
+      },
+      "patch": {
+        "content": "某基准程序在机器 A 上运行的时间是 20s，而在机器 B 上运行的时间是 16s，那么相对来说，下列给出的结论中，（）是正确的。",
+        "options": {
+          "A": "所有程序在机器 A 上都比在机器 B 上运行速度慢",
+          "B": "机器 B 的速度是机器 A 的 1.25 倍",
+          "C": "机器 A 的速度是机器 B 的 1.25 倍",
+          "D": "机器 A 比机器 B 慢 1.25 倍"
+        },
+        "answer": {
+          "explanation": "机器的速度与基准程序在该机器上的运行时间呈相反关系，因此可知：机器 B 的速度/机器 A 的速度 = 基准程序在机器 A 上的运行时间/基准程序在机器 B 上的运行时间 = 20s÷16s = 1.25。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X11",
+      "course_key": "coa",
+      "chapter": "计算机系统概述",
+      "question_id": "X11",
+      "source_hash": "97b529b5a1b4c4e02643a571c4f3d16c6ae23a4115e73e7fac6d1d293b364c9d",
+      "status": "verified",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "下列给出了改善计算机性能的4种措施：\nI.用更快的处理器来替换原来的慢速处理器\nII.增加同类处理器个数，使得不同的处理器同时执行程序\nIl.优化编译生成的代码，使得程序执行的总时钟周期数减少\nIV.减少指令执行过程中的访存时间\n对于某个特定的程序，在以上措施中，能缩短其执行时间的措施是（）。",
+        "options": {
+          "A": "I、II和III",
+          "B": "III和IV",
+          "C": "I、III和IV",
+          "D": "全部"
+        },
+        "answer.choice": "D",
+        "explanation": "采用更快的处理器，可以减少单条指令的执行时间；增加处理器的个数，可以增加程序执行\n的并行性，缩短程序的执行时间；优化编译代码，可以减少指令之间的各种冲突；访存时间占指\n令执行的大部分时间，减少访存时间同样可以大大加快指令的执行时间。"
+      },
+      "patch": null
+    },
+    {
+      "source_uid": "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X19",
+      "course_key": "coa",
+      "chapter": "计算机系统概述",
+      "question_id": "X19",
+      "source_hash": "74e9a709d501525f4103ed34b96080b01b13ca780eb97be29ef01f5011adf40c",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "【2022统考真题】某计算机主频为1GHz，程序P运行过程中，共执行了10000条指令，其中，80%的指令执行平均需1个时钟周期，20%的指令执行平均需10个时钟周期。程序P的平均CPI和CPU执行时间分别是（）。",
+        "options": {
+          "A": "2.8,28μs",
+          "B": "28,28μs",
+          "C": "2.8,28ms",
+          "D": "28,28ms"
+        },
+        "answer.choice": "A",
+        "explanation": "CPI指平均每条指令的执行需要多少个时钟周期。80%的指令执行平均需要1个时钟周期，20%的指令执行平均需要10个时钟周期，因此CPI=80%×1+20%×10=2.8。计算机主频为1GHz，程序P共执行10000条指令，平均每条指令需要2.8个时钟周期，因此CPU执行时"
+      },
+      "patch": {
+        "content": "【2022统考真题】某计算机主频为1GHz，程序P运行过程中，共执行了10000条指令，其中，80%的指令执行平均需1个时钟周期，20%的指令执行平均需10个时钟周期。程序P的平均CPI和CPU执行时间分别是（）。",
+        "answer": {
+          "explanation": "CPI指平均每条指令的执行需要多少个时钟周期。80%的指令执行平均需要1个时钟周期，20%的指令执行平均需要10个时钟周期，因此CPI=80%×1+20%×10=2.8。计算机主频为1GHz，程序P共执行10000条指令，平均每条指令需要2.8个时钟周期，因此CPU执行时"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X06",
+      "course_key": "coa",
+      "chapter": "数据的表示和运算",
+      "question_id": "X06",
+      "source_hash": "0eb61e864510a8337c2b3307808445ad72c94eb25fe8cf7ac39a5a29b273f52b",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "若 X 为负数，则由[X]补求[-X]补是将（）。",
+        "options": {
+          "A": "[X]补各值保持不变",
+          "B": "[X]补符号位变反，其他各位不变",
+          "C": "[X]补除符号位外，各位变反，末位加 1",
+          "D": "[X]补连同符号位一起变反，末位加 1"
+        },
+        "answer.choice": "D",
+        "explanation": "不论 X 是正数还是负数，由[X]补求[-X]补的方法是连同符号位一起，每位取反，末位加 1。"
+      },
+      "patch": {
+        "content": "若 X 为负数，则由[X]补求[-X]补是将（）。",
+        "options": {
+          "A": "[X]补各值保持不变",
+          "B": "[X]补符号位变反，其他各位不变",
+          "C": "[X]补除符号位外，各位变反，末位加 1",
+          "D": "[X]补连同符号位一起变反，末位加 1"
+        },
+        "answer": {
+          "explanation": "不论 X 是正数还是负数，由[X]补求[-X]补的方法是连同符号位一起，每位取反，末位加 1。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X27",
+      "course_key": "coa",
+      "chapter": "数据的表示和运算",
+      "question_id": "X27",
+      "source_hash": "59a578795783ca17a9bb9f096d78303efe34c0728d94d87e97543518df8817a3",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "【2012统考真题】假定编译器规定int型和short型长度分别为32位和16位，执行下列C语言语句：\nunsigned short x=65530;\nunsigned int y=x;\n得到y的机器数为（）。",
+        "options": {
+          "A": "0000 7FFAH",
+          "B": "0000 FFFAH",
+          "C": "FFFF 7FFAH",
+          "D": "FFFF FFFAH"
+        },
+        "answer.choice": "B",
+        "explanation": "将一个16位unsigned short型数转换为32位unsigned int型数时，因为都是无符号数，新表示形式的高位用0填充。16位无符号整数所能表示的最大值为65535，其十六进制表示为FFFFH，因此x的十六进制表示为FFFFH－5H=FFFAH，所以y的十六进制表示为0000 FFFAH。"
+      },
+      "patch": {
+        "content": "【2012统考真题】假定编译器规定int型和short型长度分别为32位和16位，执行下列C语言语句：\nunsigned short x=65530;\nunsigned int y=x;\n得到y的机器数为（）。",
+        "answer": {
+          "explanation": "将一个16位unsigned short型数转换为32位unsigned int型数时，因为都是无符号数，新表示形式的高位用0填充。16位无符号整数所能表示的最大值为65535，其十六进制表示为FFFFH，因此x的十六进制表示为FFFFH－5H=FFFAH，所以y的十六进制表示为0000 FFFAH。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 运算方法和运算电路 · 选择题::X23",
+      "course_key": "coa",
+      "chapter": "数据的表示和运算",
+      "question_id": "X23",
+      "source_hash": "d6473ed553354cc2a4b0ff55d59bfea758730730b3427168f44bcbfd003ba6aa",
+      "status": "verified",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "下图是实现32位补码一位乘法的逻辑结构图，下列说法中正确的是（）。\n被乘数寄存器X\n32 32\n加/减\n32位ALU\n64位 右移\n乘积寄存器P丨乘数寄存器Y 控制逻辑\n计数器C\n32 写使能\n↑时钟",
+        "options": {
+          "A": "32位无符号整数的乘法电路和该图没有区别",
+          "B": "在执行过程中，ALU要么做加法，要么做减法，不可能执行空操作",
+          "C": "图中的乘积寄存器P和乘数寄存器Y所执行的右移是算术右移",
+          "D": "计算完成后，若乘积寄存器P中的值不全为0，则发生溢出"
+        },
+        "answer.choice": "C",
+        "explanation": "无符号乘法无须辅助位，电路结构更简单。当控制逻辑的输入是“00”或“11”时，ALU执\n行空操作，仅移位。因结果为有符号数，P和Y的右移必须为算术右移，以保持符号位不变，选项\nC正确。溢出判断依据是P的所有位是否都等于Y的符号位，而非P是否全为0。"
+      },
+      "patch": null
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 运算方法和运算电路 · 选择题::X33",
+      "course_key": "coa",
+      "chapter": "数据的表示和运算",
+      "question_id": "X33",
+      "source_hash": "170fb9634d8032d871936b78d99b702750d41c33930e10a0aadcf5902fa69be5",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "【2024统考真题】C语言代码段如下，执行该代码段后，j的值是（）。\nint i=32777;\nshort si=i;\nint j=si;",
+        "options": {
+          "A": "-32777",
+          "B": "-32759",
+          "C": "32759",
+          "D": "32777"
+        },
+        "answer.choice": "B",
+        "explanation": "2¹⁵ = 32768，i = 32768 + 9 = 8000H + 9H = 8009H，32 位有符号数 i 的机器数为 0000 8009H。将 32 位有符号数 i 强制转换为 16 位有符号数 si，直接保留机器数的末 16 位即可，因此 si 的机器数为 8009H，真值为 −2¹⁵ + 9 = −32759。将 16 位有符号数 si 强制转换为 32 位有符号数 j，采用符号扩展（si"
+      },
+      "patch": {
+        "answer": {
+          "explanation": "2¹⁵ = 32768，i = 32768 + 9 = 8000H + 9H = 8009H，32 位有符号数 i 的机器数为 0000 8009H。将 32 位有符号数 i 强制转换为 16 位有符号数 si，直接保留机器数的末 16 位即可，因此 si 的机器数为 8009H，真值为 −2¹⁵ + 9 = −32759。将 16 位有符号数 si 强制转换为 32 位有符号数 j，采用符号扩展（si"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 浮点数的表示与运算 · 选择题::X45",
+      "course_key": "coa",
+      "chapter": "数据的表示和运算",
+      "question_id": "X45",
+      "source_hash": "b2b71a11137edd83447e7bb9967f80a98b87792574a8c074fcf5423a726aeab3",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "【2025统考真题】某32位计算机按字节编址，采用小端方式存放数据，编译器按边界对齐方式为下列C语言结构型数组变量 employee 分配存储空间。\nstruct record {\n    int id;\n    char name[10];\n    int salary;\n}employee[200];\n若 employee 的首地址为 0000 A0B0H，employee[1].id 的机器数为 1234 5678H，则该机器数中的 56H 所在存储单元的地址是（）。",
+        "options": {
+          "A": "0000 A0C3H",
+          "B": "0000 A0C4H",
+          "C": "0000 A0C5H",
+          "D": "0000 A0C6H"
+        },
+        "answer.choice": "C",
+        "explanation": "首先分析结构体 record 的内存布局：int id 占 4 字节；char name[10] 占 10 字节，为使后续 int salary 对齐到 4 字节边界，需要在 name 后填充 2 字节，使 salary 从 4 的整数倍偏移处开始。因此结构体总大小为 4 + 10 + 2 + 4 = 20 字节。employee[1] 的首地址为 0000 A0B0H + 20 = 0000 A0C4H，id 为其第一个成员，起始地址即为 0000 A0C4H。已知 id 的值为 12345678H，在小端方式下，字节按 78H、56H、34H、12H 的顺序存放，故 56H 位于 0000 A0C5H。"
+      },
+      "patch": {
+        "content": "【2025统考真题】某32位计算机按字节编址，采用小端方式存放数据，编译器按边界对齐方式为下列C语言结构型数组变量 employee 分配存储空间。\nstruct record {\n    int id;\n    char name[10];\n    int salary;\n}employee[200];\n若 employee 的首地址为 0000 A0B0H，employee[1].id 的机器数为 1234 5678H，则该机器数中的 56H 所在存储单元的地址是（）。",
+        "options": {
+          "A": "0000 A0C3H",
+          "B": "0000 A0C4H",
+          "C": "0000 A0C5H",
+          "D": "0000 A0C6H"
+        },
+        "answer": {
+          "explanation": "首先分析结构体 record 的内存布局：int id 占 4 字节；char name[10] 占 10 字节，为使后续 int salary 对齐到 4 字节边界，需要在 name 后填充 2 字节，使 salary 从 4 的整数倍偏移处开始。因此结构体总大小为 4 + 10 + 2 + 4 = 20 字节。employee[1] 的首地址为 0000 A0B0H + 20 = 0000 A0C4H，id 为其第一个成员，起始地址即为 0000 A0C4H。已知 id 的值为 12345678H，在小端方式下，字节按 78H、56H、34H、12H 的顺序存放，故 56H 位于 0000 A0C5H。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-coa::存储系统 · 存储器概述 · 选择题::X10",
+      "course_key": "coa",
+      "chapter": "存储系统",
+      "question_id": "X10",
+      "source_hash": "787e0ff25d43c6fede7d3f2f62748314999e4e490acedd74303f1ef83a9af98a",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "下列关于多级存储系统的说法中，正确的有（）。\nI. 多级存储系统是为了降低存储成本\nII. 虚拟存储器中主存和辅存之间的数据调动对任何程序员是透明的\nIII. CPU只能与Cache直接交换信息，CPU与主存交换信息也需要经过Cache",
+        "options": {
+          "A": "仅I",
+          "B": "仅I和II",
+          "C": "I、II和III",
+          "D": "仅II"
+        },
+        "answer.choice": "A",
+        "explanation": "主存和辅存之间的数据调动是由硬件和操作系统共同完成的，仅对应用级程序员透明。CPU与主存可直接交换信息。"
+      },
+      "patch": {
+        "content": "下列关于多级存储系统的说法中，正确的有（）。\nI. 多级存储系统是为了降低存储成本\nII. 虚拟存储器中主存和辅存之间的数据调动对任何程序员是透明的\nIII. CPU只能与Cache直接交换信息，CPU与主存交换信息也需要经过Cache",
+        "answer": {
+          "explanation": "主存和辅存之间的数据调动是由硬件和操作系统共同完成的，仅对应用级程序员透明。CPU与主存可直接交换信息。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-coa::存储系统 · 主存储器 · 选择题::X16",
+      "course_key": "coa",
+      "chapter": "存储系统",
+      "question_id": "X16",
+      "source_hash": "f3a447bca46a9a68b099ed83ad9f7ba60097db575ea634c7e6b3247735bd0103",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "下列关于 Flash 存储器特性与应用的说法中，正确的是（）。",
+        "options": {
+          "A": "读写速度一致，均接近 DRAM 的访问速率",
+          "B": "属于易失性存储器，断电后数据丢失",
+          "C": "写操作前需先擦除目标块，故写速慢于读速",
+          "D": "仅能用作辅助存储器（如 U 盘）"
+        },
+        "answer.choice": "C",
+        "explanation": "Flash 存储器是非易失性存储器，断电后数据不会丢失。其读操作速度较快（接近 RAM），但写入和擦除必须以块为单位进行，且需要先擦除再写入，因此写速显著慢于读速，选项 C 正确。此外，Flash 存储器广泛应用于电脑、手机、智能手表等设备的内部存储，而非限于 U 盘等辅助存储器。"
+      },
+      "patch": {
+        "content": "下列关于 Flash 存储器特性与应用的说法中，正确的是（）。",
+        "options": {
+          "A": "读写速度一致，均接近 DRAM 的访问速率",
+          "B": "属于易失性存储器，断电后数据丢失",
+          "C": "写操作前需先擦除目标块，故写速慢于读速",
+          "D": "仅能用作辅助存储器（如 U 盘）"
+        },
+        "answer": {
+          "explanation": "Flash 存储器是非易失性存储器，断电后数据不会丢失。其读操作速度较快（接近 RAM），但写入和擦除必须以块为单位进行，且需要先擦除再写入，因此写速显著慢于读速，选项 C 正确。此外，Flash 存储器广泛应用于电脑、手机、智能手表等设备的内部存储，而非限于 U 盘等辅助存储器。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-coa::存储系统 · 主存储器与CPU的连接 · 选择题::X11",
+      "course_key": "coa",
+      "chapter": "存储系统",
+      "question_id": "X11",
+      "source_hash": "f35acd0a7af4e37d188a7fe491b133a20c018d46d53488446991ecec4eb964e9",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "【2010统考真题】假定用若干2K×4位的芯片组成一个8K×8位的存储器，则地址0B1FH所在芯片的最小地址是（）。",
+        "options": {
+          "A": "0000H",
+          "B": "0600H",
+          "C": "0700H",
+          "D": "0800H"
+        },
+        "answer.choice": "D",
+        "explanation": "用2K×4位的芯片组成一个8K×8位的存储器，共需8片2K×4位的芯片，分为4组，每组由2片2K×4位的芯片并联组成2K×8位的芯片，各组芯片的地址分配如下：\n第一组（两个芯片并联）：0000H～07FFH。\n第二组（两个芯片并联）：0800H～0FFFH。\n第三组（两个芯片并联）：1000H～17FFH。\n第四组（两个芯片并联）：1800H～1FFFH。\n地址0B1FH所在的芯片属于第二组，所以其所在芯片的最小地址为0800H。"
+      },
+      "patch": {
+        "content": "【2010统考真题】假定用若干2K×4位的芯片组成一个8K×8位的存储器，则地址0B1FH所在芯片的最小地址是（）。",
+        "answer": {
+          "explanation": "用2K×4位的芯片组成一个8K×8位的存储器，共需8片2K×4位的芯片，分为4组，每组由2片2K×4位的芯片并联组成2K×8位的芯片，各组芯片的地址分配如下：\n第一组（两个芯片并联）：0000H～07FFH。\n第二组（两个芯片并联）：0800H～0FFFH。\n第三组（两个芯片并联）：1000H～17FFH。\n第四组（两个芯片并联）：1800H～1FFFH。\n地址0B1FH所在的芯片属于第二组，所以其所在芯片的最小地址为0800H。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X19",
+      "course_key": "coa",
+      "chapter": "存储系统",
+      "question_id": "X19",
+      "source_hash": "1ddcf186416f7743ea9dce523c6e4553037ecc0ecf9fd4a4d4275f209351863d",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "对于n路组相联映射Cache，在保持n及主存和Cache总容量不变的前提下，将主存块\n大小和Cache块大小都增加一倍，则下列描述中正确的是（）。",
+        "options": {
+          "A": "字块内地址的位数增加1位，主存标记字段的位数增加1位",
+          "B": "字块内地址的位数增加1位，主存标记字段的位数不变",
+          "C": "字块内地址的位数减少1位，主存标记字段的位数增加1位",
+          "D": "字块内地址的位数增加1倍，主存标记字段的位数减少一半"
+        },
+        "answer.choice": "B",
+        "explanation": "组相联映射的主存地址结构为：标记 +Cache 组号+块内地址。Cache 块大小增加一倍，\n则字块内地址的位数增加1位。Cache 组数=(Cache总容量/Cache块大小)/n，所以Cache 组数减\n少一半；Cache 组号=主存块号MODCache 组数，所以Cache 组号也减少1位。主存总容量不\n变，则主存地址总长度不变，字块内地址和Cache"
+      },
+      "patch": {
+        "answer": {
+          "explanation": "组相联映射的主存地址结构为：标记 +Cache 组号+块内地址。Cache 块大小增加一倍，\n则字块内地址的位数增加1位。Cache 组数=(Cache总容量/Cache块大小)/n，所以Cache 组数减\n少一半；Cache 组号=主存块号MODCache 组数，所以Cache 组号也减少1位。主存总容量不\n变，则主存地址总长度不变，字块内地址和Cache"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-coa::存储系统 · 虚拟存储器 · 选择题::X01",
+      "course_key": "coa",
+      "chapter": "存储系统",
+      "question_id": "X01",
+      "source_hash": "54b97edd8a32e8380680702b4f0ee44579129d6649478241e541cbcfad76c33a",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "为使虚拟存储系统有效地发挥其预期的作用，所运行程序应具有的特性是（）。",
+        "options": {
+          "A": "不应含有过多的 I/O 操作",
+          "B": "大小不应小于实际的内存容量",
+          "C": "应具有较好的局部性",
+          "D": "顺序执行的指令不应过多"
+        },
+        "answer.choice": "C",
+        "explanation": "虚拟存储系统利用的是局部性原理，程序应当具有较好的局部性，选项 C 正确。而含有输入、输出操作产生中断，与虚拟存储器无关，选项 A 错误。大小较小但可以多个程序并发执行，也可以发挥虚拟存储器的作用，选项 B 错误。顺序执行的指令应当占较大比重为宜，这样可增强程序的局部性，选项 D 错误。"
+      },
+      "patch": {
+        "options": {
+          "A": "不应含有过多的 I/O 操作",
+          "B": "大小不应小于实际的内存容量",
+          "C": "应具有较好的局部性",
+          "D": "顺序执行的指令不应过多"
+        },
+        "answer": {
+          "explanation": "虚拟存储系统利用的是局部性原理，程序应当具有较好的局部性，选项 C 正确。而含有输入、输出操作产生中断，与虚拟存储器无关，选项 A 错误。大小较小但可以多个程序并发执行，也可以发挥虚拟存储器的作用，选项 B 错误。顺序执行的指令应当占较大比重为宜，这样可增强程序的局部性，选项 D 错误。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-coa::指令系统 · 指令系统 · 选择题::X01",
+      "course_key": "coa",
+      "chapter": "指令系统",
+      "question_id": "X01",
+      "source_hash": "e223d9b11ebeefefd0f3d909480cce70b7b110a1aefafee93da42a10150aa946",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "下列关于指令集体系结构和指令系统的说法中，错误的是（）。",
+        "options": {
+          "A": "指令集体系结构位于计算机软/硬件的交界面上",
+          "B": "指令集体系结构是指低级语言程序员所看到的概念结构和功能特性",
+          "C": "任何程序运行前都要先转换为机器语言程序",
+          "D": "指令系统和机器语言是无关的"
+        },
+        "answer.choice": "D",
+        "explanation": "指令集体系结构（ISA）完整定义了软件和硬件之间的接口，是机器语言或汇编语言程序员所应熟悉的。指令系统是计算机硬件的语言系统，这显然和机器语言有关。"
+      },
+      "patch": {
+        "answer": {
+          "explanation": "指令集体系结构（ISA）完整定义了软件和硬件之间的接口，是机器语言或汇编语言程序员所应熟悉的。指令系统是计算机硬件的语言系统，这显然和机器语言有关。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-coa::指令系统 · 寻址方式 · 选择题::X06",
+      "course_key": "coa",
+      "chapter": "指令系统",
+      "question_id": "X06",
+      "source_hash": "fe22c5443e66020ee63de9b66ff03455a061b6d5ce3d09426302a1f522070bb2",
+      "status": "verified",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "假定指令中地址码所给出的是操作数的有效地址，则该指令采用（）。",
+        "options": {
+          "A": "直接寻址",
+          "B": "立即寻址",
+          "C": "寄存器寻址",
+          "D": "间接寻址"
+        },
+        "answer.choice": "A",
+        "explanation": "指令字中的形式地址为操作数的有效地址，这种方式为直接寻址。"
+      },
+      "patch": null
+    },
+    {
+      "source_uid": "408:cs408-coa::指令系统 · 寻址方式 · 选择题::X12",
+      "course_key": "coa",
+      "chapter": "指令系统",
+      "question_id": "X12",
+      "source_hash": "b800282c853995d764cd4fa7fb7645076ebfd09f07c2bec3c9243fbde2bfd0ba",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "某计算机的字长为 16 位，主存按字编址。转移指令由两个字节组成，采用相对寻址，第一个字节为操作码字段，第二个字节为相对偏移量字段。若某转移指令所在的主存地址为 4000H，相对偏移量字段的内容为 06H，则该转移指令执行后的 PC 值为（）。",
+        "options": {
+          "A": "4002H",
+          "B": "4004H",
+          "C": "4007H",
+          "D": "4008H"
+        },
+        "answer.choice": "C",
+        "explanation": "主存按字编址，指令字长为 1 个字（2 字节），因此取出该指令后，PC 自动加 1，相对偏移量为 06H，所以该转移指令执行后的 PC 值为 4000H + 06H + 1H = 4007H。"
+      },
+      "patch": {
+        "content": "某计算机的字长为 16 位，主存按字编址。转移指令由两个字节组成，采用相对寻址，第一个字节为操作码字段，第二个字节为相对偏移量字段。若某转移指令所在的主存地址为 4000H，相对偏移量字段的内容为 06H，则该转移指令执行后的 PC 值为（）。",
+        "answer": {
+          "explanation": "主存按字编址，指令字长为 1 个字（2 字节），因此取出该指令后，PC 自动加 1，相对偏移量为 06H，所以该转移指令执行后的 PC 值为 4000H + 06H + 1H = 4007H。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-coa::指令系统 · 寻址方式 · 选择题::X23",
+      "course_key": "coa",
+      "chapter": "指令系统",
+      "question_id": "X23",
+      "source_hash": "ba913e3f401d3d38a0d29bb697b141b8978d7d1a303f99e34ca8fdfdf2f91ede",
+      "status": "verified",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "【2009统考真题】某机器字长为16位，主存按字节编址，转移指令采用相对寻址，由\n2字节组成，第一字节为操作码字段，第二字节为相对位移量字段。假定取指令时，每\n\n取一字节，PC自动加1。若某转移指令所在主存地址为2000H，相对位移量字段的内容\n为06H，则该转移指令成功转移后的目标地址是（）。",
+        "options": {
+          "A": "2006H",
+          "B": "2007H",
+          "C": "2008H",
+          "D": "2009H"
+        },
+        "answer.choice": "C",
+        "explanation": "PC加1，取指令后的PC值为2002H，因此EA=(PC)+A=2002H+06H=2008H。本题易误选选\n项A或B，选项A未考虑PC值的自动更新，选项B虽然考虑了PC值的自动更新，但未注意到\n该转移指令是一条2字节指令，PC值应是“+2”而不是“+1”。"
+      },
+      "patch": null
+    },
+    {
+      "source_uid": "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 选择题::X09",
+      "course_key": "coa",
+      "chapter": "指令系统",
+      "question_id": "X09",
+      "source_hash": "13df84dbc62139b6c6d6cf7ab42b53917bee168d2ad40e58bebbee9d025f5ced",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "下列关于选择结构语句“if(comp_A) then statement_B; else statement_C”对应的机器级代码表示的叙述中，错误的是（）。",
+        "options": {
+          "A": "一定包含一条无条件转移指令",
+          "B": "一定包含一条条件转移指令（分支指令）",
+          "C": "计算 comp_A 的代码段一定在条件转移指令之前",
+          "D": "对应 statement_B 的代码一定在对应 statement_C 的代码之前"
+        },
+        "answer.choice": "D",
+        "explanation": "在 if 语句的机器级代码中，comp_A 后面紧接着有一个条件转移指令，条件成立则转移到 statement_B，statement_B 中有一个无条件转移指令，会转移到 if-else 的下一条语句，选项 A、B 和 C 正确。statement_B 不一定在 statement_C 之前，这取决于条件转移指令的类型和方向，选项 D 错误。"
+      },
+      "patch": {
+        "content": "下列关于选择结构语句“if(comp_A) then statement_B; else statement_C”对应的机器级代码表示的叙述中，错误的是（）。",
+        "options": {
+          "A": "一定包含一条无条件转移指令",
+          "B": "一定包含一条条件转移指令（分支指令）",
+          "C": "计算 comp_A 的代码段一定在条件转移指令之前",
+          "D": "对应 statement_B 的代码一定在对应 statement_C 的代码之前"
+        },
+        "answer": {
+          "explanation": "在 if 语句的机器级代码中，comp_A 后面紧接着有一个条件转移指令，条件成立则转移到 statement_B，statement_B 中有一个无条件转移指令，会转移到 if-else 的下一条语句，选项 A、B 和 C 正确。statement_B 不一定在 statement_C 之前，这取决于条件转移指令的类型和方向，选项 D 错误。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X16",
+      "course_key": "coa",
+      "chapter": "中央处理器",
+      "question_id": "X16",
+      "source_hash": "3bed87a9b7f7e8c7cfeedd7dc34a0342a75f6e4849f9215d2d01195a1a7a1c91",
+      "status": "verified",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "状态寄存器用来存放（）。",
+        "options": {
+          "A": "算术运算结果",
+          "B": "逻辑运算结果",
+          "C": "运算类型",
+          "D": "算术、逻辑运算及测试指令的结果状态"
+        },
+        "answer.choice": "D",
+        "explanation": "程序状态字寄存器用于保留算术、逻辑运算及测试指令的结果状态。"
+      },
+      "patch": null
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 数据通路的功能和基本结构 · 选择题::X15",
+      "course_key": "coa",
+      "chapter": "中央处理器",
+      "question_id": "X15",
+      "source_hash": "049f40356682e6afd4a2b9aebcd93fc4349cab34ae480e5fe4b78139fba9344d",
+      "status": "verified",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "【2016统考真题】单周期处理器中所有指令的指令周期为一个时钟周期。下列关于单周\n期处理器的叙述中，错误的是（）。",
+        "options": {
+          "A": "可以采用单总线结构数据通路",
+          "B": "处理器时钟频率较低",
+          "C": "在指令执行过程中控制信号不变",
+          "D": "每条指令的CPI为1"
+        },
+        "answer.choice": "A",
+        "explanation": "单周期处理器中所有指令的指令周期为一个时钟周期，选项D正确。因为每条指令的CPI为1,\n要考虑比较慢的指令，所以处理器的时钟频率较低，选项B正确。单总线数据通路将所有寄存器的\n输入/输出端都连接在一条公共通路上，交个时钟内只允许一次操作，无法完成指令的所有操作，选\n项A错误。控制信号是CU根据指令操作码发出的信号，对于单周期处理器来说，每条指令的执行"
+      },
+      "patch": null
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 控制器的功能和工作原理 · 选择题::X03",
+      "course_key": "coa",
+      "chapter": "中央处理器",
+      "question_id": "X03",
+      "source_hash": "f5c65b1deac61c62bb6e8299eae5c3ea2231574e0bab291ca9d94b08c12b73ab",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "在微程序控制器中，形成微程序入口地址的是（）。",
+        "options": {
+          "A": "机器指令的地址码字段",
+          "B": "微指令的微地址码字段",
+          "C": "机器指令的操作码字段",
+          "D": "微指令的微操作码字段"
+        },
+        "answer.choice": "C",
+        "explanation": "执行公用的取指微程序从主存中取出机器指令后，由机器指令的操作码字段指出各个微程序的入口地址（初始微地址）。"
+      },
+      "patch": {
+        "answer": {
+          "explanation": "执行公用的取指微程序从主存中取出机器指令后，由机器指令的操作码字段指出各个微程序的入口地址（初始微地址）。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 异常和中断机制 · 选择题::X10",
+      "course_key": "coa",
+      "chapter": "中央处理器",
+      "question_id": "X10",
+      "source_hash": "0754b1ce0ae8ad8ea940cbc63a1212ad1ef0e40fc54c38da3b5551654010ed89",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "【2015统考真题】内部异常（内中断）可分为故障（fault）、陷阱（trap）和终止（abort）三类。下列有关内部异常的叙述中，错误的是（）。",
+        "options": {
+          "A": "内部异常的产生与当前执行指令相关",
+          "B": "内部异常的检测由CPU内部逻辑实现",
+          "C": "内部异常的响应发生在指令执行过程中",
+          "D": "内部异常处理后返回到发生异常的指令继续执行"
+        },
+        "answer.choice": "D",
+        "explanation": "内部异常是指来自CPU内部产生的中断，如非法指令、地址非法、校验错、页面失效、运算溢出和除数为零等，以上都是在指令的执行过程中产生的，选项A正确。内部异常的检测是由CPU自身完成的，不必通过外部的某个信号通知CPU，选项B正确。内部异常不能被屏蔽，一旦出现应立即处理，选项C正确。对于非法指令、除数为零等异常，无法通过异常处理程序恢复故障，因此不能回到原断点执行，必须终止进程的执行，选项D错误。"
+      },
+      "patch": {
+        "content": "【2015统考真题】内部异常（内中断）可分为故障（fault）、陷阱（trap）和终止（abort）三类。下列有关内部异常的叙述中，错误的是（）。",
+        "answer": {
+          "explanation": "内部异常是指来自CPU内部产生的中断，如非法指令、地址非法、校验错、页面失效、运算溢出和除数为零等，以上都是在指令的执行过程中产生的，选项A正确。内部异常的检测是由CPU自身完成的，不必通过外部的某个信号通知CPU，选项B正确。内部异常不能被屏蔽，一旦出现应立即处理，选项C正确。对于非法指令、除数为零等异常，无法通过异常处理程序恢复故障，因此不能回到原断点执行，必须终止进程的执行，选项D错误。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 指令流水线 · 选择题::X19",
+      "course_key": "coa",
+      "chapter": "中央处理器",
+      "question_id": "X19",
+      "source_hash": "5f9e20c8956deba62143eba7923450150b3178a698c6598a677bcec3c3dc8242",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "【2009 统考真题】某计算机的指令流水线由 4 个功能段组成，指令流经各功能段的时间（忽略各功能段之间的缓存时间）分别为 90ns、80ns、70ns 和 60ns，则该计算机的 CPU 周期至少是（）。",
+        "options": {
+          "A": "90ns",
+          "B": "80ns",
+          "C": "70ns",
+          "D": "60ns"
+        },
+        "answer.choice": "A",
+        "explanation": "时钟周期应以各功能段的最长执行时间为准，否则用时长的流水段将不能正确完成。"
+      },
+      "patch": {
+        "content": "【2009 统考真题】某计算机的指令流水线由 4 个功能段组成，指令流经各功能段的时间（忽略各功能段之间的缓存时间）分别为 90ns、80ns、70ns 和 60ns，则该计算机的 CPU 周期至少是（）。"
+      }
+    },
+    {
+      "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X07",
+      "course_key": "coa",
+      "chapter": "总线",
+      "question_id": "X07",
+      "source_hash": "3ae698d72156ea28ba7a5ba43d92425129dcf9676e5481c96061f5916c69e409",
+      "status": "verified",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "系统总线中控制线的主要功能是（）。",
+        "options": {
+          "A": "提供时序信号",
+          "B": "提供主存和I/O模块的回答信号",
+          "C": "提供定时信号、操作命令和各种请求/回答信号等",
+          "D": "提供数据信息"
+        },
+        "answer.choice": "C",
+        "explanation": "系统总线中控制线的主要功能是提供定时信号、操作命令和各种请求/回答信号等。"
+      },
+      "patch": null
+    },
+    {
+      "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X14",
+      "course_key": "coa",
+      "chapter": "总线",
+      "question_id": "X14",
+      "source_hash": "f2dabd2e6d68321ae1f6b5e2ddd79fab8f446d2eaacde5b420ed5ba741006f07",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "下列信号中，可在系统总线中的控制总线上传输的有（）。\nI. 存储器和 I/O 设备的地址信息\nII. 存储器和 I/O 设备的时序信号、控制信号\nIII. 存储器和 I/O 设备的响应信号\nIV. 存储器中存放的数据",
+        "options": {
+          "A": "I 和 IV",
+          "B": "II 和 III",
+          "C": "I、II 和 III",
+          "D": "II、III 和 IV"
+        },
+        "answer.choice": "B",
+        "explanation": "控制总线主要用来传输计算机内各种控制信号，控制信号包括存储器和 I/O 设备的时序信号和响应信号，说法 II、III 正确。存储器和 I/O 设备的地址信息通过地址总线传输，说法 I 错误。存储器中存放的数据通过数据总线传输，说法 IV 错误。"
+      },
+      "patch": {
+        "content": "下列信号中，可在系统总线中的控制总线上传输的有（）。\nI. 存储器和 I/O 设备的地址信息\nII. 存储器和 I/O 设备的时序信号、控制信号\nIII. 存储器和 I/O 设备的响应信号\nIV. 存储器中存放的数据",
+        "options": {
+          "A": "I 和 IV",
+          "B": "II 和 III",
+          "C": "I、II 和 III",
+          "D": "II、III 和 IV"
+        },
+        "answer": {
+          "explanation": "控制总线主要用来传输计算机内各种控制信号，控制信号包括存储器和 I/O 设备的时序信号和响应信号，说法 II、III 正确。存储器和 I/O 设备的地址信息通过地址总线传输，说法 I 错误。存储器中存放的数据通过数据总线传输，说法 IV 错误。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X22",
+      "course_key": "coa",
+      "chapter": "总线",
+      "question_id": "X22",
+      "source_hash": "35a92e10881737b7ee2ae0d93313ff59f80c2b442d14810bd86b8b2dd367fba9",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "【2019统考真题】某计算机采用3通道存储器总线，配套的内存条型号为DDR3-1333，即内存条所接插的存储器总线的工作频率为1333MHz，总线宽度为64位，则存储器总线的总带宽大约是（）。",
+        "options": {
+          "A": "10.66GB/s",
+          "B": "32GB/s",
+          "C": "64GB/s",
+          "D": "96GB/s"
+        },
+        "answer.choice": "B",
+        "explanation": "由题目可知，计算机采用3通道存储器总线，存储器总线的工作频率为1333MHz，即1s内传送1333M次数据，总线宽度为64位即单条总线工作一次可传输8字节，因此存储器总线的总带宽为3×8×1333MB/s，约为32GB/s。"
+      },
+      "patch": {
+        "content": "【2019统考真题】某计算机采用3通道存储器总线，配套的内存条型号为DDR3-1333，即内存条所接插的存储器总线的工作频率为1333MHz，总线宽度为64位，则存储器总线的总带宽大约是（）。",
+        "answer": {
+          "explanation": "由题目可知，计算机采用3通道存储器总线，存储器总线的工作频率为1333MHz，即1s内传送1333M次数据，总线宽度为64位即单条总线工作一次可传输8字节，因此存储器总线的总带宽为3×8×1333MB/s，约为32GB/s。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X08",
+      "course_key": "coa",
+      "chapter": "总线",
+      "question_id": "X08",
+      "source_hash": "732dc1860c26e037eaad70905ddfadac09838f706c50530e6fcaeb5a4e8b9c31",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "在各种异步通信方式中，（）的速度最快。",
+        "options": {
+          "A": "全互锁",
+          "B": "半互锁",
+          "C": "不互锁",
+          "D": "速度均相等"
+        },
+        "answer.choice": "C",
+        "explanation": "在全互锁、半互锁和不互锁三种“握手”方式中，只有不互锁方式的请求信号和回答信号没有相互的制约关系，主设备发出请求信号后，不必等待回答信号的到来，便自己撤销了请求信号，所以速度最快。"
+      },
+      "patch": {
+        "answer": {
+          "explanation": "在全互锁、半互锁和不互锁三种“握手”方式中，只有不互锁方式的请求信号和回答信号没有相互的制约关系，主设备发出请求信号后，不必等待回答信号的到来，便自己撤销了请求信号，所以速度最快。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X15",
+      "course_key": "coa",
+      "chapter": "总线",
+      "question_id": "X15",
+      "source_hash": "bf078d946e53d4dde9b8f01c019489e5a89230749c0b7815d65fe3a70ff356a0",
+      "status": "verified",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "【2015统考真题】下列有关总线定时的叙述中，错误的是（）。",
+        "options": {
+          "A": "异步通信方式中，全互锁协议最慢",
+          "B": "异步通信方式中，不互锁协议的可靠性最差",
+          "C": "同步通信方式中，同步时钟信号可由各设备提供",
+          "D": "半同步通信方式中，握手信号的采样由同步时钟控制"
+        },
+        "answer.choice": "C",
+        "explanation": "同步通信方式采用系统统一的时钟信号，而不是由各设备提供，否则无法实现统一的时钟。"
+      },
+      "patch": null
+    },
+    {
+      "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X09",
+      "course_key": "coa",
+      "chapter": "输入/输出系统",
+      "question_id": "X09",
+      "source_hash": "1a8d1ea60d3bc8583526e9aa2aae8fe60e35c58500e5d37e6db3fcf55b807bd6",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "在统一编址的情况下，就I/O设备而言，其对应的I/O地址不可取的是（）。",
+        "options": {
+          "A": "要求固定在地址高端",
+          "B": "要求固定在地址低端",
+          "C": "要求相对固定在地址的某部分",
+          "D": "可以随意在地址的任何地方"
+        },
+        "answer.choice": "D",
+        "explanation": "在统一编址方式下，指令靠地址码区分内存和I/O设备，若随意在地址的任何地方编址，则会给编程造成极大的混乱，选项D错误。选项A、B、C的做法都是可取的。"
+      },
+      "patch": {
+        "content": "在统一编址的情况下，就I/O设备而言，其对应的I/O地址不可取的是（）。",
+        "answer": {
+          "explanation": "在统一编址方式下，指令靠地址码区分内存和I/O设备，若随意在地址的任何地方编址，则会给编程造成极大的混乱，选项D错误。选项A、B、C的做法都是可取的。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-coa::输入/输出系统 · I/O方式 · 选择题::X01",
+      "course_key": "coa",
+      "chapter": "输入/输出系统",
+      "question_id": "X01",
+      "source_hash": "7fb34123ec3dd134cdb4c4c53881f23766d64e72113b63fb93e1bf26b38c7359",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "设置中断排队判优逻辑的目的是（）。",
+        "options": {
+          "A": "产生中断源编码",
+          "B": "使同时提出的请求中的优先级别最高者得到及时响应",
+          "C": "使CPU能方便地转入中断服务子程序",
+          "D": "提高中断响应速度"
+        },
+        "answer.choice": "B",
+        "explanation": "当有多个中断请求同时出现时，中断服务程序必须能从中选出当前最需要给予响应的且最重要的中断请求，这就需要预先对所有的中断进行优先级排队，这个工作可由中断判优逻辑来完成，排队的规则可由软件通过对中断屏蔽寄存器进行设置来确定。"
+      },
+      "patch": {
+        "answer": {
+          "explanation": "当有多个中断请求同时出现时，中断服务程序必须能从中选出当前最需要给予响应的且最重要的中断请求，这就需要预先对所有的中断进行优先级排队，这个工作可由中断判优逻辑来完成，排队的规则可由软件通过对中断屏蔽寄存器进行设置来确定。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-coa::输入/输出系统 · I/O方式 · 选择题::X21",
+      "course_key": "coa",
+      "chapter": "输入/输出系统",
+      "question_id": "X21",
+      "source_hash": "1fa84834cc45f8b3e5821f18bff608a7d83df3d73c401526f9ab3afa74800aac",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "在DMA传送方式中，由（）发出DMA请求，在传送期间总线控制权由（）掌握。",
+        "options": {
+          "A": "外部设备、CPU",
+          "B": "DMA控制器、DMA控制器",
+          "C": "外部设备、DMA控制器",
+          "D": "DMA控制器、内存"
+        },
+        "answer.choice": "C",
+        "explanation": "在DMA方式中，由外部设备向DMA控制器发出DMA请求信号，然后由DMA控制器向CPU发出总线请求信号。DMA控制器在传送期间有总线控制权，此时CPU不能响应I/O中断。"
+      },
+      "patch": {
+        "answer": {
+          "explanation": "在DMA方式中，由外部设备向DMA控制器发出DMA请求信号，然后由DMA控制器向CPU发出总线请求信号。DMA控制器在传送期间有总线控制权，此时CPU不能响应I/O中断。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-coa::输入/输出系统 · I/O方式 · 选择题::X31",
+      "course_key": "coa",
+      "chapter": "输入/输出系统",
+      "question_id": "X31",
+      "source_hash": "43618f0c7d5e38fcc6d9bd5371afd9b38b77abc074dbb8b1855642246d7008e9",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "启动一次DMA传送，外设和主机之间将完成一个（）的数据传送。",
+        "options": {
+          "A": "字节",
+          "B": "字",
+          "C": "总线宽度",
+          "D": "数据块"
+        },
+        "answer.choice": "D",
+        "explanation": "DMA方式主要用于磁盘等高速设备的成批数据传送，这类高速设备的记录方式多采用数据块组织方式，因此每启动一次DMA传送，外设和主机之间就完成一个数据块的数据传送。"
+      },
+      "patch": {
+        "answer": {
+          "explanation": "DMA方式主要用于磁盘等高速设备的成批数据传送，这类高速设备的记录方式多采用数据块组织方式，因此每启动一次DMA传送，外设和主机之间就完成一个数据块的数据传送。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-coa::输入/输出系统 · I/O方式 · 选择题::X49",
+      "course_key": "coa",
+      "chapter": "输入/输出系统",
+      "question_id": "X49",
+      "source_hash": "3b5427b4a898290cce12716341c12ea471831fade33c90c91d4e9397bc72e6d7",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "【2022统考真题】下列关于中断I/O方式的叙述中，不正确的是（）。",
+        "options": {
+          "A": "适用于键盘、针式打印机等字符型设备",
+          "B": "外设和主机之间的数据传送通过软件完成",
+          "C": "外设准备数据的时间应小于中断处理时间",
+          "D": "外设为某进程准备数据时CPU可运行其他进程"
+        },
+        "answer.choice": "C",
+        "explanation": "中断I/O方式适用于字符型设备，此类设备的特点是数据传输速率慢，以字符或字为单位进行传输，选项A正确。若采用中断I/O方式，当外设准备好数据后，向CPU发出中断请求，CPU暂时中止现行程序，转去运行中断服务程序，由中断服务程序完成数据传送，选项B正确。若外设准备数据的时间小于中断处理时间，则可能导致数据丢失，以输入设备为例，设备为进程准备的数据会先写入设备控制器的缓冲区（缓冲区大小有限），缓冲区每写满一次，就向CPU发出一次中断请求，CPU响应并处理中断的过程，就是将缓冲区中的数据“取走”的过程，因此若外设准备数据的时间小于中断处理时间，则可能导致外设往缓冲区写入数据的速度快于CPU从缓冲区取走数据的速度，从而导致缓冲区的数据被覆盖，进而导致数据丢失，选项C错误。若采用中断I/O方式，则外设为某进程准备数据时，可令该进程阻塞，CPU运行其他进程，选项D正确。"
+      },
+      "patch": {
+        "answer": {
+          "explanation": "中断I/O方式适用于字符型设备，此类设备的特点是数据传输速率慢，以字符或字为单位进行传输，选项A正确。若采用中断I/O方式，当外设准备好数据后，向CPU发出中断请求，CPU暂时中止现行程序，转去运行中断服务程序，由中断服务程序完成数据传送，选项B正确。若外设准备数据的时间小于中断处理时间，则可能导致数据丢失，以输入设备为例，设备为进程准备的数据会先写入设备控制器的缓冲区（缓冲区大小有限），缓冲区每写满一次，就向CPU发出一次中断请求，CPU响应并处理中断的过程，就是将缓冲区中的数据“取走”的过程，因此若外设准备数据的时间小于中断处理时间，则可能导致外设往缓冲区写入数据的速度快于CPU从缓冲区取走数据的速度，从而导致缓冲区的数据被覆盖，进而导致数据丢失，选项C错误。若采用中断I/O方式，则外设为某进程准备数据时，可令该进程阻塞，CPU运行其他进程，选项D正确。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-net::计算机网络体系结构 · 计算机网络概述 · 选择题::X01",
+      "course_key": "net",
+      "chapter": "计算机网络体系结构",
+      "question_id": "X01",
+      "source_hash": "8e465d163ab299b4d72f19a1aa3e236231b0707c03fbbda643a27e47e84601a9",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "计算机网络可被理解为（）。",
+        "options": {
+          "A": "执行计算机数据处理的软件模块",
+          "B": "由自治的计算机互连起来的集合体",
+          "C": "多个处理器通过共享内存实现的紧耦合系统",
+          "D": "用于共同完成一项任务的分布式系统"
+        },
+        "answer.choice": "B",
+        "explanation": "计算机网络是由自治计算机互连起来的集合体，其中包含三个关键点：自治计算机、互连、集合体。自治计算机由软件和硬件两部分组成，能完整地实现计算机的各种功能；互连是指计算机之间能实现相互通信；集合体是指所有使用通信线路及互联设备连接起来的自治计算机的集合。选项C和D分别指多机系统和分布式系统。"
+      },
+      "patch": {
+        "answer": {
+          "explanation": "计算机网络是由自治计算机互连起来的集合体，其中包含三个关键点：自治计算机、互连、集合体。自治计算机由软件和硬件两部分组成，能完整地实现计算机的各种功能；互连是指计算机之间能实现相互通信；集合体是指所有使用通信线路及互联设备连接起来的自治计算机的集合。选项C和D分别指多机系统和分布式系统。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-net::计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题::X02",
+      "course_key": "net",
+      "chapter": "计算机网络体系结构",
+      "question_id": "X02",
+      "source_hash": "b2efc99fbacdf738a0b1df51e876788cb5837905019ad496d12b22b260834f1a",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "将用户数据分成一个个数据块传输的优点不包括（）。",
+        "options": {
+          "A": "减少延迟时间",
+          "B": "提高错误控制效率",
+          "C": "使得多个应用更公平地使用共享通信介质",
+          "D": "有效数据在协议数据单元（PDU）中所占比例更大"
+        },
+        "answer.choice": "D",
+        "explanation": "将用户数据分成一个个数据块传输，因为每块均需加入控制信息，所以实际上会使有效数据在PDU中所占的比例更小。其他各项均为其优点。"
+      },
+      "patch": {
+        "answer": {
+          "explanation": "将用户数据分成一个个数据块传输，因为每块均需加入控制信息，所以实际上会使有效数据在PDU中所占的比例更小。其他各项均为其优点。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-net::计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题::X15",
+      "course_key": "net",
+      "chapter": "计算机网络体系结构",
+      "question_id": "X15",
+      "source_hash": "fe8dc188b836e16f2d195565b4101b562642fe48c5cd3ed9c625c929b6674efe",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "下列能够最好地描述OSI参考模型的数据链路层功能的是（）。",
+        "options": {
+          "A": "提供用户和网络的接口",
+          "B": "处理信号通过介质的传输",
+          "C": "控制报文通过网络的路由选择",
+          "D": "保证数据正确的顺序和完整性"
+        },
+        "answer.choice": "D",
+        "explanation": "OSI参考模型的数据链路层向上提供可靠的传输服务，在差错检测的基础上，增加了帧编号、确认和重传机制，因此保证了数据正确的顺序和完整性。选项A是应用层的功能，选项B是物理层的功能，选项C是网络层的功能。学习3.1节后，对本题的理解将更深刻。"
+      },
+      "patch": {
+        "answer": {
+          "explanation": "OSI参考模型的数据链路层向上提供可靠的传输服务，在差错检测的基础上，增加了帧编号、确认和重传机制，因此保证了数据正确的顺序和完整性。选项A是应用层的功能，选项B是物理层的功能，选项C是网络层的功能。学习3.1节后，对本题的理解将更深刻。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-net::计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题::X22",
+      "course_key": "net",
+      "chapter": "计算机网络体系结构",
+      "question_id": "X22",
+      "source_hash": "d84085a5185491f0bd3a558d65a7451c3b38d8d5c0fa09ad8131aa107ed3994c",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "下列说法中正确描述了OSI参考模型中数据的封装过程的是（）。",
+        "options": {
+          "A": "数据链路层在分组上仅增加了源物理地址和目的物理地址",
+          "B": "网络层将高层协议产生的数据封装成分组，并增加第三层的地址和控制信息",
+          "C": "传输层将数据流封装成数据帧，并增加可靠性和流控制信息",
+          "D": "表示层将高层协议产生的数据分割成数据段，并增加相应的源和目的端口信息"
+        },
+        "answer.choice": "B",
+        "explanation": "数据链路层在分组上除增加源和目的物理地址外，也增加控制信息；传输层的PDU不称为帧；表示层不负责将高层协议产生的数据分割成数据段，负责增加相应源和目的端口信息的应是传输层。选项B正确描述了OSI参考模型中数据的封装过程，数据经过网络层后，只是增加了第三层PCI。"
+      },
+      "patch": {
+        "answer": {
+          "explanation": "数据链路层在分组上除增加源和目的物理地址外，也增加控制信息；传输层的PDU不称为帧；表示层不负责将高层协议产生的数据分割成数据段，负责增加相应源和目的端口信息的应是传输层。选项B正确描述了OSI参考模型中数据的封装过程，数据经过网络层后，只是增加了第三层PCI。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-net::计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题::X27",
+      "course_key": "net",
+      "chapter": "计算机网络体系结构",
+      "question_id": "X27",
+      "source_hash": "5bd939d6b26e3190641d52d0de2a2be56687b3932309b7cc788a6eda3795a083",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "上下相邻层实体之间的接口称为服务访问点，应用层的服务访问点也称（）。",
+        "options": {
+          "A": "用户接口",
+          "B": "网卡接口",
+          "C": "IP地址",
+          "D": "MAC地址"
+        },
+        "answer.choice": "A",
+        "explanation": "在同一系统中，相邻两层的实体交换信息的逻辑接口称为服务访问点（SAP），N层的SAP是N+1层可以访问N层服务的地方。SAP用于区分不同的服务类型。在5层体系结构中，数据链路层的服务访问点为帧的“类型”字段，网络层的服务访问点为IP数据报的“协议”字段，传输层的服务访问点为“端口号”字段，应用层的服务访问点为“用户接口”。"
+      },
+      "patch": {
+        "answer": {
+          "explanation": "在同一系统中，相邻两层的实体交换信息的逻辑接口称为服务访问点（SAP），N层的SAP是N+1层可以访问N层服务的地方。SAP用于区分不同的服务类型。在5层体系结构中，数据链路层的服务访问点为帧的“类型”字段，网络层的服务访问点为IP数据报的“协议”字段，传输层的服务访问点为“端口号”字段，应用层的服务访问点为“用户接口”。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-net::物理层 · 通信基础 · 选择题::X10",
+      "course_key": "net",
+      "chapter": "物理层",
+      "question_id": "X10",
+      "source_hash": "26fba43c7481e3eb71eb3f13dcf109a467c3521ca7c50d979aa59c493390ea61",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "有一个无噪声的8kHz信道，每个信号包含8级，每秒采样24k次，那么可以获得的最大传输速率是（）。",
+        "options": {
+          "A": "24kb/s",
+          "B": "32kb/s",
+          "C": "48kb/s",
+          "D": "72kb/s"
+        },
+        "answer.choice": "C",
+        "explanation": "无噪声的信号应该满足奈奎斯特定理，即最大数据传输速率=2W log₂V 比特/秒。将题中的数据代入，得到答案是48kb/s。注意题中给出的每秒采样24kHz是无意义的，因为超过了波特率的上限2W=16kBaud，所以选项D是错误答案。"
+      },
+      "patch": {
+        "content": "有一个无噪声的8kHz信道，每个信号包含8级，每秒采样24k次，那么可以获得的最大传输速率是（）。",
+        "answer": {
+          "explanation": "无噪声的信号应该满足奈奎斯特定理，即最大数据传输速率=2W log₂V 比特/秒。将题中的数据代入，得到答案是48kb/s。注意题中给出的每秒采样24kHz是无意义的，因为超过了波特率的上限2W=16kBaud，所以选项D是错误答案。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-net::物理层 · 通信基础 · 选择题::X12",
+      "course_key": "net",
+      "chapter": "物理层",
+      "question_id": "X12",
+      "source_hash": "a1ccef064d03b32ee3a679f9f3af783678a31a195455241d49ee88b4f1c8677d",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "二进制信号在信噪比为127:1的4kHz信道上传输，最大数据传输速率可以达到（）。",
+        "options": {
+          "A": "28000b/s",
+          "B": "8000b/s",
+          "C": "4000b/s",
+          "D": "无限大"
+        },
+        "answer.choice": "B",
+        "explanation": "根据香农定理，最大数据率=W log₂(1+S/N)=4000×log₂(1+127)=28000b/s，容易误选A。注意"
+      },
+      "patch": {
+        "answer": {
+          "explanation": "根据香农定理，最大数据率=W log₂(1+S/N)=4000×log₂(1+127)=28000b/s，容易误选A。注意"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-net::物理层 · 传输介质 · 选择题::X01",
+      "course_key": "net",
+      "chapter": "物理层",
+      "question_id": "X01",
+      "source_hash": "1291af8576be684ccf1fb1ca8e6c88edd206cbcf841b2637f2d3d7c3a100877f",
+      "status": "verified",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "双绞线是用两根绝缘导线绞合而成的，绞合的目的是（）。",
+        "options": {
+          "A": "减少干扰",
+          "B": "提高传输速度",
+          "C": "增大传输距离",
+          "D": "增大抗拉强度"
+        },
+        "answer.choice": "A",
+        "explanation": "绞合可以减少两根导线相互的电磁干扰。"
+      },
+      "patch": null
+    },
+    {
+      "source_uid": "408:cs408-net::物理层 · 传输介质 · 选择题::X09",
+      "course_key": "net",
+      "chapter": "物理层",
+      "question_id": "X09",
+      "source_hash": "de2a7a7e11c4737f76f52185ad1bd7e4f2200f98cba4c5d9ac9bd9abb935006f",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "某网络在物理层规定，信号的电平用+10V～+15V 表示二进制 0，用-10V～-15V 表示二进制 1，电线长度限于 15m 以内，这体现了物理层接口的（）。",
+        "options": {
+          "A": "机械特性",
+          "B": "功能特性",
+          "C": "电气特性",
+          "D": "规程特性"
+        },
+        "answer.choice": "C",
+        "explanation": "本题易误选功能特性。规定各条线上的电压范围，以及电缆长度的限制，属于电气特性。而功能特性指明某条线上出现的某一电平的电压表示何种意义，以及每条线的功能（数据线、控制线、时钟线）。例如，数据线上的电压+11V 表示二进制 1，就属于功能特性。"
+      },
+      "patch": {
+        "content": "某网络在物理层规定，信号的电平用+10V～+15V 表示二进制 0，用-10V～-15V 表示二进制 1，电线长度限于 15m 以内，这体现了物理层接口的（）。",
+        "answer": {
+          "explanation": "本题易误选功能特性。规定各条线上的电压范围，以及电缆长度的限制，属于电气特性。而功能特性指明某条线上出现的某一电平的电压表示何种意义，以及每条线的功能（数据线、控制线、时钟线）。例如，数据线上的电压+11V 表示二进制 1，就属于功能特性。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-net::物理层 · 物理层设备 · 选择题::X08",
+      "course_key": "net",
+      "chapter": "物理层",
+      "question_id": "X08",
+      "source_hash": "8dcd54a14c808d181db358e7b6a34f26307a3ded1d784f33921d98076c67e2ac",
+      "status": "verified",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "当集线器的一个端口收到数据后，将其（）。",
+        "options": {
+          "A": "从所有端口广播出去",
+          "B": "从除输入端口外的所有端口广播出去",
+          "C": "根据目的地址从合适的端口转发出去",
+          "D": "随机选择一个端口转发出去"
+        },
+        "answer.choice": "B",
+        "explanation": "集线器没有寻址功能，一个端口接收到数据信号后，从其他所有端口转发出去。"
+      },
+      "patch": null
+    },
+    {
+      "source_uid": "408:cs408-net::数据链路层 · 流量控制与可靠传输机制 · 选择题::X03",
+      "course_key": "net",
+      "chapter": "数据链路层",
+      "question_id": "X03",
+      "source_hash": "7bba2a1125c25b9f11bcf46f1c9595083fcba9b63ed8e57fc8a0ced6f80d9763",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "在简单的停止-等待协议中，当帧出现丢失时，发送方会永远等待下去，解决这种死锁现象的办法是（）。",
+        "options": {
+          "A": "差错检验",
+          "B": "帧序号",
+          "C": "NAK 机制",
+          "D": "超时机制"
+        },
+        "answer.choice": "D",
+        "explanation": "在停止-等待协议中，发送方设置了计时器，在发送一个帧后，发送方等待确认，若在计时器计满时仍未收到确认，则再次发送相同的帧，以免陷入永久的等待。"
+      },
+      "patch": {
+        "content": "在简单的停止-等待协议中，当帧出现丢失时，发送方会永远等待下去，解决这种死锁现象的办法是（）。",
+        "options": {
+          "A": "差错检验",
+          "B": "帧序号",
+          "C": "NAK 机制",
+          "D": "超时机制"
+        },
+        "answer": {
+          "explanation": "在停止-等待协议中，发送方设置了计时器，在发送一个帧后，发送方等待确认，若在计时器计满时仍未收到确认，则再次发送相同的帧，以免陷入永久的等待。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-net::数据链路层 · 介质访问控制 · 选择题::X04",
+      "course_key": "net",
+      "chapter": "数据链路层",
+      "question_id": "X04",
+      "source_hash": "4d79761c1e43cfc37a1247b4bb46782a3b5db00bfd6bece99ff625489da2838f",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "TDM 所用传输介质的性质是（）。（注，本题选项中的带宽是指信号的频率范围。）",
+        "options": {
+          "A": "介质的带宽大于结合信号的位速率",
+          "B": "介质的带宽小于单个信号的带宽",
+          "C": "介质的位速率小于最小信号的带宽",
+          "D": "介质的位速率大于单个信号的位速率"
+        },
+        "answer.choice": "D",
+        "explanation": "本题的关键是理解 TDM（时分复用）的原理和特点。TDM 在发送端将不同用户的信号相互交织在不同的时间片内，沿同一个信道传输，在接收端再将各个时间片内的信号提取出来，还原成原始信号。为了实现 TDM，必须满足如下条件：① 介质的位速率（每秒传输的二进制位数）大于单个信号的位速率；② 介质的带宽（所能传输信号的最高频率与最低频率之差）大于结合信号的带宽（所有信号经过调制后形成的复合信号的带宽）。"
+      },
+      "patch": {
+        "content": "TDM 所用传输介质的性质是（）。（注，本题选项中的带宽是指信号的频率范围。）",
+        "answer": {
+          "explanation": "本题的关键是理解 TDM（时分复用）的原理和特点。TDM 在发送端将不同用户的信号相互交织在不同的时间片内，沿同一个信道传输，在接收端再将各个时间片内的信号提取出来，还原成原始信号。为了实现 TDM，必须满足如下条件：① 介质的位速率（每秒传输的二进制位数）大于单个信号的位速率；② 介质的带宽（所能传输信号的最高频率与最低频率之差）大于结合信号的带宽（所有信号经过调制后形成的复合信号的带宽）。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-net::数据链路层 · 介质访问控制 · 选择题::X16",
+      "course_key": "net",
+      "chapter": "数据链路层",
+      "question_id": "X16",
+      "source_hash": "08e5de0388d33d66f657ff167e052e8f0c7c40bba71c2cc6e08c9d022d884e7d",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "在令牌环网络中，当一个站点收到自己发出去的数据帧后，它将（）。",
+        "options": {
+          "A": "不再转发该帧，并重新产生一个令牌",
+          "B": "不再转发该帧，并等待下一个令牌",
+          "C": "继续转发该帧，并重新产生一个令牌",
+          "D": "继续转发该帧，并等待下一个令牌"
+        },
+        "answer.choice": "A",
+        "explanation": "在令牌环网络中，一个站点收到自己发出去的数据帧后，不再转发该帧，而重新产生一个令牌，然后将该令牌发送给下一个站点。这样可以回收数据帧，避免环路上的冗余，并释放传输权限。"
+      },
+      "patch": {
+        "answer": {
+          "explanation": "在令牌环网络中，一个站点收到自己发出去的数据帧后，不再转发该帧，而重新产生一个令牌，然后将该令牌发送给下一个站点。这样可以回收数据帧，避免环路上的冗余，并释放传输权限。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-net::数据链路层 · 局域网 · 选择题::X39",
+      "course_key": "net",
+      "chapter": "数据链路层",
+      "question_id": "X39",
+      "source_hash": "d20c95d2674ed2032a4d9fea744253ba0ee6cb5627c98934eca801c740b925ae",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "【2012统考真题】以太网的 MAC 协议提供的是（）。",
+        "options": {
+          "A": "无连接的不可靠服务",
+          "B": "无连接的可靠服务",
+          "C": "有连接的可靠服务",
+          "D": "有连接的不可靠服务"
+        },
+        "answer.choice": "A",
+        "explanation": "考虑到局域网信道质量好，以太网采取了两项重要的措施来使通信更简单：① 采用无连接的工作方式；② 不对发送的数据帧进行编号，也不要求对方发回确认。因此，以太网提供的服务是不可靠的服务，即尽最大努力的交付。差错的纠正由高层完成。"
+      },
+      "patch": {
+        "content": "【2012统考真题】以太网的 MAC 协议提供的是（）。",
+        "answer": {
+          "explanation": "考虑到局域网信道质量好，以太网采取了两项重要的措施来使通信更简单：① 采用无连接的工作方式；② 不对发送的数据帧进行编号，也不要求对方发回确认。因此，以太网提供的服务是不可靠的服务，即尽最大努力的交付。差错的纠正由高层完成。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-net::数据链路层 · 数据链路层设备 · 选择题::X16",
+      "course_key": "net",
+      "chapter": "数据链路层",
+      "question_id": "X16",
+      "source_hash": "b6008d1963d9d07ca7300cea6f5dec51f50b7e8b0a3523e68bf1c78fefd036e9",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "以太网交换机的自学习功能是指（）。",
+        "options": {
+          "A": "记录帧的源 MAC 地址与该帧进入交换机的接口号",
+          "B": "记录帧的目的 MAC 地址与该帧进入交换机的接口号",
+          "C": "记录分组的源 IP 地址与该分组进入交换机的接口号",
+          "D": "记录分组的目的 IP 地址与该分组进入交换机的接口号"
+        },
+        "answer.choice": "A",
+        "explanation": "以太网交换机的自学习功能是指记录帧的源 MAC 地址与该帧进入交换机的接口号，并将这些信息存储在交换机的交换表中，以便于后续的转发决策。"
+      },
+      "patch": {
+        "options": {
+          "A": "记录帧的源 MAC 地址与该帧进入交换机的接口号",
+          "B": "记录帧的目的 MAC 地址与该帧进入交换机的接口号",
+          "C": "记录分组的源 IP 地址与该分组进入交换机的接口号",
+          "D": "记录分组的目的 IP 地址与该分组进入交换机的接口号"
+        },
+        "answer": {
+          "explanation": "以太网交换机的自学习功能是指记录帧的源 MAC 地址与该帧进入交换机的接口号，并将这些信息存储在交换机的交换表中，以便于后续的转发决策。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-net::网络层 · 网络层的功能 · 选择题::X04",
+      "course_key": "net",
+      "chapter": "网络层",
+      "question_id": "X04",
+      "source_hash": "6989c4b348ab82009aa9737ca087e3d406a68fc9b1d87292fc4cba93000fe75a",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "在互联网中，一个路由器的路由表通常包含（）。",
+        "options": {
+          "A": "目的网络和到达目的网络的完整路径",
+          "B": "所有目的主机和到达该目的主机的完整路径",
+          "C": "目的网络和到达该目的网络路径上的下一个路由器的 IP 地址",
+          "D": "目的网络和到达该目的网络路径上的下一个路由器的 MAC 地址"
+        },
+        "answer.choice": "C",
+        "explanation": "路由器是网络层设备，其任务是转发分组。每个路由器都维护一个路由表以决定分组的转发。为了提高路由器的查询效率并减少路由表维护的内容，路由表只保留到达目的地址的下一个路由器的地址，而不保留整个传输路径的信息。另外，采用目的网络可使每个路由表项包含很多目的主机 IP 地址，这样可减少路由表中的项目。因此，路由表通常包含目的网络和到达该目的网络路径上的下一个路由器的 IP 地址。"
+      },
+      "patch": {
+        "options": {
+          "A": "目的网络和到达目的网络的完整路径",
+          "B": "所有目的主机和到达该目的主机的完整路径",
+          "C": "目的网络和到达该目的网络路径上的下一个路由器的 IP 地址",
+          "D": "目的网络和到达该目的网络路径上的下一个路由器的 MAC 地址"
+        },
+        "answer": {
+          "explanation": "路由器是网络层设备，其任务是转发分组。每个路由器都维护一个路由表以决定分组的转发。为了提高路由器的查询效率并减少路由表维护的内容，路由表只保留到达目的地址的下一个路由器的地址，而不保留整个传输路径的信息。另外，采用目的网络可使每个路由表项包含很多目的主机 IP 地址，这样可减少路由表中的项目。因此，路由表通常包含目的网络和到达该目的网络路径上的下一个路由器的 IP 地址。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X35",
+      "course_key": "net",
+      "chapter": "网络层",
+      "question_id": "X35",
+      "source_hash": "a199018e7da393f35c28c252fb5991740f13bf083c9b3824766ada4635e3186d",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "设有 4 条路由 172.18.129.0/24、172.18.130.0/24、172.18.132.0/24 和 172.18.133.0/24，若进行路由聚合，则能覆盖这 4 条路由的地址是（）。",
+        "options": {
+          "A": "172.18.128.0/21",
+          "B": "172.18.128.0/22",
+          "C": "172.18.130.0/22",
+          "D": "172.18.132.0/23"
+        },
+        "answer.choice": "A",
+        "explanation": "4 条路由的前 24 位（3 个字节）为网络前缀，前 2 个字节都一样，因此只需要比较第 3 个字节即可，129＝10000001，130＝10000010，132＝10000100，133＝10000101。前 5 位是完全相同的，因此聚合后的网络的掩码中，1 的数量应该是 8＋8＋5＝21，聚合后的网络的第 3 个字节应该"
+      },
+      "patch": {
+        "content": "设有 4 条路由 172.18.129.0/24、172.18.130.0/24、172.18.132.0/24 和 172.18.133.0/24，若进行路由聚合，则能覆盖这 4 条路由的地址是（）。",
+        "answer": {
+          "explanation": "4 条路由的前 24 位（3 个字节）为网络前缀，前 2 个字节都一样，因此只需要比较第 3 个字节即可，129＝10000001，130＝10000010，132＝10000100，133＝10000101。前 5 位是完全相同的，因此聚合后的网络的掩码中，1 的数量应该是 8＋8＋5＝21，聚合后的网络的第 3 个字节应该"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X65",
+      "course_key": "net",
+      "chapter": "网络层",
+      "question_id": "X65",
+      "source_hash": "2b86c54b680e77f9cf74fcb5fc8e0cdc976972772ee89da809662f065d0c06d0",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "【2021统考真题】现将一个 IP 网络划分为 3 个子网，若其中一个子网是 192.168.9.128/26，则下列网络中不可能是另外两个子网之一的是（）。",
+        "options": {
+          "A": "192.168.9.0/25",
+          "B": "192.168.9.0/26",
+          "C": "192.168.9.192/26",
+          "D": "192.168.9.192/27"
+        },
+        "answer.choice": "B",
+        "explanation": "划分子网的原则是要求划分出来的子网的 IP 地址空间互不重叠，且原来的 IP 地址空间不遗漏，求解本题最好的方法是代入选项，观察是否可将原 IP 地址空间分割为 3 个互不重叠的子网。根据题意，将 IP 网络划分为 3 个子网。其中一个是 192.168.9.128/26。可简写成 10/26（省略前面"
+      },
+      "patch": {
+        "content": "【2021统考真题】现将一个 IP 网络划分为 3 个子网，若其中一个子网是 192.168.9.128/26，则下列网络中不可能是另外两个子网之一的是（）。",
+        "answer": {
+          "explanation": "划分子网的原则是要求划分出来的子网的 IP 地址空间互不重叠，且原来的 IP 地址空间不遗漏，求解本题最好的方法是代入选项，观察是否可将原 IP 地址空间分割为 3 个互不重叠的子网。根据题意，将 IP 网络划分为 3 个子网。其中一个是 192.168.9.128/26。可简写成 10/26（省略前面"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-net::网络层 · 路由算法与路由协议 · 选择题::X23",
+      "course_key": "net",
+      "chapter": "网络层",
+      "question_id": "X23",
+      "source_hash": "e99da0706dd23a5ea81d8094e3135968e1f458656e7aafa39314bd5549fc2d0b",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "某分组交换网络的拓扑如下图所示，各路由器使用 OSPF 协议且均已收敛，各链路的度量已在图中标注。假设各段链路的带宽均为 100Mb/s，分组长度为 1000B，其中分组的首部长度为 20B。若主机 A 向主机 B 发送一个大小为 980000B 的文件，忽略分组的传播时延和封装/解封时间，从 A 发送开始到 B 接收完毕为止，需要的时间是（）。",
+        "options": {
+          "A": "80.08ms",
+          "B": "80.16ms",
+          "C": "80.32ms",
+          "D": "80.64ms"
+        },
+        "answer.choice": "C",
+        "explanation": "根据 OSPF 算法，从 A 到 B 转发经过的链路代价依次为 2、3、1、1、2，一共经过 4 个路由"
+      },
+      "patch": {
+        "content": "某分组交换网络的拓扑如下图所示，各路由器使用 OSPF 协议且均已收敛，各链路的度量已在图中标注。假设各段链路的带宽均为 100Mb/s，分组长度为 1000B，其中分组的首部长度为 20B。若主机 A 向主机 B 发送一个大小为 980000B 的文件，忽略分组的传播时延和封装/解封时间，从 A 发送开始到 B 接收完毕为止，需要的时间是（）。",
+        "options": {
+          "A": "80.08ms",
+          "B": "80.16ms",
+          "C": "80.32ms",
+          "D": "80.64ms"
+        },
+        "answer": {
+          "explanation": "根据 OSPF 算法，从 A 到 B 转发经过的链路代价依次为 2、3、1、1、2，一共经过 4 个路由"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-net::网络层 · IP多播 · 选择题::X03",
+      "course_key": "net",
+      "chapter": "网络层",
+      "question_id": "X03",
+      "source_hash": "d086c73081ef9d13f0c8a98dd92d5e3275038f902b34633966dab58a417d7b59",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "以太网多播 IP 地址 224.215.145.230 应该映射到的多播 MAC 地址是（）。",
+        "options": {
+          "A": "01-00-5E-57-91-E6",
+          "B": "01-00-5E-D7-91-E6",
+          "C": "01-00-5E-5B-91-E6",
+          "D": "01-00-5E-55-91-E6"
+        },
+        "answer.choice": "A",
+        "explanation": "以太网多播地址块的范围是 01-00-5E-00-00-00～01-00-5E-7F-FF-FF，而且在每个地址中，只有后 23 位可用多播。这样，只能和 D 类 IP 地址中的后 23 位有一一对应关系。D 类 IP 地址可供分配的有 28 位，可见这 28 位中的前 5 位不能用来构成以太网硬件地址。215 的二进制为 11010111，其中，在映射过程中最高位为 0，因此 215.145.230 映射的二进制为 01010111.10010001.11100110，"
+      },
+      "patch": {
+        "content": "以太网多播 IP 地址 224.215.145.230 应该映射到的多播 MAC 地址是（）。",
+        "answer": {
+          "explanation": "以太网多播地址块的范围是 01-00-5E-00-00-00～01-00-5E-7F-FF-FF，而且在每个地址中，只有后 23 位可用多播。这样，只能和 D 类 IP 地址中的后 23 位有一一对应关系。D 类 IP 地址可供分配的有 28 位，可见这 28 位中的前 5 位不能用来构成以太网硬件地址。215 的二进制为 11010111，其中，在映射过程中最高位为 0，因此 215.145.230 映射的二进制为 01010111.10010001.11100110，"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-net::传输层 · UDP · 选择题::X04",
+      "course_key": "net",
+      "chapter": "传输层",
+      "question_id": "X04",
+      "source_hash": "e01e18432b6ccc4d489c6982c14bec29e32655b787b775eac13b35337ada953c",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "UDP 数据报中的长度字段（）。",
+        "options": {
+          "A": "不记录数据的长度",
+          "B": "只记录首部的长度",
+          "C": "只记录数据部分的长度",
+          "D": "包括首部和数据部分的长度"
+        },
+        "answer.choice": "D",
+        "explanation": "长度字段记录 UDP 数据报的长度（包括首部和数据部分），以字节为单位。"
+      },
+      "patch": {
+        "content": "UDP 数据报中的长度字段（）。",
+        "answer": {
+          "explanation": "长度字段记录 UDP 数据报的长度（包括首部和数据部分），以字节为单位。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-net::传输层 · UDP · 选择题::X14",
+      "course_key": "net",
+      "chapter": "传输层",
+      "question_id": "X14",
+      "source_hash": "4ad24906700d87d7b1c362e3055fb41796722ef998269e30d1c98b34c7d177b4",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "【2014统考真题】下列关于 UDP 的叙述中，正确的是（）。\nI. 提供无连接服务  II. 提供复用/分用服务  III. 通过差错检验，保障可靠数据传输",
+        "options": {
+          "A": "仅 I",
+          "B": "仅 I、II",
+          "C": "仅 II、III",
+          "D": "I、II、III"
+        },
+        "answer.choice": "B",
+        "explanation": "UDP 提供无连接服务（说法 I 正确），并在发送/接收时通过端口号实现复用与分用功能（说法 II 正确）。虽然 UDP 首部包含检验和字段用于差错检测，但其仅能发现传输错误并丢弃出错报文，不具备重传、确认等机制，无法保障可靠数据传输，可靠性需由应用层实现。因此，说法 III 错误。"
+      },
+      "patch": {
+        "content": "【2014统考真题】下列关于 UDP 的叙述中，正确的是（）。\nI. 提供无连接服务  II. 提供复用/分用服务  III. 通过差错检验，保障可靠数据传输",
+        "options": {
+          "A": "仅 I",
+          "B": "仅 I、II",
+          "C": "仅 II、III",
+          "D": "I、II、III"
+        },
+        "answer": {
+          "explanation": "UDP 提供无连接服务（说法 I 正确），并在发送/接收时通过端口号实现复用与分用功能（说法 II 正确）。虽然 UDP 首部包含检验和字段用于差错检测，但其仅能发现传输错误并丢弃出错报文，不具备重传、确认等机制，无法保障可靠数据传输，可靠性需由应用层实现。因此，说法 III 错误。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X20",
+      "course_key": "net",
+      "chapter": "传输层",
+      "question_id": "X20",
+      "source_hash": "6d91df69b4e578e71b946fddead8b8ad190e5c0ad2234587e7bf1abad56aa659",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "TCP 采用三报文握手建立连接，其中第三个报文是（）。",
+        "options": {
+          "A": "TCP 连接请求",
+          "B": "对 TCP 连接请求的确认",
+          "C": "对 TCP 连接请求确认的确认",
+          "D": "TCP 普通数据"
+        },
+        "answer.choice": "C",
+        "explanation": "TCP 采用三报文握手建立连接，其中第一个报文是 TCP 连接请求，第二个报文是对 TCP 连接请求的确认，第三个报文是对 TCP 连接请求确认的确认。"
+      },
+      "patch": {
+        "content": "TCP 采用三报文握手建立连接，其中第三个报文是（）。",
+        "options": {
+          "A": "TCP 连接请求",
+          "B": "对 TCP 连接请求的确认",
+          "C": "对 TCP 连接请求确认的确认",
+          "D": "TCP 普通数据"
+        },
+        "answer": {
+          "explanation": "TCP 采用三报文握手建立连接，其中第一个报文是 TCP 连接请求，第二个报文是对 TCP 连接请求的确认，第三个报文是对 TCP 连接请求确认的确认。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X29",
+      "course_key": "net",
+      "chapter": "传输层",
+      "question_id": "X29",
+      "source_hash": "ea98155e4ae80d7a868f54421fb03de53fe6486ea532a320e906e04a559e5890",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "一个 TCP 连接的数据传输阶段，若发送端的发送窗口值由 2000 变为 3000，则意味着发送端可以（）。",
+        "options": {
+          "A": "在收到一个确认之前可以发送 3000 个 TCP 报文段",
+          "B": "在收到一个确认之前可以发送 1000B",
+          "C": "在收到一个确认之前可以发送 3000B",
+          "D": "在收到一个确认之前可以发送 2000 个 TCP 报文段"
+        },
+        "answer.choice": "C",
+        "explanation": "TCP 提供的是可靠的字节流传输服务，使用窗口机制进行流量控制与拥塞控制。TCP 的滑动窗口机制是面向字节的，因此窗口大小的单位为字节。假设发送窗口的大小为 N，这意味着发送端可以在没有收到确认的情况下连续发送 N 字节。"
+      },
+      "patch": {
+        "content": "一个 TCP 连接的数据传输阶段，若发送端的发送窗口值由 2000 变为 3000，则意味着发送端可以（）。",
+        "options": {
+          "A": "在收到一个确认之前可以发送 3000 个 TCP 报文段",
+          "B": "在收到一个确认之前可以发送 1000B",
+          "C": "在收到一个确认之前可以发送 3000B",
+          "D": "在收到一个确认之前可以发送 2000 个 TCP 报文段"
+        },
+        "answer": {
+          "explanation": "TCP 提供的是可靠的字节流传输服务，使用窗口机制进行流量控制与拥塞控制。TCP 的滑动窗口机制是面向字节的，因此窗口大小的单位为字节。假设发送窗口的大小为 N，这意味着发送端可以在没有收到确认的情况下连续发送 N 字节。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X51",
+      "course_key": "net",
+      "chapter": "传输层",
+      "question_id": "X51",
+      "source_hash": "b243e2c66f58943481787b82190767aa48d35a7914e4fd4aaa3c3207769e1be1",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "【2019 统考真题】若主机甲主动发起一个与主机乙的 TCP 连接，甲、乙选择的初始序号分别为 2018 和 2046，则第三次握手 TCP 段的确认序号是（）。",
+        "options": {
+          "A": "2018",
+          "B": "2019",
+          "C": "2046",
+          "D": "2047"
+        },
+        "answer.choice": "D",
+        "explanation": "三次握手过程：甲发 SYN(seq = 2018)；乙回 SYN + ACK(seq = 2046, ack = 2019)；甲再发 ACK。第三次握手的确认序号应为乙的初始序号加 1，即 2046 + 1 = 2047。"
+      },
+      "patch": {
+        "content": "【2019 统考真题】若主机甲主动发起一个与主机乙的 TCP 连接，甲、乙选择的初始序号分别为 2018 和 2046，则第三次握手 TCP 段的确认序号是（）。",
+        "answer": {
+          "explanation": "三次握手过程：甲发 SYN(seq = 2018)；乙回 SYN + ACK(seq = 2046, ack = 2019)；甲再发 ACK。第三次握手的确认序号应为乙的初始序号加 1，即 2046 + 1 = 2047。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-net::应用层 · 网络应用模型 · 选择题::X03",
+      "course_key": "net",
+      "chapter": "应用层",
+      "question_id": "X03",
+      "source_hash": "0f0c59a3259266f6c99136717171690fdfccb59aa36cc4babee990238761476c",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "下面关于客户/服务器模型的描述，（）存在错误。\nI. 客户端必须提前知道服务器的地址，而服务器则不需要提前知道客户端的地址\nII. 客户端主要实现如何显示信息与收集用户的输入，而服务器主要实现数据的处理\nIII. 浏览器显示的内容来自服务器\nIV. 客户端是请求方，即使连接建立后，服务器也不能主动发送数据",
+        "options": {
+          "A": "I、IV",
+          "B": "III、IV",
+          "C": "仅 IV",
+          "D": "仅 III"
+        },
+        "answer.choice": "C",
+        "explanation": "在连接未建立前，服务器在某一个端口上监听。客户端是连接的请求方，客户端必须事先知道服务器的地址才能发出连接请求，而服务器则从客户端发来的数据包中获取客户端的地址。一旦连接建立，服务器就能响应客户端请求的内容，服务器也能主动发送数据给客户端，用于一些消息的通知，如一些错误的通知。所以只有说法 IV 错误。"
+      },
+      "patch": {
+        "content": "下面关于客户/服务器模型的描述，（）存在错误。\nI. 客户端必须提前知道服务器的地址，而服务器则不需要提前知道客户端的地址\nII. 客户端主要实现如何显示信息与收集用户的输入，而服务器主要实现数据的处理\nIII. 浏览器显示的内容来自服务器\nIV. 客户端是请求方，即使连接建立后，服务器也不能主动发送数据",
+        "options": {
+          "A": "I、IV",
+          "B": "III、IV",
+          "C": "仅 IV",
+          "D": "仅 III"
+        },
+        "answer": {
+          "explanation": "在连接未建立前，服务器在某一个端口上监听。客户端是连接的请求方，客户端必须事先知道服务器的地址才能发出连接请求，而服务器则从客户端发来的数据包中获取客户端的地址。一旦连接建立，服务器就能响应客户端请求的内容，服务器也能主动发送数据给客户端，用于一些消息的通知，如一些错误的通知。所以只有说法 IV 错误。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-net::应用层 · 文件传输协议 · 选择题::X03",
+      "course_key": "net",
+      "chapter": "应用层",
+      "question_id": "X03",
+      "source_hash": "4eb4be7a404e9be716a4f62c49b6c2116b8aa4bbc234fc76729561db61963893",
+      "status": "verified",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "控制信息是带外传送的协议是（）。",
+        "options": {
+          "A": "HTTP",
+          "B": "SMTP",
+          "C": "FTP",
+          "D": "POP"
+        },
+        "answer.choice": "C",
+        "explanation": "带外传送是指控制信息与数据信息通过不同的逻辑信道传送。例如，FTP使用一个单独\n的控制连接来传输控制信息，而数据连接用于传送文件。带内传送是指控制信息与数据信息\n通过同一个逻辑信道传送。例如，HTTP的请求和响应报文都是在同一个TCP连接上进行的。"
+      },
+      "patch": null
+    },
+    {
+      "source_uid": "408:cs408-net::应用层 · 文件传输协议 · 选择题::X11",
+      "course_key": "net",
+      "chapter": "应用层",
+      "question_id": "X11",
+      "source_hash": "17cf18c894cd83a288ff36d813a4d932a3e5b4305cc39d29633d98d3e9bbc947",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "FTP支持两种方式的传输：ASCII方式和Binary（二进制）方式。通常文本文件的传输采用（）方式，而图像、声音等非文本文件采用（）方式传输。",
+        "options": {
+          "A": "ASCll, Binary",
+          "B": "Binary, ASCII",
+          "C": "ASCII,ASCII",
+          "D": "Binary, Binary"
+        },
+        "answer.choice": "A",
+        "explanation": "FTP支持ASCII和Binary两种方式的传输，非加密文本文件通常采用ASCII方式传输，而图像、声音等非文本文件采用Binary方式传输。本题可能有所超纲，了解即可。"
+      },
+      "patch": {
+        "content": "FTP支持两种方式的传输：ASCII方式和Binary（二进制）方式。通常文本文件的传输采用（）方式，而图像、声音等非文本文件采用（）方式传输。",
+        "answer": {
+          "explanation": "FTP支持ASCII和Binary两种方式的传输，非加密文本文件通常采用ASCII方式传输，而图像、声音等非文本文件采用Binary方式传输。本题可能有所超纲，了解即可。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-net::应用层 · 电子邮件 · 选择题::X05",
+      "course_key": "net",
+      "chapter": "应用层",
+      "question_id": "X05",
+      "source_hash": "ba5d3bf14bcc133274652d1bc803cd85006293bedf4b90e5b6b6369f9f73b5a9",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "用户代理只能发送而不能接收电子邮件时，可能是（）地址错误。",
+        "options": {
+          "A": "POP3",
+          "B": "SMTP",
+          "C": "HTTP",
+          "D": "Mail"
+        },
+        "answer.choice": "A",
+        "explanation": "用户代理使用POP3协议接收邮件。通常用户在配置电子邮件用户代理时需要设置邮件服务器的POP3地址（如pop3.gmail.com），若这个地址设置错误，则会导致用户无法接收邮件。"
+      },
+      "patch": {
+        "answer": {
+          "explanation": "用户代理使用POP3协议接收邮件。通常用户在配置电子邮件用户代理时需要设置邮件服务器的POP3地址（如pop3.gmail.com），若这个地址设置错误，则会导致用户无法接收邮件。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X13",
+      "course_key": "net",
+      "chapter": "应用层",
+      "question_id": "X13",
+      "source_hash": "d72171d6830d12a4dee6cf727104d11b222c3775fc0764d288e6be099d3639f3",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "主机通过超链接 http://www.cskaoyan.com/index.html 请求浏览 Web 页 index.html，浏览器使用流水线方式的 HTTP/1.1 协议，该 Web 页引用了同一网站上的 7 个小图像文件，假设主机到本地域名服务器和互联网上各服务器的往返时延均为 1RTT。本地域名服务器只提供递归查询服务，其他域名服务器只提供迭代查询服务，忽略其他所有时延，则从点击超链接开始到浏览器接收到所有内容为止，所需的往返时间 RTT 数最多是（）。",
+        "options": {
+          "A": "5",
+          "B": "6",
+          "C": "7",
+          "D": "8"
+        },
+        "answer.choice": "C",
+        "explanation": "主机点击超链接获取 html 页面，大致分为以下过程：① 向本地域名服务器发送递归查询请求，若本地域名服务器中有相应的 IP 地址缓存，则直接向主机返回相应的 IP 地址，只需 1RTT。否则，本地域名服务器还需要依次向根域名服务器、com 顶级域名服务器、cskaoyan.com 域名服务器发送迭代查询请求，查询到相应的 IP 地址最多需要 4RTT。② 建立初始 TCP 连接需要 1RTT，请求并接收 Web 页需要 1RTT，支持流水线传输方式，因此在收到 Web 页后可以同时发送 7 个小图像文件的请求，第②步的总往返时间是 1RTT（建立连接）+ 1RTT（请求 Web 页）+ 1RTT（请求 7 个小"
+      },
+      "patch": {
+        "content": "主机通过超链接 http://www.cskaoyan.com/index.html 请求浏览 Web 页 index.html，浏览器使用流水线方式的 HTTP/1.1 协议，该 Web 页引用了同一网站上的 7 个小图像文件，假设主机到本地域名服务器和互联网上各服务器的往返时延均为 1RTT。本地域名服务器只提供递归查询服务，其他域名服务器只提供迭代查询服务，忽略其他所有时延，则从点击超链接开始到浏览器接收到所有内容为止，所需的往返时间 RTT 数最多是（）。",
+        "answer": {
+          "explanation": "主机点击超链接获取 html 页面，大致分为以下过程：① 向本地域名服务器发送递归查询请求，若本地域名服务器中有相应的 IP 地址缓存，则直接向主机返回相应的 IP 地址，只需 1RTT。否则，本地域名服务器还需要依次向根域名服务器、com 顶级域名服务器、cskaoyan.com 域名服务器发送迭代查询请求，查询到相应的 IP 地址最多需要 4RTT。② 建立初始 TCP 连接需要 1RTT，请求并接收 Web 页需要 1RTT，支持流水线传输方式，因此在收到 Web 页后可以同时发送 7 个小图像文件的请求，第②步的总往返时间是 1RTT（建立连接）+ 1RTT（请求 Web 页）+ 1RTT（请求 7 个小"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X03",
+      "course_key": "os",
+      "chapter": "计算机系统概述",
+      "question_id": "X03",
+      "source_hash": "591a14303f5e1106e3301ba7a83d7cb8a7bd53c77804a7472bc8c4e81aa2d351",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "下列选项中，不属于多道程序设计的基本特征的是（）。",
+        "options": {
+          "A": "制约性",
+          "B": "间断性",
+          "C": "顺序性",
+          "D": "共享性"
+        },
+        "answer.choice": "C",
+        "explanation": "多道程序的运行环境比单道程序的运行环境更加复杂。引入多道程序后，程序的执行就失去了封闭性和顺序性。程序执行因为共享资源及相互协同的原因产生了竞争，相互制约。考虑到竞争的公平性，程序的执行是断续的。"
+      },
+      "patch": {
+        "answer": {
+          "explanation": "多道程序的运行环境比单道程序的运行环境更加复杂。引入多道程序后，程序的执行就失去了封闭性和顺序性。程序执行因为共享资源及相互协同的原因产生了竞争，相互制约。考虑到竞争的公平性，程序的执行是断续的。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X08",
+      "course_key": "os",
+      "chapter": "计算机系统概述",
+      "question_id": "X08",
+      "source_hash": "dcc3439b4372af26e5930cdb6042208881aa33dcd905d3dc226b41e6f5c3635e",
+      "status": "verified",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "下列关于分时操作系统的叙述中，错误的是（）。",
+        "options": {
+          "A": "分时操作系统主要用于批处理作业",
+          "B": "分时操作系统中每个任务依次轮流使用时间片",
+          "C": "分时操作系统的响应时间好",
+          "D": "分时操作系统是一种多用户操作系统"
+        },
+        "answer.choice": "A",
+        "explanation": "分时操作系统主要用于交互式作业而非批处理作业。分时操作系统中每个任务依次轮流使用"
+      },
+      "patch": null
+    },
+    {
+      "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X15",
+      "course_key": "os",
+      "chapter": "计算机系统概述",
+      "question_id": "X15",
+      "source_hash": "c6b17d15a3401069a9f6f2ad5e333e4830573d2ae39fe86d74b67ee3b7ad230e",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "用户在程序中试图读某文件的第 100 个逻辑块，使用操作系统提供的（）接口。",
+        "options": {
+          "A": "系统调用",
+          "B": "键盘命令",
+          "C": "原语",
+          "D": "图形用户接口"
+        },
+        "answer.choice": "A",
+        "explanation": "操作系统通过系统调用向用户程序提供服务，文件 I/O 需要在内核态运行。"
+      },
+      "patch": {
+        "content": "用户在程序中试图读某文件的第 100 个逻辑块，使用操作系统提供的（）接口。",
+        "answer": {
+          "explanation": "操作系统通过系统调用向用户程序提供服务，文件 I/O 需要在内核态运行。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X23",
+      "course_key": "os",
+      "chapter": "计算机系统概述",
+      "question_id": "X23",
+      "source_hash": "8ae14ce5dc95030d40051a9cbea2b57f40d76402d1f143fe3eccc99dc7336074",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "【2016 统考真题】异常是指令执行过程中在处理器内部发生的特殊事件，中断是来自处理器外部的请求事件。下列关于中断或异常情况的叙述中，错误的是（）。",
+        "options": {
+          "A": "“访存时缺页”属于中断",
+          "B": "“整数除以零”属于异常",
+          "C": "“DMA 传送结束”属于中断",
+          "D": "“存储保护错”属于异常"
+        },
+        "answer.choice": "A",
+        "explanation": "中断是指来自 CPU 执行指令以外事件，如设备发出的 I/O 结束中断，表示设备输入/输出已完成，希望处理机能够向设备发出下一个输入/输出请求，同时让完成输入/输出后的程序继续运行。异常也称内中断，指源自 CPU 执行指令内部的事件。选项 A 错误。"
+      },
+      "patch": {
+        "content": "【2016 统考真题】异常是指令执行过程中在处理器内部发生的特殊事件，中断是来自处理器外部的请求事件。下列关于中断或异常情况的叙述中，错误的是（）。",
+        "options": {
+          "A": "“访存时缺页”属于中断",
+          "B": "“整数除以零”属于异常",
+          "C": "“DMA 传送结束”属于中断",
+          "D": "“存储保护错”属于异常"
+        },
+        "answer": {
+          "explanation": "中断是指来自 CPU 执行指令以外事件，如设备发出的 I/O 结束中断，表示设备输入/输出已完成，希望处理机能够向设备发出下一个输入/输出请求，同时让完成输入/输出后的程序继续运行。异常也称内中断，指源自 CPU 执行指令内部的事件。选项 A 错误。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-os::计算机系统概述 · 虚拟机 · 选择题::X19",
+      "course_key": "os",
+      "chapter": "计算机系统概述",
+      "question_id": "X19",
+      "source_hash": "32390bc691161977d38f1257ad59d5b2a201ad1094eb458eb09a1415e74f464e",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "【2013 统考真题】计算机开机后，操作系统最终被加载到（）。",
+        "options": {
+          "A": "BIOS",
+          "B": "ROM",
+          "C": "EPROM",
+          "D": "RAM"
+        },
+        "answer.choice": "D",
+        "explanation": "系统开机后，操作系统的程序会被自动加载到内存中的系统区，这段区域是 RAM。部分未复习计组的读者对该内容可能不太熟悉，但熟悉了各类存储介质后，解答本题并不难。"
+      },
+      "patch": {
+        "content": "【2013 统考真题】计算机开机后，操作系统最终被加载到（）。",
+        "answer": {
+          "explanation": "系统开机后，操作系统的程序会被自动加载到内存中的系统区，这段区域是 RAM。部分未复习计组的读者对该内容可能不太熟悉，但熟悉了各类存储介质后，解答本题并不难。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-os::进程与线程 · 进程与线程简介 · 选择题::X35",
+      "course_key": "os",
+      "chapter": "进程与线程",
+      "question_id": "X35",
+      "source_hash": "9c5565e46e05b1aa204f9b935c8d71f3f0b993f89c89934cdbd4351c998696cd",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "下面的叙述中，正确的是（）。",
+        "options": {
+          "A": "线程是比进程更小的能独立运行的基本单位，可以脱离进程独立运行",
+          "B": "引入线程可提高程序并发执行的程度，可进一步提高系统效率",
+          "C": "线程的引入增加了程序执行时的时空开销",
+          "D": "一个进程一定包含多个线程"
+        },
+        "answer.choice": "B",
+        "explanation": "线程是进程内一个相对独立的执行单元，但不能脱离进程单独运行，只能在进程中运行。引入线程是为了减少程序执行时的时空开销。一个进程可包含一个或多个线程。"
+      },
+      "patch": {
+        "answer": {
+          "explanation": "线程是进程内一个相对独立的执行单元，但不能脱离进程单独运行，只能在进程中运行。引入线程是为了减少程序执行时的时空开销。一个进程可包含一个或多个线程。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-os::进程与线程 · 进程与线程简介 · 选择题::X59",
+      "course_key": "os",
+      "chapter": "进程与线程",
+      "question_id": "X59",
+      "source_hash": "31c7b745aee145014187602df2d37053b25a8256f1654baf0f52d3f6d94c27c4",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "【2011 统考真题】在支持多线程的系统中，进程 P 创建的若干线程不能共享的是（）。",
+        "options": {
+          "A": "进程 P 的代码段",
+          "B": "进程 P 中打开的文件",
+          "C": "进程 P 的全局变量",
+          "D": "进程 P 中某线程的栈指针"
+        },
+        "answer.choice": "D",
+        "explanation": "进程是资源分配的基本单位，线程是 CPU 调度的基本单位。进程的代码段、进程打开的文件、进程的全局变量等都是进程的资源，唯有进程中某线程的栈指针（包含在线程 TCB 中）是属于线程的，属于进程的资源可以共享，属于线程的栈指针是独享的，对其他线程透明。"
+      },
+      "patch": {
+        "content": "【2011 统考真题】在支持多线程的系统中，进程 P 创建的若干线程不能共享的是（）。",
+        "options": {
+          "A": "进程 P 的代码段",
+          "B": "进程 P 中打开的文件",
+          "C": "进程 P 的全局变量",
+          "D": "进程 P 中某线程的栈指针"
+        },
+        "answer": {
+          "explanation": "进程是资源分配的基本单位，线程是 CPU 调度的基本单位。进程的代码段、进程打开的文件、进程的全局变量等都是进程的资源，唯有进程中某线程的栈指针（包含在线程 TCB 中）是属于线程的，属于进程的资源可以共享，属于线程的栈指针是独享的，对其他线程透明。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-os::进程与线程 · CPU调度 · 选择题::X37",
+      "course_key": "os",
+      "chapter": "进程与线程",
+      "question_id": "X37",
+      "source_hash": "28a09c845e082785b75278d0475eea6b28f3b1d5dcea09adf9c20280e1257978",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "【2009统考真题】下列进程调度算法中，综合考虑进程等待时间和执行时间的是（）。",
+        "options": {
+          "A": "时间片轮转调度算法",
+          "B": "短进程优先调度算法",
+          "C": "先来先服务调度算法",
+          "D": "高响应比优先调度算法"
+        },
+        "answer.choice": "D",
+        "explanation": "响应比=(等待时间+执行时间)/执行时间。它综合考虑了每个进程的等待时间和执行时间，对于同时到达的长进程和短进程，短进程会优先执行，以提高系统吞吐量；而长进程的响应比可以随等待时间的增加而提高，不会产生进程无法调度的情况。"
+      },
+      "patch": {
+        "answer": {
+          "explanation": "响应比=(等待时间+执行时间)/执行时间。它综合考虑了每个进程的等待时间和执行时间，对于同时到达的长进程和短进程，短进程会优先执行，以提高系统吞吐量；而长进程的响应比可以随等待时间的增加而提高，不会产生进程无法调度的情况。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-os::进程与线程 · 同步与互斥 · 选择题::X16",
+      "course_key": "os",
+      "chapter": "进程与线程",
+      "question_id": "X16",
+      "source_hash": "1cb0444798b3db666f7d51cb1f3a5192b4525364a61042939038d38062305e7d",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "用 V 操作唤醒一个等待进程时，被唤醒进程变为（）态。",
+        "options": {
+          "A": "运行",
+          "B": "等待",
+          "C": "就绪",
+          "D": "完成"
+        },
+        "answer.choice": "C",
+        "explanation": "只有就绪进程能获得处理器资源，被唤醒的进程并不能直接转换为运行态。"
+      },
+      "patch": {
+        "content": "用 V 操作唤醒一个等待进程时，被唤醒进程变为（）态。"
+      }
+    },
+    {
+      "source_uid": "408:cs408-os::进程与线程 · 死锁 · 选择题::X34",
+      "course_key": "os",
+      "chapter": "进程与线程",
+      "question_id": "X34",
+      "source_hash": "41b91e1aafefa28501e94e8674e237be6264b9ffdb76b2831aa91dcb0ad45aea",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "【2009 统考真题】某计算机系统中有 8 台打印机，由 K 个进程竞争使用，每个进程最多需要 3 台打印机。该系统可能发生死锁的 K 的最小值是（）。",
+        "options": {
+          "A": "2",
+          "B": "3",
+          "C": "4",
+          "D": "5"
+        },
+        "answer.choice": "C",
+        "explanation": "这类题可用到组合数学中鸽巢原理的思想。考虑最极端的情况，因为每个进程最多需要 3 台打印机，若每个进程已经占有了 2 台打印机，则只要还有多的打印机，总能满足一个进程达到 3 台的条件，然后顺利执行，所以将 8 台打印机分给 K 个进程，每个进程有 2 台打印机，这个情况就是极端情况，K 为 4。或者，假设 M 是打印机的数量，K 是进程的数量，R 是每个进程最多需要打印机的数量。根据死锁公式逆推可得，若 M≤K(R-1)，则系统可能发生死锁。将本题的数"
+      },
+      "patch": {
+        "content": "【2009 统考真题】某计算机系统中有 8 台打印机，由 K 个进程竞争使用，每个进程最多需要 3 台打印机。该系统可能发生死锁的 K 的最小值是（）。",
+        "answer": {
+          "explanation": "这类题可用到组合数学中鸽巢原理的思想。考虑最极端的情况，因为每个进程最多需要 3 台打印机，若每个进程已经占有了 2 台打印机，则只要还有多的打印机，总能满足一个进程达到 3 台的条件，然后顺利执行，所以将 8 台打印机分给 K 个进程，每个进程有 2 台打印机，这个情况就是极端情况，K 为 4。或者，假设 M 是打印机的数量，K 是进程的数量，R 是每个进程最多需要打印机的数量。根据死锁公式逆推可得，若 M≤K(R-1)，则系统可能发生死锁。将本题的数"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 内存管理概念 · 选择题::X16",
+      "course_key": "os",
+      "chapter": "内存管理",
+      "question_id": "X16",
+      "source_hash": "3db95fcf768745385ceb8e6248cdeddf706b927ff48ff391b7d7a97f386af5fe",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "某页式存储管理系统中，按字节编址，页表内容如下表所示。若页的大小为4KB，则地址转换机构将逻辑地址4097转换成的物理地址为（）。（地址均用十进制表示。）\n页号 页框号\n0 2\n1 1\n3 0\n4 5",
+        "options": {
+          "A": "8193",
+          "B": "4097",
+          "C": "2049",
+          "D": "1025"
+        },
+        "answer.choice": "B",
+        "explanation": "逻辑地址4097对应的页号为4097/4096=1，页内偏移量为4097%4096=1。由页表可知，页号1对应的页框号也是1，页大小为4KB，因此转换成的物理地址为1×4K+1=4097。"
+      },
+      "patch": {
+        "content": "某页式存储管理系统中，按字节编址，页表内容如下表所示。若页的大小为4KB，则地址转换机构将逻辑地址4097转换成的物理地址为（）。（地址均用十进制表示。）\n页号 页框号\n0 2\n1 1\n3 0\n4 5",
+        "answer": {
+          "explanation": "逻辑地址4097对应的页号为4097/4096=1，页内偏移量为4097%4096=1。由页表可知，页号1对应的页框号也是1，页大小为4KB，因此转换成的物理地址为1×4K+1=4097。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 内存管理概念 · 选择题::X46",
+      "course_key": "os",
+      "chapter": "内存管理",
+      "question_id": "X46",
+      "source_hash": "3f6bd0434268dbd262f9de01194f9d57184ee347134cd04a985285d422a47b6b",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "采用段页式存储管理时，内存地址结构是（）。",
+        "options": {
+          "A": "线性的",
+          "B": "二维的",
+          "C": "三维的",
+          "D": "四维的"
+        },
+        "answer.choice": "B",
+        "explanation": "虽然段页式存储管理的内存地址结构分为段号、段内页号和页内地址三部分，但分页是操作系统的行为，用户不用指出页内偏移量的位数；而分段之间是独立的，且段长不定长，需指出段号所占的位数。因此，当采用段页式存储管理时，内存地址结构仍然是二维的。而在分页存储管理中，作业地址空间是一维的，即单一的线性地址空间，程序员只需要一个整数来表示地址。简言之，确定一个地址需要几个参数，作业地址空间就是几维的。"
+      },
+      "patch": {
+        "answer": {
+          "explanation": "虽然段页式存储管理的内存地址结构分为段号、段内页号和页内地址三部分，但分页是操作系统的行为，用户不用指出页内偏移量的位数；而分段之间是独立的，且段长不定长，需指出段号所占的位数。因此，当采用段页式存储管理时，内存地址结构仍然是二维的。而在分页存储管理中，作业地址空间是一维的，即单一的线性地址空间，程序员只需要一个整数来表示地址。简言之，确定一个地址需要几个参数，作业地址空间就是几维的。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X03",
+      "course_key": "os",
+      "chapter": "内存管理",
+      "question_id": "X03",
+      "source_hash": "e33d044f461b080cacad2f22dac2724904c36980f337df9633e5df4bfafac65c",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "进程在执行中发生了缺页中断，经操作系统处理后，应让其执行（）指令。",
+        "options": {
+          "A": "被中断的前一条",
+          "B": "被中断的那一条",
+          "C": "被中断的后一条",
+          "D": "启动时的第一条"
+        },
+        "answer.choice": "B",
+        "explanation": "缺页中断是访存指令引起的，说明所要访问的页面不在内存中，进行缺页中断处理并调入所要访问的页后，访存指令显然应该重新执行。"
+      },
+      "patch": {
+        "answer": {
+          "explanation": "缺页中断是访存指令引起的，说明所要访问的页面不在内存中，进行缺页中断处理并调入所要访问的页后，访存指令显然应该重新执行。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X13",
+      "course_key": "os",
+      "chapter": "内存管理",
+      "question_id": "X13",
+      "source_hash": "37d67a5a84e96cf62c6bf03ceb00f7435e5bbd0d705dfeb76cae60cb1b3a614f",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "假设某个进程分配有4个页框，每个页框大小为128个字（一个整数占一个字）。进程的代码段正好可以存放在一页中，而且总是占用0号页框。数据会在其他3个页框中换进或换出。数组X为按行优先存储，则执行该进程会发生（）次缺页中断。\nint X[64][64];\nfor(int j=0;j<64;j++)\n    for(int i=0;i<64;i++)\n        X[i][j]=0;",
+        "options": {
+          "A": "32",
+          "B": "1024",
+          "C": "2048",
+          "D": "其他都不对"
+        },
+        "answer.choice": "C",
+        "explanation": "数组大小为64×64，一个页框可以存放两行数据。当访问X[0][0]时，发生第一次缺页中断，此时调入前两行数据，之后访问X[1][0]，不发生缺页中断，因为已被调入内存；当访问X[2][0]时，又发生缺页中断；同理，访问X[3][0]时不发生缺页中断。不难发现，每访问两个元素就发生一次缺页中断，共有64×64=4096个元素，因此共发生2048次缺页中断。"
+      },
+      "patch": {
+        "content": "假设某个进程分配有4个页框，每个页框大小为128个字（一个整数占一个字）。进程的代码段正好可以存放在一页中，而且总是占用0号页框。数据会在其他3个页框中换进或换出。数组X为按行优先存储，则执行该进程会发生（）次缺页中断。\nint X[64][64];\nfor(int j=0;j<64;j++)\n    for(int i=0;i<64;i++)\n        X[i][j]=0;",
+        "answer": {
+          "explanation": "数组大小为64×64，一个页框可以存放两行数据。当访问X[0][0]时，发生第一次缺页中断，此时调入前两行数据，之后访问X[1][0]，不发生缺页中断，因为已被调入内存；当访问X[2][0]时，又发生缺页中断；同理，访问X[3][0]时不发生缺页中断。不难发现，每访问两个元素就发生一次缺页中断，共有64×64=4096个元素，因此共发生2048次缺页中断。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X44",
+      "course_key": "os",
+      "chapter": "内存管理",
+      "question_id": "X44",
+      "source_hash": "774cb54786093b8b0794402cfd2d734efa74fed32bca51e0e316399caad75cf0",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "【2011统考真题】当系统发生抖动时，可以采取的有效措施是（）。\nI. 撤销部分进程    II. 增加磁盘交换区的容量\nIII. 提高用户进程的优先级",
+        "options": {
+          "A": "仅I",
+          "B": "仅II",
+          "C": "仅III",
+          "D": "仅I、II"
+        },
+        "answer.choice": "A",
+        "explanation": "在具有对换功能的操作系统中，通常把外存分为文件区（用于存放文件）和对换区（用于存放从内存换出的进程）。抖动是指刚刚被换出的页很快又要被访问，为此又要换出其他页，而该页又很快被访问，如此频繁地置换页面，以致大部分时间都花在页面置换上，导致系统性能下降。撤销部分进程可以减少所要用到的页面数，防止抖动。对换区大小和进程优先级都与抖动无关。"
+      },
+      "patch": {
+        "content": "【2011统考真题】当系统发生抖动时，可以采取的有效措施是（）。\nI. 撤销部分进程    II. 增加磁盘交换区的容量\nIII. 提高用户进程的优先级",
+        "answer": {
+          "explanation": "在具有对换功能的操作系统中，通常把外存分为文件区（用于存放文件）和对换区（用于存放从内存换出的进程）。抖动是指刚刚被换出的页很快又要被访问，为此又要换出其他页，而该页又很快被访问，如此频繁地置换页面，以致大部分时间都花在页面置换上，导致系统性能下降。撤销部分进程可以减少所要用到的页面数，防止抖动。对换区大小和进程优先级都与抖动无关。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X07",
+      "course_key": "os",
+      "chapter": "文件管理",
+      "question_id": "X07",
+      "source_hash": "234ac25545c8211da75a504b7f378631bbc47144dfbbf56f820e0d470a07f066",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "在计算机中，不允许两个文件名重名主要指的是（）。",
+        "options": {
+          "A": "不同磁盘的不同目录下",
+          "B": "不同磁盘里的同名目录下",
+          "C": "同一个磁盘的不同目录下",
+          "D": "同一个磁盘的同一目录下"
+        },
+        "answer.choice": "D",
+        "explanation": "A、B和C项的同名文件都有不同的路径名，因此不会造成文件名重名问题。在同一个磁盘的同一目录下，若两个文件名重名，则它们具有相同的路径名，因此无法区别。"
+      },
+      "patch": {
+        "answer": {
+          "explanation": "A、B和C项的同名文件都有不同的路径名，因此不会造成文件名重名问题。在同一个磁盘的同一目录下，若两个文件名重名，则它们具有相同的路径名，因此无法区别。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X20",
+      "course_key": "os",
+      "chapter": "文件管理",
+      "question_id": "X20",
+      "source_hash": "1eefdfc6b576f800e665496ccb59179a3b0ea370e2c978af759a05f465d8055b",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "物理文件的组织方式是由（）确定的。",
+        "options": {
+          "A": "应用程序",
+          "B": "主存容量",
+          "C": "外存容量",
+          "D": "操作系统"
+        },
+        "answer.choice": "D",
+        "explanation": "通常用户可以根据需要来确定文件的逻辑结构，而文件的物理结构是由操作系统的设计者根据文件存储器的特性来确定的，一旦确定，就由操作系统管理。"
+      },
+      "patch": {
+        "answer": {
+          "explanation": "通常用户可以根据需要来确定文件的逻辑结构，而文件的物理结构是由操作系统的设计者根据文件存储器的特性来确定的，一旦确定，就由操作系统管理。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X47",
+      "course_key": "os",
+      "chapter": "文件管理",
+      "question_id": "X47",
+      "source_hash": "2c2b8a28b07fd3513ecee6ab2e8827dff9c98809eea597694aaa34298ac07706",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "对一个文件的访问，常由（）共同限制。",
+        "options": {
+          "A": "用户访问权限和文件属性",
+          "B": "用户访问权限和用户优先级",
+          "C": "优先级和文件属性",
+          "D": "文件属性和口令"
+        },
+        "answer.choice": "A",
+        "explanation": "对于这道题，只要能区分用户的访问权限和用户优先级，就能得到正确的答案。用户访问权限是指用户有没有权限访问该文件，而用户优先级是指在多个用户同时请求该文件时应该先满足谁。比如，图书馆的用户排队借一本书，某用户可能有更高的优先级，即他排在队伍的前面，但有可能轮到他时被告知他没有借阅那本书的权限。\n文件的属性包括保存在FCB中对文件访问的控制信息。"
+      },
+      "patch": {
+        "answer": {
+          "explanation": "对于这道题，只要能区分用户的访问权限和用户优先级，就能得到正确的答案。用户访问权限是指用户有没有权限访问该文件，而用户优先级是指在多个用户同时请求该文件时应该先满足谁。比如，图书馆的用户排队借一本书，某用户可能有更高的优先级，即他排在队伍的前面，但有可能轮到他时被告知他没有借阅那本书的权限。\n文件的属性包括保存在FCB中对文件访问的控制信息。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X57",
+      "course_key": "os",
+      "chapter": "文件管理",
+      "question_id": "X57",
+      "source_hash": "719145e1f85ac452b9615aeab07ff0da22984ae651b1e0f1b5bac1e892273a73",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "【2013统考真题】为支持CD-ROM中视频文件的快速随机播放，播放性能最好的文件数据块组织方式是（）。",
+        "options": {
+          "A": "连续结构",
+          "B": "链式结构",
+          "C": "直接索引结构",
+          "D": "多级索引结构"
+        },
+        "answer.choice": "A",
+        "explanation": "为了实现快速随机播放，要保证最短的查询时间，即不能选取链表和索引结构，因此连续结构最优。"
+      },
+      "patch": {
+        "content": "【2013统考真题】为支持CD-ROM中视频文件的快速随机播放，播放性能最好的文件数据块组织方式是（）。",
+        "answer": {
+          "explanation": "为了实现快速随机播放，要保证最短的查询时间，即不能选取链表和索引结构，因此连续结构最优。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-os::文件管理 · 文件系统 · 选择题::X10",
+      "course_key": "os",
+      "chapter": "文件管理",
+      "question_id": "X10",
+      "source_hash": "71ae6af72a380da17e976f2fedb6fc16956ec6fbeb3d6dc603a8ec4efbc98f5a",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "若用8个字（字长32位）组成的位示图管理内存，即位示图有8行、32列，行号和列号均从1开始，则块号为100的内存块所对应位示图的位置是（）。",
+        "options": {
+          "A": "字号为3，位号为5",
+          "B": "字号为4，位号为4",
+          "C": "字号为3，位号为4",
+          "D": "字号为4，位号为5"
+        },
+        "answer.choice": "B",
+        "explanation": "首先求出块号100所在的行号，1～32在行号1中，33～64在行号2中，65～96在行号3中，97～128在行号4中，所以块号100在行号4中；然后求出块号100在行号4中的哪列，行号4的第1列是块号97，以此类推，块号100在行号4中的第4列。另解，行号row和列号col分别为\nrow=(100-1)DIV 32+1=4"
+      },
+      "patch": {
+        "content": "若用8个字（字长32位）组成的位示图管理内存，即位示图有8行、32列，行号和列号均从1开始，则块号为100的内存块所对应位示图的位置是（）。",
+        "answer": {
+          "explanation": "首先求出块号100所在的行号，1～32在行号1中，33～64在行号2中，65～96在行号3中，97～128在行号4中，所以块号100在行号4中；然后求出块号100在行号4中的哪列，行号4的第1列是块号97，以此类推，块号100在行号4中的第4列。另解，行号row和列号col分别为\nrow=(100-1)DIV 32+1=4"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-os::输入/输出管理 · I/O管理概述 · 选择题::X06",
+      "course_key": "os",
+      "chapter": "输入/输出管理",
+      "question_id": "X06",
+      "source_hash": "e98e19cfbc6dbc7c2c0f46f4d19dccbe0e9b11fb80e0aa350b7f24c33e514c5c",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "DMA方式是在（）之间建立一条直接数据通路。",
+        "options": {
+          "A": "I/O设备和主存",
+          "B": "两个I/O设备",
+          "C": "I/O设备和CPU",
+          "D": "CPU和主存"
+        },
+        "answer.choice": "A",
+        "explanation": "DMA是一种不经过CPU而直接从主存存取数据的数据交换模式，它在I/O设备和主存之间建立了一条直接数据通路，如磁盘。当然，这条数据通路只是逻辑上的，实际并未直接建立一条"
+      },
+      "patch": {
+        "answer": {
+          "explanation": "DMA是一种不经过CPU而直接从主存存取数据的数据交换模式，它在I/O设备和主存之间建立了一条直接数据通路，如磁盘。当然，这条数据通路只是逻辑上的，实际并未直接建立一条"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-os::输入/输出管理 · 设备独立性软件 · 选择题::X05",
+      "course_key": "os",
+      "chapter": "输入/输出管理",
+      "question_id": "X05",
+      "source_hash": "134aa3dc5e1d7097fb40919aa5b8476f962be1f5780abce5c18e9b7a9262cbd7",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "支持双向传送的设备应使用（）。",
+        "options": {
+          "A": "单缓冲区",
+          "B": "双缓冲区",
+          "C": "多缓冲区",
+          "D": "缓冲池"
+        },
+        "answer.choice": "B",
+        "explanation": "支持双向发送和接收数据的设备（如网卡等）应使用双缓冲区，双缓冲区可以实现同一时刻的双向数据传输，提高设备的效率和利用率。单缓冲区只能实现单向数据传输。多缓冲区和缓冲池用于提高I/O性能的技术，但不是必需的，也不一定适合所有的双向设备。"
+      },
+      "patch": {
+        "answer": {
+          "explanation": "支持双向发送和接收数据的设备（如网卡等）应使用双缓冲区，双缓冲区可以实现同一时刻的双向数据传输，提高设备的效率和利用率。单缓冲区只能实现单向数据传输。多缓冲区和缓冲池用于提高I/O性能的技术，但不是必需的，也不一定适合所有的双向设备。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-os::输入/输出管理 · 设备独立性软件 · 选择题::X32",
+      "course_key": "os",
+      "chapter": "输入/输出管理",
+      "question_id": "X32",
+      "source_hash": "1d2ed4c7017ed9368c522fe2080d00a4c9d786e6d0a484a3557aebda04285fd5",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "下列关于设备驱动程序的说法中，正确的是（）。\nI. 设备驱动程序负责处理与设备相关的中断处理过程\nII. 驱动程序全部使用汇编语言编写，没有使用高级语言编写\nIII. 设备驱动程序负责处理磁盘调度\nIV. 设备驱动程序与设备密切相关，可以在任意操作系统运行",
+        "options": {
+          "A": "II、III、IV",
+          "B": "I、III",
+          "C": "III、IV",
+          "D": "I、II、III"
+        },
+        "answer.choice": "B",
+        "explanation": "不同厂家的设备通常提供不同的驱动程序，对应不同的中断处理，因此需要驱动程序来完成，说法I正确。驱动程序仅有一部分需要用汇编语言编写，其余部分可用高级语言编写，说法II错误。不同型号的磁盘的调度方式不一定相同，磁盘调度由磁盘驱动程序完成，说法III正确。不同的操作系统有不同的驱动程序接口，因此驱动程序要根据操作系统的要求进行定制，说法IV错误。"
+      },
+      "patch": {
+        "content": "下列关于设备驱动程序的说法中，正确的是（）。\nI. 设备驱动程序负责处理与设备相关的中断处理过程\nII. 驱动程序全部使用汇编语言编写，没有使用高级语言编写\nIII. 设备驱动程序负责处理磁盘调度\nIV. 设备驱动程序与设备密切相关，可以在任意操作系统运行",
+        "options": {
+          "A": "II、III、IV",
+          "B": "I、III",
+          "C": "III、IV",
+          "D": "I、II、III"
+        },
+        "answer": {
+          "explanation": "不同厂家的设备通常提供不同的驱动程序，对应不同的中断处理，因此需要驱动程序来完成，说法I正确。驱动程序仅有一部分需要用汇编语言编写，其余部分可用高级语言编写，说法II错误。不同型号的磁盘的调度方式不一定相同，磁盘调度由磁盘驱动程序完成，说法III正确。不同的操作系统有不同的驱动程序接口，因此驱动程序要根据操作系统的要求进行定制，说法IV错误。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-os::输入/输出管理 · 磁盘和固态硬盘 · 选择题::X02",
+      "course_key": "os",
+      "chapter": "输入/输出管理",
+      "question_id": "X02",
+      "source_hash": "6c8b7327345ac362ed8c66f7deac76d019314c350b64a34cb0224bd87cb9ea72",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "磁盘是可共享设备，但在每个时刻（）作业启动它。",
+        "options": {
+          "A": "可以由任意多个",
+          "B": "能限定多个",
+          "C": "至少能由一个",
+          "D": "至多能由一个"
+        },
+        "answer.choice": "D",
+        "explanation": "磁盘是可共享设备（分时共享），是指某段时间内可以有多个用户进行访问。但某一时刻只能有一个作业可以访问。"
+      },
+      "patch": {
+        "answer": {
+          "explanation": "磁盘是可共享设备（分时共享），是指某段时间内可以有多个用户进行访问。但某一时刻只能有一个作业可以访问。"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-os::输入/输出管理 · 磁盘和固态硬盘 · 选择题::X16",
+      "course_key": "os",
+      "chapter": "输入/输出管理",
+      "question_id": "X16",
+      "source_hash": "642bcda013574d2b19b83fa12025544f34680669345f44af05a814823d722834",
+      "status": "auto_fixed",
+      "selection": "rotation",
+      "models": [
+        "claude-local-vision"
+      ],
+      "fields": {
+        "content": "假设磁盘有100个柱面，每个柱面上有8个磁道，每个磁道有8个扇区。文件A含有6400个逻辑记录，逻辑记录大小与扇区大小一致，该文件以顺序结构的形式存放在磁盘上。文件的第0个逻辑记录存放在磁盘地址（0号柱面、0号盘面、0号扇区）中，则磁盘地址（78号柱面、6号盘面、6号扇区）中存放了该文件的第（）个逻辑记录。",
+        "options": {
+          "A": "5045",
+          "B": "5046",
+          "C": "5047",
+          "D": "5048"
+        },
+        "answer.choice": "B",
+        "explanation": "每个柱面上有8个磁道（表示有8个磁头），每个磁道有8个扇区，因此每个柱面有8×8=64个扇区。由题意可知，柱面号、盘面号、扇区号和逻辑记录编号都是从0开始的，因此78号柱面的6号磁道的6号扇区存放的是文件的第78×64+6×8+6=5046个逻辑记录。"
+      },
+      "patch": {
+        "content": "假设磁盘有100个柱面，每个柱面上有8个磁道，每个磁道有8个扇区。文件A含有6400个逻辑记录，逻辑记录大小与扇区大小一致，该文件以顺序结构的形式存放在磁盘上。文件的第0个逻辑记录存放在磁盘地址（0号柱面、0号盘面、0号扇区）中，则磁盘地址（78号柱面、6号盘面、6号扇区）中存放了该文件的第（）个逻辑记录。",
+        "answer": {
+          "explanation": "每个柱面上有8个磁道（表示有8个磁头），每个磁道有8个扇区，因此每个柱面有8×8=64个扇区。由题意可知，柱面号、盘面号、扇区号和逻辑记录编号都是从0开始的，因此78号柱面的6号磁道的6号扇区存放的是文件的第78×64+6×8+6=5046个逻辑记录。"
+        }
+      }
+    }
+  ],
+  "round_history": [
+    {
+      "round_id": "coding-k26-408-accuracy-r1",
+      "sample_accuracy": 0.1984,
+      "sample_passed": 25,
+      "sample_total": 126,
+      "accuracy": 0.1852,
+      "total": 189
+    },
+    {
+      "round_id": "coding-k26-408-samples-r1",
+      "sample_accuracy": 0.2154,
+      "sample_passed": 28,
+      "sample_total": 130,
+      "accuracy": 0.2154,
+      "total": 130
+    },
+    {
+      "round_id": "coding-k26-408-batch-r1",
+      "sample_accuracy": 0.5781,
+      "sample_passed": 74,
+      "sample_total": 128,
+      "accuracy": 0.5781,
+      "total": 128
+    },
+    {
+      "round_id": "coding-k26-408-batch2-r1",
+      "sample_accuracy": 0.5748,
+      "sample_passed": 73,
+      "sample_total": 127,
+      "accuracy": 0.5748,
+      "total": 127
+    },
+    {
+      "round_id": "claude-local-r3",
+      "sample_accuracy": 1.0,
+      "sample_passed": 127,
+      "sample_total": 127,
+      "accuracy": 1.0,
+      "total": 127
+    }
+  ],
+  "summary": {
+    "total": 127,
+    "verified": 15,
+    "auto_fixed": 112,
+    "held": 0,
+    "accuracy": 1.0,
+    "sample_accuracy": 1.0,
+    "sample_passed": 127,
+    "sample_total": 127,
+    "timing": {
+      "setup_s": 0.1,
+      "api_s": 1085.7,
+      "crop_s": 18.0,
+      "retry_batches": 8,
+      "api_calls": 68,
+      "wall_s": 1103.8
+    }
+  },
+  "published_hashes": {
+    "ds": "cd2a50c298049c45f7688c8be2423e648e118a8de5e01a10b82b7364e4bee3b6",
+    "coa": "2995e14d16d3b18f6435d3b8a41b4c432848072499dfe547e9c4cd26ba70edc9",
+    "net": "ca597a4cefc3dd76df57fca3ef25a6a582c2da4bfc9cdb62a6340d793801e9f0",
+    "os": "53a0aeb589b50a808ac7582a4fb546d405ea1e4771549562fa4fdf288221417e"
+  }
+}

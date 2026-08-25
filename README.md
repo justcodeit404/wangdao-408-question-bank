@@ -14,6 +14,7 @@
 │   ├── reshape_by_l2.py      # 按 L2 小节重组章节
 │   ├── fix_questions.py      # 答案 choice 提取、子问拆分、图片关联
 │   ├── merge_courses.py      # 合并四门课程并生成前端懒加载数据
+│   ├── auto_recrop_figs.py   # 有图题配图精准重裁 + 题干图区碎片清理（build_all/rebuild_course 在 merge 后自动执行）
 │   ├── enhance_audit.py      # 题库质量审计
 │   ├── parse_toc.py          # 从 PDF 书签提取目录
 │   ├── run_ocr.py            # OCR 流水线
@@ -21,6 +22,7 @@
 ├── scripts/config.py         # 四门课程的统一配置
 ├── data/                     # 输入数据
 │   ├── ocr/{ds,coa,net,os}/  # OCR 原始输出
+│   ├── fig_manual_boxes.json # 有图题人工校准框（含跨页/摘除），auto_recrop_figs 优先采用，重建后依然生效
 │   ├── toc/toc_{ds,coa,net,os}.json  # 目录 JSON
 │   └── qa/{ds,coa,net,os}_qa_pairs.json  # 题目-答案页边界
 ├── output/                   # 构建输出
@@ -46,8 +48,33 @@
 然后运行：
 
 ```bash
+# 发布构建需要本机配置 MOONSHOT_API_KEY；视觉门禁只在本机运行
 python scripts/build_all.py
 ```
+
+`build_all.py` 会在合并前执行全自动章节轮换抽检：每个大章每轮抽 5 题，
+并额外检查变更题和历史高风险题。题目区/答案区从原书页图精确裁出，分别交给
+Kimi K3、Kimi K2.6 独立读取；答案还必须和 GPU OCR 三方一致。模型一致时才会
+生成持久化补丁和回归样例，持续冲突的题目自动写入 `math-bank/quality-hold.json`。
+API 或 GPU 故障会阻断构建并保留上一版发布题库。
+
+本地只想生成未核验预览时可显式跳过（该产物不能部署）：
+
+```bash
+python scripts/build_all.py --skip-vision-audit
+```
+
+需要的本地变量（二选一）：
+
+- Coding Plan：`KIMI_CODE_API_KEY` + 可选 `KIMI_CODE_BASE_URL`（默认
+  `https://api.kimi.com/coding/v1`，默认关闭 Thinking、由服务端路由到 K2.6；设置
+  `KIMI_CODE_THINKING=on` 才使用 K2.7，绝不调用 K3。也可用
+  `KIMI_CODE_KEY_FILE` 指向只含一行 Key 的本地文件。两次盲审默认使用同一低耗模型。
+- Open Platform：`MOONSHOT_API_KEY` + 可选 `MOONSHOT_BASE_URL`（默认
+  `https://api.moonshot.cn/v1`，使用 `kimi-k3` + `kimi-k2.6`）。
+
+视觉门禁记录在
+`math-bank/quality-verification.json`，部署打包只接受 `status=published`。
 
 **单科重抽**（无 PDF 切页 → OCR → 解析 → 合并，适合某一门质量不满意时）：
 
@@ -89,6 +116,22 @@ python -m http.server 8080
 ```bash
 python -m pytest tests/
 ```
+
+## 每章抽检
+
+从平台实际读取的四科发布 JSON 中，对每个大章节按题目顺序分层抽样。默认每章
+抽 5 题；同一个 `--round` 会得到完全相同的批次，便于复核和追踪问题。
+
+```bash
+python scripts/chapter_sample_audit.py --per-chapter 5 --round 2026-08-baseline
+```
+
+输出 `output/reports/chapter_sample_audit.json` 和
+`output/reports/chapter_sample_audit.html`。HTML 将题库内容和原书页图左右对照，
+支持标记“正常/有问题”、浏览器断点保存和导出问题 JSON。
+
+上述 HTML 是人工查看的备用报告；正式构建使用 `scripts/vision_quality_gate.py`
+自动抽检，不要求人工确认。
 
 ## 说明
 
