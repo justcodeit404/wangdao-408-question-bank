@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-26T21:16:25+00:00",
+  "generated_at": "2026-08-26T21:20:03+00:00",
   "published_hashes": {
     "ds": "a40686840e5043561d7f7159fbd779725ffa65c56bfdd79a2683965b6aed0771",
     "coa": "8f9ea82d6d82e53ea38daf200ae95a361b5c43742f0ce9881b207f671f7f06f7",
@@ -20,9 +20,9 @@
       "name": "计算机组成原理",
       "mode": "strict",
       "total": 674,
-      "certified": 404,
+      "certified": 417,
       "pending": 0,
-      "held": 270
+      "held": 257
     },
     "net": {
       "name": "计算机网络",
@@ -43,9 +43,9 @@
   },
   "summary": {
     "total": 2869,
-    "certified": 939,
+    "certified": 952,
     "pending": 0,
-    "held": 1930
+    "held": 1917
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -52059,13 +52059,10 @@
       "chapter": "输入/输出系统 · I/O接口 · 选择题",
       "question_id": "X01",
       "source_hash": "b24a8787a6121d64cf73dc1db6d29c8b7b16d168a2db9690d86ce1fb5e3b3d01",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         300,
         301,
@@ -52087,7 +52084,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T00:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -52125,10 +52122,52 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X01",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T00:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_300.png",
+              "sha256": "6fbafbcb25362a30e3e5a540f5989055803fa46768adcc8f76359b29c0d50f3b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_301.png",
+              "sha256": "0bcbed181bab7844b3073bc20dfc7d3f5c5b5d4fbf12a063f1fb49fb087ba35f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+              "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+              "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_303.png",
+              "sha256": "cbf3d00a05c77235829a8419cbea755064fb678c719a12bddff19ff35f6e864f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_304.png",
+              "sha256": "57a23f0aa37c3c8a03f6d4a7cd20837357232c3e15af02eba5301b4189f43fb6"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页295-296与答案解析页297：题干、选项、解析忠实，答案页标注01.A，与发布答案A一致。",
+          "source_hash": "b24a8787a6121d64cf73dc1db6d29c8b7b16d168a2db9690d86ce1fb5e3b3d01"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X02": {
       "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X02",
@@ -52136,13 +52175,10 @@
       "chapter": "输入/输出系统 · I/O接口 · 选择题",
       "question_id": "X02",
       "source_hash": "88025b7e4e84776379adfcee2f29ec68f5025b803bb96113a1d801638d8db49f",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         300,
         301,
@@ -52164,7 +52200,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T00:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -52187,10 +52223,52 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X02",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T00:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_300.png",
+              "sha256": "6fbafbcb25362a30e3e5a540f5989055803fa46768adcc8f76359b29c0d50f3b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_301.png",
+              "sha256": "0bcbed181bab7844b3073bc20dfc7d3f5c5b5d4fbf12a063f1fb49fb087ba35f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+              "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+              "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_303.png",
+              "sha256": "cbf3d00a05c77235829a8419cbea755064fb678c719a12bddff19ff35f6e864f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_304.png",
+              "sha256": "57a23f0aa37c3c8a03f6d4a7cd20837357232c3e15af02eba5301b4189f43fb6"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页296与答案解析页297：题干、选项、解析忠实，答案页标注02.D，与发布答案D一致。",
+          "source_hash": "88025b7e4e84776379adfcee2f29ec68f5025b803bb96113a1d801638d8db49f"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X03": {
       "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X03",
@@ -52198,13 +52276,10 @@
       "chapter": "输入/输出系统 · I/O接口 · 选择题",
       "question_id": "X03",
       "source_hash": "cc0ef9bae2c160b63b3373047835e7085d7b85f7e606dd3bd8862c2330b787a1",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         300,
         301,
@@ -52226,7 +52301,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T00:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -52264,10 +52339,52 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X03",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T00:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_300.png",
+              "sha256": "6fbafbcb25362a30e3e5a540f5989055803fa46768adcc8f76359b29c0d50f3b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_301.png",
+              "sha256": "0bcbed181bab7844b3073bc20dfc7d3f5c5b5d4fbf12a063f1fb49fb087ba35f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+              "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+              "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_303.png",
+              "sha256": "cbf3d00a05c77235829a8419cbea755064fb678c719a12bddff19ff35f6e864f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_304.png",
+              "sha256": "57a23f0aa37c3c8a03f6d4a7cd20837357232c3e15af02eba5301b4189f43fb6"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页296与答案解析页297：题干、选项、解析忠实，答案页标注03.D，与发布答案D一致。",
+          "source_hash": "cc0ef9bae2c160b63b3373047835e7085d7b85f7e606dd3bd8862c2330b787a1"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X04": {
       "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X04",
@@ -52275,14 +52392,10 @@
       "chapter": "输入/输出系统 · I/O接口 · 选择题",
       "question_id": "X04",
       "source_hash": "0a7ef2c8ed23db142e5eff5ef326a9e320a458d880382418fb482186a7f3349a",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         300,
         301,
@@ -52304,7 +52417,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T00:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -52342,10 +52455,52 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "legacy_hold_recheck;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X04",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T00:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_300.png",
+              "sha256": "6fbafbcb25362a30e3e5a540f5989055803fa46768adcc8f76359b29c0d50f3b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_301.png",
+              "sha256": "0bcbed181bab7844b3073bc20dfc7d3f5c5b5d4fbf12a063f1fb49fb087ba35f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+              "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+              "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_303.png",
+              "sha256": "cbf3d00a05c77235829a8419cbea755064fb678c719a12bddff19ff35f6e864f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_304.png",
+              "sha256": "57a23f0aa37c3c8a03f6d4a7cd20837357232c3e15af02eba5301b4189f43fb6"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页296与答案解析页297：题干、选项、解析忠实，答案页标注04.C，与发布答案C一致。",
+          "source_hash": "0a7ef2c8ed23db142e5eff5ef326a9e320a458d880382418fb482186a7f3349a"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X05": {
       "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X05",
@@ -52353,13 +52508,10 @@
       "chapter": "输入/输出系统 · I/O接口 · 选择题",
       "question_id": "X05",
       "source_hash": "39960308cee6bb1cca50f1abcdde5bdc7f283b9ca6d1e4adc95b15c420fe8df1",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         300,
         301,
@@ -52381,7 +52533,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T00:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -52419,10 +52571,52 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X05",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T00:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_300.png",
+              "sha256": "6fbafbcb25362a30e3e5a540f5989055803fa46768adcc8f76359b29c0d50f3b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_301.png",
+              "sha256": "0bcbed181bab7844b3073bc20dfc7d3f5c5b5d4fbf12a063f1fb49fb087ba35f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+              "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+              "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_303.png",
+              "sha256": "cbf3d00a05c77235829a8419cbea755064fb678c719a12bddff19ff35f6e864f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_304.png",
+              "sha256": "57a23f0aa37c3c8a03f6d4a7cd20837357232c3e15af02eba5301b4189f43fb6"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页296与答案解析页297：题干、选项、解析忠实，答案页标注05.B，与发布答案B一致。",
+          "source_hash": "39960308cee6bb1cca50f1abcdde5bdc7f283b9ca6d1e4adc95b15c420fe8df1"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X06": {
       "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X06",
@@ -52507,13 +52701,10 @@
       "chapter": "输入/输出系统 · I/O接口 · 选择题",
       "question_id": "X07",
       "source_hash": "ab8a1f99f0cc3f1cf745a6e6a15aeeabd4277b0e017837ab3177a1ed14143fc1",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         300,
         301,
@@ -52535,7 +52726,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-26T21:19:59.862010+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -52573,10 +52764,52 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X07",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-26T21:19:59.862010+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_300.png",
+              "sha256": "6fbafbcb25362a30e3e5a540f5989055803fa46768adcc8f76359b29c0d50f3b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_301.png",
+              "sha256": "0bcbed181bab7844b3073bc20dfc7d3f5c5b5d4fbf12a063f1fb49fb087ba35f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+              "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+              "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_303.png",
+              "sha256": "cbf3d00a05c77235829a8419cbea755064fb678c719a12bddff19ff35f6e864f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_304.png",
+              "sha256": "57a23f0aa37c3c8a03f6d4a7cd20837357232c3e15af02eba5301b4189f43fb6"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页296与答案解析页298：题干、选项、解析忠实，答案页标注07.D，与发布答案D一致。",
+          "source_hash": "ab8a1f99f0cc3f1cf745a6e6a15aeeabd4277b0e017837ab3177a1ed14143fc1"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X08": {
       "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X08",
@@ -52584,13 +52817,10 @@
       "chapter": "输入/输出系统 · I/O接口 · 选择题",
       "question_id": "X08",
       "source_hash": "2ca79c5e1862ddfc2928dfdbfec59fe7486ac4f8363e9fb9dd49e3c645c85666",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         300,
         301,
@@ -52612,7 +52842,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T00:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -52650,10 +52880,52 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X08",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T00:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_300.png",
+              "sha256": "6fbafbcb25362a30e3e5a540f5989055803fa46768adcc8f76359b29c0d50f3b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_301.png",
+              "sha256": "0bcbed181bab7844b3073bc20dfc7d3f5c5b5d4fbf12a063f1fb49fb087ba35f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+              "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+              "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_303.png",
+              "sha256": "cbf3d00a05c77235829a8419cbea755064fb678c719a12bddff19ff35f6e864f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_304.png",
+              "sha256": "57a23f0aa37c3c8a03f6d4a7cd20837357232c3e15af02eba5301b4189f43fb6"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页296与答案解析页298：题干、选项、解析忠实，答案页标注08.C，与发布答案C一致。",
+          "source_hash": "2ca79c5e1862ddfc2928dfdbfec59fe7486ac4f8363e9fb9dd49e3c645c85666"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X09": {
       "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X09",
@@ -52662,12 +52934,9 @@
       "question_id": "X09",
       "source_hash": "c32241016081dee84a997faba8a467469da7355ce0eaabfae2c98517d1a362eb",
       "source_fidelity": "verified",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         300,
         301,
@@ -52689,7 +52958,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T00:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -52712,10 +52981,52 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;raw_content_mismatch;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;raw_content_mismatch;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X09",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T00:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_300.png",
+              "sha256": "6fbafbcb25362a30e3e5a540f5989055803fa46768adcc8f76359b29c0d50f3b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_301.png",
+              "sha256": "0bcbed181bab7844b3073bc20dfc7d3f5c5b5d4fbf12a063f1fb49fb087ba35f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+              "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+              "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_303.png",
+              "sha256": "cbf3d00a05c77235829a8419cbea755064fb678c719a12bddff19ff35f6e864f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_304.png",
+              "sha256": "57a23f0aa37c3c8a03f6d4a7cd20837357232c3e15af02eba5301b4189f43fb6"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页296与答案解析页298：题干、选项、解析忠实，答案页标注09.D，与发布答案D一致。",
+          "source_hash": "c32241016081dee84a997faba8a467469da7355ce0eaabfae2c98517d1a362eb"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X10": {
       "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X10",
@@ -52800,14 +53111,10 @@
       "chapter": "输入/输出系统 · I/O接口 · 选择题",
       "question_id": "X11",
       "source_hash": "c0ef10e7571d5c32dfdb20cf92a61eb9f37c0318577563ffc8acd00b8617aa00",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         300,
         301,
@@ -52829,7 +53136,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T00:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -52867,10 +53174,52 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X11",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T00:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_300.png",
+              "sha256": "6fbafbcb25362a30e3e5a540f5989055803fa46768adcc8f76359b29c0d50f3b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_301.png",
+              "sha256": "0bcbed181bab7844b3073bc20dfc7d3f5c5b5d4fbf12a063f1fb49fb087ba35f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+              "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+              "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_303.png",
+              "sha256": "cbf3d00a05c77235829a8419cbea755064fb678c719a12bddff19ff35f6e864f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_304.png",
+              "sha256": "57a23f0aa37c3c8a03f6d4a7cd20837357232c3e15af02eba5301b4189f43fb6"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页296-297与答案解析页298：题干、选项、解析忠实，答案页标注11.D，与发布答案D一致。",
+          "source_hash": "c0ef10e7571d5c32dfdb20cf92a61eb9f37c0318577563ffc8acd00b8617aa00"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X12": {
       "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X12",
@@ -52878,15 +53227,10 @@
       "chapter": "输入/输出系统 · I/O接口 · 选择题",
       "question_id": "X12",
       "source_hash": "632be09a590f09d0683ffbf24a8606e72f23f8bd130405c32263e994f103b36b",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         300,
         301,
@@ -52908,7 +53252,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T00:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -52946,10 +53290,52 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X12",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T00:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_300.png",
+              "sha256": "6fbafbcb25362a30e3e5a540f5989055803fa46768adcc8f76359b29c0d50f3b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_301.png",
+              "sha256": "0bcbed181bab7844b3073bc20dfc7d3f5c5b5d4fbf12a063f1fb49fb087ba35f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+              "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+              "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_303.png",
+              "sha256": "cbf3d00a05c77235829a8419cbea755064fb678c719a12bddff19ff35f6e864f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_304.png",
+              "sha256": "57a23f0aa37c3c8a03f6d4a7cd20837357232c3e15af02eba5301b4189f43fb6"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页296-297与答案解析页298：题干、选项、解析忠实，答案页标注12.B，与发布答案B一致。",
+          "source_hash": "632be09a590f09d0683ffbf24a8606e72f23f8bd130405c32263e994f103b36b"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X13": {
       "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X13",
@@ -53047,14 +53433,10 @@
       "chapter": "输入/输出系统 · I/O接口 · 选择题",
       "question_id": "X15",
       "source_hash": "33d7053ff07f57437099ef6a7b9af39b46f9585af4bd4c1d2c56188cc2bd26c5",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         300,
         301,
@@ -53076,7 +53458,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T00:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -53114,10 +53496,52 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X15",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T00:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_300.png",
+              "sha256": "6fbafbcb25362a30e3e5a540f5989055803fa46768adcc8f76359b29c0d50f3b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_301.png",
+              "sha256": "0bcbed181bab7844b3073bc20dfc7d3f5c5b5d4fbf12a063f1fb49fb087ba35f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+              "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+              "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_303.png",
+              "sha256": "cbf3d00a05c77235829a8419cbea755064fb678c719a12bddff19ff35f6e864f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_304.png",
+              "sha256": "57a23f0aa37c3c8a03f6d4a7cd20837357232c3e15af02eba5301b4189f43fb6"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页297与答案解析页298：题干、选项、解析忠实，答案页标注15.D，与发布答案D一致。",
+          "source_hash": "33d7053ff07f57437099ef6a7b9af39b46f9585af4bd4c1d2c56188cc2bd26c5"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X16": {
       "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X16",
@@ -53125,15 +53549,10 @@
       "chapter": "输入/输出系统 · I/O接口 · 选择题",
       "question_id": "X16",
       "source_hash": "04b0598a3804d3a3c2bbbdf4829253a49bed5ddba6ed0daf25c95ee73899ade2",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         300,
         301,
@@ -53155,7 +53574,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T00:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -53193,10 +53612,52 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X16",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T00:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_300.png",
+              "sha256": "6fbafbcb25362a30e3e5a540f5989055803fa46768adcc8f76359b29c0d50f3b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_301.png",
+              "sha256": "0bcbed181bab7844b3073bc20dfc7d3f5c5b5d4fbf12a063f1fb49fb087ba35f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+              "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+              "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_303.png",
+              "sha256": "cbf3d00a05c77235829a8419cbea755064fb678c719a12bddff19ff35f6e864f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_304.png",
+              "sha256": "57a23f0aa37c3c8a03f6d4a7cd20837357232c3e15af02eba5301b4189f43fb6"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页297与答案解析页298：题干、选项、解析忠实，答案页标注16.D，与发布答案D一致。",
+          "source_hash": "04b0598a3804d3a3c2bbbdf4829253a49bed5ddba6ed0daf25c95ee73899ade2"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X17": {
       "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X17",
@@ -53204,15 +53665,10 @@
       "chapter": "输入/输出系统 · I/O接口 · 选择题",
       "question_id": "X17",
       "source_hash": "4a12c7154fcb9f3832ab76c07fabfa72b88e8dbd3e6b75c9416ce0539f227052",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         300,
         301,
@@ -53234,7 +53690,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T00:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -53272,10 +53728,52 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X17",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T00:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_300.png",
+              "sha256": "6fbafbcb25362a30e3e5a540f5989055803fa46768adcc8f76359b29c0d50f3b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_301.png",
+              "sha256": "0bcbed181bab7844b3073bc20dfc7d3f5c5b5d4fbf12a063f1fb49fb087ba35f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+              "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+              "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_303.png",
+              "sha256": "cbf3d00a05c77235829a8419cbea755064fb678c719a12bddff19ff35f6e864f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_304.png",
+              "sha256": "57a23f0aa37c3c8a03f6d4a7cd20837357232c3e15af02eba5301b4189f43fb6"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页297与答案解析页298：题干、选项、解析忠实，答案页标注17.A，与发布答案A一致。",
+          "source_hash": "4a12c7154fcb9f3832ab76c07fabfa72b88e8dbd3e6b75c9416ce0539f227052"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::输入/输出系统 · I/O方式 · 解答题::A01": {
       "source_uid": "408:cs408-coa::输入/输出系统 · I/O方式 · 解答题::A01",
