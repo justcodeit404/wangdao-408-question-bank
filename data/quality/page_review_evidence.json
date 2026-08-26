@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "protocol": "codex-original-page-review-v1",
-  "updated_at": "2026-08-26T18:14:00.369027+00:00",
+  "updated_at": "2026-08-26T18:16:35.126731+00:00",
   "records": [
     {
       "source_uid": "408:cs408-coa::中央处理器 · 异常和中断机制 · 选择题::X01",
@@ -4253,6 +4253,115 @@
       "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
       "post_patch_verified": true,
       "source_hash": "224bab38c9623fbb4aa725dd71a16ef2702cfc618abfbe9d864233ac1ea58c1a"
+    },
+    {
+      "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X62",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T05:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_281.png",
+          "sha256": "c00af36a4b5d893967aed7b7ea8b3072b76fedd8614187284bcf33dc9ba896fb"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_293.png",
+          "sha256": "a5d7c4d5bf674ec532c6fe50017b9b477cb8510a014c8fa919fb7c9183363c38"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题页281与答案页293：X62题干、选项和解析忠实，答案为D。",
+      "source_hash": "668252efa2f94a83ac2efb001b8b51f3a3941f10d455a829e4448e07193bf9c0"
+    },
+    {
+      "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X63",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T05:01:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_281.png",
+          "sha256": "c00af36a4b5d893967aed7b7ea8b3072b76fedd8614187284bcf33dc9ba896fb"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_293.png",
+          "sha256": "a5d7c4d5bf674ec532c6fe50017b9b477cb8510a014c8fa919fb7c9183363c38"
+        }
+      ],
+      "final_action": "patch",
+      "content_match": true,
+      "options_match": false,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [
+        "powers_of_two_flattened"
+      ],
+      "rationale": "亲眼核对原书题页281与答案页293：X63答案为B；原书选项为2^26、2^32、2^60、2^64，已恢复发布版扁平化指数并二查。",
+      "post_patch_verified": true,
+      "source_hash": "85098c9138e2a175dd577d4fb822706fd053d5020d7ea07cfad4551f711154c9"
+    },
+    {
+      "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X63",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "migrated:page_review_patches.json",
+      "q_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_276.png",
+          "sha256": "97fe51b6634fa9be141d7e6534e9df558dffb85439fb6350a0982a078c763b57",
+          "page": 276
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_277.png",
+          "sha256": "c67651a99bfee107eb92c7e42b78b2daa75613309e97096a3170bf2de7722c48",
+          "page": 277
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_278.png",
+          "sha256": "b553e62fc02009ea5731de5520203857b44f00833b5194ccfd511eb50fc3dbf4",
+          "page": 278
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_287.png",
+          "sha256": "00aeaa8040ea96497337b48497874602f7a8ff3069781114fb4715815fffb9a2",
+          "page": 287
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_288.png",
+          "sha256": "fb1e136920811b986c10978413490479fde9204ec81e897c0b757b01b2fba925",
+          "page": 288
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_289.png",
+          "sha256": "33ca4a3aaea769a01514d76ab657341de759ec4fc56f6e9b8371c0aa0561f10f",
+          "page": 289
+        }
+      ],
+      "final_action": "patch",
+      "content_match": null,
+      "options_match": null,
+      "answer_match": null,
+      "explanation_match": null,
+      "image_match": null,
+      "detected_errors": [
+        "persisted_page_review_patch"
+      ],
+      "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
+      "post_patch_verified": true,
+      "source_hash": "85098c9138e2a175dd577d4fb822706fd053d5020d7ea07cfad4551f711154c9"
     },
     {
       "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X02",
