@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "protocol": "codex-original-page-review-v1",
-  "updated_at": "2026-08-26T21:30:13.567182+00:00",
+  "updated_at": "2026-08-26T21:32:04.452080+00:00",
   "records": [
     {
       "source_uid": "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01",
@@ -14087,6 +14087,191 @@
       "source_hash": "bea8434baa4b7ba7051497fdc583430e7778cf5b4724a0099ad958dbb8fa2a2a"
     },
     {
+      "source_uid": "408:cs408-coa::指令系统 · 指令系统 · 解答题::A01",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T01:40:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_156.png",
+          "sha256": "5620401a8725d0bea2a837e877b248837c73652b69e0555baefbe404070d5f3f"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_157.png",
+          "sha256": "4ccc30a83d47040345663db75b39722fdb41c43106f566db2828820c3d4e8b4d"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_158.png",
+          "sha256": "231e10cce19692a97d8eb43e91c11d1d95d22a5a72b81643940dfd145d5ff453"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_158.png",
+          "sha256": "231e10cce19692a97d8eb43e91c11d1d95d22a5a72b81643940dfd145d5ff453"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_159.png",
+          "sha256": "094141488ba27b0c620c9de8f194cbb46246e8e88c22ac1e0f6ef02f190f928d"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_160.png",
+          "sha256": "6abee5f1483820c0a36282418e6cf8e2404b8027182bda60ba0fb3244a88e774"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_161.png",
+          "sha256": "e3cd73575d0006fd23a5544f3028a690d30d4a3c6125621e8ca32df7e9080fef"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_162.png",
+          "sha256": "81aeb22ac7743f87ac639efc858b4f70132e86a47620c50fb96abc8c89091680"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_163.png",
+          "sha256": "532aaad23f12b05e03b235b892acdc8f53ae9df0988a263fab777d28f5ad1a64"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_164.png",
+          "sha256": "ec54d5e93fb1b4a4cabde4a8c120137653f58694c9f07bf4ce78593e03248249"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": false,
+      "options_match": true,
+      "answer_match": false,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "published_content_truncated",
+        "published_explanation_missing_instruction_type"
+      ],
+      "rationale": "亲眼核对原书题目页151-153与答案解析页153-160：发布题干遗漏30%指令类型，解析也未覆盖该项，非选择题参考答案不完整，继续hold。",
+      "source_hash": "75a16ecc7bd4136e72cbeac73dc6aec8ec81d3abe0412f77387c269cbb5be334"
+    },
+    {
+      "source_uid": "408:cs408-coa::指令系统 · 指令系统 · 解答题::A02",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T01:40:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_156.png",
+          "sha256": "5620401a8725d0bea2a837e877b248837c73652b69e0555baefbe404070d5f3f"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_157.png",
+          "sha256": "4ccc30a83d47040345663db75b39722fdb41c43106f566db2828820c3d4e8b4d"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_158.png",
+          "sha256": "231e10cce19692a97d8eb43e91c11d1d95d22a5a72b81643940dfd145d5ff453"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_158.png",
+          "sha256": "231e10cce19692a97d8eb43e91c11d1d95d22a5a72b81643940dfd145d5ff453"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_159.png",
+          "sha256": "094141488ba27b0c620c9de8f194cbb46246e8e88c22ac1e0f6ef02f190f928d"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_160.png",
+          "sha256": "6abee5f1483820c0a36282418e6cf8e2404b8027182bda60ba0fb3244a88e774"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_161.png",
+          "sha256": "e3cd73575d0006fd23a5544f3028a690d30d4a3c6125621e8ca32df7e9080fef"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_162.png",
+          "sha256": "81aeb22ac7743f87ac639efc858b4f70132e86a47620c50fb96abc8c89091680"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_163.png",
+          "sha256": "532aaad23f12b05e03b235b892acdc8f53ae9df0988a263fab777d28f5ad1a64"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_164.png",
+          "sha256": "ec54d5e93fb1b4a4cabde4a8c120137653f58694c9f07bf4ce78593e03248249"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "published_explanation_formula_ocr_corruption"
+      ],
+      "rationale": "亲眼核对原书题目页151-153与答案解析页153-160：题干和参考答案主题可读，但解析中2^4、2^10等幂次被OCR损坏，不能标记参考答案忠实，继续hold。",
+      "source_hash": "ad4968249d0c30c18acc15e636af2632cc193a4ea012a4fbf1fee23868b7dd07"
+    },
+    {
+      "source_uid": "408:cs408-coa::指令系统 · 指令系统 · 解答题::A03",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T01:40:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_156.png",
+          "sha256": "5620401a8725d0bea2a837e877b248837c73652b69e0555baefbe404070d5f3f"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_157.png",
+          "sha256": "4ccc30a83d47040345663db75b39722fdb41c43106f566db2828820c3d4e8b4d"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_158.png",
+          "sha256": "231e10cce19692a97d8eb43e91c11d1d95d22a5a72b81643940dfd145d5ff453"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_158.png",
+          "sha256": "231e10cce19692a97d8eb43e91c11d1d95d22a5a72b81643940dfd145d5ff453"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_159.png",
+          "sha256": "094141488ba27b0c620c9de8f194cbb46246e8e88c22ac1e0f6ef02f190f928d"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_160.png",
+          "sha256": "6abee5f1483820c0a36282418e6cf8e2404b8027182bda60ba0fb3244a88e774"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_161.png",
+          "sha256": "e3cd73575d0006fd23a5544f3028a690d30d4a3c6125621e8ca32df7e9080fef"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_162.png",
+          "sha256": "81aeb22ac7743f87ac639efc858b4f70132e86a47620c50fb96abc8c89091680"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_163.png",
+          "sha256": "532aaad23f12b05e03b235b892acdc8f53ae9df0988a263fab777d28f5ad1a64"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_164.png",
+          "sha256": "ec54d5e93fb1b4a4cabde4a8c120137653f58694c9f07bf4ce78593e03248249"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": false,
+      "detected_errors": [
+        "published_explanation_truncated",
+        "published_diagram_missing"
+      ],
+      "rationale": "亲眼核对原书题目页151-153与答案解析页153-160：题干可读、答案页给出分段编码图，但发布解析仅保留首行并缺少后续图示/步骤，非选择题参考答案不完整，继续hold。",
+      "source_hash": "7f02ede933516fce03756a1b1a888332e2403dc50e5f55b3f90bfd670a4d523d"
+    },
+    {
       "source_uid": "408:cs408-coa::指令系统 · 指令系统 · 选择题::X01",
       "protocol": "codex-original-page-review-v1",
       "reviewer": "codex-vision",
@@ -22613,6 +22798,49 @@
       "protocol": "codex-original-page-review-v1",
       "reviewer": "codex-vision",
       "reviewed_at": "2026-08-26T21:30:10.927740+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_300.png",
+          "sha256": "6fbafbcb25362a30e3e5a540f5989055803fa46768adcc8f76359b29c0d50f3b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_301.png",
+          "sha256": "0bcbed181bab7844b3073bc20dfc7d3f5c5b5d4fbf12a063f1fb49fb087ba35f"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+          "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+          "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_303.png",
+          "sha256": "cbf3d00a05c77235829a8419cbea755064fb678c719a12bddff19ff35f6e864f"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_304.png",
+          "sha256": "57a23f0aa37c3c8a03f6d4a7cd20837357232c3e15af02eba5301b4189f43fb6"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页296与答案解析页298：题干、选项、解析忠实，答案页标注07.D，与发布答案D一致。",
+      "source_hash": "ab8a1f99f0cc3f1cf745a6e6a15aeeabd4277b0e017837ab3177a1ed14143fc1"
+    },
+    {
+      "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X07",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T21:32:02.106225+00:00",
       "q_pages_viewed": [
         {
           "path": "apps/bank-408/assets/pdf_images/coa/page_300.png",
