@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "protocol": "codex-original-page-review-v1",
-  "updated_at": "2026-08-26T21:14:23.889759+00:00",
+  "updated_at": "2026-08-26T21:16:24.560004+00:00",
   "records": [
     {
       "source_uid": "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01",
@@ -25043,6 +25043,49 @@
       ],
       "rationale": "亲眼核对原书题目页19与答案解析页22：原书B项为“II、III”，发布数据误写为“III、III”，保留hold待修补。",
       "source_hash": "bacad63f1d22b717e7adba6519d4033485e57573559446bc0c4bcf4a875569d1"
+    },
+    {
+      "source_uid": "408:cs408-ds::线性表 · 线性表的顺序表示 · 选择题::X08",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T00:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_023.png",
+          "sha256": "be2e683c78a05460f5e72a02a6fc50ce56cc0cb0b2ba59f29597ab7c9dbe82bc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_024.png",
+          "sha256": "6ccb34236f43e7334542c1937473809c7cfed9881d6e8353d6c671cea602a739"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_025.png",
+          "sha256": "e2382b86c091229d60b6895fbad4c9fc61b1b15d70a831f63060b12662d88d99"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_026.png",
+          "sha256": "e7025142c7963217951d082d1c944489a7a84df04e9038ad971d54ee36c26935"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_026.png",
+          "sha256": "e7025142c7963217951d082d1c944489a7a84df04e9038ad971d54ee36c26935"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_027.png",
+          "sha256": "aaa9ee90151d6403be1127951084829faba12559012a1d8425145e7840336d00"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页18-21与答案解析页21-22：X08题干、I/II/III分项、选项及解析忠实，答案页标注08.C，与发布答案C一致。",
+      "source_hash": "62fa63193a68a84d42188b1d903590fcfa1509df2415a50a0d345e7b7785373b"
     },
     {
       "source_uid": "408:cs408-ds::线性表 · 线性表的顺序表示 · 选择题::X09",
