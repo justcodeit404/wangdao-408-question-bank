@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-26T22:09:20+00:00",
+  "generated_at": "2026-08-26T22:15:08+00:00",
   "published_hashes": {
     "ds": "a40686840e5043561d7f7159fbd779725ffa65c56bfdd79a2683965b6aed0771",
     "coa": "8f9ea82d6d82e53ea38daf200ae95a361b5c43742f0ce9881b207f671f7f06f7",
@@ -12,9 +12,9 @@
       "name": "数据结构",
       "mode": "strict",
       "total": 797,
-      "certified": 178,
+      "certified": 193,
       "pending": 0,
-      "held": 619
+      "held": 604
     },
     "coa": {
       "name": "计算机组成原理",
@@ -43,9 +43,9 @@
   },
   "summary": {
     "total": 2869,
-    "certified": 1020,
+    "certified": 1035,
     "pending": 0,
-    "held": 1849
+    "held": 1834
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -53723,7 +53723,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T22:09:16.495901+00:00",
+      "verified_at": "2026-08-26T22:15:03.169045+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -53766,7 +53766,7 @@
           "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X07",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-26T22:09:16.495901+00:00",
+          "reviewed_at": "2026-08-26T22:15:03.169045+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/coa/page_300.png",
@@ -95718,13 +95718,10 @@
       "chapter": "栈、队列和数组 · 栈和队列的应用 · 选择题",
       "question_id": "X01",
       "source_hash": "7ab90f90620d14d7533a46a30ebaea30318827cacba4f71f3f102199f61b500b",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         99,
         100,
@@ -95742,7 +95739,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -95780,10 +95777,72 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X01",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_099.png",
+              "sha256": "8aa73d63542b7298c4cbb25c7288f6e8a14d991e13b9d1bfb90a4a44197651df"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_100.png",
+              "sha256": "cc6ff41c9a44c557109e14423da3c32758c20099270c881c3b2b47936828b361"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_101.png",
+              "sha256": "3fd877b6c69a3d5d393ed0ae4532bf4c1b29a55634d2c056a46336e6466670c6"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_101.png",
+              "sha256": "3fd877b6c69a3d5d393ed0ae4532bf4c1b29a55634d2c056a46336e6466670c6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_102.png",
+              "sha256": "b65386d02f3bec025557e8070a7e88e871d5cba3c7842062b550f96b7d696a86"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_103.png",
+              "sha256": "904ac7cb8031343324ce0777e2a16e6504007e72d947f610c700e3d38df9a9a3"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_104.png",
+              "sha256": "9d3090b20736fd2b92c00b2da636ebef3a941b6d747f18d3b7f076935942cc02"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_105.png",
+              "sha256": "624751113e17e222236269ac13eb00c4706ff6392a7788079d43cc080da1d1f4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_106.png",
+              "sha256": "33fadd9f84f8e3355edae30fe7cc6e247fc8a45c43c6b0ac2249c1579ac3ef14"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_107.png",
+              "sha256": "3e89b5cef4776e7391d437587a4dfacb94af5b6e2589b08b6c153a707dcd6877"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_108.png",
+              "sha256": "5f53d72f3f42fa93ddea09a8d4b3d8d5cb38e493ce7b94ba7dc166d76870f89a"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "题目页94-96与答案页96-99：题干、四项、答案D及解析均与原书一致。",
+          "source_hash": "7ab90f90620d14d7533a46a30ebaea30318827cacba4f71f3f102199f61b500b"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X02": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X02",
@@ -95791,13 +95850,10 @@
       "chapter": "栈、队列和数组 · 栈和队列的应用 · 选择题",
       "question_id": "X02",
       "source_hash": "eaa14ffd31734fc5b0530c8fca29a0d8198c7f0d804b8dbf2111fba5f6f2491c",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         99,
         100,
@@ -95815,7 +95871,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -95853,10 +95909,72 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X02",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_099.png",
+              "sha256": "8aa73d63542b7298c4cbb25c7288f6e8a14d991e13b9d1bfb90a4a44197651df"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_100.png",
+              "sha256": "cc6ff41c9a44c557109e14423da3c32758c20099270c881c3b2b47936828b361"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_101.png",
+              "sha256": "3fd877b6c69a3d5d393ed0ae4532bf4c1b29a55634d2c056a46336e6466670c6"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_101.png",
+              "sha256": "3fd877b6c69a3d5d393ed0ae4532bf4c1b29a55634d2c056a46336e6466670c6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_102.png",
+              "sha256": "b65386d02f3bec025557e8070a7e88e871d5cba3c7842062b550f96b7d696a86"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_103.png",
+              "sha256": "904ac7cb8031343324ce0777e2a16e6504007e72d947f610c700e3d38df9a9a3"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_104.png",
+              "sha256": "9d3090b20736fd2b92c00b2da636ebef3a941b6d747f18d3b7f076935942cc02"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_105.png",
+              "sha256": "624751113e17e222236269ac13eb00c4706ff6392a7788079d43cc080da1d1f4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_106.png",
+              "sha256": "33fadd9f84f8e3355edae30fe7cc6e247fc8a45c43c6b0ac2249c1579ac3ef14"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_107.png",
+              "sha256": "3e89b5cef4776e7391d437587a4dfacb94af5b6e2589b08b6c153a707dcd6877"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_108.png",
+              "sha256": "5f53d72f3f42fa93ddea09a8d4b3d8d5cb38e493ce7b94ba7dc166d76870f89a"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "题目页94-96与答案页96-99：表达式和四项、答案B及解析一致。",
+          "source_hash": "eaa14ffd31734fc5b0530c8fca29a0d8198c7f0d804b8dbf2111fba5f6f2491c"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X03": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X03",
@@ -95864,13 +95982,10 @@
       "chapter": "栈、队列和数组 · 栈和队列的应用 · 选择题",
       "question_id": "X03",
       "source_hash": "559f664739baf7ddd965d7d9f94042c9ae141872c222a4d2ae4bb362966e3adf",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         99,
         100,
@@ -95888,7 +96003,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -95911,10 +96026,72 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X03",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_099.png",
+              "sha256": "8aa73d63542b7298c4cbb25c7288f6e8a14d991e13b9d1bfb90a4a44197651df"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_100.png",
+              "sha256": "cc6ff41c9a44c557109e14423da3c32758c20099270c881c3b2b47936828b361"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_101.png",
+              "sha256": "3fd877b6c69a3d5d393ed0ae4532bf4c1b29a55634d2c056a46336e6466670c6"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_101.png",
+              "sha256": "3fd877b6c69a3d5d393ed0ae4532bf4c1b29a55634d2c056a46336e6466670c6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_102.png",
+              "sha256": "b65386d02f3bec025557e8070a7e88e871d5cba3c7842062b550f96b7d696a86"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_103.png",
+              "sha256": "904ac7cb8031343324ce0777e2a16e6504007e72d947f610c700e3d38df9a9a3"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_104.png",
+              "sha256": "9d3090b20736fd2b92c00b2da636ebef3a941b6d747f18d3b7f076935942cc02"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_105.png",
+              "sha256": "624751113e17e222236269ac13eb00c4706ff6392a7788079d43cc080da1d1f4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_106.png",
+              "sha256": "33fadd9f84f8e3355edae30fe7cc6e247fc8a45c43c6b0ac2249c1579ac3ef14"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_107.png",
+              "sha256": "3e89b5cef4776e7391d437587a4dfacb94af5b6e2589b08b6c153a707dcd6877"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_108.png",
+              "sha256": "5f53d72f3f42fa93ddea09a8d4b3d8d5cb38e493ce7b94ba7dc166d76870f89a"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "题目页94-96与答案页96-99：队列应用题面、选项、答案D和解析一致。",
+          "source_hash": "559f664739baf7ddd965d7d9f94042c9ae141872c222a4d2ae4bb362966e3adf"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X04": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X04",
@@ -95922,13 +96099,10 @@
       "chapter": "栈、队列和数组 · 栈和队列的应用 · 选择题",
       "question_id": "X04",
       "source_hash": "00a2b6e30c93e1431c7cb26e74143bc3dc690df520f49f1f02a8f2adbd6e06f0",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         99,
         100,
@@ -95946,7 +96120,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -95984,10 +96158,72 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X04",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_099.png",
+              "sha256": "8aa73d63542b7298c4cbb25c7288f6e8a14d991e13b9d1bfb90a4a44197651df"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_100.png",
+              "sha256": "cc6ff41c9a44c557109e14423da3c32758c20099270c881c3b2b47936828b361"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_101.png",
+              "sha256": "3fd877b6c69a3d5d393ed0ae4532bf4c1b29a55634d2c056a46336e6466670c6"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_101.png",
+              "sha256": "3fd877b6c69a3d5d393ed0ae4532bf4c1b29a55634d2c056a46336e6466670c6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_102.png",
+              "sha256": "b65386d02f3bec025557e8070a7e88e871d5cba3c7842062b550f96b7d696a86"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_103.png",
+              "sha256": "904ac7cb8031343324ce0777e2a16e6504007e72d947f610c700e3d38df9a9a3"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_104.png",
+              "sha256": "9d3090b20736fd2b92c00b2da636ebef3a941b6d747f18d3b7f076935942cc02"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_105.png",
+              "sha256": "624751113e17e222236269ac13eb00c4706ff6392a7788079d43cc080da1d1f4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_106.png",
+              "sha256": "33fadd9f84f8e3355edae30fe7cc6e247fc8a45c43c6b0ac2249c1579ac3ef14"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_107.png",
+              "sha256": "3e89b5cef4776e7391d437587a4dfacb94af5b6e2589b08b6c153a707dcd6877"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_108.png",
+              "sha256": "5f53d72f3f42fa93ddea09a8d4b3d8d5cb38e493ce7b94ba7dc166d76870f89a"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "题目页94-96与答案页96-99：表达式栈深题面、选项、答案B和解析一致。",
+          "source_hash": "00a2b6e30c93e1431c7cb26e74143bc3dc690df520f49f1f02a8f2adbd6e06f0"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X05": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X05",
@@ -96068,13 +96304,10 @@
       "chapter": "栈、队列和数组 · 栈和队列的应用 · 选择题",
       "question_id": "X06",
       "source_hash": "45722d79876870cb54563c411a0e4ccb8a0714c8cc482df956276f983b813377",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         99,
         100,
@@ -96092,7 +96325,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -96130,10 +96363,72 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X06",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_099.png",
+              "sha256": "8aa73d63542b7298c4cbb25c7288f6e8a14d991e13b9d1bfb90a4a44197651df"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_100.png",
+              "sha256": "cc6ff41c9a44c557109e14423da3c32758c20099270c881c3b2b47936828b361"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_101.png",
+              "sha256": "3fd877b6c69a3d5d393ed0ae4532bf4c1b29a55634d2c056a46336e6466670c6"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_101.png",
+              "sha256": "3fd877b6c69a3d5d393ed0ae4532bf4c1b29a55634d2c056a46336e6466670c6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_102.png",
+              "sha256": "b65386d02f3bec025557e8070a7e88e871d5cba3c7842062b550f96b7d696a86"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_103.png",
+              "sha256": "904ac7cb8031343324ce0777e2a16e6504007e72d947f610c700e3d38df9a9a3"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_104.png",
+              "sha256": "9d3090b20736fd2b92c00b2da636ebef3a941b6d747f18d3b7f076935942cc02"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_105.png",
+              "sha256": "624751113e17e222236269ac13eb00c4706ff6392a7788079d43cc080da1d1f4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_106.png",
+              "sha256": "33fadd9f84f8e3355edae30fe7cc6e247fc8a45c43c6b0ac2249c1579ac3ef14"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_107.png",
+              "sha256": "3e89b5cef4776e7391d437587a4dfacb94af5b6e2589b08b6c153a707dcd6877"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_108.png",
+              "sha256": "5f53d72f3f42fa93ddea09a8d4b3d8d5cb38e493ce7b94ba7dc166d76870f89a"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "题目页94-96与答案页96-99：递归调用次数代码、选项、答案C及调用树解析一致。",
+          "source_hash": "45722d79876870cb54563c411a0e4ccb8a0714c8cc482df956276f983b813377"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X07": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X07",
@@ -96214,13 +96509,10 @@
       "chapter": "栈、队列和数组 · 栈和队列的应用 · 选择题",
       "question_id": "X08",
       "source_hash": "9bb689abab49071400c4580224966701795d1c63bc5a7ce46e7111fc878239ee",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         99,
         100,
@@ -96238,7 +96530,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -96276,10 +96568,72 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X08",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_099.png",
+              "sha256": "8aa73d63542b7298c4cbb25c7288f6e8a14d991e13b9d1bfb90a4a44197651df"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_100.png",
+              "sha256": "cc6ff41c9a44c557109e14423da3c32758c20099270c881c3b2b47936828b361"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_101.png",
+              "sha256": "3fd877b6c69a3d5d393ed0ae4532bf4c1b29a55634d2c056a46336e6466670c6"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_101.png",
+              "sha256": "3fd877b6c69a3d5d393ed0ae4532bf4c1b29a55634d2c056a46336e6466670c6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_102.png",
+              "sha256": "b65386d02f3bec025557e8070a7e88e871d5cba3c7842062b550f96b7d696a86"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_103.png",
+              "sha256": "904ac7cb8031343324ce0777e2a16e6504007e72d947f610c700e3d38df9a9a3"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_104.png",
+              "sha256": "9d3090b20736fd2b92c00b2da636ebef3a941b6d747f18d3b7f076935942cc02"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_105.png",
+              "sha256": "624751113e17e222236269ac13eb00c4706ff6392a7788079d43cc080da1d1f4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_106.png",
+              "sha256": "33fadd9f84f8e3355edae30fe7cc6e247fc8a45c43c6b0ac2249c1579ac3ef14"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_107.png",
+              "sha256": "3e89b5cef4776e7391d437587a4dfacb94af5b6e2589b08b6c153a707dcd6877"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_108.png",
+              "sha256": "5f53d72f3f42fa93ddea09a8d4b3d8d5cb38e493ce7b94ba7dc166d76870f89a"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "题目页94-96与答案页96-99：递归与非递归效率题面、答案B和解析一致。",
+          "source_hash": "9bb689abab49071400c4580224966701795d1c63bc5a7ce46e7111fc878239ee"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X09": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X09",
@@ -96287,13 +96641,10 @@
       "chapter": "栈、队列和数组 · 栈和队列的应用 · 选择题",
       "question_id": "X09",
       "source_hash": "131db4d94670c458a8c7a43ba46cfe354e871d2673ee79d374fca66406eb98a9",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         99,
         100,
@@ -96311,7 +96662,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -96349,10 +96700,72 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X09",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_099.png",
+              "sha256": "8aa73d63542b7298c4cbb25c7288f6e8a14d991e13b9d1bfb90a4a44197651df"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_100.png",
+              "sha256": "cc6ff41c9a44c557109e14423da3c32758c20099270c881c3b2b47936828b361"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_101.png",
+              "sha256": "3fd877b6c69a3d5d393ed0ae4532bf4c1b29a55634d2c056a46336e6466670c6"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_101.png",
+              "sha256": "3fd877b6c69a3d5d393ed0ae4532bf4c1b29a55634d2c056a46336e6466670c6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_102.png",
+              "sha256": "b65386d02f3bec025557e8070a7e88e871d5cba3c7842062b550f96b7d696a86"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_103.png",
+              "sha256": "904ac7cb8031343324ce0777e2a16e6504007e72d947f610c700e3d38df9a9a3"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_104.png",
+              "sha256": "9d3090b20736fd2b92c00b2da636ebef3a941b6d747f18d3b7f076935942cc02"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_105.png",
+              "sha256": "624751113e17e222236269ac13eb00c4706ff6392a7788079d43cc080da1d1f4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_106.png",
+              "sha256": "33fadd9f84f8e3355edae30fe7cc6e247fc8a45c43c6b0ac2249c1579ac3ef14"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_107.png",
+              "sha256": "3e89b5cef4776e7391d437587a4dfacb94af5b6e2589b08b6c153a707dcd6877"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_108.png",
+              "sha256": "5f53d72f3f42fa93ddea09a8d4b3d8d5cb38e493ce7b94ba7dc166d76870f89a"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "题目页94-96与答案页96-99：函数局部变量存储题面、选项、答案C及解析一致。",
+          "source_hash": "131db4d94670c458a8c7a43ba46cfe354e871d2673ee79d374fca66406eb98a9"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X10": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X10",
@@ -96361,12 +96774,9 @@
       "question_id": "X10",
       "source_hash": "ce3fec041085bd4cf82e1bbf96accced424af570c8b6888882cb7ce0da904157",
       "source_fidelity": "verified",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         99,
         100,
@@ -96384,7 +96794,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -96407,10 +96817,72 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X10",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_099.png",
+              "sha256": "8aa73d63542b7298c4cbb25c7288f6e8a14d991e13b9d1bfb90a4a44197651df"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_100.png",
+              "sha256": "cc6ff41c9a44c557109e14423da3c32758c20099270c881c3b2b47936828b361"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_101.png",
+              "sha256": "3fd877b6c69a3d5d393ed0ae4532bf4c1b29a55634d2c056a46336e6466670c6"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_101.png",
+              "sha256": "3fd877b6c69a3d5d393ed0ae4532bf4c1b29a55634d2c056a46336e6466670c6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_102.png",
+              "sha256": "b65386d02f3bec025557e8070a7e88e871d5cba3c7842062b550f96b7d696a86"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_103.png",
+              "sha256": "904ac7cb8031343324ce0777e2a16e6504007e72d947f610c700e3d38df9a9a3"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_104.png",
+              "sha256": "9d3090b20736fd2b92c00b2da636ebef3a941b6d747f18d3b7f076935942cc02"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_105.png",
+              "sha256": "624751113e17e222236269ac13eb00c4706ff6392a7788079d43cc080da1d1f4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_106.png",
+              "sha256": "33fadd9f84f8e3355edae30fe7cc6e247fc8a45c43c6b0ac2249c1579ac3ef14"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_107.png",
+              "sha256": "3e89b5cef4776e7391d437587a4dfacb94af5b6e2589b08b6c153a707dcd6877"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_108.png",
+              "sha256": "5f53d72f3f42fa93ddea09a8d4b3d8d5cb38e493ce7b94ba7dc166d76870f89a"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "题目页94-96与答案页96-99：队列辅助空间题面、选项、答案B及解析一致。",
+          "source_hash": "ce3fec041085bd4cf82e1bbf96accced424af570c8b6888882cb7ce0da904157"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X11": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X11",
@@ -96418,13 +96890,10 @@
       "chapter": "栈、队列和数组 · 栈和队列的应用 · 选择题",
       "question_id": "X11",
       "source_hash": "cbfcb262f59d4e262893cbf5fc8e2c9f4d3235412dc3e323f193aff6a9e5eea9",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         99,
         100,
@@ -96442,7 +96911,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -96465,10 +96934,72 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X11",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_099.png",
+              "sha256": "8aa73d63542b7298c4cbb25c7288f6e8a14d991e13b9d1bfb90a4a44197651df"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_100.png",
+              "sha256": "cc6ff41c9a44c557109e14423da3c32758c20099270c881c3b2b47936828b361"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_101.png",
+              "sha256": "3fd877b6c69a3d5d393ed0ae4532bf4c1b29a55634d2c056a46336e6466670c6"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_101.png",
+              "sha256": "3fd877b6c69a3d5d393ed0ae4532bf4c1b29a55634d2c056a46336e6466670c6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_102.png",
+              "sha256": "b65386d02f3bec025557e8070a7e88e871d5cba3c7842062b550f96b7d696a86"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_103.png",
+              "sha256": "904ac7cb8031343324ce0777e2a16e6504007e72d947f610c700e3d38df9a9a3"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_104.png",
+              "sha256": "9d3090b20736fd2b92c00b2da636ebef3a941b6d747f18d3b7f076935942cc02"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_105.png",
+              "sha256": "624751113e17e222236269ac13eb00c4706ff6392a7788079d43cc080da1d1f4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_106.png",
+              "sha256": "33fadd9f84f8e3355edae30fe7cc6e247fc8a45c43c6b0ac2249c1579ac3ef14"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_107.png",
+              "sha256": "3e89b5cef4776e7391d437587a4dfacb94af5b6e2589b08b6c153a707dcd6877"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_108.png",
+              "sha256": "5f53d72f3f42fa93ddea09a8d4b3d8d5cb38e493ce7b94ba7dc166d76870f89a"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "题目页94-96与答案页96-99：栈相关判断题四个分项、答案A和解析一致。",
+          "source_hash": "cbfcb262f59d4e262893cbf5fc8e2c9f4d3235412dc3e323f193aff6a9e5eea9"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X12": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X12",
@@ -96476,13 +97007,10 @@
       "chapter": "栈、队列和数组 · 栈和队列的应用 · 选择题",
       "question_id": "X12",
       "source_hash": "726630931ba1472d123a0f936a1aab817c0066b394190afbfd0f5f0023a8760f",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         99,
         100,
@@ -96500,7 +97028,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -96538,10 +97066,72 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X12",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_099.png",
+              "sha256": "8aa73d63542b7298c4cbb25c7288f6e8a14d991e13b9d1bfb90a4a44197651df"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_100.png",
+              "sha256": "cc6ff41c9a44c557109e14423da3c32758c20099270c881c3b2b47936828b361"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_101.png",
+              "sha256": "3fd877b6c69a3d5d393ed0ae4532bf4c1b29a55634d2c056a46336e6466670c6"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_101.png",
+              "sha256": "3fd877b6c69a3d5d393ed0ae4532bf4c1b29a55634d2c056a46336e6466670c6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_102.png",
+              "sha256": "b65386d02f3bec025557e8070a7e88e871d5cba3c7842062b550f96b7d696a86"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_103.png",
+              "sha256": "904ac7cb8031343324ce0777e2a16e6504007e72d947f610c700e3d38df9a9a3"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_104.png",
+              "sha256": "9d3090b20736fd2b92c00b2da636ebef3a941b6d747f18d3b7f076935942cc02"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_105.png",
+              "sha256": "624751113e17e222236269ac13eb00c4706ff6392a7788079d43cc080da1d1f4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_106.png",
+              "sha256": "33fadd9f84f8e3355edae30fe7cc6e247fc8a45c43c6b0ac2249c1579ac3ef14"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_107.png",
+              "sha256": "3e89b5cef4776e7391d437587a4dfacb94af5b6e2589b08b6c153a707dcd6877"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_108.png",
+              "sha256": "5f53d72f3f42fa93ddea09a8d4b3d8d5cb38e493ce7b94ba7dc166d76870f89a"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "题目页94-96与答案页96-99：打印缓冲区题面、选项、答案B和先进先出解析一致。",
+          "source_hash": "726630931ba1472d123a0f936a1aab817c0066b394190afbfd0f5f0023a8760f"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X14": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X14",
@@ -96635,15 +97225,10 @@
       "chapter": "栈、队列和数组 · 栈和队列的应用 · 选择题",
       "question_id": "X15",
       "source_hash": "c425ca861e8e41c1cdc7bc510288efa1e03d1df8ef9cb6d208cd5c5213c55459",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         99,
         100,
@@ -96661,7 +97246,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -96699,10 +97284,72 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X15",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_099.png",
+              "sha256": "8aa73d63542b7298c4cbb25c7288f6e8a14d991e13b9d1bfb90a4a44197651df"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_100.png",
+              "sha256": "cc6ff41c9a44c557109e14423da3c32758c20099270c881c3b2b47936828b361"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_101.png",
+              "sha256": "3fd877b6c69a3d5d393ed0ae4532bf4c1b29a55634d2c056a46336e6466670c6"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_101.png",
+              "sha256": "3fd877b6c69a3d5d393ed0ae4532bf4c1b29a55634d2c056a46336e6466670c6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_102.png",
+              "sha256": "b65386d02f3bec025557e8070a7e88e871d5cba3c7842062b550f96b7d696a86"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_103.png",
+              "sha256": "904ac7cb8031343324ce0777e2a16e6504007e72d947f610c700e3d38df9a9a3"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_104.png",
+              "sha256": "9d3090b20736fd2b92c00b2da636ebef3a941b6d747f18d3b7f076935942cc02"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_105.png",
+              "sha256": "624751113e17e222236269ac13eb00c4706ff6392a7788079d43cc080da1d1f4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_106.png",
+              "sha256": "33fadd9f84f8e3355edae30fe7cc6e247fc8a45c43c6b0ac2249c1579ac3ef14"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_107.png",
+              "sha256": "3e89b5cef4776e7391d437587a4dfacb94af5b6e2589b08b6c153a707dcd6877"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_108.png",
+              "sha256": "5f53d72f3f42fa93ddea09a8d4b3d8d5cb38e493ce7b94ba7dc166d76870f89a"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "题目页94-96与答案页96-99：递归调用栈题面、调用顺序选项、答案A及解析一致。",
+          "source_hash": "c425ca861e8e41c1cdc7bc510288efa1e03d1df8ef9cb6d208cd5c5213c55459"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X16": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X16",
@@ -96796,13 +97443,10 @@
       "chapter": "栈、队列和数组 · 栈和队列的应用 · 选择题",
       "question_id": "X17",
       "source_hash": "54dc4602107ee895326b6d9e0b1e913f584a8acbfe5e6b4377f098a2f8975d37",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         99,
         100,
@@ -96820,7 +97464,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -96858,10 +97502,72 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X17",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_099.png",
+              "sha256": "8aa73d63542b7298c4cbb25c7288f6e8a14d991e13b9d1bfb90a4a44197651df"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_100.png",
+              "sha256": "cc6ff41c9a44c557109e14423da3c32758c20099270c881c3b2b47936828b361"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_101.png",
+              "sha256": "3fd877b6c69a3d5d393ed0ae4532bf4c1b29a55634d2c056a46336e6466670c6"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_101.png",
+              "sha256": "3fd877b6c69a3d5d393ed0ae4532bf4c1b29a55634d2c056a46336e6466670c6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_102.png",
+              "sha256": "b65386d02f3bec025557e8070a7e88e871d5cba3c7842062b550f96b7d696a86"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_103.png",
+              "sha256": "904ac7cb8031343324ce0777e2a16e6504007e72d947f610c700e3d38df9a9a3"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_104.png",
+              "sha256": "9d3090b20736fd2b92c00b2da636ebef3a941b6d747f18d3b7f076935942cc02"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_105.png",
+              "sha256": "624751113e17e222236269ac13eb00c4706ff6392a7788079d43cc080da1d1f4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_106.png",
+              "sha256": "33fadd9f84f8e3355edae30fe7cc6e247fc8a45c43c6b0ac2249c1579ac3ef14"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_107.png",
+              "sha256": "3e89b5cef4776e7391d437587a4dfacb94af5b6e2589b08b6c153a707dcd6877"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_108.png",
+              "sha256": "5f53d72f3f42fa93ddea09a8d4b3d8d5cb38e493ce7b94ba7dc166d76870f89a"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "题目页94-96与答案页96-99：栈叙述分项、答案C及反例解析一致。",
+          "source_hash": "54dc4602107ee895326b6d9e0b1e913f584a8acbfe5e6b4377f098a2f8975d37"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X18": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X18",
@@ -96869,13 +97575,10 @@
       "chapter": "栈、队列和数组 · 栈和队列的应用 · 选择题",
       "question_id": "X18",
       "source_hash": "6b3052fb56199537cf690bba9d9baf04a571b4c997c017a911ebbec37b21427c",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         99,
         100,
@@ -96893,7 +97596,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -96931,10 +97634,72 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X18",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_099.png",
+              "sha256": "8aa73d63542b7298c4cbb25c7288f6e8a14d991e13b9d1bfb90a4a44197651df"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_100.png",
+              "sha256": "cc6ff41c9a44c557109e14423da3c32758c20099270c881c3b2b47936828b361"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_101.png",
+              "sha256": "3fd877b6c69a3d5d393ed0ae4532bf4c1b29a55634d2c056a46336e6466670c6"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_101.png",
+              "sha256": "3fd877b6c69a3d5d393ed0ae4532bf4c1b29a55634d2c056a46336e6466670c6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_102.png",
+              "sha256": "b65386d02f3bec025557e8070a7e88e871d5cba3c7842062b550f96b7d696a86"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_103.png",
+              "sha256": "904ac7cb8031343324ce0777e2a16e6504007e72d947f610c700e3d38df9a9a3"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_104.png",
+              "sha256": "9d3090b20736fd2b92c00b2da636ebef3a941b6d747f18d3b7f076935942cc02"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_105.png",
+              "sha256": "624751113e17e222236269ac13eb00c4706ff6392a7788079d43cc080da1d1f4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_106.png",
+              "sha256": "33fadd9f84f8e3355edae30fe7cc6e247fc8a45c43c6b0ac2249c1579ac3ef14"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_107.png",
+              "sha256": "3e89b5cef4776e7391d437587a4dfacb94af5b6e2589b08b6c153a707dcd6877"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_108.png",
+              "sha256": "5f53d72f3f42fa93ddea09a8d4b3d8d5cb38e493ce7b94ba7dc166d76870f89a"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "题目页94-96与答案页96-99：双栈运算步骤、答案B及逐次计算解析一致。",
+          "source_hash": "6b3052fb56199537cf690bba9d9baf04a571b4c997c017a911ebbec37b21427c"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X19": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X19",
@@ -96942,14 +97707,10 @@
       "chapter": "栈、队列和数组 · 栈和队列的应用 · 选择题",
       "question_id": "X19",
       "source_hash": "cbff025719765867409bbecb62b39d7cd6b94be8c6443f2aafce0929804df0de",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         99,
         100,
@@ -96967,7 +97728,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -97005,10 +97766,72 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X19",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_099.png",
+              "sha256": "8aa73d63542b7298c4cbb25c7288f6e8a14d991e13b9d1bfb90a4a44197651df"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_100.png",
+              "sha256": "cc6ff41c9a44c557109e14423da3c32758c20099270c881c3b2b47936828b361"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_101.png",
+              "sha256": "3fd877b6c69a3d5d393ed0ae4532bf4c1b29a55634d2c056a46336e6466670c6"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_101.png",
+              "sha256": "3fd877b6c69a3d5d393ed0ae4532bf4c1b29a55634d2c056a46336e6466670c6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_102.png",
+              "sha256": "b65386d02f3bec025557e8070a7e88e871d5cba3c7842062b550f96b7d696a86"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_103.png",
+              "sha256": "904ac7cb8031343324ce0777e2a16e6504007e72d947f610c700e3d38df9a9a3"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_104.png",
+              "sha256": "9d3090b20736fd2b92c00b2da636ebef3a941b6d747f18d3b7f076935942cc02"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_105.png",
+              "sha256": "624751113e17e222236269ac13eb00c4706ff6392a7788079d43cc080da1d1f4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_106.png",
+              "sha256": "33fadd9f84f8e3355edae30fe7cc6e247fc8a45c43c6b0ac2249c1579ac3ef14"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_107.png",
+              "sha256": "3e89b5cef4776e7391d437587a4dfacb94af5b6e2589b08b6c153a707dcd6877"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_108.png",
+              "sha256": "5f53d72f3f42fa93ddea09a8d4b3d8d5cb38e493ce7b94ba7dc166d76870f89a"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "题目页94-96与答案页96-99：后缀表达式题面、二叉树图示、答案A及解析一致。",
+          "source_hash": "cbff025719765867409bbecb62b39d7cd6b94be8c6443f2aafce0929804df0de"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X20": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X20",
@@ -97016,13 +97839,10 @@
       "chapter": "栈、队列和数组 · 栈和队列的应用 · 选择题",
       "question_id": "X20",
       "source_hash": "7e767bcd905ce53abb43c68ff5402167a9651e915bfa7a1dbdcf20dddbaec872",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         99,
         100,
@@ -97040,7 +97860,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -97078,10 +97898,72 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X20",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_099.png",
+              "sha256": "8aa73d63542b7298c4cbb25c7288f6e8a14d991e13b9d1bfb90a4a44197651df"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_100.png",
+              "sha256": "cc6ff41c9a44c557109e14423da3c32758c20099270c881c3b2b47936828b361"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_101.png",
+              "sha256": "3fd877b6c69a3d5d393ed0ae4532bf4c1b29a55634d2c056a46336e6466670c6"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_101.png",
+              "sha256": "3fd877b6c69a3d5d393ed0ae4532bf4c1b29a55634d2c056a46336e6466670c6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_102.png",
+              "sha256": "b65386d02f3bec025557e8070a7e88e871d5cba3c7842062b550f96b7d696a86"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_103.png",
+              "sha256": "904ac7cb8031343324ce0777e2a16e6504007e72d947f610c700e3d38df9a9a3"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_104.png",
+              "sha256": "9d3090b20736fd2b92c00b2da636ebef3a941b6d747f18d3b7f076935942cc02"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_105.png",
+              "sha256": "624751113e17e222236269ac13eb00c4706ff6392a7788079d43cc080da1d1f4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_106.png",
+              "sha256": "33fadd9f84f8e3355edae30fe7cc6e247fc8a45c43c6b0ac2249c1579ac3ef14"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_107.png",
+              "sha256": "3e89b5cef4776e7391d437587a4dfacb94af5b6e2589b08b6c153a707dcd6877"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_108.png",
+              "sha256": "5f53d72f3f42fa93ddea09a8d4b3d8d5cb38e493ce7b94ba7dc166d76870f89a"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "题目页94-96与答案页96-100：括号匹配题面、四项、答案D及容量分析一致。",
+          "source_hash": "7e767bcd905ce53abb43c68ff5402167a9651e915bfa7a1dbdcf20dddbaec872"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 队列 · 解答题::A01": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 队列 · 解答题::A01",
