@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "protocol": "codex-original-page-review-v1",
-  "updated_at": "2026-08-26T21:34:38.723690+00:00",
+  "updated_at": "2026-08-26T21:41:37.810396+00:00",
   "records": [
     {
       "source_uid": "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01",
@@ -23472,6 +23472,49 @@
       "source_hash": "ab8a1f99f0cc3f1cf745a6e6a15aeeabd4277b0e017837ab3177a1ed14143fc1"
     },
     {
+      "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X07",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T21:41:35.172701+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_300.png",
+          "sha256": "6fbafbcb25362a30e3e5a540f5989055803fa46768adcc8f76359b29c0d50f3b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_301.png",
+          "sha256": "0bcbed181bab7844b3073bc20dfc7d3f5c5b5d4fbf12a063f1fb49fb087ba35f"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+          "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+          "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_303.png",
+          "sha256": "cbf3d00a05c77235829a8419cbea755064fb678c719a12bddff19ff35f6e864f"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_304.png",
+          "sha256": "57a23f0aa37c3c8a03f6d4a7cd20837357232c3e15af02eba5301b4189f43fb6"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页296与答案解析页298：题干、选项、解析忠实，答案页标注07.D，与发布答案D一致。",
+      "source_hash": "ab8a1f99f0cc3f1cf745a6e6a15aeeabd4277b0e017837ab3177a1ed14143fc1"
+    },
+    {
       "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X08",
       "protocol": "codex-original-page-review-v1",
       "reviewer": "codex-vision",
@@ -29792,6 +29835,1026 @@
       "detected_errors": [],
       "rationale": "亲眼核对原书题目页227–228与答案解析页228：X10题干、选项、解析忠实，原书答案为B。",
       "source_hash": "63f14835c95c8f4db14754c09788f8492d96012d1c0a080823dfc555f095b32d"
+    },
+    {
+      "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X01",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T02:30:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_300.png",
+          "sha256": "6303b116ee6d0fea63a19cc126faf5b56bd1dd199a2b8cec65c955a0baceea25"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_301.png",
+          "sha256": "5dc419e4c1f38c0f1df7d20d4aa6cbbed82f1972ee0e7df0c199f656d270906b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_302.png",
+          "sha256": "6d6443d5b5b49d518535505b48f0bfb5889401edccfaadd62d22d39615603fa8"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+          "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+          "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_304.png",
+          "sha256": "6308cd004ee4887013780b36400fe2166d9982d8eb246cfec16bd761f37a0809"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_305.png",
+          "sha256": "27ce42bb7188ccfa681bc72de63639661d317c8d9c43c5e61e5103ef5ebf8e7b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_306.png",
+          "sha256": "97e289bfb0709c956731f08b41f57cee800ac933500543896c05bf311815a106"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_307.png",
+          "sha256": "ed79808178196950d431813429907a4c2259f4faeb5ff52ff1b854f7abc0bc05"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_308.png",
+          "sha256": "a31613ac9acb8921898f3f8bf2d586dcd82c284be376d486321b00111e812842"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_309.png",
+          "sha256": "42bb8023c3369eade4bb9ca22fc3d0179348d49a03252f2c76b6a4a38a76e91c"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页295-298与答案解析页298-302：发布题干、选项、解析忠实，原书答案与发布一致。",
+      "source_hash": "a8843b2e7c6098b86ea79f30f37446994aa53ec9c1fcdd6cdb2df7af04b9269e"
+    },
+    {
+      "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X02",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T02:30:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_300.png",
+          "sha256": "6303b116ee6d0fea63a19cc126faf5b56bd1dd199a2b8cec65c955a0baceea25"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_301.png",
+          "sha256": "5dc419e4c1f38c0f1df7d20d4aa6cbbed82f1972ee0e7df0c199f656d270906b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_302.png",
+          "sha256": "6d6443d5b5b49d518535505b48f0bfb5889401edccfaadd62d22d39615603fa8"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+          "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+          "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_304.png",
+          "sha256": "6308cd004ee4887013780b36400fe2166d9982d8eb246cfec16bd761f37a0809"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_305.png",
+          "sha256": "27ce42bb7188ccfa681bc72de63639661d317c8d9c43c5e61e5103ef5ebf8e7b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_306.png",
+          "sha256": "97e289bfb0709c956731f08b41f57cee800ac933500543896c05bf311815a106"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_307.png",
+          "sha256": "ed79808178196950d431813429907a4c2259f4faeb5ff52ff1b854f7abc0bc05"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_308.png",
+          "sha256": "a31613ac9acb8921898f3f8bf2d586dcd82c284be376d486321b00111e812842"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_309.png",
+          "sha256": "42bb8023c3369eade4bb9ca22fc3d0179348d49a03252f2c76b6a4a38a76e91c"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "published_explanation_truncated"
+      ],
+      "rationale": "亲眼核对原书题目页295-298与答案解析页298-302：题干和答案可读，但发布解析存在截断、图示或OCR损坏，暂不认证。",
+      "source_hash": "54b6eb55734d519f24c268d61540a38cc0951980acf9bab79aeb6fce75210fb2"
+    },
+    {
+      "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X03",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T02:30:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_300.png",
+          "sha256": "6303b116ee6d0fea63a19cc126faf5b56bd1dd199a2b8cec65c955a0baceea25"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_301.png",
+          "sha256": "5dc419e4c1f38c0f1df7d20d4aa6cbbed82f1972ee0e7df0c199f656d270906b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_302.png",
+          "sha256": "6d6443d5b5b49d518535505b48f0bfb5889401edccfaadd62d22d39615603fa8"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+          "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+          "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_304.png",
+          "sha256": "6308cd004ee4887013780b36400fe2166d9982d8eb246cfec16bd761f37a0809"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_305.png",
+          "sha256": "27ce42bb7188ccfa681bc72de63639661d317c8d9c43c5e61e5103ef5ebf8e7b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_306.png",
+          "sha256": "97e289bfb0709c956731f08b41f57cee800ac933500543896c05bf311815a106"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_307.png",
+          "sha256": "ed79808178196950d431813429907a4c2259f4faeb5ff52ff1b854f7abc0bc05"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_308.png",
+          "sha256": "a31613ac9acb8921898f3f8bf2d586dcd82c284be376d486321b00111e812842"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_309.png",
+          "sha256": "42bb8023c3369eade4bb9ca22fc3d0179348d49a03252f2c76b6a4a38a76e91c"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页295-298与答案解析页298-302：发布题干、选项、解析忠实，原书答案与发布一致。",
+      "source_hash": "a3ce04be39561f8bd2e7a0bd12216abdf2fed29db06630ed0b83ce3f5a3338a9"
+    },
+    {
+      "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X04",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T02:30:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_300.png",
+          "sha256": "6303b116ee6d0fea63a19cc126faf5b56bd1dd199a2b8cec65c955a0baceea25"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_301.png",
+          "sha256": "5dc419e4c1f38c0f1df7d20d4aa6cbbed82f1972ee0e7df0c199f656d270906b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_302.png",
+          "sha256": "6d6443d5b5b49d518535505b48f0bfb5889401edccfaadd62d22d39615603fa8"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+          "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+          "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_304.png",
+          "sha256": "6308cd004ee4887013780b36400fe2166d9982d8eb246cfec16bd761f37a0809"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_305.png",
+          "sha256": "27ce42bb7188ccfa681bc72de63639661d317c8d9c43c5e61e5103ef5ebf8e7b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_306.png",
+          "sha256": "97e289bfb0709c956731f08b41f57cee800ac933500543896c05bf311815a106"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_307.png",
+          "sha256": "ed79808178196950d431813429907a4c2259f4faeb5ff52ff1b854f7abc0bc05"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_308.png",
+          "sha256": "a31613ac9acb8921898f3f8bf2d586dcd82c284be376d486321b00111e812842"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_309.png",
+          "sha256": "42bb8023c3369eade4bb9ca22fc3d0179348d49a03252f2c76b6a4a38a76e91c"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页295-298与答案解析页298-302：发布题干、选项、解析忠实，原书答案与发布一致。",
+      "source_hash": "1ef6c6bbc41b492e465c13958fa7f526f22ef1b8434086e4c654cd0139278d0c"
+    },
+    {
+      "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X05",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T02:30:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_300.png",
+          "sha256": "6303b116ee6d0fea63a19cc126faf5b56bd1dd199a2b8cec65c955a0baceea25"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_301.png",
+          "sha256": "5dc419e4c1f38c0f1df7d20d4aa6cbbed82f1972ee0e7df0c199f656d270906b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_302.png",
+          "sha256": "6d6443d5b5b49d518535505b48f0bfb5889401edccfaadd62d22d39615603fa8"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+          "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+          "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_304.png",
+          "sha256": "6308cd004ee4887013780b36400fe2166d9982d8eb246cfec16bd761f37a0809"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_305.png",
+          "sha256": "27ce42bb7188ccfa681bc72de63639661d317c8d9c43c5e61e5103ef5ebf8e7b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_306.png",
+          "sha256": "97e289bfb0709c956731f08b41f57cee800ac933500543896c05bf311815a106"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_307.png",
+          "sha256": "ed79808178196950d431813429907a4c2259f4faeb5ff52ff1b854f7abc0bc05"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_308.png",
+          "sha256": "a31613ac9acb8921898f3f8bf2d586dcd82c284be376d486321b00111e812842"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_309.png",
+          "sha256": "42bb8023c3369eade4bb9ca22fc3d0179348d49a03252f2c76b6a4a38a76e91c"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "published_explanation_ocr_corruption"
+      ],
+      "rationale": "亲眼核对原书题目页295-298与答案解析页298-302：题干和答案可读，但发布解析存在OCR损坏，暂不认证。",
+      "source_hash": "0665667ed6902ee24d4433db851e4cef36fdc771770e4a0aed081c87278bddde"
+    },
+    {
+      "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X06",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T02:30:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_300.png",
+          "sha256": "6303b116ee6d0fea63a19cc126faf5b56bd1dd199a2b8cec65c955a0baceea25"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_301.png",
+          "sha256": "5dc419e4c1f38c0f1df7d20d4aa6cbbed82f1972ee0e7df0c199f656d270906b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_302.png",
+          "sha256": "6d6443d5b5b49d518535505b48f0bfb5889401edccfaadd62d22d39615603fa8"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+          "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+          "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_304.png",
+          "sha256": "6308cd004ee4887013780b36400fe2166d9982d8eb246cfec16bd761f37a0809"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_305.png",
+          "sha256": "27ce42bb7188ccfa681bc72de63639661d317c8d9c43c5e61e5103ef5ebf8e7b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_306.png",
+          "sha256": "97e289bfb0709c956731f08b41f57cee800ac933500543896c05bf311815a106"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_307.png",
+          "sha256": "ed79808178196950d431813429907a4c2259f4faeb5ff52ff1b854f7abc0bc05"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_308.png",
+          "sha256": "a31613ac9acb8921898f3f8bf2d586dcd82c284be376d486321b00111e812842"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_309.png",
+          "sha256": "42bb8023c3369eade4bb9ca22fc3d0179348d49a03252f2c76b6a4a38a76e91c"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "published_explanation_ocr_corruption"
+      ],
+      "rationale": "亲眼核对原书题目页295-298与答案解析页298-302：题干和答案可读，但发布解析存在OCR损坏，暂不认证。",
+      "source_hash": "833b0ef717f121644ed836d0ba2478f488b82a95aeeae4a1712f845d8788ca39"
+    },
+    {
+      "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X07",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T02:30:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_300.png",
+          "sha256": "6303b116ee6d0fea63a19cc126faf5b56bd1dd199a2b8cec65c955a0baceea25"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_301.png",
+          "sha256": "5dc419e4c1f38c0f1df7d20d4aa6cbbed82f1972ee0e7df0c199f656d270906b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_302.png",
+          "sha256": "6d6443d5b5b49d518535505b48f0bfb5889401edccfaadd62d22d39615603fa8"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+          "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+          "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_304.png",
+          "sha256": "6308cd004ee4887013780b36400fe2166d9982d8eb246cfec16bd761f37a0809"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_305.png",
+          "sha256": "27ce42bb7188ccfa681bc72de63639661d317c8d9c43c5e61e5103ef5ebf8e7b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_306.png",
+          "sha256": "97e289bfb0709c956731f08b41f57cee800ac933500543896c05bf311815a106"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_307.png",
+          "sha256": "ed79808178196950d431813429907a4c2259f4faeb5ff52ff1b854f7abc0bc05"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_308.png",
+          "sha256": "a31613ac9acb8921898f3f8bf2d586dcd82c284be376d486321b00111e812842"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_309.png",
+          "sha256": "42bb8023c3369eade4bb9ca22fc3d0179348d49a03252f2c76b6a4a38a76e91c"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页295-298与答案解析页298-302：发布题干、选项、解析忠实，原书答案与发布一致。",
+      "source_hash": "a04ba304ffe1b8f13702d9d4424035a6fd6ca78e28ff0fae335b04c528c39932"
+    },
+    {
+      "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X08",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T02:30:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_300.png",
+          "sha256": "6303b116ee6d0fea63a19cc126faf5b56bd1dd199a2b8cec65c955a0baceea25"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_301.png",
+          "sha256": "5dc419e4c1f38c0f1df7d20d4aa6cbbed82f1972ee0e7df0c199f656d270906b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_302.png",
+          "sha256": "6d6443d5b5b49d518535505b48f0bfb5889401edccfaadd62d22d39615603fa8"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+          "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+          "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_304.png",
+          "sha256": "6308cd004ee4887013780b36400fe2166d9982d8eb246cfec16bd761f37a0809"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_305.png",
+          "sha256": "27ce42bb7188ccfa681bc72de63639661d317c8d9c43c5e61e5103ef5ebf8e7b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_306.png",
+          "sha256": "97e289bfb0709c956731f08b41f57cee800ac933500543896c05bf311815a106"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_307.png",
+          "sha256": "ed79808178196950d431813429907a4c2259f4faeb5ff52ff1b854f7abc0bc05"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_308.png",
+          "sha256": "a31613ac9acb8921898f3f8bf2d586dcd82c284be376d486321b00111e812842"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_309.png",
+          "sha256": "42bb8023c3369eade4bb9ca22fc3d0179348d49a03252f2c76b6a4a38a76e91c"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页295-298与答案解析页298-302：发布题干、选项、解析忠实，原书答案与发布一致。",
+      "source_hash": "c4469bff34c28235e8959b20daeebf97d89f34d41981a875f6d5373c86522874"
+    },
+    {
+      "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X09",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T02:30:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_300.png",
+          "sha256": "6303b116ee6d0fea63a19cc126faf5b56bd1dd199a2b8cec65c955a0baceea25"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_301.png",
+          "sha256": "5dc419e4c1f38c0f1df7d20d4aa6cbbed82f1972ee0e7df0c199f656d270906b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_302.png",
+          "sha256": "6d6443d5b5b49d518535505b48f0bfb5889401edccfaadd62d22d39615603fa8"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+          "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+          "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_304.png",
+          "sha256": "6308cd004ee4887013780b36400fe2166d9982d8eb246cfec16bd761f37a0809"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_305.png",
+          "sha256": "27ce42bb7188ccfa681bc72de63639661d317c8d9c43c5e61e5103ef5ebf8e7b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_306.png",
+          "sha256": "97e289bfb0709c956731f08b41f57cee800ac933500543896c05bf311815a106"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_307.png",
+          "sha256": "ed79808178196950d431813429907a4c2259f4faeb5ff52ff1b854f7abc0bc05"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_308.png",
+          "sha256": "a31613ac9acb8921898f3f8bf2d586dcd82c284be376d486321b00111e812842"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_309.png",
+          "sha256": "42bb8023c3369eade4bb9ca22fc3d0179348d49a03252f2c76b6a4a38a76e91c"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页295-298与答案解析页298-302：发布题干、选项、解析忠实，原书答案与发布一致。",
+      "source_hash": "f0cf655ef667795775b6ed9575baa7339ad215c737d551ece3fd9a50a4cf0af5"
+    },
+    {
+      "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X10",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T02:30:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_300.png",
+          "sha256": "6303b116ee6d0fea63a19cc126faf5b56bd1dd199a2b8cec65c955a0baceea25"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_301.png",
+          "sha256": "5dc419e4c1f38c0f1df7d20d4aa6cbbed82f1972ee0e7df0c199f656d270906b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_302.png",
+          "sha256": "6d6443d5b5b49d518535505b48f0bfb5889401edccfaadd62d22d39615603fa8"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+          "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+          "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_304.png",
+          "sha256": "6308cd004ee4887013780b36400fe2166d9982d8eb246cfec16bd761f37a0809"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_305.png",
+          "sha256": "27ce42bb7188ccfa681bc72de63639661d317c8d9c43c5e61e5103ef5ebf8e7b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_306.png",
+          "sha256": "97e289bfb0709c956731f08b41f57cee800ac933500543896c05bf311815a106"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_307.png",
+          "sha256": "ed79808178196950d431813429907a4c2259f4faeb5ff52ff1b854f7abc0bc05"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_308.png",
+          "sha256": "a31613ac9acb8921898f3f8bf2d586dcd82c284be376d486321b00111e812842"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_309.png",
+          "sha256": "42bb8023c3369eade4bb9ca22fc3d0179348d49a03252f2c76b6a4a38a76e91c"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页295-298与答案解析页298-302：发布题干、选项、解析忠实，原书答案与发布一致。",
+      "source_hash": "618e4f70cdfd6f262d0f28e3d23d1432b891243dca0d7ed87a7bc4e514e7b1f2"
+    },
+    {
+      "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X12",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T02:30:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_300.png",
+          "sha256": "6303b116ee6d0fea63a19cc126faf5b56bd1dd199a2b8cec65c955a0baceea25"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_301.png",
+          "sha256": "5dc419e4c1f38c0f1df7d20d4aa6cbbed82f1972ee0e7df0c199f656d270906b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_302.png",
+          "sha256": "6d6443d5b5b49d518535505b48f0bfb5889401edccfaadd62d22d39615603fa8"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+          "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+          "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_304.png",
+          "sha256": "6308cd004ee4887013780b36400fe2166d9982d8eb246cfec16bd761f37a0809"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_305.png",
+          "sha256": "27ce42bb7188ccfa681bc72de63639661d317c8d9c43c5e61e5103ef5ebf8e7b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_306.png",
+          "sha256": "97e289bfb0709c956731f08b41f57cee800ac933500543896c05bf311815a106"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_307.png",
+          "sha256": "ed79808178196950d431813429907a4c2259f4faeb5ff52ff1b854f7abc0bc05"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_308.png",
+          "sha256": "a31613ac9acb8921898f3f8bf2d586dcd82c284be376d486321b00111e812842"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_309.png",
+          "sha256": "42bb8023c3369eade4bb9ca22fc3d0179348d49a03252f2c76b6a4a38a76e91c"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页295-298与答案解析页298-302：发布题干、选项、解析忠实，原书答案与发布一致。",
+      "source_hash": "bfcaa68703429c8df9afd0b8d5c999f66ce250237109c99ef7aba10b44386f34"
+    },
+    {
+      "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X15",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T02:30:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_300.png",
+          "sha256": "6303b116ee6d0fea63a19cc126faf5b56bd1dd199a2b8cec65c955a0baceea25"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_301.png",
+          "sha256": "5dc419e4c1f38c0f1df7d20d4aa6cbbed82f1972ee0e7df0c199f656d270906b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_302.png",
+          "sha256": "6d6443d5b5b49d518535505b48f0bfb5889401edccfaadd62d22d39615603fa8"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+          "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+          "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_304.png",
+          "sha256": "6308cd004ee4887013780b36400fe2166d9982d8eb246cfec16bd761f37a0809"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_305.png",
+          "sha256": "27ce42bb7188ccfa681bc72de63639661d317c8d9c43c5e61e5103ef5ebf8e7b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_306.png",
+          "sha256": "97e289bfb0709c956731f08b41f57cee800ac933500543896c05bf311815a106"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_307.png",
+          "sha256": "ed79808178196950d431813429907a4c2259f4faeb5ff52ff1b854f7abc0bc05"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_308.png",
+          "sha256": "a31613ac9acb8921898f3f8bf2d586dcd82c284be376d486321b00111e812842"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_309.png",
+          "sha256": "42bb8023c3369eade4bb9ca22fc3d0179348d49a03252f2c76b6a4a38a76e91c"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页295-298与答案解析页298-302：发布题干、选项、解析忠实，原书答案与发布一致。",
+      "source_hash": "57a57a492238cdca7ba53a8665d367e28c8f16abfbed1709226d50675ebbffa8"
+    },
+    {
+      "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X16",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T02:30:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_300.png",
+          "sha256": "6303b116ee6d0fea63a19cc126faf5b56bd1dd199a2b8cec65c955a0baceea25"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_301.png",
+          "sha256": "5dc419e4c1f38c0f1df7d20d4aa6cbbed82f1972ee0e7df0c199f656d270906b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_302.png",
+          "sha256": "6d6443d5b5b49d518535505b48f0bfb5889401edccfaadd62d22d39615603fa8"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+          "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+          "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_304.png",
+          "sha256": "6308cd004ee4887013780b36400fe2166d9982d8eb246cfec16bd761f37a0809"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_305.png",
+          "sha256": "27ce42bb7188ccfa681bc72de63639661d317c8d9c43c5e61e5103ef5ebf8e7b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_306.png",
+          "sha256": "97e289bfb0709c956731f08b41f57cee800ac933500543896c05bf311815a106"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_307.png",
+          "sha256": "ed79808178196950d431813429907a4c2259f4faeb5ff52ff1b854f7abc0bc05"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_308.png",
+          "sha256": "a31613ac9acb8921898f3f8bf2d586dcd82c284be376d486321b00111e812842"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_309.png",
+          "sha256": "42bb8023c3369eade4bb9ca22fc3d0179348d49a03252f2c76b6a4a38a76e91c"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页295-298与答案解析页298-302：发布题干、选项、解析忠实，原书答案与发布一致。",
+      "source_hash": "a62ebc260d2bd6c9c0abc9cca22b54b4229e95ddd61858195ff463d2c4bdaa2e"
+    },
+    {
+      "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X17",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T02:30:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_300.png",
+          "sha256": "6303b116ee6d0fea63a19cc126faf5b56bd1dd199a2b8cec65c955a0baceea25"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_301.png",
+          "sha256": "5dc419e4c1f38c0f1df7d20d4aa6cbbed82f1972ee0e7df0c199f656d270906b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_302.png",
+          "sha256": "6d6443d5b5b49d518535505b48f0bfb5889401edccfaadd62d22d39615603fa8"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+          "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+          "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_304.png",
+          "sha256": "6308cd004ee4887013780b36400fe2166d9982d8eb246cfec16bd761f37a0809"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_305.png",
+          "sha256": "27ce42bb7188ccfa681bc72de63639661d317c8d9c43c5e61e5103ef5ebf8e7b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_306.png",
+          "sha256": "97e289bfb0709c956731f08b41f57cee800ac933500543896c05bf311815a106"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_307.png",
+          "sha256": "ed79808178196950d431813429907a4c2259f4faeb5ff52ff1b854f7abc0bc05"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_308.png",
+          "sha256": "a31613ac9acb8921898f3f8bf2d586dcd82c284be376d486321b00111e812842"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_309.png",
+          "sha256": "42bb8023c3369eade4bb9ca22fc3d0179348d49a03252f2c76b6a4a38a76e91c"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "published_explanation_ocr_corruption"
+      ],
+      "rationale": "亲眼核对原书题目页295-298与答案解析页298-302：题干和答案可读，但Cookie字段说明存在OCR用词错误，暂不认证。",
+      "source_hash": "87d2a1295e1d7a1b0a5c5b8ffaf75e6ef3b88ce82247d416023af8e563565c50"
+    },
+    {
+      "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X18",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T02:30:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_300.png",
+          "sha256": "6303b116ee6d0fea63a19cc126faf5b56bd1dd199a2b8cec65c955a0baceea25"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_301.png",
+          "sha256": "5dc419e4c1f38c0f1df7d20d4aa6cbbed82f1972ee0e7df0c199f656d270906b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_302.png",
+          "sha256": "6d6443d5b5b49d518535505b48f0bfb5889401edccfaadd62d22d39615603fa8"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+          "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+          "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_304.png",
+          "sha256": "6308cd004ee4887013780b36400fe2166d9982d8eb246cfec16bd761f37a0809"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_305.png",
+          "sha256": "27ce42bb7188ccfa681bc72de63639661d317c8d9c43c5e61e5103ef5ebf8e7b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_306.png",
+          "sha256": "97e289bfb0709c956731f08b41f57cee800ac933500543896c05bf311815a106"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_307.png",
+          "sha256": "ed79808178196950d431813429907a4c2259f4faeb5ff52ff1b854f7abc0bc05"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_308.png",
+          "sha256": "a31613ac9acb8921898f3f8bf2d586dcd82c284be376d486321b00111e812842"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_309.png",
+          "sha256": "42bb8023c3369eade4bb9ca22fc3d0179348d49a03252f2c76b6a4a38a76e91c"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "published_explanation_ocr_corruption"
+      ],
+      "rationale": "亲眼核对原书题目页295-298与答案解析页298-302：题干和答案可读，但持续连接说明含捎带/HTTP等OCR错误，暂不认证。",
+      "source_hash": "c6b3f6e526eee8bec65197610fc0099952b0159bcddf16dcb1bc5a309e930723"
+    },
+    {
+      "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X19",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T02:30:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_300.png",
+          "sha256": "6303b116ee6d0fea63a19cc126faf5b56bd1dd199a2b8cec65c955a0baceea25"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_301.png",
+          "sha256": "5dc419e4c1f38c0f1df7d20d4aa6cbbed82f1972ee0e7df0c199f656d270906b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_302.png",
+          "sha256": "6d6443d5b5b49d518535505b48f0bfb5889401edccfaadd62d22d39615603fa8"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+          "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+          "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_304.png",
+          "sha256": "6308cd004ee4887013780b36400fe2166d9982d8eb246cfec16bd761f37a0809"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_305.png",
+          "sha256": "27ce42bb7188ccfa681bc72de63639661d317c8d9c43c5e61e5103ef5ebf8e7b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_306.png",
+          "sha256": "97e289bfb0709c956731f08b41f57cee800ac933500543896c05bf311815a106"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_307.png",
+          "sha256": "ed79808178196950d431813429907a4c2259f4faeb5ff52ff1b854f7abc0bc05"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_308.png",
+          "sha256": "a31613ac9acb8921898f3f8bf2d586dcd82c284be376d486321b00111e812842"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_309.png",
+          "sha256": "42bb8023c3369eade4bb9ca22fc3d0179348d49a03252f2c76b6a4a38a76e91c"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "published_explanation_ocr_corruption"
+      ],
+      "rationale": "亲眼核对原书题目页295-298与答案解析页298-302：题干和答案可读，但HTTP/1.0、捎带等术语存在OCR错误，暂不认证。",
+      "source_hash": "8b22d58857eedb8177b493dc6af88b90f9aedd4e7ffcf5e48d66614fdf78eca7"
     },
     {
       "source_uid": "408:cs408-net::应用层 · 域名系统 · 选择题::X01",

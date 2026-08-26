@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-26T21:34:40+00:00",
+  "generated_at": "2026-08-26T21:41:39+00:00",
   "published_hashes": {
     "ds": "a40686840e5043561d7f7159fbd779725ffa65c56bfdd79a2683965b6aed0771",
     "coa": "8f9ea82d6d82e53ea38daf200ae95a361b5c43742f0ce9881b207f671f7f06f7",
@@ -28,9 +28,9 @@
       "name": "计算机网络",
       "mode": "strict",
       "total": 639,
-      "certified": 203,
+      "certified": 213,
       "pending": 0,
-      "held": 436
+      "held": 426
     },
     "os": {
       "name": "操作系统",
@@ -43,9 +43,9 @@
   },
   "summary": {
     "total": 2869,
-    "certified": 970,
+    "certified": 980,
     "pending": 0,
-    "held": 1899
+    "held": 1889
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -53266,7 +53266,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T21:34:36.353574+00:00",
+      "verified_at": "2026-08-26T21:41:35.172701+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -53309,7 +53309,7 @@
           "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X07",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-26T21:34:36.353574+00:00",
+          "reviewed_at": "2026-08-26T21:41:35.172701+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/coa/page_300.png",
@@ -125760,14 +125760,10 @@
       "chapter": "应用层 · 万维网 · 选择题",
       "question_id": "X01",
       "source_hash": "a8843b2e7c6098b86ea79f30f37446994aa53ec9c1fcdd6cdb2df7af04b9269e",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         300,
         301,
@@ -125785,7 +125781,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T02:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -125823,10 +125819,72 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "legacy_hold_recheck;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X01",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T02:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_300.png",
+              "sha256": "6303b116ee6d0fea63a19cc126faf5b56bd1dd199a2b8cec65c955a0baceea25"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_301.png",
+              "sha256": "5dc419e4c1f38c0f1df7d20d4aa6cbbed82f1972ee0e7df0c199f656d270906b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_302.png",
+              "sha256": "6d6443d5b5b49d518535505b48f0bfb5889401edccfaadd62d22d39615603fa8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+              "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+              "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_304.png",
+              "sha256": "6308cd004ee4887013780b36400fe2166d9982d8eb246cfec16bd761f37a0809"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_305.png",
+              "sha256": "27ce42bb7188ccfa681bc72de63639661d317c8d9c43c5e61e5103ef5ebf8e7b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_306.png",
+              "sha256": "97e289bfb0709c956731f08b41f57cee800ac933500543896c05bf311815a106"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_307.png",
+              "sha256": "ed79808178196950d431813429907a4c2259f4faeb5ff52ff1b854f7abc0bc05"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_308.png",
+              "sha256": "a31613ac9acb8921898f3f8bf2d586dcd82c284be376d486321b00111e812842"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_309.png",
+              "sha256": "42bb8023c3369eade4bb9ca22fc3d0179348d49a03252f2c76b6a4a38a76e91c"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页295-298与答案解析页298-302：发布题干、选项、解析忠实，原书答案与发布一致。",
+          "source_hash": "a8843b2e7c6098b86ea79f30f37446994aa53ec9c1fcdd6cdb2df7af04b9269e"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-net::应用层 · 万维网 · 选择题::X02": {
       "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X02",
@@ -125907,13 +125965,10 @@
       "chapter": "应用层 · 万维网 · 选择题",
       "question_id": "X03",
       "source_hash": "a3ce04be39561f8bd2e7a0bd12216abdf2fed29db06630ed0b83ce3f5a3338a9",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         300,
         301,
@@ -125931,7 +125986,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T02:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -125954,10 +126009,72 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X03",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T02:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_300.png",
+              "sha256": "6303b116ee6d0fea63a19cc126faf5b56bd1dd199a2b8cec65c955a0baceea25"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_301.png",
+              "sha256": "5dc419e4c1f38c0f1df7d20d4aa6cbbed82f1972ee0e7df0c199f656d270906b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_302.png",
+              "sha256": "6d6443d5b5b49d518535505b48f0bfb5889401edccfaadd62d22d39615603fa8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+              "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+              "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_304.png",
+              "sha256": "6308cd004ee4887013780b36400fe2166d9982d8eb246cfec16bd761f37a0809"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_305.png",
+              "sha256": "27ce42bb7188ccfa681bc72de63639661d317c8d9c43c5e61e5103ef5ebf8e7b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_306.png",
+              "sha256": "97e289bfb0709c956731f08b41f57cee800ac933500543896c05bf311815a106"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_307.png",
+              "sha256": "ed79808178196950d431813429907a4c2259f4faeb5ff52ff1b854f7abc0bc05"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_308.png",
+              "sha256": "a31613ac9acb8921898f3f8bf2d586dcd82c284be376d486321b00111e812842"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_309.png",
+              "sha256": "42bb8023c3369eade4bb9ca22fc3d0179348d49a03252f2c76b6a4a38a76e91c"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页295-298与答案解析页298-302：发布题干、选项、解析忠实，原书答案与发布一致。",
+          "source_hash": "a3ce04be39561f8bd2e7a0bd12216abdf2fed29db06630ed0b83ce3f5a3338a9"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-net::应用层 · 万维网 · 选择题::X04": {
       "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X04",
@@ -125965,14 +126082,10 @@
       "chapter": "应用层 · 万维网 · 选择题",
       "question_id": "X04",
       "source_hash": "1ef6c6bbc41b492e465c13958fa7f526f22ef1b8434086e4c654cd0139278d0c",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         300,
         301,
@@ -125990,7 +126103,7 @@
       ],
       "has_image": false,
       "answer_choice": "CC",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T02:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -126028,10 +126141,72 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X04",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T02:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_300.png",
+              "sha256": "6303b116ee6d0fea63a19cc126faf5b56bd1dd199a2b8cec65c955a0baceea25"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_301.png",
+              "sha256": "5dc419e4c1f38c0f1df7d20d4aa6cbbed82f1972ee0e7df0c199f656d270906b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_302.png",
+              "sha256": "6d6443d5b5b49d518535505b48f0bfb5889401edccfaadd62d22d39615603fa8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+              "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+              "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_304.png",
+              "sha256": "6308cd004ee4887013780b36400fe2166d9982d8eb246cfec16bd761f37a0809"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_305.png",
+              "sha256": "27ce42bb7188ccfa681bc72de63639661d317c8d9c43c5e61e5103ef5ebf8e7b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_306.png",
+              "sha256": "97e289bfb0709c956731f08b41f57cee800ac933500543896c05bf311815a106"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_307.png",
+              "sha256": "ed79808178196950d431813429907a4c2259f4faeb5ff52ff1b854f7abc0bc05"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_308.png",
+              "sha256": "a31613ac9acb8921898f3f8bf2d586dcd82c284be376d486321b00111e812842"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_309.png",
+              "sha256": "42bb8023c3369eade4bb9ca22fc3d0179348d49a03252f2c76b6a4a38a76e91c"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页295-298与答案解析页298-302：发布题干、选项、解析忠实，原书答案与发布一致。",
+          "source_hash": "1ef6c6bbc41b492e465c13958fa7f526f22ef1b8434086e4c654cd0139278d0c"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-net::应用层 · 万维网 · 选择题::X05": {
       "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X05",
@@ -126187,13 +126362,10 @@
       "chapter": "应用层 · 万维网 · 选择题",
       "question_id": "X07",
       "source_hash": "a04ba304ffe1b8f13702d9d4424035a6fd6ca78e28ff0fae335b04c528c39932",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         300,
         301,
@@ -126211,7 +126383,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T02:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -126249,10 +126421,72 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X07",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T02:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_300.png",
+              "sha256": "6303b116ee6d0fea63a19cc126faf5b56bd1dd199a2b8cec65c955a0baceea25"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_301.png",
+              "sha256": "5dc419e4c1f38c0f1df7d20d4aa6cbbed82f1972ee0e7df0c199f656d270906b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_302.png",
+              "sha256": "6d6443d5b5b49d518535505b48f0bfb5889401edccfaadd62d22d39615603fa8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+              "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+              "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_304.png",
+              "sha256": "6308cd004ee4887013780b36400fe2166d9982d8eb246cfec16bd761f37a0809"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_305.png",
+              "sha256": "27ce42bb7188ccfa681bc72de63639661d317c8d9c43c5e61e5103ef5ebf8e7b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_306.png",
+              "sha256": "97e289bfb0709c956731f08b41f57cee800ac933500543896c05bf311815a106"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_307.png",
+              "sha256": "ed79808178196950d431813429907a4c2259f4faeb5ff52ff1b854f7abc0bc05"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_308.png",
+              "sha256": "a31613ac9acb8921898f3f8bf2d586dcd82c284be376d486321b00111e812842"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_309.png",
+              "sha256": "42bb8023c3369eade4bb9ca22fc3d0179348d49a03252f2c76b6a4a38a76e91c"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页295-298与答案解析页298-302：发布题干、选项、解析忠实，原书答案与发布一致。",
+          "source_hash": "a04ba304ffe1b8f13702d9d4424035a6fd6ca78e28ff0fae335b04c528c39932"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-net::应用层 · 万维网 · 选择题::X08": {
       "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X08",
@@ -126260,14 +126494,10 @@
       "chapter": "应用层 · 万维网 · 选择题",
       "question_id": "X08",
       "source_hash": "c4469bff34c28235e8959b20daeebf97d89f34d41981a875f6d5373c86522874",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         300,
         301,
@@ -126285,7 +126515,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T02:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -126323,10 +126553,72 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "legacy_hold_recheck;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X08",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T02:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_300.png",
+              "sha256": "6303b116ee6d0fea63a19cc126faf5b56bd1dd199a2b8cec65c955a0baceea25"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_301.png",
+              "sha256": "5dc419e4c1f38c0f1df7d20d4aa6cbbed82f1972ee0e7df0c199f656d270906b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_302.png",
+              "sha256": "6d6443d5b5b49d518535505b48f0bfb5889401edccfaadd62d22d39615603fa8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+              "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+              "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_304.png",
+              "sha256": "6308cd004ee4887013780b36400fe2166d9982d8eb246cfec16bd761f37a0809"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_305.png",
+              "sha256": "27ce42bb7188ccfa681bc72de63639661d317c8d9c43c5e61e5103ef5ebf8e7b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_306.png",
+              "sha256": "97e289bfb0709c956731f08b41f57cee800ac933500543896c05bf311815a106"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_307.png",
+              "sha256": "ed79808178196950d431813429907a4c2259f4faeb5ff52ff1b854f7abc0bc05"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_308.png",
+              "sha256": "a31613ac9acb8921898f3f8bf2d586dcd82c284be376d486321b00111e812842"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_309.png",
+              "sha256": "42bb8023c3369eade4bb9ca22fc3d0179348d49a03252f2c76b6a4a38a76e91c"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页295-298与答案解析页298-302：发布题干、选项、解析忠实，原书答案与发布一致。",
+          "source_hash": "c4469bff34c28235e8959b20daeebf97d89f34d41981a875f6d5373c86522874"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-net::应用层 · 万维网 · 选择题::X09": {
       "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X09",
@@ -126334,13 +126626,10 @@
       "chapter": "应用层 · 万维网 · 选择题",
       "question_id": "X09",
       "source_hash": "f0cf655ef667795775b6ed9575baa7339ad215c737d551ece3fd9a50a4cf0af5",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         300,
         301,
@@ -126358,7 +126647,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T02:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -126396,10 +126685,72 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X09",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T02:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_300.png",
+              "sha256": "6303b116ee6d0fea63a19cc126faf5b56bd1dd199a2b8cec65c955a0baceea25"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_301.png",
+              "sha256": "5dc419e4c1f38c0f1df7d20d4aa6cbbed82f1972ee0e7df0c199f656d270906b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_302.png",
+              "sha256": "6d6443d5b5b49d518535505b48f0bfb5889401edccfaadd62d22d39615603fa8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+              "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+              "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_304.png",
+              "sha256": "6308cd004ee4887013780b36400fe2166d9982d8eb246cfec16bd761f37a0809"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_305.png",
+              "sha256": "27ce42bb7188ccfa681bc72de63639661d317c8d9c43c5e61e5103ef5ebf8e7b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_306.png",
+              "sha256": "97e289bfb0709c956731f08b41f57cee800ac933500543896c05bf311815a106"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_307.png",
+              "sha256": "ed79808178196950d431813429907a4c2259f4faeb5ff52ff1b854f7abc0bc05"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_308.png",
+              "sha256": "a31613ac9acb8921898f3f8bf2d586dcd82c284be376d486321b00111e812842"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_309.png",
+              "sha256": "42bb8023c3369eade4bb9ca22fc3d0179348d49a03252f2c76b6a4a38a76e91c"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页295-298与答案解析页298-302：发布题干、选项、解析忠实，原书答案与发布一致。",
+          "source_hash": "f0cf655ef667795775b6ed9575baa7339ad215c737d551ece3fd9a50a4cf0af5"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-net::应用层 · 万维网 · 选择题::X10": {
       "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X10",
@@ -126407,13 +126758,10 @@
       "chapter": "应用层 · 万维网 · 选择题",
       "question_id": "X10",
       "source_hash": "618e4f70cdfd6f262d0f28e3d23d1432b891243dca0d7ed87a7bc4e514e7b1f2",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         300,
         301,
@@ -126431,7 +126779,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T02:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -126469,10 +126817,72 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X10",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T02:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_300.png",
+              "sha256": "6303b116ee6d0fea63a19cc126faf5b56bd1dd199a2b8cec65c955a0baceea25"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_301.png",
+              "sha256": "5dc419e4c1f38c0f1df7d20d4aa6cbbed82f1972ee0e7df0c199f656d270906b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_302.png",
+              "sha256": "6d6443d5b5b49d518535505b48f0bfb5889401edccfaadd62d22d39615603fa8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+              "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+              "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_304.png",
+              "sha256": "6308cd004ee4887013780b36400fe2166d9982d8eb246cfec16bd761f37a0809"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_305.png",
+              "sha256": "27ce42bb7188ccfa681bc72de63639661d317c8d9c43c5e61e5103ef5ebf8e7b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_306.png",
+              "sha256": "97e289bfb0709c956731f08b41f57cee800ac933500543896c05bf311815a106"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_307.png",
+              "sha256": "ed79808178196950d431813429907a4c2259f4faeb5ff52ff1b854f7abc0bc05"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_308.png",
+              "sha256": "a31613ac9acb8921898f3f8bf2d586dcd82c284be376d486321b00111e812842"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_309.png",
+              "sha256": "42bb8023c3369eade4bb9ca22fc3d0179348d49a03252f2c76b6a4a38a76e91c"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页295-298与答案解析页298-302：发布题干、选项、解析忠实，原书答案与发布一致。",
+          "source_hash": "618e4f70cdfd6f262d0f28e3d23d1432b891243dca0d7ed87a7bc4e514e7b1f2"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-net::应用层 · 万维网 · 选择题::X11": {
       "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X11",
@@ -126537,13 +126947,10 @@
       "chapter": "应用层 · 万维网 · 选择题",
       "question_id": "X12",
       "source_hash": "bfcaa68703429c8df9afd0b8d5c999f66ce250237109c99ef7aba10b44386f34",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         300,
         301,
@@ -126561,7 +126968,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T02:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -126599,10 +127006,72 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X12",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T02:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_300.png",
+              "sha256": "6303b116ee6d0fea63a19cc126faf5b56bd1dd199a2b8cec65c955a0baceea25"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_301.png",
+              "sha256": "5dc419e4c1f38c0f1df7d20d4aa6cbbed82f1972ee0e7df0c199f656d270906b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_302.png",
+              "sha256": "6d6443d5b5b49d518535505b48f0bfb5889401edccfaadd62d22d39615603fa8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+              "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+              "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_304.png",
+              "sha256": "6308cd004ee4887013780b36400fe2166d9982d8eb246cfec16bd761f37a0809"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_305.png",
+              "sha256": "27ce42bb7188ccfa681bc72de63639661d317c8d9c43c5e61e5103ef5ebf8e7b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_306.png",
+              "sha256": "97e289bfb0709c956731f08b41f57cee800ac933500543896c05bf311815a106"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_307.png",
+              "sha256": "ed79808178196950d431813429907a4c2259f4faeb5ff52ff1b854f7abc0bc05"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_308.png",
+              "sha256": "a31613ac9acb8921898f3f8bf2d586dcd82c284be376d486321b00111e812842"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_309.png",
+              "sha256": "42bb8023c3369eade4bb9ca22fc3d0179348d49a03252f2c76b6a4a38a76e91c"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页295-298与答案解析页298-302：发布题干、选项、解析忠实，原书答案与发布一致。",
+          "source_hash": "bfcaa68703429c8df9afd0b8d5c999f66ce250237109c99ef7aba10b44386f34"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-net::应用层 · 万维网 · 选择题::X13": {
       "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X13",
@@ -126739,15 +127208,10 @@
       "chapter": "应用层 · 万维网 · 选择题",
       "question_id": "X15",
       "source_hash": "57a57a492238cdca7ba53a8665d367e28c8f16abfbed1709226d50675ebbffa8",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         300,
         301,
@@ -126765,7 +127229,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T02:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -126803,10 +127267,72 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X15",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T02:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_300.png",
+              "sha256": "6303b116ee6d0fea63a19cc126faf5b56bd1dd199a2b8cec65c955a0baceea25"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_301.png",
+              "sha256": "5dc419e4c1f38c0f1df7d20d4aa6cbbed82f1972ee0e7df0c199f656d270906b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_302.png",
+              "sha256": "6d6443d5b5b49d518535505b48f0bfb5889401edccfaadd62d22d39615603fa8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+              "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+              "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_304.png",
+              "sha256": "6308cd004ee4887013780b36400fe2166d9982d8eb246cfec16bd761f37a0809"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_305.png",
+              "sha256": "27ce42bb7188ccfa681bc72de63639661d317c8d9c43c5e61e5103ef5ebf8e7b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_306.png",
+              "sha256": "97e289bfb0709c956731f08b41f57cee800ac933500543896c05bf311815a106"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_307.png",
+              "sha256": "ed79808178196950d431813429907a4c2259f4faeb5ff52ff1b854f7abc0bc05"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_308.png",
+              "sha256": "a31613ac9acb8921898f3f8bf2d586dcd82c284be376d486321b00111e812842"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_309.png",
+              "sha256": "42bb8023c3369eade4bb9ca22fc3d0179348d49a03252f2c76b6a4a38a76e91c"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页295-298与答案解析页298-302：发布题干、选项、解析忠实，原书答案与发布一致。",
+          "source_hash": "57a57a492238cdca7ba53a8665d367e28c8f16abfbed1709226d50675ebbffa8"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-net::应用层 · 万维网 · 选择题::X16": {
       "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X16",
@@ -126814,13 +127340,10 @@
       "chapter": "应用层 · 万维网 · 选择题",
       "question_id": "X16",
       "source_hash": "a62ebc260d2bd6c9c0abc9cca22b54b4229e95ddd61858195ff463d2c4bdaa2e",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         300,
         301,
@@ -126838,7 +127361,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T02:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -126876,10 +127399,72 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X16",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T02:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_300.png",
+              "sha256": "6303b116ee6d0fea63a19cc126faf5b56bd1dd199a2b8cec65c955a0baceea25"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_301.png",
+              "sha256": "5dc419e4c1f38c0f1df7d20d4aa6cbbed82f1972ee0e7df0c199f656d270906b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_302.png",
+              "sha256": "6d6443d5b5b49d518535505b48f0bfb5889401edccfaadd62d22d39615603fa8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+              "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+              "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_304.png",
+              "sha256": "6308cd004ee4887013780b36400fe2166d9982d8eb246cfec16bd761f37a0809"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_305.png",
+              "sha256": "27ce42bb7188ccfa681bc72de63639661d317c8d9c43c5e61e5103ef5ebf8e7b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_306.png",
+              "sha256": "97e289bfb0709c956731f08b41f57cee800ac933500543896c05bf311815a106"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_307.png",
+              "sha256": "ed79808178196950d431813429907a4c2259f4faeb5ff52ff1b854f7abc0bc05"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_308.png",
+              "sha256": "a31613ac9acb8921898f3f8bf2d586dcd82c284be376d486321b00111e812842"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_309.png",
+              "sha256": "42bb8023c3369eade4bb9ca22fc3d0179348d49a03252f2c76b6a4a38a76e91c"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页295-298与答案解析页298-302：发布题干、选项、解析忠实，原书答案与发布一致。",
+          "source_hash": "a62ebc260d2bd6c9c0abc9cca22b54b4229e95ddd61858195ff463d2c4bdaa2e"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-net::应用层 · 万维网 · 选择题::X17": {
       "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X17",
