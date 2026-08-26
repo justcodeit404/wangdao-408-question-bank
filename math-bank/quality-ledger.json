@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-26T17:10:25+00:00",
+  "generated_at": "2026-08-26T17:18:01+00:00",
   "published_hashes": {
     "ds": "a40686840e5043561d7f7159fbd779725ffa65c56bfdd79a2683965b6aed0771",
-    "coa": "df240ac6d3f026f1dfede25644fe32d7f4196c1a459c8ecdf97a654a4d6160ae",
-    "net": "458ab81f680a262af652ad396c4d5183c5f9fd4171691b23b9d94639f0ef1534",
+    "coa": "54b38d71d77a53cf20212e7e838c472fd7acf7584272bc4348f66c9317da395b",
+    "net": "0fc4432f9af3214d9d5628799a687af65394f1f32fd0f87deb86500c484ba17a",
     "os": "a43ca9d4375b7cd96ca2c0d5d024b6d51904bb50fa6525ee1a8eb55ff81161fe"
   },
   "courses": {
@@ -12,8 +12,8 @@
       "name": "数据结构",
       "mode": "progressive",
       "total": 797,
-      "certified": 96,
-      "pending": 1,
+      "certified": 97,
+      "pending": 0,
       "held": 700
     },
     "coa": {
@@ -29,8 +29,8 @@
       "mode": "progressive",
       "total": 639,
       "certified": 90,
-      "pending": 0,
-      "held": 549
+      "pending": 1,
+      "held": 548
     },
     "os": {
       "name": "操作系统",
@@ -43,9 +43,9 @@
   },
   "summary": {
     "total": 2869,
-    "certified": 426,
+    "certified": 427,
     "pending": 1,
-    "held": 2442
+    "held": 2441
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -30282,7 +30282,7 @@
       "course_key": "coa",
       "chapter": "指令系统 · 程序的机器级代码表示 · 选择题",
       "question_id": "X07",
-      "source_hash": "d799b38dc8f06b2aa82e1112f3c4e34edc7a917adc1dd36f5d34e1adb34b368f",
+      "source_hash": "d160f29b6bca2a6e2956609754325790ff318e73eefb3f09439fde0d6f16f5aa",
       "source_fidelity": "pending",
       "answer_validation": "pending",
       "overall": "pending",
@@ -64416,27 +64416,48 @@
           "reviewed_at": "2026-08-26T17:10:24.941076+00:00",
           "q_pages_viewed": [
             {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_373.png",
-              "sha256": "eba025a6d79058ce65c0cf68b8f9a105f24b9dc226efebe7254614f91169dfa3"
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_372.png",
+              "sha256": "bf3c5ebc20192ee478de6f813b34b81715be0565db2c0c0050851036c848ae30",
+              "page": 372
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_373.png",
+              "sha256": "eba025a6d79058ce65c0cf68b8f9a105f24b9dc226efebe7254614f91169dfa3",
+              "page": 373
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_374.png",
+              "sha256": "08936bc3cf1fb35aacc5fc120b6d20f3b7ffd4573efdacfbca84d18c3b47fb51",
+              "page": 374
             }
           ],
           "a_pages_viewed": [
             {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_375.png",
-              "sha256": "d473565ae493ea2a3fd8a1105499508e02b3b29834fde24e71291f23d41d6c51"
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_375.png",
+              "sha256": "d473565ae493ea2a3fd8a1105499508e02b3b29834fde24e71291f23d41d6c51",
+              "page": 375
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_376.png",
+              "sha256": "f93091d7c35541f625879bf92ba09ca1da6c662fa8f8587db2bdb68aabae9963",
+              "page": 376
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_377.png",
+              "sha256": "904c9921e6f27a3986f69f6f14af39c338d5216f82cdad312f28314530e78c00",
+              "page": 377
             }
           ],
           "final_action": "patch",
-          "content_match": false,
-          "options_match": false,
-          "answer_match": true,
-          "explanation_match": true,
-          "image_match": true,
+          "content_match": null,
+          "options_match": null,
+          "answer_match": null,
+          "explanation_match": null,
+          "image_match": null,
           "detected_errors": [
-            "subscripts_lost",
-            "options_A_B_duplicated"
+            "persisted_page_review_patch"
           ],
-          "rationale": "原书题页373第11题含k₁/k₂下标，A-D四个排序步骤均不同；答案页375明确为11.D。已恢复下标并拆开重复选项。",
+          "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
           "post_patch_verified": true,
           "source_hash": "4390a7ba518148fd5f46bce2386a48ce69c39148b3e0ebf2df809140996ee691"
         }
@@ -107793,16 +107814,11 @@
       "course_key": "net",
       "chapter": "传输层 · TCP · 选择题",
       "question_id": "X35",
-      "source_hash": "79dd015665b9879b0cf20f93a954c3e124bf38fb345a8e6a2af91d008117007c",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "structural_check",
-        "structural_error"
-      ],
+      "source_hash": "9f57d0e690698de8a3a8c86ab50e7177059d09fe5f6af45a081576731426285a",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         251,
         252,
@@ -107832,48 +107848,41 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T00:00:00+00:00",
       "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
+        "original_page_review": {
+          "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X35",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T00:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_254.png",
+              "sha256": "940e2590d9163174e74fc30e83086616b1b949181a0507ba5e89ad9fee68e71e"
+            }
           ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_264.png",
+              "sha256": "1e4254415d3c6429454f9fcd769852171df16291bebbd6d415e1a747fefe0fab"
+            }
           ],
-          "source_hash": "79dd015665b9879b0cf20f93a954c3e124bf38fb345a8e6a2af91d008117007c",
-          "choices": [
-            "",
-            "C"
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": false,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [
+            "option_C_ocr_duplicate_of_D"
           ],
-          "confidence": [
-            0.45,
-            0.99
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "",
-            "C"
-          ],
-          "blind_confidence": [
-            0.45,
-            0.99
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;structural_check;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+          "rationale": "亲眼核对原书题页254第35题与答案页264：原书选项C为2^k、D为2k，答案明确为35.D；已将发布数据重复的C修正为2^k。",
+          "post_patch_verified": true,
+          "source_hash": "9f57d0e690698de8a3a8c86ab50e7177059d09fe5f6af45a081576731426285a"
+        }
       },
       "certification_profile": "objective_full",
-      "primary_hold_reason": "structural_error"
+      "primary_hold_reason": "strict_hold"
     },
     "408:cs408-net::传输层 · TCP · 选择题::X36": {
       "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X36",

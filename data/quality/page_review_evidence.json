@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "protocol": "codex-original-page-review-v1",
-  "updated_at": "2026-08-26T17:10:25.426748+00:00",
+  "updated_at": "2026-08-26T17:18:00.549396+00:00",
   "records": [
     {
       "source_uid": "408:cs408-coa::中央处理器 · 异常和中断机制 · 选择题::X01",
@@ -860,27 +860,48 @@
       "reviewed_at": "2026-08-26T17:10:24.941076+00:00",
       "q_pages_viewed": [
         {
-          "path": "apps/bank-408/assets/pdf_images/ds/page_373.png",
-          "sha256": "eba025a6d79058ce65c0cf68b8f9a105f24b9dc226efebe7254614f91169dfa3"
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_372.png",
+          "sha256": "bf3c5ebc20192ee478de6f813b34b81715be0565db2c0c0050851036c848ae30",
+          "page": 372
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_373.png",
+          "sha256": "eba025a6d79058ce65c0cf68b8f9a105f24b9dc226efebe7254614f91169dfa3",
+          "page": 373
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_374.png",
+          "sha256": "08936bc3cf1fb35aacc5fc120b6d20f3b7ffd4573efdacfbca84d18c3b47fb51",
+          "page": 374
         }
       ],
       "a_pages_viewed": [
         {
-          "path": "apps/bank-408/assets/pdf_images/ds/page_375.png",
-          "sha256": "d473565ae493ea2a3fd8a1105499508e02b3b29834fde24e71291f23d41d6c51"
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_375.png",
+          "sha256": "d473565ae493ea2a3fd8a1105499508e02b3b29834fde24e71291f23d41d6c51",
+          "page": 375
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_376.png",
+          "sha256": "f93091d7c35541f625879bf92ba09ca1da6c662fa8f8587db2bdb68aabae9963",
+          "page": 376
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_377.png",
+          "sha256": "904c9921e6f27a3986f69f6f14af39c338d5216f82cdad312f28314530e78c00",
+          "page": 377
         }
       ],
       "final_action": "patch",
-      "content_match": false,
-      "options_match": false,
-      "answer_match": true,
-      "explanation_match": true,
-      "image_match": true,
+      "content_match": null,
+      "options_match": null,
+      "answer_match": null,
+      "explanation_match": null,
+      "image_match": null,
       "detected_errors": [
-        "subscripts_lost",
-        "options_A_B_duplicated"
+        "persisted_page_review_patch"
       ],
-      "rationale": "原书题页373第11题含k₁/k₂下标，A-D四个排序步骤均不同；答案页375明确为11.D。已恢复下标并拆开重复选项。",
+      "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
       "post_patch_verified": true,
       "source_hash": "4390a7ba518148fd5f46bce2386a48ce69c39148b3e0ebf2df809140996ee691"
     },
@@ -1755,6 +1776,117 @@
       "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
       "post_patch_verified": true,
       "source_hash": "ee7c4d3a21015d5b2452d8e8c2817e22f538d0e4eb96255a790f5070a8501170"
+    },
+    {
+      "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X18",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T17:12:37.424231+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_252.png",
+          "sha256": "7264434b1c057d7f5cac6e1368cb52c34d73eb37c8ae6d28824d12dc12afd289"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_262.png",
+          "sha256": "20cac070f923edbb6a7ebabce0f1c3c30b1c4657737fb802068f4e2b6ec975ee"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": true,
+      "options_match": false,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [
+        "multi_blank_two_answers_not_representable",
+        "options_split_from_stem"
+      ],
+      "rationale": "原书题页252第18题含两个独立空格①/②，各自A-D选项；答案页262明确为18.A、C。当前单一A-D选项和choice无法无损表达，继续hold。"
+    },
+    {
+      "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X35",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T00:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_254.png",
+          "sha256": "940e2590d9163174e74fc30e83086616b1b949181a0507ba5e89ad9fee68e71e"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_264.png",
+          "sha256": "1e4254415d3c6429454f9fcd769852171df16291bebbd6d415e1a747fefe0fab"
+        }
+      ],
+      "final_action": "patch",
+      "content_match": true,
+      "options_match": false,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [
+        "option_C_ocr_duplicate_of_D"
+      ],
+      "rationale": "亲眼核对原书题页254第35题与答案页264：原书选项C为2^k、D为2k，答案明确为35.D；已将发布数据重复的C修正为2^k。",
+      "post_patch_verified": true,
+      "source_hash": "9f57d0e690698de8a3a8c86ab50e7177059d09fe5f6af45a081576731426285a"
+    },
+    {
+      "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X35",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "migrated:page_review_patches.json",
+      "q_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_251.png",
+          "sha256": "58760bc03db358eb21c8a26b430a86577670963fa1f65ff738e27bddf448b5a1",
+          "page": 251
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_252.png",
+          "sha256": "7264434b1c057d7f5cac6e1368cb52c34d73eb37c8ae6d28824d12dc12afd289",
+          "page": 252
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_253.png",
+          "sha256": "005abd6eb02a0a0444d39a7e265163af56b5eff7f5222041d72525f8f2718790",
+          "page": 253
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_261.png",
+          "sha256": "7f7fd639b75d687e2e0287cacbd9fe4e925946754156262cc48a32e1b8056838",
+          "page": 261
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_262.png",
+          "sha256": "20cac070f923edbb6a7ebabce0f1c3c30b1c4657737fb802068f4e2b6ec975ee",
+          "page": 262
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_263.png",
+          "sha256": "bb83c5e9ce7ea8062736f0c041495507ddcc7d32825606bf6b7994b9120d874f",
+          "page": 263
+        }
+      ],
+      "final_action": "patch",
+      "content_match": null,
+      "options_match": null,
+      "answer_match": null,
+      "explanation_match": null,
+      "image_match": null,
+      "detected_errors": [
+        "persisted_page_review_patch"
+      ],
+      "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
+      "post_patch_verified": true,
+      "source_hash": "9f57d0e690698de8a3a8c86ab50e7177059d09fe5f6af45a081576731426285a"
     },
     {
       "source_uid": "408:cs408-net::数据链路层 · 流量控制与可靠传输机制 · 选择题::X17",
