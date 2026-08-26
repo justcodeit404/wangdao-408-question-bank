@@ -26,6 +26,7 @@ LEDGER_PATH = MATH_BANK_DIR / "quality-ledger.json"
 HOLD_PATH = MATH_BANK_DIR / "quality-hold.json"
 VERIFICATION_PATH = MATH_BANK_DIR / "quality-verification.json"
 LEDGER_JS_PATH = MATH_BANK_DIR / "quality-ledger.js"
+PAGE_REVIEW_EVIDENCE_PATH = Path(__file__).resolve().parents[1] / "data" / "quality" / "page_review_evidence.json"
 
 TERMINAL_SOURCE = {"verified", "conflict"}
 TERMINAL_ANSWER = {"verified", "conflict"}
@@ -137,6 +138,27 @@ def _old_verified_records() -> dict[str, Mapping[str, Any]]:
             for row in state.get("last_records") or []:
                 if isinstance(row, Mapping) and row.get("source_uid"):
                     records[str(row["source_uid"])] = row
+    # 原书逐页复核是当前正式的人工视觉证据。把已完成的 certify/patch
+    # 记录纳入迁移索引，重建 ledger 时仍按题目 source_hash 严格匹配；
+    # 这样重新运行 quality_ledger 不会把人工认证回退成历史 OCR 冲突。
+    page_review = _load_json(PAGE_REVIEW_EVIDENCE_PATH, {})
+    for row in (page_review.get("records") or []) if isinstance(page_review, Mapping) else []:
+        if not isinstance(row, Mapping) or not row.get("source_uid"):
+            continue
+        action = str(row.get("final_action") or "").lower()
+        if action not in {"certify", "patch"}:
+            continue
+        if action == "patch" and row.get("post_patch_verified") is not True:
+            continue
+        if not row.get("source_hash") or not row.get("q_pages_viewed") or not row.get("a_pages_viewed"):
+            continue
+        records[str(row["source_uid"])] = {
+            "source_uid": str(row["source_uid"]),
+            "status": "verified",
+            "verified_hash": str(row["source_hash"]),
+            "source_hash": str(row["source_hash"]),
+            "page_review": dict(row),
+        }
     return records
 
 

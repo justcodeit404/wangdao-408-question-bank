@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "protocol": "codex-original-page-review-v1",
-  "updated_at": "2026-08-26T17:30:06.204675+00:00",
+  "updated_at": "2026-08-26T17:48:53.363307+00:00",
   "records": [
     {
       "source_uid": "408:cs408-coa::中央处理器 · 异常和中断机制 · 选择题::X01",
@@ -1162,34 +1162,48 @@
       "reviewed_at": "2026-08-27T01:00:00+00:00",
       "q_pages_viewed": [
         {
-          "path": "apps/bank-408/assets/pdf_images/coa/page_018.png",
-          "sha256": "7fff70c91f13a62c7297ab96b322adbbfda656990aaf79529dc0f73b51585880"
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_018.png",
+          "sha256": "7fff70c91f13a62c7297ab96b322adbbfda656990aaf79529dc0f73b51585880",
+          "page": 18
         },
         {
-          "path": "apps/bank-408/assets/pdf_images/coa/page_019.png",
-          "sha256": "e4238e7a6f569be712b081cdb65c13328dae5121229cfdf831a397ff7269788b"
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_019.png",
+          "sha256": "e4238e7a6f569be712b081cdb65c13328dae5121229cfdf831a397ff7269788b",
+          "page": 19
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_020.png",
+          "sha256": "3ffd8cbed34a59bcdf2bd24de95094f19b7a213ce1ac02f33f635b7ef4d7152d",
+          "page": 20
         }
       ],
       "a_pages_viewed": [
         {
-          "path": "apps/bank-408/assets/pdf_images/coa/page_020.png",
-          "sha256": "3ffd8cbed34a59bcdf2bd24de95094f19b7a213ce1ac02f33f635b7ef4d7152d"
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_020.png",
+          "sha256": "3ffd8cbed34a59bcdf2bd24de95094f19b7a213ce1ac02f33f635b7ef4d7152d",
+          "page": 20
         },
         {
-          "path": "apps/bank-408/assets/pdf_images/coa/page_021.png",
-          "sha256": "8423d78e60b2ee46b9ea6195c0fe3b84057290346a87fa6ab5a70ab89f3cfd0c"
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_021.png",
+          "sha256": "8423d78e60b2ee46b9ea6195c0fe3b84057290346a87fa6ab5a70ab89f3cfd0c",
+          "page": 21
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_022.png",
+          "sha256": "8a2e6dc4cbfe8a2207cd958d48d871e2f9a94260a8ee3fe0fbff72f0957e2ebe",
+          "page": 22
         }
       ],
       "final_action": "patch",
-      "content_match": true,
-      "options_match": true,
-      "answer_match": true,
-      "explanation_match": false,
-      "image_match": true,
+      "content_match": null,
+      "options_match": null,
+      "answer_match": null,
+      "explanation_match": null,
+      "image_match": null,
       "detected_errors": [
-        "explanation_ocr_corruption"
+        "persisted_page_review_patch"
       ],
-      "rationale": "亲眼核对原书题页18-19及答案页20-21，题干、选项和答案与发布内容一致；解析中M1/M2等文字已按原书恢复。",
+      "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
       "post_patch_verified": true,
       "source_hash": "15ebb6f4e1e8c414b32ad0b05389d19fb1feb03d031f88bf0e30631336246531"
     },
@@ -3394,6 +3408,318 @@
         "multi_blank_four_answers_not_representable"
       ],
       "rationale": "原书题页14第06题为四个独立空格，答案页17明确为06.A、A、A、C；当前单一choice字段无法无损表达，继续hold。"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 内存管理概念 · 选择题::X14",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T01:30:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_196.png",
+          "sha256": "e413c678744bd28ce4d7dc182bc16319491dc55e8207a12610395558c7bc5e12",
+          "page": 196
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_197.png",
+          "sha256": "62e29796ce8a472c5ce9c14f0532011cc194885d594398b15f637afe825a3951",
+          "page": 197
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_198.png",
+          "sha256": "044526bca5c891a74fdac3a82deda5879b6379dec02d8e7ff525004a171cfdfc",
+          "page": 198
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_205.png",
+          "sha256": "2a323b69bcc0ba2720758f28e96df0c2918ef771b654e83501b5346417011951",
+          "page": 205
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_206.png",
+          "sha256": "0143c0ab08bf6413a7c103e1645e695b0cc3bd5589be72881f2b8a63b241708a",
+          "page": 206
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_207.png",
+          "sha256": "e7a8197f22507d03f6874ddb31b6b669a4dc464fad398a71c31cadcece5d9efd",
+          "page": 207
+        }
+      ],
+      "final_action": "patch",
+      "content_match": null,
+      "options_match": null,
+      "answer_match": null,
+      "explanation_match": null,
+      "image_match": null,
+      "detected_errors": [
+        "persisted_page_review_patch"
+      ],
+      "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
+      "post_patch_verified": true,
+      "source_hash": "2105497869d388f568be914945a2bbdc7621003b009a05fe757e25d054cdf8b6"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 内存管理概念 · 选择题::X14",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "migrated:page_review_patches.json",
+      "q_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_196.png",
+          "sha256": "e413c678744bd28ce4d7dc182bc16319491dc55e8207a12610395558c7bc5e12",
+          "page": 196
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_197.png",
+          "sha256": "62e29796ce8a472c5ce9c14f0532011cc194885d594398b15f637afe825a3951",
+          "page": 197
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_198.png",
+          "sha256": "044526bca5c891a74fdac3a82deda5879b6379dec02d8e7ff525004a171cfdfc",
+          "page": 198
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_205.png",
+          "sha256": "2a323b69bcc0ba2720758f28e96df0c2918ef771b654e83501b5346417011951",
+          "page": 205
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_206.png",
+          "sha256": "0143c0ab08bf6413a7c103e1645e695b0cc3bd5589be72881f2b8a63b241708a",
+          "page": 206
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_207.png",
+          "sha256": "e7a8197f22507d03f6874ddb31b6b669a4dc464fad398a71c31cadcece5d9efd",
+          "page": 207
+        }
+      ],
+      "final_action": "patch",
+      "content_match": null,
+      "options_match": null,
+      "answer_match": null,
+      "explanation_match": null,
+      "image_match": null,
+      "detected_errors": [
+        "persisted_page_review_patch"
+      ],
+      "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
+      "post_patch_verified": true,
+      "source_hash": "57ddd1129c8dd742d9d3ad644957c4636c874fbcc5a93991554595a0394d1d31"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 内存管理概念 · 选择题::X58",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T01:30:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_196.png",
+          "sha256": "e413c678744bd28ce4d7dc182bc16319491dc55e8207a12610395558c7bc5e12",
+          "page": 196
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_197.png",
+          "sha256": "62e29796ce8a472c5ce9c14f0532011cc194885d594398b15f637afe825a3951",
+          "page": 197
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_198.png",
+          "sha256": "044526bca5c891a74fdac3a82deda5879b6379dec02d8e7ff525004a171cfdfc",
+          "page": 198
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_205.png",
+          "sha256": "2a323b69bcc0ba2720758f28e96df0c2918ef771b654e83501b5346417011951",
+          "page": 205
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_206.png",
+          "sha256": "0143c0ab08bf6413a7c103e1645e695b0cc3bd5589be72881f2b8a63b241708a",
+          "page": 206
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_207.png",
+          "sha256": "e7a8197f22507d03f6874ddb31b6b669a4dc464fad398a71c31cadcece5d9efd",
+          "page": 207
+        }
+      ],
+      "final_action": "patch",
+      "content_match": null,
+      "options_match": null,
+      "answer_match": null,
+      "explanation_match": null,
+      "image_match": null,
+      "detected_errors": [
+        "persisted_page_review_patch"
+      ],
+      "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
+      "post_patch_verified": true,
+      "source_hash": "905d97036f838104d11439e2c1799a0e2b473de732c525d0a38c6df642e43b1c"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 内存管理概念 · 选择题::X58",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "migrated:page_review_patches.json",
+      "q_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_196.png",
+          "sha256": "e413c678744bd28ce4d7dc182bc16319491dc55e8207a12610395558c7bc5e12",
+          "page": 196
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_197.png",
+          "sha256": "62e29796ce8a472c5ce9c14f0532011cc194885d594398b15f637afe825a3951",
+          "page": 197
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_198.png",
+          "sha256": "044526bca5c891a74fdac3a82deda5879b6379dec02d8e7ff525004a171cfdfc",
+          "page": 198
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_205.png",
+          "sha256": "2a323b69bcc0ba2720758f28e96df0c2918ef771b654e83501b5346417011951",
+          "page": 205
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_206.png",
+          "sha256": "0143c0ab08bf6413a7c103e1645e695b0cc3bd5589be72881f2b8a63b241708a",
+          "page": 206
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_207.png",
+          "sha256": "e7a8197f22507d03f6874ddb31b6b669a4dc464fad398a71c31cadcece5d9efd",
+          "page": 207
+        }
+      ],
+      "final_action": "patch",
+      "content_match": null,
+      "options_match": null,
+      "answer_match": null,
+      "explanation_match": null,
+      "image_match": null,
+      "detected_errors": [
+        "persisted_page_review_patch"
+      ],
+      "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
+      "post_patch_verified": true,
+      "source_hash": "01ea9550b4dcc8b00729665513b73492f7f056fc1a41377b2e393036a2e6aa65"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 内存管理概念 · 选择题::X60",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T01:30:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_196.png",
+          "sha256": "e413c678744bd28ce4d7dc182bc16319491dc55e8207a12610395558c7bc5e12",
+          "page": 196
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_197.png",
+          "sha256": "62e29796ce8a472c5ce9c14f0532011cc194885d594398b15f637afe825a3951",
+          "page": 197
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_198.png",
+          "sha256": "044526bca5c891a74fdac3a82deda5879b6379dec02d8e7ff525004a171cfdfc",
+          "page": 198
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_205.png",
+          "sha256": "2a323b69bcc0ba2720758f28e96df0c2918ef771b654e83501b5346417011951",
+          "page": 205
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_206.png",
+          "sha256": "0143c0ab08bf6413a7c103e1645e695b0cc3bd5589be72881f2b8a63b241708a",
+          "page": 206
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_207.png",
+          "sha256": "e7a8197f22507d03f6874ddb31b6b669a4dc464fad398a71c31cadcece5d9efd",
+          "page": 207
+        }
+      ],
+      "final_action": "patch",
+      "content_match": null,
+      "options_match": null,
+      "answer_match": null,
+      "explanation_match": null,
+      "image_match": null,
+      "detected_errors": [
+        "persisted_page_review_patch"
+      ],
+      "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
+      "post_patch_verified": true,
+      "source_hash": "a0c5e786cbe421534c0ad965ddf0cd43f55c90469f8205ab3b63dcc6174c0166"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 内存管理概念 · 选择题::X60",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "migrated:page_review_patches.json",
+      "q_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_196.png",
+          "sha256": "e413c678744bd28ce4d7dc182bc16319491dc55e8207a12610395558c7bc5e12",
+          "page": 196
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_197.png",
+          "sha256": "62e29796ce8a472c5ce9c14f0532011cc194885d594398b15f637afe825a3951",
+          "page": 197
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_198.png",
+          "sha256": "044526bca5c891a74fdac3a82deda5879b6379dec02d8e7ff525004a171cfdfc",
+          "page": 198
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_205.png",
+          "sha256": "2a323b69bcc0ba2720758f28e96df0c2918ef771b654e83501b5346417011951",
+          "page": 205
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_206.png",
+          "sha256": "0143c0ab08bf6413a7c103e1645e695b0cc3bd5589be72881f2b8a63b241708a",
+          "page": 206
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_207.png",
+          "sha256": "e7a8197f22507d03f6874ddb31b6b669a4dc464fad398a71c31cadcece5d9efd",
+          "page": 207
+        }
+      ],
+      "final_action": "patch",
+      "content_match": null,
+      "options_match": null,
+      "answer_match": null,
+      "explanation_match": null,
+      "image_match": null,
+      "detected_errors": [
+        "persisted_page_review_patch"
+      ],
+      "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
+      "post_patch_verified": true,
+      "source_hash": "39b3960d4cbc85ac0b0ceff75e9c1073feea4f03cc0627c6328894befa0a7480"
     },
     {
       "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X02",

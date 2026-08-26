@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-26T17:30:07+00:00",
+  "generated_at": "2026-08-26T17:49:18+00:00",
   "published_hashes": {
     "ds": "a40686840e5043561d7f7159fbd779725ffa65c56bfdd79a2683965b6aed0771",
-    "coa": "0026b6ebae0098be029cc00f55abc243882cd3977f91ca478f7a6b5d104756f4",
+    "coa": "377f0520ffc140c7140ebe1f8e7d28afadf3466b41dd25f855213473d42aaef8",
     "net": "0fc4432f9af3214d9d5628799a687af65394f1f32fd0f87deb86500c484ba17a",
-    "os": "a43ca9d4375b7cd96ca2c0d5d024b6d51904bb50fa6525ee1a8eb55ff81161fe"
+    "os": "91a102b999ddc4c73e2c1cf8efb16d6dfaa2845ebe2616fa8bf1896decea0056"
   },
   "courses": {
     "ds": {
       "name": "数据结构",
-      "mode": "progressive",
+      "mode": "strict",
       "total": 797,
       "certified": 97,
       "pending": 0,
@@ -20,13 +20,13 @@
       "name": "计算机组成原理",
       "mode": "strict",
       "total": 674,
-      "certified": 122,
+      "certified": 128,
       "pending": 0,
-      "held": 552
+      "held": 546
     },
     "net": {
       "name": "计算机网络",
-      "mode": "progressive",
+      "mode": "strict",
       "total": 639,
       "certified": 91,
       "pending": 0,
@@ -34,18 +34,18 @@
     },
     "os": {
       "name": "操作系统",
-      "mode": "progressive",
+      "mode": "strict",
       "total": 759,
-      "certified": 127,
+      "certified": 129,
       "pending": 0,
-      "held": 632
+      "held": 630
     }
   },
   "summary": {
     "total": 2869,
-    "certified": 443,
+    "certified": 445,
     "pending": 0,
-    "held": 2426
+    "held": 2424
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -30282,12 +30282,12 @@
       "course_key": "coa",
       "chapter": "指令系统 · 程序的机器级代码表示 · 选择题",
       "question_id": "X07",
-      "source_hash": "1870b277232e7c3bc4cac6f5c0bdb0dd2aba4f027a061d59cb5bb456e5a0af21",
+      "source_hash": "1d370508c8bbdbcdbb238b189cbb25c27bf8b7c23e7c53135e21392e55e13b88",
       "source_fidelity": "pending",
       "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "legacy_hold_recheck"
+        "strict_hold"
       ],
       "q_pages": [
         186,
@@ -30309,7 +30309,8 @@
       "answer_choice": "C",
       "verified_at": null,
       "evidence": {},
-      "certification_profile": "objective_full"
+      "certification_profile": "objective_full",
+      "primary_hold_reason": "strict_hold"
     },
     "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 选择题::X08": {
       "source_uid": "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 选择题::X08",
@@ -40284,8 +40285,7 @@
           "source_hash": "973232db4ffd7f55c4147fb4bc472f579d0d701bf570572c4f95d6b971eabc4f"
         }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X02": {
       "source_uid": "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X02",
@@ -40393,8 +40393,7 @@
           "source_hash": "179a57e135baa32136e4f15fdbf3eca739210c66a33dc587396b4e2e91e096d3"
         }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X03": {
       "source_uid": "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X03",
@@ -40436,34 +40435,48 @@
           "reviewed_at": "2026-08-27T01:00:00+00:00",
           "q_pages_viewed": [
             {
-              "path": "apps/bank-408/assets/pdf_images/coa/page_018.png",
-              "sha256": "7fff70c91f13a62c7297ab96b322adbbfda656990aaf79529dc0f73b51585880"
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_018.png",
+              "sha256": "7fff70c91f13a62c7297ab96b322adbbfda656990aaf79529dc0f73b51585880",
+              "page": 18
             },
             {
-              "path": "apps/bank-408/assets/pdf_images/coa/page_019.png",
-              "sha256": "e4238e7a6f569be712b081cdb65c13328dae5121229cfdf831a397ff7269788b"
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_019.png",
+              "sha256": "e4238e7a6f569be712b081cdb65c13328dae5121229cfdf831a397ff7269788b",
+              "page": 19
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_020.png",
+              "sha256": "3ffd8cbed34a59bcdf2bd24de95094f19b7a213ce1ac02f33f635b7ef4d7152d",
+              "page": 20
             }
           ],
           "a_pages_viewed": [
             {
-              "path": "apps/bank-408/assets/pdf_images/coa/page_020.png",
-              "sha256": "3ffd8cbed34a59bcdf2bd24de95094f19b7a213ce1ac02f33f635b7ef4d7152d"
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_020.png",
+              "sha256": "3ffd8cbed34a59bcdf2bd24de95094f19b7a213ce1ac02f33f635b7ef4d7152d",
+              "page": 20
             },
             {
-              "path": "apps/bank-408/assets/pdf_images/coa/page_021.png",
-              "sha256": "8423d78e60b2ee46b9ea6195c0fe3b84057290346a87fa6ab5a70ab89f3cfd0c"
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_021.png",
+              "sha256": "8423d78e60b2ee46b9ea6195c0fe3b84057290346a87fa6ab5a70ab89f3cfd0c",
+              "page": 21
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_022.png",
+              "sha256": "8a2e6dc4cbfe8a2207cd958d48d871e2f9a94260a8ee3fe0fbff72f0957e2ebe",
+              "page": 22
             }
           ],
           "final_action": "patch",
-          "content_match": true,
-          "options_match": true,
-          "answer_match": true,
-          "explanation_match": false,
-          "image_match": true,
+          "content_match": null,
+          "options_match": null,
+          "answer_match": null,
+          "explanation_match": null,
+          "image_match": null,
           "detected_errors": [
-            "explanation_ocr_corruption"
+            "persisted_page_review_patch"
           ],
-          "rationale": "亲眼核对原书题页18-19及答案页20-21，题干、选项和答案与发布内容一致；解析中M1/M2等文字已按原书恢复。",
+          "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
           "post_patch_verified": true,
           "source_hash": "15ebb6f4e1e8c414b32ad0b05389d19fb1feb03d031f88bf0e30631336246531"
         }
@@ -40699,8 +40712,7 @@
           "source_hash": "9235cb9d9a6469af5393ef91759fbc7d53ca80ed5ec342644efdaa58ecd010b8"
         }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X07": {
       "source_uid": "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X07",
@@ -40808,8 +40820,7 @@
           "source_hash": "fd371016630750feaa2e0640dfa60da7661acfd5c16814fd2f431ed93eefa109"
         }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X08": {
       "source_uid": "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X08",
@@ -41072,8 +41083,7 @@
           "source_hash": "b51288fe33683da83151c0f77612304276c8726ddb4a6ddf894cabc7b28274a3"
         }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X11": {
       "source_uid": "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X11",
@@ -152659,15 +152669,11 @@
       "course_key": "os",
       "chapter": "内存管理 · 内存管理概念 · 选择题",
       "question_id": "X14",
-      "source_hash": "57ddd1129c8dd742d9d3ad644957c4636c874fbcc5a93991554595a0394d1d31",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "structural_check",
-        "structural_error"
-      ],
+      "source_hash": "2105497869d388f568be914945a2bbdc7621003b009a05fe757e25d054cdf8b6",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         196,
         197,
@@ -152710,33 +152716,62 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T01:30:00+00:00",
       "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
+        "original_page_review": {
+          "source_uid": "408:cs408-os::内存管理 · 内存管理概念 · 选择题::X14",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T01:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_196.png",
+              "sha256": "e413c678744bd28ce4d7dc182bc16319491dc55e8207a12610395558c7bc5e12",
+              "page": 196
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_197.png",
+              "sha256": "62e29796ce8a472c5ce9c14f0532011cc194885d594398b15f637afe825a3951",
+              "page": 197
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_198.png",
+              "sha256": "044526bca5c891a74fdac3a82deda5879b6379dec02d8e7ff525004a171cfdfc",
+              "page": 198
+            }
           ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_205.png",
+              "sha256": "2a323b69bcc0ba2720758f28e96df0c2918ef771b654e83501b5346417011951",
+              "page": 205
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_206.png",
+              "sha256": "0143c0ab08bf6413a7c103e1645e695b0cc3bd5589be72881f2b8a63b241708a",
+              "page": 206
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_207.png",
+              "sha256": "e7a8197f22507d03f6874ddb31b6b669a4dc464fad398a71c31cadcece5d9efd",
+              "page": 207
+            }
           ],
-          "source_hash": "57ddd1129c8dd742d9d3ad644957c4636c874fbcc5a93991554595a0394d1d31",
-          "choices": [],
-          "confidence": [],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "status": "hold",
-          "reason": "stale_source_hash"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;structural_check;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+          "final_action": "patch",
+          "content_match": null,
+          "options_match": null,
+          "answer_match": null,
+          "explanation_match": null,
+          "image_match": null,
+          "detected_errors": [
+            "persisted_page_review_patch"
+          ],
+          "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
+          "post_patch_verified": true,
+          "source_hash": "2105497869d388f568be914945a2bbdc7621003b009a05fe757e25d054cdf8b6"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "structural_error"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::内存管理 · 内存管理概念 · 选择题::X15": {
       "source_uid": "408:cs408-os::内存管理 · 内存管理概念 · 选择题::X15",
@@ -156888,12 +156923,11 @@
       "course_key": "os",
       "chapter": "内存管理 · 内存管理概念 · 选择题",
       "question_id": "X58",
-      "source_hash": "01ea9550b4dcc8b00729665513b73492f7f056fc1a41377b2e393036a2e6aa65",
+      "source_hash": "905d97036f838104d11439e2c1799a0e2b473de732c525d0a38c6df642e43b1c",
       "source_fidelity": "conflict",
       "answer_validation": "conflict",
       "overall": "hold",
       "reason_codes": [
-        "luna_source_conflict",
         "structural_check",
         "structural_error"
       ],
@@ -156939,45 +156973,60 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T01:30:00+00:00",
       "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
+        "original_page_review": {
+          "source_uid": "408:cs408-os::内存管理 · 内存管理概念 · 选择题::X58",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T01:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_196.png",
+              "sha256": "e413c678744bd28ce4d7dc182bc16319491dc55e8207a12610395558c7bc5e12",
+              "page": 196
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_197.png",
+              "sha256": "62e29796ce8a472c5ce9c14f0532011cc194885d594398b15f637afe825a3951",
+              "page": 197
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_198.png",
+              "sha256": "044526bca5c891a74fdac3a82deda5879b6379dec02d8e7ff525004a171cfdfc",
+              "page": 198
+            }
           ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_205.png",
+              "sha256": "2a323b69bcc0ba2720758f28e96df0c2918ef771b654e83501b5346417011951",
+              "page": 205
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_206.png",
+              "sha256": "0143c0ab08bf6413a7c103e1645e695b0cc3bd5589be72881f2b8a63b241708a",
+              "page": 206
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_207.png",
+              "sha256": "e7a8197f22507d03f6874ddb31b6b669a4dc464fad398a71c31cadcece5d9efd",
+              "page": 207
+            }
           ],
-          "source_hash": "01ea9550b4dcc8b00729665513b73492f7f056fc1a41377b2e393036a2e6aa65",
-          "choices": [
-            "A",
-            "A"
+          "final_action": "patch",
+          "content_match": null,
+          "options_match": null,
+          "answer_match": null,
+          "explanation_match": null,
+          "image_match": null,
+          "detected_errors": [
+            "persisted_page_review_patch"
           ],
-          "confidence": [
-            0.9,
-            0.99
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "A",
-            "A"
-          ],
-          "blind_confidence": [
-            0.9,
-            0.99
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_source_conflict;structural_check;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+          "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
+          "post_patch_verified": true,
+          "source_hash": "905d97036f838104d11439e2c1799a0e2b473de732c525d0a38c6df642e43b1c"
+        }
       },
       "certification_profile": "objective_full",
       "primary_hold_reason": "structural_error"
@@ -157085,15 +157134,11 @@
       "course_key": "os",
       "chapter": "内存管理 · 内存管理概念 · 选择题",
       "question_id": "X60",
-      "source_hash": "39b3960d4cbc85ac0b0ceff75e9c1073feea4f03cc0627c6328894befa0a7480",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "structural_check",
-        "structural_error"
-      ],
+      "source_hash": "a0c5e786cbe421534c0ad965ddf0cd43f55c90469f8205ab3b63dcc6174c0166",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         196,
         197,
@@ -157136,48 +157181,62 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T01:30:00+00:00",
       "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
+        "original_page_review": {
+          "source_uid": "408:cs408-os::内存管理 · 内存管理概念 · 选择题::X60",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T01:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_196.png",
+              "sha256": "e413c678744bd28ce4d7dc182bc16319491dc55e8207a12610395558c7bc5e12",
+              "page": 196
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_197.png",
+              "sha256": "62e29796ce8a472c5ce9c14f0532011cc194885d594398b15f637afe825a3951",
+              "page": 197
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_198.png",
+              "sha256": "044526bca5c891a74fdac3a82deda5879b6379dec02d8e7ff525004a171cfdfc",
+              "page": 198
+            }
           ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_205.png",
+              "sha256": "2a323b69bcc0ba2720758f28e96df0c2918ef771b654e83501b5346417011951",
+              "page": 205
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_206.png",
+              "sha256": "0143c0ab08bf6413a7c103e1645e695b0cc3bd5589be72881f2b8a63b241708a",
+              "page": 206
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_207.png",
+              "sha256": "e7a8197f22507d03f6874ddb31b6b669a4dc464fad398a71c31cadcece5d9efd",
+              "page": 207
+            }
           ],
-          "source_hash": "39b3960d4cbc85ac0b0ceff75e9c1073feea4f03cc0627c6328894befa0a7480",
-          "choices": [
-            "C",
-            "C"
+          "final_action": "patch",
+          "content_match": null,
+          "options_match": null,
+          "answer_match": null,
+          "explanation_match": null,
+          "image_match": null,
+          "detected_errors": [
+            "persisted_page_review_patch"
           ],
-          "confidence": [
-            0.9,
-            0.98
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "C",
-            "C"
-          ],
-          "blind_confidence": [
-            0.9,
-            0.98
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_source_conflict;structural_check;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+          "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
+          "post_patch_verified": true,
+          "source_hash": "a0c5e786cbe421534c0ad965ddf0cd43f55c90469f8205ab3b63dcc6174c0166"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "structural_error"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::内存管理 · 内存管理概念 · 选择题::X61": {
       "source_uid": "408:cs408-os::内存管理 · 内存管理概念 · 选择题::X61",
