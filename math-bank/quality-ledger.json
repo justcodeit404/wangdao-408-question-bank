@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-26T22:15:08+00:00",
+  "generated_at": "2026-08-26T22:17:54+00:00",
   "published_hashes": {
     "ds": "a40686840e5043561d7f7159fbd779725ffa65c56bfdd79a2683965b6aed0771",
     "coa": "8f9ea82d6d82e53ea38daf200ae95a361b5c43742f0ce9881b207f671f7f06f7",
@@ -12,9 +12,9 @@
       "name": "数据结构",
       "mode": "strict",
       "total": 797,
-      "certified": 193,
+      "certified": 214,
       "pending": 0,
-      "held": 604
+      "held": 583
     },
     "coa": {
       "name": "计算机组成原理",
@@ -43,9 +43,9 @@
   },
   "summary": {
     "total": 2869,
-    "certified": 1035,
+    "certified": 1056,
     "pending": 0,
-    "held": 1834
+    "held": 1813
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -53723,7 +53723,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T22:15:03.169045+00:00",
+      "verified_at": "2026-08-26T22:17:49.625622+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -53766,7 +53766,7 @@
           "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X07",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-26T22:15:03.169045+00:00",
+          "reviewed_at": "2026-08-26T22:17:49.625622+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/coa/page_300.png",
@@ -93333,13 +93333,10 @@
       "chapter": "栈、队列和数组 · 栈 · 选择题",
       "question_id": "X01",
       "source_hash": "bce5b31c3ff8871b14208bddb2ce06ed7fb9207cb1aa917fd7c16c6421fe188b",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         72,
         73,
@@ -93362,7 +93359,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -93385,10 +93382,92 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X01",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_072.png",
+              "sha256": "e29868c3139ccdba635f2eed13d04f2985111c0d46f9cbecfbbc4810dfe73af9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_073.png",
+              "sha256": "d084f605084aefd40ed8a084df913148b70b18459f1edd515339a8c5571050f8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_075.png",
+              "sha256": "ea0723b16dc3242cad3241caf4206ad1a14bbe9a0e5f66faf55b6a21c3645071"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_076.png",
+              "sha256": "953e4a071b6551197ee7356111d5112227fc93a50e75cd0e08034d5762c30913"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_077.png",
+              "sha256": "e7a0a9dadc123277d003ffbd51bdad0be15c851fade3dbc6bef2ce55640fc48b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_078.png",
+              "sha256": "80610f6523291d5ae69f73e5610d63520022e522fda7a293f25da8009c8b73b5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_079.png",
+              "sha256": "21e293b356b1923b0720dc76aecd6d279280ee6019c530c689849cd59871fedb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_080.png",
+              "sha256": "408ac3c3671a278718066a9ad4f74a13a4e4898e86c32c6c1e029667840a1e2a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_081.png",
+              "sha256": "5cff68031e5a2cf2bb47f163f459f28f2540a241a3cb4ff3fc319341acf94a09"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_082.png",
+              "sha256": "b93c14e992a12da45cfb48247d99c57b104ffe223b8c9261cd3b8a753bdb1a2d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_083.png",
+              "sha256": "0ec3aea6e085258fe8e60a3e70e26a712fd19dee9c8fa661cf36246a6195df38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_084.png",
+              "sha256": "e10049ae74cb72983f225fdfa16196a8bcf04e8519283bc61679783a172d318d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_085.png",
+              "sha256": "c2bcc32db42133525bc6f43e037824dd56ed53ba9f0ef3cf38fa025d4b6e4dd4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_086.png",
+              "sha256": "d2fbb7ac7febc3e3eae4aadf41ef0088add1265c9eb21a62a537ffb7217a0218"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页67-69与答案页69-81逐题核对：题干、选项、答案和解析与发布内容一致。",
+          "source_hash": "bce5b31c3ff8871b14208bddb2ce06ed7fb9207cb1aa917fd7c16c6421fe188b"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X02": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X02",
@@ -93396,13 +93475,10 @@
       "chapter": "栈、队列和数组 · 栈 · 选择题",
       "question_id": "X02",
       "source_hash": "e7a7c6e2a041d548ff108caecd32b4a8d4be92403365f0fc92d6b51a523a1bf8",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         72,
         73,
@@ -93425,7 +93501,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -93463,10 +93539,92 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X02",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_072.png",
+              "sha256": "e29868c3139ccdba635f2eed13d04f2985111c0d46f9cbecfbbc4810dfe73af9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_073.png",
+              "sha256": "d084f605084aefd40ed8a084df913148b70b18459f1edd515339a8c5571050f8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_075.png",
+              "sha256": "ea0723b16dc3242cad3241caf4206ad1a14bbe9a0e5f66faf55b6a21c3645071"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_076.png",
+              "sha256": "953e4a071b6551197ee7356111d5112227fc93a50e75cd0e08034d5762c30913"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_077.png",
+              "sha256": "e7a0a9dadc123277d003ffbd51bdad0be15c851fade3dbc6bef2ce55640fc48b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_078.png",
+              "sha256": "80610f6523291d5ae69f73e5610d63520022e522fda7a293f25da8009c8b73b5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_079.png",
+              "sha256": "21e293b356b1923b0720dc76aecd6d279280ee6019c530c689849cd59871fedb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_080.png",
+              "sha256": "408ac3c3671a278718066a9ad4f74a13a4e4898e86c32c6c1e029667840a1e2a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_081.png",
+              "sha256": "5cff68031e5a2cf2bb47f163f459f28f2540a241a3cb4ff3fc319341acf94a09"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_082.png",
+              "sha256": "b93c14e992a12da45cfb48247d99c57b104ffe223b8c9261cd3b8a753bdb1a2d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_083.png",
+              "sha256": "0ec3aea6e085258fe8e60a3e70e26a712fd19dee9c8fa661cf36246a6195df38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_084.png",
+              "sha256": "e10049ae74cb72983f225fdfa16196a8bcf04e8519283bc61679783a172d318d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_085.png",
+              "sha256": "c2bcc32db42133525bc6f43e037824dd56ed53ba9f0ef3cf38fa025d4b6e4dd4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_086.png",
+              "sha256": "d2fbb7ac7febc3e3eae4aadf41ef0088add1265c9eb21a62a537ffb7217a0218"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页67-69与答案页69-81逐题核对：题干、选项、答案和解析与发布内容一致。",
+          "source_hash": "e7a7c6e2a041d548ff108caecd32b4a8d4be92403365f0fc92d6b51a523a1bf8"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X03": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X03",
@@ -93474,13 +93632,10 @@
       "chapter": "栈、队列和数组 · 栈 · 选择题",
       "question_id": "X03",
       "source_hash": "f7276d44884eca633ea0c711ae435c66132dcc2580b5068f3a6ef8d305c1cda9",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         72,
         73,
@@ -93503,7 +93658,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -93541,10 +93696,92 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X03",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_072.png",
+              "sha256": "e29868c3139ccdba635f2eed13d04f2985111c0d46f9cbecfbbc4810dfe73af9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_073.png",
+              "sha256": "d084f605084aefd40ed8a084df913148b70b18459f1edd515339a8c5571050f8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_075.png",
+              "sha256": "ea0723b16dc3242cad3241caf4206ad1a14bbe9a0e5f66faf55b6a21c3645071"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_076.png",
+              "sha256": "953e4a071b6551197ee7356111d5112227fc93a50e75cd0e08034d5762c30913"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_077.png",
+              "sha256": "e7a0a9dadc123277d003ffbd51bdad0be15c851fade3dbc6bef2ce55640fc48b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_078.png",
+              "sha256": "80610f6523291d5ae69f73e5610d63520022e522fda7a293f25da8009c8b73b5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_079.png",
+              "sha256": "21e293b356b1923b0720dc76aecd6d279280ee6019c530c689849cd59871fedb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_080.png",
+              "sha256": "408ac3c3671a278718066a9ad4f74a13a4e4898e86c32c6c1e029667840a1e2a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_081.png",
+              "sha256": "5cff68031e5a2cf2bb47f163f459f28f2540a241a3cb4ff3fc319341acf94a09"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_082.png",
+              "sha256": "b93c14e992a12da45cfb48247d99c57b104ffe223b8c9261cd3b8a753bdb1a2d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_083.png",
+              "sha256": "0ec3aea6e085258fe8e60a3e70e26a712fd19dee9c8fa661cf36246a6195df38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_084.png",
+              "sha256": "e10049ae74cb72983f225fdfa16196a8bcf04e8519283bc61679783a172d318d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_085.png",
+              "sha256": "c2bcc32db42133525bc6f43e037824dd56ed53ba9f0ef3cf38fa025d4b6e4dd4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_086.png",
+              "sha256": "d2fbb7ac7febc3e3eae4aadf41ef0088add1265c9eb21a62a537ffb7217a0218"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页67-69与答案页69-81逐题核对：题干、选项、答案和解析与发布内容一致。",
+          "source_hash": "f7276d44884eca633ea0c711ae435c66132dcc2580b5068f3a6ef8d305c1cda9"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X04": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X04",
@@ -93552,13 +93789,10 @@
       "chapter": "栈、队列和数组 · 栈 · 选择题",
       "question_id": "X04",
       "source_hash": "4ad822875b65e91141d48fb4b58c2c57bcd6756d8e82c233c1c622ead2b692d3",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         72,
         73,
@@ -93581,7 +93815,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -93619,10 +93853,92 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X04",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_072.png",
+              "sha256": "e29868c3139ccdba635f2eed13d04f2985111c0d46f9cbecfbbc4810dfe73af9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_073.png",
+              "sha256": "d084f605084aefd40ed8a084df913148b70b18459f1edd515339a8c5571050f8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_075.png",
+              "sha256": "ea0723b16dc3242cad3241caf4206ad1a14bbe9a0e5f66faf55b6a21c3645071"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_076.png",
+              "sha256": "953e4a071b6551197ee7356111d5112227fc93a50e75cd0e08034d5762c30913"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_077.png",
+              "sha256": "e7a0a9dadc123277d003ffbd51bdad0be15c851fade3dbc6bef2ce55640fc48b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_078.png",
+              "sha256": "80610f6523291d5ae69f73e5610d63520022e522fda7a293f25da8009c8b73b5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_079.png",
+              "sha256": "21e293b356b1923b0720dc76aecd6d279280ee6019c530c689849cd59871fedb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_080.png",
+              "sha256": "408ac3c3671a278718066a9ad4f74a13a4e4898e86c32c6c1e029667840a1e2a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_081.png",
+              "sha256": "5cff68031e5a2cf2bb47f163f459f28f2540a241a3cb4ff3fc319341acf94a09"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_082.png",
+              "sha256": "b93c14e992a12da45cfb48247d99c57b104ffe223b8c9261cd3b8a753bdb1a2d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_083.png",
+              "sha256": "0ec3aea6e085258fe8e60a3e70e26a712fd19dee9c8fa661cf36246a6195df38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_084.png",
+              "sha256": "e10049ae74cb72983f225fdfa16196a8bcf04e8519283bc61679783a172d318d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_085.png",
+              "sha256": "c2bcc32db42133525bc6f43e037824dd56ed53ba9f0ef3cf38fa025d4b6e4dd4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_086.png",
+              "sha256": "d2fbb7ac7febc3e3eae4aadf41ef0088add1265c9eb21a62a537ffb7217a0218"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页67-69与答案页69-81逐题核对：题干、选项、答案和解析与发布内容一致。",
+          "source_hash": "4ad822875b65e91141d48fb4b58c2c57bcd6756d8e82c233c1c622ead2b692d3"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X05": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X05",
@@ -93708,13 +94024,10 @@
       "chapter": "栈、队列和数组 · 栈 · 选择题",
       "question_id": "X06",
       "source_hash": "51fe48bb1e72edae5319d3dd548ef1f99f8ebf090829d197ea7066c5051a2500",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         72,
         73,
@@ -93737,7 +94050,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -93775,10 +94088,92 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X06",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_072.png",
+              "sha256": "e29868c3139ccdba635f2eed13d04f2985111c0d46f9cbecfbbc4810dfe73af9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_073.png",
+              "sha256": "d084f605084aefd40ed8a084df913148b70b18459f1edd515339a8c5571050f8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_075.png",
+              "sha256": "ea0723b16dc3242cad3241caf4206ad1a14bbe9a0e5f66faf55b6a21c3645071"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_076.png",
+              "sha256": "953e4a071b6551197ee7356111d5112227fc93a50e75cd0e08034d5762c30913"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_077.png",
+              "sha256": "e7a0a9dadc123277d003ffbd51bdad0be15c851fade3dbc6bef2ce55640fc48b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_078.png",
+              "sha256": "80610f6523291d5ae69f73e5610d63520022e522fda7a293f25da8009c8b73b5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_079.png",
+              "sha256": "21e293b356b1923b0720dc76aecd6d279280ee6019c530c689849cd59871fedb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_080.png",
+              "sha256": "408ac3c3671a278718066a9ad4f74a13a4e4898e86c32c6c1e029667840a1e2a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_081.png",
+              "sha256": "5cff68031e5a2cf2bb47f163f459f28f2540a241a3cb4ff3fc319341acf94a09"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_082.png",
+              "sha256": "b93c14e992a12da45cfb48247d99c57b104ffe223b8c9261cd3b8a753bdb1a2d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_083.png",
+              "sha256": "0ec3aea6e085258fe8e60a3e70e26a712fd19dee9c8fa661cf36246a6195df38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_084.png",
+              "sha256": "e10049ae74cb72983f225fdfa16196a8bcf04e8519283bc61679783a172d318d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_085.png",
+              "sha256": "c2bcc32db42133525bc6f43e037824dd56ed53ba9f0ef3cf38fa025d4b6e4dd4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_086.png",
+              "sha256": "d2fbb7ac7febc3e3eae4aadf41ef0088add1265c9eb21a62a537ffb7217a0218"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页67-69与答案页69-81逐题核对：题干、选项、答案和解析与发布内容一致。",
+          "source_hash": "51fe48bb1e72edae5319d3dd548ef1f99f8ebf090829d197ea7066c5051a2500"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X07": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X07",
@@ -93786,14 +94181,10 @@
       "chapter": "栈、队列和数组 · 栈 · 选择题",
       "question_id": "X07",
       "source_hash": "85b343d225ad31c86089a281413ea76e3739d5ce692f86a770e95770daf85507",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         72,
         73,
@@ -93816,7 +94207,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -93854,10 +94245,92 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "legacy_hold_recheck;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X07",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_072.png",
+              "sha256": "e29868c3139ccdba635f2eed13d04f2985111c0d46f9cbecfbbc4810dfe73af9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_073.png",
+              "sha256": "d084f605084aefd40ed8a084df913148b70b18459f1edd515339a8c5571050f8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_075.png",
+              "sha256": "ea0723b16dc3242cad3241caf4206ad1a14bbe9a0e5f66faf55b6a21c3645071"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_076.png",
+              "sha256": "953e4a071b6551197ee7356111d5112227fc93a50e75cd0e08034d5762c30913"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_077.png",
+              "sha256": "e7a0a9dadc123277d003ffbd51bdad0be15c851fade3dbc6bef2ce55640fc48b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_078.png",
+              "sha256": "80610f6523291d5ae69f73e5610d63520022e522fda7a293f25da8009c8b73b5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_079.png",
+              "sha256": "21e293b356b1923b0720dc76aecd6d279280ee6019c530c689849cd59871fedb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_080.png",
+              "sha256": "408ac3c3671a278718066a9ad4f74a13a4e4898e86c32c6c1e029667840a1e2a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_081.png",
+              "sha256": "5cff68031e5a2cf2bb47f163f459f28f2540a241a3cb4ff3fc319341acf94a09"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_082.png",
+              "sha256": "b93c14e992a12da45cfb48247d99c57b104ffe223b8c9261cd3b8a753bdb1a2d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_083.png",
+              "sha256": "0ec3aea6e085258fe8e60a3e70e26a712fd19dee9c8fa661cf36246a6195df38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_084.png",
+              "sha256": "e10049ae74cb72983f225fdfa16196a8bcf04e8519283bc61679783a172d318d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_085.png",
+              "sha256": "c2bcc32db42133525bc6f43e037824dd56ed53ba9f0ef3cf38fa025d4b6e4dd4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_086.png",
+              "sha256": "d2fbb7ac7febc3e3eae4aadf41ef0088add1265c9eb21a62a537ffb7217a0218"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页67-69与答案页69-81逐题核对：题干、选项、答案和解析与发布内容一致。",
+          "source_hash": "85b343d225ad31c86089a281413ea76e3739d5ce692f86a770e95770daf85507"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X08": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X08",
@@ -93865,13 +94338,10 @@
       "chapter": "栈、队列和数组 · 栈 · 选择题",
       "question_id": "X08",
       "source_hash": "b3898dc38cbd5e8bb9af4780892d6dd41a5e2ef1f7ee4b8e827bcb4122780266",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         72,
         73,
@@ -93894,7 +94364,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -93932,10 +94402,92 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X08",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_072.png",
+              "sha256": "e29868c3139ccdba635f2eed13d04f2985111c0d46f9cbecfbbc4810dfe73af9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_073.png",
+              "sha256": "d084f605084aefd40ed8a084df913148b70b18459f1edd515339a8c5571050f8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_075.png",
+              "sha256": "ea0723b16dc3242cad3241caf4206ad1a14bbe9a0e5f66faf55b6a21c3645071"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_076.png",
+              "sha256": "953e4a071b6551197ee7356111d5112227fc93a50e75cd0e08034d5762c30913"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_077.png",
+              "sha256": "e7a0a9dadc123277d003ffbd51bdad0be15c851fade3dbc6bef2ce55640fc48b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_078.png",
+              "sha256": "80610f6523291d5ae69f73e5610d63520022e522fda7a293f25da8009c8b73b5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_079.png",
+              "sha256": "21e293b356b1923b0720dc76aecd6d279280ee6019c530c689849cd59871fedb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_080.png",
+              "sha256": "408ac3c3671a278718066a9ad4f74a13a4e4898e86c32c6c1e029667840a1e2a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_081.png",
+              "sha256": "5cff68031e5a2cf2bb47f163f459f28f2540a241a3cb4ff3fc319341acf94a09"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_082.png",
+              "sha256": "b93c14e992a12da45cfb48247d99c57b104ffe223b8c9261cd3b8a753bdb1a2d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_083.png",
+              "sha256": "0ec3aea6e085258fe8e60a3e70e26a712fd19dee9c8fa661cf36246a6195df38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_084.png",
+              "sha256": "e10049ae74cb72983f225fdfa16196a8bcf04e8519283bc61679783a172d318d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_085.png",
+              "sha256": "c2bcc32db42133525bc6f43e037824dd56ed53ba9f0ef3cf38fa025d4b6e4dd4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_086.png",
+              "sha256": "d2fbb7ac7febc3e3eae4aadf41ef0088add1265c9eb21a62a537ffb7217a0218"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页67-69与答案页69-81逐题核对：题干、选项、答案和解析与发布内容一致。",
+          "source_hash": "b3898dc38cbd5e8bb9af4780892d6dd41a5e2ef1f7ee4b8e827bcb4122780266"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X09": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X09",
@@ -94023,12 +94575,9 @@
       "question_id": "X10",
       "source_hash": "297e533f845b8953bacb388aeda18dbe4773ab58df7705ca7d934dd614a3d30e",
       "source_fidelity": "verified",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         72,
         73,
@@ -94051,7 +94600,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -94074,10 +94623,92 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X10",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_072.png",
+              "sha256": "e29868c3139ccdba635f2eed13d04f2985111c0d46f9cbecfbbc4810dfe73af9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_073.png",
+              "sha256": "d084f605084aefd40ed8a084df913148b70b18459f1edd515339a8c5571050f8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_075.png",
+              "sha256": "ea0723b16dc3242cad3241caf4206ad1a14bbe9a0e5f66faf55b6a21c3645071"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_076.png",
+              "sha256": "953e4a071b6551197ee7356111d5112227fc93a50e75cd0e08034d5762c30913"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_077.png",
+              "sha256": "e7a0a9dadc123277d003ffbd51bdad0be15c851fade3dbc6bef2ce55640fc48b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_078.png",
+              "sha256": "80610f6523291d5ae69f73e5610d63520022e522fda7a293f25da8009c8b73b5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_079.png",
+              "sha256": "21e293b356b1923b0720dc76aecd6d279280ee6019c530c689849cd59871fedb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_080.png",
+              "sha256": "408ac3c3671a278718066a9ad4f74a13a4e4898e86c32c6c1e029667840a1e2a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_081.png",
+              "sha256": "5cff68031e5a2cf2bb47f163f459f28f2540a241a3cb4ff3fc319341acf94a09"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_082.png",
+              "sha256": "b93c14e992a12da45cfb48247d99c57b104ffe223b8c9261cd3b8a753bdb1a2d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_083.png",
+              "sha256": "0ec3aea6e085258fe8e60a3e70e26a712fd19dee9c8fa661cf36246a6195df38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_084.png",
+              "sha256": "e10049ae74cb72983f225fdfa16196a8bcf04e8519283bc61679783a172d318d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_085.png",
+              "sha256": "c2bcc32db42133525bc6f43e037824dd56ed53ba9f0ef3cf38fa025d4b6e4dd4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_086.png",
+              "sha256": "d2fbb7ac7febc3e3eae4aadf41ef0088add1265c9eb21a62a537ffb7217a0218"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页67-69与答案页69-81逐题核对：题干、选项、答案和解析与发布内容一致。",
+          "source_hash": "297e533f845b8953bacb388aeda18dbe4773ab58df7705ca7d934dd614a3d30e"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X11": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X11",
@@ -94085,13 +94716,10 @@
       "chapter": "栈、队列和数组 · 栈 · 选择题",
       "question_id": "X11",
       "source_hash": "290230f01f7f31129edc8a80c42593a88e8fe83e346b72f36d00d208a124351d",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         72,
         73,
@@ -94114,7 +94742,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -94152,10 +94780,92 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X11",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_072.png",
+              "sha256": "e29868c3139ccdba635f2eed13d04f2985111c0d46f9cbecfbbc4810dfe73af9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_073.png",
+              "sha256": "d084f605084aefd40ed8a084df913148b70b18459f1edd515339a8c5571050f8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_075.png",
+              "sha256": "ea0723b16dc3242cad3241caf4206ad1a14bbe9a0e5f66faf55b6a21c3645071"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_076.png",
+              "sha256": "953e4a071b6551197ee7356111d5112227fc93a50e75cd0e08034d5762c30913"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_077.png",
+              "sha256": "e7a0a9dadc123277d003ffbd51bdad0be15c851fade3dbc6bef2ce55640fc48b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_078.png",
+              "sha256": "80610f6523291d5ae69f73e5610d63520022e522fda7a293f25da8009c8b73b5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_079.png",
+              "sha256": "21e293b356b1923b0720dc76aecd6d279280ee6019c530c689849cd59871fedb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_080.png",
+              "sha256": "408ac3c3671a278718066a9ad4f74a13a4e4898e86c32c6c1e029667840a1e2a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_081.png",
+              "sha256": "5cff68031e5a2cf2bb47f163f459f28f2540a241a3cb4ff3fc319341acf94a09"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_082.png",
+              "sha256": "b93c14e992a12da45cfb48247d99c57b104ffe223b8c9261cd3b8a753bdb1a2d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_083.png",
+              "sha256": "0ec3aea6e085258fe8e60a3e70e26a712fd19dee9c8fa661cf36246a6195df38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_084.png",
+              "sha256": "e10049ae74cb72983f225fdfa16196a8bcf04e8519283bc61679783a172d318d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_085.png",
+              "sha256": "c2bcc32db42133525bc6f43e037824dd56ed53ba9f0ef3cf38fa025d4b6e4dd4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_086.png",
+              "sha256": "d2fbb7ac7febc3e3eae4aadf41ef0088add1265c9eb21a62a537ffb7217a0218"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页67-69与答案页69-81逐题核对：题干、选项、答案和解析与发布内容一致。",
+          "source_hash": "290230f01f7f31129edc8a80c42593a88e8fe83e346b72f36d00d208a124351d"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X12": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X12",
@@ -94319,13 +95029,10 @@
       "chapter": "栈、队列和数组 · 栈 · 选择题",
       "question_id": "X14",
       "source_hash": "8e1c92f61b1060dd71aa29975d0ad77304098c6163a722e0f64c6f4d925971cf",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         72,
         73,
@@ -94348,7 +95055,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -94371,10 +95078,92 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X14",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_072.png",
+              "sha256": "e29868c3139ccdba635f2eed13d04f2985111c0d46f9cbecfbbc4810dfe73af9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_073.png",
+              "sha256": "d084f605084aefd40ed8a084df913148b70b18459f1edd515339a8c5571050f8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_075.png",
+              "sha256": "ea0723b16dc3242cad3241caf4206ad1a14bbe9a0e5f66faf55b6a21c3645071"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_076.png",
+              "sha256": "953e4a071b6551197ee7356111d5112227fc93a50e75cd0e08034d5762c30913"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_077.png",
+              "sha256": "e7a0a9dadc123277d003ffbd51bdad0be15c851fade3dbc6bef2ce55640fc48b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_078.png",
+              "sha256": "80610f6523291d5ae69f73e5610d63520022e522fda7a293f25da8009c8b73b5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_079.png",
+              "sha256": "21e293b356b1923b0720dc76aecd6d279280ee6019c530c689849cd59871fedb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_080.png",
+              "sha256": "408ac3c3671a278718066a9ad4f74a13a4e4898e86c32c6c1e029667840a1e2a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_081.png",
+              "sha256": "5cff68031e5a2cf2bb47f163f459f28f2540a241a3cb4ff3fc319341acf94a09"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_082.png",
+              "sha256": "b93c14e992a12da45cfb48247d99c57b104ffe223b8c9261cd3b8a753bdb1a2d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_083.png",
+              "sha256": "0ec3aea6e085258fe8e60a3e70e26a712fd19dee9c8fa661cf36246a6195df38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_084.png",
+              "sha256": "e10049ae74cb72983f225fdfa16196a8bcf04e8519283bc61679783a172d318d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_085.png",
+              "sha256": "c2bcc32db42133525bc6f43e037824dd56ed53ba9f0ef3cf38fa025d4b6e4dd4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_086.png",
+              "sha256": "d2fbb7ac7febc3e3eae4aadf41ef0088add1265c9eb21a62a537ffb7217a0218"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页67-69与答案页69-81逐题核对：题干、选项、答案和解析与发布内容一致。",
+          "source_hash": "8e1c92f61b1060dd71aa29975d0ad77304098c6163a722e0f64c6f4d925971cf"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X15": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X15",
@@ -94382,13 +95171,10 @@
       "chapter": "栈、队列和数组 · 栈 · 选择题",
       "question_id": "X15",
       "source_hash": "989b6cf7d362f562d677c6506d54a4de824ef4a978c9049e3f3a3bccebb332a6",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         72,
         73,
@@ -94411,7 +95197,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -94449,10 +95235,92 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X15",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_072.png",
+              "sha256": "e29868c3139ccdba635f2eed13d04f2985111c0d46f9cbecfbbc4810dfe73af9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_073.png",
+              "sha256": "d084f605084aefd40ed8a084df913148b70b18459f1edd515339a8c5571050f8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_075.png",
+              "sha256": "ea0723b16dc3242cad3241caf4206ad1a14bbe9a0e5f66faf55b6a21c3645071"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_076.png",
+              "sha256": "953e4a071b6551197ee7356111d5112227fc93a50e75cd0e08034d5762c30913"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_077.png",
+              "sha256": "e7a0a9dadc123277d003ffbd51bdad0be15c851fade3dbc6bef2ce55640fc48b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_078.png",
+              "sha256": "80610f6523291d5ae69f73e5610d63520022e522fda7a293f25da8009c8b73b5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_079.png",
+              "sha256": "21e293b356b1923b0720dc76aecd6d279280ee6019c530c689849cd59871fedb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_080.png",
+              "sha256": "408ac3c3671a278718066a9ad4f74a13a4e4898e86c32c6c1e029667840a1e2a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_081.png",
+              "sha256": "5cff68031e5a2cf2bb47f163f459f28f2540a241a3cb4ff3fc319341acf94a09"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_082.png",
+              "sha256": "b93c14e992a12da45cfb48247d99c57b104ffe223b8c9261cd3b8a753bdb1a2d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_083.png",
+              "sha256": "0ec3aea6e085258fe8e60a3e70e26a712fd19dee9c8fa661cf36246a6195df38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_084.png",
+              "sha256": "e10049ae74cb72983f225fdfa16196a8bcf04e8519283bc61679783a172d318d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_085.png",
+              "sha256": "c2bcc32db42133525bc6f43e037824dd56ed53ba9f0ef3cf38fa025d4b6e4dd4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_086.png",
+              "sha256": "d2fbb7ac7febc3e3eae4aadf41ef0088add1265c9eb21a62a537ffb7217a0218"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页67-69与答案页69-81逐题核对：题干、选项、答案和解析与发布内容一致。",
+          "source_hash": "989b6cf7d362f562d677c6506d54a4de824ef4a978c9049e3f3a3bccebb332a6"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X16": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X16",
@@ -94460,13 +95328,10 @@
       "chapter": "栈、队列和数组 · 栈 · 选择题",
       "question_id": "X16",
       "source_hash": "4e07d0acf070b913c8d41ec14b98d4559697992656d156865b189524c55d15ae",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         72,
         73,
@@ -94489,7 +95354,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -94527,10 +95392,92 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X16",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_072.png",
+              "sha256": "e29868c3139ccdba635f2eed13d04f2985111c0d46f9cbecfbbc4810dfe73af9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_073.png",
+              "sha256": "d084f605084aefd40ed8a084df913148b70b18459f1edd515339a8c5571050f8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_075.png",
+              "sha256": "ea0723b16dc3242cad3241caf4206ad1a14bbe9a0e5f66faf55b6a21c3645071"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_076.png",
+              "sha256": "953e4a071b6551197ee7356111d5112227fc93a50e75cd0e08034d5762c30913"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_077.png",
+              "sha256": "e7a0a9dadc123277d003ffbd51bdad0be15c851fade3dbc6bef2ce55640fc48b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_078.png",
+              "sha256": "80610f6523291d5ae69f73e5610d63520022e522fda7a293f25da8009c8b73b5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_079.png",
+              "sha256": "21e293b356b1923b0720dc76aecd6d279280ee6019c530c689849cd59871fedb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_080.png",
+              "sha256": "408ac3c3671a278718066a9ad4f74a13a4e4898e86c32c6c1e029667840a1e2a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_081.png",
+              "sha256": "5cff68031e5a2cf2bb47f163f459f28f2540a241a3cb4ff3fc319341acf94a09"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_082.png",
+              "sha256": "b93c14e992a12da45cfb48247d99c57b104ffe223b8c9261cd3b8a753bdb1a2d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_083.png",
+              "sha256": "0ec3aea6e085258fe8e60a3e70e26a712fd19dee9c8fa661cf36246a6195df38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_084.png",
+              "sha256": "e10049ae74cb72983f225fdfa16196a8bcf04e8519283bc61679783a172d318d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_085.png",
+              "sha256": "c2bcc32db42133525bc6f43e037824dd56ed53ba9f0ef3cf38fa025d4b6e4dd4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_086.png",
+              "sha256": "d2fbb7ac7febc3e3eae4aadf41ef0088add1265c9eb21a62a537ffb7217a0218"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页67-69与答案页69-81逐题核对：题干、选项、答案和解析与发布内容一致。",
+          "source_hash": "4e07d0acf070b913c8d41ec14b98d4559697992656d156865b189524c55d15ae"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X17": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X17",
@@ -94618,12 +95565,9 @@
       "question_id": "X18",
       "source_hash": "39ea05647793527df258ee43690d51c914c5f2a6208c03aedc32193ebf7f4c9b",
       "source_fidelity": "verified",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         72,
         73,
@@ -94646,7 +95590,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -94669,10 +95613,92 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X18",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_072.png",
+              "sha256": "e29868c3139ccdba635f2eed13d04f2985111c0d46f9cbecfbbc4810dfe73af9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_073.png",
+              "sha256": "d084f605084aefd40ed8a084df913148b70b18459f1edd515339a8c5571050f8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_075.png",
+              "sha256": "ea0723b16dc3242cad3241caf4206ad1a14bbe9a0e5f66faf55b6a21c3645071"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_076.png",
+              "sha256": "953e4a071b6551197ee7356111d5112227fc93a50e75cd0e08034d5762c30913"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_077.png",
+              "sha256": "e7a0a9dadc123277d003ffbd51bdad0be15c851fade3dbc6bef2ce55640fc48b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_078.png",
+              "sha256": "80610f6523291d5ae69f73e5610d63520022e522fda7a293f25da8009c8b73b5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_079.png",
+              "sha256": "21e293b356b1923b0720dc76aecd6d279280ee6019c530c689849cd59871fedb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_080.png",
+              "sha256": "408ac3c3671a278718066a9ad4f74a13a4e4898e86c32c6c1e029667840a1e2a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_081.png",
+              "sha256": "5cff68031e5a2cf2bb47f163f459f28f2540a241a3cb4ff3fc319341acf94a09"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_082.png",
+              "sha256": "b93c14e992a12da45cfb48247d99c57b104ffe223b8c9261cd3b8a753bdb1a2d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_083.png",
+              "sha256": "0ec3aea6e085258fe8e60a3e70e26a712fd19dee9c8fa661cf36246a6195df38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_084.png",
+              "sha256": "e10049ae74cb72983f225fdfa16196a8bcf04e8519283bc61679783a172d318d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_085.png",
+              "sha256": "c2bcc32db42133525bc6f43e037824dd56ed53ba9f0ef3cf38fa025d4b6e4dd4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_086.png",
+              "sha256": "d2fbb7ac7febc3e3eae4aadf41ef0088add1265c9eb21a62a537ffb7217a0218"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页67-69与答案页69-81逐题核对：题干、选项、答案和解析与发布内容一致。",
+          "source_hash": "39ea05647793527df258ee43690d51c914c5f2a6208c03aedc32193ebf7f4c9b"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X19": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X19",
@@ -94680,13 +95706,10 @@
       "chapter": "栈、队列和数组 · 栈 · 选择题",
       "question_id": "X19",
       "source_hash": "67960e2794fb8402bed40cf2c3d4e74579ce39a7430bdff6891594d0b0642172",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         72,
         73,
@@ -94709,7 +95732,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -94732,10 +95755,92 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X19",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_072.png",
+              "sha256": "e29868c3139ccdba635f2eed13d04f2985111c0d46f9cbecfbbc4810dfe73af9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_073.png",
+              "sha256": "d084f605084aefd40ed8a084df913148b70b18459f1edd515339a8c5571050f8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_075.png",
+              "sha256": "ea0723b16dc3242cad3241caf4206ad1a14bbe9a0e5f66faf55b6a21c3645071"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_076.png",
+              "sha256": "953e4a071b6551197ee7356111d5112227fc93a50e75cd0e08034d5762c30913"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_077.png",
+              "sha256": "e7a0a9dadc123277d003ffbd51bdad0be15c851fade3dbc6bef2ce55640fc48b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_078.png",
+              "sha256": "80610f6523291d5ae69f73e5610d63520022e522fda7a293f25da8009c8b73b5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_079.png",
+              "sha256": "21e293b356b1923b0720dc76aecd6d279280ee6019c530c689849cd59871fedb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_080.png",
+              "sha256": "408ac3c3671a278718066a9ad4f74a13a4e4898e86c32c6c1e029667840a1e2a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_081.png",
+              "sha256": "5cff68031e5a2cf2bb47f163f459f28f2540a241a3cb4ff3fc319341acf94a09"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_082.png",
+              "sha256": "b93c14e992a12da45cfb48247d99c57b104ffe223b8c9261cd3b8a753bdb1a2d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_083.png",
+              "sha256": "0ec3aea6e085258fe8e60a3e70e26a712fd19dee9c8fa661cf36246a6195df38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_084.png",
+              "sha256": "e10049ae74cb72983f225fdfa16196a8bcf04e8519283bc61679783a172d318d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_085.png",
+              "sha256": "c2bcc32db42133525bc6f43e037824dd56ed53ba9f0ef3cf38fa025d4b6e4dd4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_086.png",
+              "sha256": "d2fbb7ac7febc3e3eae4aadf41ef0088add1265c9eb21a62a537ffb7217a0218"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页67-69与答案页69-81逐题核对：题干、选项、答案和解析与发布内容一致。",
+          "source_hash": "67960e2794fb8402bed40cf2c3d4e74579ce39a7430bdff6891594d0b0642172"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X20": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X20",
@@ -94743,14 +95848,10 @@
       "chapter": "栈、队列和数组 · 栈 · 选择题",
       "question_id": "X20",
       "source_hash": "91677f9540558a6903acd0cb1a5b940f5c51bf354d61b9ffcaee1bd48cbba733",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         72,
         73,
@@ -94773,7 +95874,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -94811,10 +95912,92 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X20",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_072.png",
+              "sha256": "e29868c3139ccdba635f2eed13d04f2985111c0d46f9cbecfbbc4810dfe73af9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_073.png",
+              "sha256": "d084f605084aefd40ed8a084df913148b70b18459f1edd515339a8c5571050f8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_075.png",
+              "sha256": "ea0723b16dc3242cad3241caf4206ad1a14bbe9a0e5f66faf55b6a21c3645071"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_076.png",
+              "sha256": "953e4a071b6551197ee7356111d5112227fc93a50e75cd0e08034d5762c30913"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_077.png",
+              "sha256": "e7a0a9dadc123277d003ffbd51bdad0be15c851fade3dbc6bef2ce55640fc48b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_078.png",
+              "sha256": "80610f6523291d5ae69f73e5610d63520022e522fda7a293f25da8009c8b73b5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_079.png",
+              "sha256": "21e293b356b1923b0720dc76aecd6d279280ee6019c530c689849cd59871fedb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_080.png",
+              "sha256": "408ac3c3671a278718066a9ad4f74a13a4e4898e86c32c6c1e029667840a1e2a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_081.png",
+              "sha256": "5cff68031e5a2cf2bb47f163f459f28f2540a241a3cb4ff3fc319341acf94a09"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_082.png",
+              "sha256": "b93c14e992a12da45cfb48247d99c57b104ffe223b8c9261cd3b8a753bdb1a2d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_083.png",
+              "sha256": "0ec3aea6e085258fe8e60a3e70e26a712fd19dee9c8fa661cf36246a6195df38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_084.png",
+              "sha256": "e10049ae74cb72983f225fdfa16196a8bcf04e8519283bc61679783a172d318d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_085.png",
+              "sha256": "c2bcc32db42133525bc6f43e037824dd56ed53ba9f0ef3cf38fa025d4b6e4dd4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_086.png",
+              "sha256": "d2fbb7ac7febc3e3eae4aadf41ef0088add1265c9eb21a62a537ffb7217a0218"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页67-69与答案页69-81逐题核对：题干、选项、答案和解析与发布内容一致。",
+          "source_hash": "91677f9540558a6903acd0cb1a5b940f5c51bf354d61b9ffcaee1bd48cbba733"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X21": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X21",
@@ -94822,13 +96005,10 @@
       "chapter": "栈、队列和数组 · 栈 · 选择题",
       "question_id": "X21",
       "source_hash": "3f5d5df14663a419548145fe996bdb6313b5ca9282502f408dd2c979fe80b51d",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         72,
         73,
@@ -94851,7 +96031,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -94889,10 +96069,92 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X21",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_072.png",
+              "sha256": "e29868c3139ccdba635f2eed13d04f2985111c0d46f9cbecfbbc4810dfe73af9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_073.png",
+              "sha256": "d084f605084aefd40ed8a084df913148b70b18459f1edd515339a8c5571050f8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_075.png",
+              "sha256": "ea0723b16dc3242cad3241caf4206ad1a14bbe9a0e5f66faf55b6a21c3645071"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_076.png",
+              "sha256": "953e4a071b6551197ee7356111d5112227fc93a50e75cd0e08034d5762c30913"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_077.png",
+              "sha256": "e7a0a9dadc123277d003ffbd51bdad0be15c851fade3dbc6bef2ce55640fc48b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_078.png",
+              "sha256": "80610f6523291d5ae69f73e5610d63520022e522fda7a293f25da8009c8b73b5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_079.png",
+              "sha256": "21e293b356b1923b0720dc76aecd6d279280ee6019c530c689849cd59871fedb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_080.png",
+              "sha256": "408ac3c3671a278718066a9ad4f74a13a4e4898e86c32c6c1e029667840a1e2a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_081.png",
+              "sha256": "5cff68031e5a2cf2bb47f163f459f28f2540a241a3cb4ff3fc319341acf94a09"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_082.png",
+              "sha256": "b93c14e992a12da45cfb48247d99c57b104ffe223b8c9261cd3b8a753bdb1a2d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_083.png",
+              "sha256": "0ec3aea6e085258fe8e60a3e70e26a712fd19dee9c8fa661cf36246a6195df38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_084.png",
+              "sha256": "e10049ae74cb72983f225fdfa16196a8bcf04e8519283bc61679783a172d318d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_085.png",
+              "sha256": "c2bcc32db42133525bc6f43e037824dd56ed53ba9f0ef3cf38fa025d4b6e4dd4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_086.png",
+              "sha256": "d2fbb7ac7febc3e3eae4aadf41ef0088add1265c9eb21a62a537ffb7217a0218"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页67-69与答案页69-81逐题核对：题干、选项、答案和解析与发布内容一致。",
+          "source_hash": "3f5d5df14663a419548145fe996bdb6313b5ca9282502f408dd2c979fe80b51d"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X22": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X22",
@@ -94900,13 +96162,10 @@
       "chapter": "栈、队列和数组 · 栈 · 选择题",
       "question_id": "X22",
       "source_hash": "03349580b9847f8bd5ef831e3a349183d8f6ea3287969effa1f84d7396a3ef70",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         72,
         73,
@@ -94929,7 +96188,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -94967,10 +96226,92 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X22",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_072.png",
+              "sha256": "e29868c3139ccdba635f2eed13d04f2985111c0d46f9cbecfbbc4810dfe73af9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_073.png",
+              "sha256": "d084f605084aefd40ed8a084df913148b70b18459f1edd515339a8c5571050f8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_075.png",
+              "sha256": "ea0723b16dc3242cad3241caf4206ad1a14bbe9a0e5f66faf55b6a21c3645071"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_076.png",
+              "sha256": "953e4a071b6551197ee7356111d5112227fc93a50e75cd0e08034d5762c30913"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_077.png",
+              "sha256": "e7a0a9dadc123277d003ffbd51bdad0be15c851fade3dbc6bef2ce55640fc48b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_078.png",
+              "sha256": "80610f6523291d5ae69f73e5610d63520022e522fda7a293f25da8009c8b73b5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_079.png",
+              "sha256": "21e293b356b1923b0720dc76aecd6d279280ee6019c530c689849cd59871fedb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_080.png",
+              "sha256": "408ac3c3671a278718066a9ad4f74a13a4e4898e86c32c6c1e029667840a1e2a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_081.png",
+              "sha256": "5cff68031e5a2cf2bb47f163f459f28f2540a241a3cb4ff3fc319341acf94a09"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_082.png",
+              "sha256": "b93c14e992a12da45cfb48247d99c57b104ffe223b8c9261cd3b8a753bdb1a2d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_083.png",
+              "sha256": "0ec3aea6e085258fe8e60a3e70e26a712fd19dee9c8fa661cf36246a6195df38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_084.png",
+              "sha256": "e10049ae74cb72983f225fdfa16196a8bcf04e8519283bc61679783a172d318d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_085.png",
+              "sha256": "c2bcc32db42133525bc6f43e037824dd56ed53ba9f0ef3cf38fa025d4b6e4dd4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_086.png",
+              "sha256": "d2fbb7ac7febc3e3eae4aadf41ef0088add1265c9eb21a62a537ffb7217a0218"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页67-69与答案页69-81逐题核对：题干、选项、答案和解析与发布内容一致。",
+          "source_hash": "03349580b9847f8bd5ef831e3a349183d8f6ea3287969effa1f84d7396a3ef70"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X23": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X23",
@@ -95057,13 +96398,10 @@
       "chapter": "栈、队列和数组 · 栈 · 选择题",
       "question_id": "X24",
       "source_hash": "5a06c19f665c7ad453794f0bf46676feea1a7dcd642f9619d3c253d54f0de125",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         72,
         73,
@@ -95086,7 +96424,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -95124,10 +96462,92 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X24",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_072.png",
+              "sha256": "e29868c3139ccdba635f2eed13d04f2985111c0d46f9cbecfbbc4810dfe73af9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_073.png",
+              "sha256": "d084f605084aefd40ed8a084df913148b70b18459f1edd515339a8c5571050f8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_075.png",
+              "sha256": "ea0723b16dc3242cad3241caf4206ad1a14bbe9a0e5f66faf55b6a21c3645071"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_076.png",
+              "sha256": "953e4a071b6551197ee7356111d5112227fc93a50e75cd0e08034d5762c30913"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_077.png",
+              "sha256": "e7a0a9dadc123277d003ffbd51bdad0be15c851fade3dbc6bef2ce55640fc48b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_078.png",
+              "sha256": "80610f6523291d5ae69f73e5610d63520022e522fda7a293f25da8009c8b73b5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_079.png",
+              "sha256": "21e293b356b1923b0720dc76aecd6d279280ee6019c530c689849cd59871fedb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_080.png",
+              "sha256": "408ac3c3671a278718066a9ad4f74a13a4e4898e86c32c6c1e029667840a1e2a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_081.png",
+              "sha256": "5cff68031e5a2cf2bb47f163f459f28f2540a241a3cb4ff3fc319341acf94a09"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_082.png",
+              "sha256": "b93c14e992a12da45cfb48247d99c57b104ffe223b8c9261cd3b8a753bdb1a2d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_083.png",
+              "sha256": "0ec3aea6e085258fe8e60a3e70e26a712fd19dee9c8fa661cf36246a6195df38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_084.png",
+              "sha256": "e10049ae74cb72983f225fdfa16196a8bcf04e8519283bc61679783a172d318d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_085.png",
+              "sha256": "c2bcc32db42133525bc6f43e037824dd56ed53ba9f0ef3cf38fa025d4b6e4dd4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_086.png",
+              "sha256": "d2fbb7ac7febc3e3eae4aadf41ef0088add1265c9eb21a62a537ffb7217a0218"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页67-69与答案页69-81逐题核对：题干、选项、答案和解析与发布内容一致。",
+          "source_hash": "5a06c19f665c7ad453794f0bf46676feea1a7dcd642f9619d3c253d54f0de125"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X25": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X25",
@@ -95135,13 +96555,10 @@
       "chapter": "栈、队列和数组 · 栈 · 选择题",
       "question_id": "X25",
       "source_hash": "49375159cb4d084bd6d5c67afb0a8918098ae1bef0e287ff9c29a49ac1499fa4",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         72,
         73,
@@ -95164,7 +96581,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -95202,10 +96619,92 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X25",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_072.png",
+              "sha256": "e29868c3139ccdba635f2eed13d04f2985111c0d46f9cbecfbbc4810dfe73af9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_073.png",
+              "sha256": "d084f605084aefd40ed8a084df913148b70b18459f1edd515339a8c5571050f8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_075.png",
+              "sha256": "ea0723b16dc3242cad3241caf4206ad1a14bbe9a0e5f66faf55b6a21c3645071"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_076.png",
+              "sha256": "953e4a071b6551197ee7356111d5112227fc93a50e75cd0e08034d5762c30913"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_077.png",
+              "sha256": "e7a0a9dadc123277d003ffbd51bdad0be15c851fade3dbc6bef2ce55640fc48b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_078.png",
+              "sha256": "80610f6523291d5ae69f73e5610d63520022e522fda7a293f25da8009c8b73b5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_079.png",
+              "sha256": "21e293b356b1923b0720dc76aecd6d279280ee6019c530c689849cd59871fedb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_080.png",
+              "sha256": "408ac3c3671a278718066a9ad4f74a13a4e4898e86c32c6c1e029667840a1e2a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_081.png",
+              "sha256": "5cff68031e5a2cf2bb47f163f459f28f2540a241a3cb4ff3fc319341acf94a09"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_082.png",
+              "sha256": "b93c14e992a12da45cfb48247d99c57b104ffe223b8c9261cd3b8a753bdb1a2d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_083.png",
+              "sha256": "0ec3aea6e085258fe8e60a3e70e26a712fd19dee9c8fa661cf36246a6195df38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_084.png",
+              "sha256": "e10049ae74cb72983f225fdfa16196a8bcf04e8519283bc61679783a172d318d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_085.png",
+              "sha256": "c2bcc32db42133525bc6f43e037824dd56ed53ba9f0ef3cf38fa025d4b6e4dd4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_086.png",
+              "sha256": "d2fbb7ac7febc3e3eae4aadf41ef0088add1265c9eb21a62a537ffb7217a0218"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页67-69与答案页69-81逐题核对：题干、选项、答案和解析与发布内容一致。",
+          "source_hash": "49375159cb4d084bd6d5c67afb0a8918098ae1bef0e287ff9c29a49ac1499fa4"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X26": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X26",
@@ -95447,13 +96946,10 @@
       "chapter": "栈、队列和数组 · 栈 · 选择题",
       "question_id": "X29",
       "source_hash": "88e2936743a4db9acc70170886d8cc660cc42c857b3e80036e6b8e5f6da60498",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         72,
         73,
@@ -95476,7 +96972,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -95514,10 +97010,92 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X29",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_072.png",
+              "sha256": "e29868c3139ccdba635f2eed13d04f2985111c0d46f9cbecfbbc4810dfe73af9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_073.png",
+              "sha256": "d084f605084aefd40ed8a084df913148b70b18459f1edd515339a8c5571050f8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_075.png",
+              "sha256": "ea0723b16dc3242cad3241caf4206ad1a14bbe9a0e5f66faf55b6a21c3645071"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_076.png",
+              "sha256": "953e4a071b6551197ee7356111d5112227fc93a50e75cd0e08034d5762c30913"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_077.png",
+              "sha256": "e7a0a9dadc123277d003ffbd51bdad0be15c851fade3dbc6bef2ce55640fc48b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_078.png",
+              "sha256": "80610f6523291d5ae69f73e5610d63520022e522fda7a293f25da8009c8b73b5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_079.png",
+              "sha256": "21e293b356b1923b0720dc76aecd6d279280ee6019c530c689849cd59871fedb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_080.png",
+              "sha256": "408ac3c3671a278718066a9ad4f74a13a4e4898e86c32c6c1e029667840a1e2a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_081.png",
+              "sha256": "5cff68031e5a2cf2bb47f163f459f28f2540a241a3cb4ff3fc319341acf94a09"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_082.png",
+              "sha256": "b93c14e992a12da45cfb48247d99c57b104ffe223b8c9261cd3b8a753bdb1a2d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_083.png",
+              "sha256": "0ec3aea6e085258fe8e60a3e70e26a712fd19dee9c8fa661cf36246a6195df38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_084.png",
+              "sha256": "e10049ae74cb72983f225fdfa16196a8bcf04e8519283bc61679783a172d318d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_085.png",
+              "sha256": "c2bcc32db42133525bc6f43e037824dd56ed53ba9f0ef3cf38fa025d4b6e4dd4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_086.png",
+              "sha256": "d2fbb7ac7febc3e3eae4aadf41ef0088add1265c9eb21a62a537ffb7217a0218"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页67-69与答案页69-81逐题核对：题干、选项、答案和解析与发布内容一致。",
+          "source_hash": "88e2936743a4db9acc70170886d8cc660cc42c857b3e80036e6b8e5f6da60498"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X30": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X30",
@@ -95603,13 +97181,10 @@
       "chapter": "栈、队列和数组 · 栈 · 选择题",
       "question_id": "X31",
       "source_hash": "f7f7568aa2e7017b693173b01d7aa4d4107d8967b3452265591028e002b0ef36",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         72,
         73,
@@ -95632,7 +97207,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T06:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -95670,10 +97245,92 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X31",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T06:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_072.png",
+              "sha256": "e29868c3139ccdba635f2eed13d04f2985111c0d46f9cbecfbbc4810dfe73af9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_073.png",
+              "sha256": "d084f605084aefd40ed8a084df913148b70b18459f1edd515339a8c5571050f8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_075.png",
+              "sha256": "ea0723b16dc3242cad3241caf4206ad1a14bbe9a0e5f66faf55b6a21c3645071"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_076.png",
+              "sha256": "953e4a071b6551197ee7356111d5112227fc93a50e75cd0e08034d5762c30913"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_077.png",
+              "sha256": "e7a0a9dadc123277d003ffbd51bdad0be15c851fade3dbc6bef2ce55640fc48b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_078.png",
+              "sha256": "80610f6523291d5ae69f73e5610d63520022e522fda7a293f25da8009c8b73b5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_079.png",
+              "sha256": "21e293b356b1923b0720dc76aecd6d279280ee6019c530c689849cd59871fedb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_080.png",
+              "sha256": "408ac3c3671a278718066a9ad4f74a13a4e4898e86c32c6c1e029667840a1e2a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_081.png",
+              "sha256": "5cff68031e5a2cf2bb47f163f459f28f2540a241a3cb4ff3fc319341acf94a09"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_082.png",
+              "sha256": "b93c14e992a12da45cfb48247d99c57b104ffe223b8c9261cd3b8a753bdb1a2d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_083.png",
+              "sha256": "0ec3aea6e085258fe8e60a3e70e26a712fd19dee9c8fa661cf36246a6195df38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_084.png",
+              "sha256": "e10049ae74cb72983f225fdfa16196a8bcf04e8519283bc61679783a172d318d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_085.png",
+              "sha256": "c2bcc32db42133525bc6f43e037824dd56ed53ba9f0ef3cf38fa025d4b6e4dd4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_086.png",
+              "sha256": "d2fbb7ac7febc3e3eae4aadf41ef0088add1265c9eb21a62a537ffb7217a0218"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页67-69与答案页69-81逐题核对：题干、选项、答案和解析与发布内容一致。",
+          "source_hash": "f7f7568aa2e7017b693173b01d7aa4d4107d8967b3452265591028e002b0ef36"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 解答题::A01": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 解答题::A01",
