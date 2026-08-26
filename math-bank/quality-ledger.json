@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-26T21:27:05+00:00",
+  "generated_at": "2026-08-26T21:30:14+00:00",
   "published_hashes": {
     "ds": "a40686840e5043561d7f7159fbd779725ffa65c56bfdd79a2683965b6aed0771",
     "coa": "8f9ea82d6d82e53ea38daf200ae95a361b5c43742f0ce9881b207f671f7f06f7",
@@ -12,9 +12,9 @@
       "name": "数据结构",
       "mode": "strict",
       "total": 797,
-      "certified": 143,
+      "certified": 151,
       "pending": 0,
-      "held": 654
+      "held": 646
     },
     "coa": {
       "name": "计算机组成原理",
@@ -43,9 +43,9 @@
   },
   "summary": {
     "total": 2869,
-    "certified": 962,
+    "certified": 970,
     "pending": 0,
-    "held": 1907
+    "held": 1899
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -53266,7 +53266,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T21:27:02.296138+00:00",
+      "verified_at": "2026-08-26T21:30:10.927740+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -53309,7 +53309,7 @@
           "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X07",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-26T21:27:02.296138+00:00",
+          "reviewed_at": "2026-08-26T21:30:10.927740+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/coa/page_300.png",
@@ -115739,13 +115739,10 @@
       "chapter": "绪论 · 算法和算法评价 · 选择题",
       "question_id": "X02",
       "source_hash": "ac9a21177ba4f6f5ad869a16cf5343a200c4612e1517bf714587f1eb238820ce",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         11,
         12,
@@ -115761,7 +115758,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T01:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -115784,10 +115781,64 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X02",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T01:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_011.png",
+              "sha256": "80ea1e8011118af08e81b6020fdb47dadf9ca0a3a52a5ae7b7b92d6bffb22d63"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_012.png",
+              "sha256": "9151b1111f92f922f7a141392e0b438cb98ea09c82a9f46c59e26051e366d742"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_013.png",
+              "sha256": "01b861919841e68838d833daf861b6072ce4a6ecb30084a91023b76321d6126c"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_013.png",
+              "sha256": "01b861919841e68838d833daf861b6072ce4a6ecb30084a91023b76321d6126c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_014.png",
+              "sha256": "386373bcbd453ba0f22cf72edd982738a58ef6b979de5339c0b1878d1ae801c6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_015.png",
+              "sha256": "0ac72027c3a383e6d9862e5f57e1732d28202664cd3e78f59aa2acd190c126d4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_016.png",
+              "sha256": "96829337b7b72609a477c0a5f16d5dd6a2349638f4eda282d1a7fa8c1f00712e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_017.png",
+              "sha256": "eb67d1ef6f5cfb76c4a96bab582ec9678dc3b1a0f5ee267d9612e8a68d607338"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_018.png",
+              "sha256": "c88d9328e2f73e64e164fc60af7c2651b5cbc9219be60546fa0f88353a4d7247"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页6-8与答案解析页8-11：发布题干、选项、解析忠实，原书答案与发布一致。",
+          "source_hash": "ac9a21177ba4f6f5ad869a16cf5343a200c4612e1517bf714587f1eb238820ce"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X03": {
       "source_uid": "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X03",
@@ -115850,13 +115901,10 @@
       "chapter": "绪论 · 算法和算法评价 · 选择题",
       "question_id": "X04",
       "source_hash": "f17b2c241e77ef178ce4eaef2be6b2ea4723c2c25df19cf64fea88a9be194750",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         11,
         12,
@@ -115872,7 +115920,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T01:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -115895,10 +115943,64 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X04",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T01:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_011.png",
+              "sha256": "80ea1e8011118af08e81b6020fdb47dadf9ca0a3a52a5ae7b7b92d6bffb22d63"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_012.png",
+              "sha256": "9151b1111f92f922f7a141392e0b438cb98ea09c82a9f46c59e26051e366d742"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_013.png",
+              "sha256": "01b861919841e68838d833daf861b6072ce4a6ecb30084a91023b76321d6126c"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_013.png",
+              "sha256": "01b861919841e68838d833daf861b6072ce4a6ecb30084a91023b76321d6126c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_014.png",
+              "sha256": "386373bcbd453ba0f22cf72edd982738a58ef6b979de5339c0b1878d1ae801c6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_015.png",
+              "sha256": "0ac72027c3a383e6d9862e5f57e1732d28202664cd3e78f59aa2acd190c126d4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_016.png",
+              "sha256": "96829337b7b72609a477c0a5f16d5dd6a2349638f4eda282d1a7fa8c1f00712e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_017.png",
+              "sha256": "eb67d1ef6f5cfb76c4a96bab582ec9678dc3b1a0f5ee267d9612e8a68d607338"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_018.png",
+              "sha256": "c88d9328e2f73e64e164fc60af7c2651b5cbc9219be60546fa0f88353a4d7247"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页6-8与答案解析页8-11：发布题干、选项、解析忠实，原书答案与发布一致。",
+          "source_hash": "f17b2c241e77ef178ce4eaef2be6b2ea4723c2c25df19cf64fea88a9be194750"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X05": {
       "source_uid": "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X05",
@@ -115907,12 +116009,9 @@
       "question_id": "X05",
       "source_hash": "42cd9d76c132d7d2fbd5086dec4b08fd9cd00f91697cf4b69b8758eb7a6aed73",
       "source_fidelity": "verified",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         11,
         12,
@@ -115928,7 +116027,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T01:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -115951,10 +116050,64 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X05",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T01:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_011.png",
+              "sha256": "80ea1e8011118af08e81b6020fdb47dadf9ca0a3a52a5ae7b7b92d6bffb22d63"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_012.png",
+              "sha256": "9151b1111f92f922f7a141392e0b438cb98ea09c82a9f46c59e26051e366d742"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_013.png",
+              "sha256": "01b861919841e68838d833daf861b6072ce4a6ecb30084a91023b76321d6126c"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_013.png",
+              "sha256": "01b861919841e68838d833daf861b6072ce4a6ecb30084a91023b76321d6126c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_014.png",
+              "sha256": "386373bcbd453ba0f22cf72edd982738a58ef6b979de5339c0b1878d1ae801c6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_015.png",
+              "sha256": "0ac72027c3a383e6d9862e5f57e1732d28202664cd3e78f59aa2acd190c126d4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_016.png",
+              "sha256": "96829337b7b72609a477c0a5f16d5dd6a2349638f4eda282d1a7fa8c1f00712e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_017.png",
+              "sha256": "eb67d1ef6f5cfb76c4a96bab582ec9678dc3b1a0f5ee267d9612e8a68d607338"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_018.png",
+              "sha256": "c88d9328e2f73e64e164fc60af7c2651b5cbc9219be60546fa0f88353a4d7247"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页6-8与答案解析页8-11：发布题干、选项、解析忠实，原书答案与发布一致。",
+          "source_hash": "42cd9d76c132d7d2fbd5086dec4b08fd9cd00f91697cf4b69b8758eb7a6aed73"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X06": {
       "source_uid": "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X06",
@@ -116147,13 +116300,10 @@
       "chapter": "绪论 · 算法和算法评价 · 选择题",
       "question_id": "X09",
       "source_hash": "82559aa98375ba636d80b5ddca6e347b15583120e5149ea9f4b26121fdc6a240",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         11,
         12,
@@ -116169,7 +116319,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T01:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -116192,10 +116342,64 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_options_mismatch;raw_options_mismatch;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_options_mismatch;raw_options_mismatch;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X09",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T01:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_011.png",
+              "sha256": "80ea1e8011118af08e81b6020fdb47dadf9ca0a3a52a5ae7b7b92d6bffb22d63"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_012.png",
+              "sha256": "9151b1111f92f922f7a141392e0b438cb98ea09c82a9f46c59e26051e366d742"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_013.png",
+              "sha256": "01b861919841e68838d833daf861b6072ce4a6ecb30084a91023b76321d6126c"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_013.png",
+              "sha256": "01b861919841e68838d833daf861b6072ce4a6ecb30084a91023b76321d6126c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_014.png",
+              "sha256": "386373bcbd453ba0f22cf72edd982738a58ef6b979de5339c0b1878d1ae801c6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_015.png",
+              "sha256": "0ac72027c3a383e6d9862e5f57e1732d28202664cd3e78f59aa2acd190c126d4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_016.png",
+              "sha256": "96829337b7b72609a477c0a5f16d5dd6a2349638f4eda282d1a7fa8c1f00712e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_017.png",
+              "sha256": "eb67d1ef6f5cfb76c4a96bab582ec9678dc3b1a0f5ee267d9612e8a68d607338"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_018.png",
+              "sha256": "c88d9328e2f73e64e164fc60af7c2651b5cbc9219be60546fa0f88353a4d7247"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页6-8与答案解析页8-11：发布题干、选项、解析忠实，原书答案与发布一致。",
+          "source_hash": "82559aa98375ba636d80b5ddca6e347b15583120e5149ea9f4b26121fdc6a240"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X10": {
       "source_uid": "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X10",
@@ -116204,12 +116408,9 @@
       "question_id": "X10",
       "source_hash": "5df5e51d9e88cde163864638f4b53f21b16d48617172d2e16ae66d4d1be3bc97",
       "source_fidelity": "verified",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         11,
         12,
@@ -116225,7 +116426,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T01:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -116248,10 +116449,64 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;raw_content_mismatch;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;raw_content_mismatch;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X10",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T01:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_011.png",
+              "sha256": "80ea1e8011118af08e81b6020fdb47dadf9ca0a3a52a5ae7b7b92d6bffb22d63"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_012.png",
+              "sha256": "9151b1111f92f922f7a141392e0b438cb98ea09c82a9f46c59e26051e366d742"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_013.png",
+              "sha256": "01b861919841e68838d833daf861b6072ce4a6ecb30084a91023b76321d6126c"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_013.png",
+              "sha256": "01b861919841e68838d833daf861b6072ce4a6ecb30084a91023b76321d6126c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_014.png",
+              "sha256": "386373bcbd453ba0f22cf72edd982738a58ef6b979de5339c0b1878d1ae801c6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_015.png",
+              "sha256": "0ac72027c3a383e6d9862e5f57e1732d28202664cd3e78f59aa2acd190c126d4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_016.png",
+              "sha256": "96829337b7b72609a477c0a5f16d5dd6a2349638f4eda282d1a7fa8c1f00712e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_017.png",
+              "sha256": "eb67d1ef6f5cfb76c4a96bab582ec9678dc3b1a0f5ee267d9612e8a68d607338"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_018.png",
+              "sha256": "c88d9328e2f73e64e164fc60af7c2651b5cbc9219be60546fa0f88353a4d7247"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页6-8与答案解析页8-11：发布题干、选项、解析忠实，原书答案与发布一致。",
+          "source_hash": "5df5e51d9e88cde163864638f4b53f21b16d48617172d2e16ae66d4d1be3bc97"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X11": {
       "source_uid": "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X11",
@@ -116259,14 +116514,10 @@
       "chapter": "绪论 · 算法和算法评价 · 选择题",
       "question_id": "X11",
       "source_hash": "935e9fcd07320bb6be37a2919c40c098deaca600eb75a49445c16bbda70e4e13",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         11,
         12,
@@ -116282,7 +116533,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T01:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -116305,10 +116556,64 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_stale_source_hash;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;ocr_stem_or_options_mismatch"
+        "human_evidence": "legacy_hold_recheck;luna_stale_source_hash;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X11",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T01:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_011.png",
+              "sha256": "80ea1e8011118af08e81b6020fdb47dadf9ca0a3a52a5ae7b7b92d6bffb22d63"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_012.png",
+              "sha256": "9151b1111f92f922f7a141392e0b438cb98ea09c82a9f46c59e26051e366d742"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_013.png",
+              "sha256": "01b861919841e68838d833daf861b6072ce4a6ecb30084a91023b76321d6126c"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_013.png",
+              "sha256": "01b861919841e68838d833daf861b6072ce4a6ecb30084a91023b76321d6126c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_014.png",
+              "sha256": "386373bcbd453ba0f22cf72edd982738a58ef6b979de5339c0b1878d1ae801c6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_015.png",
+              "sha256": "0ac72027c3a383e6d9862e5f57e1732d28202664cd3e78f59aa2acd190c126d4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_016.png",
+              "sha256": "96829337b7b72609a477c0a5f16d5dd6a2349638f4eda282d1a7fa8c1f00712e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_017.png",
+              "sha256": "eb67d1ef6f5cfb76c4a96bab582ec9678dc3b1a0f5ee267d9612e8a68d607338"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_018.png",
+              "sha256": "c88d9328e2f73e64e164fc60af7c2651b5cbc9219be60546fa0f88353a4d7247"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页6-8与答案解析页8-11：发布题干、选项、解析忠实，原书答案与发布一致。",
+          "source_hash": "935e9fcd07320bb6be37a2919c40c098deaca600eb75a49445c16bbda70e4e13"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X12": {
       "source_uid": "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X12",
@@ -116316,14 +116621,10 @@
       "chapter": "绪论 · 算法和算法评价 · 选择题",
       "question_id": "X12",
       "source_hash": "2ce72b5c7aa490e1987e2cbe0365131e6f9dc2dd4f4c15d2ed9871caaa74108e",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         11,
         12,
@@ -116339,7 +116640,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T01:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -116362,10 +116663,64 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_stale_source_hash;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;ocr_stem_or_options_mismatch"
+        "human_evidence": "legacy_hold_recheck;luna_stale_source_hash;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X12",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T01:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_011.png",
+              "sha256": "80ea1e8011118af08e81b6020fdb47dadf9ca0a3a52a5ae7b7b92d6bffb22d63"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_012.png",
+              "sha256": "9151b1111f92f922f7a141392e0b438cb98ea09c82a9f46c59e26051e366d742"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_013.png",
+              "sha256": "01b861919841e68838d833daf861b6072ce4a6ecb30084a91023b76321d6126c"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_013.png",
+              "sha256": "01b861919841e68838d833daf861b6072ce4a6ecb30084a91023b76321d6126c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_014.png",
+              "sha256": "386373bcbd453ba0f22cf72edd982738a58ef6b979de5339c0b1878d1ae801c6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_015.png",
+              "sha256": "0ac72027c3a383e6d9862e5f57e1732d28202664cd3e78f59aa2acd190c126d4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_016.png",
+              "sha256": "96829337b7b72609a477c0a5f16d5dd6a2349638f4eda282d1a7fa8c1f00712e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_017.png",
+              "sha256": "eb67d1ef6f5cfb76c4a96bab582ec9678dc3b1a0f5ee267d9612e8a68d607338"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_018.png",
+              "sha256": "c88d9328e2f73e64e164fc60af7c2651b5cbc9219be60546fa0f88353a4d7247"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页6-8与答案解析页8-11：发布题干、选项、解析忠实，原书答案与发布一致。",
+          "source_hash": "2ce72b5c7aa490e1987e2cbe0365131e6f9dc2dd4f4c15d2ed9871caaa74108e"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X13": {
       "source_uid": "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X13",
@@ -116589,13 +116944,10 @@
       "chapter": "绪论 · 算法和算法评价 · 选择题",
       "question_id": "X16",
       "source_hash": "758458af6297baf3e2730363527b604f9440f81428b445e643016d326db1fbda",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         11,
         12,
@@ -116611,7 +116963,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T01:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -116634,10 +116986,64 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_options_mismatch;raw_options_mismatch;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_options_mismatch;raw_options_mismatch;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X16",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T01:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_011.png",
+              "sha256": "80ea1e8011118af08e81b6020fdb47dadf9ca0a3a52a5ae7b7b92d6bffb22d63"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_012.png",
+              "sha256": "9151b1111f92f922f7a141392e0b438cb98ea09c82a9f46c59e26051e366d742"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_013.png",
+              "sha256": "01b861919841e68838d833daf861b6072ce4a6ecb30084a91023b76321d6126c"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_013.png",
+              "sha256": "01b861919841e68838d833daf861b6072ce4a6ecb30084a91023b76321d6126c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_014.png",
+              "sha256": "386373bcbd453ba0f22cf72edd982738a58ef6b979de5339c0b1878d1ae801c6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_015.png",
+              "sha256": "0ac72027c3a383e6d9862e5f57e1732d28202664cd3e78f59aa2acd190c126d4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_016.png",
+              "sha256": "96829337b7b72609a477c0a5f16d5dd6a2349638f4eda282d1a7fa8c1f00712e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_017.png",
+              "sha256": "eb67d1ef6f5cfb76c4a96bab582ec9678dc3b1a0f5ee267d9612e8a68d607338"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_018.png",
+              "sha256": "c88d9328e2f73e64e164fc60af7c2651b5cbc9219be60546fa0f88353a4d7247"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页6-8与答案解析页8-11：发布题干、选项、解析忠实，原书答案与发布一致。",
+          "source_hash": "758458af6297baf3e2730363527b604f9440f81428b445e643016d326db1fbda"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X17": {
       "source_uid": "408:cs408-ds::绪论 · 算法和算法评价 · 选择题::X17",
