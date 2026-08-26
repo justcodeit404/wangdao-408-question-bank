@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-26T17:25:45+00:00",
+  "generated_at": "2026-08-26T17:27:35+00:00",
   "published_hashes": {
     "ds": "a40686840e5043561d7f7159fbd779725ffa65c56bfdd79a2683965b6aed0771",
-    "coa": "6ef8de41691fe7df372d966eb8d7f5d749f40a2855438cd3165bc9b206e63b11",
+    "coa": "2d2efca30ff83754c93c067e7bce390e989ab2435aefc933a9358e89a35df972",
     "net": "0fc4432f9af3214d9d5628799a687af65394f1f32fd0f87deb86500c484ba17a",
     "os": "a43ca9d4375b7cd96ca2c0d5d024b6d51904bb50fa6525ee1a8eb55ff81161fe"
   },
@@ -20,9 +20,9 @@
       "name": "计算机组成原理",
       "mode": "strict",
       "total": 674,
-      "certified": 117,
+      "certified": 119,
       "pending": 0,
-      "held": 557
+      "held": 555
     },
     "net": {
       "name": "计算机网络",
@@ -43,9 +43,9 @@
   },
   "summary": {
     "total": 2869,
-    "certified": 434,
+    "certified": 437,
     "pending": 0,
-    "held": 2435
+    "held": 2432
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -30282,11 +30282,13 @@
       "course_key": "coa",
       "chapter": "指令系统 · 程序的机器级代码表示 · 选择题",
       "question_id": "X07",
-      "source_hash": "4c7b47abe2326a53f6d8119c601807b2722de846926a3090b844217d73ef6963",
+      "source_hash": "80c338193f1694781ef29a50a49b5a52238243beb437b0aa4ebea8603bd22cca",
       "source_fidelity": "pending",
       "answer_validation": "pending",
       "overall": "hold",
-      "reason_codes": [],
+      "reason_codes": [
+        "legacy_hold_recheck"
+      ],
       "q_pages": [
         186,
         187,
@@ -30656,15 +30658,11 @@
       "course_key": "coa",
       "chapter": "数据的表示和运算 · 数制与编码 · 选择题",
       "question_id": "X01",
-      "source_hash": "8c7803f5dd83424730731b6cf38992838a835fffd05ce0b8155d1f868ab77b65",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_hash": "daddb960aad30a01abfc7951d8b125ea7b583c42eb6a8923550ae252fba4b60a",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         32,
         33,
@@ -30689,62 +30687,51 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T00:50:00+00:00",
       "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X01",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T00:50:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_032.png",
+              "sha256": "5f983dade9d215e3a5048f71434bdce794f896ce2ed6ef66ba5c625447d95737"
+            }
           ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_035.png",
+              "sha256": "fb61c618d5d4e2f386a96f76bba0dccc9c8986fafa5553dccfb54629dd03179f"
+            }
           ],
-          "source_hash": "8c7803f5dd83424730731b6cf38992838a835fffd05ce0b8155d1f868ab77b65",
-          "choices": [
-            "B",
-            "B"
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": false,
+          "image_match": true,
+          "detected_errors": [
+            "explanation_ocr_truncation"
           ],
-          "confidence": [
-            0.0,
-            0.0
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "B",
-            "B"
-          ],
-          "blind_confidence": [
-            0.0,
-            0.0
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+          "rationale": "亲眼核对原书题页32与答案页35，A-D及答案为B；解析按原书恢复被截断/错误的文字与指数。",
+          "post_patch_verified": true,
+          "source_hash": "daddb960aad30a01abfc7951d8b125ea7b583c42eb6a8923550ae252fba4b60a"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X02": {
       "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X02",
       "course_key": "coa",
       "chapter": "数据的表示和运算 · 数制与编码 · 选择题",
       "question_id": "X02",
-      "source_hash": "7ef3a4cd96d04d436eabed50a209c4109f7ccf6493bcea968edb5b52f9ce3d5f",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_hash": "7478e6a4ab69c55dfddbe1f35c39b660cbff8678670112c244ab6c52b594f403",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         32,
         33,
@@ -30769,48 +30756,51 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T00:50:00+00:00",
       "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X02",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T00:50:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_032.png",
+              "sha256": "5f983dade9d215e3a5048f71434bdce794f896ce2ed6ef66ba5c625447d95737"
+            }
           ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_035.png",
+              "sha256": "fb61c618d5d4e2f386a96f76bba0dccc9c8986fafa5553dccfb54629dd03179f"
+            }
           ],
-          "source_hash": "7ef3a4cd96d04d436eabed50a209c4109f7ccf6493bcea968edb5b52f9ce3d5f",
-          "choices": [],
-          "confidence": [],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "status": "hold",
-          "reason": "stale_source_hash"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;ocr_answer_mismatch"
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": false,
+          "image_match": true,
+          "detected_errors": [
+            "explanation_ocr_truncation"
+          ],
+          "rationale": "亲眼核对原书题页32与答案页35，A-D及答案为B；解析按原书恢复被截断/错误的文字与指数。",
+          "post_patch_verified": true,
+          "source_hash": "7478e6a4ab69c55dfddbe1f35c39b660cbff8678670112c244ab6c52b594f403"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X03": {
       "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X03",
       "course_key": "coa",
       "chapter": "数据的表示和运算 · 数制与编码 · 选择题",
       "question_id": "X03",
-      "source_hash": "8404d371f2472a6b763f69673939137fa1924534b2cc8a358f92c324e787ad9c",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_hash": "e168398239b551f6d7c72987595f7eac4326a67dd1b0b43ba0710c125da85911",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         32,
         33,
@@ -30835,48 +30825,40 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T00:50:00+00:00",
       "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X03",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T00:50:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_032.png",
+              "sha256": "5f983dade9d215e3a5048f71434bdce794f896ce2ed6ef66ba5c625447d95737"
+            }
           ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_035.png",
+              "sha256": "fb61c618d5d4e2f386a96f76bba0dccc9c8986fafa5553dccfb54629dd03179f"
+            }
           ],
-          "source_hash": "8404d371f2472a6b763f69673939137fa1924534b2cc8a358f92c324e787ad9c",
-          "choices": [
-            "D",
-            "D"
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": false,
+          "image_match": true,
+          "detected_errors": [
+            "explanation_ocr_truncation"
           ],
-          "confidence": [
-            0.0,
-            0.0
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "D",
-            "D"
-          ],
-          "blind_confidence": [
-            0.0,
-            0.0
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+          "rationale": "亲眼核对原书题页32与答案页35，A-D及答案为D；解析按原书恢复被截断/错误的文字与指数。",
+          "post_patch_verified": true,
+          "source_hash": "e168398239b551f6d7c72987595f7eac4326a67dd1b0b43ba0710c125da85911"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X04": {
       "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X04",
@@ -30921,26 +30903,48 @@
           "reviewed_at": "2026-08-27T00:40:00+00:00",
           "q_pages_viewed": [
             {
-              "path": "apps/bank-408/assets/pdf_images/coa/page_032.png",
-              "sha256": "5f983dade9d215e3a5048f71434bdce794f896ce2ed6ef66ba5c625447d95737"
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_032.png",
+              "sha256": "5f983dade9d215e3a5048f71434bdce794f896ce2ed6ef66ba5c625447d95737",
+              "page": 32
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_033.png",
+              "sha256": "5c09832f429095c3b8d3dd83ea45aad4f75e5a0e0d7801d890f219c50316e795",
+              "page": 33
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_034.png",
+              "sha256": "bdc8521ad1f5a1ed31f710e33b26fea25f3783985a6cab1bfe400cd9f52b177f",
+              "page": 34
             }
           ],
           "a_pages_viewed": [
             {
-              "path": "apps/bank-408/assets/pdf_images/coa/page_035.png",
-              "sha256": "fb61c618d5d4e2f386a96f76bba0dccc9c8986fafa5553dccfb54629dd03179f"
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_034.png",
+              "sha256": "bdc8521ad1f5a1ed31f710e33b26fea25f3783985a6cab1bfe400cd9f52b177f",
+              "page": 34
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_035.png",
+              "sha256": "fb61c618d5d4e2f386a96f76bba0dccc9c8986fafa5553dccfb54629dd03179f",
+              "page": 35
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_036.png",
+              "sha256": "363c5e15180bb88b8c944f26ef9517371b4e1f5274605bf5d94e21e57f4bc0d7",
+              "page": 36
             }
           ],
           "final_action": "patch",
-          "content_match": true,
-          "options_match": true,
-          "answer_match": true,
-          "explanation_match": false,
-          "image_match": true,
+          "content_match": null,
+          "options_match": null,
+          "answer_match": null,
+          "explanation_match": null,
+          "image_match": null,
           "detected_errors": [
-            "explanation_corrupted_by_ocr"
+            "persisted_page_review_patch"
           ],
-          "rationale": "原书题页32第04题与答案页35第04题已核对，题干和选项无误；解析中的原码/反码/补码/移码等式按原书恢复。",
+          "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
           "post_patch_verified": true,
           "source_hash": "ccdae52d470ba60d4d9c26cc2c490fcaa9f7a07251229a6263ff52e93296d8a7"
         }
@@ -30990,26 +30994,48 @@
           "reviewed_at": "2026-08-27T00:40:00+00:00",
           "q_pages_viewed": [
             {
-              "path": "apps/bank-408/assets/pdf_images/coa/page_032.png",
-              "sha256": "5f983dade9d215e3a5048f71434bdce794f896ce2ed6ef66ba5c625447d95737"
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_032.png",
+              "sha256": "5f983dade9d215e3a5048f71434bdce794f896ce2ed6ef66ba5c625447d95737",
+              "page": 32
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_033.png",
+              "sha256": "5c09832f429095c3b8d3dd83ea45aad4f75e5a0e0d7801d890f219c50316e795",
+              "page": 33
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_034.png",
+              "sha256": "bdc8521ad1f5a1ed31f710e33b26fea25f3783985a6cab1bfe400cd9f52b177f",
+              "page": 34
             }
           ],
           "a_pages_viewed": [
             {
-              "path": "apps/bank-408/assets/pdf_images/coa/page_035.png",
-              "sha256": "fb61c618d5d4e2f386a96f76bba0dccc9c8986fafa5553dccfb54629dd03179f"
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_034.png",
+              "sha256": "bdc8521ad1f5a1ed31f710e33b26fea25f3783985a6cab1bfe400cd9f52b177f",
+              "page": 34
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_035.png",
+              "sha256": "fb61c618d5d4e2f386a96f76bba0dccc9c8986fafa5553dccfb54629dd03179f",
+              "page": 35
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_036.png",
+              "sha256": "363c5e15180bb88b8c944f26ef9517371b4e1f5274605bf5d94e21e57f4bc0d7",
+              "page": 36
             }
           ],
           "final_action": "patch",
-          "content_match": false,
-          "options_match": true,
-          "answer_match": true,
-          "explanation_match": true,
-          "image_match": true,
+          "content_match": null,
+          "options_match": null,
+          "answer_match": null,
+          "explanation_match": null,
+          "image_match": null,
           "detected_errors": [
-            "content_symbol_misread"
+            "persisted_page_review_patch"
           ],
-          "rationale": "原书题页32第05题与答案页35第05题已核对；题干末项为[X]原，发布文本误读为[X]系，已修正。",
+          "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
           "post_patch_verified": true,
           "source_hash": "817d6f451fb19d824d13680732bd7740c2fccb4332b356ee252a9c8ec4ccdcef"
         }

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "protocol": "codex-original-page-review-v1",
-  "updated_at": "2026-08-26T17:25:43.975136+00:00",
+  "updated_at": "2026-08-26T17:27:34.865825+00:00",
   "records": [
     {
       "source_uid": "408:cs408-coa::中央处理器 · 异常和中断机制 · 选择题::X01",
@@ -462,10 +462,10 @@
       "source_hash": "c89df3580b801503748d493d94c7e25b32a5c4bfd67675529612e56786f90c70"
     },
     {
-      "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X04",
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X01",
       "protocol": "codex-original-page-review-v1",
       "reviewer": "codex-vision",
-      "reviewed_at": "2026-08-27T00:40:00+00:00",
+      "reviewed_at": "2026-08-27T00:50:00+00:00",
       "q_pages_viewed": [
         {
           "path": "apps/bank-408/assets/pdf_images/coa/page_032.png",
@@ -485,9 +485,277 @@
       "explanation_match": false,
       "image_match": true,
       "detected_errors": [
-        "explanation_corrupted_by_ocr"
+        "explanation_ocr_truncation"
       ],
-      "rationale": "原书题页32第04题与答案页35第04题已核对，题干和选项无误；解析中的原码/反码/补码/移码等式按原书恢复。",
+      "rationale": "亲眼核对原书题页32与答案页35，A-D及答案为B；解析按原书恢复被截断/错误的文字与指数。",
+      "post_patch_verified": true,
+      "source_hash": "daddb960aad30a01abfc7951d8b125ea7b583c42eb6a8923550ae252fba4b60a"
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X01",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "migrated:page_review_patches.json",
+      "q_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_032.png",
+          "sha256": "5f983dade9d215e3a5048f71434bdce794f896ce2ed6ef66ba5c625447d95737",
+          "page": 32
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_033.png",
+          "sha256": "5c09832f429095c3b8d3dd83ea45aad4f75e5a0e0d7801d890f219c50316e795",
+          "page": 33
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_034.png",
+          "sha256": "bdc8521ad1f5a1ed31f710e33b26fea25f3783985a6cab1bfe400cd9f52b177f",
+          "page": 34
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_034.png",
+          "sha256": "bdc8521ad1f5a1ed31f710e33b26fea25f3783985a6cab1bfe400cd9f52b177f",
+          "page": 34
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_035.png",
+          "sha256": "fb61c618d5d4e2f386a96f76bba0dccc9c8986fafa5553dccfb54629dd03179f",
+          "page": 35
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_036.png",
+          "sha256": "363c5e15180bb88b8c944f26ef9517371b4e1f5274605bf5d94e21e57f4bc0d7",
+          "page": 36
+        }
+      ],
+      "final_action": "patch",
+      "content_match": null,
+      "options_match": null,
+      "answer_match": null,
+      "explanation_match": null,
+      "image_match": null,
+      "detected_errors": [
+        "persisted_page_review_patch"
+      ],
+      "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
+      "post_patch_verified": true,
+      "source_hash": "8c7803f5dd83424730731b6cf38992838a835fffd05ce0b8155d1f868ab77b65"
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X02",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T00:50:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_032.png",
+          "sha256": "5f983dade9d215e3a5048f71434bdce794f896ce2ed6ef66ba5c625447d95737"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_035.png",
+          "sha256": "fb61c618d5d4e2f386a96f76bba0dccc9c8986fafa5553dccfb54629dd03179f"
+        }
+      ],
+      "final_action": "patch",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "explanation_ocr_truncation"
+      ],
+      "rationale": "亲眼核对原书题页32与答案页35，A-D及答案为B；解析按原书恢复被截断/错误的文字与指数。",
+      "post_patch_verified": true,
+      "source_hash": "7478e6a4ab69c55dfddbe1f35c39b660cbff8678670112c244ab6c52b594f403"
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X02",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "migrated:page_review_patches.json",
+      "q_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_032.png",
+          "sha256": "5f983dade9d215e3a5048f71434bdce794f896ce2ed6ef66ba5c625447d95737",
+          "page": 32
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_033.png",
+          "sha256": "5c09832f429095c3b8d3dd83ea45aad4f75e5a0e0d7801d890f219c50316e795",
+          "page": 33
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_034.png",
+          "sha256": "bdc8521ad1f5a1ed31f710e33b26fea25f3783985a6cab1bfe400cd9f52b177f",
+          "page": 34
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_034.png",
+          "sha256": "bdc8521ad1f5a1ed31f710e33b26fea25f3783985a6cab1bfe400cd9f52b177f",
+          "page": 34
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_035.png",
+          "sha256": "fb61c618d5d4e2f386a96f76bba0dccc9c8986fafa5553dccfb54629dd03179f",
+          "page": 35
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_036.png",
+          "sha256": "363c5e15180bb88b8c944f26ef9517371b4e1f5274605bf5d94e21e57f4bc0d7",
+          "page": 36
+        }
+      ],
+      "final_action": "patch",
+      "content_match": null,
+      "options_match": null,
+      "answer_match": null,
+      "explanation_match": null,
+      "image_match": null,
+      "detected_errors": [
+        "persisted_page_review_patch"
+      ],
+      "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
+      "post_patch_verified": true,
+      "source_hash": "7ef3a4cd96d04d436eabed50a209c4109f7ccf6493bcea968edb5b52f9ce3d5f"
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X03",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T00:50:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_032.png",
+          "sha256": "5f983dade9d215e3a5048f71434bdce794f896ce2ed6ef66ba5c625447d95737"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_035.png",
+          "sha256": "fb61c618d5d4e2f386a96f76bba0dccc9c8986fafa5553dccfb54629dd03179f"
+        }
+      ],
+      "final_action": "patch",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "explanation_ocr_truncation"
+      ],
+      "rationale": "亲眼核对原书题页32与答案页35，A-D及答案为D；解析按原书恢复被截断/错误的文字与指数。",
+      "post_patch_verified": true,
+      "source_hash": "e168398239b551f6d7c72987595f7eac4326a67dd1b0b43ba0710c125da85911"
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X03",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "migrated:page_review_patches.json",
+      "q_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_032.png",
+          "sha256": "5f983dade9d215e3a5048f71434bdce794f896ce2ed6ef66ba5c625447d95737",
+          "page": 32
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_033.png",
+          "sha256": "5c09832f429095c3b8d3dd83ea45aad4f75e5a0e0d7801d890f219c50316e795",
+          "page": 33
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_034.png",
+          "sha256": "bdc8521ad1f5a1ed31f710e33b26fea25f3783985a6cab1bfe400cd9f52b177f",
+          "page": 34
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_034.png",
+          "sha256": "bdc8521ad1f5a1ed31f710e33b26fea25f3783985a6cab1bfe400cd9f52b177f",
+          "page": 34
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_035.png",
+          "sha256": "fb61c618d5d4e2f386a96f76bba0dccc9c8986fafa5553dccfb54629dd03179f",
+          "page": 35
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_036.png",
+          "sha256": "363c5e15180bb88b8c944f26ef9517371b4e1f5274605bf5d94e21e57f4bc0d7",
+          "page": 36
+        }
+      ],
+      "final_action": "patch",
+      "content_match": null,
+      "options_match": null,
+      "answer_match": null,
+      "explanation_match": null,
+      "image_match": null,
+      "detected_errors": [
+        "persisted_page_review_patch"
+      ],
+      "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
+      "post_patch_verified": true,
+      "source_hash": "8404d371f2472a6b763f69673939137fa1924534b2cc8a358f92c324e787ad9c"
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X04",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T00:40:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_032.png",
+          "sha256": "5f983dade9d215e3a5048f71434bdce794f896ce2ed6ef66ba5c625447d95737",
+          "page": 32
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_033.png",
+          "sha256": "5c09832f429095c3b8d3dd83ea45aad4f75e5a0e0d7801d890f219c50316e795",
+          "page": 33
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_034.png",
+          "sha256": "bdc8521ad1f5a1ed31f710e33b26fea25f3783985a6cab1bfe400cd9f52b177f",
+          "page": 34
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_034.png",
+          "sha256": "bdc8521ad1f5a1ed31f710e33b26fea25f3783985a6cab1bfe400cd9f52b177f",
+          "page": 34
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_035.png",
+          "sha256": "fb61c618d5d4e2f386a96f76bba0dccc9c8986fafa5553dccfb54629dd03179f",
+          "page": 35
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_036.png",
+          "sha256": "363c5e15180bb88b8c944f26ef9517371b4e1f5274605bf5d94e21e57f4bc0d7",
+          "page": 36
+        }
+      ],
+      "final_action": "patch",
+      "content_match": null,
+      "options_match": null,
+      "answer_match": null,
+      "explanation_match": null,
+      "image_match": null,
+      "detected_errors": [
+        "persisted_page_review_patch"
+      ],
+      "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
       "post_patch_verified": true,
       "source_hash": "ccdae52d470ba60d4d9c26cc2c490fcaa9f7a07251229a6263ff52e93296d8a7"
     },
@@ -550,26 +818,48 @@
       "reviewed_at": "2026-08-27T00:40:00+00:00",
       "q_pages_viewed": [
         {
-          "path": "apps/bank-408/assets/pdf_images/coa/page_032.png",
-          "sha256": "5f983dade9d215e3a5048f71434bdce794f896ce2ed6ef66ba5c625447d95737"
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_032.png",
+          "sha256": "5f983dade9d215e3a5048f71434bdce794f896ce2ed6ef66ba5c625447d95737",
+          "page": 32
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_033.png",
+          "sha256": "5c09832f429095c3b8d3dd83ea45aad4f75e5a0e0d7801d890f219c50316e795",
+          "page": 33
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_034.png",
+          "sha256": "bdc8521ad1f5a1ed31f710e33b26fea25f3783985a6cab1bfe400cd9f52b177f",
+          "page": 34
         }
       ],
       "a_pages_viewed": [
         {
-          "path": "apps/bank-408/assets/pdf_images/coa/page_035.png",
-          "sha256": "fb61c618d5d4e2f386a96f76bba0dccc9c8986fafa5553dccfb54629dd03179f"
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_034.png",
+          "sha256": "bdc8521ad1f5a1ed31f710e33b26fea25f3783985a6cab1bfe400cd9f52b177f",
+          "page": 34
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_035.png",
+          "sha256": "fb61c618d5d4e2f386a96f76bba0dccc9c8986fafa5553dccfb54629dd03179f",
+          "page": 35
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_036.png",
+          "sha256": "363c5e15180bb88b8c944f26ef9517371b4e1f5274605bf5d94e21e57f4bc0d7",
+          "page": 36
         }
       ],
       "final_action": "patch",
-      "content_match": false,
-      "options_match": true,
-      "answer_match": true,
-      "explanation_match": true,
-      "image_match": true,
+      "content_match": null,
+      "options_match": null,
+      "answer_match": null,
+      "explanation_match": null,
+      "image_match": null,
       "detected_errors": [
-        "content_symbol_misread"
+        "persisted_page_review_patch"
       ],
-      "rationale": "原书题页32第05题与答案页35第05题已核对；题干末项为[X]原，发布文本误读为[X]系，已修正。",
+      "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
       "post_patch_verified": true,
       "source_hash": "817d6f451fb19d824d13680732bd7740c2fccb4332b356ee252a9c8ec4ccdcef"
     },

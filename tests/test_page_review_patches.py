@@ -53,7 +53,7 @@ def test_ds_circular_queue_end_pointers_not_duplicated():
 
 def test_page_review_manifest_is_valid_and_unique():
     patches = load_page_review_patches()
-    assert len(patches) == 33
+    assert len(patches) == 36
     assert all(len(key) == 3 for key in patches)
 
 
