@@ -18,6 +18,7 @@ from pathlib import Path
 from typing import Any, Mapping
 
 from config import COURSES, MATH_BANK_DIR, REPORTS_DIR
+from luna_review_v2 import apply_v2_fields
 from quality_hold import _choice_should_hold, source_uid
 from utils import write_json_atomic, write_text_atomic
 
@@ -230,7 +231,7 @@ def _new_item(
     answer = (
         question.get("answer") if isinstance(question.get("answer"), Mapping) else {}
     )
-    return {
+    row = {
         "source_uid": uid,
         "course_key": course_key,
         "chapter": chapter,
@@ -249,6 +250,8 @@ def _new_item(
         "verified_at": old.get("verified_at") if same_hash and old else None,
         "evidence": dict(old.get("evidence") or {}) if same_hash and old else {},
     }
+    apply_v2_fields(row, question)
+    return row
 
 
 def _recompute_overall(item: dict[str, Any], strict: bool = False) -> None:
