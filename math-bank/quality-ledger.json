@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-26T22:25:06+00:00",
+  "generated_at": "2026-08-26T22:29:09+00:00",
   "published_hashes": {
     "ds": "a40686840e5043561d7f7159fbd779725ffa65c56bfdd79a2683965b6aed0771",
     "coa": "8f9ea82d6d82e53ea38daf200ae95a361b5c43742f0ce9881b207f671f7f06f7",
@@ -36,16 +36,16 @@
       "name": "操作系统",
       "mode": "strict",
       "total": 759,
-      "certified": 189,
+      "certified": 207,
       "pending": 0,
-      "held": 570
+      "held": 552
     }
   },
   "summary": {
     "total": 2869,
-    "certified": 1110,
+    "certified": 1128,
     "pending": 0,
-    "held": 1759
+    "held": 1741
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -54624,7 +54624,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T22:24:59.965810+00:00",
+      "verified_at": "2026-08-26T22:29:03.394449+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -54667,7 +54667,7 @@
           "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X07",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-26T22:24:59.965810+00:00",
+          "reviewed_at": "2026-08-26T22:29:03.394449+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/coa/page_300.png",
@@ -203333,14 +203333,10 @@
       "chapter": "计算机系统概述 · 操作系统的运行环境 · 选择题",
       "question_id": "X05",
       "source_hash": "e3dda6826442353f479444bd4876d23dd11af2c9b5ae230c192a57a8cae505be",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         24,
         25,
@@ -203360,7 +203356,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -203398,10 +203394,80 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "legacy_hold_recheck;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X05",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_024.png",
+              "sha256": "d1727429f972ae13d177aba379c6d6f8e15a52aeb122aae04394ca1688d2e2bc"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_025.png",
+              "sha256": "610be1e0efa21329ca7b4c5d53601c1e2c872f5690fc372f0054a40a5d4d3923"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_026.png",
+              "sha256": "c1f6cc801f7367059e373b5d560482aa874fe060a3ec9b8205206b5a7bdb7ec4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_028.png",
+              "sha256": "c3cdedb14f250c2e7e8e1333ab30125966233c9c00dc0c08ff5632452f69569b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_029.png",
+              "sha256": "d88605bdb1856bf03c225a36501a4d5001eefb62414ab024b4d14f8e6d0f7e3f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_030.png",
+              "sha256": "f28173a2cba949af1bd3bf7f8329e2f91688e0c2de4738560ffe61c5ede5585c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_031.png",
+              "sha256": "bacd0c33060ba5cb406481b828cc6f35dbfcc7007efa49e540bf347a41ff28ee"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_032.png",
+              "sha256": "51b994782553ceb5d6238d18b16d73564d0a6551e070604252dc90d86f170250"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_033.png",
+              "sha256": "11103c51d787d776424a5e98ddcc886838e6dbb0af38d819550b8a363dcd0095"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_034.png",
+              "sha256": "be6e5d9da975c1c6414325f2f09df77a09ed29b31ceb91cbb37f21675a426d78"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_035.png",
+              "sha256": "27ae8d7265eac589fadbc548f431bee459750822c039bce777a7935f64afc144"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页19–22与答案页22–30逐题核对，题干、选项、答案和解析与发布内容一致（仅版式/空格差异）。",
+          "source_hash": "e3dda6826442353f479444bd4876d23dd11af2c9b5ae230c192a57a8cae505be"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X06": {
       "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X06",
@@ -203409,13 +203475,10 @@
       "chapter": "计算机系统概述 · 操作系统的运行环境 · 选择题",
       "question_id": "X06",
       "source_hash": "8e9a91fad17c0ef4ed8321491f92bddbed0a79f5899cf542bce5c604217dcea7",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         24,
         25,
@@ -203435,7 +203498,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -203473,10 +203536,80 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X06",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_024.png",
+              "sha256": "d1727429f972ae13d177aba379c6d6f8e15a52aeb122aae04394ca1688d2e2bc"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_025.png",
+              "sha256": "610be1e0efa21329ca7b4c5d53601c1e2c872f5690fc372f0054a40a5d4d3923"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_026.png",
+              "sha256": "c1f6cc801f7367059e373b5d560482aa874fe060a3ec9b8205206b5a7bdb7ec4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_028.png",
+              "sha256": "c3cdedb14f250c2e7e8e1333ab30125966233c9c00dc0c08ff5632452f69569b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_029.png",
+              "sha256": "d88605bdb1856bf03c225a36501a4d5001eefb62414ab024b4d14f8e6d0f7e3f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_030.png",
+              "sha256": "f28173a2cba949af1bd3bf7f8329e2f91688e0c2de4738560ffe61c5ede5585c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_031.png",
+              "sha256": "bacd0c33060ba5cb406481b828cc6f35dbfcc7007efa49e540bf347a41ff28ee"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_032.png",
+              "sha256": "51b994782553ceb5d6238d18b16d73564d0a6551e070604252dc90d86f170250"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_033.png",
+              "sha256": "11103c51d787d776424a5e98ddcc886838e6dbb0af38d819550b8a363dcd0095"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_034.png",
+              "sha256": "be6e5d9da975c1c6414325f2f09df77a09ed29b31ceb91cbb37f21675a426d78"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_035.png",
+              "sha256": "27ae8d7265eac589fadbc548f431bee459750822c039bce777a7935f64afc144"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页19–22与答案页22–30逐题核对，题干、选项、答案和解析与发布内容一致（仅版式/空格差异）。",
+          "source_hash": "8e9a91fad17c0ef4ed8321491f92bddbed0a79f5899cf542bce5c604217dcea7"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X07": {
       "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X07",
@@ -203557,13 +203690,10 @@
       "chapter": "计算机系统概述 · 操作系统的运行环境 · 选择题",
       "question_id": "X08",
       "source_hash": "fe9e1ab03f5d306761c6003c5f2522ad55b271594d1e9d76f0647182a3d4e9bf",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         24,
         25,
@@ -203583,7 +203713,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -203621,10 +203751,80 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X08",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_024.png",
+              "sha256": "d1727429f972ae13d177aba379c6d6f8e15a52aeb122aae04394ca1688d2e2bc"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_025.png",
+              "sha256": "610be1e0efa21329ca7b4c5d53601c1e2c872f5690fc372f0054a40a5d4d3923"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_026.png",
+              "sha256": "c1f6cc801f7367059e373b5d560482aa874fe060a3ec9b8205206b5a7bdb7ec4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_028.png",
+              "sha256": "c3cdedb14f250c2e7e8e1333ab30125966233c9c00dc0c08ff5632452f69569b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_029.png",
+              "sha256": "d88605bdb1856bf03c225a36501a4d5001eefb62414ab024b4d14f8e6d0f7e3f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_030.png",
+              "sha256": "f28173a2cba949af1bd3bf7f8329e2f91688e0c2de4738560ffe61c5ede5585c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_031.png",
+              "sha256": "bacd0c33060ba5cb406481b828cc6f35dbfcc7007efa49e540bf347a41ff28ee"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_032.png",
+              "sha256": "51b994782553ceb5d6238d18b16d73564d0a6551e070604252dc90d86f170250"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_033.png",
+              "sha256": "11103c51d787d776424a5e98ddcc886838e6dbb0af38d819550b8a363dcd0095"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_034.png",
+              "sha256": "be6e5d9da975c1c6414325f2f09df77a09ed29b31ceb91cbb37f21675a426d78"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_035.png",
+              "sha256": "27ae8d7265eac589fadbc548f431bee459750822c039bce777a7935f64afc144"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页19–22与答案页22–30逐题核对，题干、选项、答案和解析与发布内容一致（仅版式/空格差异）。",
+          "source_hash": "fe9e1ab03f5d306761c6003c5f2522ad55b271594d1e9d76f0647182a3d4e9bf"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X09": {
       "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X09",
@@ -203768,13 +203968,10 @@
       "chapter": "计算机系统概述 · 操作系统的运行环境 · 选择题",
       "question_id": "X11",
       "source_hash": "9238a79e3b20c3ce1ba4aa706b04cde8fa33815072b8edd39e0bdfc56d7adb50",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         24,
         25,
@@ -203794,7 +203991,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -203817,10 +204014,80 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X11",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_024.png",
+              "sha256": "d1727429f972ae13d177aba379c6d6f8e15a52aeb122aae04394ca1688d2e2bc"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_025.png",
+              "sha256": "610be1e0efa21329ca7b4c5d53601c1e2c872f5690fc372f0054a40a5d4d3923"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_026.png",
+              "sha256": "c1f6cc801f7367059e373b5d560482aa874fe060a3ec9b8205206b5a7bdb7ec4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_028.png",
+              "sha256": "c3cdedb14f250c2e7e8e1333ab30125966233c9c00dc0c08ff5632452f69569b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_029.png",
+              "sha256": "d88605bdb1856bf03c225a36501a4d5001eefb62414ab024b4d14f8e6d0f7e3f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_030.png",
+              "sha256": "f28173a2cba949af1bd3bf7f8329e2f91688e0c2de4738560ffe61c5ede5585c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_031.png",
+              "sha256": "bacd0c33060ba5cb406481b828cc6f35dbfcc7007efa49e540bf347a41ff28ee"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_032.png",
+              "sha256": "51b994782553ceb5d6238d18b16d73564d0a6551e070604252dc90d86f170250"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_033.png",
+              "sha256": "11103c51d787d776424a5e98ddcc886838e6dbb0af38d819550b8a363dcd0095"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_034.png",
+              "sha256": "be6e5d9da975c1c6414325f2f09df77a09ed29b31ceb91cbb37f21675a426d78"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_035.png",
+              "sha256": "27ae8d7265eac589fadbc548f431bee459750822c039bce777a7935f64afc144"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页19–22与答案页22–30逐题核对，题干、选项、答案和解析与发布内容一致（仅版式/空格差异）。",
+          "source_hash": "9238a79e3b20c3ce1ba4aa706b04cde8fa33815072b8edd39e0bdfc56d7adb50"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X12": {
       "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X12",
@@ -203828,13 +204095,10 @@
       "chapter": "计算机系统概述 · 操作系统的运行环境 · 选择题",
       "question_id": "X12",
       "source_hash": "62c12ddba3b9eb01973eed88975b10c4efa4752267c778e087749daf6adc6736",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         24,
         25,
@@ -203854,7 +204118,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -203877,10 +204141,80 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X12",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_024.png",
+              "sha256": "d1727429f972ae13d177aba379c6d6f8e15a52aeb122aae04394ca1688d2e2bc"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_025.png",
+              "sha256": "610be1e0efa21329ca7b4c5d53601c1e2c872f5690fc372f0054a40a5d4d3923"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_026.png",
+              "sha256": "c1f6cc801f7367059e373b5d560482aa874fe060a3ec9b8205206b5a7bdb7ec4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_028.png",
+              "sha256": "c3cdedb14f250c2e7e8e1333ab30125966233c9c00dc0c08ff5632452f69569b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_029.png",
+              "sha256": "d88605bdb1856bf03c225a36501a4d5001eefb62414ab024b4d14f8e6d0f7e3f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_030.png",
+              "sha256": "f28173a2cba949af1bd3bf7f8329e2f91688e0c2de4738560ffe61c5ede5585c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_031.png",
+              "sha256": "bacd0c33060ba5cb406481b828cc6f35dbfcc7007efa49e540bf347a41ff28ee"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_032.png",
+              "sha256": "51b994782553ceb5d6238d18b16d73564d0a6551e070604252dc90d86f170250"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_033.png",
+              "sha256": "11103c51d787d776424a5e98ddcc886838e6dbb0af38d819550b8a363dcd0095"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_034.png",
+              "sha256": "be6e5d9da975c1c6414325f2f09df77a09ed29b31ceb91cbb37f21675a426d78"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_035.png",
+              "sha256": "27ae8d7265eac589fadbc548f431bee459750822c039bce777a7935f64afc144"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页19–22与答案页22–30逐题核对，题干、选项、答案和解析与发布内容一致（仅版式/空格差异）。",
+          "source_hash": "62c12ddba3b9eb01973eed88975b10c4efa4752267c778e087749daf6adc6736"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X13": {
       "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X13",
@@ -203888,13 +204222,10 @@
       "chapter": "计算机系统概述 · 操作系统的运行环境 · 选择题",
       "question_id": "X13",
       "source_hash": "8177030affff3e6b42ebc34f02c5aa2c79cb2424d484b25e756c1b0c800a836a",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         24,
         25,
@@ -203914,7 +204245,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -203952,10 +204283,80 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X13",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_024.png",
+              "sha256": "d1727429f972ae13d177aba379c6d6f8e15a52aeb122aae04394ca1688d2e2bc"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_025.png",
+              "sha256": "610be1e0efa21329ca7b4c5d53601c1e2c872f5690fc372f0054a40a5d4d3923"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_026.png",
+              "sha256": "c1f6cc801f7367059e373b5d560482aa874fe060a3ec9b8205206b5a7bdb7ec4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_028.png",
+              "sha256": "c3cdedb14f250c2e7e8e1333ab30125966233c9c00dc0c08ff5632452f69569b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_029.png",
+              "sha256": "d88605bdb1856bf03c225a36501a4d5001eefb62414ab024b4d14f8e6d0f7e3f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_030.png",
+              "sha256": "f28173a2cba949af1bd3bf7f8329e2f91688e0c2de4738560ffe61c5ede5585c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_031.png",
+              "sha256": "bacd0c33060ba5cb406481b828cc6f35dbfcc7007efa49e540bf347a41ff28ee"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_032.png",
+              "sha256": "51b994782553ceb5d6238d18b16d73564d0a6551e070604252dc90d86f170250"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_033.png",
+              "sha256": "11103c51d787d776424a5e98ddcc886838e6dbb0af38d819550b8a363dcd0095"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_034.png",
+              "sha256": "be6e5d9da975c1c6414325f2f09df77a09ed29b31ceb91cbb37f21675a426d78"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_035.png",
+              "sha256": "27ae8d7265eac589fadbc548f431bee459750822c039bce777a7935f64afc144"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页19–22与答案页22–30逐题核对，题干、选项、答案和解析与发布内容一致（仅版式/空格差异）。",
+          "source_hash": "8177030affff3e6b42ebc34f02c5aa2c79cb2424d484b25e756c1b0c800a836a"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X14": {
       "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X14",
@@ -203963,14 +204364,10 @@
       "chapter": "计算机系统概述 · 操作系统的运行环境 · 选择题",
       "question_id": "X14",
       "source_hash": "f2121cce0f5768838a8008797d869b566ba7e60c77b5fefa6332ea1b2ff1b7fb",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         24,
         25,
@@ -203990,7 +204387,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -204028,10 +204425,80 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;raw_content_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;raw_content_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X14",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_024.png",
+              "sha256": "d1727429f972ae13d177aba379c6d6f8e15a52aeb122aae04394ca1688d2e2bc"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_025.png",
+              "sha256": "610be1e0efa21329ca7b4c5d53601c1e2c872f5690fc372f0054a40a5d4d3923"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_026.png",
+              "sha256": "c1f6cc801f7367059e373b5d560482aa874fe060a3ec9b8205206b5a7bdb7ec4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_028.png",
+              "sha256": "c3cdedb14f250c2e7e8e1333ab30125966233c9c00dc0c08ff5632452f69569b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_029.png",
+              "sha256": "d88605bdb1856bf03c225a36501a4d5001eefb62414ab024b4d14f8e6d0f7e3f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_030.png",
+              "sha256": "f28173a2cba949af1bd3bf7f8329e2f91688e0c2de4738560ffe61c5ede5585c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_031.png",
+              "sha256": "bacd0c33060ba5cb406481b828cc6f35dbfcc7007efa49e540bf347a41ff28ee"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_032.png",
+              "sha256": "51b994782553ceb5d6238d18b16d73564d0a6551e070604252dc90d86f170250"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_033.png",
+              "sha256": "11103c51d787d776424a5e98ddcc886838e6dbb0af38d819550b8a363dcd0095"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_034.png",
+              "sha256": "be6e5d9da975c1c6414325f2f09df77a09ed29b31ceb91cbb37f21675a426d78"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_035.png",
+              "sha256": "27ae8d7265eac589fadbc548f431bee459750822c039bce777a7935f64afc144"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页19–22与答案页22–30逐题核对，题干、选项、答案和解析与发布内容一致（仅版式/空格差异）。",
+          "source_hash": "f2121cce0f5768838a8008797d869b566ba7e60c77b5fefa6332ea1b2ff1b7fb"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X15": {
       "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X15",
@@ -204040,12 +204507,9 @@
       "question_id": "X15",
       "source_hash": "b5d5064b6962b955e8a423d8742b2c5c9792732682106c08e47a2e9d72b05fce",
       "source_fidelity": "verified",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         24,
         25,
@@ -204065,7 +204529,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -204088,10 +204552,80 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X15",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_024.png",
+              "sha256": "d1727429f972ae13d177aba379c6d6f8e15a52aeb122aae04394ca1688d2e2bc"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_025.png",
+              "sha256": "610be1e0efa21329ca7b4c5d53601c1e2c872f5690fc372f0054a40a5d4d3923"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_026.png",
+              "sha256": "c1f6cc801f7367059e373b5d560482aa874fe060a3ec9b8205206b5a7bdb7ec4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_028.png",
+              "sha256": "c3cdedb14f250c2e7e8e1333ab30125966233c9c00dc0c08ff5632452f69569b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_029.png",
+              "sha256": "d88605bdb1856bf03c225a36501a4d5001eefb62414ab024b4d14f8e6d0f7e3f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_030.png",
+              "sha256": "f28173a2cba949af1bd3bf7f8329e2f91688e0c2de4738560ffe61c5ede5585c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_031.png",
+              "sha256": "bacd0c33060ba5cb406481b828cc6f35dbfcc7007efa49e540bf347a41ff28ee"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_032.png",
+              "sha256": "51b994782553ceb5d6238d18b16d73564d0a6551e070604252dc90d86f170250"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_033.png",
+              "sha256": "11103c51d787d776424a5e98ddcc886838e6dbb0af38d819550b8a363dcd0095"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_034.png",
+              "sha256": "be6e5d9da975c1c6414325f2f09df77a09ed29b31ceb91cbb37f21675a426d78"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_035.png",
+              "sha256": "27ae8d7265eac589fadbc548f431bee459750822c039bce777a7935f64afc144"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页19–22与答案页22–30逐题核对，题干、选项、答案和解析与发布内容一致（仅版式/空格差异）。",
+          "source_hash": "b5d5064b6962b955e8a423d8742b2c5c9792732682106c08e47a2e9d72b05fce"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X16": {
       "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X16",
@@ -204099,13 +204633,10 @@
       "chapter": "计算机系统概述 · 操作系统的运行环境 · 选择题",
       "question_id": "X16",
       "source_hash": "3236f8614b8b1f39be2ff345ec912346aa7d62914de9afd3f29175a06740ae5f",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         24,
         25,
@@ -204125,7 +204656,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -204163,10 +204694,80 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X16",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_024.png",
+              "sha256": "d1727429f972ae13d177aba379c6d6f8e15a52aeb122aae04394ca1688d2e2bc"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_025.png",
+              "sha256": "610be1e0efa21329ca7b4c5d53601c1e2c872f5690fc372f0054a40a5d4d3923"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_026.png",
+              "sha256": "c1f6cc801f7367059e373b5d560482aa874fe060a3ec9b8205206b5a7bdb7ec4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_028.png",
+              "sha256": "c3cdedb14f250c2e7e8e1333ab30125966233c9c00dc0c08ff5632452f69569b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_029.png",
+              "sha256": "d88605bdb1856bf03c225a36501a4d5001eefb62414ab024b4d14f8e6d0f7e3f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_030.png",
+              "sha256": "f28173a2cba949af1bd3bf7f8329e2f91688e0c2de4738560ffe61c5ede5585c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_031.png",
+              "sha256": "bacd0c33060ba5cb406481b828cc6f35dbfcc7007efa49e540bf347a41ff28ee"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_032.png",
+              "sha256": "51b994782553ceb5d6238d18b16d73564d0a6551e070604252dc90d86f170250"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_033.png",
+              "sha256": "11103c51d787d776424a5e98ddcc886838e6dbb0af38d819550b8a363dcd0095"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_034.png",
+              "sha256": "be6e5d9da975c1c6414325f2f09df77a09ed29b31ceb91cbb37f21675a426d78"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_035.png",
+              "sha256": "27ae8d7265eac589fadbc548f431bee459750822c039bce777a7935f64afc144"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页19–22与答案页22–30逐题核对，题干、选项、答案和解析与发布内容一致（仅版式/空格差异）。",
+          "source_hash": "3236f8614b8b1f39be2ff345ec912346aa7d62914de9afd3f29175a06740ae5f"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X17": {
       "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X17",
@@ -204174,13 +204775,10 @@
       "chapter": "计算机系统概述 · 操作系统的运行环境 · 选择题",
       "question_id": "X17",
       "source_hash": "b9e1288f3991047a1bf92797c9404a128872f12981e146eeb6d6b423f27e1934",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         24,
         25,
@@ -204200,7 +204798,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -204238,10 +204836,80 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X17",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_024.png",
+              "sha256": "d1727429f972ae13d177aba379c6d6f8e15a52aeb122aae04394ca1688d2e2bc"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_025.png",
+              "sha256": "610be1e0efa21329ca7b4c5d53601c1e2c872f5690fc372f0054a40a5d4d3923"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_026.png",
+              "sha256": "c1f6cc801f7367059e373b5d560482aa874fe060a3ec9b8205206b5a7bdb7ec4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_028.png",
+              "sha256": "c3cdedb14f250c2e7e8e1333ab30125966233c9c00dc0c08ff5632452f69569b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_029.png",
+              "sha256": "d88605bdb1856bf03c225a36501a4d5001eefb62414ab024b4d14f8e6d0f7e3f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_030.png",
+              "sha256": "f28173a2cba949af1bd3bf7f8329e2f91688e0c2de4738560ffe61c5ede5585c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_031.png",
+              "sha256": "bacd0c33060ba5cb406481b828cc6f35dbfcc7007efa49e540bf347a41ff28ee"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_032.png",
+              "sha256": "51b994782553ceb5d6238d18b16d73564d0a6551e070604252dc90d86f170250"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_033.png",
+              "sha256": "11103c51d787d776424a5e98ddcc886838e6dbb0af38d819550b8a363dcd0095"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_034.png",
+              "sha256": "be6e5d9da975c1c6414325f2f09df77a09ed29b31ceb91cbb37f21675a426d78"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_035.png",
+              "sha256": "27ae8d7265eac589fadbc548f431bee459750822c039bce777a7935f64afc144"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页19–22与答案页22–30逐题核对，题干、选项、答案和解析与发布内容一致（仅版式/空格差异）。",
+          "source_hash": "b9e1288f3991047a1bf92797c9404a128872f12981e146eeb6d6b423f27e1934"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X18": {
       "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X18",
@@ -204249,14 +204917,10 @@
       "chapter": "计算机系统概述 · 操作系统的运行环境 · 选择题",
       "question_id": "X18",
       "source_hash": "41a27ed2fc0c8cbb3106d2d406440db506072b200b84d19ff5a2abcd75d41902",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         24,
         25,
@@ -204276,7 +204940,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -204314,10 +204978,80 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X18",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_024.png",
+              "sha256": "d1727429f972ae13d177aba379c6d6f8e15a52aeb122aae04394ca1688d2e2bc"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_025.png",
+              "sha256": "610be1e0efa21329ca7b4c5d53601c1e2c872f5690fc372f0054a40a5d4d3923"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_026.png",
+              "sha256": "c1f6cc801f7367059e373b5d560482aa874fe060a3ec9b8205206b5a7bdb7ec4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_028.png",
+              "sha256": "c3cdedb14f250c2e7e8e1333ab30125966233c9c00dc0c08ff5632452f69569b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_029.png",
+              "sha256": "d88605bdb1856bf03c225a36501a4d5001eefb62414ab024b4d14f8e6d0f7e3f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_030.png",
+              "sha256": "f28173a2cba949af1bd3bf7f8329e2f91688e0c2de4738560ffe61c5ede5585c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_031.png",
+              "sha256": "bacd0c33060ba5cb406481b828cc6f35dbfcc7007efa49e540bf347a41ff28ee"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_032.png",
+              "sha256": "51b994782553ceb5d6238d18b16d73564d0a6551e070604252dc90d86f170250"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_033.png",
+              "sha256": "11103c51d787d776424a5e98ddcc886838e6dbb0af38d819550b8a363dcd0095"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_034.png",
+              "sha256": "be6e5d9da975c1c6414325f2f09df77a09ed29b31ceb91cbb37f21675a426d78"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_035.png",
+              "sha256": "27ae8d7265eac589fadbc548f431bee459750822c039bce777a7935f64afc144"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页19–22与答案页22–30逐题核对，题干、选项、答案和解析与发布内容一致（仅版式/空格差异）。",
+          "source_hash": "41a27ed2fc0c8cbb3106d2d406440db506072b200b84d19ff5a2abcd75d41902"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X19": {
       "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X19",
@@ -204473,13 +205207,10 @@
       "chapter": "计算机系统概述 · 操作系统的运行环境 · 选择题",
       "question_id": "X21",
       "source_hash": "820a6fe2a97fe69a4cede37e5b8c90d46a617680de54810d59a128bd66ed657b",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         24,
         25,
@@ -204499,7 +205230,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -204522,10 +205253,80 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X21",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_024.png",
+              "sha256": "d1727429f972ae13d177aba379c6d6f8e15a52aeb122aae04394ca1688d2e2bc"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_025.png",
+              "sha256": "610be1e0efa21329ca7b4c5d53601c1e2c872f5690fc372f0054a40a5d4d3923"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_026.png",
+              "sha256": "c1f6cc801f7367059e373b5d560482aa874fe060a3ec9b8205206b5a7bdb7ec4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_028.png",
+              "sha256": "c3cdedb14f250c2e7e8e1333ab30125966233c9c00dc0c08ff5632452f69569b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_029.png",
+              "sha256": "d88605bdb1856bf03c225a36501a4d5001eefb62414ab024b4d14f8e6d0f7e3f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_030.png",
+              "sha256": "f28173a2cba949af1bd3bf7f8329e2f91688e0c2de4738560ffe61c5ede5585c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_031.png",
+              "sha256": "bacd0c33060ba5cb406481b828cc6f35dbfcc7007efa49e540bf347a41ff28ee"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_032.png",
+              "sha256": "51b994782553ceb5d6238d18b16d73564d0a6551e070604252dc90d86f170250"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_033.png",
+              "sha256": "11103c51d787d776424a5e98ddcc886838e6dbb0af38d819550b8a363dcd0095"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_034.png",
+              "sha256": "be6e5d9da975c1c6414325f2f09df77a09ed29b31ceb91cbb37f21675a426d78"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_035.png",
+              "sha256": "27ae8d7265eac589fadbc548f431bee459750822c039bce777a7935f64afc144"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页19–22与答案页22–30逐题核对，题干、选项、答案和解析与发布内容一致（仅版式/空格差异）。",
+          "source_hash": "820a6fe2a97fe69a4cede37e5b8c90d46a617680de54810d59a128bd66ed657b"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X22": {
       "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X22",
@@ -204817,13 +205618,10 @@
       "chapter": "计算机系统概述 · 操作系统的运行环境 · 选择题",
       "question_id": "X26",
       "source_hash": "14539a8981b9b3d49b50a4064f4b7eee0c82c0a0d6488fd8d85106c445a4a7a1",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         24,
         25,
@@ -204843,7 +205641,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -204881,10 +205679,80 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X26",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_024.png",
+              "sha256": "d1727429f972ae13d177aba379c6d6f8e15a52aeb122aae04394ca1688d2e2bc"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_025.png",
+              "sha256": "610be1e0efa21329ca7b4c5d53601c1e2c872f5690fc372f0054a40a5d4d3923"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_026.png",
+              "sha256": "c1f6cc801f7367059e373b5d560482aa874fe060a3ec9b8205206b5a7bdb7ec4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_028.png",
+              "sha256": "c3cdedb14f250c2e7e8e1333ab30125966233c9c00dc0c08ff5632452f69569b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_029.png",
+              "sha256": "d88605bdb1856bf03c225a36501a4d5001eefb62414ab024b4d14f8e6d0f7e3f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_030.png",
+              "sha256": "f28173a2cba949af1bd3bf7f8329e2f91688e0c2de4738560ffe61c5ede5585c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_031.png",
+              "sha256": "bacd0c33060ba5cb406481b828cc6f35dbfcc7007efa49e540bf347a41ff28ee"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_032.png",
+              "sha256": "51b994782553ceb5d6238d18b16d73564d0a6551e070604252dc90d86f170250"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_033.png",
+              "sha256": "11103c51d787d776424a5e98ddcc886838e6dbb0af38d819550b8a363dcd0095"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_034.png",
+              "sha256": "be6e5d9da975c1c6414325f2f09df77a09ed29b31ceb91cbb37f21675a426d78"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_035.png",
+              "sha256": "27ae8d7265eac589fadbc548f431bee459750822c039bce777a7935f64afc144"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页19–22与答案页22–30逐题核对，题干、选项、答案和解析与发布内容一致（仅版式/空格差异）。",
+          "source_hash": "14539a8981b9b3d49b50a4064f4b7eee0c82c0a0d6488fd8d85106c445a4a7a1"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X27": {
       "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X27",
@@ -204892,14 +205760,10 @@
       "chapter": "计算机系统概述 · 操作系统的运行环境 · 选择题",
       "question_id": "X27",
       "source_hash": "7307c7aa9c0d475845b2d3ca9b19c2809433d00f4d1fcf6bfe175f6ae2bc5e88",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         24,
         25,
@@ -204919,7 +205783,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -204957,10 +205821,80 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X27",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_024.png",
+              "sha256": "d1727429f972ae13d177aba379c6d6f8e15a52aeb122aae04394ca1688d2e2bc"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_025.png",
+              "sha256": "610be1e0efa21329ca7b4c5d53601c1e2c872f5690fc372f0054a40a5d4d3923"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_026.png",
+              "sha256": "c1f6cc801f7367059e373b5d560482aa874fe060a3ec9b8205206b5a7bdb7ec4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_028.png",
+              "sha256": "c3cdedb14f250c2e7e8e1333ab30125966233c9c00dc0c08ff5632452f69569b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_029.png",
+              "sha256": "d88605bdb1856bf03c225a36501a4d5001eefb62414ab024b4d14f8e6d0f7e3f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_030.png",
+              "sha256": "f28173a2cba949af1bd3bf7f8329e2f91688e0c2de4738560ffe61c5ede5585c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_031.png",
+              "sha256": "bacd0c33060ba5cb406481b828cc6f35dbfcc7007efa49e540bf347a41ff28ee"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_032.png",
+              "sha256": "51b994782553ceb5d6238d18b16d73564d0a6551e070604252dc90d86f170250"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_033.png",
+              "sha256": "11103c51d787d776424a5e98ddcc886838e6dbb0af38d819550b8a363dcd0095"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_034.png",
+              "sha256": "be6e5d9da975c1c6414325f2f09df77a09ed29b31ceb91cbb37f21675a426d78"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_035.png",
+              "sha256": "27ae8d7265eac589fadbc548f431bee459750822c039bce777a7935f64afc144"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页19–22与答案页22–30逐题核对，题干、选项、答案和解析与发布内容一致（仅版式/空格差异）。",
+          "source_hash": "7307c7aa9c0d475845b2d3ca9b19c2809433d00f4d1fcf6bfe175f6ae2bc5e88"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X28": {
       "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X28",
@@ -204968,13 +205902,10 @@
       "chapter": "计算机系统概述 · 操作系统的运行环境 · 选择题",
       "question_id": "X28",
       "source_hash": "fb6fe7fce82250105248d6603b8aabf7063d705d72417f210b9679a48084b704",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         24,
         25,
@@ -204994,7 +205925,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -205032,10 +205963,80 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X28",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_024.png",
+              "sha256": "d1727429f972ae13d177aba379c6d6f8e15a52aeb122aae04394ca1688d2e2bc"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_025.png",
+              "sha256": "610be1e0efa21329ca7b4c5d53601c1e2c872f5690fc372f0054a40a5d4d3923"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_026.png",
+              "sha256": "c1f6cc801f7367059e373b5d560482aa874fe060a3ec9b8205206b5a7bdb7ec4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_028.png",
+              "sha256": "c3cdedb14f250c2e7e8e1333ab30125966233c9c00dc0c08ff5632452f69569b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_029.png",
+              "sha256": "d88605bdb1856bf03c225a36501a4d5001eefb62414ab024b4d14f8e6d0f7e3f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_030.png",
+              "sha256": "f28173a2cba949af1bd3bf7f8329e2f91688e0c2de4738560ffe61c5ede5585c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_031.png",
+              "sha256": "bacd0c33060ba5cb406481b828cc6f35dbfcc7007efa49e540bf347a41ff28ee"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_032.png",
+              "sha256": "51b994782553ceb5d6238d18b16d73564d0a6551e070604252dc90d86f170250"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_033.png",
+              "sha256": "11103c51d787d776424a5e98ddcc886838e6dbb0af38d819550b8a363dcd0095"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_034.png",
+              "sha256": "be6e5d9da975c1c6414325f2f09df77a09ed29b31ceb91cbb37f21675a426d78"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_035.png",
+              "sha256": "27ae8d7265eac589fadbc548f431bee459750822c039bce777a7935f64afc144"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页19–22与答案页22–30逐题核对，题干、选项、答案和解析与发布内容一致（仅版式/空格差异）。",
+          "source_hash": "fb6fe7fce82250105248d6603b8aabf7063d705d72417f210b9679a48084b704"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X29": {
       "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X29",
@@ -205043,13 +206044,10 @@
       "chapter": "计算机系统概述 · 操作系统的运行环境 · 选择题",
       "question_id": "X29",
       "source_hash": "8207e118a2e9c66cb2bf89e3889cabfde18b34ed160b6fb295858d1b765eb6ac",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         24,
         25,
@@ -205069,7 +206067,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -205107,10 +206105,80 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_content_mismatch;raw_content_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_content_mismatch;raw_content_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X29",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_024.png",
+              "sha256": "d1727429f972ae13d177aba379c6d6f8e15a52aeb122aae04394ca1688d2e2bc"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_025.png",
+              "sha256": "610be1e0efa21329ca7b4c5d53601c1e2c872f5690fc372f0054a40a5d4d3923"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_026.png",
+              "sha256": "c1f6cc801f7367059e373b5d560482aa874fe060a3ec9b8205206b5a7bdb7ec4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_028.png",
+              "sha256": "c3cdedb14f250c2e7e8e1333ab30125966233c9c00dc0c08ff5632452f69569b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_029.png",
+              "sha256": "d88605bdb1856bf03c225a36501a4d5001eefb62414ab024b4d14f8e6d0f7e3f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_030.png",
+              "sha256": "f28173a2cba949af1bd3bf7f8329e2f91688e0c2de4738560ffe61c5ede5585c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_031.png",
+              "sha256": "bacd0c33060ba5cb406481b828cc6f35dbfcc7007efa49e540bf347a41ff28ee"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_032.png",
+              "sha256": "51b994782553ceb5d6238d18b16d73564d0a6551e070604252dc90d86f170250"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_033.png",
+              "sha256": "11103c51d787d776424a5e98ddcc886838e6dbb0af38d819550b8a363dcd0095"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_034.png",
+              "sha256": "be6e5d9da975c1c6414325f2f09df77a09ed29b31ceb91cbb37f21675a426d78"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_035.png",
+              "sha256": "27ae8d7265eac589fadbc548f431bee459750822c039bce777a7935f64afc144"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页19–22与答案页22–30逐题核对，题干、选项、答案和解析与发布内容一致（仅版式/空格差异）。",
+          "source_hash": "8207e118a2e9c66cb2bf89e3889cabfde18b34ed160b6fb295858d1b765eb6ac"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X30": {
       "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X30",
@@ -205270,13 +206338,10 @@
       "chapter": "计算机系统概述 · 操作系统的运行环境 · 选择题",
       "question_id": "X32",
       "source_hash": "8c3d31a823fbb0b9ee53d83bd4eb22978a5ebf4703047fbd3e51a82db9857353",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         24,
         25,
@@ -205296,7 +206361,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -205334,10 +206399,80 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X32",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_024.png",
+              "sha256": "d1727429f972ae13d177aba379c6d6f8e15a52aeb122aae04394ca1688d2e2bc"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_025.png",
+              "sha256": "610be1e0efa21329ca7b4c5d53601c1e2c872f5690fc372f0054a40a5d4d3923"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_026.png",
+              "sha256": "c1f6cc801f7367059e373b5d560482aa874fe060a3ec9b8205206b5a7bdb7ec4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_028.png",
+              "sha256": "c3cdedb14f250c2e7e8e1333ab30125966233c9c00dc0c08ff5632452f69569b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_029.png",
+              "sha256": "d88605bdb1856bf03c225a36501a4d5001eefb62414ab024b4d14f8e6d0f7e3f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_030.png",
+              "sha256": "f28173a2cba949af1bd3bf7f8329e2f91688e0c2de4738560ffe61c5ede5585c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_031.png",
+              "sha256": "bacd0c33060ba5cb406481b828cc6f35dbfcc7007efa49e540bf347a41ff28ee"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_032.png",
+              "sha256": "51b994782553ceb5d6238d18b16d73564d0a6551e070604252dc90d86f170250"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_033.png",
+              "sha256": "11103c51d787d776424a5e98ddcc886838e6dbb0af38d819550b8a363dcd0095"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_034.png",
+              "sha256": "be6e5d9da975c1c6414325f2f09df77a09ed29b31ceb91cbb37f21675a426d78"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_035.png",
+              "sha256": "27ae8d7265eac589fadbc548f431bee459750822c039bce777a7935f64afc144"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页19–22与答案页22–30逐题核对，题干、选项、答案和解析与发布内容一致（仅版式/空格差异）。",
+          "source_hash": "8c3d31a823fbb0b9ee53d83bd4eb22978a5ebf4703047fbd3e51a82db9857353"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X33": {
       "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X33",
@@ -205345,13 +206480,10 @@
       "chapter": "计算机系统概述 · 操作系统的运行环境 · 选择题",
       "question_id": "X33",
       "source_hash": "2befe04ae7fb8d520234ee49ed7d5a7aa052aef96f4ca86a4531de8cac96510c",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         24,
         25,
@@ -205371,7 +206503,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -205409,10 +206541,80 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_content_mismatch;raw_content_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_content_mismatch;raw_content_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X33",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_024.png",
+              "sha256": "d1727429f972ae13d177aba379c6d6f8e15a52aeb122aae04394ca1688d2e2bc"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_025.png",
+              "sha256": "610be1e0efa21329ca7b4c5d53601c1e2c872f5690fc372f0054a40a5d4d3923"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_026.png",
+              "sha256": "c1f6cc801f7367059e373b5d560482aa874fe060a3ec9b8205206b5a7bdb7ec4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_027.png",
+              "sha256": "61cb8632969f8ace25742fa9d9aac8f4bb9e5b85544412a445b28193da5ac8f2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_028.png",
+              "sha256": "c3cdedb14f250c2e7e8e1333ab30125966233c9c00dc0c08ff5632452f69569b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_029.png",
+              "sha256": "d88605bdb1856bf03c225a36501a4d5001eefb62414ab024b4d14f8e6d0f7e3f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_030.png",
+              "sha256": "f28173a2cba949af1bd3bf7f8329e2f91688e0c2de4738560ffe61c5ede5585c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_031.png",
+              "sha256": "bacd0c33060ba5cb406481b828cc6f35dbfcc7007efa49e540bf347a41ff28ee"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_032.png",
+              "sha256": "51b994782553ceb5d6238d18b16d73564d0a6551e070604252dc90d86f170250"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_033.png",
+              "sha256": "11103c51d787d776424a5e98ddcc886838e6dbb0af38d819550b8a363dcd0095"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_034.png",
+              "sha256": "be6e5d9da975c1c6414325f2f09df77a09ed29b31ceb91cbb37f21675a426d78"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_035.png",
+              "sha256": "27ae8d7265eac589fadbc548f431bee459750822c039bce777a7935f64afc144"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页19–22与答案页22–30逐题核对，题干、选项、答案和解析与发布内容一致（仅版式/空格差异）。",
+          "source_hash": "2befe04ae7fb8d520234ee49ed7d5a7aa052aef96f4ca86a4531de8cac96510c"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::计算机系统概述 · 虚拟机 · 选择题::X01": {
       "source_uid": "408:cs408-os::计算机系统概述 · 虚拟机 · 选择题::X01",
