@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-26T16:42:31+00:00",
+  "generated_at": "2026-08-26T16:47:26+00:00",
   "published_hashes": {
     "ds": "1c86d053da78ddb9d7ea0bac5abc98ca74c23f0b736f1f440172cf2d74721ef2",
-    "coa": "585e6a73f77e5529eb9a00395d8a7630cba491fd68e25a00252b66c34001b48d",
+    "coa": "8e8256d912743a1f54f01b1e6a6198d91aaf385e99792fd8b9a773f3594c90a2",
     "net": "2bc29faf5bac4ee762dd8d42920025f5abbc5c2a34b5b9f8d0e52fa910662a5d",
-    "os": "619e36bfd30f4125ca3dd145ab2bd38bb400f5be937bd5656352cce4ba9021ce"
+    "os": "746cf01f595a59cf98f80780e359b05350f5d3d9cbe599d2412171fd490560e0"
   },
   "courses": {
     "ds": {
@@ -36,16 +36,16 @@
       "name": "操作系统",
       "mode": "strict",
       "total": 759,
-      "certified": 124,
+      "certified": 125,
       "pending": 0,
-      "held": 635
+      "held": 634
     }
   },
   "summary": {
     "total": 2869,
-    "certified": 421,
+    "certified": 422,
     "pending": 0,
-    "held": 2448
+    "held": 2447
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -30282,7 +30282,7 @@
       "course_key": "coa",
       "chapter": "指令系统 · 程序的机器级代码表示 · 选择题",
       "question_id": "X07",
-      "source_hash": "8d9618e3ee84233d2eb9a237359f01a1f5bee54e1a298ee0e040a446892d9631",
+      "source_hash": "4d94da9ca81960541e7697ee470d8520d6b48abb1f317027bc30c578734b926c",
       "source_fidelity": "pending",
       "answer_validation": "pending",
       "overall": "hold",
@@ -190967,16 +190967,11 @@
       "course_key": "os",
       "chapter": "进程与线程 · CPU调度 · 选择题",
       "question_id": "X19",
-      "source_hash": "a5b82eab131a73b6fecb0ff3b32df8cc3451759f1e300cf0da7141cbafdc3bf2",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "structural_check",
-        "structural_error"
-      ],
+      "source_hash": "02eacb601161ff1f6f7e5eda482a18e4f5b71ff4899a62cc2743a4f0c29ed7e8",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         83,
         84,
@@ -191020,48 +191015,62 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "migrated:page_review_patches.json",
       "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
+        "original_page_review": {
+          "source_uid": "408:cs408-os::进程与线程 · CPU调度 · 选择题::X19",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "migrated:page_review_patches.json",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_083.png",
+              "sha256": "6ce855d3a564c28cf2c2050ad9d23cf1e280c99b56ea5d18acaea8db22b19c45",
+              "page": 83
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_084.png",
+              "sha256": "b519a02178933b4e33d09d2a6980e30c4d02b847ee1cb79e0a9f3b0daf918b21",
+              "page": 84
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_085.png",
+              "sha256": "d5a51ea0b07e8436dc287873775df5af0527b7cb77357a16da455d9fb9ffc6e3",
+              "page": 85
+            }
           ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_092.png",
+              "sha256": "1303c2d6102badd7f796c650ebf4646014cf04c2878cabd33fd02124ea58d11a",
+              "page": 92
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_093.png",
+              "sha256": "cf27a0d439ed347f582092b941ccce73adb835ad1054220c2944494ed9e9f95a",
+              "page": 93
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_094.png",
+              "sha256": "609aebe1872cc67c576ec9c6f31387ac55493950b1562f8fc3d8ec93bfbbf1c1",
+              "page": 94
+            }
           ],
-          "source_hash": "a5b82eab131a73b6fecb0ff3b32df8cc3451759f1e300cf0da7141cbafdc3bf2",
-          "choices": [
-            "D",
-            "D"
+          "final_action": "patch",
+          "content_match": null,
+          "options_match": null,
+          "answer_match": null,
+          "explanation_match": null,
+          "image_match": null,
+          "detected_errors": [
+            "persisted_page_review_patch"
           ],
-          "confidence": [
-            0.0,
-            0.0
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "D",
-            "D"
-          ],
-          "blind_confidence": [
-            0.0,
-            0.0
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;structural_check;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+          "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
+          "post_patch_verified": true,
+          "source_hash": "02eacb601161ff1f6f7e5eda482a18e4f5b71ff4899a62cc2743a4f0c29ed7e8"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "structural_error"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::进程与线程 · CPU调度 · 选择题::X20": {
       "source_uid": "408:cs408-os::进程与线程 · CPU调度 · 选择题::X20",

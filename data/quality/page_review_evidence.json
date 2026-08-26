@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "protocol": "codex-original-page-review-v1",
-  "updated_at": "2026-08-26T16:42:31.581401+00:00",
+  "updated_at": "2026-08-26T16:47:25.962018+00:00",
   "records": [
     {
       "source_uid": "408:cs408-coa::中央处理器 · 异常和中断机制 · 选择题::X01",
@@ -1718,6 +1718,88 @@
       "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
       "post_patch_verified": true,
       "source_hash": "922646b8a642d0e5a8a5960d9bf1c242a867396837c91fafc8dffb30f70cec4f"
+    },
+    {
+      "source_uid": "408:cs408-os::进程与线程 · CPU调度 · 选择题::X19",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T16:46:58.389948+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_085.png",
+          "sha256": "d5a51ea0b07e8436dc287873775df5af0527b7cb77357a16da455d9fb9ffc6e3"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_094.png",
+          "sha256": "609aebe1872cc67c576ec9c6f31387ac55493950b1562f8fc3d8ec93bfbbf1c1"
+        }
+      ],
+      "final_action": "patch",
+      "content_match": false,
+      "options_match": false,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": null,
+      "detected_errors": [
+        "subscripts_lost",
+        "option_C_duplicated"
+      ],
+      "rationale": "原书85页题19选项为J₁/J₂/J₃四种顺序，答案页94页19.D；已修正题干和选项下标。",
+      "post_patch_verified": true
+    },
+    {
+      "source_uid": "408:cs408-os::进程与线程 · CPU调度 · 选择题::X19",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "migrated:page_review_patches.json",
+      "q_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_083.png",
+          "sha256": "6ce855d3a564c28cf2c2050ad9d23cf1e280c99b56ea5d18acaea8db22b19c45",
+          "page": 83
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_084.png",
+          "sha256": "b519a02178933b4e33d09d2a6980e30c4d02b847ee1cb79e0a9f3b0daf918b21",
+          "page": 84
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_085.png",
+          "sha256": "d5a51ea0b07e8436dc287873775df5af0527b7cb77357a16da455d9fb9ffc6e3",
+          "page": 85
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_092.png",
+          "sha256": "1303c2d6102badd7f796c650ebf4646014cf04c2878cabd33fd02124ea58d11a",
+          "page": 92
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_093.png",
+          "sha256": "cf27a0d439ed347f582092b941ccce73adb835ad1054220c2944494ed9e9f95a",
+          "page": 93
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_094.png",
+          "sha256": "609aebe1872cc67c576ec9c6f31387ac55493950b1562f8fc3d8ec93bfbbf1c1",
+          "page": 94
+        }
+      ],
+      "final_action": "patch",
+      "content_match": null,
+      "options_match": null,
+      "answer_match": null,
+      "explanation_match": null,
+      "image_match": null,
+      "detected_errors": [
+        "persisted_page_review_patch"
+      ],
+      "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
+      "post_patch_verified": true,
+      "source_hash": "02eacb601161ff1f6f7e5eda482a18e4f5b71ff4899a62cc2743a4f0c29ed7e8"
     }
   ]
 }
