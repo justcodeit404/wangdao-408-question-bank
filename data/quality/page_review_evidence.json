@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "protocol": "codex-original-page-review-v1",
-  "updated_at": "2026-08-26T18:34:36.523185+00:00",
+  "updated_at": "2026-08-26T18:36:16.390605+00:00",
   "records": [
     {
       "source_uid": "408:cs408-coa::中央处理器 · 异常和中断机制 · 选择题::X01",
@@ -1434,6 +1434,141 @@
       "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
       "post_patch_verified": true,
       "source_hash": "d0e1ef5372272312c9783355ca08fb9481bc9b369ebaa47abb332d77ce33cad3"
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 运算方法和运算电路 · 选择题::X01",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T06:35:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_049.png",
+          "sha256": "ba23688b37609417b3bbb89dafbb3bc9167e5d4241eeb1e16eb0547f4421a153"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_053.png",
+          "sha256": "4f61a607f3b291959e46da690d888afe61000dac205d783bd31c5dd1694957f8"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题页49与答案页53：X01 ALU核心部件题干、选项及解析忠实，答案为C。",
+      "source_hash": "7be2966afb12fabc1a8911e82f1f7a3ed7b6f64cb60927c9a9d0e8a83f51d600"
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 运算方法和运算电路 · 选择题::X02",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T06:36:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_049.png",
+          "sha256": "ba23688b37609417b3bbb89dafbb3bc9167e5d4241eeb1e16eb0547f4421a153"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_053.png",
+          "sha256": "4f61a607f3b291959e46da690d888afe61000dac205d783bd31c5dd1694957f8"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题页49与答案页53：X02 ALU功能题干、选项及解析忠实，答案为C。",
+      "source_hash": "45fecb6586c5f18e280a28afa4656966b6097cb07b175dcc74ee363ae2e26d04"
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 运算方法和运算电路 · 选择题::X03",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T06:37:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_049.png",
+          "sha256": "ba23688b37609417b3bbb89dafbb3bc9167e5d4241eeb1e16eb0547f4421a153"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_053.png",
+          "sha256": "4f61a607f3b291959e46da690d888afe61000dac205d783bd31c5dd1694957f8"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题页49与答案页53：X03 补码定点左移题干、选项及解析忠实，答案为B。",
+      "source_hash": "6a7aae18e7bbe107fb9d3818ecd7f994e63986248adf2318af3f229aafad138d"
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 运算方法和运算电路 · 选择题::X04",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T06:38:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_049.png",
+          "sha256": "ba23688b37609417b3bbb89dafbb3bc9167e5d4241eeb1e16eb0547f4421a153"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_054.png",
+          "sha256": "6494414804e33cf2b5393489b7c89ff4a7f48f5a1a7db47422fd4aeb2d6088b9"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题页49与答案页54：X04 补码左移溢出题干、选项及解析忠实，答案为D。",
+      "source_hash": "623fee34aef0c945137f987bde46bd819fdb51790aea564bec97f7a012dff51a"
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 运算方法和运算电路 · 选择题::X05",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T06:39:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_049.png",
+          "sha256": "ba23688b37609417b3bbb89dafbb3bc9167e5d4241eeb1e16eb0547f4421a153"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_054.png",
+          "sha256": "6494414804e33cf2b5393489b7c89ff4a7f48f5a1a7db47422fd4aeb2d6088b9"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题页49与答案页54：X05 补码右移题干、选项及解析忠实，答案为D。",
+      "source_hash": "c136b86ddd46ea9714b32a2fe24c63316359439ad3a38d9ea1b598e1afaccca4"
     },
     {
       "source_uid": "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X01",
