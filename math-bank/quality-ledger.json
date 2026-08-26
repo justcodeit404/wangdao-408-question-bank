@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-26T21:54:06+00:00",
+  "generated_at": "2026-08-26T22:01:27+00:00",
   "published_hashes": {
     "ds": "a40686840e5043561d7f7159fbd779725ffa65c56bfdd79a2683965b6aed0771",
     "coa": "8f9ea82d6d82e53ea38daf200ae95a361b5c43742f0ce9881b207f671f7f06f7",
@@ -12,9 +12,9 @@
       "name": "数据结构",
       "mode": "strict",
       "total": 797,
-      "certified": 165,
+      "certified": 178,
       "pending": 0,
-      "held": 632
+      "held": 619
     },
     "coa": {
       "name": "计算机组成原理",
@@ -43,9 +43,9 @@
   },
   "summary": {
     "total": 2869,
-    "certified": 995,
+    "certified": 1008,
     "pending": 0,
-    "held": 1874
+    "held": 1861
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -53266,7 +53266,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T21:54:01.932491+00:00",
+      "verified_at": "2026-08-26T22:01:23.211550+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -53309,7 +53309,7 @@
           "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X07",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-26T21:54:01.932491+00:00",
+          "reviewed_at": "2026-08-26T22:01:23.211550+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/coa/page_300.png",
@@ -71992,13 +71992,10 @@
       "chapter": "排序 · 各种内部排序算法的比较及应用 · 选择题",
       "question_id": "X01",
       "source_hash": "59c28e130111b00e2c770f27185a2a8f57c900946d7b89d3c5ebf80a327f7f3d",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         379,
         380,
@@ -72017,7 +72014,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T04:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -72055,10 +72052,76 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X01",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T04:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_379.png",
+              "sha256": "72bd5e793fd6e08bf4d12cbd0185e6c7fb3dc7e2ce06b93efd40c0ac7366b29d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_380.png",
+              "sha256": "85964ea06f1479accf07b93189e35f392cd089c112133bbb042363bd3d372ef5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_381.png",
+              "sha256": "9cf43d200b0d54487b8ac15328735e7263077444871fcb8d27f4f3953096c1e4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_382.png",
+              "sha256": "6b94e92c04e809387074bb2d08cfc157d671472bcebac04f92c0ac64447999d0"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_382.png",
+              "sha256": "6b94e92c04e809387074bb2d08cfc157d671472bcebac04f92c0ac64447999d0"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_383.png",
+              "sha256": "746e92d2e6899fa8a63a4f498444b3ca55faf628ab0088a0e6e1802bd3146714"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_384.png",
+              "sha256": "0deff4c8706adac5ec0a2e7a1bd52797eca2ddcbe1db6fd1adef3ff48fc8817a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_385.png",
+              "sha256": "6485bccfb01dba32d6bbcf05c7f69705a659812f2e0685e91f3c8519bfe9b4c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_386.png",
+              "sha256": "ac817519ebedcb7ff967f5c8441b93690727e053e9249c3ffc4a5d6ef0338bdc"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_387.png",
+              "sha256": "b13af27ab7df189b02c618ececd41ed9aaa338f372dfe1b19a95800ecc1b751f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_388.png",
+              "sha256": "11e42836e3d2958fbc7bbca85e8a411f7e5998d2282e2dad7be8efb6a54f5a36"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_389.png",
+              "sha256": "86b3bedaa18fe122abefdf784b0a79c842011259d1834a273ea631c3984cc072"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页374-375与答案页377：题干、选项、答案A及稳定性解析忠实完整。",
+          "source_hash": "59c28e130111b00e2c770f27185a2a8f57c900946d7b89d3c5ebf80a327f7f3d"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X02": {
       "source_uid": "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X02",
@@ -72066,13 +72129,10 @@
       "chapter": "排序 · 各种内部排序算法的比较及应用 · 选择题",
       "question_id": "X02",
       "source_hash": "188a7ed4222081e07b6fab395126f15f1dea4d4d19e1d118af9e1658ef300681",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         379,
         380,
@@ -72091,7 +72151,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T04:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -72129,10 +72189,76 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X02",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T04:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_379.png",
+              "sha256": "72bd5e793fd6e08bf4d12cbd0185e6c7fb3dc7e2ce06b93efd40c0ac7366b29d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_380.png",
+              "sha256": "85964ea06f1479accf07b93189e35f392cd089c112133bbb042363bd3d372ef5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_381.png",
+              "sha256": "9cf43d200b0d54487b8ac15328735e7263077444871fcb8d27f4f3953096c1e4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_382.png",
+              "sha256": "6b94e92c04e809387074bb2d08cfc157d671472bcebac04f92c0ac64447999d0"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_382.png",
+              "sha256": "6b94e92c04e809387074bb2d08cfc157d671472bcebac04f92c0ac64447999d0"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_383.png",
+              "sha256": "746e92d2e6899fa8a63a4f498444b3ca55faf628ab0088a0e6e1802bd3146714"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_384.png",
+              "sha256": "0deff4c8706adac5ec0a2e7a1bd52797eca2ddcbe1db6fd1adef3ff48fc8817a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_385.png",
+              "sha256": "6485bccfb01dba32d6bbcf05c7f69705a659812f2e0685e91f3c8519bfe9b4c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_386.png",
+              "sha256": "ac817519ebedcb7ff967f5c8441b93690727e053e9249c3ffc4a5d6ef0338bdc"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_387.png",
+              "sha256": "b13af27ab7df189b02c618ececd41ed9aaa338f372dfe1b19a95800ecc1b751f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_388.png",
+              "sha256": "11e42836e3d2958fbc7bbca85e8a411f7e5998d2282e2dad7be8efb6a54f5a36"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_389.png",
+              "sha256": "86b3bedaa18fe122abefdf784b0a79c842011259d1834a273ea631c3984cc072"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页374-375与答案页377：题干、选项、答案C及复杂度解析忠实完整。",
+          "source_hash": "188a7ed4222081e07b6fab395126f15f1dea4d4d19e1d118af9e1658ef300681"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X03": {
       "source_uid": "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X03",
@@ -72212,14 +72338,10 @@
       "chapter": "排序 · 各种内部排序算法的比较及应用 · 选择题",
       "question_id": "X05",
       "source_hash": "e05b964da50b3278457078e9f5211509791dadc2004a126ef691a298cc345e80",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         379,
         380,
@@ -72238,7 +72360,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T04:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -72276,10 +72398,76 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "legacy_hold_recheck;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X05",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T04:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_379.png",
+              "sha256": "72bd5e793fd6e08bf4d12cbd0185e6c7fb3dc7e2ce06b93efd40c0ac7366b29d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_380.png",
+              "sha256": "85964ea06f1479accf07b93189e35f392cd089c112133bbb042363bd3d372ef5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_381.png",
+              "sha256": "9cf43d200b0d54487b8ac15328735e7263077444871fcb8d27f4f3953096c1e4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_382.png",
+              "sha256": "6b94e92c04e809387074bb2d08cfc157d671472bcebac04f92c0ac64447999d0"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_382.png",
+              "sha256": "6b94e92c04e809387074bb2d08cfc157d671472bcebac04f92c0ac64447999d0"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_383.png",
+              "sha256": "746e92d2e6899fa8a63a4f498444b3ca55faf628ab0088a0e6e1802bd3146714"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_384.png",
+              "sha256": "0deff4c8706adac5ec0a2e7a1bd52797eca2ddcbe1db6fd1adef3ff48fc8817a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_385.png",
+              "sha256": "6485bccfb01dba32d6bbcf05c7f69705a659812f2e0685e91f3c8519bfe9b4c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_386.png",
+              "sha256": "ac817519ebedcb7ff967f5c8441b93690727e053e9249c3ffc4a5d6ef0338bdc"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_387.png",
+              "sha256": "b13af27ab7df189b02c618ececd41ed9aaa338f372dfe1b19a95800ecc1b751f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_388.png",
+              "sha256": "11e42836e3d2958fbc7bbca85e8a411f7e5998d2282e2dad7be8efb6a54f5a36"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_389.png",
+              "sha256": "86b3bedaa18fe122abefdf784b0a79c842011259d1834a273ea631c3984cc072"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页375与答案页377：题干、选项、答案A及辅助空间解析忠实完整。",
+          "source_hash": "e05b964da50b3278457078e9f5211509791dadc2004a126ef691a298cc345e80"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X06": {
       "source_uid": "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X06",
@@ -72287,14 +72475,10 @@
       "chapter": "排序 · 各种内部排序算法的比较及应用 · 选择题",
       "question_id": "X06",
       "source_hash": "fb7bc4696d21eb5f1211878c3a93ba883728a36318668f276876b13ec66edfc1",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         379,
         380,
@@ -72313,7 +72497,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T04:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -72351,10 +72535,76 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "legacy_hold_recheck;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X06",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T04:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_379.png",
+              "sha256": "72bd5e793fd6e08bf4d12cbd0185e6c7fb3dc7e2ce06b93efd40c0ac7366b29d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_380.png",
+              "sha256": "85964ea06f1479accf07b93189e35f392cd089c112133bbb042363bd3d372ef5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_381.png",
+              "sha256": "9cf43d200b0d54487b8ac15328735e7263077444871fcb8d27f4f3953096c1e4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_382.png",
+              "sha256": "6b94e92c04e809387074bb2d08cfc157d671472bcebac04f92c0ac64447999d0"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_382.png",
+              "sha256": "6b94e92c04e809387074bb2d08cfc157d671472bcebac04f92c0ac64447999d0"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_383.png",
+              "sha256": "746e92d2e6899fa8a63a4f498444b3ca55faf628ab0088a0e6e1802bd3146714"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_384.png",
+              "sha256": "0deff4c8706adac5ec0a2e7a1bd52797eca2ddcbe1db6fd1adef3ff48fc8817a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_385.png",
+              "sha256": "6485bccfb01dba32d6bbcf05c7f69705a659812f2e0685e91f3c8519bfe9b4c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_386.png",
+              "sha256": "ac817519ebedcb7ff967f5c8441b93690727e053e9249c3ffc4a5d6ef0338bdc"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_387.png",
+              "sha256": "b13af27ab7df189b02c618ececd41ed9aaa338f372dfe1b19a95800ecc1b751f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_388.png",
+              "sha256": "11e42836e3d2958fbc7bbca85e8a411f7e5998d2282e2dad7be8efb6a54f5a36"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_389.png",
+              "sha256": "86b3bedaa18fe122abefdf784b0a79c842011259d1834a273ea631c3984cc072"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页375与答案页377-378：题干、四个判断项、答案B及趟数解析忠实，标点空格差异不影响语义。",
+          "source_hash": "fb7bc4696d21eb5f1211878c3a93ba883728a36318668f276876b13ec66edfc1"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X07": {
       "source_uid": "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X07",
@@ -72434,13 +72684,10 @@
       "chapter": "排序 · 各种内部排序算法的比较及应用 · 选择题",
       "question_id": "X08",
       "source_hash": "34d7ebf9ed22bd94234e0f9347025a9432e0ba792d1b803f62c78e0d02aa849f",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         379,
         380,
@@ -72459,7 +72706,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T04:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -72497,10 +72744,76 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X08",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T04:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_379.png",
+              "sha256": "72bd5e793fd6e08bf4d12cbd0185e6c7fb3dc7e2ce06b93efd40c0ac7366b29d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_380.png",
+              "sha256": "85964ea06f1479accf07b93189e35f392cd089c112133bbb042363bd3d372ef5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_381.png",
+              "sha256": "9cf43d200b0d54487b8ac15328735e7263077444871fcb8d27f4f3953096c1e4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_382.png",
+              "sha256": "6b94e92c04e809387074bb2d08cfc157d671472bcebac04f92c0ac64447999d0"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_382.png",
+              "sha256": "6b94e92c04e809387074bb2d08cfc157d671472bcebac04f92c0ac64447999d0"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_383.png",
+              "sha256": "746e92d2e6899fa8a63a4f498444b3ca55faf628ab0088a0e6e1802bd3146714"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_384.png",
+              "sha256": "0deff4c8706adac5ec0a2e7a1bd52797eca2ddcbe1db6fd1adef3ff48fc8817a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_385.png",
+              "sha256": "6485bccfb01dba32d6bbcf05c7f69705a659812f2e0685e91f3c8519bfe9b4c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_386.png",
+              "sha256": "ac817519ebedcb7ff967f5c8441b93690727e053e9249c3ffc4a5d6ef0338bdc"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_387.png",
+              "sha256": "b13af27ab7df189b02c618ececd41ed9aaa338f372dfe1b19a95800ecc1b751f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_388.png",
+              "sha256": "11e42836e3d2958fbc7bbca85e8a411f7e5998d2282e2dad7be8efb6a54f5a36"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_389.png",
+              "sha256": "86b3bedaa18fe122abefdf784b0a79c842011259d1834a273ea631c3984cc072"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页375与答案页378：题干、选项、答案C及趟数解析忠实完整。",
+          "source_hash": "34d7ebf9ed22bd94234e0f9347025a9432e0ba792d1b803f62c78e0d02aa849f"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X09": {
       "source_uid": "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X09",
@@ -72726,14 +73039,10 @@
       "chapter": "排序 · 各种内部排序算法的比较及应用 · 选择题",
       "question_id": "X12",
       "source_hash": "9b406fe34c13e76bef384edc360d41dc71c6e1b574db88d6f37d3244312fac37",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         379,
         380,
@@ -72752,7 +73061,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T04:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -72790,10 +73099,76 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X12",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T04:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_379.png",
+              "sha256": "72bd5e793fd6e08bf4d12cbd0185e6c7fb3dc7e2ce06b93efd40c0ac7366b29d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_380.png",
+              "sha256": "85964ea06f1479accf07b93189e35f392cd089c112133bbb042363bd3d372ef5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_381.png",
+              "sha256": "9cf43d200b0d54487b8ac15328735e7263077444871fcb8d27f4f3953096c1e4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_382.png",
+              "sha256": "6b94e92c04e809387074bb2d08cfc157d671472bcebac04f92c0ac64447999d0"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_382.png",
+              "sha256": "6b94e92c04e809387074bb2d08cfc157d671472bcebac04f92c0ac64447999d0"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_383.png",
+              "sha256": "746e92d2e6899fa8a63a4f498444b3ca55faf628ab0088a0e6e1802bd3146714"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_384.png",
+              "sha256": "0deff4c8706adac5ec0a2e7a1bd52797eca2ddcbe1db6fd1adef3ff48fc8817a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_385.png",
+              "sha256": "6485bccfb01dba32d6bbcf05c7f69705a659812f2e0685e91f3c8519bfe9b4c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_386.png",
+              "sha256": "ac817519ebedcb7ff967f5c8441b93690727e053e9249c3ffc4a5d6ef0338bdc"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_387.png",
+              "sha256": "b13af27ab7df189b02c618ececd41ed9aaa338f372dfe1b19a95800ecc1b751f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_388.png",
+              "sha256": "11e42836e3d2958fbc7bbca85e8a411f7e5998d2282e2dad7be8efb6a54f5a36"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_389.png",
+              "sha256": "86b3bedaa18fe122abefdf784b0a79c842011259d1834a273ea631c3984cc072"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页375与答案页378：题干、选项、答案A及并行性解析忠实完整。",
+          "source_hash": "9b406fe34c13e76bef384edc360d41dc71c6e1b574db88d6f37d3244312fac37"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X13": {
       "source_uid": "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X13",
@@ -72801,13 +73176,10 @@
       "chapter": "排序 · 各种内部排序算法的比较及应用 · 选择题",
       "question_id": "X13",
       "source_hash": "70b87a968e5f4845bbecf82eef8ed5b3d93765229db19f1f7757228567e01725",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         379,
         380,
@@ -72826,7 +73198,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T04:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -72864,10 +73236,76 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_content_mismatch;raw_content_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_content_mismatch;raw_content_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X13",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T04:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_379.png",
+              "sha256": "72bd5e793fd6e08bf4d12cbd0185e6c7fb3dc7e2ce06b93efd40c0ac7366b29d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_380.png",
+              "sha256": "85964ea06f1479accf07b93189e35f392cd089c112133bbb042363bd3d372ef5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_381.png",
+              "sha256": "9cf43d200b0d54487b8ac15328735e7263077444871fcb8d27f4f3953096c1e4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_382.png",
+              "sha256": "6b94e92c04e809387074bb2d08cfc157d671472bcebac04f92c0ac64447999d0"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_382.png",
+              "sha256": "6b94e92c04e809387074bb2d08cfc157d671472bcebac04f92c0ac64447999d0"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_383.png",
+              "sha256": "746e92d2e6899fa8a63a4f498444b3ca55faf628ab0088a0e6e1802bd3146714"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_384.png",
+              "sha256": "0deff4c8706adac5ec0a2e7a1bd52797eca2ddcbe1db6fd1adef3ff48fc8817a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_385.png",
+              "sha256": "6485bccfb01dba32d6bbcf05c7f69705a659812f2e0685e91f3c8519bfe9b4c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_386.png",
+              "sha256": "ac817519ebedcb7ff967f5c8441b93690727e053e9249c3ffc4a5d6ef0338bdc"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_387.png",
+              "sha256": "b13af27ab7df189b02c618ececd41ed9aaa338f372dfe1b19a95800ecc1b751f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_388.png",
+              "sha256": "11e42836e3d2958fbc7bbca85e8a411f7e5998d2282e2dad7be8efb6a54f5a36"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_389.png",
+              "sha256": "86b3bedaa18fe122abefdf784b0a79c842011259d1834a273ea631c3984cc072"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页375与答案页378：2009真题题干、选项、答案B及排除法解析忠实完整。",
+          "source_hash": "70b87a968e5f4845bbecf82eef8ed5b3d93765229db19f1f7757228567e01725"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X14": {
       "source_uid": "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X14",
@@ -72875,13 +73313,10 @@
       "chapter": "排序 · 各种内部排序算法的比较及应用 · 选择题",
       "question_id": "X14",
       "source_hash": "990e7d519a869ae805a98dd82a56bdd9c3574e05a486b286dcb581adc8c8faea",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         379,
         380,
@@ -72900,7 +73335,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T04:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -72938,10 +73373,76 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X14",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T04:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_379.png",
+              "sha256": "72bd5e793fd6e08bf4d12cbd0185e6c7fb3dc7e2ce06b93efd40c0ac7366b29d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_380.png",
+              "sha256": "85964ea06f1479accf07b93189e35f392cd089c112133bbb042363bd3d372ef5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_381.png",
+              "sha256": "9cf43d200b0d54487b8ac15328735e7263077444871fcb8d27f4f3953096c1e4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_382.png",
+              "sha256": "6b94e92c04e809387074bb2d08cfc157d671472bcebac04f92c0ac64447999d0"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_382.png",
+              "sha256": "6b94e92c04e809387074bb2d08cfc157d671472bcebac04f92c0ac64447999d0"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_383.png",
+              "sha256": "746e92d2e6899fa8a63a4f498444b3ca55faf628ab0088a0e6e1802bd3146714"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_384.png",
+              "sha256": "0deff4c8706adac5ec0a2e7a1bd52797eca2ddcbe1db6fd1adef3ff48fc8817a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_385.png",
+              "sha256": "6485bccfb01dba32d6bbcf05c7f69705a659812f2e0685e91f3c8519bfe9b4c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_386.png",
+              "sha256": "ac817519ebedcb7ff967f5c8441b93690727e053e9249c3ffc4a5d6ef0338bdc"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_387.png",
+              "sha256": "b13af27ab7df189b02c618ececd41ed9aaa338f372dfe1b19a95800ecc1b751f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_388.png",
+              "sha256": "11e42836e3d2958fbc7bbca85e8a411f7e5998d2282e2dad7be8efb6a54f5a36"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_389.png",
+              "sha256": "86b3bedaa18fe122abefdf784b0a79c842011259d1834a273ea631c3984cc072"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页375与答案页378：2010真题排序过程、选项、答案A及解析忠实完整。",
+          "source_hash": "990e7d519a869ae805a98dd82a56bdd9c3574e05a486b286dcb581adc8c8faea"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X15": {
       "source_uid": "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X15",
@@ -72949,14 +73450,10 @@
       "chapter": "排序 · 各种内部排序算法的比较及应用 · 选择题",
       "question_id": "X15",
       "source_hash": "2830d0be3419d5b9269242da567e63041e5d5291ae72da4b3797970850ae3d08",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         379,
         380,
@@ -72975,7 +73472,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T04:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -73013,10 +73510,76 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "legacy_hold_recheck;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X15",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T04:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_379.png",
+              "sha256": "72bd5e793fd6e08bf4d12cbd0185e6c7fb3dc7e2ce06b93efd40c0ac7366b29d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_380.png",
+              "sha256": "85964ea06f1479accf07b93189e35f392cd089c112133bbb042363bd3d372ef5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_381.png",
+              "sha256": "9cf43d200b0d54487b8ac15328735e7263077444871fcb8d27f4f3953096c1e4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_382.png",
+              "sha256": "6b94e92c04e809387074bb2d08cfc157d671472bcebac04f92c0ac64447999d0"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_382.png",
+              "sha256": "6b94e92c04e809387074bb2d08cfc157d671472bcebac04f92c0ac64447999d0"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_383.png",
+              "sha256": "746e92d2e6899fa8a63a4f498444b3ca55faf628ab0088a0e6e1802bd3146714"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_384.png",
+              "sha256": "0deff4c8706adac5ec0a2e7a1bd52797eca2ddcbe1db6fd1adef3ff48fc8817a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_385.png",
+              "sha256": "6485bccfb01dba32d6bbcf05c7f69705a659812f2e0685e91f3c8519bfe9b4c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_386.png",
+              "sha256": "ac817519ebedcb7ff967f5c8441b93690727e053e9249c3ffc4a5d6ef0338bdc"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_387.png",
+              "sha256": "b13af27ab7df189b02c618ececd41ed9aaa338f372dfe1b19a95800ecc1b751f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_388.png",
+              "sha256": "11e42836e3d2958fbc7bbca85e8a411f7e5998d2282e2dad7be8efb6a54f5a36"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_389.png",
+              "sha256": "86b3bedaa18fe122abefdf784b0a79c842011259d1834a273ea631c3984cc072"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页375-376与答案页378-379：题干、五种算法判断、答案A及解析忠实完整。",
+          "source_hash": "2830d0be3419d5b9269242da567e63041e5d5291ae72da4b3797970850ae3d08"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X16": {
       "source_uid": "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X16",
@@ -73098,13 +73661,10 @@
       "chapter": "排序 · 各种内部排序算法的比较及应用 · 选择题",
       "question_id": "X17",
       "source_hash": "0179c8174d936e588c13d3a41f6498512e32a6aafa40d4e7a9dcc6f9b12c781a",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         379,
         380,
@@ -73123,7 +73683,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T04:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -73161,10 +73721,76 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X17",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T04:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_379.png",
+              "sha256": "72bd5e793fd6e08bf4d12cbd0185e6c7fb3dc7e2ce06b93efd40c0ac7366b29d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_380.png",
+              "sha256": "85964ea06f1479accf07b93189e35f392cd089c112133bbb042363bd3d372ef5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_381.png",
+              "sha256": "9cf43d200b0d54487b8ac15328735e7263077444871fcb8d27f4f3953096c1e4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_382.png",
+              "sha256": "6b94e92c04e809387074bb2d08cfc157d671472bcebac04f92c0ac64447999d0"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_382.png",
+              "sha256": "6b94e92c04e809387074bb2d08cfc157d671472bcebac04f92c0ac64447999d0"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_383.png",
+              "sha256": "746e92d2e6899fa8a63a4f498444b3ca55faf628ab0088a0e6e1802bd3146714"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_384.png",
+              "sha256": "0deff4c8706adac5ec0a2e7a1bd52797eca2ddcbe1db6fd1adef3ff48fc8817a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_385.png",
+              "sha256": "6485bccfb01dba32d6bbcf05c7f69705a659812f2e0685e91f3c8519bfe9b4c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_386.png",
+              "sha256": "ac817519ebedcb7ff967f5c8441b93690727e053e9249c3ffc4a5d6ef0338bdc"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_387.png",
+              "sha256": "b13af27ab7df189b02c618ececd41ed9aaa338f372dfe1b19a95800ecc1b751f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_388.png",
+              "sha256": "11e42836e3d2958fbc7bbca85e8a411f7e5998d2282e2dad7be8efb6a54f5a36"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_389.png",
+              "sha256": "86b3bedaa18fe122abefdf784b0a79c842011259d1834a273ea631c3984cc072"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页376与答案页379：题干、选项、答案D及顺序/链式存储解析忠实完整。",
+          "source_hash": "0179c8174d936e588c13d3a41f6498512e32a6aafa40d4e7a9dcc6f9b12c781a"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X18": {
       "source_uid": "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X18",
@@ -73173,12 +73799,9 @@
       "question_id": "X18",
       "source_hash": "32677d7ad8f582d6771ac5621457bf4e16d04e8f546005582a422608870e9fc7",
       "source_fidelity": "verified",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         379,
         380,
@@ -73197,7 +73820,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T04:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -73220,10 +73843,76 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X18",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T04:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_379.png",
+              "sha256": "72bd5e793fd6e08bf4d12cbd0185e6c7fb3dc7e2ce06b93efd40c0ac7366b29d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_380.png",
+              "sha256": "85964ea06f1479accf07b93189e35f392cd089c112133bbb042363bd3d372ef5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_381.png",
+              "sha256": "9cf43d200b0d54487b8ac15328735e7263077444871fcb8d27f4f3953096c1e4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_382.png",
+              "sha256": "6b94e92c04e809387074bb2d08cfc157d671472bcebac04f92c0ac64447999d0"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_382.png",
+              "sha256": "6b94e92c04e809387074bb2d08cfc157d671472bcebac04f92c0ac64447999d0"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_383.png",
+              "sha256": "746e92d2e6899fa8a63a4f498444b3ca55faf628ab0088a0e6e1802bd3146714"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_384.png",
+              "sha256": "0deff4c8706adac5ec0a2e7a1bd52797eca2ddcbe1db6fd1adef3ff48fc8817a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_385.png",
+              "sha256": "6485bccfb01dba32d6bbcf05c7f69705a659812f2e0685e91f3c8519bfe9b4c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_386.png",
+              "sha256": "ac817519ebedcb7ff967f5c8441b93690727e053e9249c3ffc4a5d6ef0338bdc"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_387.png",
+              "sha256": "b13af27ab7df189b02c618ececd41ed9aaa338f372dfe1b19a95800ecc1b751f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_388.png",
+              "sha256": "11e42836e3d2958fbc7bbca85e8a411f7e5998d2282e2dad7be8efb6a54f5a36"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_389.png",
+              "sha256": "86b3bedaa18fe122abefdf784b0a79c842011259d1834a273ea631c3984cc072"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页376与答案页379：题干、选项、答案D及因素分析忠实完整。",
+          "source_hash": "32677d7ad8f582d6771ac5621457bf4e16d04e8f546005582a422608870e9fc7"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X19": {
       "source_uid": "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X19",
@@ -73391,13 +74080,10 @@
       "chapter": "排序 · 各种内部排序算法的比较及应用 · 选择题",
       "question_id": "X21",
       "source_hash": "0ab2ccfbeea274e0b929b73c6bfcde7c83fab13d4c68c48a877f0727aba995ee",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         379,
         380,
@@ -73416,7 +74102,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T04:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -73454,10 +74140,76 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X21",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T04:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_379.png",
+              "sha256": "72bd5e793fd6e08bf4d12cbd0185e6c7fb3dc7e2ce06b93efd40c0ac7366b29d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_380.png",
+              "sha256": "85964ea06f1479accf07b93189e35f392cd089c112133bbb042363bd3d372ef5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_381.png",
+              "sha256": "9cf43d200b0d54487b8ac15328735e7263077444871fcb8d27f4f3953096c1e4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_382.png",
+              "sha256": "6b94e92c04e809387074bb2d08cfc157d671472bcebac04f92c0ac64447999d0"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_382.png",
+              "sha256": "6b94e92c04e809387074bb2d08cfc157d671472bcebac04f92c0ac64447999d0"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_383.png",
+              "sha256": "746e92d2e6899fa8a63a4f498444b3ca55faf628ab0088a0e6e1802bd3146714"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_384.png",
+              "sha256": "0deff4c8706adac5ec0a2e7a1bd52797eca2ddcbe1db6fd1adef3ff48fc8817a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_385.png",
+              "sha256": "6485bccfb01dba32d6bbcf05c7f69705a659812f2e0685e91f3c8519bfe9b4c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_386.png",
+              "sha256": "ac817519ebedcb7ff967f5c8441b93690727e053e9249c3ffc4a5d6ef0338bdc"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_387.png",
+              "sha256": "b13af27ab7df189b02c618ececd41ed9aaa338f372dfe1b19a95800ecc1b751f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_388.png",
+              "sha256": "11e42836e3d2958fbc7bbca85e8a411f7e5998d2282e2dad7be8efb6a54f5a36"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_389.png",
+              "sha256": "86b3bedaa18fe122abefdf784b0a79c842011259d1834a273ea631c3984cc072"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页376与答案页379：题干、选项、答案C及稳定性分类解析忠实完整。",
+          "source_hash": "0ab2ccfbeea274e0b929b73c6bfcde7c83fab13d4c68c48a877f0727aba995ee"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X22": {
       "source_uid": "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X22",
@@ -73538,13 +74290,10 @@
       "chapter": "排序 · 各种内部排序算法的比较及应用 · 选择题",
       "question_id": "X23",
       "source_hash": "1c4d10377a6fa49bdcf2afa563afd6c94b0798349188f8ff1ed6fab525e1b7a6",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         379,
         380,
@@ -73563,7 +74312,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T04:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -73601,10 +74350,76 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_content_mismatch;raw_content_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_content_mismatch;raw_content_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X23",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T04:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_379.png",
+              "sha256": "72bd5e793fd6e08bf4d12cbd0185e6c7fb3dc7e2ce06b93efd40c0ac7366b29d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_380.png",
+              "sha256": "85964ea06f1479accf07b93189e35f392cd089c112133bbb042363bd3d372ef5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_381.png",
+              "sha256": "9cf43d200b0d54487b8ac15328735e7263077444871fcb8d27f4f3953096c1e4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_382.png",
+              "sha256": "6b94e92c04e809387074bb2d08cfc157d671472bcebac04f92c0ac64447999d0"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_382.png",
+              "sha256": "6b94e92c04e809387074bb2d08cfc157d671472bcebac04f92c0ac64447999d0"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_383.png",
+              "sha256": "746e92d2e6899fa8a63a4f498444b3ca55faf628ab0088a0e6e1802bd3146714"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_384.png",
+              "sha256": "0deff4c8706adac5ec0a2e7a1bd52797eca2ddcbe1db6fd1adef3ff48fc8817a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_385.png",
+              "sha256": "6485bccfb01dba32d6bbcf05c7f69705a659812f2e0685e91f3c8519bfe9b4c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_386.png",
+              "sha256": "ac817519ebedcb7ff967f5c8441b93690727e053e9249c3ffc4a5d6ef0338bdc"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_387.png",
+              "sha256": "b13af27ab7df189b02c618ececd41ed9aaa338f372dfe1b19a95800ecc1b751f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_388.png",
+              "sha256": "11e42836e3d2958fbc7bbca85e8a411f7e5998d2282e2dad7be8efb6a54f5a36"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_389.png",
+              "sha256": "86b3bedaa18fe122abefdf784b0a79c842011259d1834a273ea631c3984cc072"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页376-377表格与答案页379：题干、表格、选项、答案A及希尔排序分组解析忠实完整。",
+          "source_hash": "1c4d10377a6fa49bdcf2afa563afd6c94b0798349188f8ff1ed6fab525e1b7a6"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::排序 · 外部排序 · 解答题::A01": {
       "source_uid": "408:cs408-ds::排序 · 外部排序 · 解答题::A01",
