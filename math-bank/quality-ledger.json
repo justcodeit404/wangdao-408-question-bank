@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-26T18:02:49+00:00",
+  "generated_at": "2026-08-26T18:06:01+00:00",
   "published_hashes": {
     "ds": "a40686840e5043561d7f7159fbd779725ffa65c56bfdd79a2683965b6aed0771",
-    "coa": "68f087cc7ac7c2a3832abaa29269222dbce0a13fda81fdc6f65212fb8fb264e4",
+    "coa": "bde7f1697bbafa7dbc17734ec6abd685832504ce0fdd3dd45adc4287b038a137",
     "net": "0fc4432f9af3214d9d5628799a687af65394f1f32fd0f87deb86500c484ba17a",
-    "os": "27ce52d711ded01aea5a4d03422ca6ddfc9417eceba1b649200793b7cca2cd81"
+    "os": "8c04b1733762dc804a49a6c3fa193ab1486c574220a3b967afdd79a67849ef71"
   },
   "courses": {
     "ds": {
@@ -36,16 +36,16 @@
       "name": "操作系统",
       "mode": "strict",
       "total": 759,
-      "certified": 134,
+      "certified": 135,
       "pending": 0,
-      "held": 625
+      "held": 624
     }
   },
   "summary": {
     "total": 2869,
-    "certified": 450,
+    "certified": 451,
     "pending": 0,
-    "held": 2419
+    "held": 2418
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -30282,7 +30282,7 @@
       "course_key": "coa",
       "chapter": "指令系统 · 程序的机器级代码表示 · 选择题",
       "question_id": "X07",
-      "source_hash": "6278e3195d0c7d597f52d2e2533448ef2979c99f9e5a5b7d609f7a7e751fe0b2",
+      "source_hash": "7cb1758192c0e81901519b38f76281948bda19c424e9f6f1086d6e157343670b",
       "source_fidelity": "pending",
       "answer_validation": "pending",
       "overall": "hold",
@@ -183249,26 +183249,48 @@
           "reviewed_at": "2026-08-27T03:20:00+00:00",
           "q_pages_viewed": [
             {
-              "path": "apps/bank-408/assets/pdf_images/os/page_353.png",
-              "sha256": "550b65a1b917ed280d2fe81e3e32dd72f2ec379f44d348a4f8f0d2c8f8453839"
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_353.png",
+              "sha256": "550b65a1b917ed280d2fe81e3e32dd72f2ec379f44d348a4f8f0d2c8f8453839",
+              "page": 353
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_354.png",
+              "sha256": "8f128a0fe0dc07328ab5816ee5bda8ffc4d31c8b5ea2ab44563cb088d90b6396",
+              "page": 354
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_355.png",
+              "sha256": "93a926e0b6d78f0d6eb8fe32a837b6ba34a3ee1a2811cac16ca600a30bb7670f",
+              "page": 355
             }
           ],
           "a_pages_viewed": [
             {
-              "path": "apps/bank-408/assets/pdf_images/os/page_358.png",
-              "sha256": "a4de6e9877ef99ba16288de0c4e95aba7b53017dc2c92c287364081b469a1460"
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_357.png",
+              "sha256": "f49f81e3a735a53bbae2f0526833ab09a8b48854a0eba83556cdfd9185f4a411",
+              "page": 357
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_358.png",
+              "sha256": "a4de6e9877ef99ba16288de0c4e95aba7b53017dc2c92c287364081b469a1460",
+              "page": 358
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_359.png",
+              "sha256": "a33ae5eb5677e9361b02e5f474835e20b07136ce8b4bce71f1300ee4744413a9",
+              "page": 359
             }
           ],
           "final_action": "patch",
-          "content_match": true,
-          "options_match": false,
-          "answer_match": true,
-          "explanation_match": true,
-          "image_match": true,
+          "content_match": null,
+          "options_match": null,
+          "answer_match": null,
+          "explanation_match": null,
+          "image_match": null,
           "detected_errors": [
-            "missing_option_D"
+            "persisted_page_review_patch"
           ],
-          "rationale": "亲眼核对原书题页353与答案页358：X06选项D为磁道、答案为A；已补齐发布版缺失选项并二查。",
+          "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
           "post_patch_verified": true,
           "source_hash": "9e9f5480b24d88cd6b38831f72c4878befa66b1eb5a1a9aa93eb805b9aecb353"
         }
@@ -186268,16 +186290,11 @@
       "course_key": "os",
       "chapter": "输入/输出管理 · 设备独立性软件 · 选择题",
       "question_id": "X10",
-      "source_hash": "bbe58302c0747ed92510623579f2f29cc29e059a5237b0b13cb0ad8339151512",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "structural_check",
-        "structural_error"
-      ],
+      "source_hash": "84ffd8af8d6687d6c7a6f23950b51bade4691b6f91478ee4531b2cbf1f36057c",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         334,
         335,
@@ -186304,48 +186321,40 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T03:40:00+00:00",
       "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
+        "original_page_review": {
+          "source_uid": "408:cs408-os::输入/输出管理 · 设备独立性软件 · 选择题::X10",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T03:40:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_335.png",
+              "sha256": "c2e9e2ae62540d4c1f74af96c71f21a7c14f0e98f2454b6978f3e9222e3cc9e8"
+            }
           ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_340.png",
+              "sha256": "0f7a8ce6c42c532333508df6118ff1765990e63598ebea0a174dae4a935ea84a"
+            }
           ],
-          "source_hash": "bbe58302c0747ed92510623579f2f29cc29e059a5237b0b13cb0ad8339151512",
-          "choices": [
-            "B",
-            ""
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": false,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [
+            "missing_option_D"
           ],
-          "confidence": [
-            0.0,
-            0.0
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "B",
-            ""
-          ],
-          "blind_confidence": [
-            0.0,
-            0.0
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;structural_check;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+          "rationale": "亲眼核对原书题页335与答案页340：X10选项D为max(T₁, T₂+T₃)，答案为D；已补齐发布版缺失选项并二查。",
+          "post_patch_verified": true,
+          "source_hash": "84ffd8af8d6687d6c7a6f23950b51bade4691b6f91478ee4531b2cbf1f36057c"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "structural_error"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::输入/输出管理 · 设备独立性软件 · 选择题::X11": {
       "source_uid": "408:cs408-os::输入/输出管理 · 设备独立性软件 · 选择题::X11",
