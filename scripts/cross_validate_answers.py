@@ -79,13 +79,17 @@ def classify_evidence(
     current: str | None, raw_ocr: str | None, fresh_ocr: str | None
 ) -> tuple[str, bool]:
     """返回 (状态, 是否隔离)。fresh OCR 是自动放行的必要证据。"""
+    from ocr_equivalence import answers_equivalent
+
     if not current:
         return "missing_current", True
-    if fresh_ocr == current:
+    if answers_equivalent(fresh_ocr, current):
         return "verified", False
     if fresh_ocr is None:
         return "fresh_ocr_missing", True
-    if raw_ocr == fresh_ocr and fresh_ocr != current:
+    if answers_equivalent(raw_ocr, fresh_ocr) and not answers_equivalent(
+        fresh_ocr, current
+    ):
         return "source_consensus_conflict", True
     return "evidence_conflict", True
 

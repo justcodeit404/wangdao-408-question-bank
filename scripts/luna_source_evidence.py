@@ -35,6 +35,7 @@ from cross_validate_answers import (
     parse_group_answers,
     run_fresh_ocr,
 )
+from ocr_equivalence import answers_equivalent, source_texts_equivalent
 from luna_audit_queue import iter_questions
 from utils import write_json_atomic
 
@@ -233,6 +234,8 @@ def _strict_or_near_match(
     # numbers/operators from a neighboring block must never be ignored.
     marker = QUESTION_MARKER_RE.match(actual)
     comparable = actual[marker.end() :] if marker else actual
+    if source_texts_equivalent(expected, comparable):
+        return True
     if _critical_tokens(expected) != _critical_tokens(comparable):
         return False
     if expected in comparable:
@@ -391,13 +394,13 @@ def _pending_reasons(
         reasons.append("published_answer_missing")
     if not raw:
         reasons.append("raw_ocr_missing")
-    elif published and raw != published:
+    elif published and not answers_equivalent(published, raw):
         reasons.append("raw_ocr_mismatch")
     if not fresh:
         reasons.append("fresh_ocr_missing")
-    elif published and fresh != published:
+    elif published and not answers_equivalent(published, fresh):
         reasons.append("fresh_ocr_mismatch")
-    if published and raw and fresh and raw != fresh:
+    if published and raw and fresh and not answers_equivalent(raw, fresh):
         reasons.append("ocr_disagreement")
     for label, fields in (("raw", raw_fields), ("fresh", fresh_fields)):
         if not fields.get("anchor_found"):
@@ -423,7 +426,11 @@ def _evidence_item(
     tier = _text(row.get("risk_tier")) or "high"
     score = int(row.get("risk_score") or 0)
     risk_reasons = [str(value) for value in row.get("risk_reasons") or [] if str(value)]
-    answer_matches = bool(published and published == raw == fresh)
+    answer_matches = bool(
+        published
+        and answers_equivalent(published, raw)
+        and answers_equivalent(published, fresh)
+    )
     fields_match = bool(
         raw_fields.get("anchor_found")
         and raw_fields.get("content")
