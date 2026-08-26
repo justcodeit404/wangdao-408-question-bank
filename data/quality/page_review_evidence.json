@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "protocol": "codex-original-page-review-v1",
-  "updated_at": "2026-08-26T17:56:13.448980+00:00",
+  "updated_at": "2026-08-26T17:58:45.751487+00:00",
   "records": [
     {
       "source_uid": "408:cs408-coa::中央处理器 · 异常和中断机制 · 选择题::X01",
@@ -3722,6 +3722,88 @@
       "source_hash": "39b3960d4cbc85ac0b0ceff75e9c1073feea4f03cc0627c6328894befa0a7480"
     },
     {
+      "source_uid": "408:cs408-os::文件管理 · 文件系统 · 选择题::X15",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T02:40:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_306.png",
+          "sha256": "095a2a5e5bcaae0c3582578bea71dfd52b9356d2f87bea4bd8c70060f5230b45"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_308.png",
+          "sha256": "92d0dfdd806e4dda073c18323985efdbd77e5c65fe3a90dbc23eb4a7854cb156"
+        }
+      ],
+      "final_action": "patch",
+      "content_match": true,
+      "options_match": false,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [
+        "duplicate_option_D"
+      ],
+      "rationale": "亲眼核对原书题页306与答案页308：X15答案为B；原书D为仅II、III、IV，发布版误录为仅I、III、IV，已修补并二查。",
+      "post_patch_verified": true,
+      "source_hash": "e708e3c11f586aad1c13e6047034caf8529e69c90cb3ef7aeb1a61701e54feab"
+    },
+    {
+      "source_uid": "408:cs408-os::文件管理 · 文件系统 · 选择题::X15",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "migrated:page_review_patches.json",
+      "q_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_305.png",
+          "sha256": "26adfdfbfe1f5e644a91e75717c09c2362949d2a47798d605a8f079a91c87cc3",
+          "page": 305
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_306.png",
+          "sha256": "095a2a5e5bcaae0c3582578bea71dfd52b9356d2f87bea4bd8c70060f5230b45",
+          "page": 306
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_307.png",
+          "sha256": "08c9fae06e0b78b2ee2581624742aa2daff5bde6f7f9163753efee1e0b09d0a8",
+          "page": 307
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_307.png",
+          "sha256": "08c9fae06e0b78b2ee2581624742aa2daff5bde6f7f9163753efee1e0b09d0a8",
+          "page": 307
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_308.png",
+          "sha256": "92d0dfdd806e4dda073c18323985efdbd77e5c65fe3a90dbc23eb4a7854cb156",
+          "page": 308
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_309.png",
+          "sha256": "9713087736c6a6f1dd8b20dc972763981f76ddf2c2c9c028f96af7c9da53eff6",
+          "page": 309
+        }
+      ],
+      "final_action": "patch",
+      "content_match": null,
+      "options_match": null,
+      "answer_match": null,
+      "explanation_match": null,
+      "image_match": null,
+      "detected_errors": [
+        "persisted_page_review_patch"
+      ],
+      "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
+      "post_patch_verified": true,
+      "source_hash": "e708e3c11f586aad1c13e6047034caf8529e69c90cb3ef7aeb1a61701e54feab"
+    },
+    {
       "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X54",
       "protocol": "codex-original-page-review-v1",
       "reviewer": "codex-vision",
@@ -3832,27 +3914,48 @@
       "reviewed_at": "2026-08-27T02:20:00+00:00",
       "q_pages_viewed": [
         {
-          "path": "apps/bank-408/assets/pdf_images/os/page_281.png",
-          "sha256": "c00af36a4b5d893967aed7b7ea8b3072b76fedd8614187284bcf33dc9ba896fb"
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_276.png",
+          "sha256": "97fe51b6634fa9be141d7e6534e9df558dffb85439fb6350a0982a078c763b57",
+          "page": 276
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_277.png",
+          "sha256": "c67651a99bfee107eb92c7e42b78b2daa75613309e97096a3170bf2de7722c48",
+          "page": 277
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_278.png",
+          "sha256": "b553e62fc02009ea5731de5520203857b44f00833b5194ccfd511eb50fc3dbf4",
+          "page": 278
         }
       ],
       "a_pages_viewed": [
         {
-          "path": "apps/bank-408/assets/pdf_images/os/page_292.png",
-          "sha256": "98f3d81b28508484504013243df77616a55ea6dbe3ce08b71a72862b3695d2fa"
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_287.png",
+          "sha256": "00aeaa8040ea96497337b48497874602f7a8ff3069781114fb4715815fffb9a2",
+          "page": 287
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_288.png",
+          "sha256": "fb1e136920811b986c10978413490479fde9204ec81e897c0b757b01b2fba925",
+          "page": 288
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_289.png",
+          "sha256": "33ca4a3aaea769a01514d76ab657341de759ec4fc56f6e9b8371c0aa0561f10f",
+          "page": 289
         }
       ],
       "final_action": "patch",
-      "content_match": true,
-      "options_match": false,
-      "answer_match": true,
-      "explanation_match": true,
-      "image_match": true,
+      "content_match": null,
+      "options_match": null,
+      "answer_match": null,
+      "explanation_match": null,
+      "image_match": null,
       "detected_errors": [
-        "missing_option_II",
-        "wrong_option_C"
+        "persisted_page_review_patch"
       ],
-      "rationale": "亲眼核对原书题目页281与答案页292：X61答案为B；原书选项B为仅II、III，C为仅I、II，已修补发布题并二查。",
+      "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
       "post_patch_verified": true,
       "source_hash": "224bab38c9623fbb4aa725dd71a16ef2702cfc618abfbe9d864233ac1ea58c1a"
     },
