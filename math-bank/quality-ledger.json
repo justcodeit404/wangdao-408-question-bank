@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-26T22:02:18+00:00",
+  "generated_at": "2026-08-26T22:09:20+00:00",
   "published_hashes": {
     "ds": "a40686840e5043561d7f7159fbd779725ffa65c56bfdd79a2683965b6aed0771",
     "coa": "8f9ea82d6d82e53ea38daf200ae95a361b5c43742f0ce9881b207f671f7f06f7",
@@ -20,9 +20,9 @@
       "name": "计算机组成原理",
       "mode": "strict",
       "total": 674,
-      "certified": 427,
+      "certified": 439,
       "pending": 0,
-      "held": 247
+      "held": 235
     },
     "net": {
       "name": "计算机网络",
@@ -43,9 +43,9 @@
   },
   "summary": {
     "total": 2869,
-    "certified": 1008,
+    "certified": 1020,
     "pending": 0,
-    "held": 1861
+    "held": 1849
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -26859,14 +26859,10 @@
       "chapter": "总线 · 总线事务和定时 · 选择题",
       "question_id": "X02",
       "source_hash": "29fc0da5137bbf247b51894a929273457e60786db08816f332cb6b93ae90ee1a",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         291,
         292,
@@ -26883,7 +26879,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T05:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -26921,10 +26917,52 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X02",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T05:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_291.png",
+              "sha256": "45d44820de0e72d192e1135a5179cc4269ae55e414cad8c038b9d97d396bb748"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_292.png",
+              "sha256": "00a595e6d8282affbb8d89d0891b833632b2513603144b52bb2e682e81995db6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_293.png",
+              "sha256": "e2979e74fe685172dfa177c2edb9311de1097b0cb1439ae2f494b3579a9c9136"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_293.png",
+              "sha256": "e2979e74fe685172dfa177c2edb9311de1097b0cb1439ae2f494b3579a9c9136"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_294.png",
+              "sha256": "16d298e57c054c95075098491910f2cb4f5fff565949e2a3145bb84f9d90249a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_295.png",
+              "sha256": "7b8babc0639608e2a5fd0a2154a3a35186e53db4570fc3ae485eefc456ebb3f9"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页286-287与答案页288：题干、选项、答案C及同步/异步说明忠实完整。",
+          "source_hash": "29fc0da5137bbf247b51894a929273457e60786db08816f332cb6b93ae90ee1a"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X03": {
       "source_uid": "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X03",
@@ -27077,13 +27115,10 @@
       "chapter": "总线 · 总线事务和定时 · 选择题",
       "question_id": "X05",
       "source_hash": "d96db28a78ed93f7f1d3089fb47f7460832b69e54fa98785e766e587186a6016",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         291,
         292,
@@ -27100,7 +27135,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T05:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -27123,10 +27158,52 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X05",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T05:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_291.png",
+              "sha256": "45d44820de0e72d192e1135a5179cc4269ae55e414cad8c038b9d97d396bb748"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_292.png",
+              "sha256": "00a595e6d8282affbb8d89d0891b833632b2513603144b52bb2e682e81995db6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_293.png",
+              "sha256": "e2979e74fe685172dfa177c2edb9311de1097b0cb1439ae2f494b3579a9c9136"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_293.png",
+              "sha256": "e2979e74fe685172dfa177c2edb9311de1097b0cb1439ae2f494b3579a9c9136"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_294.png",
+              "sha256": "16d298e57c054c95075098491910f2cb4f5fff565949e2a3145bb84f9d90249a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_295.png",
+              "sha256": "7b8babc0639608e2a5fd0a2154a3a35186e53db4570fc3ae485eefc456ebb3f9"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页286-287与答案页288：题干、选项、答案B及同步传输特点解析忠实完整。",
+          "source_hash": "d96db28a78ed93f7f1d3089fb47f7460832b69e54fa98785e766e587186a6016"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X06": {
       "source_uid": "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X06",
@@ -27134,14 +27211,10 @@
       "chapter": "总线 · 总线事务和定时 · 选择题",
       "question_id": "X06",
       "source_hash": "5d7575f48abea8ad97f6dfed18397355852f8db58afd9dcd987027282f47496a",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         291,
         292,
@@ -27158,7 +27231,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T05:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -27196,10 +27269,52 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X06",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T05:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_291.png",
+              "sha256": "45d44820de0e72d192e1135a5179cc4269ae55e414cad8c038b9d97d396bb748"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_292.png",
+              "sha256": "00a595e6d8282affbb8d89d0891b833632b2513603144b52bb2e682e81995db6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_293.png",
+              "sha256": "e2979e74fe685172dfa177c2edb9311de1097b0cb1439ae2f494b3579a9c9136"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_293.png",
+              "sha256": "e2979e74fe685172dfa177c2edb9311de1097b0cb1439ae2f494b3579a9c9136"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_294.png",
+              "sha256": "16d298e57c054c95075098491910f2cb4f5fff565949e2a3145bb84f9d90249a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_295.png",
+              "sha256": "7b8babc0639608e2a5fd0a2154a3a35186e53db4570fc3ae485eefc456ebb3f9"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页286-287与答案页288：题干、选项、答案D及异步总线按需分配时间解析忠实完整。",
+          "source_hash": "5d7575f48abea8ad97f6dfed18397355852f8db58afd9dcd987027282f47496a"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X07": {
       "source_uid": "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X07",
@@ -27264,12 +27379,9 @@
       "question_id": "X08",
       "source_hash": "54380b9bb62abc798474ff2d7a71f1b0acf9b64553a09a508390e5b9e453505f",
       "source_fidelity": "verified",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         291,
         292,
@@ -27286,7 +27398,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T05:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -27309,10 +27421,52 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X08",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T05:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_291.png",
+              "sha256": "45d44820de0e72d192e1135a5179cc4269ae55e414cad8c038b9d97d396bb748"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_292.png",
+              "sha256": "00a595e6d8282affbb8d89d0891b833632b2513603144b52bb2e682e81995db6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_293.png",
+              "sha256": "e2979e74fe685172dfa177c2edb9311de1097b0cb1439ae2f494b3579a9c9136"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_293.png",
+              "sha256": "e2979e74fe685172dfa177c2edb9311de1097b0cb1439ae2f494b3579a9c9136"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_294.png",
+              "sha256": "16d298e57c054c95075098491910f2cb4f5fff565949e2a3145bb84f9d90249a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_295.png",
+              "sha256": "7b8babc0639608e2a5fd0a2154a3a35186e53db4570fc3ae485eefc456ebb3f9"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页286-287与答案页288：题干、选项、答案C及不互锁速度最快解析忠实完整。",
+          "source_hash": "54380b9bb62abc798474ff2d7a71f1b0acf9b64553a09a508390e5b9e453505f"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X09": {
       "source_uid": "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X09",
@@ -27393,15 +27547,10 @@
       "chapter": "总线 · 总线事务和定时 · 选择题",
       "question_id": "X10",
       "source_hash": "0e0b632e976a46e10ecf50a4db544c6b43ff70291c9cb14bc931de5a3cb30b58",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         291,
         292,
@@ -27418,7 +27567,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T05:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -27456,10 +27605,52 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X10",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T05:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_291.png",
+              "sha256": "45d44820de0e72d192e1135a5179cc4269ae55e414cad8c038b9d97d396bb748"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_292.png",
+              "sha256": "00a595e6d8282affbb8d89d0891b833632b2513603144b52bb2e682e81995db6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_293.png",
+              "sha256": "e2979e74fe685172dfa177c2edb9311de1097b0cb1439ae2f494b3579a9c9136"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_293.png",
+              "sha256": "e2979e74fe685172dfa177c2edb9311de1097b0cb1439ae2f494b3579a9c9136"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_294.png",
+              "sha256": "16d298e57c054c95075098491910f2cb4f5fff565949e2a3145bb84f9d90249a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_295.png",
+              "sha256": "7b8babc0639608e2a5fd0a2154a3a35186e53db4570fc3ae485eefc456ebb3f9"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页287与答案页288-289：计算题、答案C及总线周期解析忠实完整。",
+          "source_hash": "0e0b632e976a46e10ecf50a4db544c6b43ff70291c9cb14bc931de5a3cb30b58"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X11": {
       "source_uid": "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X11",
@@ -27467,14 +27658,10 @@
       "chapter": "总线 · 总线事务和定时 · 选择题",
       "question_id": "X11",
       "source_hash": "794f6760f8afcaa75f018ecc843caa3c7ed0ac897a18f893ff91bf47cd452d34",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         291,
         292,
@@ -27491,7 +27678,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T05:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -27529,10 +27716,52 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X11",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T05:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_291.png",
+              "sha256": "45d44820de0e72d192e1135a5179cc4269ae55e414cad8c038b9d97d396bb748"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_292.png",
+              "sha256": "00a595e6d8282affbb8d89d0891b833632b2513603144b52bb2e682e81995db6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_293.png",
+              "sha256": "e2979e74fe685172dfa177c2edb9311de1097b0cb1439ae2f494b3579a9c9136"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_293.png",
+              "sha256": "e2979e74fe685172dfa177c2edb9311de1097b0cb1439ae2f494b3579a9c9136"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_294.png",
+              "sha256": "16d298e57c054c95075098491910f2cb4f5fff565949e2a3145bb84f9d90249a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_295.png",
+              "sha256": "7b8babc0639608e2a5fd0a2154a3a35186e53db4570fc3ae485eefc456ebb3f9"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页287与答案页289：异步串行比特数计算、答案D及解析忠实完整。",
+          "source_hash": "794f6760f8afcaa75f018ecc843caa3c7ed0ac897a18f893ff91bf47cd452d34"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X12": {
       "source_uid": "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X12",
@@ -27540,14 +27769,10 @@
       "chapter": "总线 · 总线事务和定时 · 选择题",
       "question_id": "X12",
       "source_hash": "cbf3552f627f120148da47d612d3c665701e7f54848bfc7b49db38d9ae992586",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         291,
         292,
@@ -27564,7 +27789,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T05:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -27602,10 +27827,52 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X12",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T05:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_291.png",
+              "sha256": "45d44820de0e72d192e1135a5179cc4269ae55e414cad8c038b9d97d396bb748"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_292.png",
+              "sha256": "00a595e6d8282affbb8d89d0891b833632b2513603144b52bb2e682e81995db6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_293.png",
+              "sha256": "e2979e74fe685172dfa177c2edb9311de1097b0cb1439ae2f494b3579a9c9136"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_293.png",
+              "sha256": "e2979e74fe685172dfa177c2edb9311de1097b0cb1439ae2f494b3579a9c9136"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_294.png",
+              "sha256": "16d298e57c054c95075098491910f2cb4f5fff565949e2a3145bb84f9d90249a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_295.png",
+              "sha256": "7b8babc0639608e2a5fd0a2154a3a35186e53db4570fc3ae485eefc456ebb3f9"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页287与答案页289：总线叙述、答案D及事务分离解析忠实完整。",
+          "source_hash": "cbf3552f627f120148da47d612d3c665701e7f54848bfc7b49db38d9ae992586"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X13": {
       "source_uid": "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X13",
@@ -27669,14 +27936,10 @@
       "chapter": "总线 · 总线事务和定时 · 选择题",
       "question_id": "X14",
       "source_hash": "c5f68b3761de3feb0720434fa524307110b9d775f7efac143871c234f31cf8a2",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         291,
         292,
@@ -27693,7 +27956,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T05:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -27731,10 +27994,52 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X14",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T05:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_291.png",
+              "sha256": "45d44820de0e72d192e1135a5179cc4269ae55e414cad8c038b9d97d396bb748"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_292.png",
+              "sha256": "00a595e6d8282affbb8d89d0891b833632b2513603144b52bb2e682e81995db6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_293.png",
+              "sha256": "e2979e74fe685172dfa177c2edb9311de1097b0cb1439ae2f494b3579a9c9136"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_293.png",
+              "sha256": "e2979e74fe685172dfa177c2edb9311de1097b0cb1439ae2f494b3579a9c9136"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_294.png",
+              "sha256": "16d298e57c054c95075098491910f2cb4f5fff565949e2a3145bb84f9d90249a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_295.png",
+              "sha256": "7b8babc0639608e2a5fd0a2154a3a35186e53db4570fc3ae485eefc456ebb3f9"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页287与答案页289：突发传输定义、答案C及解析忠实完整。",
+          "source_hash": "c5f68b3761de3feb0720434fa524307110b9d775f7efac143871c234f31cf8a2"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X15": {
       "source_uid": "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X15",
@@ -27743,13 +28048,9 @@
       "question_id": "X15",
       "source_hash": "a82124947c4e9f500763044d31918feb9e8765d978407bfa1b6581584f51bc58",
       "source_fidelity": "verified",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         291,
         292,
@@ -27766,7 +28067,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T05:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -27804,10 +28105,52 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X15",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T05:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_291.png",
+              "sha256": "45d44820de0e72d192e1135a5179cc4269ae55e414cad8c038b9d97d396bb748"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_292.png",
+              "sha256": "00a595e6d8282affbb8d89d0891b833632b2513603144b52bb2e682e81995db6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_293.png",
+              "sha256": "e2979e74fe685172dfa177c2edb9311de1097b0cb1439ae2f494b3579a9c9136"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_293.png",
+              "sha256": "e2979e74fe685172dfa177c2edb9311de1097b0cb1439ae2f494b3579a9c9136"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_294.png",
+              "sha256": "16d298e57c054c95075098491910f2cb4f5fff565949e2a3145bb84f9d90249a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_295.png",
+              "sha256": "7b8babc0639608e2a5fd0a2154a3a35186e53db4570fc3ae485eefc456ebb3f9"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页287与答案页289：总线定时判断、答案C及解析忠实完整。",
+          "source_hash": "a82124947c4e9f500763044d31918feb9e8765d978407bfa1b6581584f51bc58"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X16": {
       "source_uid": "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X16",
@@ -27815,13 +28158,10 @@
       "chapter": "总线 · 总线事务和定时 · 选择题",
       "question_id": "X16",
       "source_hash": "09f989104d851f2f7a86333e0bc1656a13ad67df6933a402546b4c3221fdf922",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         291,
         292,
@@ -27838,7 +28178,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T05:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -27861,10 +28201,52 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X16",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T05:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_291.png",
+              "sha256": "45d44820de0e72d192e1135a5179cc4269ae55e414cad8c038b9d97d396bb748"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_292.png",
+              "sha256": "00a595e6d8282affbb8d89d0891b833632b2513603144b52bb2e682e81995db6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_293.png",
+              "sha256": "e2979e74fe685172dfa177c2edb9311de1097b0cb1439ae2f494b3579a9c9136"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_293.png",
+              "sha256": "e2979e74fe685172dfa177c2edb9311de1097b0cb1439ae2f494b3579a9c9136"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_294.png",
+              "sha256": "16d298e57c054c95075098491910f2cb4f5fff565949e2a3145bb84f9d90249a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_295.png",
+              "sha256": "7b8babc0639608e2a5fd0a2154a3a35186e53db4570fc3ae485eefc456ebb3f9"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页287与答案页289：总线设计判断、答案A及串并行对比解析忠实完整。",
+          "source_hash": "09f989104d851f2f7a86333e0bc1656a13ad67df6933a402546b4c3221fdf922"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X17": {
       "source_uid": "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X17",
@@ -27872,15 +28254,10 @@
       "chapter": "总线 · 总线事务和定时 · 选择题",
       "question_id": "X17",
       "source_hash": "b5c299e8f14b935403765f7c01072334d0b1be0abfc10e37222f0f73a1b0c0e5",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         291,
         292,
@@ -27897,7 +28274,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T05:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -27935,10 +28312,52 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X17",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T05:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_291.png",
+              "sha256": "45d44820de0e72d192e1135a5179cc4269ae55e414cad8c038b9d97d396bb748"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_292.png",
+              "sha256": "00a595e6d8282affbb8d89d0891b833632b2513603144b52bb2e682e81995db6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_293.png",
+              "sha256": "e2979e74fe685172dfa177c2edb9311de1097b0cb1439ae2f494b3579a9c9136"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_293.png",
+              "sha256": "e2979e74fe685172dfa177c2edb9311de1097b0cb1439ae2f494b3579a9c9136"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_294.png",
+              "sha256": "16d298e57c054c95075098491910f2cb4f5fff565949e2a3145bb84f9d90249a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_295.png",
+              "sha256": "7b8babc0639608e2a5fd0a2154a3a35186e53db4570fc3ae485eefc456ebb3f9"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页287与答案页289：多总线结构判断、答案D及PCI-Express串行说明忠实完整。",
+          "source_hash": "b5c299e8f14b935403765f7c01072334d0b1be0abfc10e37222f0f73a1b0c0e5"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X18": {
       "source_uid": "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X18",
@@ -28019,14 +28438,10 @@
       "chapter": "总线 · 总线事务和定时 · 选择题",
       "question_id": "X19",
       "source_hash": "d764404d954ebe409b640f22a83e05b87a40d79818ac71cdb2dce4a54267146c",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         291,
         292,
@@ -28043,7 +28458,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T05:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -28081,10 +28496,52 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X19",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T05:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_291.png",
+              "sha256": "45d44820de0e72d192e1135a5179cc4269ae55e414cad8c038b9d97d396bb748"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_292.png",
+              "sha256": "00a595e6d8282affbb8d89d0891b833632b2513603144b52bb2e682e81995db6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_293.png",
+              "sha256": "e2979e74fe685172dfa177c2edb9311de1097b0cb1439ae2f494b3579a9c9136"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_293.png",
+              "sha256": "e2979e74fe685172dfa177c2edb9311de1097b0cb1439ae2f494b3579a9c9136"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_294.png",
+              "sha256": "16d298e57c054c95075098491910f2cb4f5fff565949e2a3145bb84f9d90249a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_295.png",
+              "sha256": "7b8babc0639608e2a5fd0a2154a3a35186e53db4570fc3ae485eefc456ebb3f9"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页287-288与答案页289-290：总线错误判断、答案C及握手数据交换说明忠实完整。",
+          "source_hash": "d764404d954ebe409b640f22a83e05b87a40d79818ac71cdb2dce4a54267146c"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X20": {
       "source_uid": "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X20",
@@ -53266,7 +53723,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T22:01:23.211550+00:00",
+      "verified_at": "2026-08-26T22:09:16.495901+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -53309,7 +53766,7 @@
           "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X07",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-26T22:01:23.211550+00:00",
+          "reviewed_at": "2026-08-26T22:09:16.495901+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/coa/page_300.png",
