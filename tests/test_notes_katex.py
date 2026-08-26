@@ -63,8 +63,12 @@ def test_notes_preview_wired_in_viewer():
     assert ".q-notes.has-note-preview .q-notes-preview" in css
     html = (ROOT / "math-bank" / "index.html").read_text(encoding="utf-8")
     assert "app.js?v=" in html
+    import re
+
+    m = re.search(r"__BANK_DATA_VER__='(\d+)'", html)
+    assert m, "missing __BANK_DATA_VER__"
     sw = (ROOT / "math-bank" / "sw.js").read_text(encoding="utf-8")
-    assert "wd408-ui-v43" in sw
+    assert f"wd408-ui-v{m.group(1)}" in sw
 
 
 def test_prepare_note_math_bare_log_and_delimited():
