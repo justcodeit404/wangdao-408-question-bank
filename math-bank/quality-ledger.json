@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-26T17:53:52+00:00",
+  "generated_at": "2026-08-26T17:56:14+00:00",
   "published_hashes": {
     "ds": "a40686840e5043561d7f7159fbd779725ffa65c56bfdd79a2683965b6aed0771",
-    "coa": "1b4a71348489aa8a1d470a31c000381e52c6fea7e045ed20f2b69d54fd842c05",
+    "coa": "00140de980e4826da1257067d1c2933fd33be9c288913120959c96d4c00b7490",
     "net": "0fc4432f9af3214d9d5628799a687af65394f1f32fd0f87deb86500c484ba17a",
-    "os": "bd962526043276608b9bd7343daee65ef2c7bad08062a5ac5a38f0eb54ebd1f4"
+    "os": "e7871218424fd9ceef28efa203bcccc79a551975bee01dffb9d0237ce3509f0e"
   },
   "courses": {
     "ds": {
@@ -36,16 +36,16 @@
       "name": "操作系统",
       "mode": "strict",
       "total": 759,
-      "certified": 130,
+      "certified": 131,
       "pending": 0,
-      "held": 629
+      "held": 628
     }
   },
   "summary": {
     "total": 2869,
-    "certified": 446,
+    "certified": 447,
     "pending": 0,
-    "held": 2423
+    "held": 2422
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -30282,7 +30282,7 @@
       "course_key": "coa",
       "chapter": "指令系统 · 程序的机器级代码表示 · 选择题",
       "question_id": "X07",
-      "source_hash": "95a365c902c951cf4b9158e311966c555ee4befabcd474426a7384a3411eb978",
+      "source_hash": "cea02ea203fedcc71984a2bad6dcd91002b66227e2211aff8d59bd699b9b686f",
       "source_fidelity": "pending",
       "answer_validation": "pending",
       "overall": "hold",
@@ -172597,31 +172597,48 @@
           "reviewed_at": "2026-08-27T02:00:00+00:00",
           "q_pages_viewed": [
             {
-              "path": "apps/bank-408/assets/pdf_images/os/page_280.png",
-              "sha256": "67b6b0dc3e9b7f0328ff7d434ae05fd418527aeda5080cf00a9c2192103f54f3"
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_276.png",
+              "sha256": "97fe51b6634fa9be141d7e6534e9df558dffb85439fb6350a0982a078c763b57",
+              "page": 276
             },
             {
-              "path": "apps/bank-408/assets/pdf_images/os/page_281.png",
-              "sha256": "c00af36a4b5d893967aed7b7ea8b3072b76fedd8614187284bcf33dc9ba896fb"
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_277.png",
+              "sha256": "c67651a99bfee107eb92c7e42b78b2daa75613309e97096a3170bf2de7722c48",
+              "page": 277
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_278.png",
+              "sha256": "b553e62fc02009ea5731de5520203857b44f00833b5194ccfd511eb50fc3dbf4",
+              "page": 278
             }
           ],
           "a_pages_viewed": [
             {
-              "path": "apps/bank-408/assets/pdf_images/os/page_291.png",
-              "sha256": "2626b25cfeaec17610d4398d41574bcb1ede987266337b530c52247cac651402"
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_287.png",
+              "sha256": "00aeaa8040ea96497337b48497874602f7a8ff3069781114fb4715815fffb9a2",
+              "page": 287
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_288.png",
+              "sha256": "fb1e136920811b986c10978413490479fde9204ec81e897c0b757b01b2fba925",
+              "page": 288
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_289.png",
+              "sha256": "33ca4a3aaea769a01514d76ab657341de759ec4fc56f6e9b8371c0aa0561f10f",
+              "page": 289
             }
           ],
           "final_action": "patch",
-          "content_match": true,
-          "options_match": false,
-          "answer_match": true,
-          "explanation_match": true,
-          "image_match": true,
+          "content_match": null,
+          "options_match": null,
+          "answer_match": null,
+          "explanation_match": null,
+          "image_match": null,
           "detected_errors": [
-            "duplicate_option_C",
-            "corrupt_option_D"
+            "persisted_page_review_patch"
           ],
-          "rationale": "亲眼核对原书题目页280-281与答案页291：X54答案为A；原书选项C为仅II、III、D为I、II和III，已修补发布题的重复/乱码选项并二查。",
+          "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
           "post_patch_verified": true,
           "source_hash": "61004a8d231068fa3d3a425cef47f27289d0eae5794314ea198e5ac85ac3d7e6"
         }
@@ -173173,16 +173190,11 @@
       "course_key": "os",
       "chapter": "文件管理 · 目录与文件 · 选择题",
       "question_id": "X61",
-      "source_hash": "b346bb6443539778b0ecd310f54ddf6c8dc2960105fcef59a46d4cec146f9504",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "structural_check",
-        "structural_error"
-      ],
+      "source_hash": "224bab38c9623fbb4aa725dd71a16ef2702cfc618abfbe9d864233ac1ea58c1a",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         276,
         277,
@@ -173219,48 +173231,41 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T02:20:00+00:00",
       "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
+        "original_page_review": {
+          "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X61",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T02:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_281.png",
+              "sha256": "c00af36a4b5d893967aed7b7ea8b3072b76fedd8614187284bcf33dc9ba896fb"
+            }
           ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_292.png",
+              "sha256": "98f3d81b28508484504013243df77616a55ea6dbe3ce08b71a72862b3695d2fa"
+            }
           ],
-          "source_hash": "b346bb6443539778b0ecd310f54ddf6c8dc2960105fcef59a46d4cec146f9504",
-          "choices": [
-            "",
-            ""
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": false,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [
+            "missing_option_II",
+            "wrong_option_C"
           ],
-          "confidence": [
-            0.0,
-            0.0
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "",
-            ""
-          ],
-          "blind_confidence": [
-            0.0,
-            0.0
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;structural_check;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+          "rationale": "亲眼核对原书题目页281与答案页292：X61答案为B；原书选项B为仅II、III，C为仅I、II，已修补发布题并二查。",
+          "post_patch_verified": true,
+          "source_hash": "224bab38c9623fbb4aa725dd71a16ef2702cfc618abfbe9d864233ac1ea58c1a"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "structural_error"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::文件管理 · 目录与文件 · 选择题::X62": {
       "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X62",
