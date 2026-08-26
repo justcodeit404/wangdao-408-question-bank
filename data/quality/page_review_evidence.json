@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "protocol": "codex-original-page-review-v1",
-  "updated_at": "2026-08-26T18:50:39.405801+00:00",
+  "updated_at": "2026-08-26T18:53:16.971045+00:00",
   "records": [
     {
       "source_uid": "408:cs408-coa::中央处理器 · 异常和中断机制 · 选择题::X01",
@@ -2985,6 +2985,91 @@
       "detected_errors": [],
       "rationale": "亲眼核对原书题页51与答案页56：X28 定点补码加减溢出题干、选项及解析忠实，答案为C。",
       "source_hash": "b09695fbc13f1651f7b00af4cab8019ec79839bf1d007b1ab6227c32526ccc29"
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 运算方法和运算电路 · 选择题::X29",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T08:15:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_051.png",
+          "sha256": "c2114fd788afde2b07c614308ded5af2af7bd15931a96b2ff42090241737c15b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_052.png",
+          "sha256": "8d802c76fd39616e3dfa4972738bf1685e3fe57a8378b5d6f9263f3401fb991c"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_056.png",
+          "sha256": "f41d031a2c37c74796b63f4474b9edf4c410752b193350ee73a33644f8dd2895"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题页51-52与答案页56：X29 int补码减法机器数题干、选项及解析忠实，答案为C。",
+      "source_hash": "162d69d7a8eff53b1331584b2f346a62ad8f95973f6404e7e0a054d754372709"
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 运算方法和运算电路 · 选择题::X31",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T08:16:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_052.png",
+          "sha256": "8d802c76fd39616e3dfa4972738bf1685e3fe57a8378b5d6f9263f3401fb991c"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_056.png",
+          "sha256": "f41d031a2c37c74796b63f4474b9edf4c410752b193350ee73a33644f8dd2895"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题页52与答案页56：X31 减法指令CF/OF题干、选项及解析忠实，答案为A。",
+      "source_hash": "4ce98afe14f3bef6ca787e2e1e27c354a1119e46d0364f4a4e66f7594de23902"
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 运算方法和运算电路 · 选择题::X32",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T08:17:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_052.png",
+          "sha256": "8d802c76fd39616e3dfa4972738bf1685e3fe57a8378b5d6f9263f3401fb991c"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_056.png",
+          "sha256": "f41d031a2c37c74796b63f4474b9edf4c410752b193350ee73a33644f8dd2895"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题页52与答案页56：X32 有符号/无符号减法溢出题干、选项及解析忠实，答案为B。",
+      "source_hash": "8c009ff65311454fead2b2b9cde6a09065c2427d88e16d2b6f0581f2f96d4472"
     },
     {
       "source_uid": "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X01",
