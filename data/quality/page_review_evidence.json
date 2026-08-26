@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "protocol": "codex-original-page-review-v1",
-  "updated_at": "2026-08-26T16:18:17.466249+00:00",
+  "updated_at": "2026-08-26T16:20:54.025140+00:00",
   "records": [
     {
       "source_uid": "408:cs408-coa::中央处理器 · 异常和中断机制 · 选择题::X01",
@@ -10,26 +10,45 @@
       "reviewed_at": "2026-08-26T15:09:26.149392+00:00",
       "q_pages_viewed": [
         {
-          "path": "apps/bank-408/assets/pdf_images/coa/page_249.png",
-          "sha256": "70b188effca1138f298f54520837c8f533034c3a0019343915acb03741cf53b0"
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_249.png",
+          "sha256": "70b188effca1138f298f54520837c8f533034c3a0019343915acb03741cf53b0",
+          "page": 249
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_250.png",
+          "sha256": "f9936a8f02a63f11965e8986041b23dc506d7907e81ee6fc7f81d20c8b92c46f",
+          "page": 250
         }
       ],
       "a_pages_viewed": [
         {
-          "path": "apps/bank-408/assets/pdf_images/coa/page_250.png",
-          "sha256": "f9936a8f02a63f11965e8986041b23dc506d7907e81ee6fc7f81d20c8b92c46f"
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_250.png",
+          "sha256": "f9936a8f02a63f11965e8986041b23dc506d7907e81ee6fc7f81d20c8b92c46f",
+          "page": 250
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_251.png",
+          "sha256": "0c16084955a24d59fbc9ce09dcbb479ac8e56ab4065308ffef60e7ab26d33400",
+          "page": 251
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_252.png",
+          "sha256": "d7e2640de1951899e2770cc86e8f6cfa89b8258ffda8d28e2ba115f0d84890cc",
+          "page": 252
         }
       ],
       "final_action": "patch",
-      "content_match": true,
-      "options_match": false,
-      "answer_match": true,
+      "content_match": null,
+      "options_match": null,
+      "answer_match": null,
       "explanation_match": null,
       "image_match": null,
       "detected_errors": [
-        "option C swallowed D"
+        "persisted_page_review_patch"
       ],
-      "rationale": "原书249页 D 独立成项；答案页01=C"
+      "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
+      "post_patch_verified": true,
+      "source_hash": "ff87cfe466b8b8dbfa555481a88983c64cf34a3f69ec81ad00a7779291c86ce5"
     },
     {
       "source_uid": "408:cs408-coa::中央处理器 · 异常和中断机制 · 选择题::X09",
@@ -38,26 +57,45 @@
       "reviewed_at": "2026-08-26T15:09:26.149392+00:00",
       "q_pages_viewed": [
         {
-          "path": "apps/bank-408/assets/pdf_images/coa/page_250.png",
-          "sha256": "f9936a8f02a63f11965e8986041b23dc506d7907e81ee6fc7f81d20c8b92c46f"
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_249.png",
+          "sha256": "70b188effca1138f298f54520837c8f533034c3a0019343915acb03741cf53b0",
+          "page": 249
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_250.png",
+          "sha256": "f9936a8f02a63f11965e8986041b23dc506d7907e81ee6fc7f81d20c8b92c46f",
+          "page": 250
         }
       ],
       "a_pages_viewed": [
         {
-          "path": "apps/bank-408/assets/pdf_images/coa/page_250.png",
-          "sha256": "f9936a8f02a63f11965e8986041b23dc506d7907e81ee6fc7f81d20c8b92c46f"
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_250.png",
+          "sha256": "f9936a8f02a63f11965e8986041b23dc506d7907e81ee6fc7f81d20c8b92c46f",
+          "page": 250
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_251.png",
+          "sha256": "0c16084955a24d59fbc9ce09dcbb479ac8e56ab4065308ffef60e7ab26d33400",
+          "page": 251
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_252.png",
+          "sha256": "d7e2640de1951899e2770cc86e8f6cfa89b8258ffda8d28e2ba115f0d84890cc",
+          "page": 252
         }
       ],
       "final_action": "patch",
-      "content_match": false,
-      "options_match": false,
-      "answer_match": true,
+      "content_match": null,
+      "options_match": null,
+      "answer_match": null,
       "explanation_match": null,
       "image_match": null,
       "detected_errors": [
-        "A/B merged into stem"
+        "persisted_page_review_patch"
       ],
-      "rationale": "原书250页 A-D 齐全；答案09=C"
+      "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
+      "post_patch_verified": true,
+      "source_hash": "76c1e15245d1c5aff85d9d3f4b4c12833fee0d21b75484bfd8db46df0e045d04"
     },
     {
       "source_uid": "408:cs408-coa::中央处理器 · 控制器的功能和工作原理 · 选择题::X26",
@@ -66,26 +104,50 @@
       "reviewed_at": "2026-08-26T15:09:26.149392+00:00",
       "q_pages_viewed": [
         {
-          "path": "apps/bank-408/assets/pdf_images/coa/page_243.png",
-          "sha256": "d2981c3b176ec426896c8dc0eb66f81c2d5e401fe028801cf26848b59e95d828"
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_239.png",
+          "sha256": "003feecf542676b2f145fd4f672cc7cf0d5b2af9080feab8ecb0039db239c1cc",
+          "page": 239
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_240.png",
+          "sha256": "2e6e70c50117028897cbd7ef1f4dd9d1e221fe7dfec0ec3775ff66604d21ab7d",
+          "page": 240
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_241.png",
+          "sha256": "43e4332f84c758de932a160850bc39abed67702afa2fd65676e6d4eba51dfed5",
+          "page": 241
         }
       ],
       "a_pages_viewed": [
         {
-          "path": "apps/bank-408/assets/pdf_images/coa/page_243.png",
-          "sha256": "d2981c3b176ec426896c8dc0eb66f81c2d5e401fe028801cf26848b59e95d828"
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_243.png",
+          "sha256": "d2981c3b176ec426896c8dc0eb66f81c2d5e401fe028801cf26848b59e95d828",
+          "page": 243
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_244.png",
+          "sha256": "1903c956734f895c121aefad007c2b07ee0eb6fb67d63cb2d01272d9b6d1a0bf",
+          "page": 244
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_245.png",
+          "sha256": "8c8c7c586e459b627c2a368f4b38e8f06cbc810781c8b5a40dc3c89bbd501a4b",
+          "page": 245
         }
       ],
       "final_action": "patch",
-      "content_match": true,
-      "options_match": false,
-      "answer_match": false,
+      "content_match": null,
+      "options_match": null,
+      "answer_match": null,
       "explanation_match": null,
       "image_match": null,
       "detected_errors": [
-        "C duplicated B; D was book C; book D missing; published choice D should be B"
+        "persisted_page_review_patch"
       ],
-      "rationale": "原书243页选项C=仅III、IV，D=仅II、III、IV；答案26=B"
+      "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
+      "post_patch_verified": true,
+      "source_hash": "28e25a4a8dadfeb14805181ed829ab5d2ec9835f90e9df3fb4cccb9b0b6d9efc"
     },
     {
       "source_uid": "408:cs408-coa::存储系统 · 主存储器 · 选择题::X17",
@@ -94,26 +156,50 @@
       "reviewed_at": "2026-08-26T15:09:26.149392+00:00",
       "q_pages_viewed": [
         {
-          "path": "apps/bank-408/assets/pdf_images/coa/page_094.png",
-          "sha256": "b06ebab3e3e310a052c039834487a44c3d943eabb562b21e3742731f01443ec2"
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_092.png",
+          "sha256": "917c10cbc6ada7d08f016b5920f284ac9e75aa531873c816d217de696ad4cea2",
+          "page": 92
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_093.png",
+          "sha256": "4916d26e491d124ed1127abcce8736e2a247a3502f1ea803b7d564cbaaf108d6",
+          "page": 93
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_094.png",
+          "sha256": "b06ebab3e3e310a052c039834487a44c3d943eabb562b21e3742731f01443ec2",
+          "page": 94
         }
       ],
       "a_pages_viewed": [
         {
-          "path": "apps/bank-408/assets/pdf_images/coa/page_097.png",
-          "sha256": "f2f52b36aa943781c6596fdb013e7d659b622cdb43f45c630efe691232448eee"
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_097.png",
+          "sha256": "f2f52b36aa943781c6596fdb013e7d659b622cdb43f45c630efe691232448eee",
+          "page": 97
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_098.png",
+          "sha256": "5f3cb98a85cdd68a55a9b699db85da766be6e55127f8f75f4aefeff7646d1331",
+          "page": 98
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_099.png",
+          "sha256": "38ba6970ce780938c45feb0f569f7f395c8d0a6ecd19a0eaeac5ca2877d0e861",
+          "page": 99
         }
       ],
       "final_action": "patch",
-      "content_match": true,
-      "options_match": false,
-      "answer_match": true,
+      "content_match": null,
+      "options_match": null,
+      "answer_match": null,
       "explanation_match": null,
       "image_match": null,
       "detected_errors": [
-        "missing option C"
+        "persisted_page_review_patch"
       ],
-      "rationale": "原书94页C=DRAM需定期刷新而SDRAM不需要；答案17=D"
+      "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
+      "post_patch_verified": true,
+      "source_hash": "5d86dc7f0ea3dec677c60cb7f6d6040a77738c6b13e10059dc8470a179edd73a"
     },
     {
       "source_uid": "408:cs408-coa::存储系统 · 主存储器 · 选择题::X29",
@@ -610,6 +696,58 @@
         "multi_blank_matrix_structure_not_representable_in_current_schema"
       ],
       "rationale": "原书212页题目为三组独立选项，答案页215页明确为06．B、B、D；当前单一A-D options无法无损表达，按规则不猜改。"
+    },
+    {
+      "source_uid": "408:cs408-ds::图 · 图的应用 · 选择题::X07",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "migrated:page_review_patches.json",
+      "q_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_242.png",
+          "sha256": "73566c0fa2b69c11db41e872e65e296f5c37dab9e3fdc61ea698d5c6fda3cf9d",
+          "page": 242
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_243.png",
+          "sha256": "7785d07bb007e8afdbaac56185e4c66c4f0401383e143e6539bd7dfa3a6ebaa9",
+          "page": 243
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_244.png",
+          "sha256": "1729271d76eabb461d6fc4ca072b1562a6feac270df1a5bdcc17c5ae7e118d3b",
+          "page": 244
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_251.png",
+          "sha256": "913cd38e5a408895aca3edea82ef36b02abf05178a5ff8a772311bb71ee5a09c",
+          "page": 251
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_252.png",
+          "sha256": "e058397c6cae69844e6bd28a9102e88287ce6a575d33779322e74d020edd3937",
+          "page": 252
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_253.png",
+          "sha256": "958024d25de2d55081cc1aee000854a8f2cc1f7d6b923194fa4748f4212e241d",
+          "page": 253
+        }
+      ],
+      "final_action": "patch",
+      "content_match": null,
+      "options_match": null,
+      "answer_match": null,
+      "explanation_match": null,
+      "image_match": null,
+      "detected_errors": [
+        "persisted_page_review_patch"
+      ],
+      "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
+      "post_patch_verified": true,
+      "source_hash": "336ddd09ca24f783a1dcc27ce1a8aba8918bd0eb3a28fd99ee3902759be1858c"
     },
     {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X14",

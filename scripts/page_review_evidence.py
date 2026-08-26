@@ -112,16 +112,16 @@ def load_jsonl(paths: Iterable[Path]) -> list[dict[str, Any]]:
 
 def build_evidence(rows: Iterable[dict[str, Any]], previous: dict[str, Any] | None = None) -> dict[str, Any]:
     existing = previous.get("records", []) if isinstance(previous, dict) else []
-    records = [dict(row) for row in existing if isinstance(row, dict)]
-    seen = {
-        (str(row.get("source_uid")), str(row.get("reviewed_at")), str(row.get("final_action")))
-        for row in records
+    by_key = {
+        (str(row.get("source_uid")), str(row.get("reviewed_at")), str(row.get("final_action"))): dict(row)
+        for row in existing if isinstance(row, dict)
     }
     for row in rows:
         key = (row["source_uid"], row["reviewed_at"], row["final_action"])
-        if key not in seen:
-            records.append(row)
-            seen.add(key)
+        # 同一审核记录可能在补丁后 source_hash 更新；新记录必须替换旧快照，
+        # 不能因去重而继续保留过期哈希。
+        by_key[key] = dict(row)
+    records = list(by_key.values())
     records.sort(key=lambda row: (str(row.get("source_uid")), str(row.get("reviewed_at"))))
     return {
         "schema_version": 1,

@@ -83,7 +83,7 @@ def sync_queue(
             # 补丁题的旧队列哈希来自修补前快照；补丁清单是该题已完成
             # 原书二查的依据，因此把队列绑定到新的发布哈希，而不是把
             # 已完成题误报为 stale。其它题目必须重新排队。
-            if uid in patch_uids and current.get("overall") == "certified":
+            if uid in patch_uids:
                 row["source_hash"] = current.get("source_hash")
             else:
                 row["status"] = "stale"
