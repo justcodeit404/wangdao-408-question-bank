@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "protocol": "codex-original-page-review-v1",
-  "updated_at": "2026-08-26T21:32:04.452080+00:00",
+  "updated_at": "2026-08-26T21:34:38.723690+00:00",
   "records": [
     {
       "source_uid": "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01",
@@ -12282,6 +12282,555 @@
       "source_hash": "8b8c645b6d682d5e83cf84572bb6a91133802241f7a05a50fefb36474f7068df"
     },
     {
+      "source_uid": "408:cs408-coa::指令系统 · 寻址方式 · 解答题::A01",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T02:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_165.png",
+          "sha256": "d3f221caf98397bca3faac64bddb6efe87c48ad4ef154bda1fbf4881d251f205"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_166.png",
+          "sha256": "55da2c418ae67d307ec4f2996e89089e39b3049cf68810ffe3bc5438f720ff0c"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_167.png",
+          "sha256": "9c8f06a58a038690c405befe36612add18fec556541aa3f65ea9ef47804a06d8"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_168.png",
+          "sha256": "ad901b20ec50a02009b393e5a92fafc526701a13ff415c04322e102326b8c3d4"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_169.png",
+          "sha256": "bde6793fbf673ab8a2ba99afb781d62510bddaa4f5ff5e9e01172a0315753f00"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_170.png",
+          "sha256": "7841dbeb6e37a7056cc412343fa686cd62f45b4d8d9f889eda3b22e3d37c4913"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_171.png",
+          "sha256": "97044681528bd6b9c3a3322c619bca2e130764d3f8045434c3e434e79aa77448"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_171.png",
+          "sha256": "97044681528bd6b9c3a3322c619bca2e130764d3f8045434c3e434e79aa77448"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_172.png",
+          "sha256": "ade1c678e36a9a44206d973d2f34b096d0def7994ce43f119689464b1ce455fa"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_173.png",
+          "sha256": "62f2861fe4e83ec3379bea276243e4b444c7386e74f34ef7f08226dd5e0bfd83"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_174.png",
+          "sha256": "087f76ec6b83e12cfd84f5269c9edaa2024d6214d4e6b6ff4df50af270419fab"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_175.png",
+          "sha256": "2b20ed52277ef364c18cdf24536f9f8d34dadeef3e4cafe6cb5a50597cd3c7b7"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_176.png",
+          "sha256": "64d4f81ed7a5c231fb0e42656c8f1cfa28c193738fe920fc923fe3043b4cd324"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_177.png",
+          "sha256": "eb01efef6381fe037fda69786ae4542837e2ff8ab5b84509559aec20b6af05d8"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_178.png",
+          "sha256": "4a6d9e7d439440a2b5802ad390848c55a581394d053e3e6d8add751196b22ed8"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_179.png",
+          "sha256": "f642aba9a77ff997736e8706d45e25e732edeb3fd41584c5d8d564757a1432f4"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_180.png",
+          "sha256": "08af2fb4b4312eabe72cacbda07dbd342ba6dd786c2cd9318674190e88d2fbbd"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_181.png",
+          "sha256": "baa3d790eae0ba93264b1cb2ab489bc843e5064f36ba1f4914b90cc707af0bdd"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_182.png",
+          "sha256": "2b6b93b9e1667d552cfcedb7edc0762741a1c7a565449ccc0146d9b783207118"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_183.png",
+          "sha256": "4de2af058511287195425eb9b9acddcac5bea7adb30211e25faed175b7ec7edf"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_184.png",
+          "sha256": "1f553fc57d92a1f8a5798dea7d2404b0b76c41967a0ac01fe2bce60e2b1a5ca1"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_185.png",
+          "sha256": "da6e8d1a54040260181c9fccdbe823e5d9f133eff20f4e6883c9556b77c584cd"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": false,
+      "options_match": true,
+      "answer_match": false,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "published_content_truncated",
+        "published_explanation_incomplete"
+      ],
+      "rationale": "亲眼核对原书题目页160-166与答案解析页166-180：发布题干主体被截断，虽然子问存在但无法视为完整忠实转录，继续hold。",
+      "source_hash": "f39bb22c3c39eb81c92a60d9452caf6685b0b502c67b718949b3f3402211e836"
+    },
+    {
+      "source_uid": "408:cs408-coa::指令系统 · 寻址方式 · 解答题::A02",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T02:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_165.png",
+          "sha256": "d3f221caf98397bca3faac64bddb6efe87c48ad4ef154bda1fbf4881d251f205"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_166.png",
+          "sha256": "55da2c418ae67d307ec4f2996e89089e39b3049cf68810ffe3bc5438f720ff0c"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_167.png",
+          "sha256": "9c8f06a58a038690c405befe36612add18fec556541aa3f65ea9ef47804a06d8"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_168.png",
+          "sha256": "ad901b20ec50a02009b393e5a92fafc526701a13ff415c04322e102326b8c3d4"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_169.png",
+          "sha256": "bde6793fbf673ab8a2ba99afb781d62510bddaa4f5ff5e9e01172a0315753f00"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_170.png",
+          "sha256": "7841dbeb6e37a7056cc412343fa686cd62f45b4d8d9f889eda3b22e3d37c4913"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_171.png",
+          "sha256": "97044681528bd6b9c3a3322c619bca2e130764d3f8045434c3e434e79aa77448"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_171.png",
+          "sha256": "97044681528bd6b9c3a3322c619bca2e130764d3f8045434c3e434e79aa77448"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_172.png",
+          "sha256": "ade1c678e36a9a44206d973d2f34b096d0def7994ce43f119689464b1ce455fa"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_173.png",
+          "sha256": "62f2861fe4e83ec3379bea276243e4b444c7386e74f34ef7f08226dd5e0bfd83"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_174.png",
+          "sha256": "087f76ec6b83e12cfd84f5269c9edaa2024d6214d4e6b6ff4df50af270419fab"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_175.png",
+          "sha256": "2b20ed52277ef364c18cdf24536f9f8d34dadeef3e4cafe6cb5a50597cd3c7b7"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_176.png",
+          "sha256": "64d4f81ed7a5c231fb0e42656c8f1cfa28c193738fe920fc923fe3043b4cd324"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_177.png",
+          "sha256": "eb01efef6381fe037fda69786ae4542837e2ff8ab5b84509559aec20b6af05d8"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_178.png",
+          "sha256": "4a6d9e7d439440a2b5802ad390848c55a581394d053e3e6d8add751196b22ed8"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_179.png",
+          "sha256": "f642aba9a77ff997736e8706d45e25e732edeb3fd41584c5d8d564757a1432f4"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_180.png",
+          "sha256": "08af2fb4b4312eabe72cacbda07dbd342ba6dd786c2cd9318674190e88d2fbbd"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_181.png",
+          "sha256": "baa3d790eae0ba93264b1cb2ab489bc843e5064f36ba1f4914b90cc707af0bdd"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_182.png",
+          "sha256": "2b6b93b9e1667d552cfcedb7edc0762741a1c7a565449ccc0146d9b783207118"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_183.png",
+          "sha256": "4de2af058511287195425eb9b9acddcac5bea7adb30211e25faed175b7ec7edf"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_184.png",
+          "sha256": "1f553fc57d92a1f8a5798dea7d2404b0b76c41967a0ac01fe2bce60e2b1a5ca1"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_185.png",
+          "sha256": "da6e8d1a54040260181c9fccdbe823e5d9f133eff20f4e6883c9556b77c584cd"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "published_explanation_formula_ocr_corruption"
+      ],
+      "rationale": "亲眼核对原书题目页160-166与答案解析页166-180：题干和参考答案结构可读，但解析中的幂次、逻辑符号和数值被OCR损坏，继续hold。",
+      "source_hash": "cb3e7fe47f790bce964df56b5c57937b0da4a795acaa689d6b0d7d7b690cd097"
+    },
+    {
+      "source_uid": "408:cs408-coa::指令系统 · 寻址方式 · 解答题::A03",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T02:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_165.png",
+          "sha256": "d3f221caf98397bca3faac64bddb6efe87c48ad4ef154bda1fbf4881d251f205"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_166.png",
+          "sha256": "55da2c418ae67d307ec4f2996e89089e39b3049cf68810ffe3bc5438f720ff0c"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_167.png",
+          "sha256": "9c8f06a58a038690c405befe36612add18fec556541aa3f65ea9ef47804a06d8"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_168.png",
+          "sha256": "ad901b20ec50a02009b393e5a92fafc526701a13ff415c04322e102326b8c3d4"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_169.png",
+          "sha256": "bde6793fbf673ab8a2ba99afb781d62510bddaa4f5ff5e9e01172a0315753f00"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_170.png",
+          "sha256": "7841dbeb6e37a7056cc412343fa686cd62f45b4d8d9f889eda3b22e3d37c4913"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_171.png",
+          "sha256": "97044681528bd6b9c3a3322c619bca2e130764d3f8045434c3e434e79aa77448"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_171.png",
+          "sha256": "97044681528bd6b9c3a3322c619bca2e130764d3f8045434c3e434e79aa77448"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_172.png",
+          "sha256": "ade1c678e36a9a44206d973d2f34b096d0def7994ce43f119689464b1ce455fa"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_173.png",
+          "sha256": "62f2861fe4e83ec3379bea276243e4b444c7386e74f34ef7f08226dd5e0bfd83"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_174.png",
+          "sha256": "087f76ec6b83e12cfd84f5269c9edaa2024d6214d4e6b6ff4df50af270419fab"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_175.png",
+          "sha256": "2b20ed52277ef364c18cdf24536f9f8d34dadeef3e4cafe6cb5a50597cd3c7b7"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_176.png",
+          "sha256": "64d4f81ed7a5c231fb0e42656c8f1cfa28c193738fe920fc923fe3043b4cd324"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_177.png",
+          "sha256": "eb01efef6381fe037fda69786ae4542837e2ff8ab5b84509559aec20b6af05d8"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_178.png",
+          "sha256": "4a6d9e7d439440a2b5802ad390848c55a581394d053e3e6d8add751196b22ed8"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_179.png",
+          "sha256": "f642aba9a77ff997736e8706d45e25e732edeb3fd41584c5d8d564757a1432f4"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_180.png",
+          "sha256": "08af2fb4b4312eabe72cacbda07dbd342ba6dd786c2cd9318674190e88d2fbbd"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_181.png",
+          "sha256": "baa3d790eae0ba93264b1cb2ab489bc843e5064f36ba1f4914b90cc707af0bdd"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_182.png",
+          "sha256": "2b6b93b9e1667d552cfcedb7edc0762741a1c7a565449ccc0146d9b783207118"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_183.png",
+          "sha256": "4de2af058511287195425eb9b9acddcac5bea7adb30211e25faed175b7ec7edf"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_184.png",
+          "sha256": "1f553fc57d92a1f8a5798dea7d2404b0b76c41967a0ac01fe2bce60e2b1a5ca1"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_185.png",
+          "sha256": "da6e8d1a54040260181c9fccdbe823e5d9f133eff20f4e6883c9556b77c584cd"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": false,
+      "detected_errors": [
+        "published_explanation_truncated",
+        "published_diagram_missing"
+      ],
+      "rationale": "亲眼核对原书题目页160-166与答案解析页166-180：题干可读，但发布解析只有首段并缺少机器码表格和后续步骤，继续hold。",
+      "source_hash": "9d6e9ed0be87aa1137977202578d7d11280621e6e3787b3399f2d9b53c3ecacd"
+    },
+    {
+      "source_uid": "408:cs408-coa::指令系统 · 寻址方式 · 解答题::A04",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T02:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_165.png",
+          "sha256": "d3f221caf98397bca3faac64bddb6efe87c48ad4ef154bda1fbf4881d251f205"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_166.png",
+          "sha256": "55da2c418ae67d307ec4f2996e89089e39b3049cf68810ffe3bc5438f720ff0c"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_167.png",
+          "sha256": "9c8f06a58a038690c405befe36612add18fec556541aa3f65ea9ef47804a06d8"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_168.png",
+          "sha256": "ad901b20ec50a02009b393e5a92fafc526701a13ff415c04322e102326b8c3d4"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_169.png",
+          "sha256": "bde6793fbf673ab8a2ba99afb781d62510bddaa4f5ff5e9e01172a0315753f00"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_170.png",
+          "sha256": "7841dbeb6e37a7056cc412343fa686cd62f45b4d8d9f889eda3b22e3d37c4913"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_171.png",
+          "sha256": "97044681528bd6b9c3a3322c619bca2e130764d3f8045434c3e434e79aa77448"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_171.png",
+          "sha256": "97044681528bd6b9c3a3322c619bca2e130764d3f8045434c3e434e79aa77448"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_172.png",
+          "sha256": "ade1c678e36a9a44206d973d2f34b096d0def7994ce43f119689464b1ce455fa"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_173.png",
+          "sha256": "62f2861fe4e83ec3379bea276243e4b444c7386e74f34ef7f08226dd5e0bfd83"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_174.png",
+          "sha256": "087f76ec6b83e12cfd84f5269c9edaa2024d6214d4e6b6ff4df50af270419fab"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_175.png",
+          "sha256": "2b20ed52277ef364c18cdf24536f9f8d34dadeef3e4cafe6cb5a50597cd3c7b7"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_176.png",
+          "sha256": "64d4f81ed7a5c231fb0e42656c8f1cfa28c193738fe920fc923fe3043b4cd324"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_177.png",
+          "sha256": "eb01efef6381fe037fda69786ae4542837e2ff8ab5b84509559aec20b6af05d8"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_178.png",
+          "sha256": "4a6d9e7d439440a2b5802ad390848c55a581394d053e3e6d8add751196b22ed8"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_179.png",
+          "sha256": "f642aba9a77ff997736e8706d45e25e732edeb3fd41584c5d8d564757a1432f4"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_180.png",
+          "sha256": "08af2fb4b4312eabe72cacbda07dbd342ba6dd786c2cd9318674190e88d2fbbd"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_181.png",
+          "sha256": "baa3d790eae0ba93264b1cb2ab489bc843e5064f36ba1f4914b90cc707af0bdd"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_182.png",
+          "sha256": "2b6b93b9e1667d552cfcedb7edc0762741a1c7a565449ccc0146d9b783207118"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_183.png",
+          "sha256": "4de2af058511287195425eb9b9acddcac5bea7adb30211e25faed175b7ec7edf"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_184.png",
+          "sha256": "1f553fc57d92a1f8a5798dea7d2404b0b76c41967a0ac01fe2bce60e2b1a5ca1"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_185.png",
+          "sha256": "da6e8d1a54040260181c9fccdbe823e5d9f133eff20f4e6883c9556b77c584cd"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": false,
+      "options_match": false,
+      "answer_match": false,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "published_content_truncated",
+        "published_explanation_truncated"
+      ],
+      "rationale": "亲眼核对原书题目页160-166与答案解析页166-180：发布题干仅保留开头，选项/多问结构缺失，参考答案也只有第一问，继续hold。",
+      "source_hash": "76135c0158768306a46f7758f30f874e61aac8c617ff6859ac026049523260ad"
+    },
+    {
+      "source_uid": "408:cs408-coa::指令系统 · 寻址方式 · 解答题::A05",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T02:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_165.png",
+          "sha256": "d3f221caf98397bca3faac64bddb6efe87c48ad4ef154bda1fbf4881d251f205"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_166.png",
+          "sha256": "55da2c418ae67d307ec4f2996e89089e39b3049cf68810ffe3bc5438f720ff0c"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_167.png",
+          "sha256": "9c8f06a58a038690c405befe36612add18fec556541aa3f65ea9ef47804a06d8"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_168.png",
+          "sha256": "ad901b20ec50a02009b393e5a92fafc526701a13ff415c04322e102326b8c3d4"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_169.png",
+          "sha256": "bde6793fbf673ab8a2ba99afb781d62510bddaa4f5ff5e9e01172a0315753f00"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_170.png",
+          "sha256": "7841dbeb6e37a7056cc412343fa686cd62f45b4d8d9f889eda3b22e3d37c4913"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_171.png",
+          "sha256": "97044681528bd6b9c3a3322c619bca2e130764d3f8045434c3e434e79aa77448"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_171.png",
+          "sha256": "97044681528bd6b9c3a3322c619bca2e130764d3f8045434c3e434e79aa77448"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_172.png",
+          "sha256": "ade1c678e36a9a44206d973d2f34b096d0def7994ce43f119689464b1ce455fa"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_173.png",
+          "sha256": "62f2861fe4e83ec3379bea276243e4b444c7386e74f34ef7f08226dd5e0bfd83"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_174.png",
+          "sha256": "087f76ec6b83e12cfd84f5269c9edaa2024d6214d4e6b6ff4df50af270419fab"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_175.png",
+          "sha256": "2b20ed52277ef364c18cdf24536f9f8d34dadeef3e4cafe6cb5a50597cd3c7b7"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_176.png",
+          "sha256": "64d4f81ed7a5c231fb0e42656c8f1cfa28c193738fe920fc923fe3043b4cd324"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_177.png",
+          "sha256": "eb01efef6381fe037fda69786ae4542837e2ff8ab5b84509559aec20b6af05d8"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_178.png",
+          "sha256": "4a6d9e7d439440a2b5802ad390848c55a581394d053e3e6d8add751196b22ed8"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_179.png",
+          "sha256": "f642aba9a77ff997736e8706d45e25e732edeb3fd41584c5d8d564757a1432f4"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_180.png",
+          "sha256": "08af2fb4b4312eabe72cacbda07dbd342ba6dd786c2cd9318674190e88d2fbbd"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_181.png",
+          "sha256": "baa3d790eae0ba93264b1cb2ab489bc843e5064f36ba1f4914b90cc707af0bdd"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_182.png",
+          "sha256": "2b6b93b9e1667d552cfcedb7edc0762741a1c7a565449ccc0146d9b783207118"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_183.png",
+          "sha256": "4de2af058511287195425eb9b9acddcac5bea7adb30211e25faed175b7ec7edf"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_184.png",
+          "sha256": "1f553fc57d92a1f8a5798dea7d2404b0b76c41967a0ac01fe2bce60e2b1a5ca1"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_185.png",
+          "sha256": "da6e8d1a54040260181c9fccdbe823e5d9f133eff20f4e6883c9556b77c584cd"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": false,
+      "options_match": false,
+      "answer_match": false,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "published_content_ocr_corruption",
+        "published_explanation_formula_ocr_corruption"
+      ],
+      "rationale": "亲眼核对原书题目页160-166与答案解析页166-180：发布题干及格式表中出现op/寄存器字段OCR错误，解析含多处幂次和符号损坏，继续hold。",
+      "source_hash": "a2b6ed41584d5d4a3d1216fedaa9a07f30ca435fcc6dad7866b8350f979469bb"
+    },
+    {
       "source_uid": "408:cs408-coa::指令系统 · 寻址方式 · 选择题::X01",
       "protocol": "codex-original-page-review-v1",
       "reviewer": "codex-vision",
@@ -22841,6 +23390,49 @@
       "protocol": "codex-original-page-review-v1",
       "reviewer": "codex-vision",
       "reviewed_at": "2026-08-26T21:32:02.106225+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_300.png",
+          "sha256": "6fbafbcb25362a30e3e5a540f5989055803fa46768adcc8f76359b29c0d50f3b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_301.png",
+          "sha256": "0bcbed181bab7844b3073bc20dfc7d3f5c5b5d4fbf12a063f1fb49fb087ba35f"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+          "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+          "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_303.png",
+          "sha256": "cbf3d00a05c77235829a8419cbea755064fb678c719a12bddff19ff35f6e864f"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_304.png",
+          "sha256": "57a23f0aa37c3c8a03f6d4a7cd20837357232c3e15af02eba5301b4189f43fb6"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页296与答案解析页298：题干、选项、解析忠实，答案页标注07.D，与发布答案D一致。",
+      "source_hash": "ab8a1f99f0cc3f1cf745a6e6a15aeeabd4277b0e017837ab3177a1ed14143fc1"
+    },
+    {
+      "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X07",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T21:34:36.353574+00:00",
       "q_pages_viewed": [
         {
           "path": "apps/bank-408/assets/pdf_images/coa/page_300.png",
