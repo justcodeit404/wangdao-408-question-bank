@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "protocol": "codex-original-page-review-v1",
-  "updated_at": "2026-08-26T17:48:53.363307+00:00",
+  "updated_at": "2026-08-26T17:53:51.847080+00:00",
   "records": [
     {
       "source_uid": "408:cs408-coa::中央处理器 · 异常和中断机制 · 选择题::X01",
@@ -3720,6 +3720,93 @@
       "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
       "post_patch_verified": true,
       "source_hash": "39b3960d4cbc85ac0b0ceff75e9c1073feea4f03cc0627c6328894befa0a7480"
+    },
+    {
+      "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X54",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T02:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_280.png",
+          "sha256": "67b6b0dc3e9b7f0328ff7d434ae05fd418527aeda5080cf00a9c2192103f54f3"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_281.png",
+          "sha256": "c00af36a4b5d893967aed7b7ea8b3072b76fedd8614187284bcf33dc9ba896fb"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_291.png",
+          "sha256": "2626b25cfeaec17610d4398d41574bcb1ede987266337b530c52247cac651402"
+        }
+      ],
+      "final_action": "patch",
+      "content_match": true,
+      "options_match": false,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [
+        "duplicate_option_C",
+        "corrupt_option_D"
+      ],
+      "rationale": "亲眼核对原书题目页280-281与答案页291：X54答案为A；原书选项C为仅II、III、D为I、II和III，已修补发布题的重复/乱码选项并二查。",
+      "post_patch_verified": true,
+      "source_hash": "61004a8d231068fa3d3a425cef47f27289d0eae5794314ea198e5ac85ac3d7e6"
+    },
+    {
+      "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X54",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "migrated:page_review_patches.json",
+      "q_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_276.png",
+          "sha256": "97fe51b6634fa9be141d7e6534e9df558dffb85439fb6350a0982a078c763b57",
+          "page": 276
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_277.png",
+          "sha256": "c67651a99bfee107eb92c7e42b78b2daa75613309e97096a3170bf2de7722c48",
+          "page": 277
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_278.png",
+          "sha256": "b553e62fc02009ea5731de5520203857b44f00833b5194ccfd511eb50fc3dbf4",
+          "page": 278
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_287.png",
+          "sha256": "00aeaa8040ea96497337b48497874602f7a8ff3069781114fb4715815fffb9a2",
+          "page": 287
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_288.png",
+          "sha256": "fb1e136920811b986c10978413490479fde9204ec81e897c0b757b01b2fba925",
+          "page": 288
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_289.png",
+          "sha256": "33ca4a3aaea769a01514d76ab657341de759ec4fc56f6e9b8371c0aa0561f10f",
+          "page": 289
+        }
+      ],
+      "final_action": "patch",
+      "content_match": null,
+      "options_match": null,
+      "answer_match": null,
+      "explanation_match": null,
+      "image_match": null,
+      "detected_errors": [
+        "persisted_page_review_patch"
+      ],
+      "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
+      "post_patch_verified": true,
+      "source_hash": "61004a8d231068fa3d3a425cef47f27289d0eae5794314ea198e5ac85ac3d7e6"
     },
     {
       "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X02",
