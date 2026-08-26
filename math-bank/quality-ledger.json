@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-26T19:06:35+00:00",
+  "generated_at": "2026-08-26T19:11:17+00:00",
   "published_hashes": {
     "ds": "a40686840e5043561d7f7159fbd779725ffa65c56bfdd79a2683965b6aed0771",
     "coa": "8f9ea82d6d82e53ea38daf200ae95a361b5c43742f0ce9881b207f671f7f06f7",
@@ -20,9 +20,9 @@
       "name": "计算机组成原理",
       "mode": "strict",
       "total": 674,
-      "certified": 232,
+      "certified": 253,
       "pending": 0,
-      "held": 442
+      "held": 421
     },
     "net": {
       "name": "计算机网络",
@@ -43,9 +43,9 @@
   },
   "summary": {
     "total": 2869,
-    "certified": 581,
+    "certified": 602,
     "pending": 0,
-    "held": 2288
+    "held": 2267
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -14763,14 +14763,10 @@
       "chapter": "存储系统 · 主存储器与CPU的连接 · 选择题",
       "question_id": "X03",
       "source_hash": "6224821c11e853f585b12fa523d7eb98f584b696341f98378f2f2884d9743213",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         104,
         105
@@ -14784,7 +14780,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T09:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -14822,10 +14818,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 主存储器与CPU的连接 · 选择题::X03",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T09:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_104.png",
+              "sha256": "10f3dcd5da0491da0e3c4dc30a464c100e9c6980b06a85c36c7e87032565ee08"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_106.png",
+              "sha256": "d4067669dda2c6892b01f4980b40ed17ac21bb60f105312a87b8cf81fbe1f535"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页104与答案页106：X03 存储芯片容量扩展题干、选项及解析忠实，答案为A。",
+          "source_hash": "6224821c11e853f585b12fa523d7eb98f584b696341f98378f2f2884d9743213"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 主存储器与CPU的连接 · 选择题::X04": {
       "source_uid": "408:cs408-coa::存储系统 · 主存储器与CPU的连接 · 选择题::X04",
@@ -14833,14 +14855,10 @@
       "chapter": "存储系统 · 主存储器与CPU的连接 · 选择题",
       "question_id": "X04",
       "source_hash": "ed19e975865bd58f8e874b02f3a574f06b564627c93efa6c9726dc9af1dfb4fb",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         104,
         105
@@ -14854,7 +14872,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T09:21:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -14892,10 +14910,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 主存储器与CPU的连接 · 选择题::X04",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T09:21:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_104.png",
+              "sha256": "10f3dcd5da0491da0e3c4dc30a464c100e9c6980b06a85c36c7e87032565ee08"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_106.png",
+              "sha256": "d4067669dda2c6892b01f4980b40ed17ac21bb60f105312a87b8cf81fbe1f535"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页104与答案页106：X04 存储器容量扩展题干、选项及解析忠实，答案为C。",
+          "source_hash": "ed19e975865bd58f8e874b02f3a574f06b564627c93efa6c9726dc9af1dfb4fb"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 主存储器与CPU的连接 · 选择题::X05": {
       "source_uid": "408:cs408-coa::存储系统 · 主存储器与CPU的连接 · 选择题::X05",
@@ -14903,14 +14947,10 @@
       "chapter": "存储系统 · 主存储器与CPU的连接 · 选择题",
       "question_id": "X05",
       "source_hash": "0679466082e5835d95f45f06d5379181b18b2c9b111d45684169c9b5ba4f0298",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         104,
         105
@@ -14924,7 +14964,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T09:22:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -14962,10 +15002,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 主存储器与CPU的连接 · 选择题::X05",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T09:22:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_104.png",
+              "sha256": "10f3dcd5da0491da0e3c4dc30a464c100e9c6980b06a85c36c7e87032565ee08"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_106.png",
+              "sha256": "d4067669dda2c6892b01f4980b40ed17ac21bb60f105312a87b8cf81fbe1f535"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页104与答案页106：X05 主存储器芯片数量题干、选项及解析忠实，答案为D。",
+          "source_hash": "0679466082e5835d95f45f06d5379181b18b2c9b111d45684169c9b5ba4f0298"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 主存储器与CPU的连接 · 选择题::X06": {
       "source_uid": "408:cs408-coa::存储系统 · 主存储器与CPU的连接 · 选择题::X06",
@@ -14973,14 +15039,10 @@
       "chapter": "存储系统 · 主存储器与CPU的连接 · 选择题",
       "question_id": "X06",
       "source_hash": "4f050bd53fbf939a6f38985476c20d3781ed15ba0d8c52b094061c82ffcad5dd",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         104,
         105
@@ -14994,7 +15056,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T09:23:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -15032,10 +15094,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 主存储器与CPU的连接 · 选择题::X06",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T09:23:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_104.png",
+              "sha256": "10f3dcd5da0491da0e3c4dc30a464c100e9c6980b06a85c36c7e87032565ee08"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_106.png",
+              "sha256": "d4067669dda2c6892b01f4980b40ed17ac21bb60f105312a87b8cf81fbe1f535"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页104与答案页106：X06 地址译码器输入题干、选项及解析忠实，答案为A。",
+          "source_hash": "4f050bd53fbf939a6f38985476c20d3781ed15ba0d8c52b094061c82ffcad5dd"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 主存储器与CPU的连接 · 选择题::X07": {
       "source_uid": "408:cs408-coa::存储系统 · 主存储器与CPU的连接 · 选择题::X07",
@@ -15043,14 +15131,10 @@
       "chapter": "存储系统 · 主存储器与CPU的连接 · 选择题",
       "question_id": "X07",
       "source_hash": "ab8d3a04d777250059b0c3728d4b12f2a22b2c0b3f83fac8b286f92977db65ba",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         104,
         105
@@ -15064,7 +15148,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T09:24:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -15102,10 +15186,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 主存储器与CPU的连接 · 选择题::X07",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T09:24:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_104.png",
+              "sha256": "10f3dcd5da0491da0e3c4dc30a464c100e9c6980b06a85c36c7e87032565ee08"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_106.png",
+              "sha256": "d4067669dda2c6892b01f4980b40ed17ac21bb60f105312a87b8cf81fbe1f535"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页104与答案页106：X07 地址空间分配题干、选项及解析忠实，答案为C。",
+          "source_hash": "ab8d3a04d777250059b0c3728d4b12f2a22b2c0b3f83fac8b286f92977db65ba"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 主存储器与CPU的连接 · 选择题::X08": {
       "source_uid": "408:cs408-coa::存储系统 · 主存储器与CPU的连接 · 选择题::X08",
@@ -15182,14 +15292,10 @@
       "chapter": "存储系统 · 主存储器与CPU的连接 · 选择题",
       "question_id": "X09",
       "source_hash": "a89b507625e78684a0013c627f92096cb376a8880c3529079d556af851f4df1c",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         104,
         105
@@ -15203,7 +15309,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T09:25:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -15241,10 +15347,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 主存储器与CPU的连接 · 选择题::X09",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T09:25:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_105.png",
+              "sha256": "b1753f2223066f45c97a609983f0f43e955ff8817ded8a722e2b9d6530fa8a77"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_106.png",
+              "sha256": "d4067669dda2c6892b01f4980b40ed17ac21bb60f105312a87b8cf81fbe1f535"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页105与答案页106：X09 片选地址与存储范围题干、选项及解析忠实，答案为B。",
+          "source_hash": "a89b507625e78684a0013c627f92096cb376a8880c3529079d556af851f4df1c"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 主存储器与CPU的连接 · 选择题::X10": {
       "source_uid": "408:cs408-coa::存储系统 · 主存储器与CPU的连接 · 选择题::X10",
@@ -15252,14 +15384,10 @@
       "chapter": "存储系统 · 主存储器与CPU的连接 · 选择题",
       "question_id": "X10",
       "source_hash": "33e4248d44a4e3a595509ea712160f06626c5785efefde70df9ccb10b0b77985",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         104,
         105
@@ -15273,7 +15401,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T09:26:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -15311,10 +15439,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 主存储器与CPU的连接 · 选择题::X10",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T09:26:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_105.png",
+              "sha256": "b1753f2223066f45c97a609983f0f43e955ff8817ded8a722e2b9d6530fa8a77"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_106.png",
+              "sha256": "d4067669dda2c6892b01f4980b40ed17ac21bb60f105312a87b8cf81fbe1f535"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页105与答案页106：X10 ROM/RAM芯片数量题干、选项及解析忠实，答案为D。",
+          "source_hash": "33e4248d44a4e3a595509ea712160f06626c5785efefde70df9ccb10b0b77985"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 主存储器与CPU的连接 · 选择题::X11": {
       "source_uid": "408:cs408-coa::存储系统 · 主存储器与CPU的连接 · 选择题::X11",
@@ -15323,12 +15477,9 @@
       "question_id": "X11",
       "source_hash": "99b7bf1771d964bdc2a9d99558915799a78e45c927ab9ab02257e262e3a76ca2",
       "source_fidelity": "verified",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         104,
         105
@@ -15342,7 +15493,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T09:27:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -15365,10 +15516,36 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 主存储器与CPU的连接 · 选择题::X11",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T09:27:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_105.png",
+              "sha256": "b1753f2223066f45c97a609983f0f43e955ff8817ded8a722e2b9d6530fa8a77"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_106.png",
+              "sha256": "d4067669dda2c6892b01f4980b40ed17ac21bb60f105312a87b8cf81fbe1f535"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页105与答案页106：X11 芯片最小地址题干、选项及解析忠实，答案为D。",
+          "source_hash": "99b7bf1771d964bdc2a9d99558915799a78e45c927ab9ab02257e262e3a76ca2"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 主存储器与CPU的连接 · 选择题::X12": {
       "source_uid": "408:cs408-coa::存储系统 · 主存储器与CPU的连接 · 选择题::X12",
@@ -15376,15 +15553,10 @@
       "chapter": "存储系统 · 主存储器与CPU的连接 · 选择题",
       "question_id": "X12",
       "source_hash": "562b9372e3f6570da608b108e35f4628868d11c0a37e3ddd888b2d9f13d852d9",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         104,
         105
@@ -15398,7 +15570,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T09:28:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -15436,10 +15608,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 主存储器与CPU的连接 · 选择题::X12",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T09:28:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_105.png",
+              "sha256": "b1753f2223066f45c97a609983f0f43e955ff8817ded8a722e2b9d6530fa8a77"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_106.png",
+              "sha256": "d4067669dda2c6892b01f4980b40ed17ac21bb60f105312a87b8cf81fbe1f535"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页105与答案页106：X12 MAR位数题干、选项及解析忠实，答案为D。",
+          "source_hash": "562b9372e3f6570da608b108e35f4628868d11c0a37e3ddd888b2d9f13d852d9"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 主存储器与CPU的连接 · 选择题::X13": {
       "source_uid": "408:cs408-coa::存储系统 · 主存储器与CPU的连接 · 选择题::X13",
@@ -15516,15 +15714,10 @@
       "chapter": "存储系统 · 主存储器与CPU的连接 · 选择题",
       "question_id": "X14",
       "source_hash": "2f88de16f305ee8ffe7752ccdf484edb1c29aa304ff01e9ec6eb3d81a96314b2",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         104,
         105
@@ -15538,7 +15731,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T09:29:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -15576,10 +15769,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 主存储器与CPU的连接 · 选择题::X14",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T09:29:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_105.png",
+              "sha256": "b1753f2223066f45c97a609983f0f43e955ff8817ded8a722e2b9d6530fa8a77"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_107.png",
+              "sha256": "c2b92f2dd7440b66171f36111d51249a9e685b303ab20403c7464791f7a8c7aa"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页105与答案页107：X14 RAM芯片数量题干、选项及解析忠实，答案为C。",
+          "source_hash": "2f88de16f305ee8ffe7752ccdf484edb1c29aa304ff01e9ec6eb3d81a96314b2"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 主存储器与CPU的连接 · 选择题::X15": {
       "source_uid": "408:cs408-coa::存储系统 · 主存储器与CPU的连接 · 选择题::X15",
@@ -15695,14 +15914,10 @@
       "chapter": "存储系统 · 外部存储器 · 选择题",
       "question_id": "X01",
       "source_hash": "4f7ce8d3062fc5fe5b0e8b4971f1d9f4e216bfd0415bcff0fce6afa0d61f3fcb",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         110,
         111,
@@ -15722,7 +15937,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T09:40:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -15760,10 +15975,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 外部存储器 · 选择题::X01",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T09:40:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_110.png",
+              "sha256": "d950e5b4b70d207063bdc9f74317c0066a7c35fd15d183381d1fd6dafe3ae416"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_112.png",
+              "sha256": "ae1a049783bd22ff968ab27c672fc7fd7f51cd7df7f70d4485b2d33214f3f80d"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页110与答案页112：X01 磁盘存储器叙述题干、选项及解析忠实，答案为B。",
+          "source_hash": "4f7ce8d3062fc5fe5b0e8b4971f1d9f4e216bfd0415bcff0fce6afa0d61f3fcb"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 外部存储器 · 选择题::X02": {
       "source_uid": "408:cs408-coa::存储系统 · 外部存储器 · 选择题::X02",
@@ -15771,13 +16012,10 @@
       "chapter": "存储系统 · 外部存储器 · 选择题",
       "question_id": "X02",
       "source_hash": "679b7c557152d946b6e91ebf0f85e8f0eb620c17887e3efd5ef323bd622da6ba",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         110,
         111,
@@ -15797,7 +16035,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T09:41:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -15820,10 +16058,36 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 外部存储器 · 选择题::X02",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T09:41:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_111.png",
+              "sha256": "fc6c1a5a66d6f52cbc809f3911b54e00a8718521b491901f3fe9b3bbf9c9363d"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_112.png",
+              "sha256": "ae1a049783bd22ff968ab27c672fc7fd7f51cd7df7f70d4485b2d33214f3f80d"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页111与答案页112：X02 磁盘驱动器叙述题干、选项及解析忠实，答案为A。",
+          "source_hash": "679b7c557152d946b6e91ebf0f85e8f0eb620c17887e3efd5ef323bd622da6ba"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 外部存储器 · 选择题::X03": {
       "source_uid": "408:cs408-coa::存储系统 · 外部存储器 · 选择题::X03",
@@ -15831,14 +16095,10 @@
       "chapter": "存储系统 · 外部存储器 · 选择题",
       "question_id": "X03",
       "source_hash": "7faa93d80aad16d3c4de866b1d7749afc9c685c6e691608bf390d21d76ccc9ee",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         110,
         111,
@@ -15858,7 +16118,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T09:42:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -15896,10 +16156,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 外部存储器 · 选择题::X03",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T09:42:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_111.png",
+              "sha256": "fc6c1a5a66d6f52cbc809f3911b54e00a8718521b491901f3fe9b3bbf9c9363d"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_112.png",
+              "sha256": "ae1a049783bd22ff968ab27c672fc7fd7f51cd7df7f70d4485b2d33214f3f80d"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页111与答案页112：X03 磁盘存储器读写操作叙述题干、选项及解析忠实，答案为D。",
+          "source_hash": "7faa93d80aad16d3c4de866b1d7749afc9c685c6e691608bf390d21d76ccc9ee"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 外部存储器 · 选择题::X04": {
       "source_uid": "408:cs408-coa::存储系统 · 外部存储器 · 选择题::X04",
@@ -15907,14 +16193,10 @@
       "chapter": "存储系统 · 外部存储器 · 选择题",
       "question_id": "X04",
       "source_hash": "336d146c8f4816b70d81cb4161e6a0ed9084ab3aee7eddf2c03ad0b0d026361b",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         110,
         111,
@@ -15934,7 +16216,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T09:43:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -15972,10 +16254,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 外部存储器 · 选择题::X04",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T09:43:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_111.png",
+              "sha256": "fc6c1a5a66d6f52cbc809f3911b54e00a8718521b491901f3fe9b3bbf9c9363d"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_112.png",
+              "sha256": "ae1a049783bd22ff968ab27c672fc7fd7f51cd7df7f70d4485b2d33214f3f80d"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页111与答案页112：X04 磁盘转速提高影响题干、选项及解析忠实，答案为C。",
+          "source_hash": "336d146c8f4816b70d81cb4161e6a0ed9084ab3aee7eddf2c03ad0b0d026361b"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 外部存储器 · 选择题::X05": {
       "source_uid": "408:cs408-coa::存储系统 · 外部存储器 · 选择题::X05",
@@ -15983,14 +16291,10 @@
       "chapter": "存储系统 · 外部存储器 · 选择题",
       "question_id": "X05",
       "source_hash": "7d0cc9904577a49d293484d92c4283d2ac49321855b32f680022c9f265ef12c4",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         110,
         111,
@@ -16010,7 +16314,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T09:44:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -16048,10 +16352,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 外部存储器 · 选择题::X05",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T09:44:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_111.png",
+              "sha256": "fc6c1a5a66d6f52cbc809f3911b54e00a8718521b491901f3fe9b3bbf9c9363d"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_112.png",
+              "sha256": "ae1a049783bd22ff968ab27c672fc7fd7f51cd7df7f70d4485b2d33214f3f80d"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页111与答案页112：X05 SSD特性叙述题干、选项及解析忠实，答案为B。",
+          "source_hash": "7d0cc9904577a49d293484d92c4283d2ac49321855b32f680022c9f265ef12c4"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 外部存储器 · 选择题::X06": {
       "source_uid": "408:cs408-coa::存储系统 · 外部存储器 · 选择题::X06",
@@ -16059,14 +16389,10 @@
       "chapter": "存储系统 · 外部存储器 · 选择题",
       "question_id": "X06",
       "source_hash": "0811bcc89c0b422b5b9a2a7370b2ebd69a9300cd117a9f2c7103d8db47654fbc",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         110,
         111,
@@ -16086,7 +16412,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T09:45:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -16124,10 +16450,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 外部存储器 · 选择题::X06",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T09:45:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_111.png",
+              "sha256": "fc6c1a5a66d6f52cbc809f3911b54e00a8718521b491901f3fe9b3bbf9c9363d"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_112.png",
+              "sha256": "ae1a049783bd22ff968ab27c672fc7fd7f51cd7df7f70d4485b2d33214f3f80d"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页111与答案页112：X06 SSD存储器叙述题干、选项及解析忠实，答案为D。",
+          "source_hash": "0811bcc89c0b422b5b9a2a7370b2ebd69a9300cd117a9f2c7103d8db47654fbc"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 外部存储器 · 选择题::X07": {
       "source_uid": "408:cs408-coa::存储系统 · 外部存储器 · 选择题::X07",
@@ -16210,14 +16562,10 @@
       "chapter": "存储系统 · 外部存储器 · 选择题",
       "question_id": "X08",
       "source_hash": "da08f1135a43f2b3fdb1cb7eac50e1467b5b1fa24a62a2d104e9a19f5d5601a4",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         110,
         111,
@@ -16237,7 +16585,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T09:47:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -16275,10 +16623,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 外部存储器 · 选择题::X08",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T09:47:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_111.png",
+              "sha256": "fc6c1a5a66d6f52cbc809f3911b54e00a8718521b491901f3fe9b3bbf9c9363d"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_113.png",
+              "sha256": "29388a5284caa0f107da441f0b4edc95f305008677255723ff2eff71bd40c952"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页111与答案页113：X08 磁盘接口传输率题干、选项及解析忠实，答案为D。",
+          "source_hash": "da08f1135a43f2b3fdb1cb7eac50e1467b5b1fa24a62a2d104e9a19f5d5601a4"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 外部存储器 · 选择题::X09": {
       "source_uid": "408:cs408-coa::存储系统 · 外部存储器 · 选择题::X09",
@@ -16286,13 +16660,10 @@
       "chapter": "存储系统 · 外部存储器 · 选择题",
       "question_id": "X09",
       "source_hash": "1a922c1e308ddccacc7a6f276c3b9293b0b0e25e2095f7c09005d78ad00815f4",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         110,
         111,
@@ -16312,7 +16683,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T09:48:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -16335,10 +16706,36 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 外部存储器 · 选择题::X09",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T09:48:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_111.png",
+              "sha256": "fc6c1a5a66d6f52cbc809f3911b54e00a8718521b491901f3fe9b3bbf9c9363d"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_113.png",
+              "sha256": "29388a5284caa0f107da441f0b4edc95f305008677255723ff2eff71bd40c952"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页111与答案页113：X09 磁盘平均存取时间题干、选项及解析忠实，答案为B。",
+          "source_hash": "1a922c1e308ddccacc7a6f276c3b9293b0b0e25e2095f7c09005d78ad00815f4"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 外部存储器 · 选择题::X10": {
       "source_uid": "408:cs408-coa::存储系统 · 外部存储器 · 选择题::X10",
@@ -16346,14 +16743,10 @@
       "chapter": "存储系统 · 外部存储器 · 选择题",
       "question_id": "X10",
       "source_hash": "e70033e3cd9ce57f4fc59aa71ee94f43e393ba219da11928309c4123bfde5bac",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         110,
         111,
@@ -16373,7 +16766,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T09:49:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -16411,10 +16804,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 外部存储器 · 选择题::X10",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T09:49:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_111.png",
+              "sha256": "fc6c1a5a66d6f52cbc809f3911b54e00a8718521b491901f3fe9b3bbf9c9363d"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_113.png",
+              "sha256": "29388a5284caa0f107da441f0b4edc95f305008677255723ff2eff71bd40c952"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页111与答案页113：X10 RAID可靠性措施题干、选项及解析忠实，答案为B。",
+          "source_hash": "e70033e3cd9ce57f4fc59aa71ee94f43e393ba219da11928309c4123bfde5bac"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 外部存储器 · 选择题::X11": {
       "source_uid": "408:cs408-coa::存储系统 · 外部存储器 · 选择题::X11",
@@ -16422,14 +16841,10 @@
       "chapter": "存储系统 · 外部存储器 · 选择题",
       "question_id": "X11",
       "source_hash": "9a98784e081b53e60d41375bd52f040a9fd86a8195ef0ca2d7023e35b40764ab",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         110,
         111,
@@ -16449,7 +16864,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T09:50:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -16487,10 +16902,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 外部存储器 · 选择题::X11",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T09:50:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_111.png",
+              "sha256": "fc6c1a5a66d6f52cbc809f3911b54e00a8718521b491901f3fe9b3bbf9c9363d"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_113.png",
+              "sha256": "29388a5284caa0f107da441f0b4edc95f305008677255723ff2eff71bd40c952"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页111与答案页113：X11 磁盘扇区平均存取时间题干、选项及解析忠实，答案为B。",
+          "source_hash": "9a98784e081b53e60d41375bd52f040a9fd86a8195ef0ca2d7023e35b40764ab"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 外部存储器 · 选择题::X12": {
       "source_uid": "408:cs408-coa::存储系统 · 外部存储器 · 选择题::X12",
@@ -16498,14 +16939,10 @@
       "chapter": "存储系统 · 外部存储器 · 选择题",
       "question_id": "X12",
       "source_hash": "c4a0967a7ae326c782b5e31133977ba3fb42a3b1f52a44667cf049d5c4b5b101",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         110,
         111,
@@ -16525,7 +16962,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T09:51:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -16563,10 +17000,40 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;raw_content_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;raw_content_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 外部存储器 · 选择题::X12",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T09:51:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_111.png",
+              "sha256": "fc6c1a5a66d6f52cbc809f3911b54e00a8718521b491901f3fe9b3bbf9c9363d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_112.png",
+              "sha256": "ae1a049783bd22ff968ab27c672fc7fd7f51cd7df7f70d4485b2d33214f3f80d"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_113.png",
+              "sha256": "29388a5284caa0f107da441f0b4edc95f305008677255723ff2eff71bd40c952"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页111-112与答案页113：X12 磁盘存储器叙述题干、选项及解析忠实，答案为C。",
+          "source_hash": "c4a0967a7ae326c782b5e31133977ba3fb42a3b1f52a44667cf049d5c4b5b101"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 存储器概述 · 选择题::X01": {
       "source_uid": "408:cs408-coa::存储系统 · 存储器概述 · 选择题::X01",
