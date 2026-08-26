@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-26T16:20:54+00:00",
+  "generated_at": "2026-08-26T16:34:58+00:00",
   "published_hashes": {
-    "ds": "01e41e77e785fed6c1e5b7c87b638ff422ae25fec5e96936159a1f73a4c96a5a",
-    "coa": "0ef595ebf9c909c7037a8bbd353cb285bf080a4fd1a2ced8ec9e29c4d5a50092",
-    "net": "610ca9cb66abff0b5692bc08d55cd67ed109fc893464facfc10133c0e52485fe",
+    "ds": "1c86d053da78ddb9d7ea0bac5abc98ca74c23f0b736f1f440172cf2d74721ef2",
+    "coa": "a8914a8228119cdbe502b30feff55f924511de2837b539496224be736c18c96d",
+    "net": "2bc29faf5bac4ee762dd8d42920025f5abbc5c2a34b5b9f8d0e52fa910662a5d",
     "os": "ad56559e552e326e2d5889f683787c51faab134b3e8a46b558f970ff4f078dca"
   },
   "courses": {
@@ -12,9 +12,9 @@
       "name": "数据结构",
       "mode": "strict",
       "total": 797,
-      "certified": 91,
+      "certified": 96,
       "pending": 0,
-      "held": 706
+      "held": 701
     },
     "coa": {
       "name": "计算机组成原理",
@@ -43,9 +43,9 @@
   },
   "summary": {
     "total": 2869,
-    "certified": 415,
+    "certified": 420,
     "pending": 0,
-    "held": 2454
+    "held": 2449
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -30282,7 +30282,7 @@
       "course_key": "coa",
       "chapter": "指令系统 · 程序的机器级代码表示 · 选择题",
       "question_id": "X07",
-      "source_hash": "a060e09dd7f099eed1dcc17d2ba6f526328efe21b6f008bb3c7a291816b6e1ef",
+      "source_hash": "82ad1f3ce7f43204db3014ca4473399287950e467f927afa22561864bea2b75f",
       "source_fidelity": "pending",
       "answer_validation": "pending",
       "overall": "hold",
@@ -62048,15 +62048,11 @@
       "course_key": "ds",
       "chapter": "排序 · 各种内部排序算法的比较及应用 · 选择题",
       "question_id": "X20",
-      "source_hash": "2868b12c318472ad00323a25a9d05d8fef605cf2a93c4da2ca26acd9f85b5c45",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "structural_check",
-        "structural_error"
-      ],
+      "source_hash": "90a1aacaa40cca79f6f617981ea21b3f3dd3ee63b0028676f1f62a726d9f4bc6",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         379,
         380,
@@ -62075,48 +62071,62 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "migrated:page_review_patches.json",
       "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X20",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "migrated:page_review_patches.json",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_379.png",
+              "sha256": "72bd5e793fd6e08bf4d12cbd0185e6c7fb3dc7e2ce06b93efd40c0ac7366b29d",
+              "page": 379
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_380.png",
+              "sha256": "85964ea06f1479accf07b93189e35f392cd089c112133bbb042363bd3d372ef5",
+              "page": 380
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_381.png",
+              "sha256": "9cf43d200b0d54487b8ac15328735e7263077444871fcb8d27f4f3953096c1e4",
+              "page": 381
+            }
           ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_382.png",
+              "sha256": "6b94e92c04e809387074bb2d08cfc157d671472bcebac04f92c0ac64447999d0",
+              "page": 382
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_383.png",
+              "sha256": "746e92d2e6899fa8a63a4f498444b3ca55faf628ab0088a0e6e1802bd3146714",
+              "page": 383
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_384.png",
+              "sha256": "0deff4c8706adac5ec0a2e7a1bd52797eca2ddcbe1db6fd1adef3ff48fc8817a",
+              "page": 384
+            }
           ],
-          "source_hash": "2868b12c318472ad00323a25a9d05d8fef605cf2a93c4da2ca26acd9f85b5c45",
-          "choices": [
-            "D",
-            "D"
+          "final_action": "patch",
+          "content_match": null,
+          "options_match": null,
+          "answer_match": null,
+          "explanation_match": null,
+          "image_match": null,
+          "detected_errors": [
+            "persisted_page_review_patch"
           ],
-          "confidence": [
-            0.9,
-            0.99
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "D",
-            "D"
-          ],
-          "blind_confidence": [
-            0.9,
-            0.99
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_source_conflict;structural_check;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+          "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
+          "post_patch_verified": true,
+          "source_hash": "90a1aacaa40cca79f6f617981ea21b3f3dd3ee63b0028676f1f62a726d9f4bc6"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "structural_error"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X21": {
       "source_uid": "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 选择题::X21",
@@ -87415,15 +87425,11 @@
       "course_key": "ds",
       "chapter": "树与二叉树 · 二叉树的概念 · 选择题",
       "question_id": "X27",
-      "source_hash": "40cd72ea3cddc6cd01ff44ab57202191b06ced3561f6aa49a6309d5159f65ad6",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "structural_check",
-        "structural_error"
-      ],
+      "source_hash": "91eb226cd6a4c4a0a44bcb4331fa7d1869657c2cdd74744a85e30258fe85500f",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         138,
         139,
@@ -87444,33 +87450,62 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "migrated:page_review_patches.json",
       "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X27",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "migrated:page_review_patches.json",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_138.png",
+              "sha256": "0b51fccc67b5a94a88cda575cae9d6091faa00c483c662010cde3613b586e44a",
+              "page": 138
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_139.png",
+              "sha256": "3207129455e3e45244c352a8a7633651da546a65d9357027c59c1e1e0cdebe38",
+              "page": 139
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_140.png",
+              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99",
+              "page": 140
+            }
           ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_140.png",
+              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99",
+              "page": 140
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_141.png",
+              "sha256": "3f0e77ae9bfe8fdba6dbf2caab0da06d790c49774ac2734b475d9bcef0ac8b76",
+              "page": 141
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_142.png",
+              "sha256": "0b16124db42c50ecf7e9f119d21693e07306c686dd51e93be22080196eb06650",
+              "page": 142
+            }
           ],
-          "source_hash": "40cd72ea3cddc6cd01ff44ab57202191b06ced3561f6aa49a6309d5159f65ad6",
-          "choices": [],
-          "confidence": [],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "status": "hold",
-          "reason": "stale_source_hash"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;structural_check;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+          "final_action": "patch",
+          "content_match": null,
+          "options_match": null,
+          "answer_match": null,
+          "explanation_match": null,
+          "image_match": null,
+          "detected_errors": [
+            "persisted_page_review_patch"
+          ],
+          "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
+          "post_patch_verified": true,
+          "source_hash": "91eb226cd6a4c4a0a44bcb4331fa7d1869657c2cdd74744a85e30258fe85500f"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "structural_error"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X28": {
       "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X28",
@@ -98353,15 +98388,11 @@
       "course_key": "ds",
       "chapter": "线性表 · 线性表的链式表示 · 选择题",
       "question_id": "X06",
-      "source_hash": "c5d850141aa3058ed82abcd79d46fe0c73ca60e409bf2f0154ecae5eb77c9983",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "structural_check",
-        "structural_error"
-      ],
+      "source_hash": "09d937dfff5c63d7c2f10627395cd598e02ee9bb1ccaebe35966de5739137962",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         44,
         45,
@@ -98397,48 +98428,62 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "migrated:page_review_patches.json",
       "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::线性表 · 线性表的链式表示 · 选择题::X06",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "migrated:page_review_patches.json",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_044.png",
+              "sha256": "04706751c428c80259237d9c68db2356ed4eb129012c145b287b2a47810a7311",
+              "page": 44
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_045.png",
+              "sha256": "7a4821a4f05048c6845ed0dbcff439d0a323296b12a8d5952e66508f15f6372f",
+              "page": 45
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_046.png",
+              "sha256": "9d894d9382846653c49a45023b3dd738d92a8f780bf8b8947d2167ce29f95fb7",
+              "page": 46
+            }
           ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_050.png",
+              "sha256": "60b301f24f74752cfc04a8e42e4080c02aa9204fabfcd59825266f5b64f7cbb0",
+              "page": 50
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_051.png",
+              "sha256": "0033fb53acd290709a5f934e42080329e68e0cf0e2fe71847569b3463c8880f2",
+              "page": 51
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_052.png",
+              "sha256": "30b35ad8d94370d78fd3179e12b11a10c2867ff73e2901e3579c00c4a9b37eb8",
+              "page": 52
+            }
           ],
-          "source_hash": "c5d850141aa3058ed82abcd79d46fe0c73ca60e409bf2f0154ecae5eb77c9983",
-          "choices": [
-            "C",
-            "C"
+          "final_action": "patch",
+          "content_match": null,
+          "options_match": null,
+          "answer_match": null,
+          "explanation_match": null,
+          "image_match": null,
+          "detected_errors": [
+            "persisted_page_review_patch"
           ],
-          "confidence": [
-            0.95,
-            0.99
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "C",
-            "C"
-          ],
-          "blind_confidence": [
-            0.95,
-            0.99
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_source_conflict;structural_check;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+          "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
+          "post_patch_verified": true,
+          "source_hash": "09d937dfff5c63d7c2f10627395cd598e02ee9bb1ccaebe35966de5739137962"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "structural_error"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::线性表 · 线性表的链式表示 · 选择题::X07": {
       "source_uid": "408:cs408-ds::线性表 · 线性表的链式表示 · 选择题::X07",
@@ -100830,16 +100875,11 @@
       "course_key": "ds",
       "chapter": "线性表 · 线性表的链式表示 · 选择题",
       "question_id": "X35",
-      "source_hash": "1bb56515d12909678af1f2b077f0dbffca086b9cc987a29541c0d84075d44e63",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "structural_check",
-        "structural_error"
-      ],
+      "source_hash": "ee7c4d3a21015d5b2452d8e8c2817e22f538d0e4eb96255a790f5070a8501170",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         44,
         45,
@@ -100875,48 +100915,62 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "migrated:page_review_patches.json",
       "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::线性表 · 线性表的链式表示 · 选择题::X35",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "migrated:page_review_patches.json",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_044.png",
+              "sha256": "04706751c428c80259237d9c68db2356ed4eb129012c145b287b2a47810a7311",
+              "page": 44
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_045.png",
+              "sha256": "7a4821a4f05048c6845ed0dbcff439d0a323296b12a8d5952e66508f15f6372f",
+              "page": 45
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_046.png",
+              "sha256": "9d894d9382846653c49a45023b3dd738d92a8f780bf8b8947d2167ce29f95fb7",
+              "page": 46
+            }
           ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_050.png",
+              "sha256": "60b301f24f74752cfc04a8e42e4080c02aa9204fabfcd59825266f5b64f7cbb0",
+              "page": 50
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_051.png",
+              "sha256": "0033fb53acd290709a5f934e42080329e68e0cf0e2fe71847569b3463c8880f2",
+              "page": 51
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_052.png",
+              "sha256": "30b35ad8d94370d78fd3179e12b11a10c2867ff73e2901e3579c00c4a9b37eb8",
+              "page": 52
+            }
           ],
-          "source_hash": "1bb56515d12909678af1f2b077f0dbffca086b9cc987a29541c0d84075d44e63",
-          "choices": [
-            "B",
-            "C"
+          "final_action": "patch",
+          "content_match": null,
+          "options_match": null,
+          "answer_match": null,
+          "explanation_match": null,
+          "image_match": null,
+          "detected_errors": [
+            "persisted_page_review_patch"
           ],
-          "confidence": [
-            0.98,
-            0.98
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "B",
-            "C"
-          ],
-          "blind_confidence": [
-            0.98,
-            0.98
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;structural_check;fresh_content_mismatch;raw_content_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+          "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
+          "post_patch_verified": true,
+          "source_hash": "ee7c4d3a21015d5b2452d8e8c2817e22f538d0e4eb96255a790f5070a8501170"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "structural_error"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::线性表 · 线性表的链式表示 · 选择题::X36": {
       "source_uid": "408:cs408-ds::线性表 · 线性表的链式表示 · 选择题::X36",
@@ -130123,15 +130177,11 @@
       "course_key": "net",
       "chapter": "物理层 · 通信基础 · 选择题",
       "question_id": "X02",
-      "source_hash": "73970c59df5887b2eaa8eb9a8553e1879d944a676824d31fae19686ae8928d3c",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "structural_check",
-        "structural_error"
-      ],
+      "source_hash": "4f75b5fd7e4abbb195f09627c396d7eca9ab1dea2dde7c92afe0d5455732e946",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         40,
         41,
@@ -130147,34 +130197,63 @@
         48
       ],
       "has_image": false,
-      "answer_choice": "AB",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "answer_choice": "A",
+      "verified_at": "migrated:page_review_patches.json",
       "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
+        "original_page_review": {
+          "source_uid": "408:cs408-net::物理层 · 通信基础 · 选择题::X02",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "migrated:page_review_patches.json",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_040.png",
+              "sha256": "9d2263c260539c4d9c4d86847a650f6af406cb7da74e70bed543a24c0d409237",
+              "page": 40
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_041.png",
+              "sha256": "009dac1442816f923034d81b2933768e7a933ef5a1626fc25d4c9eea0649ebfc",
+              "page": 41
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_042.png",
+              "sha256": "89864426c603454247c2bcf38289f672549c1ea84693de68b7fe343595064935",
+              "page": 42
+            }
           ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_043.png",
+              "sha256": "8a1c1b4f0fb40bf6848b0d696b850f183367a4db11e961b6d84fbfb2a4ce1bf1",
+              "page": 43
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_044.png",
+              "sha256": "ed7f271021e68424c4963e13318c292a24c86ffcc92c1d4768b2b405ea508680",
+              "page": 44
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_045.png",
+              "sha256": "1c80c776a91e0cd009601d7b92e7b9d0b50e1558935b7a93483c249ea81addd0",
+              "page": 45
+            }
           ],
-          "source_hash": "73970c59df5887b2eaa8eb9a8553e1879d944a676824d31fae19686ae8928d3c",
-          "choices": [],
-          "confidence": [],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "status": "hold",
-          "reason": "stale_source_hash"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;structural_check;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+          "final_action": "patch",
+          "content_match": null,
+          "options_match": null,
+          "answer_match": null,
+          "explanation_match": null,
+          "image_match": null,
+          "detected_errors": [
+            "persisted_page_review_patch"
+          ],
+          "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
+          "post_patch_verified": true,
+          "source_hash": "4f75b5fd7e4abbb195f09627c396d7eca9ab1dea2dde7c92afe0d5455732e946"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "structural_error"
+      "certification_profile": "objective_full"
     },
     "408:cs408-net::物理层 · 通信基础 · 选择题::X03": {
       "source_uid": "408:cs408-net::物理层 · 通信基础 · 选择题::X03",
