@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-26T20:00:36+00:00",
+  "generated_at": "2026-08-26T20:07:56+00:00",
   "published_hashes": {
     "ds": "a40686840e5043561d7f7159fbd779725ffa65c56bfdd79a2683965b6aed0771",
     "coa": "8f9ea82d6d82e53ea38daf200ae95a361b5c43742f0ce9881b207f671f7f06f7",
@@ -20,32 +20,32 @@
       "name": "计算机组成原理",
       "mode": "strict",
       "total": 674,
-      "certified": 340,
+      "certified": 343,
       "pending": 0,
-      "held": 334
+      "held": 331
     },
     "net": {
       "name": "计算机网络",
       "mode": "strict",
       "total": 639,
-      "certified": 123,
+      "certified": 131,
       "pending": 0,
-      "held": 516
+      "held": 508
     },
     "os": {
       "name": "操作系统",
       "mode": "strict",
       "total": 759,
-      "certified": 167,
+      "certified": 179,
       "pending": 0,
-      "held": 592
+      "held": 580
     }
   },
   "summary": {
     "total": 2869,
-    "certified": 734,
+    "certified": 757,
     "pending": 0,
-    "held": 2135
+    "held": 2112
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -12298,13 +12298,10 @@
       "chapter": "存储系统 · 主存储器 · 选择题",
       "question_id": "X12",
       "source_hash": "acb79c6d91347b44ce9bb25bb3cd5b9b7540c53db72ad16db8a055bf08b6310f",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         92,
         93,
@@ -12324,7 +12321,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T15:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -12347,10 +12344,80 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 主存储器 · 选择题::X12",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T15:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_092.png",
+              "sha256": "917c10cbc6ada7d08f016b5920f284ac9e75aa531873c816d217de696ad4cea2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_093.png",
+              "sha256": "4916d26e491d124ed1127abcce8736e2a247a3502f1ea803b7d564cbaaf108d6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_094.png",
+              "sha256": "b06ebab3e3e310a052c039834487a44c3d943eabb562b21e3742731f01443ec2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_095.png",
+              "sha256": "509e4fcc0931fb0642295999898760d781843e3acd398e72a9d0821e3f1df6a2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_096.png",
+              "sha256": "952618eb735de6cdefbf04a951d3192c4a979ce8afa9f3ba2b3d80c265ce0f3b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_097.png",
+              "sha256": "f2f52b36aa943781c6596fdb013e7d659b622cdb43f45c630efe691232448eee"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_097.png",
+              "sha256": "f2f52b36aa943781c6596fdb013e7d659b622cdb43f45c630efe691232448eee"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_098.png",
+              "sha256": "5f3cb98a85cdd68a55a9b699db85da766be6e55127f8f75f4aefeff7646d1331"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_099.png",
+              "sha256": "38ba6970ce780938c45feb0f569f7f395c8d0a6ecd19a0eaeac5ca2877d0e861"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_100.png",
+              "sha256": "91609de0c857319ce2873d5e5303ccde2edf75e157cb770a20d84784a4d0742c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_101.png",
+              "sha256": "c00d44ff0755cf9b0bcd57ed0efef5d2c722317f2d49e46269936790dc295f09"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_102.png",
+              "sha256": "18522c63c26c4f990eb4a7a935d26ca2092677c7db5ac3da752b4024f212f87c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_103.png",
+              "sha256": "351d131287222bb088fc7bdcebe1cec952ecfc41af2b65c6c39c67674ee5f941"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页87–91与答案解析页92–98：X12题干、选项及解析忠实，原书答案为D。",
+          "source_hash": "acb79c6d91347b44ce9bb25bb3cd5b9b7540c53db72ad16db8a055bf08b6310f"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 主存储器 · 选择题::X13": {
       "source_uid": "408:cs408-coa::存储系统 · 主存储器 · 选择题::X13",
@@ -12634,12 +12701,9 @@
       "question_id": "X16",
       "source_hash": "bce9585438a3a68f6c0ad9a8522c23a74dd19f981fbb92a7e0bd7ce4282c5733",
       "source_fidelity": "verified",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         92,
         93,
@@ -12659,7 +12723,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T15:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -12682,10 +12746,80 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 主存储器 · 选择题::X16",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T15:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_092.png",
+              "sha256": "917c10cbc6ada7d08f016b5920f284ac9e75aa531873c816d217de696ad4cea2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_093.png",
+              "sha256": "4916d26e491d124ed1127abcce8736e2a247a3502f1ea803b7d564cbaaf108d6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_094.png",
+              "sha256": "b06ebab3e3e310a052c039834487a44c3d943eabb562b21e3742731f01443ec2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_095.png",
+              "sha256": "509e4fcc0931fb0642295999898760d781843e3acd398e72a9d0821e3f1df6a2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_096.png",
+              "sha256": "952618eb735de6cdefbf04a951d3192c4a979ce8afa9f3ba2b3d80c265ce0f3b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_097.png",
+              "sha256": "f2f52b36aa943781c6596fdb013e7d659b622cdb43f45c630efe691232448eee"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_097.png",
+              "sha256": "f2f52b36aa943781c6596fdb013e7d659b622cdb43f45c630efe691232448eee"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_098.png",
+              "sha256": "5f3cb98a85cdd68a55a9b699db85da766be6e55127f8f75f4aefeff7646d1331"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_099.png",
+              "sha256": "38ba6970ce780938c45feb0f569f7f395c8d0a6ecd19a0eaeac5ca2877d0e861"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_100.png",
+              "sha256": "91609de0c857319ce2873d5e5303ccde2edf75e157cb770a20d84784a4d0742c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_101.png",
+              "sha256": "c00d44ff0755cf9b0bcd57ed0efef5d2c722317f2d49e46269936790dc295f09"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_102.png",
+              "sha256": "18522c63c26c4f990eb4a7a935d26ca2092677c7db5ac3da752b4024f212f87c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_103.png",
+              "sha256": "351d131287222bb088fc7bdcebe1cec952ecfc41af2b65c6c39c67674ee5f941"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页87–91与答案解析页92–98：X16题干、选项及解析忠实，原书答案为C。",
+          "source_hash": "bce9585438a3a68f6c0ad9a8522c23a74dd19f981fbb92a7e0bd7ce4282c5733"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 主存储器 · 选择题::X17": {
       "source_uid": "408:cs408-coa::存储系统 · 主存储器 · 选择题::X17",
@@ -13640,13 +13774,10 @@
       "chapter": "存储系统 · 主存储器 · 选择题",
       "question_id": "X27",
       "source_hash": "5450659ea34efbab3a002a86b216520f39e75994017aeb39695e4a5467d26460",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         92,
         93,
@@ -13666,7 +13797,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T15:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -13689,10 +13820,80 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;raw_content_mismatch;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;raw_content_mismatch;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 主存储器 · 选择题::X27",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T15:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_092.png",
+              "sha256": "917c10cbc6ada7d08f016b5920f284ac9e75aa531873c816d217de696ad4cea2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_093.png",
+              "sha256": "4916d26e491d124ed1127abcce8736e2a247a3502f1ea803b7d564cbaaf108d6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_094.png",
+              "sha256": "b06ebab3e3e310a052c039834487a44c3d943eabb562b21e3742731f01443ec2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_095.png",
+              "sha256": "509e4fcc0931fb0642295999898760d781843e3acd398e72a9d0821e3f1df6a2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_096.png",
+              "sha256": "952618eb735de6cdefbf04a951d3192c4a979ce8afa9f3ba2b3d80c265ce0f3b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_097.png",
+              "sha256": "f2f52b36aa943781c6596fdb013e7d659b622cdb43f45c630efe691232448eee"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_097.png",
+              "sha256": "f2f52b36aa943781c6596fdb013e7d659b622cdb43f45c630efe691232448eee"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_098.png",
+              "sha256": "5f3cb98a85cdd68a55a9b699db85da766be6e55127f8f75f4aefeff7646d1331"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_099.png",
+              "sha256": "38ba6970ce780938c45feb0f569f7f395c8d0a6ecd19a0eaeac5ca2877d0e861"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_100.png",
+              "sha256": "91609de0c857319ce2873d5e5303ccde2edf75e157cb770a20d84784a4d0742c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_101.png",
+              "sha256": "c00d44ff0755cf9b0bcd57ed0efef5d2c722317f2d49e46269936790dc295f09"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_102.png",
+              "sha256": "18522c63c26c4f990eb4a7a935d26ca2092677c7db5ac3da752b4024f212f87c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_103.png",
+              "sha256": "351d131287222bb088fc7bdcebe1cec952ecfc41af2b65c6c39c67674ee5f941"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页87–91与答案解析页92–98：X27题干、选项及解析忠实，原书答案为B。",
+          "source_hash": "5450659ea34efbab3a002a86b216520f39e75994017aeb39695e4a5467d26460"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 主存储器 · 选择题::X28": {
       "source_uid": "408:cs408-coa::存储系统 · 主存储器 · 选择题::X28",
@@ -130453,13 +130654,10 @@
       "chapter": "数据链路层 · 差错控制 · 选择题",
       "question_id": "X01",
       "source_hash": "cda58b3bbe5a9b2e7cb52ff7be4ba4fbb38a60b0d1a1140eb012c63c9f2aacea",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         64,
         65
@@ -130475,7 +130673,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T15:10:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -130513,10 +130711,64 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::数据链路层 · 差错控制 · 选择题::X01",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T15:10:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_064.png",
+              "sha256": "08ecbead37dc97ad308358f770043bbbdf3f1a16afa7ff73379bc8972d6715c5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_065.png",
+              "sha256": "e7caa82334f443b3f678f28c30c3c08c2243216b1467a5afaf2341030d908346"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_065.png",
+              "sha256": "e7caa82334f443b3f678f28c30c3c08c2243216b1467a5afaf2341030d908346"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_066.png",
+              "sha256": "c5f4569be4b44802da5ee66a4e3cec62d83656d0ab0886fbedcc178ad6307981"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_067.png",
+              "sha256": "3db619ec96be49cccc5b407224c587f70bcd83bde7f3eb07e00a52b29a0dbfde"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_068.png",
+              "sha256": "c7ac051a5483fc2321e079ead6bb240d40f0a89aa4d5f49561d5a283ffd05c59"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_069.png",
+              "sha256": "c7ce7abc7a59f9738e7731e3f2cf474e7d3444c98b4adc4283dc48de79360f6d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_070.png",
+              "sha256": "4acc0b44247823a5386189ee69b11227554d25618bab219d9301fc5d05b7428e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_071.png",
+              "sha256": "5730161c633b2a22ec74343e3d7e9e9cbd2758033248fbc0fad3eb45b94a265c"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页59–60与答案解析页60–66：X01题干、选项及解析忠实，原书答案为A。",
+          "source_hash": "cda58b3bbe5a9b2e7cb52ff7be4ba4fbb38a60b0d1a1140eb012c63c9f2aacea"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-net::数据链路层 · 差错控制 · 选择题::X02": {
       "source_uid": "408:cs408-net::数据链路层 · 差错控制 · 选择题::X02",
@@ -130524,13 +130776,10 @@
       "chapter": "数据链路层 · 差错控制 · 选择题",
       "question_id": "X02",
       "source_hash": "ed0996f94c6f1581de3cb1fdeedb946cf95c3e7eaca9eeb213f9708b599ff7b2",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         64,
         65
@@ -130546,7 +130795,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T15:10:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -130584,10 +130833,64 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::数据链路层 · 差错控制 · 选择题::X02",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T15:10:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_064.png",
+              "sha256": "08ecbead37dc97ad308358f770043bbbdf3f1a16afa7ff73379bc8972d6715c5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_065.png",
+              "sha256": "e7caa82334f443b3f678f28c30c3c08c2243216b1467a5afaf2341030d908346"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_065.png",
+              "sha256": "e7caa82334f443b3f678f28c30c3c08c2243216b1467a5afaf2341030d908346"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_066.png",
+              "sha256": "c5f4569be4b44802da5ee66a4e3cec62d83656d0ab0886fbedcc178ad6307981"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_067.png",
+              "sha256": "3db619ec96be49cccc5b407224c587f70bcd83bde7f3eb07e00a52b29a0dbfde"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_068.png",
+              "sha256": "c7ac051a5483fc2321e079ead6bb240d40f0a89aa4d5f49561d5a283ffd05c59"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_069.png",
+              "sha256": "c7ce7abc7a59f9738e7731e3f2cf474e7d3444c98b4adc4283dc48de79360f6d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_070.png",
+              "sha256": "4acc0b44247823a5386189ee69b11227554d25618bab219d9301fc5d05b7428e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_071.png",
+              "sha256": "5730161c633b2a22ec74343e3d7e9e9cbd2758033248fbc0fad3eb45b94a265c"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页59–60与答案解析页60–66：X02题干、选项及解析忠实，原书答案为A。",
+          "source_hash": "ed0996f94c6f1581de3cb1fdeedb946cf95c3e7eaca9eeb213f9708b599ff7b2"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-net::数据链路层 · 差错控制 · 选择题::X03": {
       "source_uid": "408:cs408-net::数据链路层 · 差错控制 · 选择题::X03",
@@ -130595,14 +130898,10 @@
       "chapter": "数据链路层 · 差错控制 · 选择题",
       "question_id": "X03",
       "source_hash": "38a20d8348e49e48b74e8306e407b5fb1a038adef5c328fed654a54f78676171",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         64,
         65
@@ -130618,7 +130917,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T15:10:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -130656,10 +130955,64 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "legacy_hold_recheck;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::数据链路层 · 差错控制 · 选择题::X03",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T15:10:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_064.png",
+              "sha256": "08ecbead37dc97ad308358f770043bbbdf3f1a16afa7ff73379bc8972d6715c5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_065.png",
+              "sha256": "e7caa82334f443b3f678f28c30c3c08c2243216b1467a5afaf2341030d908346"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_065.png",
+              "sha256": "e7caa82334f443b3f678f28c30c3c08c2243216b1467a5afaf2341030d908346"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_066.png",
+              "sha256": "c5f4569be4b44802da5ee66a4e3cec62d83656d0ab0886fbedcc178ad6307981"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_067.png",
+              "sha256": "3db619ec96be49cccc5b407224c587f70bcd83bde7f3eb07e00a52b29a0dbfde"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_068.png",
+              "sha256": "c7ac051a5483fc2321e079ead6bb240d40f0a89aa4d5f49561d5a283ffd05c59"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_069.png",
+              "sha256": "c7ce7abc7a59f9738e7731e3f2cf474e7d3444c98b4adc4283dc48de79360f6d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_070.png",
+              "sha256": "4acc0b44247823a5386189ee69b11227554d25618bab219d9301fc5d05b7428e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_071.png",
+              "sha256": "5730161c633b2a22ec74343e3d7e9e9cbd2758033248fbc0fad3eb45b94a265c"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页59–60与答案解析页60–66：X03题干、选项及解析忠实，原书答案为D。",
+          "source_hash": "38a20d8348e49e48b74e8306e407b5fb1a038adef5c328fed654a54f78676171"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-net::数据链路层 · 差错控制 · 选择题::X04": {
       "source_uid": "408:cs408-net::数据链路层 · 差错控制 · 选择题::X04",
@@ -130667,13 +131020,10 @@
       "chapter": "数据链路层 · 差错控制 · 选择题",
       "question_id": "X04",
       "source_hash": "bb589ae7fe4b5b2adb8b03f52b1d45acb848bf7b3bc79eef1de049ecfc4e0473",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         64,
         65
@@ -130689,7 +131039,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T15:10:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -130727,10 +131077,64 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::数据链路层 · 差错控制 · 选择题::X04",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T15:10:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_064.png",
+              "sha256": "08ecbead37dc97ad308358f770043bbbdf3f1a16afa7ff73379bc8972d6715c5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_065.png",
+              "sha256": "e7caa82334f443b3f678f28c30c3c08c2243216b1467a5afaf2341030d908346"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_065.png",
+              "sha256": "e7caa82334f443b3f678f28c30c3c08c2243216b1467a5afaf2341030d908346"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_066.png",
+              "sha256": "c5f4569be4b44802da5ee66a4e3cec62d83656d0ab0886fbedcc178ad6307981"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_067.png",
+              "sha256": "3db619ec96be49cccc5b407224c587f70bcd83bde7f3eb07e00a52b29a0dbfde"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_068.png",
+              "sha256": "c7ac051a5483fc2321e079ead6bb240d40f0a89aa4d5f49561d5a283ffd05c59"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_069.png",
+              "sha256": "c7ce7abc7a59f9738e7731e3f2cf474e7d3444c98b4adc4283dc48de79360f6d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_070.png",
+              "sha256": "4acc0b44247823a5386189ee69b11227554d25618bab219d9301fc5d05b7428e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_071.png",
+              "sha256": "5730161c633b2a22ec74343e3d7e9e9cbd2758033248fbc0fad3eb45b94a265c"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页59–60与答案解析页60–66：X04题干、选项及解析忠实，原书答案为D。",
+          "source_hash": "bb589ae7fe4b5b2adb8b03f52b1d45acb848bf7b3bc79eef1de049ecfc4e0473"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-net::数据链路层 · 差错控制 · 选择题::X05": {
       "source_uid": "408:cs408-net::数据链路层 · 差错控制 · 选择题::X05",
@@ -130807,14 +131211,10 @@
       "chapter": "数据链路层 · 差错控制 · 选择题",
       "question_id": "X06",
       "source_hash": "77c24660f5b2ea942752991f21c9192b4e29db178aa97ab54a0e743d0236a8a4",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         64,
         65
@@ -130830,7 +131230,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T15:10:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -130868,10 +131268,64 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::数据链路层 · 差错控制 · 选择题::X06",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T15:10:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_064.png",
+              "sha256": "08ecbead37dc97ad308358f770043bbbdf3f1a16afa7ff73379bc8972d6715c5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_065.png",
+              "sha256": "e7caa82334f443b3f678f28c30c3c08c2243216b1467a5afaf2341030d908346"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_065.png",
+              "sha256": "e7caa82334f443b3f678f28c30c3c08c2243216b1467a5afaf2341030d908346"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_066.png",
+              "sha256": "c5f4569be4b44802da5ee66a4e3cec62d83656d0ab0886fbedcc178ad6307981"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_067.png",
+              "sha256": "3db619ec96be49cccc5b407224c587f70bcd83bde7f3eb07e00a52b29a0dbfde"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_068.png",
+              "sha256": "c7ac051a5483fc2321e079ead6bb240d40f0a89aa4d5f49561d5a283ffd05c59"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_069.png",
+              "sha256": "c7ce7abc7a59f9738e7731e3f2cf474e7d3444c98b4adc4283dc48de79360f6d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_070.png",
+              "sha256": "4acc0b44247823a5386189ee69b11227554d25618bab219d9301fc5d05b7428e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_071.png",
+              "sha256": "5730161c633b2a22ec74343e3d7e9e9cbd2758033248fbc0fad3eb45b94a265c"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页59–60与答案解析页60–66：X06题干、选项及解析忠实，原书答案为B。",
+          "source_hash": "77c24660f5b2ea942752991f21c9192b4e29db178aa97ab54a0e743d0236a8a4"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-net::数据链路层 · 差错控制 · 选择题::X07": {
       "source_uid": "408:cs408-net::数据链路层 · 差错控制 · 选择题::X07",
@@ -130879,14 +131333,10 @@
       "chapter": "数据链路层 · 差错控制 · 选择题",
       "question_id": "X07",
       "source_hash": "51f173861ac654c67a9928b8fcad1a01b373dc91a518f740fd0f61c5147ae1e2",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         64,
         65
@@ -130902,7 +131352,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T15:10:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -130940,10 +131390,64 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::数据链路层 · 差错控制 · 选择题::X07",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T15:10:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_064.png",
+              "sha256": "08ecbead37dc97ad308358f770043bbbdf3f1a16afa7ff73379bc8972d6715c5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_065.png",
+              "sha256": "e7caa82334f443b3f678f28c30c3c08c2243216b1467a5afaf2341030d908346"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_065.png",
+              "sha256": "e7caa82334f443b3f678f28c30c3c08c2243216b1467a5afaf2341030d908346"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_066.png",
+              "sha256": "c5f4569be4b44802da5ee66a4e3cec62d83656d0ab0886fbedcc178ad6307981"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_067.png",
+              "sha256": "3db619ec96be49cccc5b407224c587f70bcd83bde7f3eb07e00a52b29a0dbfde"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_068.png",
+              "sha256": "c7ac051a5483fc2321e079ead6bb240d40f0a89aa4d5f49561d5a283ffd05c59"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_069.png",
+              "sha256": "c7ce7abc7a59f9738e7731e3f2cf474e7d3444c98b4adc4283dc48de79360f6d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_070.png",
+              "sha256": "4acc0b44247823a5386189ee69b11227554d25618bab219d9301fc5d05b7428e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_071.png",
+              "sha256": "5730161c633b2a22ec74343e3d7e9e9cbd2758033248fbc0fad3eb45b94a265c"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页59–60与答案解析页60–66：X07题干、选项及解析忠实，原书答案为C。",
+          "source_hash": "51f173861ac654c67a9928b8fcad1a01b373dc91a518f740fd0f61c5147ae1e2"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-net::数据链路层 · 差错控制 · 选择题::X08": {
       "source_uid": "408:cs408-net::数据链路层 · 差错控制 · 选择题::X08",
@@ -130951,15 +131455,10 @@
       "chapter": "数据链路层 · 差错控制 · 选择题",
       "question_id": "X08",
       "source_hash": "6b1c9ba249b362c6c80d7e37df619f40478ed8308fad893635d7bc3dbd9e4817",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         64,
         65
@@ -130975,7 +131474,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T15:10:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -131013,10 +131512,64 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::数据链路层 · 差错控制 · 选择题::X08",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T15:10:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_064.png",
+              "sha256": "08ecbead37dc97ad308358f770043bbbdf3f1a16afa7ff73379bc8972d6715c5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_065.png",
+              "sha256": "e7caa82334f443b3f678f28c30c3c08c2243216b1467a5afaf2341030d908346"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_065.png",
+              "sha256": "e7caa82334f443b3f678f28c30c3c08c2243216b1467a5afaf2341030d908346"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_066.png",
+              "sha256": "c5f4569be4b44802da5ee66a4e3cec62d83656d0ab0886fbedcc178ad6307981"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_067.png",
+              "sha256": "3db619ec96be49cccc5b407224c587f70bcd83bde7f3eb07e00a52b29a0dbfde"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_068.png",
+              "sha256": "c7ac051a5483fc2321e079ead6bb240d40f0a89aa4d5f49561d5a283ffd05c59"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_069.png",
+              "sha256": "c7ce7abc7a59f9738e7731e3f2cf474e7d3444c98b4adc4283dc48de79360f6d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_070.png",
+              "sha256": "4acc0b44247823a5386189ee69b11227554d25618bab219d9301fc5d05b7428e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_071.png",
+              "sha256": "5730161c633b2a22ec74343e3d7e9e9cbd2758033248fbc0fad3eb45b94a265c"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页59–60与答案解析页60–66：X08题干、选项及解析忠实，原书答案为D。",
+          "source_hash": "6b1c9ba249b362c6c80d7e37df619f40478ed8308fad893635d7bc3dbd9e4817"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-net::数据链路层 · 差错控制 · 选择题::X09": {
       "source_uid": "408:cs408-net::数据链路层 · 差错控制 · 选择题::X09",
@@ -131024,15 +131577,10 @@
       "chapter": "数据链路层 · 差错控制 · 选择题",
       "question_id": "X09",
       "source_hash": "e9975adbee8937ce00fab1988ca947ffcb75ac6bc7c9b5d99636b54375ef918f",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         64,
         65
@@ -131048,7 +131596,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T15:10:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -131086,10 +131634,64 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::数据链路层 · 差错控制 · 选择题::X09",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T15:10:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_064.png",
+              "sha256": "08ecbead37dc97ad308358f770043bbbdf3f1a16afa7ff73379bc8972d6715c5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_065.png",
+              "sha256": "e7caa82334f443b3f678f28c30c3c08c2243216b1467a5afaf2341030d908346"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_065.png",
+              "sha256": "e7caa82334f443b3f678f28c30c3c08c2243216b1467a5afaf2341030d908346"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_066.png",
+              "sha256": "c5f4569be4b44802da5ee66a4e3cec62d83656d0ab0886fbedcc178ad6307981"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_067.png",
+              "sha256": "3db619ec96be49cccc5b407224c587f70bcd83bde7f3eb07e00a52b29a0dbfde"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_068.png",
+              "sha256": "c7ac051a5483fc2321e079ead6bb240d40f0a89aa4d5f49561d5a283ffd05c59"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_069.png",
+              "sha256": "c7ce7abc7a59f9738e7731e3f2cf474e7d3444c98b4adc4283dc48de79360f6d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_070.png",
+              "sha256": "4acc0b44247823a5386189ee69b11227554d25618bab219d9301fc5d05b7428e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_071.png",
+              "sha256": "5730161c633b2a22ec74343e3d7e9e9cbd2758033248fbc0fad3eb45b94a265c"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页59–60与答案解析页60–66：X09题干、选项及解析忠实，原书答案为C。",
+          "source_hash": "e9975adbee8937ce00fab1988ca947ffcb75ac6bc7c9b5d99636b54375ef918f"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-net::数据链路层 · 广域网 · 选择题::X01": {
       "source_uid": "408:cs408-net::数据链路层 · 广域网 · 选择题::X01",
@@ -183183,13 +183785,10 @@
       "chapter": "计算机系统概述 · 操作系统发展历程 · 选择题",
       "question_id": "X01",
       "source_hash": "dd8137577a8f2d5a384985cc931e2af7936d18f4c48bbf72b654b8a1d00e7f30",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         15,
         16,
@@ -183206,7 +183805,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T15:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -183244,10 +183843,68 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X01",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T15:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_015.png",
+              "sha256": "bbcfdd4ef63bbafa440d3b14d0cd50e19e30ca234c074cc3e2257ccbe39c99c1"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_016.png",
+              "sha256": "1d7e20afb57ef1b99b3ac711809c90196a1889793ee22b36c43db351d7ea46de"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_017.png",
+              "sha256": "4eddec3066c4f7795394a0c4622f548281c30204876a3dfcbe8614e411b7eb93"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_017.png",
+              "sha256": "4eddec3066c4f7795394a0c4622f548281c30204876a3dfcbe8614e411b7eb93"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_018.png",
+              "sha256": "27f3e585cf6a84e213543d1d4cba3e665fb72dd10c62233944cec678c23ed2de"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_019.png",
+              "sha256": "944c26cca4ed51e6e7feb98c067323324d856a9bca5678a783eeb3772694ad2e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_020.png",
+              "sha256": "a8371a483ab08de8d8caf6309ce05974d008c5878e175348041bd2f197e09de7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_021.png",
+              "sha256": "eccea5d2427d2381669585653d873380c478729923c8f02ee0c344af2c0d61cd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_022.png",
+              "sha256": "5773486177c2e53c761986db82636b370c962a6b65a62749734358d877bd9dc2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_023.png",
+              "sha256": "844bd3d4475b14fe4d9a9e77bda2fff5a4000d4dbda583e0270f861fa82ee4fc"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页10–12与答案解析页12–18：X01题干、选项及解析忠实，原书答案为D。",
+          "source_hash": "dd8137577a8f2d5a384985cc931e2af7936d18f4c48bbf72b654b8a1d00e7f30"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X02": {
       "source_uid": "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X02",
@@ -183326,12 +183983,9 @@
       "question_id": "X03",
       "source_hash": "7aba6b5a08895e351f94af10cfb26facff333900be6505999cdd9b1b91bc1cc2",
       "source_fidelity": "verified",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         15,
         16,
@@ -183348,7 +184002,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T15:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -183371,10 +184025,68 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X03",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T15:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_015.png",
+              "sha256": "bbcfdd4ef63bbafa440d3b14d0cd50e19e30ca234c074cc3e2257ccbe39c99c1"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_016.png",
+              "sha256": "1d7e20afb57ef1b99b3ac711809c90196a1889793ee22b36c43db351d7ea46de"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_017.png",
+              "sha256": "4eddec3066c4f7795394a0c4622f548281c30204876a3dfcbe8614e411b7eb93"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_017.png",
+              "sha256": "4eddec3066c4f7795394a0c4622f548281c30204876a3dfcbe8614e411b7eb93"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_018.png",
+              "sha256": "27f3e585cf6a84e213543d1d4cba3e665fb72dd10c62233944cec678c23ed2de"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_019.png",
+              "sha256": "944c26cca4ed51e6e7feb98c067323324d856a9bca5678a783eeb3772694ad2e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_020.png",
+              "sha256": "a8371a483ab08de8d8caf6309ce05974d008c5878e175348041bd2f197e09de7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_021.png",
+              "sha256": "eccea5d2427d2381669585653d873380c478729923c8f02ee0c344af2c0d61cd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_022.png",
+              "sha256": "5773486177c2e53c761986db82636b370c962a6b65a62749734358d877bd9dc2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_023.png",
+              "sha256": "844bd3d4475b14fe4d9a9e77bda2fff5a4000d4dbda583e0270f861fa82ee4fc"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页10–12与答案解析页12–18：X03题干、选项及解析忠实，原书答案为C。",
+          "source_hash": "7aba6b5a08895e351f94af10cfb26facff333900be6505999cdd9b1b91bc1cc2"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X04": {
       "source_uid": "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X04",
@@ -183382,13 +184094,10 @@
       "chapter": "计算机系统概述 · 操作系统发展历程 · 选择题",
       "question_id": "X04",
       "source_hash": "0f9c21cb01fa74f1b4827749b6fcdd9192b58757683167feae221dcb330fd3d6",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         15,
         16,
@@ -183405,7 +184114,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T15:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -183428,10 +184137,68 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X04",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T15:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_015.png",
+              "sha256": "bbcfdd4ef63bbafa440d3b14d0cd50e19e30ca234c074cc3e2257ccbe39c99c1"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_016.png",
+              "sha256": "1d7e20afb57ef1b99b3ac711809c90196a1889793ee22b36c43db351d7ea46de"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_017.png",
+              "sha256": "4eddec3066c4f7795394a0c4622f548281c30204876a3dfcbe8614e411b7eb93"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_017.png",
+              "sha256": "4eddec3066c4f7795394a0c4622f548281c30204876a3dfcbe8614e411b7eb93"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_018.png",
+              "sha256": "27f3e585cf6a84e213543d1d4cba3e665fb72dd10c62233944cec678c23ed2de"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_019.png",
+              "sha256": "944c26cca4ed51e6e7feb98c067323324d856a9bca5678a783eeb3772694ad2e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_020.png",
+              "sha256": "a8371a483ab08de8d8caf6309ce05974d008c5878e175348041bd2f197e09de7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_021.png",
+              "sha256": "eccea5d2427d2381669585653d873380c478729923c8f02ee0c344af2c0d61cd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_022.png",
+              "sha256": "5773486177c2e53c761986db82636b370c962a6b65a62749734358d877bd9dc2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_023.png",
+              "sha256": "844bd3d4475b14fe4d9a9e77bda2fff5a4000d4dbda583e0270f861fa82ee4fc"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页10–12与答案解析页12–18：X04题干、选项及解析忠实，原书答案为B。",
+          "source_hash": "0f9c21cb01fa74f1b4827749b6fcdd9192b58757683167feae221dcb330fd3d6"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X05": {
       "source_uid": "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X05",
@@ -183439,13 +184206,10 @@
       "chapter": "计算机系统概述 · 操作系统发展历程 · 选择题",
       "question_id": "X05",
       "source_hash": "21282e0eda78b56f4f797cb20f52765c33917e3f843d0f20c4a1c2a7c6c5a394",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         15,
         16,
@@ -183462,7 +184226,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T15:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -183500,10 +184264,68 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X05",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T15:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_015.png",
+              "sha256": "bbcfdd4ef63bbafa440d3b14d0cd50e19e30ca234c074cc3e2257ccbe39c99c1"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_016.png",
+              "sha256": "1d7e20afb57ef1b99b3ac711809c90196a1889793ee22b36c43db351d7ea46de"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_017.png",
+              "sha256": "4eddec3066c4f7795394a0c4622f548281c30204876a3dfcbe8614e411b7eb93"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_017.png",
+              "sha256": "4eddec3066c4f7795394a0c4622f548281c30204876a3dfcbe8614e411b7eb93"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_018.png",
+              "sha256": "27f3e585cf6a84e213543d1d4cba3e665fb72dd10c62233944cec678c23ed2de"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_019.png",
+              "sha256": "944c26cca4ed51e6e7feb98c067323324d856a9bca5678a783eeb3772694ad2e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_020.png",
+              "sha256": "a8371a483ab08de8d8caf6309ce05974d008c5878e175348041bd2f197e09de7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_021.png",
+              "sha256": "eccea5d2427d2381669585653d873380c478729923c8f02ee0c344af2c0d61cd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_022.png",
+              "sha256": "5773486177c2e53c761986db82636b370c962a6b65a62749734358d877bd9dc2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_023.png",
+              "sha256": "844bd3d4475b14fe4d9a9e77bda2fff5a4000d4dbda583e0270f861fa82ee4fc"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页10–12与答案解析页12–18：X05题干、选项及解析忠实，原书答案为B。",
+          "source_hash": "21282e0eda78b56f4f797cb20f52765c33917e3f843d0f20c4a1c2a7c6c5a394"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X06": {
       "source_uid": "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X06",
@@ -183511,14 +184333,10 @@
       "chapter": "计算机系统概述 · 操作系统发展历程 · 选择题",
       "question_id": "X06",
       "source_hash": "0cdbf7ddb1bcea707c74d743258e896a480f27eeac3037e590fc29cf465d8767",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         15,
         16,
@@ -183535,7 +184353,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T15:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -183573,10 +184391,68 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;raw_content_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;raw_content_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X06",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T15:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_015.png",
+              "sha256": "bbcfdd4ef63bbafa440d3b14d0cd50e19e30ca234c074cc3e2257ccbe39c99c1"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_016.png",
+              "sha256": "1d7e20afb57ef1b99b3ac711809c90196a1889793ee22b36c43db351d7ea46de"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_017.png",
+              "sha256": "4eddec3066c4f7795394a0c4622f548281c30204876a3dfcbe8614e411b7eb93"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_017.png",
+              "sha256": "4eddec3066c4f7795394a0c4622f548281c30204876a3dfcbe8614e411b7eb93"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_018.png",
+              "sha256": "27f3e585cf6a84e213543d1d4cba3e665fb72dd10c62233944cec678c23ed2de"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_019.png",
+              "sha256": "944c26cca4ed51e6e7feb98c067323324d856a9bca5678a783eeb3772694ad2e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_020.png",
+              "sha256": "a8371a483ab08de8d8caf6309ce05974d008c5878e175348041bd2f197e09de7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_021.png",
+              "sha256": "eccea5d2427d2381669585653d873380c478729923c8f02ee0c344af2c0d61cd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_022.png",
+              "sha256": "5773486177c2e53c761986db82636b370c962a6b65a62749734358d877bd9dc2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_023.png",
+              "sha256": "844bd3d4475b14fe4d9a9e77bda2fff5a4000d4dbda583e0270f861fa82ee4fc"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页10–12与答案解析页12–18：X06题干、选项及解析忠实，原书答案为B。",
+          "source_hash": "0cdbf7ddb1bcea707c74d743258e896a480f27eeac3037e590fc29cf465d8767"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X07": {
       "source_uid": "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X07",
@@ -183584,13 +184460,10 @@
       "chapter": "计算机系统概述 · 操作系统发展历程 · 选择题",
       "question_id": "X07",
       "source_hash": "f706a3e2f222b1ee6ae0955e4bbe367b65dbb7ba79d6239c4d174d5adce668a9",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         15,
         16,
@@ -183607,7 +184480,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T15:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -183645,10 +184518,68 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X07",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T15:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_015.png",
+              "sha256": "bbcfdd4ef63bbafa440d3b14d0cd50e19e30ca234c074cc3e2257ccbe39c99c1"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_016.png",
+              "sha256": "1d7e20afb57ef1b99b3ac711809c90196a1889793ee22b36c43db351d7ea46de"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_017.png",
+              "sha256": "4eddec3066c4f7795394a0c4622f548281c30204876a3dfcbe8614e411b7eb93"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_017.png",
+              "sha256": "4eddec3066c4f7795394a0c4622f548281c30204876a3dfcbe8614e411b7eb93"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_018.png",
+              "sha256": "27f3e585cf6a84e213543d1d4cba3e665fb72dd10c62233944cec678c23ed2de"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_019.png",
+              "sha256": "944c26cca4ed51e6e7feb98c067323324d856a9bca5678a783eeb3772694ad2e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_020.png",
+              "sha256": "a8371a483ab08de8d8caf6309ce05974d008c5878e175348041bd2f197e09de7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_021.png",
+              "sha256": "eccea5d2427d2381669585653d873380c478729923c8f02ee0c344af2c0d61cd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_022.png",
+              "sha256": "5773486177c2e53c761986db82636b370c962a6b65a62749734358d877bd9dc2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_023.png",
+              "sha256": "844bd3d4475b14fe4d9a9e77bda2fff5a4000d4dbda583e0270f861fa82ee4fc"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页10–12与答案解析页12–18：X07题干、选项及解析忠实，原书答案为D。",
+          "source_hash": "f706a3e2f222b1ee6ae0955e4bbe367b65dbb7ba79d6239c4d174d5adce668a9"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X08": {
       "source_uid": "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X08",
@@ -183725,14 +184656,10 @@
       "chapter": "计算机系统概述 · 操作系统发展历程 · 选择题",
       "question_id": "X09",
       "source_hash": "109d49313a8dc8dfff8ec62f0825e7713cfffa08b575c7c71c5a0b295e1ead4c",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         15,
         16,
@@ -183749,7 +184676,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T15:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -183787,10 +184714,68 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X09",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T15:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_015.png",
+              "sha256": "bbcfdd4ef63bbafa440d3b14d0cd50e19e30ca234c074cc3e2257ccbe39c99c1"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_016.png",
+              "sha256": "1d7e20afb57ef1b99b3ac711809c90196a1889793ee22b36c43db351d7ea46de"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_017.png",
+              "sha256": "4eddec3066c4f7795394a0c4622f548281c30204876a3dfcbe8614e411b7eb93"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_017.png",
+              "sha256": "4eddec3066c4f7795394a0c4622f548281c30204876a3dfcbe8614e411b7eb93"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_018.png",
+              "sha256": "27f3e585cf6a84e213543d1d4cba3e665fb72dd10c62233944cec678c23ed2de"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_019.png",
+              "sha256": "944c26cca4ed51e6e7feb98c067323324d856a9bca5678a783eeb3772694ad2e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_020.png",
+              "sha256": "a8371a483ab08de8d8caf6309ce05974d008c5878e175348041bd2f197e09de7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_021.png",
+              "sha256": "eccea5d2427d2381669585653d873380c478729923c8f02ee0c344af2c0d61cd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_022.png",
+              "sha256": "5773486177c2e53c761986db82636b370c962a6b65a62749734358d877bd9dc2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_023.png",
+              "sha256": "844bd3d4475b14fe4d9a9e77bda2fff5a4000d4dbda583e0270f861fa82ee4fc"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页10–12与答案解析页12–18：X09题干、选项及解析忠实，原书答案为C。",
+          "source_hash": "109d49313a8dc8dfff8ec62f0825e7713cfffa08b575c7c71c5a0b295e1ead4c"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X10": {
       "source_uid": "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X10",
@@ -183798,13 +184783,10 @@
       "chapter": "计算机系统概述 · 操作系统发展历程 · 选择题",
       "question_id": "X10",
       "source_hash": "e6f0443d8e174a03b3adbeb13907c74df5558372abca8c903400d3d2beb9e51e",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         15,
         16,
@@ -183821,7 +184803,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T15:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -183859,10 +184841,68 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X10",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T15:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_015.png",
+              "sha256": "bbcfdd4ef63bbafa440d3b14d0cd50e19e30ca234c074cc3e2257ccbe39c99c1"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_016.png",
+              "sha256": "1d7e20afb57ef1b99b3ac711809c90196a1889793ee22b36c43db351d7ea46de"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_017.png",
+              "sha256": "4eddec3066c4f7795394a0c4622f548281c30204876a3dfcbe8614e411b7eb93"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_017.png",
+              "sha256": "4eddec3066c4f7795394a0c4622f548281c30204876a3dfcbe8614e411b7eb93"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_018.png",
+              "sha256": "27f3e585cf6a84e213543d1d4cba3e665fb72dd10c62233944cec678c23ed2de"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_019.png",
+              "sha256": "944c26cca4ed51e6e7feb98c067323324d856a9bca5678a783eeb3772694ad2e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_020.png",
+              "sha256": "a8371a483ab08de8d8caf6309ce05974d008c5878e175348041bd2f197e09de7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_021.png",
+              "sha256": "eccea5d2427d2381669585653d873380c478729923c8f02ee0c344af2c0d61cd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_022.png",
+              "sha256": "5773486177c2e53c761986db82636b370c962a6b65a62749734358d877bd9dc2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_023.png",
+              "sha256": "844bd3d4475b14fe4d9a9e77bda2fff5a4000d4dbda583e0270f861fa82ee4fc"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页10–12与答案解析页12–18：X10题干、选项及解析忠实，原书答案为B。",
+          "source_hash": "e6f0443d8e174a03b3adbeb13907c74df5558372abca8c903400d3d2beb9e51e"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X11": {
       "source_uid": "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X11",
@@ -183870,13 +184910,10 @@
       "chapter": "计算机系统概述 · 操作系统发展历程 · 选择题",
       "question_id": "X11",
       "source_hash": "2f313b04eee8dc90fb0b4f2a408001b4b2ccb3b3db19255de4be11d5e02c284c",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         15,
         16,
@@ -183893,7 +184930,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T15:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -183931,10 +184968,68 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X11",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T15:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_015.png",
+              "sha256": "bbcfdd4ef63bbafa440d3b14d0cd50e19e30ca234c074cc3e2257ccbe39c99c1"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_016.png",
+              "sha256": "1d7e20afb57ef1b99b3ac711809c90196a1889793ee22b36c43db351d7ea46de"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_017.png",
+              "sha256": "4eddec3066c4f7795394a0c4622f548281c30204876a3dfcbe8614e411b7eb93"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_017.png",
+              "sha256": "4eddec3066c4f7795394a0c4622f548281c30204876a3dfcbe8614e411b7eb93"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_018.png",
+              "sha256": "27f3e585cf6a84e213543d1d4cba3e665fb72dd10c62233944cec678c23ed2de"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_019.png",
+              "sha256": "944c26cca4ed51e6e7feb98c067323324d856a9bca5678a783eeb3772694ad2e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_020.png",
+              "sha256": "a8371a483ab08de8d8caf6309ce05974d008c5878e175348041bd2f197e09de7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_021.png",
+              "sha256": "eccea5d2427d2381669585653d873380c478729923c8f02ee0c344af2c0d61cd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_022.png",
+              "sha256": "5773486177c2e53c761986db82636b370c962a6b65a62749734358d877bd9dc2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_023.png",
+              "sha256": "844bd3d4475b14fe4d9a9e77bda2fff5a4000d4dbda583e0270f861fa82ee4fc"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页10–12与答案解析页12–18：X11题干、选项及解析忠实，原书答案为C。",
+          "source_hash": "2f313b04eee8dc90fb0b4f2a408001b4b2ccb3b3db19255de4be11d5e02c284c"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X12": {
       "source_uid": "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X12",
@@ -184351,13 +185446,10 @@
       "chapter": "计算机系统概述 · 操作系统发展历程 · 选择题",
       "question_id": "X18",
       "source_hash": "57be088c14eae5645c8d107c4311cb962b2210e178d850a01afa6f4f40a31f11",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         15,
         16,
@@ -184374,7 +185466,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T15:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -184412,10 +185504,68 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X18",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T15:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_015.png",
+              "sha256": "bbcfdd4ef63bbafa440d3b14d0cd50e19e30ca234c074cc3e2257ccbe39c99c1"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_016.png",
+              "sha256": "1d7e20afb57ef1b99b3ac711809c90196a1889793ee22b36c43db351d7ea46de"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_017.png",
+              "sha256": "4eddec3066c4f7795394a0c4622f548281c30204876a3dfcbe8614e411b7eb93"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_017.png",
+              "sha256": "4eddec3066c4f7795394a0c4622f548281c30204876a3dfcbe8614e411b7eb93"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_018.png",
+              "sha256": "27f3e585cf6a84e213543d1d4cba3e665fb72dd10c62233944cec678c23ed2de"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_019.png",
+              "sha256": "944c26cca4ed51e6e7feb98c067323324d856a9bca5678a783eeb3772694ad2e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_020.png",
+              "sha256": "a8371a483ab08de8d8caf6309ce05974d008c5878e175348041bd2f197e09de7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_021.png",
+              "sha256": "eccea5d2427d2381669585653d873380c478729923c8f02ee0c344af2c0d61cd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_022.png",
+              "sha256": "5773486177c2e53c761986db82636b370c962a6b65a62749734358d877bd9dc2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_023.png",
+              "sha256": "844bd3d4475b14fe4d9a9e77bda2fff5a4000d4dbda583e0270f861fa82ee4fc"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页10–12与答案解析页12–18：X18题干、选项及解析忠实，原书答案为D。",
+          "source_hash": "57be088c14eae5645c8d107c4311cb962b2210e178d850a01afa6f4f40a31f11"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X19": {
       "source_uid": "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X19",
@@ -184423,13 +185573,10 @@
       "chapter": "计算机系统概述 · 操作系统发展历程 · 选择题",
       "question_id": "X19",
       "source_hash": "3ef7a87ea46a339c13f5392e0d05706c3049a4fce4e288902f51acd810c26bb3",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         15,
         16,
@@ -184446,7 +185593,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T15:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -184484,10 +185631,68 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X19",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T15:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_015.png",
+              "sha256": "bbcfdd4ef63bbafa440d3b14d0cd50e19e30ca234c074cc3e2257ccbe39c99c1"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_016.png",
+              "sha256": "1d7e20afb57ef1b99b3ac711809c90196a1889793ee22b36c43db351d7ea46de"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_017.png",
+              "sha256": "4eddec3066c4f7795394a0c4622f548281c30204876a3dfcbe8614e411b7eb93"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_017.png",
+              "sha256": "4eddec3066c4f7795394a0c4622f548281c30204876a3dfcbe8614e411b7eb93"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_018.png",
+              "sha256": "27f3e585cf6a84e213543d1d4cba3e665fb72dd10c62233944cec678c23ed2de"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_019.png",
+              "sha256": "944c26cca4ed51e6e7feb98c067323324d856a9bca5678a783eeb3772694ad2e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_020.png",
+              "sha256": "a8371a483ab08de8d8caf6309ce05974d008c5878e175348041bd2f197e09de7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_021.png",
+              "sha256": "eccea5d2427d2381669585653d873380c478729923c8f02ee0c344af2c0d61cd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_022.png",
+              "sha256": "5773486177c2e53c761986db82636b370c962a6b65a62749734358d877bd9dc2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_023.png",
+              "sha256": "844bd3d4475b14fe4d9a9e77bda2fff5a4000d4dbda583e0270f861fa82ee4fc"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页10–12与答案解析页12–18：X19题干、选项及解析忠实，原书答案为C。",
+          "source_hash": "3ef7a87ea46a339c13f5392e0d05706c3049a4fce4e288902f51acd810c26bb3"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X20": {
       "source_uid": "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X20",
@@ -184495,13 +185700,10 @@
       "chapter": "计算机系统概述 · 操作系统发展历程 · 选择题",
       "question_id": "X20",
       "source_hash": "3ac1f5c6df8561f6b0fdf3901e8ede22ded19cd3180c6b2bbf684bba40eee42a",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         15,
         16,
@@ -184518,7 +185720,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T15:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -184556,10 +185758,68 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::计算机系统概述 · 操作系统发展历程 · 选择题::X20",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T15:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_015.png",
+              "sha256": "bbcfdd4ef63bbafa440d3b14d0cd50e19e30ca234c074cc3e2257ccbe39c99c1"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_016.png",
+              "sha256": "1d7e20afb57ef1b99b3ac711809c90196a1889793ee22b36c43db351d7ea46de"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_017.png",
+              "sha256": "4eddec3066c4f7795394a0c4622f548281c30204876a3dfcbe8614e411b7eb93"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_017.png",
+              "sha256": "4eddec3066c4f7795394a0c4622f548281c30204876a3dfcbe8614e411b7eb93"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_018.png",
+              "sha256": "27f3e585cf6a84e213543d1d4cba3e665fb72dd10c62233944cec678c23ed2de"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_019.png",
+              "sha256": "944c26cca4ed51e6e7feb98c067323324d856a9bca5678a783eeb3772694ad2e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_020.png",
+              "sha256": "a8371a483ab08de8d8caf6309ce05974d008c5878e175348041bd2f197e09de7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_021.png",
+              "sha256": "eccea5d2427d2381669585653d873380c478729923c8f02ee0c344af2c0d61cd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_022.png",
+              "sha256": "5773486177c2e53c761986db82636b370c962a6b65a62749734358d877bd9dc2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_023.png",
+              "sha256": "844bd3d4475b14fe4d9a9e77bda2fff5a4000d4dbda583e0270f861fa82ee4fc"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页10–12与答案解析页12–18：X20题干、选项及解析忠实，原书答案为D。",
+          "source_hash": "3ac1f5c6df8561f6b0fdf3901e8ede22ded19cd3180c6b2bbf684bba40eee42a"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::计算机系统概述 · 操作系统的基本概念 · 选择题::X01": {
       "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的基本概念 · 选择题::X01",
