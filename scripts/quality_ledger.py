@@ -219,6 +219,14 @@ def _new_item(
         and old_row.get("status") in {"verified", "auto_fixed"}
     )
     vision_held = bool(old_row and old_row.get("status") == "held" and same_hash)
+    # 原书逐页复核同时核对题面和答案页，属于比历史 OCR/Luna 冲突更高等级的
+    # 当前证据。不能只把 source_fidelity 改成 verified 后再沿用旧的
+    # answer_validation=conflict，否则重建会把已经亲眼复核的题重新判回 hold。
+    page_review_verified = bool(
+        old_row
+        and isinstance(old_row.get("page_review"), Mapping)
+        and same_hash
+    )
     reasons = list(old.get("reason_codes") or []) if same_hash and old else []
     if structural or vision_held:
         reasons = sorted(
@@ -229,14 +237,18 @@ def _new_item(
         overall = "hold"
     elif vision_verified:
         source_status = "verified"
-        answer_status = (
-            str(old.get("answer_validation") or "pending")
-            if same_hash and old
-            else "pending"
-        )
-        overall = (
-            str(old.get("overall") or "pending") if same_hash and old else "pending"
-        )
+        if page_review_verified:
+            answer_status = "verified"
+            overall = "certified"
+        else:
+            answer_status = (
+                str(old.get("answer_validation") or "pending")
+                if same_hash and old
+                else "pending"
+            )
+            overall = (
+                str(old.get("overall") or "pending") if same_hash and old else "pending"
+            )
     elif same_hash and old:
         source_status = str(old.get("source_fidelity") or "pending")
         answer_status = str(old.get("answer_validation") or "pending")
