@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "protocol": "codex-original-page-review-v1",
-  "updated_at": "2026-08-26T17:18:00.549396+00:00",
+  "updated_at": "2026-08-26T17:22:31.560825+00:00",
   "records": [
     {
       "source_uid": "408:cs408-coa::中央处理器 · 异常和中断机制 · 选择题::X01",
@@ -564,6 +564,321 @@
       "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
       "post_patch_verified": true,
       "source_hash": "d0e1ef5372272312c9783355ca08fb9481bc9b369ebaa47abb332d77ce33cad3"
+    },
+    {
+      "source_uid": "408:cs408-coa::计算机系统概述 · 计算机系统层次结构 · 选择题::X06",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T00:10:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_013.png",
+          "sha256": "3c7c81855e0da024ae0b80769a16d9aba2c9d29647780cf8ba3f52464ce59ae3"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_014.png",
+          "sha256": "d81756a0fcdac7c9bf0cd6a46a036e351f57de9fd034b9aa0a6e6a335d00aefe"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_014.png",
+          "sha256": "d81756a0fcdac7c9bf0cd6a46a036e351f57de9fd034b9aa0a6e6a335d00aefe"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_015.png",
+          "sha256": "d7320001e41f6feddf424e44280ab0a6b3c011255b3f7f3b9c8f6e04654ffe56"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题页13-14第06题及答案页14-15：题干、A-D选项与发布内容一致，答案页明确为06.C。",
+      "source_hash": "8160358a3c595851f4c4df90bfec4ede58c40821522ca3156d873bca4c26730a"
+    },
+    {
+      "source_uid": "408:cs408-coa::计算机系统概述 · 计算机系统层次结构 · 选择题::X07",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T00:30:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_013.png",
+          "sha256": "3c7c81855e0da024ae0b80769a16d9aba2c9d29647780cf8ba3f52464ce59ae3"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_014.png",
+          "sha256": "d81756a0fcdac7c9bf0cd6a46a036e351f57de9fd034b9aa0a6e6a335d00aefe"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_014.png",
+          "sha256": "d81756a0fcdac7c9bf0cd6a46a036e351f57de9fd034b9aa0a6e6a335d00aefe"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_015.png",
+          "sha256": "d7320001e41f6feddf424e44280ab0a6b3c011255b3f7f3b9c8f6e04654ffe56"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题页13-14及答案页14-15，题干、A-D选项与发布内容一致，答案明确为C.",
+      "source_hash": "e08687d27817ea8c51f71434a0c9892a6e4a66dcbf654f54a4b9754589840209"
+    },
+    {
+      "source_uid": "408:cs408-coa::计算机系统概述 · 计算机系统层次结构 · 选择题::X08",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T00:30:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_013.png",
+          "sha256": "3c7c81855e0da024ae0b80769a16d9aba2c9d29647780cf8ba3f52464ce59ae3"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_014.png",
+          "sha256": "d81756a0fcdac7c9bf0cd6a46a036e351f57de9fd034b9aa0a6e6a335d00aefe"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_014.png",
+          "sha256": "d81756a0fcdac7c9bf0cd6a46a036e351f57de9fd034b9aa0a6e6a335d00aefe"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_015.png",
+          "sha256": "d7320001e41f6feddf424e44280ab0a6b3c011255b3f7f3b9c8f6e04654ffe56"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题页13-14及答案页14-15，题干、A-D选项与发布内容一致，答案明确为D.",
+      "source_hash": "fe1b7e03216c6f96baedeb97a9f41425d9efd834b6404848ca49f9801856e6a3"
+    },
+    {
+      "source_uid": "408:cs408-coa::计算机系统概述 · 计算机系统层次结构 · 选择题::X09",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T00:30:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_013.png",
+          "sha256": "3c7c81855e0da024ae0b80769a16d9aba2c9d29647780cf8ba3f52464ce59ae3"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_014.png",
+          "sha256": "d81756a0fcdac7c9bf0cd6a46a036e351f57de9fd034b9aa0a6e6a335d00aefe"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_014.png",
+          "sha256": "d81756a0fcdac7c9bf0cd6a46a036e351f57de9fd034b9aa0a6e6a335d00aefe"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_015.png",
+          "sha256": "d7320001e41f6feddf424e44280ab0a6b3c011255b3f7f3b9c8f6e04654ffe56"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题页13-14及答案页14-15，题干、A-D选项与发布内容一致，答案明确为D.",
+      "source_hash": "c00121f52a100940a402f1cc6ca422d95461e879e53f5090bf65d3f1feecd42c"
+    },
+    {
+      "source_uid": "408:cs408-coa::计算机系统概述 · 计算机系统层次结构 · 选择题::X10",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T00:30:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_013.png",
+          "sha256": "3c7c81855e0da024ae0b80769a16d9aba2c9d29647780cf8ba3f52464ce59ae3"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_014.png",
+          "sha256": "d81756a0fcdac7c9bf0cd6a46a036e351f57de9fd034b9aa0a6e6a335d00aefe"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_014.png",
+          "sha256": "d81756a0fcdac7c9bf0cd6a46a036e351f57de9fd034b9aa0a6e6a335d00aefe"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_015.png",
+          "sha256": "d7320001e41f6feddf424e44280ab0a6b3c011255b3f7f3b9c8f6e04654ffe56"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题页13-14及答案页14-15，题干、A-D选项与发布内容一致，答案明确为B.",
+      "source_hash": "12047a5000bfa1195235cc4f0d4d53c918c70a07796edebf93f10f07714607f5"
+    },
+    {
+      "source_uid": "408:cs408-coa::计算机系统概述 · 计算机系统层次结构 · 选择题::X11",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T00:30:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_013.png",
+          "sha256": "3c7c81855e0da024ae0b80769a16d9aba2c9d29647780cf8ba3f52464ce59ae3"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_014.png",
+          "sha256": "d81756a0fcdac7c9bf0cd6a46a036e351f57de9fd034b9aa0a6e6a335d00aefe"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_014.png",
+          "sha256": "d81756a0fcdac7c9bf0cd6a46a036e351f57de9fd034b9aa0a6e6a335d00aefe"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_015.png",
+          "sha256": "d7320001e41f6feddf424e44280ab0a6b3c011255b3f7f3b9c8f6e04654ffe56"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题页13-14及答案页14-15，题干、A-D选项与发布内容一致，答案明确为A.",
+      "source_hash": "28828da48af078c82016222d8064968fb20b954fc2ac123971f8b6d49f1c9643"
+    },
+    {
+      "source_uid": "408:cs408-coa::计算机系统概述 · 计算机系统层次结构 · 选择题::X12",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T00:20:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_013.png",
+          "sha256": "3c7c81855e0da024ae0b80769a16d9aba2c9d29647780cf8ba3f52464ce59ae3"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_014.png",
+          "sha256": "d81756a0fcdac7c9bf0cd6a46a036e351f57de9fd034b9aa0a6e6a335d00aefe"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_014.png",
+          "sha256": "d81756a0fcdac7c9bf0cd6a46a036e351f57de9fd034b9aa0a6e6a335d00aefe"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_015.png",
+          "sha256": "d7320001e41f6feddf424e44280ab0a6b3c011255b3f7f3b9c8f6e04654ffe56"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题页13-14及答案页14-15，题干、A-D选项与发布内容一致，答案分别明确为C.",
+      "source_hash": "8fbdf922dbe1a32c355c104fcf25e0a74b59daf57b1fc4fd60dec5bc79cc7500"
+    },
+    {
+      "source_uid": "408:cs408-coa::计算机系统概述 · 计算机系统层次结构 · 选择题::X13",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T00:20:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_013.png",
+          "sha256": "3c7c81855e0da024ae0b80769a16d9aba2c9d29647780cf8ba3f52464ce59ae3"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_014.png",
+          "sha256": "d81756a0fcdac7c9bf0cd6a46a036e351f57de9fd034b9aa0a6e6a335d00aefe"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_014.png",
+          "sha256": "d81756a0fcdac7c9bf0cd6a46a036e351f57de9fd034b9aa0a6e6a335d00aefe"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_015.png",
+          "sha256": "d7320001e41f6feddf424e44280ab0a6b3c011255b3f7f3b9c8f6e04654ffe56"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题页13-14及答案页14-15，题干、A-D选项与发布内容一致，答案分别明确为C.",
+      "source_hash": "8dd7edae1640cb391a68cdaeb1d47d76033019bafadd0dc3fa3d6cc08c30f4c7"
+    },
+    {
+      "source_uid": "408:cs408-coa::计算机系统概述 · 计算机系统层次结构 · 选择题::X14",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T00:20:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_013.png",
+          "sha256": "3c7c81855e0da024ae0b80769a16d9aba2c9d29647780cf8ba3f52464ce59ae3"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_014.png",
+          "sha256": "d81756a0fcdac7c9bf0cd6a46a036e351f57de9fd034b9aa0a6e6a335d00aefe"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_014.png",
+          "sha256": "d81756a0fcdac7c9bf0cd6a46a036e351f57de9fd034b9aa0a6e6a335d00aefe"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_015.png",
+          "sha256": "d7320001e41f6feddf424e44280ab0a6b3c011255b3f7f3b9c8f6e04654ffe56"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题页13-14及答案页14-15，题干、A-D选项与发布内容一致，答案分别明确为A.",
+      "source_hash": "d332288b7fcef0c6621c8f40a1834a7a354ab1f054508bc911154b217400b4d3"
     },
     {
       "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X13",
@@ -1813,26 +2128,48 @@
       "reviewed_at": "2026-08-27T00:00:00+00:00",
       "q_pages_viewed": [
         {
-          "path": "apps/bank-408/assets/pdf_images/net/page_254.png",
-          "sha256": "940e2590d9163174e74fc30e83086616b1b949181a0507ba5e89ad9fee68e71e"
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_251.png",
+          "sha256": "58760bc03db358eb21c8a26b430a86577670963fa1f65ff738e27bddf448b5a1",
+          "page": 251
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_252.png",
+          "sha256": "7264434b1c057d7f5cac6e1368cb52c34d73eb37c8ae6d28824d12dc12afd289",
+          "page": 252
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_253.png",
+          "sha256": "005abd6eb02a0a0444d39a7e265163af56b5eff7f5222041d72525f8f2718790",
+          "page": 253
         }
       ],
       "a_pages_viewed": [
         {
-          "path": "apps/bank-408/assets/pdf_images/net/page_264.png",
-          "sha256": "1e4254415d3c6429454f9fcd769852171df16291bebbd6d415e1a747fefe0fab"
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_261.png",
+          "sha256": "7f7fd639b75d687e2e0287cacbd9fe4e925946754156262cc48a32e1b8056838",
+          "page": 261
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_262.png",
+          "sha256": "20cac070f923edbb6a7ebabce0f1c3c30b1c4657737fb802068f4e2b6ec975ee",
+          "page": 262
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_263.png",
+          "sha256": "bb83c5e9ce7ea8062736f0c041495507ddcc7d32825606bf6b7994b9120d874f",
+          "page": 263
         }
       ],
       "final_action": "patch",
-      "content_match": true,
-      "options_match": false,
-      "answer_match": true,
-      "explanation_match": true,
-      "image_match": true,
+      "content_match": null,
+      "options_match": null,
+      "answer_match": null,
+      "explanation_match": null,
+      "image_match": null,
       "detected_errors": [
-        "option_C_ocr_duplicate_of_D"
+        "persisted_page_review_patch"
       ],
-      "rationale": "亲眼核对原书题页254第35题与答案页264：原书选项C为2^k、D为2k，答案明确为35.D；已将发布数据重复的C修正为2^k。",
+      "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
       "post_patch_verified": true,
       "source_hash": "9f57d0e690698de8a3a8c86ab50e7177059d09fe5f6af45a081576731426285a"
     },
