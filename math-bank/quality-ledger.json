@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-26T19:11:17+00:00",
+  "generated_at": "2026-08-26T19:15:29+00:00",
   "published_hashes": {
     "ds": "a40686840e5043561d7f7159fbd779725ffa65c56bfdd79a2683965b6aed0771",
     "coa": "8f9ea82d6d82e53ea38daf200ae95a361b5c43742f0ce9881b207f671f7f06f7",
@@ -20,9 +20,9 @@
       "name": "计算机组成原理",
       "mode": "strict",
       "total": 674,
-      "certified": 253,
+      "certified": 269,
       "pending": 0,
-      "held": 421
+      "held": 405
     },
     "net": {
       "name": "计算机网络",
@@ -43,9 +43,9 @@
   },
   "summary": {
     "total": 2869,
-    "certified": 602,
+    "certified": 618,
     "pending": 0,
-    "held": 2267
+    "held": 2251
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -20155,14 +20155,10 @@
       "chapter": "存储系统 · 高速缓冲存储器 · 选择题",
       "question_id": "X01",
       "source_hash": "8ce288eceffacf8f5c15f8581dd1f3b9f220c270e1badef46197cfd15d3c3125",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         122,
         123,
@@ -20188,7 +20184,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T10:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -20226,10 +20222,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X01",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T10:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_122.png",
+              "sha256": "36957e1727dd13ba18638b6fbefe9344c3c19aef8813aa7750a87eb12404a06b"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_127.png",
+              "sha256": "65caef65cab70e2721eb4d1de916e5ada19adc837cace1153545398ae9624ce9"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页122与答案页127：X01 高速缓存存储系统容量题干、选项及解析忠实，答案为B。",
+          "source_hash": "8ce288eceffacf8f5c15f8581dd1f3b9f220c270e1badef46197cfd15d3c3125"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X02": {
       "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X02",
@@ -20237,14 +20259,10 @@
       "chapter": "存储系统 · 高速缓冲存储器 · 选择题",
       "question_id": "X02",
       "source_hash": "b37460dc3ac8bacd0f673586e9ab28ee5099148251e5731aa17dd627449ccae4",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         122,
         123,
@@ -20270,7 +20288,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T10:01:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -20308,10 +20326,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X02",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T10:01:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_122.png",
+              "sha256": "36957e1727dd13ba18638b6fbefe9344c3c19aef8813aa7750a87eb12404a06b"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_128.png",
+              "sha256": "8bb92ee75993a4582407c9c78a53b4c2210c2370d466580294e8a5c3e0309c94"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页122与答案页128：X02 Cache缺失传输单位题干、选项及解析忠实，答案为C。",
+          "source_hash": "b37460dc3ac8bacd0f673586e9ab28ee5099148251e5731aa17dd627449ccae4"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X03": {
       "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X03",
@@ -20319,14 +20363,10 @@
       "chapter": "存储系统 · 高速缓冲存储器 · 选择题",
       "question_id": "X03",
       "source_hash": "901b111315acf9842e01d363523990fd4bceafad840be762cad3b14a3262621b",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         122,
         123,
@@ -20352,7 +20392,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T10:02:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -20390,10 +20430,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X03",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T10:02:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_122.png",
+              "sha256": "36957e1727dd13ba18638b6fbefe9344c3c19aef8813aa7750a87eb12404a06b"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_128.png",
+              "sha256": "8bb92ee75993a4582407c9c78a53b4c2210c2370d466580294e8a5c3e0309c94"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页122与答案页128：X03 Cache命中率计算题干、选项及解析忠实，答案为C。",
+          "source_hash": "901b111315acf9842e01d363523990fd4bceafad840be762cad3b14a3262621b"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X04": {
       "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X04",
@@ -20401,14 +20467,10 @@
       "chapter": "存储系统 · 高速缓冲存储器 · 选择题",
       "question_id": "X04",
       "source_hash": "abc3c54c8486790d396f2a465096a7ad2e35bcd42a0b9cacfc47976bc99a854a",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         122,
         123,
@@ -20434,7 +20496,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T10:03:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -20472,10 +20534,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X04",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T10:03:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_122.png",
+              "sha256": "36957e1727dd13ba18638b6fbefe9344c3c19aef8813aa7750a87eb12404a06b"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_128.png",
+              "sha256": "8bb92ee75993a4582407c9c78a53b4c2210c2370d466580294e8a5c3e0309c94"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页122与答案页128：X04 Cache更新策略题干、选项及解析忠实，答案为D。",
+          "source_hash": "abc3c54c8486790d396f2a465096a7ad2e35bcd42a0b9cacfc47976bc99a854a"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X05": {
       "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X05",
@@ -20483,14 +20571,10 @@
       "chapter": "存储系统 · 高速缓冲存储器 · 选择题",
       "question_id": "X05",
       "source_hash": "38ba02887c17d17781c00d41a69b3cea662eb6eb8b0c8490e810a54673e7a366",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         122,
         123,
@@ -20516,7 +20600,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T10:04:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -20554,10 +20638,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X05",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T10:04:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_122.png",
+              "sha256": "36957e1727dd13ba18638b6fbefe9344c3c19aef8813aa7750a87eb12404a06b"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_128.png",
+              "sha256": "8bb92ee75993a4582407c9c78a53b4c2210c2370d466580294e8a5c3e0309c94"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页122与答案页128：X05 Cache写策略选择题干、选项及解析忠实，答案为A。",
+          "source_hash": "38ba02887c17d17781c00d41a69b3cea662eb6eb8b0c8490e810a54673e7a366"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X06": {
       "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X06",
@@ -20565,14 +20675,10 @@
       "chapter": "存储系统 · 高速缓冲存储器 · 选择题",
       "question_id": "X06",
       "source_hash": "f66cc026cb2d1b83d4db20b99b63f3405a3a7cdb43e980203fb6556623b6402d",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         122,
         123,
@@ -20598,7 +20704,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T10:05:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -20636,10 +20742,40 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;raw_content_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;raw_content_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X06",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T10:05:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_122.png",
+              "sha256": "36957e1727dd13ba18638b6fbefe9344c3c19aef8813aa7750a87eb12404a06b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_123.png",
+              "sha256": "68604db35f7472731dfd4660143b5153758f3860f2a9beea058ab4d326b276cb"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_128.png",
+              "sha256": "8bb92ee75993a4582407c9c78a53b4c2210c2370d466580294e8a5c3e0309c94"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页122-123与答案页128：X06 时间/空间局部性题干、选项及解析忠实，答案为C。",
+          "source_hash": "f66cc026cb2d1b83d4db20b99b63f3405a3a7cdb43e980203fb6556623b6402d"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X07": {
       "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X07",
@@ -20647,14 +20783,10 @@
       "chapter": "存储系统 · 高速缓冲存储器 · 选择题",
       "question_id": "X07",
       "source_hash": "d8eaad0d42a6376dddd311a12a6a2e0a5985a213e0e18f6e608c2c178814db95",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         122,
         123,
@@ -20680,7 +20812,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T10:06:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -20718,10 +20850,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X07",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T10:06:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_123.png",
+              "sha256": "68604db35f7472731dfd4660143b5153758f3860f2a9beea058ab4d326b276cb"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_128.png",
+              "sha256": "8bb92ee75993a4582407c9c78a53b4c2210c2370d466580294e8a5c3e0309c94"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页123与答案页128：X07 数组访问空间局部性代码题干、选项及解析忠实，答案为B。",
+          "source_hash": "d8eaad0d42a6376dddd311a12a6a2e0a5985a213e0e18f6e608c2c178814db95"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X08": {
       "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X08",
@@ -20729,14 +20887,10 @@
       "chapter": "存储系统 · 高速缓冲存储器 · 选择题",
       "question_id": "X08",
       "source_hash": "3cab5d472d76dce21e354a3b76225976ce82966e217b830136b2d06893c208fc",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         122,
         123,
@@ -20762,7 +20916,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T10:07:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -20800,10 +20954,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X08",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T10:07:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_123.png",
+              "sha256": "68604db35f7472731dfd4660143b5153758f3860f2a9beea058ab4d326b276cb"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_128.png",
+              "sha256": "8bb92ee75993a4582407c9c78a53b4c2210c2370d466580294e8a5c3e0309c94"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页123与答案页128：X08 高速缓存描述题干、选项及解析忠实，答案为A。",
+          "source_hash": "3cab5d472d76dce21e354a3b76225976ce82966e217b830136b2d06893c208fc"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X09": {
       "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X09",
@@ -20811,14 +20991,10 @@
       "chapter": "存储系统 · 高速缓冲存储器 · 选择题",
       "question_id": "X09",
       "source_hash": "83bd73db092596aae9c2ac5060a5675fa9f890d761ded12496adff2f4c2e6735",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         122,
         123,
@@ -20844,7 +21020,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T10:08:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -20882,10 +21058,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X09",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T10:08:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_123.png",
+              "sha256": "68604db35f7472731dfd4660143b5153758f3860f2a9beea058ab4d326b276cb"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_128.png",
+              "sha256": "8bb92ee75993a4582407c9c78a53b4c2210c2370d466580294e8a5c3e0309c94"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页123与答案页128：X09 Cache特性判断题干、选项及解析忠实，答案为D。",
+          "source_hash": "83bd73db092596aae9c2ac5060a5675fa9f890d761ded12496adff2f4c2e6735"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X10": {
       "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X10",
@@ -20893,14 +21095,10 @@
       "chapter": "存储系统 · 高速缓冲存储器 · 选择题",
       "question_id": "X10",
       "source_hash": "48123dd97aa90d00eebd0a3a31f900b1df4990d766d56ab6725db5e3f1eabbb9",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         122,
         123,
@@ -20926,7 +21124,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T10:09:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -20964,10 +21162,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X10",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T10:09:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_123.png",
+              "sha256": "68604db35f7472731dfd4660143b5153758f3860f2a9beea058ab4d326b276cb"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_128.png",
+              "sha256": "8bb92ee75993a4582407c9c78a53b4c2210c2370d466580294e8a5c3e0309c94"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页123与答案页128：X10 二路组相联LRU缺失率题干、选项及解析忠实，答案为C。",
+          "source_hash": "48123dd97aa90d00eebd0a3a31f900b1df4990d766d56ab6725db5e3f1eabbb9"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X11": {
       "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X11",
@@ -20975,14 +21199,10 @@
       "chapter": "存储系统 · 高速缓冲存储器 · 选择题",
       "question_id": "X11",
       "source_hash": "8969ad818e228f870ae1d87eaf4550f19f8c7f7a2c0923b520db278031efe1bf",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         122,
         123,
@@ -21008,7 +21228,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T10:10:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -21046,10 +21266,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X11",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T10:10:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_123.png",
+              "sha256": "68604db35f7472731dfd4660143b5153758f3860f2a9beea058ab4d326b276cb"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_128.png",
+              "sha256": "8bb92ee75993a4582407c9c78a53b4c2210c2370d466580294e8a5c3e0309c94"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页123与答案页128：X11 多级Cache整体命中率题干、选项及解析忠实，答案为C。",
+          "source_hash": "8969ad818e228f870ae1d87eaf4550f19f8c7f7a2c0923b520db278031efe1bf"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X12": {
       "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X12",
@@ -21057,15 +21303,10 @@
       "chapter": "存储系统 · 高速缓冲存储器 · 选择题",
       "question_id": "X12",
       "source_hash": "8d3e0dee5544afb3d549c75db0d4574bb47cc493799c3eeaeee9040b24d6296f",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         122,
         123,
@@ -21091,7 +21332,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T10:11:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -21129,10 +21370,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X12",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T10:11:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_123.png",
+              "sha256": "68604db35f7472731dfd4660143b5153758f3860f2a9beea058ab4d326b276cb"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_129.png",
+              "sha256": "8b48a93b57e1751ea9c945c38ad9897a26d445695bc0f24d1ce2f3801759e68b"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页123与答案页129：X12 Cache映射方式判断题干、选项及解析忠实，答案为A。",
+          "source_hash": "8d3e0dee5544afb3d549c75db0d4574bb47cc493799c3eeaeee9040b24d6296f"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X13": {
       "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X13",
@@ -21140,14 +21407,10 @@
       "chapter": "存储系统 · 高速缓冲存储器 · 选择题",
       "question_id": "X13",
       "source_hash": "a7a85ad0876ff3bef0bc6cdcac154df1335026e900913f3e62463109bf9e7572",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         122,
         123,
@@ -21173,7 +21436,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T10:12:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -21211,10 +21474,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X13",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T10:12:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_123.png",
+              "sha256": "68604db35f7472731dfd4660143b5153758f3860f2a9beea058ab4d326b276cb"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_129.png",
+              "sha256": "8b48a93b57e1751ea9c945c38ad9897a26d445695bc0f24d1ce2f3801759e68b"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页123与答案页129：X13 LRU局部性判断题干、选项及解析忠实，答案为C。",
+          "source_hash": "a7a85ad0876ff3bef0bc6cdcac154df1335026e900913f3e62463109bf9e7572"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X14": {
       "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X14",
@@ -21222,15 +21511,10 @@
       "chapter": "存储系统 · 高速缓冲存储器 · 选择题",
       "question_id": "X14",
       "source_hash": "8a9223161c646cf92a7c2de0cba72f07c6c8480d8b83199df677a38212a6eab3",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         122,
         123,
@@ -21256,7 +21540,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T10:13:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -21294,10 +21578,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X14",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T10:13:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_124.png",
+              "sha256": "3afee7644ca86b9bbd7900e93d5c4a4a8e2bc0e155a255fb740e0430bb3f6d53"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_129.png",
+              "sha256": "8b48a93b57e1751ea9c945c38ad9897a26d445695bc0f24d1ce2f3801759e68b"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页124与答案页129：X14 Cache标记位总数题干、选项及解析忠实，答案为D。",
+          "source_hash": "8a9223161c646cf92a7c2de0cba72f07c6c8480d8b83199df677a38212a6eab3"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X15": {
       "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X15",
@@ -21386,13 +21696,10 @@
       "chapter": "存储系统 · 高速缓冲存储器 · 选择题",
       "question_id": "X16",
       "source_hash": "01261b2fb1cdf43a51d080b0094edf6479ad2f74369037f93bbe968043fb90dc",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         122,
         123,
@@ -21418,7 +21725,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T10:14:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -21441,10 +21748,36 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X16",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T10:14:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_124.png",
+              "sha256": "3afee7644ca86b9bbd7900e93d5c4a4a8e2bc0e155a255fb740e0430bb3f6d53"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_129.png",
+              "sha256": "8b48a93b57e1751ea9c945c38ad9897a26d445695bc0f24d1ce2f3801759e68b"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页124与答案页129：X16 直接映射Cache行号题干、选项及解析忠实，答案为A。",
+          "source_hash": "01261b2fb1cdf43a51d080b0094edf6479ad2f74369037f93bbe968043fb90dc"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X17": {
       "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X17",
@@ -21534,14 +21867,10 @@
       "chapter": "存储系统 · 高速缓冲存储器 · 选择题",
       "question_id": "X18",
       "source_hash": "fbcc2863bd212f80ba34c26b964c9ed1f63c4b5d9d7eaec98a2fc683faf4a975",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         122,
         123,
@@ -21567,7 +21896,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T10:16:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -21605,10 +21934,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X18",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T10:16:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_124.png",
+              "sha256": "3afee7644ca86b9bbd7900e93d5c4a4a8e2bc0e155a255fb740e0430bb3f6d53"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_129.png",
+              "sha256": "8b48a93b57e1751ea9c945c38ad9897a26d445695bc0f24d1ce2f3801759e68b"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页124与答案页129：X18 页式虚拟存储地址位数题干、选项及解析忠实，答案为C。",
+          "source_hash": "fbcc2863bd212f80ba34c26b964c9ed1f63c4b5d9d7eaec98a2fc683faf4a975"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X19": {
       "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X19",
