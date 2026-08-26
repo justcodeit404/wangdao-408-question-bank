@@ -174,7 +174,12 @@ def sync(
     previous: dict[str, Any] = {}
     if output_path.is_file():
         previous = json.loads(output_path.read_text(encoding="utf-8"))
-    rows = load_jsonl([input_path])
+    # 支持按批次持久化审核记录：主文件保留历史记录，reviews_*.jsonl
+    # 由断点审核批次追加；按路径排序后再合并，保证可复现且不依赖写入顺序。
+    input_paths = [input_path]
+    if input_path.parent.is_dir():
+        input_paths.extend(sorted(path for path in input_path.parent.glob("reviews_*.jsonl") if path != input_path))
+    rows = load_jsonl(input_paths)
     rows.extend(normalize_row(row) for row in _manifest_rows(queue_path, patches_path))
     packet = build_evidence(rows, previous)
     output_path.parent.mkdir(parents=True, exist_ok=True)

@@ -142,9 +142,22 @@ def _old_verified_records() -> dict[str, Mapping[str, Any]]:
     # 记录纳入迁移索引，重建 ledger 时仍按题目 source_hash 严格匹配；
     # 这样重新运行 quality_ledger 不会把人工认证回退成历史 OCR 冲突。
     page_review = _load_json(PAGE_REVIEW_EVIDENCE_PATH, {})
+    # 证据文件允许断点续跑产生同一 UID 的多条记录；必须按审核时间选最新
+    # 记录，不能因迁移占位行排在末尾而覆盖当前哈希。migrated 行永远最低。
+    def _review_rank(row: Mapping[str, Any]) -> str:
+        value = str(row.get("reviewed_at") or "")
+        return "" if value.startswith("migrated:") else value
+
+    page_review_latest: dict[str, Mapping[str, Any]] = {}
     for row in (page_review.get("records") or []) if isinstance(page_review, Mapping) else []:
         if not isinstance(row, Mapping) or not row.get("source_uid"):
             continue
+        uid = str(row["source_uid"])
+        previous = page_review_latest.get(uid)
+        if previous is not None and _review_rank(row) < _review_rank(previous):
+            continue
+        page_review_latest[uid] = row
+    for row in page_review_latest.values():
         action = str(row.get("final_action") or "").lower()
         if action not in {"certify", "patch"}:
             continue

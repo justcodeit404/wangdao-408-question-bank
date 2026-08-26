@@ -48,6 +48,11 @@ def apply(evidence_path: Path = DEFAULT_EVIDENCE, ledger_path: Path = LEDGER_PAT
         item = items.get(uid)
         if not isinstance(item, dict):
             raise ValueError(f"page review evidence UID not in ledger: {uid}")
+        # 视觉记录不能绕过当前发布数据的结构门禁。选项缺失、非法
+        # choice 等 structural_* 题必须先有可复现补丁并重建消除结构错误，
+        # 否则严格 ledger 会把它保留为 hold，造成应用计数与正式账本漂移。
+        if any(str(code).startswith("structural_") for code in (item.get("reason_codes") or [])):
+            continue
         action = str(record.get("final_action") or "").lower()
         if action not in {"certify", "patch"}:
             continue
