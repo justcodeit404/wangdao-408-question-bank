@@ -26,7 +26,9 @@ def test_pure_prose_candidates_are_exhausted_after_sync():
                 )
                 if source_question and candidate(source_question, question):
                     remaining.append(question.get("id"))
-        assert not remaining, f"published prose drift remains: {published_path.name} {remaining[:5]}"
+        assert not remaining, (
+            f"published prose drift remains: {published_path.name} {remaining[:5]}"
+        )
 
 
 def test_x28_has_no_ocr_line_break_in_published_ds():
@@ -40,6 +42,53 @@ def test_x28_has_no_ocr_line_break_in_published_ds():
     )
     assert "结\n构" not in question["content"]
     assert "需要\n的" not in question["content"]
+
+
+def test_x01_traversal_stem_has_no_threaded_tree_bleed():
+    data = _load(COURSES["ds"][1])
+    question = next(
+        q
+        for chapter in data["chapters"]
+        if "二叉树的遍历和线索二叉树" in str(chapter.get("name"))
+        and "选择题" in str(chapter.get("name"))
+        for q in chapter["questions"]
+        if q.get("id") == "X01"
+    )
+    assert question["content"] == "在下列关于二叉树遍历的说法中，正确的是（）。"
+    assert "函数1" not in question["content"]
+    assert "ltag" not in question["content"]
+
+
+def test_x07_ipv4_stem_has_no_icmp_footnote_bleed():
+    data = _load(COURSES["net"][1])
+    question = next(
+        q
+        for chapter in data["chapters"]
+        if "IPv4" in str(chapter.get("name")) and "选择题" in str(chapter.get("name"))
+        for q in chapter["questions"]
+        if q.get("id") == "X07"
+    )
+    assert question["content"] == "在IP首部的字段中，与分片和重组无关的字段是（）。"
+    assert "ICMP" not in question["content"]
+    assert "RFC" not in question["content"]
+
+
+def test_x05_sequential_storage_stem_keeps_array_table():
+    data = _load(COURSES["ds"][1])
+    question = next(
+        q
+        for chapter in data["chapters"]
+        if "二叉树的遍历和线索二叉树" in str(chapter.get("name"))
+        and "选择题" in str(chapter.get("name"))
+        for q in chapter["questions"]
+        if q.get("id") == "X05"
+        and "gdbhefca" in json.dumps(q.get("options") or {}, ensure_ascii=False)
+    )
+    content = question["content"]
+    assert "| 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |" in content
+    assert "|  | a | b | c | d | ∧ | e | ∧ | f | g | h | i | ∧ |" in content
+    assert "D b C d e f g h" not in content
+    assert "2i+1和2i+2" not in str((question.get("answer") or {}).get("explanation"))
 
 
 def test_quality_ledger_hashes_match_all_published_json():

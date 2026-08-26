@@ -10503,6 +10503,67 @@
           "explanation": "每个柱面上有8个磁道（表示有8个磁头），每个磁道有8个扇区，因此每个柱面有8×8=64个扇区。由题意可知，柱面号、盘面号、扇区号和逻辑记录编号都是从0开始的，因此78号柱面的6号磁道的6号扇区存放的是文件的第78×64+6×8+6=5046个逻辑记录。"
         }
       }
+    },
+    {
+      "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题::X01",
+      "course_key": "ds",
+      "chapter": "树与二叉树",
+      "question_id": "X01",
+      "source_hash": "3630b276bb6716a6c8330982f6111b5a0263d7a2e111bb9e03f999c31f36d706",
+      "status": "auto_fixed",
+      "models": [
+        "human-ocr-fix"
+      ],
+      "fields": {
+        "content": "在下列关于二叉树遍历的说法中，正确的是（）。"
+      },
+      "patch": {
+        "content": "在下列关于二叉树遍历的说法中，正确的是（）。"
+      }
+    },
+    {
+      "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X07",
+      "course_key": "net",
+      "chapter": "网络层",
+      "question_id": "X07",
+      "source_hash": "94e62c45ebcd3c2864505507fbbc7194ec20557bfb1d2375dd5a6685a06aedf3",
+      "status": "auto_fixed",
+      "models": [
+        "human-ocr-fix"
+      ],
+      "fields": {
+        "content": "在IP首部的字段中，与分片和重组无关的字段是（）。"
+      },
+      "patch": {
+        "content": "在IP首部的字段中，与分片和重组无关的字段是（）。"
+      }
+    },
+    {
+      "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题::X05",
+      "course_key": "ds",
+      "chapter": "树与二叉树",
+      "question_id": "X05",
+      "source_hash": "67258883a901f238a83c06f187ca36bc663d77ade5bf98419eac54225377f2d3",
+      "status": "human_fixed",
+      "patch": {
+        "content": "某非空二叉树采用顺序存储结构，树中的结点信息按完全二叉树的层次序列依次存放在如下所示的一维数组中（∧ 表示空结点，下标 0 未使用），则该二叉树的后序遍历序列为（）。\n\n| 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|\n|  | a | b | c | d | ∧ | e | ∧ | f | g | h | i | ∧ |",
+        "answer": {
+          "explanation": "顺序存储下标从 1 开始（0 号不用）。结点 i 的左孩子下标为 2i，右孩子下标为 2i+1；∧ 表示空结点。据此还原二叉树后，后序遍历序列为 gdbhefca。"
+        }
+      },
+      "reason": "human_ocr_fix_book_p152_table"
+    },
+    {
+      "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题::X05",
+      "course_key": "ds",
+      "chapter": "树与二叉树",
+      "question_id": "X05",
+      "source_hash": "08f51119534695e2e7bce48adf3accad8b92464f47d80991ff2a8c69eb65639b",
+      "status": "human_fixed",
+      "patch": {
+        "content": "某非空二叉树采用顺序存储结构，树中的结点信息按完全二叉树的层次序列依次存放在如下所示的一维数组中（∧ 表示空结点，下标 0 未使用），则该二叉树的后序遍历序列为（）。\n\n| 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|\n|  | a | b | c | d | ∧ | e | ∧ | f | g | h | i | ∧ |"
+      },
+      "reason": "human_ocr_fix_book_p152_table_markdown"
     }
   ]
 }

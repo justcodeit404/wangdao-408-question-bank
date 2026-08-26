@@ -133,7 +133,7 @@ CURATED_TEXT_PATCHES = {
             "②每层的结点数尽可能少。\n"
             "情况类似右图所示的树，结点数为h+3。\n"
             "要使得度为4、高度为h的树的总结点数最多，应使每个非叶结点的度均为4，即满树，"
-            "总结点数最多为1+4+4²+…+4^{h-1}。\n"
+            "总结点数最多为$1+4+4^2+\\cdots+4^{h-1}$。\n"
             "对于上面的两题，应画出草图来求解，就能一目了然。"
         ),
     },
@@ -247,6 +247,56 @@ CURATED_TEXT_PATCHES = {
         "explanation": (
             "对于高度为h的满二叉树，结点总数 "
             "$n=2^0+2^1+\\cdots+2^{h-1}=2^h-1$，叶结点数 $m=2^{h-1}$。"
+        ),
+    },
+    # 三叉树最小高度：OCR 将 3^{i-1}、求和式和 ceil/log 下标压扁。
+    ("ds", 139, "X22"): {
+        "explanation": (
+            "满足条件的三叉树可以是完全三叉树，第i（i≥1）层最多有 "
+            "3^{i-1} 个结点。高度为h时，前h层最多有 "
+            "1+3+\\cdots+3^{h-1}=\\dfrac{3^h-1}{2} 个结点；由 "
+            "50≤(3^h-1)/2 得 h≥\\lceil\\log_3 101\\rceil=5。"
+        ),
+    },
+    # 二叉树最大深度：OCR 将 2^6-1 的公式和数字混写。
+    ("ds", 139, "X15"): {
+        "explanation": (
+            "要使只有度为0和2的二叉树含有126个结点且深度最大，前6层组成满二叉树，"
+            "共有$2^6-1=63$个结点，剩余63个结点位于第7层，因此最大深度为7。"
+        ),
+    },
+    # 计组定长编码：8 位可表示 2^8=256 种不同编码。
+    ("coa", 32, "X07"): {
+        "explanation": (
+            "8 位二进制编码共有 $2^8=256$ 种不同表示。若全 0 编码表示无效，"
+            "则可表示的有效编码数量相应减一；本题按题干约定选择对应选项。"
+        ),
+    },
+    # CSMA/CD 退避窗口：第 i 次冲突的随机退避范围为 0～$2^i-1$。
+    ("net", 106, "X18"): {
+        "explanation": (
+            "二进制指数退避算法在第i次冲突后，从0到$2^i-1$中随机选择退避时隙；"
+            "达到规定的最大重传次数后再放弃发送。"
+        ),
+    },
+    # QAM 信号状态数：4 MHz、48 Mb/s 对应 log₂V=6，即 $V=2^6=64$。
+    ("net", 43, "X27"): {
+        "explanation": (
+            "由奈奎斯特和香农公式可知，题设条件对应每个码元携带6 bit，"
+            "因此 $V=2^6=64$，采用 QAM-64 调制。"
+        ),
+    },
+    # 性能指标计算：统一恢复 OCR 丢失的乘号、幂次和除号。
+    ("coa", 18, "X09"): {
+        "explanation": (
+            "CPU 频率为500 MHz。程序P的指令数为 $500\\times10^6$，平均 CPI 为2.5，"
+            "故执行时间为 $500\\times10^6\\div(2.5\\times10^6)=200$ ms。"
+        ),
+    },
+    ("coa", 20, "X20"): {
+        "explanation": (
+            "程序P的指令数为 $5\\times10^5$，平均 CPI 为1.2，故所需时钟周期数为 "
+            "$5\\times10^5\\times1.2=6\\times10^5$。"
         ),
     },
 }
@@ -1534,11 +1584,11 @@ def fix_file(path, pdf_images_dir=None, course_key=None):
             )
             if text_patch:
                 changed = False
-                if q.get("content") != text_patch["content"]:
+                if "content" in text_patch and q.get("content") != text_patch["content"]:
                     q["content"] = text_patch["content"]
                     changed = True
                 current_answer = q.get("answer") or {}
-                if current_answer.get("explanation") != text_patch["explanation"]:
+                if "explanation" in text_patch and current_answer.get("explanation") != text_patch["explanation"]:
                     current_answer["explanation"] = text_patch["explanation"]
                     q["answer"] = current_answer
                     ans = current_answer
