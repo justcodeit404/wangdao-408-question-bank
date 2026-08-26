@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-26T18:16:36+00:00",
+  "generated_at": "2026-08-26T18:19:25+00:00",
   "published_hashes": {
     "ds": "a40686840e5043561d7f7159fbd779725ffa65c56bfdd79a2683965b6aed0771",
     "coa": "8f9ea82d6d82e53ea38daf200ae95a361b5c43742f0ce9881b207f671f7f06f7",
@@ -36,16 +36,16 @@
       "name": "操作系统",
       "mode": "strict",
       "total": 759,
-      "certified": 143,
+      "certified": 154,
       "pending": 0,
-      "held": 616
+      "held": 605
     }
   },
   "summary": {
     "total": 2869,
-    "certified": 459,
+    "certified": 470,
     "pending": 0,
-    "held": 2410
+    "held": 2399
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -171603,14 +171603,10 @@
       "chapter": "文件管理 · 目录与文件 · 选择题",
       "question_id": "X43",
       "source_hash": "73021f8703b0603efeba76b7f883bbabc9981e7b718fbc7d46ca533a2d51d8d0",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         276,
         277,
@@ -171647,7 +171643,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T05:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -171685,10 +171681,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "legacy_hold_recheck;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X43",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T05:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_280.png",
+              "sha256": "67b6b0dc3e9b7f0328ff7d434ae05fd418527aeda5080cf00a9c2192103f54f3"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_290.png",
+              "sha256": "fd4d66cfc66de1c2015b01c29ddd0c222e9b86763cebcf8a2882f79247f808fa"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页280与答案页290：X43题干、选项和解析忠实，答案为A。",
+          "source_hash": "73021f8703b0603efeba76b7f883bbabc9981e7b718fbc7d46ca533a2d51d8d0"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::文件管理 · 目录与文件 · 选择题::X44": {
       "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X44",
@@ -171696,13 +171718,10 @@
       "chapter": "文件管理 · 目录与文件 · 选择题",
       "question_id": "X44",
       "source_hash": "bd1e525c151410535e5e266be37595473a83814da5acc83bbe53e5624a554b02",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         276,
         277,
@@ -171739,7 +171758,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T05:21:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -171777,10 +171796,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X44",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T05:21:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_280.png",
+              "sha256": "67b6b0dc3e9b7f0328ff7d434ae05fd418527aeda5080cf00a9c2192103f54f3"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_290.png",
+              "sha256": "fd4d66cfc66de1c2015b01c29ddd0c222e9b86763cebcf8a2882f79247f808fa"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页280与答案页290：X44题干、选项和解析忠实，答案为A。",
+          "source_hash": "bd1e525c151410535e5e266be37595473a83814da5acc83bbe53e5624a554b02"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::文件管理 · 目录与文件 · 选择题::X45": {
       "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X45",
@@ -171788,13 +171833,10 @@
       "chapter": "文件管理 · 目录与文件 · 选择题",
       "question_id": "X45",
       "source_hash": "9f0581e5eab7fe95d5fd31e0234d0dead71917a6211ddd8c2fa2ed3cf2ba94e1",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         276,
         277,
@@ -171831,7 +171873,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T05:22:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -171869,10 +171911,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X45",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T05:22:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_280.png",
+              "sha256": "67b6b0dc3e9b7f0328ff7d434ae05fd418527aeda5080cf00a9c2192103f54f3"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_291.png",
+              "sha256": "2626b25cfeaec17610d4398d41574bcb1ede987266337b530c52247cac651402"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页280与答案页291：X45题干、选项和解析忠实，答案为A。",
+          "source_hash": "9f0581e5eab7fe95d5fd31e0234d0dead71917a6211ddd8c2fa2ed3cf2ba94e1"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::文件管理 · 目录与文件 · 选择题::X46": {
       "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X46",
@@ -171880,13 +171948,10 @@
       "chapter": "文件管理 · 目录与文件 · 选择题",
       "question_id": "X46",
       "source_hash": "b95b3686af192505ac194e92c8c6aea75c6af7d59ff1f501f0b45310e0af3286",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         276,
         277,
@@ -171923,7 +171988,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T05:23:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -171946,10 +172011,36 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X46",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T05:23:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_280.png",
+              "sha256": "67b6b0dc3e9b7f0328ff7d434ae05fd418527aeda5080cf00a9c2192103f54f3"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_291.png",
+              "sha256": "2626b25cfeaec17610d4398d41574bcb1ede987266337b530c52247cac651402"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页280与答案页291：X46题干、选项和解析忠实，答案为D。",
+          "source_hash": "b95b3686af192505ac194e92c8c6aea75c6af7d59ff1f501f0b45310e0af3286"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::文件管理 · 目录与文件 · 选择题::X47": {
       "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X47",
@@ -171958,12 +172049,9 @@
       "question_id": "X47",
       "source_hash": "1c55d6cad80b5c189c22ce7fd8db54f15cdd10bb0b8c4817097a7e92d9b24128",
       "source_fidelity": "verified",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         276,
         277,
@@ -172000,7 +172088,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T05:24:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -172023,10 +172111,36 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X47",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T05:24:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_280.png",
+              "sha256": "67b6b0dc3e9b7f0328ff7d434ae05fd418527aeda5080cf00a9c2192103f54f3"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_291.png",
+              "sha256": "2626b25cfeaec17610d4398d41574bcb1ede987266337b530c52247cac651402"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页280与答案页291：X47题干、选项和解析忠实，答案为A。",
+          "source_hash": "1c55d6cad80b5c189c22ce7fd8db54f15cdd10bb0b8c4817097a7e92d9b24128"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::文件管理 · 目录与文件 · 选择题::X48": {
       "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X48",
@@ -172034,14 +172148,10 @@
       "chapter": "文件管理 · 目录与文件 · 选择题",
       "question_id": "X48",
       "source_hash": "9b02c11caecee4284cdbbacbdcd27962f75beccd8f21c546dbd88a654e360870",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         276,
         277,
@@ -172078,7 +172188,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T05:25:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -172116,10 +172226,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X48",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T05:25:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_280.png",
+              "sha256": "67b6b0dc3e9b7f0328ff7d434ae05fd418527aeda5080cf00a9c2192103f54f3"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_291.png",
+              "sha256": "2626b25cfeaec17610d4398d41574bcb1ede987266337b530c52247cac651402"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页280与答案页291：X48题干、选项和解析忠实，答案为A。",
+          "source_hash": "9b02c11caecee4284cdbbacbdcd27962f75beccd8f21c546dbd88a654e360870"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::文件管理 · 目录与文件 · 选择题::X49": {
       "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X49",
@@ -172127,13 +172263,10 @@
       "chapter": "文件管理 · 目录与文件 · 选择题",
       "question_id": "X49",
       "source_hash": "de52a23aeac1a237a255a3cb253198679e1cc170b8a1541b34a2027f0aa11cbd",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         276,
         277,
@@ -172170,7 +172303,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T05:26:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -172208,10 +172341,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X49",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T05:26:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_280.png",
+              "sha256": "67b6b0dc3e9b7f0328ff7d434ae05fd418527aeda5080cf00a9c2192103f54f3"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_291.png",
+              "sha256": "2626b25cfeaec17610d4398d41574bcb1ede987266337b530c52247cac651402"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页280与答案页291：X49题干、选项和解析忠实，答案为A。",
+          "source_hash": "de52a23aeac1a237a255a3cb253198679e1cc170b8a1541b34a2027f0aa11cbd"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::文件管理 · 目录与文件 · 选择题::X50": {
       "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X50",
@@ -172219,13 +172378,10 @@
       "chapter": "文件管理 · 目录与文件 · 选择题",
       "question_id": "X50",
       "source_hash": "218874ca2ecff622126b7dfe74bd25ad66deb0694346bd712f639c49a45db383",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         276,
         277,
@@ -172262,7 +172418,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T05:27:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -172285,10 +172441,36 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X50",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T05:27:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_280.png",
+              "sha256": "67b6b0dc3e9b7f0328ff7d434ae05fd418527aeda5080cf00a9c2192103f54f3"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_291.png",
+              "sha256": "2626b25cfeaec17610d4398d41574bcb1ede987266337b530c52247cac651402"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页280与答案页291：X50题干、选项和解析忠实，答案为B。",
+          "source_hash": "218874ca2ecff622126b7dfe74bd25ad66deb0694346bd712f639c49a45db383"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::文件管理 · 目录与文件 · 选择题::X51": {
       "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X51",
@@ -172296,14 +172478,10 @@
       "chapter": "文件管理 · 目录与文件 · 选择题",
       "question_id": "X51",
       "source_hash": "fc975dfea6563edca9dd3d14c1e5a73dcb1f088ec2001431c0c102ac2969deae",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         276,
         277,
@@ -172340,7 +172518,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T05:28:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -172378,10 +172556,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X51",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T05:28:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_280.png",
+              "sha256": "67b6b0dc3e9b7f0328ff7d434ae05fd418527aeda5080cf00a9c2192103f54f3"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_291.png",
+              "sha256": "2626b25cfeaec17610d4398d41574bcb1ede987266337b530c52247cac651402"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页280与答案页291：X51题干、选项和解析忠实，答案为B。",
+          "source_hash": "fc975dfea6563edca9dd3d14c1e5a73dcb1f088ec2001431c0c102ac2969deae"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::文件管理 · 目录与文件 · 选择题::X52": {
       "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X52",
@@ -172389,13 +172593,10 @@
       "chapter": "文件管理 · 目录与文件 · 选择题",
       "question_id": "X52",
       "source_hash": "78e4f4ac160ef10cb6a90e33e538d8cca3f4ec54a9c44fecab51059ca17d4526",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         276,
         277,
@@ -172432,7 +172633,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T05:29:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -172470,10 +172671,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X52",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T05:29:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_280.png",
+              "sha256": "67b6b0dc3e9b7f0328ff7d434ae05fd418527aeda5080cf00a9c2192103f54f3"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_291.png",
+              "sha256": "2626b25cfeaec17610d4398d41574bcb1ede987266337b530c52247cac651402"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页280与答案页291：X52题干、选项和解析忠实，答案为C。",
+          "source_hash": "78e4f4ac160ef10cb6a90e33e538d8cca3f4ec54a9c44fecab51059ca17d4526"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::文件管理 · 目录与文件 · 选择题::X53": {
       "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X53",
@@ -172481,13 +172708,10 @@
       "chapter": "文件管理 · 目录与文件 · 选择题",
       "question_id": "X53",
       "source_hash": "8a92803eec44e020dab6106f9f83473ab26896a74c1856d5293b618744eba661",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         276,
         277,
@@ -172524,7 +172748,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T05:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -172547,10 +172771,36 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X53",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T05:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_280.png",
+              "sha256": "67b6b0dc3e9b7f0328ff7d434ae05fd418527aeda5080cf00a9c2192103f54f3"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_291.png",
+              "sha256": "2626b25cfeaec17610d4398d41574bcb1ede987266337b530c52247cac651402"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页280与答案页291：X53题干、选项和解析忠实，答案为C。",
+          "source_hash": "8a92803eec44e020dab6106f9f83473ab26896a74c1856d5293b618744eba661"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::文件管理 · 目录与文件 · 选择题::X54": {
       "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 选择题::X54",
@@ -173603,26 +173853,48 @@
           "reviewed_at": "2026-08-27T05:01:00+00:00",
           "q_pages_viewed": [
             {
-              "path": "apps/bank-408/assets/pdf_images/os/page_281.png",
-              "sha256": "c00af36a4b5d893967aed7b7ea8b3072b76fedd8614187284bcf33dc9ba896fb"
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_276.png",
+              "sha256": "97fe51b6634fa9be141d7e6534e9df558dffb85439fb6350a0982a078c763b57",
+              "page": 276
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_277.png",
+              "sha256": "c67651a99bfee107eb92c7e42b78b2daa75613309e97096a3170bf2de7722c48",
+              "page": 277
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_278.png",
+              "sha256": "b553e62fc02009ea5731de5520203857b44f00833b5194ccfd511eb50fc3dbf4",
+              "page": 278
             }
           ],
           "a_pages_viewed": [
             {
-              "path": "apps/bank-408/assets/pdf_images/os/page_293.png",
-              "sha256": "a5d7c4d5bf674ec532c6fe50017b9b477cb8510a014c8fa919fb7c9183363c38"
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_287.png",
+              "sha256": "00aeaa8040ea96497337b48497874602f7a8ff3069781114fb4715815fffb9a2",
+              "page": 287
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_288.png",
+              "sha256": "fb1e136920811b986c10978413490479fde9204ec81e897c0b757b01b2fba925",
+              "page": 288
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_289.png",
+              "sha256": "33ca4a3aaea769a01514d76ab657341de759ec4fc56f6e9b8371c0aa0561f10f",
+              "page": 289
             }
           ],
           "final_action": "patch",
-          "content_match": true,
-          "options_match": false,
-          "answer_match": true,
-          "explanation_match": true,
-          "image_match": true,
+          "content_match": null,
+          "options_match": null,
+          "answer_match": null,
+          "explanation_match": null,
+          "image_match": null,
           "detected_errors": [
-            "powers_of_two_flattened"
+            "persisted_page_review_patch"
           ],
-          "rationale": "亲眼核对原书题页281与答案页293：X63答案为B；原书选项为2^26、2^32、2^60、2^64，已恢复发布版扁平化指数并二查。",
+          "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
           "post_patch_verified": true,
           "source_hash": "85098c9138e2a175dd577d4fb822706fd053d5020d7ea07cfad4551f711154c9"
         }
