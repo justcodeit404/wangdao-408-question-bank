@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "protocol": "codex-original-page-review-v1",
-  "updated_at": "2026-08-26T22:39:37.979921+00:00",
+  "updated_at": "2026-08-26T22:48:13.933389+00:00",
   "records": [
     {
       "source_uid": "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01",
@@ -26198,6 +26198,49 @@
       "protocol": "codex-original-page-review-v1",
       "reviewer": "codex-vision",
       "reviewed_at": "2026-08-26T22:39:29.825904+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_300.png",
+          "sha256": "6fbafbcb25362a30e3e5a540f5989055803fa46768adcc8f76359b29c0d50f3b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_301.png",
+          "sha256": "0bcbed181bab7844b3073bc20dfc7d3f5c5b5d4fbf12a063f1fb49fb087ba35f"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+          "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+          "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_303.png",
+          "sha256": "cbf3d00a05c77235829a8419cbea755064fb678c719a12bddff19ff35f6e864f"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_304.png",
+          "sha256": "57a23f0aa37c3c8a03f6d4a7cd20837357232c3e15af02eba5301b4189f43fb6"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页296与答案解析页298：题干、选项、解析忠实，答案页标注07.D，与发布答案D一致。",
+      "source_hash": "ab8a1f99f0cc3f1cf745a6e6a15aeeabd4277b0e017837ab3177a1ed14143fc1"
+    },
+    {
+      "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X07",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:05.699985+00:00",
       "q_pages_viewed": [
         {
           "path": "apps/bank-408/assets/pdf_images/coa/page_300.png",
@@ -62547,6 +62590,1446 @@
       "detected_errors": [],
       "rationale": "亲眼核对原书题目页191–198与答案解析页200–208，题干、选项、答案和解析与发布内容一致（表格/公式仅作等价排版转换）。",
       "source_hash": "5862e409b60ab393eb06e05d845ddf6fbd17bcb8005c6ddabace5228123f82a8"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X01",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.357251+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_231.png",
+          "sha256": "005c5b2bf1b5b26bb31ce6a0bb57bb375f1cdfe1327cf09af536edfa46db9d4f"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_242.png",
+          "sha256": "be1be38032437c6cfaa4f9a5c8017e14f4ed41a358aee0ffb902d940cdbb10b0"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页与答案页，题干、选项、答案和解析忠实一致。",
+      "source_hash": "8751726b1c764f5fda13144abd5eec3dffa7afc83be5aef2ff6662368a3cbfcc"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X02",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.359463+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_231.png",
+          "sha256": "005c5b2bf1b5b26bb31ce6a0bb57bb375f1cdfe1327cf09af536edfa46db9d4f"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_242.png",
+          "sha256": "be1be38032437c6cfaa4f9a5c8017e14f4ed41a358aee0ffb902d940cdbb10b0"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页与答案页，题干、选项、答案和解析忠实一致。",
+      "source_hash": "cc8b3bcf64fe3d790beab2a27544c7532899af661465adc10200528897bbf2ec"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X03",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.362104+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_231.png",
+          "sha256": "005c5b2bf1b5b26bb31ce6a0bb57bb375f1cdfe1327cf09af536edfa46db9d4f"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_242.png",
+          "sha256": "be1be38032437c6cfaa4f9a5c8017e14f4ed41a358aee0ffb902d940cdbb10b0"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页与答案页，题干、选项、答案和解析忠实一致。",
+      "source_hash": "63298e60d2eab59a1da6b9e440013a116b2b2f3be8f7a28d9f87c969213028d3"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X04",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.364593+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_231.png",
+          "sha256": "005c5b2bf1b5b26bb31ce6a0bb57bb375f1cdfe1327cf09af536edfa46db9d4f"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_242.png",
+          "sha256": "be1be38032437c6cfaa4f9a5c8017e14f4ed41a358aee0ffb902d940cdbb10b0"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页与答案页，题干、选项、答案和解析忠实一致。",
+      "source_hash": "07be80e1637274d599b5121e8bbfefd9294d8c6a980fc45af377594202cc3673"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X05",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.365741+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_231.png",
+          "sha256": "005c5b2bf1b5b26bb31ce6a0bb57bb375f1cdfe1327cf09af536edfa46db9d4f"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_242.png",
+          "sha256": "be1be38032437c6cfaa4f9a5c8017e14f4ed41a358aee0ffb902d940cdbb10b0"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页与答案页，题干、选项、答案和解析忠实一致。",
+      "source_hash": "2421f4b1a463b5e0728047596856ade6d7d97a30640c2e07c6f74c66e1d18d7c"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X06",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.368863+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_231.png",
+          "sha256": "005c5b2bf1b5b26bb31ce6a0bb57bb375f1cdfe1327cf09af536edfa46db9d4f"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_242.png",
+          "sha256": "be1be38032437c6cfaa4f9a5c8017e14f4ed41a358aee0ffb902d940cdbb10b0"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页与答案页，题干、选项、答案和解析忠实一致。",
+      "source_hash": "31f540a95537bc1588c90c2cc9dc8c70b018a5bd3df5799fb976941e55565586"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X08",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.369863+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_231.png",
+          "sha256": "005c5b2bf1b5b26bb31ce6a0bb57bb375f1cdfe1327cf09af536edfa46db9d4f"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_242.png",
+          "sha256": "be1be38032437c6cfaa4f9a5c8017e14f4ed41a358aee0ffb902d940cdbb10b0"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页与答案页，题干、选项、答案和解析忠实一致。",
+      "source_hash": "49bd3b5013db588f4913acf6604bd0835b813b6339ceb85dab5448e49b5efddb"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X09",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.372539+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_231.png",
+          "sha256": "005c5b2bf1b5b26bb31ce6a0bb57bb375f1cdfe1327cf09af536edfa46db9d4f"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_242.png",
+          "sha256": "be1be38032437c6cfaa4f9a5c8017e14f4ed41a358aee0ffb902d940cdbb10b0"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页与答案页，题干、选项、答案和解析忠实一致。",
+      "source_hash": "87689d6189163b78f243c8475c7787c7da183332203e97f95a00e13d42704134"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X11",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.375067+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_231.png",
+          "sha256": "005c5b2bf1b5b26bb31ce6a0bb57bb375f1cdfe1327cf09af536edfa46db9d4f"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_242.png",
+          "sha256": "be1be38032437c6cfaa4f9a5c8017e14f4ed41a358aee0ffb902d940cdbb10b0"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": false,
+      "options_match": false,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [
+        "题干标点与页图不一致"
+      ],
+      "rationale": "亲眼核对后发现题干末尾括号标点存在 OCR 噪声，保留 hold。",
+      "source_hash": "4370009ad89bee3d39c23877802158fd369aa46a26dbb612194783b5a8f82aa5"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X12",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.376071+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_232.png",
+          "sha256": "a014a58441587747a2efe4d39fa87919f642fd7c94d7c0e89eaec0347f9b9587"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_243.png",
+          "sha256": "386a3354e1df730260924ea269804d92fb617b0c1ef533319682bd54543b2f5c"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "解析在关键计算处截断"
+      ],
+      "rationale": "原书答案页解析尚未完整转录，不能认证。",
+      "source_hash": "23ff788c819552d2af1e7445b17eefc23ceaebd3e73acfacd74240e411bbc3a6"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X13",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.379676+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_232.png",
+          "sha256": "a014a58441587747a2efe4d39fa87919f642fd7c94d7c0e89eaec0347f9b9587"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_243.png",
+          "sha256": "386a3354e1df730260924ea269804d92fb617b0c1ef533319682bd54543b2f5c"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对代码题的题目页和答案页，代码、选项、答案及计算解析一致。",
+      "source_hash": "c95c1df4b1757ce96346232f98e5ae6c4324b72a0d71a792525d768e0a99093f"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X14",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.381684+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_232.png",
+          "sha256": "a014a58441587747a2efe4d39fa87919f642fd7c94d7c0e89eaec0347f9b9587"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_243.png",
+          "sha256": "386a3354e1df730260924ea269804d92fb617b0c1ef533319682bd54543b2f5c"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对公式题的题目页和答案页，数值、选项、答案及解析一致。",
+      "source_hash": "88a191eabef71dfc5f62fe8cf971abf0fbe8d0c7bbfd306be2c5f07f0462d4dc"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X15",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.383904+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_232.png",
+          "sha256": "a014a58441587747a2efe4d39fa87919f642fd7c94d7c0e89eaec0347f9b9587"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_243.png",
+          "sha256": "386a3354e1df730260924ea269804d92fb617b0c1ef533319682bd54543b2f5c"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页与答案页，题干、选项、答案及解析一致。",
+      "source_hash": "c1b93cf6e43e1d83b0b2a63307197a08b7bdeb6310223bb8db0a5d2cf6ff6598"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X17",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.387097+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_232.png",
+          "sha256": "a014a58441587747a2efe4d39fa87919f642fd7c94d7c0e89eaec0347f9b9587"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_243.png",
+          "sha256": "386a3354e1df730260924ea269804d92fb617b0c1ef533319682bd54543b2f5c"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页与答案页，题干、选项、答案及解析一致。",
+      "source_hash": "aaf200f28e0f353d33135106c5d8ddd95f6cbe7cf51eab96eabe3a320328d484"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X18",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.389592+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_232.png",
+          "sha256": "a014a58441587747a2efe4d39fa87919f642fd7c94d7c0e89eaec0347f9b9587"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_243.png",
+          "sha256": "386a3354e1df730260924ea269804d92fb617b0c1ef533319682bd54543b2f5c"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页与答案页，题干、选项、答案及解析一致。",
+      "source_hash": "34315ec36241d1b40c09289c11128bce77727b26e6904fe2f07bccf4b32ec08f"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X20",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.391771+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_232.png",
+          "sha256": "a014a58441587747a2efe4d39fa87919f642fd7c94d7c0e89eaec0347f9b9587"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_243.png",
+          "sha256": "386a3354e1df730260924ea269804d92fb617b0c1ef533319682bd54543b2f5c"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页与答案页，地址计算、选项、答案及解析一致。",
+      "source_hash": "2815a431cb65ad76de10579650be6bc6518ec66594cac09a46b0a6c3b1faa3f8"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X21",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.393979+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_233.png",
+          "sha256": "5b9dc59d1ea6ba9577bed863b301f7edbc02aaaca4f854ab0fa2d25955e0eeab"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_243.png",
+          "sha256": "386a3354e1df730260924ea269804d92fb617b0c1ef533319682bd54543b2f5c"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页与答案页，题干、选项、答案及解析一致。",
+      "source_hash": "bd1108d292a062e54e530e3d1026d14514b3264b544dbd264da9e39a1312bca3"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X23",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.396046+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_233.png",
+          "sha256": "5b9dc59d1ea6ba9577bed863b301f7edbc02aaaca4f854ab0fa2d25955e0eeab"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_244.png",
+          "sha256": "b9551edb838a1f2c4861d09199002088ec4797877f10e1f9f76a2e2c44f51c5e"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页与答案页，题干、选项、答案及解析一致。",
+      "source_hash": "58feb7cc2669471ecf55cf2a036828bde88faf56e1285229edfc1e303de660ae"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X24",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.398451+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_233.png",
+          "sha256": "5b9dc59d1ea6ba9577bed863b301f7edbc02aaaca4f854ab0fa2d25955e0eeab"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_244.png",
+          "sha256": "b9551edb838a1f2c4861d09199002088ec4797877f10e1f9f76a2e2c44f51c5e"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页与答案页，题干、选项、答案及解析一致。",
+      "source_hash": "74697d9be51f8c1dc19767e4cf852913d3ac76d352636946af2dc568ecb85704"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X27",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.402350+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_233.png",
+          "sha256": "5b9dc59d1ea6ba9577bed863b301f7edbc02aaaca4f854ab0fa2d25955e0eeab"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_244.png",
+          "sha256": "b9551edb838a1f2c4861d09199002088ec4797877f10e1f9f76a2e2c44f51c5e"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页与答案页，题干、选项、答案及解析一致。",
+      "source_hash": "ec126aa3617b240149dbdab58dccf8e5c0adfa1a04dae808178dca53312c1dfc"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X28",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.404755+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_233.png",
+          "sha256": "5b9dc59d1ea6ba9577bed863b301f7edbc02aaaca4f854ab0fa2d25955e0eeab"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_244.png",
+          "sha256": "b9551edb838a1f2c4861d09199002088ec4797877f10e1f9f76a2e2c44f51c5e"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页与答案页，题干、选项、答案及解析一致。",
+      "source_hash": "75b2a966347a1311e3651e9f3ec3a5a88f4df1eb24a420fe998ee128ea9b3982"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X29",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.405762+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_233.png",
+          "sha256": "5b9dc59d1ea6ba9577bed863b301f7edbc02aaaca4f854ab0fa2d25955e0eeab"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_244.png",
+          "sha256": "b9551edb838a1f2c4861d09199002088ec4797877f10e1f9f76a2e2c44f51c5e"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": false,
+      "options_match": false,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [
+        "罗马数字分项及选项重复/错位"
+      ],
+      "rationale": "原书页中的 I、II、III 与发布字段不一致，结构语义受损，保留 hold。",
+      "source_hash": "2c60b4952455ae66bbfeca2d298c028b922f73e511b024ce4e44519517cd9e05"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X30",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.408884+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_233.png",
+          "sha256": "5b9dc59d1ea6ba9577bed863b301f7edbc02aaaca4f854ab0fa2d25955e0eeab"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_244.png",
+          "sha256": "b9551edb838a1f2c4861d09199002088ec4797877f10e1f9f76a2e2c44f51c5e"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": false,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "微秒单位被 OCR 为 lus/us"
+      ],
+      "rationale": "公式单位与原书符号不一致，先保留 hold。",
+      "source_hash": "0223390e1ef569fc29ae966859c8798e50958b77452a73d8d85ef3da22296cf0"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X31",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.412056+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_233.png",
+          "sha256": "5b9dc59d1ea6ba9577bed863b301f7edbc02aaaca4f854ab0fa2d25955e0eeab"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_244.png",
+          "sha256": "b9551edb838a1f2c4861d09199002088ec4797877f10e1f9f76a2e2c44f51c5e"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页与答案页，题干、选项、答案及解析一致。",
+      "source_hash": "cf0134fd3d383a7aefe761e6f0c681bb6abb75d9ad378221a3717d7b563e7c02"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X32",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.414084+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_233.png",
+          "sha256": "5b9dc59d1ea6ba9577bed863b301f7edbc02aaaca4f854ab0fa2d25955e0eeab"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_244.png",
+          "sha256": "b9551edb838a1f2c4861d09199002088ec4797877f10e1f9f76a2e2c44f51c5e"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页与答案页，题干、选项、答案及解析一致。",
+      "source_hash": "8b00af3145a2a369b9b5615dafd7ebae4976cf3e9a40a45e1ef36facb19f0c09"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X33",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.416232+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_233.png",
+          "sha256": "5b9dc59d1ea6ba9577bed863b301f7edbc02aaaca4f854ab0fa2d25955e0eeab"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_244.png",
+          "sha256": "b9551edb838a1f2c4861d09199002088ec4797877f10e1f9f76a2e2c44f51c5e"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页与答案页，题干、选项、答案及解析一致。",
+      "source_hash": "a9774f628ae8804e50bfbbd870e12d4e19e54980ec52aa0738645bb46db447ec"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X34",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.418331+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_233.png",
+          "sha256": "5b9dc59d1ea6ba9577bed863b301f7edbc02aaaca4f854ab0fa2d25955e0eeab"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_244.png",
+          "sha256": "b9551edb838a1f2c4861d09199002088ec4797877f10e1f9f76a2e2c44f51c5e"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "解析在句末截断"
+      ],
+      "rationale": "原书答案页解析未完整转录，不能认证。",
+      "source_hash": "01ae61d5b170db754b7fbee45c592c4244e059906300cc1671b6d93ccb751b33"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X35",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.420388+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_234.png",
+          "sha256": "8c044533d14347da2bbea37405bc155bb43414d5d0a1914ccd30d16bb7a11cc3"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_245.png",
+          "sha256": "a0d9e5b35249269b39f6623a49354e58c7859ea6207d6f679e1269c404c2ab80"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": false,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [
+        "题干括号存在 OCR 噪声"
+      ],
+      "rationale": "题干标点与原书不忠实，保留 hold。",
+      "source_hash": "db38997911a7d1fd5cb65ea8e3a027e82d61d3191f139a3feaee472b774aa273"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X36",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.422415+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_234.png",
+          "sha256": "8c044533d14347da2bbea37405bc155bb43414d5d0a1914ccd30d16bb7a11cc3"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_245.png",
+          "sha256": "a0d9e5b35249269b39f6623a49354e58c7859ea6207d6f679e1269c404c2ab80"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书内存映射题题目页与答案页，题干、选项、答案及解析一致。",
+      "source_hash": "be2fdc16729a06e5617258184edd830c4ea61225273dc89939f5b72a3498b591"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X37",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.425589+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_234.png",
+          "sha256": "8c044533d14347da2bbea37405bc155bb43414d5d0a1914ccd30d16bb7a11cc3"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_245.png",
+          "sha256": "a0d9e5b35249269b39f6623a49354e58c7859ea6207d6f679e1269c404c2ab80"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页与答案页，顺序及解析一致。",
+      "source_hash": "c66ea4cb14bbd725233a774921945d0c9de389055ade2129d4df0dac76228813"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X38",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.428251+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_234.png",
+          "sha256": "8c044533d14347da2bbea37405bc155bb43414d5d0a1914ccd30d16bb7a11cc3"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_245.png",
+          "sha256": "a0d9e5b35249269b39f6623a49354e58c7859ea6207d6f679e1269c404c2ab80"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "2^9 指数被 OCR 损坏"
+      ],
+      "rationale": "多级页表计算中的指数符号损坏，保留 hold。",
+      "source_hash": "ced23509212827c1b708d4cf3d0d862300a50a58683726834c3c0fd83ef727d3"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X39",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.430260+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_234.png",
+          "sha256": "8c044533d14347da2bbea37405bc155bb43414d5d0a1914ccd30d16bb7a11cc3"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_245.png",
+          "sha256": "a0d9e5b35249269b39f6623a49354e58c7859ea6207d6f679e1269c404c2ab80"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页与答案页，分项、选项、答案及解析一致。",
+      "source_hash": "44bc82d782c5bf3ed1405a60e06b00d858e5fbf202190126bc1cdc499773f102"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X41",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.433273+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_234.png",
+          "sha256": "8c044533d14347da2bbea37405bc155bb43414d5d0a1914ccd30d16bb7a11cc3"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_245.png",
+          "sha256": "a0d9e5b35249269b39f6623a49354e58c7859ea6207d6f679e1269c404c2ab80"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": false,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [
+        "I–VI 分项顺序和编号损坏"
+      ],
+      "rationale": "多分项题的编号顺序与原书不一致，保留 hold。",
+      "source_hash": "986318dfb38ebbd4ea82678019c5c82a037ed31a648ba12bb7871331e175bd45"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X42",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.435449+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_234.png",
+          "sha256": "8c044533d14347da2bbea37405bc155bb43414d5d0a1914ccd30d16bb7a11cc3"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_245.png",
+          "sha256": "a0d9e5b35249269b39f6623a49354e58c7859ea6207d6f679e1269c404c2ab80"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页与答案页，分项、选项、答案及解析一致。",
+      "source_hash": "d91a1c88c07e3661fe179a7c3cda403a6ba11d2ca21711a5efc4a19065f69ee0"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X43",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.438098+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_234.png",
+          "sha256": "8c044533d14347da2bbea37405bc155bb43414d5d0a1914ccd30d16bb7a11cc3"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_245.png",
+          "sha256": "a0d9e5b35249269b39f6623a49354e58c7859ea6207d6f679e1269c404c2ab80"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "解析在结尾处截断"
+      ],
+      "rationale": "答案页解析未完整转录，保留 hold。",
+      "source_hash": "12a241e35be9b0fde270c4429617ba8b86316e9b2ad60c4b8470c913f20c279b"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X44",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.439512+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_235.png",
+          "sha256": "5af8d25ad0711b4029ad810e1e0df76ab7c00b628b52d26ea97608dd9bd23eca"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_246.png",
+          "sha256": "6874c71b1a23df2a92ed0e9b60d5371fa956614a837208640c078bbfd43825fd"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页与答案页，分项、选项、答案及解析一致。",
+      "source_hash": "992e56324b292f219f2abf457a4527f32c45d73ea7036a286646283aebdaccf9"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X45",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.442407+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_235.png",
+          "sha256": "5af8d25ad0711b4029ad810e1e0df76ab7c00b628b52d26ea97608dd9bd23eca"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_246.png",
+          "sha256": "6874c71b1a23df2a92ed0e9b60d5371fa956614a837208640c078bbfd43825fd"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页与答案页，题干、选项、答案及解析一致。",
+      "source_hash": "a693036caa359af5b2f30253cdcd1d8ab85910ca3afc1950c2234b733962b510"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X46",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.445387+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_235.png",
+          "sha256": "5af8d25ad0711b4029ad810e1e0df76ab7c00b628b52d26ea97608dd9bd23eca"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_246.png",
+          "sha256": "6874c71b1a23df2a92ed0e9b60d5371fa956614a837208640c078bbfd43825fd"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": false,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [
+        "I/II/III 分项编号重复"
+      ],
+      "rationale": "分项编号被 OCR 错读，保留 hold。",
+      "source_hash": "e963bde05b7d7ab534883972dc7f8e82d0e2f9b3e5401209b582f3cf5d30c28f"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X47",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.447535+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_235.png",
+          "sha256": "5af8d25ad0711b4029ad810e1e0df76ab7c00b628b52d26ea97608dd9bd23eca"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_246.png",
+          "sha256": "6874c71b1a23df2a92ed0e9b60d5371fa956614a837208640c078bbfd43825fd"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页与答案页，分项、选项、答案及解析一致。",
+      "source_hash": "0fee3e677b398483b72bb3a9f34db4ee07c62dbc22f93440bcee2247828170d6"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X48",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.449546+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_235.png",
+          "sha256": "5af8d25ad0711b4029ad810e1e0df76ab7c00b628b52d26ea97608dd9bd23eca"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_246.png",
+          "sha256": "6874c71b1a23df2a92ed0e9b60d5371fa956614a837208640c078bbfd43825fd"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": false,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [
+        "分项编号重复/错位"
+      ],
+      "rationale": "Belady 分项的罗马数字与原书不一致，保留 hold。",
+      "source_hash": "f3cc0db686a320ba3ca2369aee2bcc07e90810cf2191c771856dc24cd5d69a41"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X49",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.451588+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_235.png",
+          "sha256": "5af8d25ad0711b4029ad810e1e0df76ab7c00b628b52d26ea97608dd9bd23eca"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_247.png",
+          "sha256": "9ed8670a5e216b7686d55c2522d37e8dc3f9f4588a0accb5dae1bb07055b425c"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页与答案页，策略选项、答案及解析一致。",
+      "source_hash": "83ed83f479848b8d383e331d4aca5e15f396de725e0c4878b8a0df2767b0252b"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X51",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.453713+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_235.png",
+          "sha256": "5af8d25ad0711b4029ad810e1e0df76ab7c00b628b52d26ea97608dd9bd23eca"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_247.png",
+          "sha256": "9ed8670a5e216b7686d55c2522d37e8dc3f9f4588a0accb5dae1bb07055b425c"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书改进 CLOCK 题目页与答案页，分项、选项、答案及解析一致。",
+      "source_hash": "daba0c5fc82781149ad48cba7720797de631325eafff7e845f43892c45f373a7"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X52",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.455737+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_235.png",
+          "sha256": "5af8d25ad0711b4029ad810e1e0df76ab7c00b628b52d26ea97608dd9bd23eca"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_247.png",
+          "sha256": "9ed8670a5e216b7686d55c2522d37e8dc3f9f4588a0accb5dae1bb07055b425c"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": false,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [
+        "工作集访问序列及时间轴损坏"
+      ],
+      "rationale": "题目中的序列图被 OCR 破坏，不能据此认证。",
+      "source_hash": "e84ff01e13f31d094c7822f9a80a9f55814dbeeb51755db4a97bc0c2c3a9f6c2"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X53",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.458917+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_236.png",
+          "sha256": "c83672a20a920bfe629141d502a86939f5f90a26adea9811f28ad3e9fbe374e4"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_247.png",
+          "sha256": "9ed8670a5e216b7686d55c2522d37e8dc3f9f4588a0accb5dae1bb07055b425c"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "解析在第一次置换说明处截断"
+      ],
+      "rationale": "答案解析未完整转录，保留 hold。",
+      "source_hash": "b94e4ba9ff7aec9673a95d0d2e165c0754cfb6d34ccb922d9b3d30976a0877c3"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X54",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.459924+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_236.png",
+          "sha256": "c83672a20a920bfe629141d502a86939f5f90a26adea9811f28ad3e9fbe374e4"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_248.png",
+          "sha256": "ea80fbd905ad48f472f40f15ccf72a168d30f75ddaff442243a16337ea53d8ad"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书分项题目页与答案页，四个因素、选项、答案及解析一致。",
+      "source_hash": "e7171b2b9e6d8ca30130482aee8e0ff0ce7504dba1d85fed41c8b642ba72f880"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X55",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.463071+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_236.png",
+          "sha256": "c83672a20a920bfe629141d502a86939f5f90a26adea9811f28ad3e9fbe374e4"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_248.png",
+          "sha256": "ea80fbd905ad48f472f40f15ccf72a168d30f75ddaff442243a16337ea53d8ad"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": false,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [
+        "页表格及十六进制字段被 OCR 损坏"
+      ],
+      "rationale": "表格题关键字段不能确认，保留 hold。",
+      "source_hash": "bacab70e5a7e31bd640b88993686ad8af295eb9496c6482cb4269a1f228fb162"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X56",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.464217+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_236.png",
+          "sha256": "c83672a20a920bfe629141d502a86939f5f90a26adea9811f28ad3e9fbe374e4"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_248.png",
+          "sha256": "ea80fbd905ad48f472f40f15ccf72a168d30f75ddaff442243a16337ea53d8ad"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页与答案页，选项、答案及解析一致。",
+      "source_hash": "b3378a25ac6066c4e5a0f530cb52baf63865531e3547c0bdd88f62951c5cebda"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X57",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.467240+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_236.png",
+          "sha256": "c83672a20a920bfe629141d502a86939f5f90a26adea9811f28ad3e9fbe374e4"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_248.png",
+          "sha256": "ea80fbd905ad48f472f40f15ccf72a168d30f75ddaff442243a16337ea53d8ad"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页与答案页，选项、答案及解析一致。",
+      "source_hash": "bdb9c883eb396b9700a75990fb84ca289ad52f744ac9045e31d55530289c18ad"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X58",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.469613+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_236.png",
+          "sha256": "c83672a20a920bfe629141d502a86939f5f90a26adea9811f28ad3e9fbe374e4"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_248.png",
+          "sha256": "ea80fbd905ad48f472f40f15ccf72a168d30f75ddaff442243a16337ea53d8ad"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": false,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "malloc() 符号被 OCR 为 mallocO"
+      ],
+      "rationale": "解释中的函数符号与原书不一致，保留 hold。",
+      "source_hash": "cd936f41153d0b97cd3aa6a5b6d547d8c58bcb096a9e9f4e2dac4ab69c683719"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X59",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.471409+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_236.png",
+          "sha256": "c83672a20a920bfe629141d502a86939f5f90a26adea9811f28ad3e9fbe374e4"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_248.png",
+          "sha256": "ea80fbd905ad48f472f40f15ccf72a168d30f75ddaff442243a16337ea53d8ad"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "LRU 表格与解析在末尾截断"
+      ],
+      "rationale": "表格题解析未完整转录，保留 hold。",
+      "source_hash": "5d1848ddef9d53a1da6c26fe374f771a1e1adf05bc241a68c9458ddcc0d0abe1"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X60",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.474551+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_236.png",
+          "sha256": "c83672a20a920bfe629141d502a86939f5f90a26adea9811f28ad3e9fbe374e4"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_249.png",
+          "sha256": "32fb6c75b2d95e98aa7e9f5ce3753b50186f8280c9dffe1bfccb3136463e942c"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": false,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "解析中‘物理内存大小’短语被 OCR 截断"
+      ],
+      "rationale": "答案解析存在字段缺失，保留 hold。",
+      "source_hash": "eb537c8299e10dbb3904038c96d417eb62350a14c240d33b9bf7799b4173655f"
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X61",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:48:13.476583+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_237.png",
+          "sha256": "4f1a06f2f346d87cd9196de8675fcf6160e487ef345eeaa0f0d3d48fc495fcd9"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_249.png",
+          "sha256": "32fb6c75b2d95e98aa7e9f5ce3753b50186f8280c9dffe1bfccb3136463e942c"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": false,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [
+        "分项 II 被 OCR 重复为 II/III"
+      ],
+      "rationale": "内存映射文件题分项编号损坏，保留 hold。",
+      "source_hash": "39eb6098f89650902daadb8fcdb9c47d3ae399354360cb13f3cd3daf8ecad824"
     },
     {
       "source_uid": "408:cs408-os::文件管理 · 文件系统 · 选择题::X01",
