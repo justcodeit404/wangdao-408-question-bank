@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-26T20:45:13+00:00",
+  "generated_at": "2026-08-26T20:49:17+00:00",
   "published_hashes": {
     "ds": "a40686840e5043561d7f7159fbd779725ffa65c56bfdd79a2683965b6aed0771",
     "coa": "8f9ea82d6d82e53ea38daf200ae95a361b5c43742f0ce9881b207f671f7f06f7",
@@ -20,9 +20,9 @@
       "name": "计算机组成原理",
       "mode": "strict",
       "total": 674,
-      "certified": 384,
+      "certified": 389,
       "pending": 0,
-      "held": 290
+      "held": 285
     },
     "net": {
       "name": "计算机网络",
@@ -43,9 +43,9 @@
   },
   "summary": {
     "total": 2869,
-    "certified": 885,
+    "certified": 890,
     "pending": 0,
-    "held": 1984
+    "held": 1979
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -36117,14 +36117,10 @@
       "chapter": "指令系统 · 程序的机器级代码表示 · 选择题",
       "question_id": "X02",
       "source_hash": "b52fb129fb25e14d26cf4df72d603a60e4b32422d527309c8dc5c713cddda088",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         186,
         187,
@@ -36143,7 +36139,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T21:35:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -36181,10 +36177,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 选择题::X02",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T21:35:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_186.png",
+              "sha256": "eee6755e1d63ed591f2fd375cec35956dee1547d464de104a4f91243e6b15f77"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_192.png",
+              "sha256": "b521ac63e9a0910d63c23db9dbdd2c930e6077754c56a09b0d57a23743057b8f"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页181与答案解析页187：X02 sub指令题干、选项和解析忠实，答案页标注02.B，与发布答案B一致；原书解析本身的符号位表述按原样保留。",
+          "source_hash": "b52fb129fb25e14d26cf4df72d603a60e4b32422d527309c8dc5c713cddda088"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 选择题::X03": {
       "source_uid": "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 选择题::X03",
@@ -36417,14 +36439,10 @@
       "chapter": "指令系统 · 程序的机器级代码表示 · 选择题",
       "question_id": "X06",
       "source_hash": "569b0f2f0ebbb5be60dcbfe56fb14931119c6f6ef813c0033b8633ebdcfd9eea",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         186,
         187,
@@ -36443,7 +36461,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T21:35:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -36481,10 +36499,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 选择题::X06",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T21:35:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_187.png",
+              "sha256": "82fd45061e8d736fe0aecf23227bd73b00745017c760286a29c9fbcd69afac5e"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_192.png",
+              "sha256": "b521ac63e9a0910d63c23db9dbdd2c930e6077754c56a09b0d57a23743057b8f"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页182与答案解析页187：X06条件转移地址题干、机器码和选项忠实，答案页标注06.D，与发布答案D一致。",
+          "source_hash": "569b0f2f0ebbb5be60dcbfe56fb14931119c6f6ef813c0033b8633ebdcfd9eea"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 选择题::X07": {
       "source_uid": "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 选择题::X07",
@@ -36588,12 +36632,9 @@
       "question_id": "X09",
       "source_hash": "4b09b616025cc98d4b28f384108768120aacb793b11162b3c170490a92937e69",
       "source_fidelity": "verified",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         186,
         187,
@@ -36612,7 +36653,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T21:35:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -36635,10 +36676,36 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 选择题::X09",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T21:35:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_187.png",
+              "sha256": "82fd45061e8d736fe0aecf23227bd73b00745017c760286a29c9fbcd69afac5e"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_193.png",
+              "sha256": "6c010a52473b0d61cb090fb0ca1520e109ed5a6a57287bedeb039f2bd7f29ac3"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页182与答案解析页188：X09 if-else机器码题干、选项和解析忠实，答案页标注09.D，与发布答案D一致。",
+          "source_hash": "4b09b616025cc98d4b28f384108768120aacb793b11162b3c170490a92937e69"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 选择题::X10": {
       "source_uid": "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 选择题::X10",
@@ -36646,14 +36713,10 @@
       "chapter": "指令系统 · 程序的机器级代码表示 · 选择题",
       "question_id": "X10",
       "source_hash": "2103f99b54e1e8344fbab2b95b9d0a438583f5ee83a1d590d07fd137a31010a7",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         186,
         187,
@@ -36672,7 +36735,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T21:35:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -36710,10 +36773,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 选择题::X10",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T21:35:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_187.png",
+              "sha256": "82fd45061e8d736fe0aecf23227bd73b00745017c760286a29c9fbcd69afac5e"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_193.png",
+              "sha256": "6c010a52473b0d61cb090fb0ca1520e109ed5a6a57287bedeb039f2bd7f29ac3"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页182与答案解析页188：X10循环结构机器码题干、选项和解析忠实，答案页标注10.D，与发布答案D一致。",
+          "source_hash": "2103f99b54e1e8344fbab2b95b9d0a438583f5ee83a1d590d07fd137a31010a7"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 选择题::X11": {
       "source_uid": "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 选择题::X11",
@@ -36721,14 +36810,10 @@
       "chapter": "指令系统 · 程序的机器级代码表示 · 选择题",
       "question_id": "X11",
       "source_hash": "7cdb2c432fa4139519058612b221f17212e6abc90bfcec95af57555347dd9dac",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         186,
         187,
@@ -36747,7 +36832,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T21:35:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -36785,10 +36870,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 选择题::X11",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T21:35:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_187.png",
+              "sha256": "82fd45061e8d736fe0aecf23227bd73b00745017c760286a29c9fbcd69afac5e"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_193.png",
+              "sha256": "6c010a52473b0d61cb090fb0ca1520e109ed5a6a57287bedeb039f2bd7f29ac3"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页182与答案解析页188：X11调用指令题干、选项和解析忠实，答案页标注11.D，与发布答案D一致。",
+          "source_hash": "7cdb2c432fa4139519058612b221f17212e6abc90bfcec95af57555347dd9dac"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 选择题::X12": {
       "source_uid": "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 选择题::X12",

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "protocol": "codex-original-page-review-v1",
-  "updated_at": "2026-08-26T20:45:11.867216+00:00",
+  "updated_at": "2026-08-26T20:49:15.785239+00:00",
   "records": [
     {
       "source_uid": "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01",
@@ -13392,6 +13392,203 @@
       "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
       "post_patch_verified": true,
       "source_hash": "c89df3580b801503748d493d94c7e25b32a5c4bfd67675529612e56786f90c70"
+    },
+    {
+      "source_uid": "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 选择题::X02",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T21:35:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_186.png",
+          "sha256": "eee6755e1d63ed591f2fd375cec35956dee1547d464de104a4f91243e6b15f77"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_192.png",
+          "sha256": "b521ac63e9a0910d63c23db9dbdd2c930e6077754c56a09b0d57a23743057b8f"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页181与答案解析页187：X02 sub指令题干、选项和解析忠实，答案页标注02.B，与发布答案B一致；原书解析本身的符号位表述按原样保留。",
+      "source_hash": "b52fb129fb25e14d26cf4df72d603a60e4b32422d527309c8dc5c713cddda088"
+    },
+    {
+      "source_uid": "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 选择题::X04",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T21:35:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_186.png",
+          "sha256": "eee6755e1d63ed591f2fd375cec35956dee1547d464de104a4f91243e6b15f77"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_187.png",
+          "sha256": "82fd45061e8d736fe0aecf23227bd73b00745017c760286a29c9fbcd69afac5e"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_192.png",
+          "sha256": "b521ac63e9a0910d63c23db9dbdd2c930e6077754c56a09b0d57a23743057b8f"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "published_explanation_ocr_corruption"
+      ],
+      "rationale": "亲眼核对原书题目页181–182与答案解析页187：答案A一致，但发布解析中的b[i][j]表达式被OCR破坏为b[j[0]/b[i]j]，保留hold。",
+      "source_hash": "2bc7f212e3ab4f6ed005378af02bf14dd21fb4c5196808dc16a8df67e5a892c6"
+    },
+    {
+      "source_uid": "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 选择题::X06",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T21:35:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_187.png",
+          "sha256": "82fd45061e8d736fe0aecf23227bd73b00745017c760286a29c9fbcd69afac5e"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_192.png",
+          "sha256": "b521ac63e9a0910d63c23db9dbdd2c930e6077754c56a09b0d57a23743057b8f"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页182与答案解析页187：X06条件转移地址题干、机器码和选项忠实，答案页标注06.D，与发布答案D一致。",
+      "source_hash": "569b0f2f0ebbb5be60dcbfe56fb14931119c6f6ef813c0033b8633ebdcfd9eea"
+    },
+    {
+      "source_uid": "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 选择题::X08",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T21:35:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_187.png",
+          "sha256": "82fd45061e8d736fe0aecf23227bd73b00745017c760286a29c9fbcd69afac5e"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_193.png",
+          "sha256": "6c010a52473b0d61cb090fb0ca1520e109ed5a6a57287bedeb039f2bd7f29ac3"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "published_explanation_rewritten"
+      ],
+      "rationale": "亲眼核对原书题目页182与答案解析页188：答案B一致，但发布解析加入了原书没有的扩展改写，非忠实转录，保留hold。",
+      "source_hash": "e1866b1953b5f80b72c0b51d7d1a01bce456f50cbcad116c8306ca2dfce29b6e"
+    },
+    {
+      "source_uid": "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 选择题::X09",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T21:35:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_187.png",
+          "sha256": "82fd45061e8d736fe0aecf23227bd73b00745017c760286a29c9fbcd69afac5e"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_193.png",
+          "sha256": "6c010a52473b0d61cb090fb0ca1520e109ed5a6a57287bedeb039f2bd7f29ac3"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页182与答案解析页188：X09 if-else机器码题干、选项和解析忠实，答案页标注09.D，与发布答案D一致。",
+      "source_hash": "4b09b616025cc98d4b28f384108768120aacb793b11162b3c170490a92937e69"
+    },
+    {
+      "source_uid": "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 选择题::X10",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T21:35:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_187.png",
+          "sha256": "82fd45061e8d736fe0aecf23227bd73b00745017c760286a29c9fbcd69afac5e"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_193.png",
+          "sha256": "6c010a52473b0d61cb090fb0ca1520e109ed5a6a57287bedeb039f2bd7f29ac3"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页182与答案解析页188：X10循环结构机器码题干、选项和解析忠实，答案页标注10.D，与发布答案D一致。",
+      "source_hash": "2103f99b54e1e8344fbab2b95b9d0a438583f5ee83a1d590d07fd137a31010a7"
+    },
+    {
+      "source_uid": "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 选择题::X11",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T21:35:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_187.png",
+          "sha256": "82fd45061e8d736fe0aecf23227bd73b00745017c760286a29c9fbcd69afac5e"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_193.png",
+          "sha256": "6c010a52473b0d61cb090fb0ca1520e109ed5a6a57287bedeb039f2bd7f29ac3"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页182与答案解析页188：X11调用指令题干、选项和解析忠实，答案页标注11.D，与发布答案D一致。",
+      "source_hash": "7cdb2c432fa4139519058612b221f17212e6abc90bfcec95af57555347dd9dac"
     },
     {
       "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X01",
