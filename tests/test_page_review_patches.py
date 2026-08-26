@@ -1,6 +1,10 @@
 import json
 from pathlib import Path
 
+import pytest
+
+from fix_questions import fix_file, load_page_review_patches
+
 BANK = Path(__file__).resolve().parents[1] / "math-bank"
 
 
@@ -45,3 +49,41 @@ def test_ds_circular_queue_end_pointers_not_duplicated():
     question = _q("ds", " · 队列 · ", "X22")
     assert question["options"]["A"] != question["options"]["B"]
     assert "end1==end2" in question["options"]["A"]
+
+
+def test_page_review_manifest_is_valid_and_unique():
+    patches = load_page_review_patches()
+    assert len(patches) == 19
+    assert all(len(key) == 3 for key in patches)
+
+
+def test_page_review_manifest_is_applied_by_fix_file(tmp_path):
+    (course, chapter, qid), fields = next(iter(load_page_review_patches().items()))
+    path = tmp_path / f"questions_{course}.json"
+    path.write_text(json.dumps({
+        "chapters": [{
+            "name": chapter,
+            "questions": [{
+                "id": qid,
+                "type": "选择题",
+                "content": "old",
+                "options": {"A": "a", "B": "b", "C": "old-c", "D": "old-d"},
+                "answer": {"choice": "A", "explanation": "old"},
+            }],
+            "question_count": 1,
+        }],
+    }, ensure_ascii=False), encoding="utf-8")
+    fix_file(path, pdf_images_dir=tmp_path, course_key=course, apply_page_review_patches=True)
+    question = json.loads(path.read_text(encoding="utf-8"))["chapters"][0]["questions"][0]
+    for key, value in fields.get("options", {}).items():
+        assert question["options"][key] == value
+
+
+def test_page_review_manifest_rejects_duplicate_target(tmp_path):
+    source = Path(__file__).resolve().parents[1] / "data" / "quality" / "page_review_patches.json"
+    payload = json.loads(source.read_text(encoding="utf-8"))
+    payload["items"].append(payload["items"][0])
+    path = tmp_path / "duplicate.json"
+    path.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
+    with pytest.raises(ValueError, match="duplicate page review patch target"):
+        load_page_review_patches(path)

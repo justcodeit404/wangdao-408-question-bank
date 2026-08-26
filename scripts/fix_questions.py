@@ -18,6 +18,52 @@ from parse_patterns import has_real_image_ref
 
 sys.stdout.reconfigure(encoding="utf-8")
 
+PAGE_REVIEW_PATCHES_PATH = PROJECT_ROOT / "data" / "quality" / "page_review_patches.json"
+PAGE_REVIEW_PATCH_FIELDS = {"content", "options", "choice", "explanation"}
+
+
+def load_page_review_patches(path=PAGE_REVIEW_PATCHES_PATH):
+    """Load and validate persistent original-page patches for every rebuild."""
+    manifest_path = Path(path)
+    if not manifest_path.exists():
+        return {}
+    payload = json.loads(manifest_path.read_text(encoding="utf-8"))
+    if not isinstance(payload, dict) or not isinstance(payload.get("items"), list):
+        raise ValueError(f"invalid page review patch manifest: {manifest_path}")
+    patches = {}
+    for index, item in enumerate(payload["items"]):
+        if not isinstance(item, dict):
+            raise ValueError(f"page review patch #{index + 1} is not an object")
+        course = str(item.get("course") or "").strip()
+        chapter = str(item.get("chapter") or "").strip()
+        qid = str(item.get("qid") or "").strip()
+        fields = item.get("fields")
+        if not course or not chapter or not qid or not isinstance(fields, dict) or not fields:
+            raise ValueError(f"page review patch #{index + 1} has incomplete target/fields")
+        unknown = sorted(set(fields) - PAGE_REVIEW_PATCH_FIELDS)
+        if unknown:
+            raise ValueError(f"page review patch {course}/{chapter}/{qid} has unknown fields: {unknown}")
+        options = fields.get("options")
+        if options is not None and (
+            not isinstance(options, dict) or not options or any(
+                str(key) not in {"A", "B", "C", "D"} or not isinstance(value, str) or not value.strip()
+                for key, value in options.items()
+            )
+        ):
+            raise ValueError(f"page review patch {course}/{chapter}/{qid} has invalid options")
+        if "choice" in fields:
+            choice = str(fields["choice"]).strip().upper()
+            if not choice or any(letter not in "ABCD" for letter in choice):
+                raise ValueError(f"page review patch {course}/{chapter}/{qid} has invalid choice")
+        for key in ("content", "explanation"):
+            if key in fields and (not isinstance(fields[key], str) or not fields[key].strip()):
+                raise ValueError(f"page review patch {course}/{chapter}/{qid} has empty {key}")
+        target = (course, chapter, qid)
+        if target in patches:
+            raise ValueError(f"duplicate page review patch target: {course}/{chapter}/{qid}")
+        patches[target] = dict(fields)
+    return patches
+
 # 题目区域截图的四周留白（像素）
 # 原 60 过大会把相邻题目也裁进来；10 足够保留插图边缘，同时最大限度避免混入邻题
 CROP_PADDING = 10
@@ -1475,11 +1521,21 @@ def detect_image_ref(q, pdf_images_dir, course_key=None):
     return {"page": page, "note": "题干含图，已关联到原题页", "cropped": rel}
 
 
-def fix_file(path, pdf_images_dir=None, course_key=None):
+def fix_file(path, pdf_images_dir=None, course_key=None, apply_page_review_patches=None):
     path = Path(path)
     if course_key is None:
         course = COURSE_BY_OUT_JSON.get(path.name)
         course_key = getattr(course, "key", None) if course else None
+    if apply_page_review_patches is None:
+        apply_page_review_patches = path.resolve().parent == (PROJECT_ROOT / "output").resolve()
+    page_review_patches = (
+        load_page_review_patches() if apply_page_review_patches else {}
+    )
+    course_page_patches = {
+        key: value for key, value in page_review_patches.items()
+        if key[0] == course_key
+    }
+    applied_page_patches = set()
     data = json.load(open(path, encoding="utf-8"))
     fixes = {
         "choice_filled": 0,
@@ -1491,9 +1547,11 @@ def fix_file(path, pdf_images_dir=None, course_key=None):
         "curated_character_patched": 0,
         "curated_text_patched": 0,
         "curated_answer_patched": 0,
+        "page_review_patched": 0,
     }
 
     for ch in data.get("chapters", []):
+        chapter_name = str(ch.get("name") or ch.get("topic_title") or "").strip()
         for q in ch.get("questions", []):
             # 清理历史误拆：选择题不应有 sub_questions
             if q.get("type") == "选择题" and q.get("sub_questions"):
@@ -1605,6 +1663,34 @@ def fix_file(path, pdf_images_dir=None, course_key=None):
                 ans = q["answer"]
                 expl = ans["explanation"]
                 fixes["curated_answer_patched"] += 1
+
+            # 8. 原书逐页复核补丁：这是正式构建输入，不是仅供审计的报告。
+            page_patch_key = (course_key, chapter_name, str(q.get("id") or "").strip())
+            page_patch = course_page_patches.get(page_patch_key)
+            if page_patch is not None:
+                if "content" in page_patch:
+                    q["content"] = page_patch["content"]
+                if "options" in page_patch:
+                    current_options = q.get("options") or {}
+                    current_options.update(page_patch["options"])
+                    q["options"] = current_options
+                ans = q.get("answer") or {}
+                if "choice" in page_patch:
+                    ans["choice"] = str(page_patch["choice"]).strip().upper()
+                if "explanation" in page_patch:
+                    ans["explanation"] = page_patch["explanation"]
+                if ans:
+                    q["answer"] = ans
+                expl = (ans.get("explanation") or "").strip()
+                choice = str(ans.get("choice") or "").strip().upper()
+                if choice and q.get("type") == "选择题":
+                    options = q.get("options") or {}
+                    if any(letter not in options for letter in choice):
+                        raise ValueError(
+                            f"page review patch {course_key}/{chapter_name}/{q.get('id')} leaves answer choice without option"
+                        )
+                applied_page_patches.add(page_patch_key)
+                fixes["page_review_patched"] += 1
             if ans.get("explanation"):
                 ans["explanation"] = fix_code_in_content(
                     fix_common_ocr_errors(clean_content(ans["explanation"]))
@@ -1650,6 +1736,16 @@ def fix_file(path, pdf_images_dir=None, course_key=None):
                 ):
                     q["answer"] = None
                     fixes["empty_explanation_cleaned"] += 1
+
+    missing_page_patches = sorted(set(course_page_patches) - applied_page_patches)
+    # 真实 output 构建必须覆盖该课程的所有补丁；小型 fixture 可以显式
+    # 只验证单条补丁的应用，不应被整套清单的其它课程题目阻塞。
+    strict_page_review_targets = path.resolve().parent == (PROJECT_ROOT / "output").resolve()
+    if missing_page_patches and strict_page_review_targets:
+        raise ValueError(
+            "page review patch target not found in output: "
+            + ", ".join("/".join(key) for key in missing_page_patches[:3])
+        )
 
     fixes["curated_choice_reclassified"] = apply_curated_choice_patches(
         data, course_key

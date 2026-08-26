@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-26T15:49:10+00:00",
+  "generated_at": "2026-08-26T16:16:18+00:00",
   "published_hashes": {
-    "ds": "cf5bcf9cabb0de8f57d4a7dea74c0460ff362064826087325a76507b44543ed7",
-    "coa": "c9ddf05b182878566b5088f21a760bb5ad3218a8b6ef5f40fc3604013fd15269",
+    "ds": "fb676465b8602e39d6b37d482bd25a2b4ea061ea6509483563209ee1af967128",
+    "coa": "db58784a6abc764c97c7c45af24b421292485ec4aa93a4d5788c6f4b29acc25a",
     "net": "610ca9cb66abff0b5692bc08d55cd67ed109fc893464facfc10133c0e52485fe",
     "os": "ad56559e552e326e2d5889f683787c51faab134b3e8a46b558f970ff4f078dca"
   },
   "courses": {
     "ds": {
       "name": "数据结构",
-      "mode": "progressive",
+      "mode": "strict",
       "total": 797,
       "certified": 91,
       "pending": 0,
@@ -18,15 +18,15 @@
     },
     "coa": {
       "name": "计算机组成原理",
-      "mode": "progressive",
+      "mode": "strict",
       "total": 674,
-      "certified": 113,
+      "certified": 112,
       "pending": 0,
-      "held": 561
+      "held": 562
     },
     "net": {
       "name": "计算机网络",
-      "mode": "progressive",
+      "mode": "strict",
       "total": 639,
       "certified": 87,
       "pending": 0,
@@ -34,7 +34,7 @@
     },
     "os": {
       "name": "操作系统",
-      "mode": "progressive",
+      "mode": "strict",
       "total": 759,
       "certified": 124,
       "pending": 0,
@@ -43,9 +43,9 @@
   },
   "summary": {
     "total": 2869,
-    "certified": 415,
+    "certified": 414,
     "pending": 0,
-    "held": 2454
+    "held": 2455
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -29842,14 +29842,11 @@
       "course_key": "coa",
       "chapter": "指令系统 · 程序的机器级代码表示 · 选择题",
       "question_id": "X07",
-      "source_hash": "b77816144a89d8279fe0cafc8d6c1a19c61dbf2dfabc3bb945da369ae25b76d9",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_hash": "a08d6b042441da9737a91fbfb3330ecf02f4a7a5a8f7e15c830fbf29ffe3bcac",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
+      "overall": "hold",
+      "reason_codes": [],
       "q_pages": [
         186,
         187,
@@ -29868,31 +29865,8 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T14:38:03+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "b77816144a89d8279fe0cafc8d6c1a19c61dbf2dfabc3bb945da369ae25b76d9",
-          "choices": [],
-          "confidence": [],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "status": "hold",
-          "reason": "stale_source_hash"
-        },
-        "human_action": "certify",
-        "human_evidence": "ocr_triad+visual_answer_page"
-      },
+      "verified_at": null,
+      "evidence": {},
       "certification_profile": "objective_full"
     },
     "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 选择题::X08": {
