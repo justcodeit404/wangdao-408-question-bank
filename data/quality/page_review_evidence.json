@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "protocol": "codex-original-page-review-v1",
-  "updated_at": "2026-08-26T16:15:13.684404+00:00",
+  "updated_at": "2026-08-26T16:18:17.466249+00:00",
   "records": [
     {
       "source_uid": "408:cs408-coa::中央处理器 · 异常和中断机制 · 选择题::X01",
@@ -582,6 +582,34 @@
       "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
       "post_patch_verified": true,
       "source_hash": "1087dd9b569bb140d5ef1547840137b69da72e913978802b6e867282b301be5d"
+    },
+    {
+      "source_uid": "408:cs408-ds::图 · 图的存储及基本操作 · 选择题::X06",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T16:18:12.858628+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_212.png",
+          "sha256": "ab8bbe66cedcb7066734e9a3b88dc06987e1186d4d76384348e5e1188bef69fd"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_215.png",
+          "sha256": "63f6b59fd57152aa70aaaa2e180c53cc6a39d907d201f92e8b42172d55a87ff0"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": false,
+      "options_match": false,
+      "answer_match": true,
+      "explanation_match": null,
+      "image_match": null,
+      "detected_errors": [
+        "multi_blank_matrix_structure_not_representable_in_current_schema"
+      ],
+      "rationale": "原书212页题目为三组独立选项，答案页215页明确为06．B、B、D；当前单一A-D options无法无损表达，按规则不猜改。"
     },
     {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X14",
