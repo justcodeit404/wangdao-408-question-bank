@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "protocol": "codex-original-page-review-v1",
-  "updated_at": "2026-08-26T21:02:50.610532+00:00",
+  "updated_at": "2026-08-26T21:07:20.166660+00:00",
   "records": [
     {
       "source_uid": "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01",
@@ -25488,6 +25488,580 @@
       "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
       "post_patch_verified": true,
       "source_hash": "9f57d0e690698de8a3a8c86ab50e7177059d09fe5f6af45a081576731426285a"
+    },
+    {
+      "source_uid": "408:cs408-net::传输层 · UDP · 选择题::X02",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T22:45:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_236.png",
+          "sha256": "2ce2ae18bc980b0ce2fb024941e55de26e750a40829f4791928860b3d9fe1e8b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_237.png",
+          "sha256": "450aa154771abe107ab4ced7146203567eb7c5e6e3c78076565ca9abfde30321"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_238.png",
+          "sha256": "ff4ecbc3cb886a4bb6964cc96e7a7446c0308730e924d30452ebf8635f70c992"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_238.png",
+          "sha256": "ff4ecbc3cb886a4bb6964cc96e7a7446c0308730e924d30452ebf8635f70c992"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_239.png",
+          "sha256": "17e2bb578f9fcc49f06b6e5524a99c1f00e24d7a8aa2a9de790a5e9e4e3e9027"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_240.png",
+          "sha256": "578c97411b2be2627d9f1a4989234c9a1415a16d3f7175d21f6238bf2dee1a74"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_241.png",
+          "sha256": "19c1e348c639250439c737b7936763f863fda8aab7225500fb54e24190d65cf4"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页231与答案解析页233：题干、选项、解析忠实，答案页标注02.B，与发布答案B一致。",
+      "source_hash": "0ec3ed94cf7ab7bec38f5ef72eb2439a347c400cddf5de5236f8533546ea2bac"
+    },
+    {
+      "source_uid": "408:cs408-net::传输层 · UDP · 选择题::X03",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T22:45:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_236.png",
+          "sha256": "2ce2ae18bc980b0ce2fb024941e55de26e750a40829f4791928860b3d9fe1e8b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_237.png",
+          "sha256": "450aa154771abe107ab4ced7146203567eb7c5e6e3c78076565ca9abfde30321"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_238.png",
+          "sha256": "ff4ecbc3cb886a4bb6964cc96e7a7446c0308730e924d30452ebf8635f70c992"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_238.png",
+          "sha256": "ff4ecbc3cb886a4bb6964cc96e7a7446c0308730e924d30452ebf8635f70c992"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_239.png",
+          "sha256": "17e2bb578f9fcc49f06b6e5524a99c1f00e24d7a8aa2a9de790a5e9e4e3e9027"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_240.png",
+          "sha256": "578c97411b2be2627d9f1a4989234c9a1415a16d3f7175d21f6238bf2dee1a74"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_241.png",
+          "sha256": "19c1e348c639250439c737b7936763f863fda8aab7225500fb54e24190d65cf4"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页231与答案解析页233：题干、选项、解析忠实，答案页标注03.D，与发布答案D一致。",
+      "source_hash": "1078b79f54b193f59aa30ddf2b2aea4a43735137f184788110de01f7bbdfbe8a"
+    },
+    {
+      "source_uid": "408:cs408-net::传输层 · UDP · 选择题::X04",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T22:45:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_236.png",
+          "sha256": "2ce2ae18bc980b0ce2fb024941e55de26e750a40829f4791928860b3d9fe1e8b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_237.png",
+          "sha256": "450aa154771abe107ab4ced7146203567eb7c5e6e3c78076565ca9abfde30321"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_238.png",
+          "sha256": "ff4ecbc3cb886a4bb6964cc96e7a7446c0308730e924d30452ebf8635f70c992"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_238.png",
+          "sha256": "ff4ecbc3cb886a4bb6964cc96e7a7446c0308730e924d30452ebf8635f70c992"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_239.png",
+          "sha256": "17e2bb578f9fcc49f06b6e5524a99c1f00e24d7a8aa2a9de790a5e9e4e3e9027"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_240.png",
+          "sha256": "578c97411b2be2627d9f1a4989234c9a1415a16d3f7175d21f6238bf2dee1a74"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_241.png",
+          "sha256": "19c1e348c639250439c737b7936763f863fda8aab7225500fb54e24190d65cf4"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页231与答案解析页233：题干、选项、解析忠实，答案页标注04.D，与发布答案D一致。",
+      "source_hash": "53ed8ae2b08ffe5cd49a10e48f3831107d055f30309cde046e0313d975dfde59"
+    },
+    {
+      "source_uid": "408:cs408-net::传输层 · UDP · 选择题::X05",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T22:45:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_236.png",
+          "sha256": "2ce2ae18bc980b0ce2fb024941e55de26e750a40829f4791928860b3d9fe1e8b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_237.png",
+          "sha256": "450aa154771abe107ab4ced7146203567eb7c5e6e3c78076565ca9abfde30321"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_238.png",
+          "sha256": "ff4ecbc3cb886a4bb6964cc96e7a7446c0308730e924d30452ebf8635f70c992"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_238.png",
+          "sha256": "ff4ecbc3cb886a4bb6964cc96e7a7446c0308730e924d30452ebf8635f70c992"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_239.png",
+          "sha256": "17e2bb578f9fcc49f06b6e5524a99c1f00e24d7a8aa2a9de790a5e9e4e3e9027"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_240.png",
+          "sha256": "578c97411b2be2627d9f1a4989234c9a1415a16d3f7175d21f6238bf2dee1a74"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_241.png",
+          "sha256": "19c1e348c639250439c737b7936763f863fda8aab7225500fb54e24190d65cf4"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "explanation_truncated"
+      ],
+      "rationale": "亲眼核对原书题目页231与答案解析页233-234：题干、选项和答案C一致，但发布解析在‘最大的差别是IP数据’处截断，暂不认证。",
+      "source_hash": "35859ab45254f7672a3fea22bc976e34cc836be40345905ecf153f6c7721f9f7"
+    },
+    {
+      "source_uid": "408:cs408-net::传输层 · UDP · 选择题::X06",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T22:45:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_236.png",
+          "sha256": "2ce2ae18bc980b0ce2fb024941e55de26e750a40829f4791928860b3d9fe1e8b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_237.png",
+          "sha256": "450aa154771abe107ab4ced7146203567eb7c5e6e3c78076565ca9abfde30321"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_238.png",
+          "sha256": "ff4ecbc3cb886a4bb6964cc96e7a7446c0308730e924d30452ebf8635f70c992"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_238.png",
+          "sha256": "ff4ecbc3cb886a4bb6964cc96e7a7446c0308730e924d30452ebf8635f70c992"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_239.png",
+          "sha256": "17e2bb578f9fcc49f06b6e5524a99c1f00e24d7a8aa2a9de790a5e9e4e3e9027"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_240.png",
+          "sha256": "578c97411b2be2627d9f1a4989234c9a1415a16d3f7175d21f6238bf2dee1a74"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_241.png",
+          "sha256": "19c1e348c639250439c737b7936763f863fda8aab7225500fb54e24190d65cf4"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页231-232与答案解析页234：题干、选项、解析忠实，答案页标注06.D，与发布答案D一致。",
+      "source_hash": "733daf2ae5b8c3ca9f2fe836884437a9bb50179f865e2735e5d8b01f304c4dac"
+    },
+    {
+      "source_uid": "408:cs408-net::传输层 · UDP · 选择题::X08",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T22:45:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_236.png",
+          "sha256": "2ce2ae18bc980b0ce2fb024941e55de26e750a40829f4791928860b3d9fe1e8b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_237.png",
+          "sha256": "450aa154771abe107ab4ced7146203567eb7c5e6e3c78076565ca9abfde30321"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_238.png",
+          "sha256": "ff4ecbc3cb886a4bb6964cc96e7a7446c0308730e924d30452ebf8635f70c992"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_238.png",
+          "sha256": "ff4ecbc3cb886a4bb6964cc96e7a7446c0308730e924d30452ebf8635f70c992"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_239.png",
+          "sha256": "17e2bb578f9fcc49f06b6e5524a99c1f00e24d7a8aa2a9de790a5e9e4e3e9027"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_240.png",
+          "sha256": "578c97411b2be2627d9f1a4989234c9a1415a16d3f7175d21f6238bf2dee1a74"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_241.png",
+          "sha256": "19c1e348c639250439c737b7936763f863fda8aab7225500fb54e24190d65cf4"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页232与答案解析页234：题干、选项、解析忠实，答案页标注08.B，与发布答案B一致。",
+      "source_hash": "06f80377c0d423afb72b4dd4c7e59f2446e9bae731db171cb5211603efe9a4af"
+    },
+    {
+      "source_uid": "408:cs408-net::传输层 · UDP · 选择题::X10",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T22:45:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_236.png",
+          "sha256": "2ce2ae18bc980b0ce2fb024941e55de26e750a40829f4791928860b3d9fe1e8b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_237.png",
+          "sha256": "450aa154771abe107ab4ced7146203567eb7c5e6e3c78076565ca9abfde30321"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_238.png",
+          "sha256": "ff4ecbc3cb886a4bb6964cc96e7a7446c0308730e924d30452ebf8635f70c992"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_238.png",
+          "sha256": "ff4ecbc3cb886a4bb6964cc96e7a7446c0308730e924d30452ebf8635f70c992"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_239.png",
+          "sha256": "17e2bb578f9fcc49f06b6e5524a99c1f00e24d7a8aa2a9de790a5e9e4e3e9027"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_240.png",
+          "sha256": "578c97411b2be2627d9f1a4989234c9a1415a16d3f7175d21f6238bf2dee1a74"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_241.png",
+          "sha256": "19c1e348c639250439c737b7936763f863fda8aab7225500fb54e24190d65cf4"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "explanation_truncated"
+      ],
+      "rationale": "亲眼核对原书题目页232与答案解析页234：题干、选项和答案D一致，但发布解析在‘远程登录需要’处截断，暂不认证。",
+      "source_hash": "65cd20ec64d8ca5f85ab4de45be7dbf978dda297440176352db5164f2b153839"
+    },
+    {
+      "source_uid": "408:cs408-net::传输层 · UDP · 选择题::X12",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T22:45:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_236.png",
+          "sha256": "2ce2ae18bc980b0ce2fb024941e55de26e750a40829f4791928860b3d9fe1e8b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_237.png",
+          "sha256": "450aa154771abe107ab4ced7146203567eb7c5e6e3c78076565ca9abfde30321"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_238.png",
+          "sha256": "ff4ecbc3cb886a4bb6964cc96e7a7446c0308730e924d30452ebf8635f70c992"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_238.png",
+          "sha256": "ff4ecbc3cb886a4bb6964cc96e7a7446c0308730e924d30452ebf8635f70c992"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_239.png",
+          "sha256": "17e2bb578f9fcc49f06b6e5524a99c1f00e24d7a8aa2a9de790a5e9e4e3e9027"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_240.png",
+          "sha256": "578c97411b2be2627d9f1a4989234c9a1415a16d3f7175d21f6238bf2dee1a74"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_241.png",
+          "sha256": "19c1e348c639250439c737b7936763f863fda8aab7225500fb54e24190d65cf4"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页232与答案解析页234：题干、选项、解析忠实，答案页标注12.C，与发布答案C一致。",
+      "source_hash": "34340b4600e16145a70c76396e3a4bc49b82ff0ee0cd2c921136d4f1c0156fb4"
+    },
+    {
+      "source_uid": "408:cs408-net::传输层 · UDP · 选择题::X13",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T22:45:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_236.png",
+          "sha256": "2ce2ae18bc980b0ce2fb024941e55de26e750a40829f4791928860b3d9fe1e8b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_237.png",
+          "sha256": "450aa154771abe107ab4ced7146203567eb7c5e6e3c78076565ca9abfde30321"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_238.png",
+          "sha256": "ff4ecbc3cb886a4bb6964cc96e7a7446c0308730e924d30452ebf8635f70c992"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_238.png",
+          "sha256": "ff4ecbc3cb886a4bb6964cc96e7a7446c0308730e924d30452ebf8635f70c992"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_239.png",
+          "sha256": "17e2bb578f9fcc49f06b6e5524a99c1f00e24d7a8aa2a9de790a5e9e4e3e9027"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_240.png",
+          "sha256": "578c97411b2be2627d9f1a4989234c9a1415a16d3f7175d21f6238bf2dee1a74"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_241.png",
+          "sha256": "19c1e348c639250439c737b7936763f863fda8aab7225500fb54e24190d65cf4"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "explanation_truncated"
+      ],
+      "rationale": "亲眼核对原书题目页232-233与答案解析页234-235：题干、选项和答案B一致，但发布解析在‘目的IP地址’处截断，暂不认证。",
+      "source_hash": "89be8589fb9a7896ccf5f735bcee8f01a71ab4ac1da272005d73ac077164dd12"
+    },
+    {
+      "source_uid": "408:cs408-net::传输层 · UDP · 选择题::X14",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T22:45:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_236.png",
+          "sha256": "2ce2ae18bc980b0ce2fb024941e55de26e750a40829f4791928860b3d9fe1e8b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_237.png",
+          "sha256": "450aa154771abe107ab4ced7146203567eb7c5e6e3c78076565ca9abfde30321"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_238.png",
+          "sha256": "ff4ecbc3cb886a4bb6964cc96e7a7446c0308730e924d30452ebf8635f70c992"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_238.png",
+          "sha256": "ff4ecbc3cb886a4bb6964cc96e7a7446c0308730e924d30452ebf8635f70c992"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_239.png",
+          "sha256": "17e2bb578f9fcc49f06b6e5524a99c1f00e24d7a8aa2a9de790a5e9e4e3e9027"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_240.png",
+          "sha256": "578c97411b2be2627d9f1a4989234c9a1415a16d3f7175d21f6238bf2dee1a74"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_241.png",
+          "sha256": "19c1e348c639250439c737b7936763f863fda8aab7225500fb54e24190d65cf4"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页232与答案解析页234：2014真题题干、选项、解析忠实，答案页标注14.B，与发布答案B一致。",
+      "source_hash": "5260b0db774c7896a0fdcc8c35d8cc58610bfaf27cc6bd007bcc59faecc400f5"
+    },
+    {
+      "source_uid": "408:cs408-net::传输层 · UDP · 选择题::X15",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T22:45:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_236.png",
+          "sha256": "2ce2ae18bc980b0ce2fb024941e55de26e750a40829f4791928860b3d9fe1e8b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_237.png",
+          "sha256": "450aa154771abe107ab4ced7146203567eb7c5e6e3c78076565ca9abfde30321"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_238.png",
+          "sha256": "ff4ecbc3cb886a4bb6964cc96e7a7446c0308730e924d30452ebf8635f70c992"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_238.png",
+          "sha256": "ff4ecbc3cb886a4bb6964cc96e7a7446c0308730e924d30452ebf8635f70c992"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_239.png",
+          "sha256": "17e2bb578f9fcc49f06b6e5524a99c1f00e24d7a8aa2a9de790a5e9e4e3e9027"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_240.png",
+          "sha256": "578c97411b2be2627d9f1a4989234c9a1415a16d3f7175d21f6238bf2dee1a74"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_241.png",
+          "sha256": "19c1e348c639250439c737b7936763f863fda8aab7225500fb54e24190d65cf4"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "explanation_truncated"
+      ],
+      "rationale": "亲眼核对原书题目页232与答案解析页234-235：2018真题题干、选项和答案B一致，但发布解析在‘目的端’处截断，暂不认证。",
+      "source_hash": "434be057be9638737e731a11316ecbf1fd828ec8d0c5628928cc56f8576d058d"
+    },
+    {
+      "source_uid": "408:cs408-net::传输层 · UDP · 选择题::X17",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T22:45:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_236.png",
+          "sha256": "2ce2ae18bc980b0ce2fb024941e55de26e750a40829f4791928860b3d9fe1e8b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_237.png",
+          "sha256": "450aa154771abe107ab4ced7146203567eb7c5e6e3c78076565ca9abfde30321"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_238.png",
+          "sha256": "ff4ecbc3cb886a4bb6964cc96e7a7446c0308730e924d30452ebf8635f70c992"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_238.png",
+          "sha256": "ff4ecbc3cb886a4bb6964cc96e7a7446c0308730e924d30452ebf8635f70c992"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_239.png",
+          "sha256": "17e2bb578f9fcc49f06b6e5524a99c1f00e24d7a8aa2a9de790a5e9e4e3e9027"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_240.png",
+          "sha256": "578c97411b2be2627d9f1a4989234c9a1415a16d3f7175d21f6238bf2dee1a74"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_241.png",
+          "sha256": "19c1e348c639250439c737b7936763f863fda8aab7225500fb54e24190d65cf4"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "explanation_truncated"
+      ],
+      "rationale": "亲眼核对原书题目页232-233与答案解析页235：2025真题题干、选项和答案B一致，但发布解析在‘因此IV’处截断，暂不认证。",
+      "source_hash": "0bf3010f6a9dbb408d4bd089908a977097f4a5dcecf5769ab221f256158b8c68"
     },
     {
       "source_uid": "408:cs408-net::传输层 · 传输层提供的服务 · 选择题::X01",
