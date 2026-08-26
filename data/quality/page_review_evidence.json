@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "protocol": "codex-original-page-review-v1",
-  "updated_at": "2026-08-26T20:53:08.686455+00:00",
+  "updated_at": "2026-08-26T21:02:50.610532+00:00",
   "records": [
     {
       "source_uid": "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01",
@@ -1125,6 +1125,205 @@
       "source_hash": "ff87cfe466b8b8dbfa555481a88983c64cf34a3f69ec81ad00a7779291c86ce5"
     },
     {
+      "source_uid": "408:cs408-coa::中央处理器 · 异常和中断机制 · 选择题::X02",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T22:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_249.png",
+          "sha256": "70b188effca1138f298f54520837c8f533034c3a0019343915acb03741cf53b0"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_250.png",
+          "sha256": "f9936a8f02a63f11965e8986041b23dc506d7907e81ee6fc7f81d20c8b92c46f"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_250.png",
+          "sha256": "f9936a8f02a63f11965e8986041b23dc506d7907e81ee6fc7f81d20c8b92c46f"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_251.png",
+          "sha256": "0c16084955a24d59fbc9ce09dcbb479ac8e56ab4065308ffef60e7ab26d33400"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_252.png",
+          "sha256": "d7e2640de1951899e2770cc86e8f6cfa89b8258ffda8d28e2ba115f0d84890cc"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "explanation_truncated"
+      ],
+      "rationale": "亲眼核对原书题目页244与答案解析页245-247：题干、选项和答案C一致，但发布解析在‘指令执行结果出现异常’处截断，未完整转录原书，暂不认证。",
+      "source_hash": "a66227de2f22683d8fc867b829c4b75660e138a45c89d73df9482515b7b56d49"
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 异常和中断机制 · 选择题::X04",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T22:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_249.png",
+          "sha256": "70b188effca1138f298f54520837c8f533034c3a0019343915acb03741cf53b0"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_250.png",
+          "sha256": "f9936a8f02a63f11965e8986041b23dc506d7907e81ee6fc7f81d20c8b92c46f"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_250.png",
+          "sha256": "f9936a8f02a63f11965e8986041b23dc506d7907e81ee6fc7f81d20c8b92c46f"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_251.png",
+          "sha256": "0c16084955a24d59fbc9ce09dcbb479ac8e56ab4065308ffef60e7ab26d33400"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_252.png",
+          "sha256": "d7e2640de1951899e2770cc86e8f6cfa89b8258ffda8d28e2ba115f0d84890cc"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页244与答案解析页245-247：题干、四个选项、解析均忠实，答案页标注04.C，与发布答案C一致。",
+      "source_hash": "95f98558c033cf97e6013fed75d67ceed2f7945614eb80338b187779dcbddcc4"
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 异常和中断机制 · 选择题::X05",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T22:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_249.png",
+          "sha256": "70b188effca1138f298f54520837c8f533034c3a0019343915acb03741cf53b0"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_250.png",
+          "sha256": "f9936a8f02a63f11965e8986041b23dc506d7907e81ee6fc7f81d20c8b92c46f"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_250.png",
+          "sha256": "f9936a8f02a63f11965e8986041b23dc506d7907e81ee6fc7f81d20c8b92c46f"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_251.png",
+          "sha256": "0c16084955a24d59fbc9ce09dcbb479ac8e56ab4065308ffef60e7ab26d33400"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_252.png",
+          "sha256": "d7e2640de1951899e2770cc86e8f6cfa89b8258ffda8d28e2ba115f0d84890cc"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "explanation_ocr_glyph_mismatch"
+      ],
+      "rationale": "亲眼核对原书题目页244与答案解析页245-247：题干、选项和答案B一致，但发布解析把原书‘除数为0’误为‘除数为〇’，保留hold等待补丁复现后二查。",
+      "source_hash": "d5b5a42a339b84638efd5ac37262ca9a619efb69d90bc760005fed4ca62e14bd"
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 异常和中断机制 · 选择题::X06",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T22:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_249.png",
+          "sha256": "70b188effca1138f298f54520837c8f533034c3a0019343915acb03741cf53b0"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_250.png",
+          "sha256": "f9936a8f02a63f11965e8986041b23dc506d7907e81ee6fc7f81d20c8b92c46f"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_250.png",
+          "sha256": "f9936a8f02a63f11965e8986041b23dc506d7907e81ee6fc7f81d20c8b92c46f"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_251.png",
+          "sha256": "0c16084955a24d59fbc9ce09dcbb479ac8e56ab4065308ffef60e7ab26d33400"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_252.png",
+          "sha256": "d7e2640de1951899e2770cc86e8f6cfa89b8258ffda8d28e2ba115f0d84890cc"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页244与答案解析页245-247：题干、选项、解析均忠实，答案页标注06.A，与发布答案A一致。",
+      "source_hash": "ec1ef397e9b37f98117010cd1dd2d044e27af321cd027a48e43dd0375988d3fc"
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 异常和中断机制 · 选择题::X07",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T22:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_249.png",
+          "sha256": "70b188effca1138f298f54520837c8f533034c3a0019343915acb03741cf53b0"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_250.png",
+          "sha256": "f9936a8f02a63f11965e8986041b23dc506d7907e81ee6fc7f81d20c8b92c46f"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_250.png",
+          "sha256": "f9936a8f02a63f11965e8986041b23dc506d7907e81ee6fc7f81d20c8b92c46f"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_251.png",
+          "sha256": "0c16084955a24d59fbc9ce09dcbb479ac8e56ab4065308ffef60e7ab26d33400"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_252.png",
+          "sha256": "d7e2640de1951899e2770cc86e8f6cfa89b8258ffda8d28e2ba115f0d84890cc"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页244-245与答案解析页245-247：题干、选项、解析均忠实，答案页标注07.B，与发布答案B一致。",
+      "source_hash": "0597c544658648be613b8c6e148f0ce4d0d01a44be1fbf8816153389cb40dc59"
+    },
+    {
       "source_uid": "408:cs408-coa::中央处理器 · 异常和中断机制 · 选择题::X09",
       "protocol": "codex-original-page-review-v1",
       "reviewer": "codex-vision",
@@ -1198,6 +1397,552 @@
       "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
       "post_patch_verified": true,
       "source_hash": "76c1e15245d1c5aff85d9d3f4b4c12833fee0d21b75484bfd8db46df0e045d04"
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 异常和中断机制 · 选择题::X10",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T22:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_249.png",
+          "sha256": "70b188effca1138f298f54520837c8f533034c3a0019343915acb03741cf53b0"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_250.png",
+          "sha256": "f9936a8f02a63f11965e8986041b23dc506d7907e81ee6fc7f81d20c8b92c46f"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_250.png",
+          "sha256": "f9936a8f02a63f11965e8986041b23dc506d7907e81ee6fc7f81d20c8b92c46f"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_251.png",
+          "sha256": "0c16084955a24d59fbc9ce09dcbb479ac8e56ab4065308ffef60e7ab26d33400"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_252.png",
+          "sha256": "d7e2640de1951899e2770cc86e8f6cfa89b8258ffda8d28e2ba115f0d84890cc"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页245与答案解析页245-247：2015真题题干、选项、解析均忠实，答案页标注10.D，与发布答案D一致。",
+      "source_hash": "55193f5e34eaaf8146d2cf5abd30a01cc2fc0691b5b76a766279798f13c9b940"
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 异常和中断机制 · 选择题::X11",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T22:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_249.png",
+          "sha256": "70b188effca1138f298f54520837c8f533034c3a0019343915acb03741cf53b0"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_250.png",
+          "sha256": "f9936a8f02a63f11965e8986041b23dc506d7907e81ee6fc7f81d20c8b92c46f"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_250.png",
+          "sha256": "f9936a8f02a63f11965e8986041b23dc506d7907e81ee6fc7f81d20c8b92c46f"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_251.png",
+          "sha256": "0c16084955a24d59fbc9ce09dcbb479ac8e56ab4065308ffef60e7ab26d33400"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_252.png",
+          "sha256": "d7e2640de1951899e2770cc86e8f6cfa89b8258ffda8d28e2ba115f0d84890cc"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页245与答案解析页246：2016真题题干、选项、解析均忠实，答案页标注11.A，与发布答案A一致。",
+      "source_hash": "2dc429b5795e73c63e391bbdaaf0faac9e5dee6a4662f7a5511876c4163539e3"
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 异常和中断机制 · 选择题::X12",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T22:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_249.png",
+          "sha256": "70b188effca1138f298f54520837c8f533034c3a0019343915acb03741cf53b0"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_250.png",
+          "sha256": "f9936a8f02a63f11965e8986041b23dc506d7907e81ee6fc7f81d20c8b92c46f"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_250.png",
+          "sha256": "f9936a8f02a63f11965e8986041b23dc506d7907e81ee6fc7f81d20c8b92c46f"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_251.png",
+          "sha256": "0c16084955a24d59fbc9ce09dcbb479ac8e56ab4065308ffef60e7ab26d33400"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_252.png",
+          "sha256": "d7e2640de1951899e2770cc86e8f6cfa89b8258ffda8d28e2ba115f0d84890cc"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页245与答案解析页247：2020真题题干、选项、解析均忠实，答案页标注12.A，与发布答案A一致。",
+      "source_hash": "a571ba47c1452e680e7c21ebaebc4856fb6612f76753ea22a8f258005c081e6"
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 异常和中断机制 · 选择题::X13",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T22:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_249.png",
+          "sha256": "70b188effca1138f298f54520837c8f533034c3a0019343915acb03741cf53b0"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_250.png",
+          "sha256": "f9936a8f02a63f11965e8986041b23dc506d7907e81ee6fc7f81d20c8b92c46f"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_250.png",
+          "sha256": "f9936a8f02a63f11965e8986041b23dc506d7907e81ee6fc7f81d20c8b92c46f"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_251.png",
+          "sha256": "0c16084955a24d59fbc9ce09dcbb479ac8e56ab4065308ffef60e7ab26d33400"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_252.png",
+          "sha256": "d7e2640de1951899e2770cc86e8f6cfa89b8258ffda8d28e2ba115f0d84890cc"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页245与答案解析页247：2021真题题干、选项、解析均忠实，答案页标注13.B，与发布答案B一致。",
+      "source_hash": "bf0bd8a7401417ac2ad0da3c89d42cf04455c52a6551f4ebbb9185f2430576ec"
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 指令执行过程 · 选择题::X01",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T22:20:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_209.png",
+          "sha256": "48cf2226cf699fccccd52de5946d78719d17e974f3bc4467c8022cebac460aea"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_210.png",
+          "sha256": "5da02888d30478c77307eb73d874f991cc9c19e250b02f26ca43a8aa95aa31fa"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_210.png",
+          "sha256": "5da02888d30478c77307eb73d874f991cc9c19e250b02f26ca43a8aa95aa31fa"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_211.png",
+          "sha256": "8409174be6f5d35bd0a980876e054306f9649dfede26504366fad24aed30d445"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页204-205与答案解析页205：题干、选项、解析忠实，答案页标注01.A，与发布答案A一致。",
+      "source_hash": "42416e9ef592f33ba9c1969190ef2b5a1f97017074ed34bd7ffe6dcb3253523c"
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 指令执行过程 · 选择题::X02",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T22:20:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_209.png",
+          "sha256": "48cf2226cf699fccccd52de5946d78719d17e974f3bc4467c8022cebac460aea"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_210.png",
+          "sha256": "5da02888d30478c77307eb73d874f991cc9c19e250b02f26ca43a8aa95aa31fa"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_210.png",
+          "sha256": "5da02888d30478c77307eb73d874f991cc9c19e250b02f26ca43a8aa95aa31fa"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_211.png",
+          "sha256": "8409174be6f5d35bd0a980876e054306f9649dfede26504366fad24aed30d445"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页204与答案解析页205：题干、选项、解析忠实，答案页标注02.C，与发布答案C一致。",
+      "source_hash": "f499f64d509102cb4a854aa2b9f86c3f712ea064e8a7e693b98c27f56ed126a2"
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 指令执行过程 · 选择题::X03",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T22:20:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_209.png",
+          "sha256": "48cf2226cf699fccccd52de5946d78719d17e974f3bc4467c8022cebac460aea"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_210.png",
+          "sha256": "5da02888d30478c77307eb73d874f991cc9c19e250b02f26ca43a8aa95aa31fa"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_210.png",
+          "sha256": "5da02888d30478c77307eb73d874f991cc9c19e250b02f26ca43a8aa95aa31fa"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_211.png",
+          "sha256": "8409174be6f5d35bd0a980876e054306f9649dfede26504366fad24aed30d445"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页204与答案解析页205：题干、选项、解析忠实，答案页标注03.B，与发布答案B一致。",
+      "source_hash": "400d97e86b91da4356b403d4c089a97e1a78e869e647f1e989cca2be5e8d7820"
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 指令执行过程 · 选择题::X04",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T22:20:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_209.png",
+          "sha256": "48cf2226cf699fccccd52de5946d78719d17e974f3bc4467c8022cebac460aea"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_210.png",
+          "sha256": "5da02888d30478c77307eb73d874f991cc9c19e250b02f26ca43a8aa95aa31fa"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_210.png",
+          "sha256": "5da02888d30478c77307eb73d874f991cc9c19e250b02f26ca43a8aa95aa31fa"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_211.png",
+          "sha256": "8409174be6f5d35bd0a980876e054306f9649dfede26504366fad24aed30d445"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页204与答案解析页205：题干、选项、解析忠实，答案页标注04.D，与发布答案D一致。",
+      "source_hash": "4f683616280dc5f52599ef3dac47f9c4a85000fbe8ae76dee90bd652fbc4ce46"
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 指令执行过程 · 选择题::X05",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T22:20:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_209.png",
+          "sha256": "48cf2226cf699fccccd52de5946d78719d17e974f3bc4467c8022cebac460aea"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_210.png",
+          "sha256": "5da02888d30478c77307eb73d874f991cc9c19e250b02f26ca43a8aa95aa31fa"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_210.png",
+          "sha256": "5da02888d30478c77307eb73d874f991cc9c19e250b02f26ca43a8aa95aa31fa"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_211.png",
+          "sha256": "8409174be6f5d35bd0a980876e054306f9649dfede26504366fad24aed30d445"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页204与答案解析页205：题干、选项、解析忠实，答案页标注05.B，与发布答案B一致。",
+      "source_hash": "d0d36ed4f161c0a165a40feb38eb093a1013bfe9b8ae8c6d8f8529b927cfa028"
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 指令执行过程 · 选择题::X06",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T22:20:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_209.png",
+          "sha256": "48cf2226cf699fccccd52de5946d78719d17e974f3bc4467c8022cebac460aea"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_210.png",
+          "sha256": "5da02888d30478c77307eb73d874f991cc9c19e250b02f26ca43a8aa95aa31fa"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_210.png",
+          "sha256": "5da02888d30478c77307eb73d874f991cc9c19e250b02f26ca43a8aa95aa31fa"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_211.png",
+          "sha256": "8409174be6f5d35bd0a980876e054306f9649dfede26504366fad24aed30d445"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页204与答案解析页205：题干、选项、解析忠实，答案页标注06.B，与发布答案B一致。",
+      "source_hash": "b639600901d42c4596c614ecd38d16c4193626db0c65bf9999a78891c774bdd3"
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 指令执行过程 · 选择题::X07",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T22:20:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_209.png",
+          "sha256": "48cf2226cf699fccccd52de5946d78719d17e974f3bc4467c8022cebac460aea"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_210.png",
+          "sha256": "5da02888d30478c77307eb73d874f991cc9c19e250b02f26ca43a8aa95aa31fa"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_210.png",
+          "sha256": "5da02888d30478c77307eb73d874f991cc9c19e250b02f26ca43a8aa95aa31fa"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_211.png",
+          "sha256": "8409174be6f5d35bd0a980876e054306f9649dfede26504366fad24aed30d445"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页204与答案解析页205：题干、选项、解析忠实，答案页标注07.B，与发布答案B一致。",
+      "source_hash": "6f914bc04d632ec5c79a44e53d6e30b36f383ded162a22add43ede958430af67"
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 指令执行过程 · 选择题::X08",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T22:20:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_209.png",
+          "sha256": "48cf2226cf699fccccd52de5946d78719d17e974f3bc4467c8022cebac460aea"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_210.png",
+          "sha256": "5da02888d30478c77307eb73d874f991cc9c19e250b02f26ca43a8aa95aa31fa"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_210.png",
+          "sha256": "5da02888d30478c77307eb73d874f991cc9c19e250b02f26ca43a8aa95aa31fa"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_211.png",
+          "sha256": "8409174be6f5d35bd0a980876e054306f9649dfede26504366fad24aed30d445"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页204与答案解析页205：题干、选项、解析忠实，答案页标注08.C，与发布答案C一致。",
+      "source_hash": "aa1478fa7b74e2aa762900db81caa1410e9c43a1c6c88b570d12e48223967e9d"
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 指令执行过程 · 选择题::X09",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T22:20:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_209.png",
+          "sha256": "48cf2226cf699fccccd52de5946d78719d17e974f3bc4467c8022cebac460aea"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_210.png",
+          "sha256": "5da02888d30478c77307eb73d874f991cc9c19e250b02f26ca43a8aa95aa31fa"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_210.png",
+          "sha256": "5da02888d30478c77307eb73d874f991cc9c19e250b02f26ca43a8aa95aa31fa"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_211.png",
+          "sha256": "8409174be6f5d35bd0a980876e054306f9649dfede26504366fad24aed30d445"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "explanation_truncated"
+      ],
+      "rationale": "亲眼核对原书题目页204与答案解析页205-206：题干、选项和答案D一致，但发布解析在‘仅涉及寄’处截断，未完整转录原书，暂不认证。",
+      "source_hash": "8c74d8c6d11715e1deb66254a242bdaec064353b771a2e213b303265cd8b501f"
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 指令执行过程 · 选择题::X10",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T22:20:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_209.png",
+          "sha256": "48cf2226cf699fccccd52de5946d78719d17e974f3bc4467c8022cebac460aea"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_210.png",
+          "sha256": "5da02888d30478c77307eb73d874f991cc9c19e250b02f26ca43a8aa95aa31fa"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_210.png",
+          "sha256": "5da02888d30478c77307eb73d874f991cc9c19e250b02f26ca43a8aa95aa31fa"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_211.png",
+          "sha256": "8409174be6f5d35bd0a980876e054306f9649dfede26504366fad24aed30d445"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页205与答案解析页205-206：2009真题题干、选项、解析忠实，答案页标注10.C，与发布答案C一致。",
+      "source_hash": "e2e5a56512f430f235e9452af6e2acb7fa0511d753b635d814397c58bbc95a4a"
+    },
+    {
+      "source_uid": "408:cs408-coa::中央处理器 · 指令执行过程 · 选择题::X11",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T22:20:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_209.png",
+          "sha256": "48cf2226cf699fccccd52de5946d78719d17e974f3bc4467c8022cebac460aea"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_210.png",
+          "sha256": "5da02888d30478c77307eb73d874f991cc9c19e250b02f26ca43a8aa95aa31fa"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_210.png",
+          "sha256": "5da02888d30478c77307eb73d874f991cc9c19e250b02f26ca43a8aa95aa31fa"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_211.png",
+          "sha256": "8409174be6f5d35bd0a980876e054306f9649dfede26504366fad24aed30d445"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "explanation_truncated",
+        "chapter_text_leak"
+      ],
+      "rationale": "亲眼核对原书题目页205与答案解析页206：2011真题题干、选项和答案C一致，但发布解析缺失‘每次取指令都至少要访存一次’等句并串入下一章正文，暂不认证。",
+      "source_hash": "c9c91364be722f0da747cee05fa90074d7e90e335e87ce51ffc8731b3cfd9b84"
     },
     {
       "source_uid": "408:cs408-coa::中央处理器 · 控制器的功能和工作原理 · 选择题::X26",
