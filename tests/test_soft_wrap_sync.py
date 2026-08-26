@@ -85,9 +85,13 @@ def test_x05_sequential_storage_stem_keeps_array_table():
         and "gdbhefca" in json.dumps(q.get("options") or {}, ensure_ascii=False)
     )
     content = question["content"]
-    assert "| 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |" in content
-    assert "|  | a | b | c | d | ∧ | e | ∧ | f | g | h | i | ∧ |" in content
+    assert "一维数组" in content
+    assert question.get("has_image") is True
+    assert (question.get("image_ref") or {}).get(
+        "cropped"
+    ) == "crops/ds/page_152_X05.png"
     assert "D b C d e f g h" not in content
+    assert "|" not in content
     assert "2i+1和2i+2" not in str((question.get("answer") or {}).get("explanation"))
 
 
