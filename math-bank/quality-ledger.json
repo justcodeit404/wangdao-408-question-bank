@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-26T17:22:32+00:00",
+  "generated_at": "2026-08-26T17:25:45+00:00",
   "published_hashes": {
     "ds": "a40686840e5043561d7f7159fbd779725ffa65c56bfdd79a2683965b6aed0771",
-    "coa": "54b38d71d77a53cf20212e7e838c472fd7acf7584272bc4348f66c9317da395b",
+    "coa": "6ef8de41691fe7df372d966eb8d7f5d749f40a2855438cd3165bc9b206e63b11",
     "net": "0fc4432f9af3214d9d5628799a687af65394f1f32fd0f87deb86500c484ba17a",
     "os": "a43ca9d4375b7cd96ca2c0d5d024b6d51904bb50fa6525ee1a8eb55ff81161fe"
   },
@@ -18,23 +18,23 @@
     },
     "coa": {
       "name": "计算机组成原理",
-      "mode": "progressive",
+      "mode": "strict",
       "total": 674,
-      "certified": 112,
-      "pending": 1,
-      "held": 561
+      "certified": 117,
+      "pending": 0,
+      "held": 557
     },
     "net": {
       "name": "计算机网络",
       "mode": "progressive",
       "total": 639,
-      "certified": 90,
-      "pending": 1,
+      "certified": 91,
+      "pending": 0,
       "held": 548
     },
     "os": {
       "name": "操作系统",
-      "mode": "strict",
+      "mode": "progressive",
       "total": 759,
       "certified": 127,
       "pending": 0,
@@ -43,9 +43,9 @@
   },
   "summary": {
     "total": 2869,
-    "certified": 432,
-    "pending": 1,
-    "held": 2436
+    "certified": 434,
+    "pending": 0,
+    "held": 2435
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -30282,13 +30282,11 @@
       "course_key": "coa",
       "chapter": "指令系统 · 程序的机器级代码表示 · 选择题",
       "question_id": "X07",
-      "source_hash": "d160f29b6bca2a6e2956609754325790ff318e73eefb3f09439fde0d6f16f5aa",
+      "source_hash": "4c7b47abe2326a53f6d8119c601807b2722de846926a3090b844217d73ef6963",
       "source_fidelity": "pending",
       "answer_validation": "pending",
-      "overall": "pending",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "overall": "hold",
+      "reason_codes": [],
       "q_pages": [
         186,
         187,
@@ -30885,15 +30883,11 @@
       "course_key": "coa",
       "chapter": "数据的表示和运算 · 数制与编码 · 选择题",
       "question_id": "X04",
-      "source_hash": "c46935004361372f61e587c161896f6ea62ad09d9ad430e80eb60617f69f4228",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_hash": "ccdae52d470ba60d4d9c26cc2c490fcaa9f7a07251229a6263ff52e93296d8a7",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         32,
         33,
@@ -30918,63 +30912,51 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T00:40:00+00:00",
       "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X04",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T00:40:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_032.png",
+              "sha256": "5f983dade9d215e3a5048f71434bdce794f896ce2ed6ef66ba5c625447d95737"
+            }
           ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_035.png",
+              "sha256": "fb61c618d5d4e2f386a96f76bba0dccc9c8986fafa5553dccfb54629dd03179f"
+            }
           ],
-          "source_hash": "c46935004361372f61e587c161896f6ea62ad09d9ad430e80eb60617f69f4228",
-          "choices": [
-            "B",
-            "B"
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": false,
+          "image_match": true,
+          "detected_errors": [
+            "explanation_corrupted_by_ocr"
           ],
-          "confidence": [
-            0.0,
-            0.0
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "B",
-            "B"
-          ],
-          "blind_confidence": [
-            0.0,
-            0.0
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+          "rationale": "原书题页32第04题与答案页35第04题已核对，题干和选项无误；解析中的原码/反码/补码/移码等式按原书恢复。",
+          "post_patch_verified": true,
+          "source_hash": "ccdae52d470ba60d4d9c26cc2c490fcaa9f7a07251229a6263ff52e93296d8a7"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X05": {
       "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X05",
       "course_key": "coa",
       "chapter": "数据的表示和运算 · 数制与编码 · 选择题",
       "question_id": "X05",
-      "source_hash": "585ce2b7b0123e33250e120974c5da4768cc8ab9b5af50b9617cd1a6430b39b2",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_hash": "817d6f451fb19d824d13680732bd7740c2fccb4332b356ee252a9c8ec4ccdcef",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         32,
         33,
@@ -30999,48 +30981,40 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T00:40:00+00:00",
       "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X05",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T00:40:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_032.png",
+              "sha256": "5f983dade9d215e3a5048f71434bdce794f896ce2ed6ef66ba5c625447d95737"
+            }
           ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_035.png",
+              "sha256": "fb61c618d5d4e2f386a96f76bba0dccc9c8986fafa5553dccfb54629dd03179f"
+            }
           ],
-          "source_hash": "585ce2b7b0123e33250e120974c5da4768cc8ab9b5af50b9617cd1a6430b39b2",
-          "choices": [
-            "B",
-            "B"
+          "final_action": "patch",
+          "content_match": false,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [
+            "content_symbol_misread"
           ],
-          "confidence": [
-            0.0,
-            0.0
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "B",
-            "B"
-          ],
-          "blind_confidence": [
-            0.0,
-            0.0
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+          "rationale": "原书题页32第05题与答案页35第05题已核对；题干末项为[X]原，发布文本误读为[X]系，已修正。",
+          "post_patch_verified": true,
+          "source_hash": "817d6f451fb19d824d13680732bd7740c2fccb4332b356ee252a9c8ec4ccdcef"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X06": {
       "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X06",
@@ -41834,8 +41808,7 @@
           "source_hash": "8160358a3c595851f4c4df90bfec4ede58c40821522ca3156d873bca4c26730a"
         }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::计算机系统概述 · 计算机系统层次结构 · 选择题::X07": {
       "source_uid": "408:cs408-coa::计算机系统概述 · 计算机系统层次结构 · 选择题::X07",
@@ -42311,8 +42284,7 @@
           "source_hash": "28828da48af078c82016222d8064968fb20b954fc2ac123971f8b6d49f1c9643"
         }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::计算机系统概述 · 计算机系统层次结构 · 选择题::X12": {
       "source_uid": "408:cs408-coa::计算机系统概述 · 计算机系统层次结构 · 选择题::X12",
@@ -42411,8 +42383,7 @@
           "source_hash": "8fbdf922dbe1a32c355c104fcf25e0a74b59daf57b1fc4fd60dec5bc79cc7500"
         }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::计算机系统概述 · 计算机系统层次结构 · 选择题::X13": {
       "source_uid": "408:cs408-coa::计算机系统概述 · 计算机系统层次结构 · 选择题::X13",
@@ -42511,8 +42482,7 @@
           "source_hash": "8dd7edae1640cb391a68cdaeb1d47d76033019bafadd0dc3fa3d6cc08c30f4c7"
         }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::计算机系统概述 · 计算机系统层次结构 · 选择题::X14": {
       "source_uid": "408:cs408-coa::计算机系统概述 · 计算机系统层次结构 · 选择题::X14",
@@ -42611,8 +42581,7 @@
           "source_hash": "d332288b7fcef0c6621c8f40a1834a7a354ab1f054508bc911154b217400b4d3"
         }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X01": {
       "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X01",
@@ -108196,8 +108165,7 @@
           "source_hash": "9f57d0e690698de8a3a8c86ab50e7177059d09fe5f6af45a081576731426285a"
         }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-net::传输层 · TCP · 选择题::X36": {
       "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X36",
