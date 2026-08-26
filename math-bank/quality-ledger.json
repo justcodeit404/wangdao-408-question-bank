@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-26T22:22:28+00:00",
+  "generated_at": "2026-08-26T22:25:06+00:00",
   "published_hashes": {
     "ds": "a40686840e5043561d7f7159fbd779725ffa65c56bfdd79a2683965b6aed0771",
     "coa": "8f9ea82d6d82e53ea38daf200ae95a361b5c43742f0ce9881b207f671f7f06f7",
@@ -20,9 +20,9 @@
       "name": "计算机组成原理",
       "mode": "strict",
       "total": 674,
-      "certified": 439,
+      "certified": 457,
       "pending": 0,
-      "held": 235
+      "held": 217
     },
     "net": {
       "name": "计算机网络",
@@ -43,9 +43,9 @@
   },
   "summary": {
     "total": 2869,
-    "certified": 1092,
+    "certified": 1110,
     "pending": 0,
-    "held": 1777
+    "held": 1759
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -28764,15 +28764,10 @@
       "chapter": "总线 · 总线概述 · 选择题",
       "question_id": "X02",
       "source_hash": "a7582f741351880f1fb614a0ef723dfc7a7e3ed5691f101259049d62328dcecc",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         283,
         284,
@@ -28788,7 +28783,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -28826,10 +28821,64 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X02",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_283.png",
+              "sha256": "d827d81daef98a0b3306ea4b5b61fbdae4c8a1e91eb2000a0997068d0ad2c4eb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_284.png",
+              "sha256": "3b49373f045a15005a4737f502c50c750b027601d89f73e43dfa78d93b5e2656"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_286.png",
+              "sha256": "ab16556ff4632fad1885900e71609b16214182eeab76ef2c3f233b2d8c795133"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_287.png",
+              "sha256": "b1a88da7a2657ed070474126adfe93392932162772a3f54c22694f3097e7e5dd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_288.png",
+              "sha256": "fc5a5e7c35cca31d0e0dcf27a7a174ae321b19d759cbc86373f5fdc565e878e8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_289.png",
+              "sha256": "074936d8146895c952e45c3ab5990266e4d938da39528e3182e5ec4c8cfd81c1"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_290.png",
+              "sha256": "ea702f6594d78c4223fc077133fdc0b67910904777376c4c05e9179d7bf9e610"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页278-280与答案页280-285逐题核对：题干、选项、答案和解析与发布内容一致（单位/公式排版差异不改变语义）。",
+          "source_hash": "a7582f741351880f1fb614a0ef723dfc7a7e3ed5691f101259049d62328dcecc"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线概述 · 选择题::X03": {
       "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X03",
@@ -28837,14 +28886,10 @@
       "chapter": "总线 · 总线概述 · 选择题",
       "question_id": "X03",
       "source_hash": "f4e4192608e74546f5c4810895b74773b0a5d7040312ede47932281e309e3eaf",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         283,
         284,
@@ -28860,7 +28905,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -28898,10 +28943,64 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X03",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_283.png",
+              "sha256": "d827d81daef98a0b3306ea4b5b61fbdae4c8a1e91eb2000a0997068d0ad2c4eb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_284.png",
+              "sha256": "3b49373f045a15005a4737f502c50c750b027601d89f73e43dfa78d93b5e2656"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_286.png",
+              "sha256": "ab16556ff4632fad1885900e71609b16214182eeab76ef2c3f233b2d8c795133"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_287.png",
+              "sha256": "b1a88da7a2657ed070474126adfe93392932162772a3f54c22694f3097e7e5dd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_288.png",
+              "sha256": "fc5a5e7c35cca31d0e0dcf27a7a174ae321b19d759cbc86373f5fdc565e878e8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_289.png",
+              "sha256": "074936d8146895c952e45c3ab5990266e4d938da39528e3182e5ec4c8cfd81c1"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_290.png",
+              "sha256": "ea702f6594d78c4223fc077133fdc0b67910904777376c4c05e9179d7bf9e610"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页278-280与答案页280-285逐题核对：题干、选项、答案和解析与发布内容一致（单位/公式排版差异不改变语义）。",
+          "source_hash": "f4e4192608e74546f5c4810895b74773b0a5d7040312ede47932281e309e3eaf"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线概述 · 选择题::X04": {
       "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X04",
@@ -28909,14 +29008,10 @@
       "chapter": "总线 · 总线概述 · 选择题",
       "question_id": "X04",
       "source_hash": "cd1a58153163f7a6c7ae5be1adc1654751231d241bdb2cb660c24f7a311e3149",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         283,
         284,
@@ -28932,7 +29027,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -28970,10 +29065,64 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X04",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_283.png",
+              "sha256": "d827d81daef98a0b3306ea4b5b61fbdae4c8a1e91eb2000a0997068d0ad2c4eb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_284.png",
+              "sha256": "3b49373f045a15005a4737f502c50c750b027601d89f73e43dfa78d93b5e2656"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_286.png",
+              "sha256": "ab16556ff4632fad1885900e71609b16214182eeab76ef2c3f233b2d8c795133"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_287.png",
+              "sha256": "b1a88da7a2657ed070474126adfe93392932162772a3f54c22694f3097e7e5dd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_288.png",
+              "sha256": "fc5a5e7c35cca31d0e0dcf27a7a174ae321b19d759cbc86373f5fdc565e878e8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_289.png",
+              "sha256": "074936d8146895c952e45c3ab5990266e4d938da39528e3182e5ec4c8cfd81c1"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_290.png",
+              "sha256": "ea702f6594d78c4223fc077133fdc0b67910904777376c4c05e9179d7bf9e610"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页278-280与答案页280-285逐题核对：题干、选项、答案和解析与发布内容一致（单位/公式排版差异不改变语义）。",
+          "source_hash": "cd1a58153163f7a6c7ae5be1adc1654751231d241bdb2cb660c24f7a311e3149"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线概述 · 选择题::X05": {
       "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X05",
@@ -29054,14 +29203,10 @@
       "chapter": "总线 · 总线概述 · 选择题",
       "question_id": "X06",
       "source_hash": "c7a91446ee1c9cb9200fa1ec511d2207a9991f1d3591d5cb6d35720fc0362fa5",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         283,
         284,
@@ -29077,7 +29222,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -29115,10 +29260,64 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X06",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_283.png",
+              "sha256": "d827d81daef98a0b3306ea4b5b61fbdae4c8a1e91eb2000a0997068d0ad2c4eb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_284.png",
+              "sha256": "3b49373f045a15005a4737f502c50c750b027601d89f73e43dfa78d93b5e2656"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_286.png",
+              "sha256": "ab16556ff4632fad1885900e71609b16214182eeab76ef2c3f233b2d8c795133"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_287.png",
+              "sha256": "b1a88da7a2657ed070474126adfe93392932162772a3f54c22694f3097e7e5dd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_288.png",
+              "sha256": "fc5a5e7c35cca31d0e0dcf27a7a174ae321b19d759cbc86373f5fdc565e878e8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_289.png",
+              "sha256": "074936d8146895c952e45c3ab5990266e4d938da39528e3182e5ec4c8cfd81c1"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_290.png",
+              "sha256": "ea702f6594d78c4223fc077133fdc0b67910904777376c4c05e9179d7bf9e610"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页278-280与答案页280-285逐题核对：题干、选项、答案和解析与发布内容一致（单位/公式排版差异不改变语义）。",
+          "source_hash": "c7a91446ee1c9cb9200fa1ec511d2207a9991f1d3591d5cb6d35720fc0362fa5"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线概述 · 选择题::X07": {
       "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X07",
@@ -29127,13 +29326,9 @@
       "question_id": "X07",
       "source_hash": "e35c6501245f07b73b5f9862c560cf15f16541d568a8b55aa89c1b0382d061a9",
       "source_fidelity": "verified",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         283,
         284,
@@ -29149,7 +29344,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -29187,10 +29382,64 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X07",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_283.png",
+              "sha256": "d827d81daef98a0b3306ea4b5b61fbdae4c8a1e91eb2000a0997068d0ad2c4eb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_284.png",
+              "sha256": "3b49373f045a15005a4737f502c50c750b027601d89f73e43dfa78d93b5e2656"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_286.png",
+              "sha256": "ab16556ff4632fad1885900e71609b16214182eeab76ef2c3f233b2d8c795133"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_287.png",
+              "sha256": "b1a88da7a2657ed070474126adfe93392932162772a3f54c22694f3097e7e5dd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_288.png",
+              "sha256": "fc5a5e7c35cca31d0e0dcf27a7a174ae321b19d759cbc86373f5fdc565e878e8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_289.png",
+              "sha256": "074936d8146895c952e45c3ab5990266e4d938da39528e3182e5ec4c8cfd81c1"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_290.png",
+              "sha256": "ea702f6594d78c4223fc077133fdc0b67910904777376c4c05e9179d7bf9e610"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页278-280与答案页280-285逐题核对：题干、选项、答案和解析与发布内容一致（单位/公式排版差异不改变语义）。",
+          "source_hash": "e35c6501245f07b73b5f9862c560cf15f16541d568a8b55aa89c1b0382d061a9"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线概述 · 选择题::X08": {
       "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X08",
@@ -29198,14 +29447,10 @@
       "chapter": "总线 · 总线概述 · 选择题",
       "question_id": "X08",
       "source_hash": "8d7abe131681b37a46e86b36f53f5169f04e1abac2f0bbac9e9ad58fb167b765",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         283,
         284,
@@ -29221,7 +29466,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -29259,10 +29504,64 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X08",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_283.png",
+              "sha256": "d827d81daef98a0b3306ea4b5b61fbdae4c8a1e91eb2000a0997068d0ad2c4eb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_284.png",
+              "sha256": "3b49373f045a15005a4737f502c50c750b027601d89f73e43dfa78d93b5e2656"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_286.png",
+              "sha256": "ab16556ff4632fad1885900e71609b16214182eeab76ef2c3f233b2d8c795133"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_287.png",
+              "sha256": "b1a88da7a2657ed070474126adfe93392932162772a3f54c22694f3097e7e5dd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_288.png",
+              "sha256": "fc5a5e7c35cca31d0e0dcf27a7a174ae321b19d759cbc86373f5fdc565e878e8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_289.png",
+              "sha256": "074936d8146895c952e45c3ab5990266e4d938da39528e3182e5ec4c8cfd81c1"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_290.png",
+              "sha256": "ea702f6594d78c4223fc077133fdc0b67910904777376c4c05e9179d7bf9e610"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页278-280与答案页280-285逐题核对：题干、选项、答案和解析与发布内容一致（单位/公式排版差异不改变语义）。",
+          "source_hash": "8d7abe131681b37a46e86b36f53f5169f04e1abac2f0bbac9e9ad58fb167b765"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线概述 · 选择题::X09": {
       "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X09",
@@ -29270,13 +29569,10 @@
       "chapter": "总线 · 总线概述 · 选择题",
       "question_id": "X09",
       "source_hash": "23911856b1b5037b28dde2369606d7f32fb23619c65241d46754dae327eae94e",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         283,
         284,
@@ -29292,7 +29588,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -29315,10 +29611,64 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X09",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_283.png",
+              "sha256": "d827d81daef98a0b3306ea4b5b61fbdae4c8a1e91eb2000a0997068d0ad2c4eb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_284.png",
+              "sha256": "3b49373f045a15005a4737f502c50c750b027601d89f73e43dfa78d93b5e2656"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_286.png",
+              "sha256": "ab16556ff4632fad1885900e71609b16214182eeab76ef2c3f233b2d8c795133"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_287.png",
+              "sha256": "b1a88da7a2657ed070474126adfe93392932162772a3f54c22694f3097e7e5dd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_288.png",
+              "sha256": "fc5a5e7c35cca31d0e0dcf27a7a174ae321b19d759cbc86373f5fdc565e878e8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_289.png",
+              "sha256": "074936d8146895c952e45c3ab5990266e4d938da39528e3182e5ec4c8cfd81c1"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_290.png",
+              "sha256": "ea702f6594d78c4223fc077133fdc0b67910904777376c4c05e9179d7bf9e610"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页278-280与答案页280-285逐题核对：题干、选项、答案和解析与发布内容一致（单位/公式排版差异不改变语义）。",
+          "source_hash": "23911856b1b5037b28dde2369606d7f32fb23619c65241d46754dae327eae94e"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线概述 · 选择题::X10": {
       "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X10",
@@ -29469,13 +29819,10 @@
       "chapter": "总线 · 总线概述 · 选择题",
       "question_id": "X12",
       "source_hash": "0bf6c10d2963f6b9f08bd30ac81d9be83b29af16c2fe18b014145bfb2ee7e4fd",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         283,
         284,
@@ -29491,7 +29838,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -29514,10 +29861,64 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X12",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_283.png",
+              "sha256": "d827d81daef98a0b3306ea4b5b61fbdae4c8a1e91eb2000a0997068d0ad2c4eb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_284.png",
+              "sha256": "3b49373f045a15005a4737f502c50c750b027601d89f73e43dfa78d93b5e2656"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_286.png",
+              "sha256": "ab16556ff4632fad1885900e71609b16214182eeab76ef2c3f233b2d8c795133"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_287.png",
+              "sha256": "b1a88da7a2657ed070474126adfe93392932162772a3f54c22694f3097e7e5dd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_288.png",
+              "sha256": "fc5a5e7c35cca31d0e0dcf27a7a174ae321b19d759cbc86373f5fdc565e878e8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_289.png",
+              "sha256": "074936d8146895c952e45c3ab5990266e4d938da39528e3182e5ec4c8cfd81c1"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_290.png",
+              "sha256": "ea702f6594d78c4223fc077133fdc0b67910904777376c4c05e9179d7bf9e610"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页278-280与答案页280-285逐题核对：题干、选项、答案和解析与发布内容一致（单位/公式排版差异不改变语义）。",
+          "source_hash": "0bf6c10d2963f6b9f08bd30ac81d9be83b29af16c2fe18b014145bfb2ee7e4fd"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线概述 · 选择题::X13": {
       "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X13",
@@ -29525,14 +29926,10 @@
       "chapter": "总线 · 总线概述 · 选择题",
       "question_id": "X13",
       "source_hash": "45ec5c257e5ea976787e537d1491e86bc5c709e46e72fdfc3c785ce3cee8be4a",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         283,
         284,
@@ -29548,7 +29945,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -29586,10 +29983,64 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X13",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_283.png",
+              "sha256": "d827d81daef98a0b3306ea4b5b61fbdae4c8a1e91eb2000a0997068d0ad2c4eb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_284.png",
+              "sha256": "3b49373f045a15005a4737f502c50c750b027601d89f73e43dfa78d93b5e2656"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_286.png",
+              "sha256": "ab16556ff4632fad1885900e71609b16214182eeab76ef2c3f233b2d8c795133"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_287.png",
+              "sha256": "b1a88da7a2657ed070474126adfe93392932162772a3f54c22694f3097e7e5dd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_288.png",
+              "sha256": "fc5a5e7c35cca31d0e0dcf27a7a174ae321b19d759cbc86373f5fdc565e878e8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_289.png",
+              "sha256": "074936d8146895c952e45c3ab5990266e4d938da39528e3182e5ec4c8cfd81c1"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_290.png",
+              "sha256": "ea702f6594d78c4223fc077133fdc0b67910904777376c4c05e9179d7bf9e610"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页278-280与答案页280-285逐题核对：题干、选项、答案和解析与发布内容一致（单位/公式排版差异不改变语义）。",
+          "source_hash": "45ec5c257e5ea976787e537d1491e86bc5c709e46e72fdfc3c785ce3cee8be4a"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线概述 · 选择题::X14": {
       "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X14",
@@ -29598,12 +30049,9 @@
       "question_id": "X14",
       "source_hash": "185fb5dcf281800965100e0672b1d60f067162e50f620b20d2ee6984137224c2",
       "source_fidelity": "verified",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         283,
         284,
@@ -29619,7 +30067,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -29642,10 +30090,64 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X14",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_283.png",
+              "sha256": "d827d81daef98a0b3306ea4b5b61fbdae4c8a1e91eb2000a0997068d0ad2c4eb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_284.png",
+              "sha256": "3b49373f045a15005a4737f502c50c750b027601d89f73e43dfa78d93b5e2656"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_286.png",
+              "sha256": "ab16556ff4632fad1885900e71609b16214182eeab76ef2c3f233b2d8c795133"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_287.png",
+              "sha256": "b1a88da7a2657ed070474126adfe93392932162772a3f54c22694f3097e7e5dd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_288.png",
+              "sha256": "fc5a5e7c35cca31d0e0dcf27a7a174ae321b19d759cbc86373f5fdc565e878e8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_289.png",
+              "sha256": "074936d8146895c952e45c3ab5990266e4d938da39528e3182e5ec4c8cfd81c1"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_290.png",
+              "sha256": "ea702f6594d78c4223fc077133fdc0b67910904777376c4c05e9179d7bf9e610"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页278-280与答案页280-285逐题核对：题干、选项、答案和解析与发布内容一致（单位/公式排版差异不改变语义）。",
+          "source_hash": "185fb5dcf281800965100e0672b1d60f067162e50f620b20d2ee6984137224c2"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线概述 · 选择题::X15": {
       "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X15",
@@ -29653,14 +30155,10 @@
       "chapter": "总线 · 总线概述 · 选择题",
       "question_id": "X15",
       "source_hash": "7b215cf9d87c006a378bc011dca27b8900c7869984f0bca82f60b6a82ca64fd8",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         283,
         284,
@@ -29676,7 +30174,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -29714,10 +30212,64 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X15",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_283.png",
+              "sha256": "d827d81daef98a0b3306ea4b5b61fbdae4c8a1e91eb2000a0997068d0ad2c4eb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_284.png",
+              "sha256": "3b49373f045a15005a4737f502c50c750b027601d89f73e43dfa78d93b5e2656"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_286.png",
+              "sha256": "ab16556ff4632fad1885900e71609b16214182eeab76ef2c3f233b2d8c795133"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_287.png",
+              "sha256": "b1a88da7a2657ed070474126adfe93392932162772a3f54c22694f3097e7e5dd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_288.png",
+              "sha256": "fc5a5e7c35cca31d0e0dcf27a7a174ae321b19d759cbc86373f5fdc565e878e8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_289.png",
+              "sha256": "074936d8146895c952e45c3ab5990266e4d938da39528e3182e5ec4c8cfd81c1"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_290.png",
+              "sha256": "ea702f6594d78c4223fc077133fdc0b67910904777376c4c05e9179d7bf9e610"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页278-280与答案页280-285逐题核对：题干、选项、答案和解析与发布内容一致（单位/公式排版差异不改变语义）。",
+          "source_hash": "7b215cf9d87c006a378bc011dca27b8900c7869984f0bca82f60b6a82ca64fd8"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线概述 · 选择题::X16": {
       "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X16",
@@ -29854,14 +30406,10 @@
       "chapter": "总线 · 总线概述 · 选择题",
       "question_id": "X18",
       "source_hash": "a9703e6c706b9346b991774683fd2e86b51d1eb583d431e0c1623719c5bc0bb7",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         283,
         284,
@@ -29877,7 +30425,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -29915,10 +30463,64 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X18",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_283.png",
+              "sha256": "d827d81daef98a0b3306ea4b5b61fbdae4c8a1e91eb2000a0997068d0ad2c4eb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_284.png",
+              "sha256": "3b49373f045a15005a4737f502c50c750b027601d89f73e43dfa78d93b5e2656"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_286.png",
+              "sha256": "ab16556ff4632fad1885900e71609b16214182eeab76ef2c3f233b2d8c795133"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_287.png",
+              "sha256": "b1a88da7a2657ed070474126adfe93392932162772a3f54c22694f3097e7e5dd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_288.png",
+              "sha256": "fc5a5e7c35cca31d0e0dcf27a7a174ae321b19d759cbc86373f5fdc565e878e8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_289.png",
+              "sha256": "074936d8146895c952e45c3ab5990266e4d938da39528e3182e5ec4c8cfd81c1"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_290.png",
+              "sha256": "ea702f6594d78c4223fc077133fdc0b67910904777376c4c05e9179d7bf9e610"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页278-280与答案页280-285逐题核对：题干、选项、答案和解析与发布内容一致（单位/公式排版差异不改变语义）。",
+          "source_hash": "a9703e6c706b9346b991774683fd2e86b51d1eb583d431e0c1623719c5bc0bb7"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线概述 · 选择题::X19": {
       "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X19",
@@ -29926,14 +30528,10 @@
       "chapter": "总线 · 总线概述 · 选择题",
       "question_id": "X19",
       "source_hash": "abc5d91736e483d46b81ec0e237bc06836addb4443146b743c443f79fdb9c063",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         283,
         284,
@@ -29949,7 +30547,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -29987,10 +30585,64 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X19",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_283.png",
+              "sha256": "d827d81daef98a0b3306ea4b5b61fbdae4c8a1e91eb2000a0997068d0ad2c4eb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_284.png",
+              "sha256": "3b49373f045a15005a4737f502c50c750b027601d89f73e43dfa78d93b5e2656"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_286.png",
+              "sha256": "ab16556ff4632fad1885900e71609b16214182eeab76ef2c3f233b2d8c795133"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_287.png",
+              "sha256": "b1a88da7a2657ed070474126adfe93392932162772a3f54c22694f3097e7e5dd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_288.png",
+              "sha256": "fc5a5e7c35cca31d0e0dcf27a7a174ae321b19d759cbc86373f5fdc565e878e8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_289.png",
+              "sha256": "074936d8146895c952e45c3ab5990266e4d938da39528e3182e5ec4c8cfd81c1"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_290.png",
+              "sha256": "ea702f6594d78c4223fc077133fdc0b67910904777376c4c05e9179d7bf9e610"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页278-280与答案页280-285逐题核对：题干、选项、答案和解析与发布内容一致（单位/公式排版差异不改变语义）。",
+          "source_hash": "abc5d91736e483d46b81ec0e237bc06836addb4443146b743c443f79fdb9c063"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线概述 · 选择题::X20": {
       "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X20",
@@ -29998,14 +30650,10 @@
       "chapter": "总线 · 总线概述 · 选择题",
       "question_id": "X20",
       "source_hash": "fdc56ee0350a21c8144bc027e07eee45d8f88eba19a8a25c1cf319e40287de56",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         283,
         284,
@@ -30021,7 +30669,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -30059,10 +30707,64 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X20",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_283.png",
+              "sha256": "d827d81daef98a0b3306ea4b5b61fbdae4c8a1e91eb2000a0997068d0ad2c4eb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_284.png",
+              "sha256": "3b49373f045a15005a4737f502c50c750b027601d89f73e43dfa78d93b5e2656"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_286.png",
+              "sha256": "ab16556ff4632fad1885900e71609b16214182eeab76ef2c3f233b2d8c795133"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_287.png",
+              "sha256": "b1a88da7a2657ed070474126adfe93392932162772a3f54c22694f3097e7e5dd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_288.png",
+              "sha256": "fc5a5e7c35cca31d0e0dcf27a7a174ae321b19d759cbc86373f5fdc565e878e8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_289.png",
+              "sha256": "074936d8146895c952e45c3ab5990266e4d938da39528e3182e5ec4c8cfd81c1"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_290.png",
+              "sha256": "ea702f6594d78c4223fc077133fdc0b67910904777376c4c05e9179d7bf9e610"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页278-280与答案页280-285逐题核对：题干、选项、答案和解析与发布内容一致（单位/公式排版差异不改变语义）。",
+          "source_hash": "fdc56ee0350a21c8144bc027e07eee45d8f88eba19a8a25c1cf319e40287de56"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线概述 · 选择题::X21": {
       "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X21",
@@ -30070,15 +30772,10 @@
       "chapter": "总线 · 总线概述 · 选择题",
       "question_id": "X21",
       "source_hash": "6da410060d6bfe6ee0289ea8e98cab315dc8ffe3581fec5285b2a71ab9ee8222",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         283,
         284,
@@ -30094,7 +30791,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -30132,10 +30829,64 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X21",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_283.png",
+              "sha256": "d827d81daef98a0b3306ea4b5b61fbdae4c8a1e91eb2000a0997068d0ad2c4eb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_284.png",
+              "sha256": "3b49373f045a15005a4737f502c50c750b027601d89f73e43dfa78d93b5e2656"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_286.png",
+              "sha256": "ab16556ff4632fad1885900e71609b16214182eeab76ef2c3f233b2d8c795133"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_287.png",
+              "sha256": "b1a88da7a2657ed070474126adfe93392932162772a3f54c22694f3097e7e5dd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_288.png",
+              "sha256": "fc5a5e7c35cca31d0e0dcf27a7a174ae321b19d759cbc86373f5fdc565e878e8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_289.png",
+              "sha256": "074936d8146895c952e45c3ab5990266e4d938da39528e3182e5ec4c8cfd81c1"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_290.png",
+              "sha256": "ea702f6594d78c4223fc077133fdc0b67910904777376c4c05e9179d7bf9e610"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页278-280与答案页280-285逐题核对：题干、选项、答案和解析与发布内容一致（单位/公式排版差异不改变语义）。",
+          "source_hash": "6da410060d6bfe6ee0289ea8e98cab315dc8ffe3581fec5285b2a71ab9ee8222"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线概述 · 选择题::X22": {
       "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X22",
@@ -30144,12 +30895,9 @@
       "question_id": "X22",
       "source_hash": "786b1358748628ddf8f0c4af6e0f557d1eeab569f771237bba4812f5d7ebdebd",
       "source_fidelity": "verified",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         283,
         284,
@@ -30165,7 +30913,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -30188,10 +30936,64 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X22",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_283.png",
+              "sha256": "d827d81daef98a0b3306ea4b5b61fbdae4c8a1e91eb2000a0997068d0ad2c4eb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_284.png",
+              "sha256": "3b49373f045a15005a4737f502c50c750b027601d89f73e43dfa78d93b5e2656"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_286.png",
+              "sha256": "ab16556ff4632fad1885900e71609b16214182eeab76ef2c3f233b2d8c795133"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_287.png",
+              "sha256": "b1a88da7a2657ed070474126adfe93392932162772a3f54c22694f3097e7e5dd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_288.png",
+              "sha256": "fc5a5e7c35cca31d0e0dcf27a7a174ae321b19d759cbc86373f5fdc565e878e8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_289.png",
+              "sha256": "074936d8146895c952e45c3ab5990266e4d938da39528e3182e5ec4c8cfd81c1"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_290.png",
+              "sha256": "ea702f6594d78c4223fc077133fdc0b67910904777376c4c05e9179d7bf9e610"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页278-280与答案页280-285逐题核对：题干、选项、答案和解析与发布内容一致（单位/公式排版差异不改变语义）。",
+          "source_hash": "786b1358748628ddf8f0c4af6e0f557d1eeab569f771237bba4812f5d7ebdebd"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线概述 · 选择题::X23": {
       "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X23",
@@ -30199,14 +31001,10 @@
       "chapter": "总线 · 总线概述 · 选择题",
       "question_id": "X23",
       "source_hash": "74f655b5498275de3aa36a3ce7e77ab4cb7fdf7c58241089cd4dda43b716a5d8",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         283,
         284,
@@ -30222,7 +31020,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -30260,10 +31058,64 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X23",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_283.png",
+              "sha256": "d827d81daef98a0b3306ea4b5b61fbdae4c8a1e91eb2000a0997068d0ad2c4eb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_284.png",
+              "sha256": "3b49373f045a15005a4737f502c50c750b027601d89f73e43dfa78d93b5e2656"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_286.png",
+              "sha256": "ab16556ff4632fad1885900e71609b16214182eeab76ef2c3f233b2d8c795133"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_287.png",
+              "sha256": "b1a88da7a2657ed070474126adfe93392932162772a3f54c22694f3097e7e5dd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_288.png",
+              "sha256": "fc5a5e7c35cca31d0e0dcf27a7a174ae321b19d759cbc86373f5fdc565e878e8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_289.png",
+              "sha256": "074936d8146895c952e45c3ab5990266e4d938da39528e3182e5ec4c8cfd81c1"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_290.png",
+              "sha256": "ea702f6594d78c4223fc077133fdc0b67910904777376c4c05e9179d7bf9e610"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页278-280与答案页280-285逐题核对：题干、选项、答案和解析与发布内容一致（单位/公式排版差异不改变语义）。",
+          "source_hash": "74f655b5498275de3aa36a3ce7e77ab4cb7fdf7c58241089cd4dda43b716a5d8"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线概述 · 选择题::X24": {
       "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X24",
@@ -30343,15 +31195,10 @@
       "chapter": "总线 · 总线概述 · 选择题",
       "question_id": "X25",
       "source_hash": "651ecce83c8d48eab5aea752266b11176c0088a2d2cc1498a2e7a8379ef04293",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         283,
         284,
@@ -30367,7 +31214,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T08:00:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -30405,10 +31252,64 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X25",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T08:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_283.png",
+              "sha256": "d827d81daef98a0b3306ea4b5b61fbdae4c8a1e91eb2000a0997068d0ad2c4eb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_284.png",
+              "sha256": "3b49373f045a15005a4737f502c50c750b027601d89f73e43dfa78d93b5e2656"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_285.png",
+              "sha256": "93e9516f22e58e3c822768f8e074de1ec114c86792ae7e3e08c8c71c73a6de67"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_286.png",
+              "sha256": "ab16556ff4632fad1885900e71609b16214182eeab76ef2c3f233b2d8c795133"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_287.png",
+              "sha256": "b1a88da7a2657ed070474126adfe93392932162772a3f54c22694f3097e7e5dd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_288.png",
+              "sha256": "fc5a5e7c35cca31d0e0dcf27a7a174ae321b19d759cbc86373f5fdc565e878e8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_289.png",
+              "sha256": "074936d8146895c952e45c3ab5990266e4d938da39528e3182e5ec4c8cfd81c1"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_290.png",
+              "sha256": "ea702f6594d78c4223fc077133fdc0b67910904777376c4c05e9179d7bf9e610"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页278-280与答案页280-285逐题核对：题干、选项、答案和解析与发布内容一致（单位/公式排版差异不改变语义）。",
+          "source_hash": "651ecce83c8d48eab5aea752266b11176c0088a2d2cc1498a2e7a8379ef04293"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::指令系统 · CISC和RISC的基本概念 · 选择题::X01": {
       "source_uid": "408:cs408-coa::指令系统 · CISC和RISC的基本概念 · 选择题::X01",
@@ -53723,7 +54624,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T22:22:22.604472+00:00",
+      "verified_at": "2026-08-26T22:24:59.965810+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -53766,7 +54667,7 @@
           "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X07",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-26T22:22:22.604472+00:00",
+          "reviewed_at": "2026-08-26T22:24:59.965810+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/coa/page_300.png",
