@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-26T18:30:03+00:00",
+  "generated_at": "2026-08-26T18:32:58+00:00",
   "published_hashes": {
     "ds": "a40686840e5043561d7f7159fbd779725ffa65c56bfdd79a2683965b6aed0771",
     "coa": "8f9ea82d6d82e53ea38daf200ae95a361b5c43742f0ce9881b207f671f7f06f7",
@@ -20,9 +20,9 @@
       "name": "计算机组成原理",
       "mode": "strict",
       "total": 674,
-      "certified": 128,
+      "certified": 133,
       "pending": 0,
-      "held": 546
+      "held": 541
     },
     "net": {
       "name": "计算机网络",
@@ -43,9 +43,9 @@
   },
   "summary": {
     "total": 2869,
-    "certified": 477,
+    "certified": 482,
     "pending": 0,
-    "held": 2392
+    "held": 2387
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -41166,13 +41166,10 @@
       "chapter": "计算机系统概述 · 计算机的性能指标 · 选择题",
       "question_id": "X12",
       "source_hash": "e750a089522d048bdbd61540f6c205df19c177fbe1b709ba92a4478de8d2b0c5",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         18,
         19,
@@ -41194,7 +41191,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T06:10:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -41232,10 +41229,52 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X12",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T06:10:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_018.png",
+              "sha256": "7fff70c91f13a62c7297ab96b322adbbfda656990aaf79529dc0f73b51585880"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_019.png",
+              "sha256": "e4238e7a6f569be712b081cdb65c13328dae5121229cfdf831a397ff7269788b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_020.png",
+              "sha256": "3ffd8cbed34a59bcdf2bd24de95094f19b7a213ce1ac02f33f635b7ef4d7152d"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_020.png",
+              "sha256": "3ffd8cbed34a59bcdf2bd24de95094f19b7a213ce1ac02f33f635b7ef4d7152d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_021.png",
+              "sha256": "8423d78e60b2ee46b9ea6195c0fe3b84057290346a87fa6ab5a70ab89f3cfd0c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_022.png",
+              "sha256": "8a2e6dc4cbfe8a2207cd958d48d871e2f9a94260a8ee3fe0fbff72f0957e2ebe"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页18-20与答案页20-22：X12题干、三项性能改进措施、选项及解析忠实，答案为D。",
+          "source_hash": "e750a089522d048bdbd61540f6c205df19c177fbe1b709ba92a4478de8d2b0c5"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X13": {
       "source_uid": "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X13",
@@ -41243,14 +41282,10 @@
       "chapter": "计算机系统概述 · 计算机的性能指标 · 选择题",
       "question_id": "X13",
       "source_hash": "1170acf8d2b6a7e99b3e4625a95c45f9d3886d922d6376c1ad649576cf15495a",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         18,
         19,
@@ -41272,7 +41307,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T06:11:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -41310,10 +41345,52 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "legacy_hold_recheck;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X13",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T06:11:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_018.png",
+              "sha256": "7fff70c91f13a62c7297ab96b322adbbfda656990aaf79529dc0f73b51585880"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_019.png",
+              "sha256": "e4238e7a6f569be712b081cdb65c13328dae5121229cfdf831a397ff7269788b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_020.png",
+              "sha256": "3ffd8cbed34a59bcdf2bd24de95094f19b7a213ce1ac02f33f635b7ef4d7152d"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_020.png",
+              "sha256": "3ffd8cbed34a59bcdf2bd24de95094f19b7a213ce1ac02f33f635b7ef4d7152d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_021.png",
+              "sha256": "8423d78e60b2ee46b9ea6195c0fe3b84057290346a87fa6ab5a70ab89f3cfd0c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_022.png",
+              "sha256": "8a2e6dc4cbfe8a2207cd958d48d871e2f9a94260a8ee3fe0fbff72f0957e2ebe"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页18-20与答案页20-22：X13题干、MIPS/CPI/IPC/MFLOPS选项及解析忠实，答案为D。",
+          "source_hash": "1170acf8d2b6a7e99b3e4625a95c45f9d3886d922d6376c1ad649576cf15495a"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X14": {
       "source_uid": "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X14",
@@ -41321,13 +41398,10 @@
       "chapter": "计算机系统概述 · 计算机的性能指标 · 选择题",
       "question_id": "X14",
       "source_hash": "f52aa1d7730b0873c81dc6143a09f28fcaceda6707efd51dc81613af1eba8be9",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         18,
         19,
@@ -41349,7 +41423,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T06:12:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -41387,10 +41461,52 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X14",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T06:12:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_018.png",
+              "sha256": "7fff70c91f13a62c7297ab96b322adbbfda656990aaf79529dc0f73b51585880"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_019.png",
+              "sha256": "e4238e7a6f569be712b081cdb65c13328dae5121229cfdf831a397ff7269788b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_020.png",
+              "sha256": "3ffd8cbed34a59bcdf2bd24de95094f19b7a213ce1ac02f33f635b7ef4d7152d"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_020.png",
+              "sha256": "3ffd8cbed34a59bcdf2bd24de95094f19b7a213ce1ac02f33f635b7ef4d7152d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_021.png",
+              "sha256": "8423d78e60b2ee46b9ea6195c0fe3b84057290346a87fa6ab5a70ab89f3cfd0c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_022.png",
+              "sha256": "8a2e6dc4cbfe8a2207cd958d48d871e2f9a94260a8ee3fe0fbff72f0957e2ebe"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页18-20与答案页20-22：X14题干、CPU/I-O性能计算选项及解析忠实，答案为D。",
+          "source_hash": "f52aa1d7730b0873c81dc6143a09f28fcaceda6707efd51dc81613af1eba8be9"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X15": {
       "source_uid": "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X15",
@@ -41460,13 +41576,10 @@
       "chapter": "计算机系统概述 · 计算机的性能指标 · 选择题",
       "question_id": "X16",
       "source_hash": "fa60d05a3794075b58ca4b1fbdc5a1528af36eceb2c8758609929151517f6d3c",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         18,
         19,
@@ -41488,7 +41601,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T06:13:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -41526,10 +41639,52 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X16",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T06:13:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_018.png",
+              "sha256": "7fff70c91f13a62c7297ab96b322adbbfda656990aaf79529dc0f73b51585880"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_019.png",
+              "sha256": "e4238e7a6f569be712b081cdb65c13328dae5121229cfdf831a397ff7269788b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_020.png",
+              "sha256": "3ffd8cbed34a59bcdf2bd24de95094f19b7a213ce1ac02f33f635b7ef4d7152d"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_020.png",
+              "sha256": "3ffd8cbed34a59bcdf2bd24de95094f19b7a213ce1ac02f33f635b7ef4d7152d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_021.png",
+              "sha256": "8423d78e60b2ee46b9ea6195c0fe3b84057290346a87fa6ab5a70ab89f3cfd0c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_022.png",
+              "sha256": "8a2e6dc4cbfe8a2207cd958d48d871e2f9a94260a8ee3fe0fbff72f0957e2ebe"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页18-20与答案页20-22：X16题干、四个时间选项及解析忠实，答案为D。",
+          "source_hash": "fa60d05a3794075b58ca4b1fbdc5a1528af36eceb2c8758609929151517f6d3c"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X17": {
       "source_uid": "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X17",
@@ -41537,15 +41692,10 @@
       "chapter": "计算机系统概述 · 计算机的性能指标 · 选择题",
       "question_id": "X17",
       "source_hash": "49f43482994bd7a1329a2345fa18a6dcb0b2449436602bc26159ad6da36217db",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         18,
         19,
@@ -41567,7 +41717,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T06:14:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -41605,10 +41755,52 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X17",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T06:14:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_018.png",
+              "sha256": "7fff70c91f13a62c7297ab96b322adbbfda656990aaf79529dc0f73b51585880"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_019.png",
+              "sha256": "e4238e7a6f569be712b081cdb65c13328dae5121229cfdf831a397ff7269788b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_020.png",
+              "sha256": "3ffd8cbed34a59bcdf2bd24de95094f19b7a213ce1ac02f33f635b7ef4d7152d"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_020.png",
+              "sha256": "3ffd8cbed34a59bcdf2bd24de95094f19b7a213ce1ac02f33f635b7ef4d7152d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_021.png",
+              "sha256": "8423d78e60b2ee46b9ea6195c0fe3b84057290346a87fa6ab5a70ab89f3cfd0c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_022.png",
+              "sha256": "8a2e6dc4cbfe8a2207cd958d48d871e2f9a94260a8ee3fe0fbff72f0957e2ebe"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页18-20与答案页20-22：X17题干、M1/M2主频与CPI选项及解析忠实，答案为C。",
+          "source_hash": "49f43482994bd7a1329a2345fa18a6dcb0b2449436602bc26159ad6da36217db"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X19": {
       "source_uid": "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X19",
