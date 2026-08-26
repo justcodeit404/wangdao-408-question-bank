@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "protocol": "codex-original-page-review-v1",
-  "updated_at": "2026-08-26T16:47:25.962018+00:00",
+  "updated_at": "2026-08-26T16:54:52.505171+00:00",
   "records": [
     {
       "source_uid": "408:cs408-coa::中央处理器 · 异常和中断机制 · 选择题::X01",
@@ -1800,6 +1800,121 @@
       "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
       "post_patch_verified": true,
       "source_hash": "02eacb601161ff1f6f7e5eda482a18e4f5b71ff4899a62cc2743a4f0c29ed7e8"
+    },
+    {
+      "source_uid": "408:cs408-os::进程与线程 · 死锁 · 选择题::X45",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T16:53:03.313720+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_169.png",
+          "sha256": "28e9287649fb0280a47a89993a408228d7889bc3d953f4cda5de649869d9855b"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_177.png",
+          "sha256": "4002203a80bc8f57f1e71cc55417a64fd339b4ddfbee9ec897c90164758590d2"
+        }
+      ],
+      "final_action": "patch",
+      "content_match": false,
+      "options_match": false,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [
+        "table_ocr_flattened",
+        "missing_options_C_D",
+        "process_subscripts_lost"
+      ],
+      "rationale": "原书题页169（书164页）表格为P₀/P₁/P₂三行，选项A-D为1/2/3/4；答案页177（书172页）45.B。已按原书重建表格文本并补齐四项。",
+      "post_patch_verified": true
+    },
+    {
+      "source_uid": "408:cs408-os::进程与线程 · 死锁 · 选择题::X45",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T16:54:52.081163+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_169.png",
+          "sha256": "28e9287649fb0280a47a89993a408228d7889bc3d953f4cda5de649869d9855b"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_177.png",
+          "sha256": "4002203a80bc8f57f1e71cc55417a64fd339b4ddfbee9ec897c90164758590d2"
+        }
+      ],
+      "final_action": "patch",
+      "content_match": false,
+      "options_match": false,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [
+        "table_ocr_flattened",
+        "missing_options_C_D",
+        "process_subscripts_lost"
+      ],
+      "rationale": "重建后复核：原书题页169（书164页）表格为P₀/P₁/P₂三行，选项A-D为1/2/3/4；答案页177（书172页）45.B。",
+      "post_patch_verified": true,
+      "source_hash": "13d860bd5be9a76e1ecb2383de9efaae112779d62be8098288cf988a3fe7d2c2"
+    },
+    {
+      "source_uid": "408:cs408-os::进程与线程 · 死锁 · 选择题::X45",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "migrated:page_review_patches.json",
+      "q_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_163.png",
+          "sha256": "47a9b4d224e91897a8b791251ad19da5dae9e98d7352280bd056ebe814b29ebb",
+          "page": 163
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_164.png",
+          "sha256": "47afda8408544b588010d50d0e20abff10134c7d08b8e3bec98968f113241634",
+          "page": 164
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_165.png",
+          "sha256": "53359804ccfcb1ef53a8487cfd05070b11231385225bcd6d0e68838bc81f802e",
+          "page": 165
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_170.png",
+          "sha256": "83ba5a0cdbd07b5059dbcc0874e5571df695776f5bb2f2bfc9140b3500185f10",
+          "page": 170
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_171.png",
+          "sha256": "2f3e636b89c86ff447457b29c6d889d8cbf5e52f1ac63c95923cf01f834094e4",
+          "page": 171
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_172.png",
+          "sha256": "9e3e8f751fe08df4218e9d8d2e08511a80c933cfbb82f04a18751c5ad4f4ee9f",
+          "page": 172
+        }
+      ],
+      "final_action": "patch",
+      "content_match": null,
+      "options_match": null,
+      "answer_match": null,
+      "explanation_match": null,
+      "image_match": null,
+      "detected_errors": [
+        "persisted_page_review_patch"
+      ],
+      "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
+      "post_patch_verified": true,
+      "source_hash": "13d860bd5be9a76e1ecb2383de9efaae112779d62be8098288cf988a3fe7d2c2"
     }
   ]
 }

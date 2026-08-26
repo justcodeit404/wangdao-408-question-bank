@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-26T16:47:26+00:00",
+  "generated_at": "2026-08-26T16:57:21+00:00",
   "published_hashes": {
     "ds": "1c86d053da78ddb9d7ea0bac5abc98ca74c23f0b736f1f440172cf2d74721ef2",
-    "coa": "8e8256d912743a1f54f01b1e6a6198d91aaf385e99792fd8b9a773f3594c90a2",
+    "coa": "9da0910b66a74dfd1476f2cc1eba97a80ebab7683b89ac2a1261278e28f5a498",
     "net": "2bc29faf5bac4ee762dd8d42920025f5abbc5c2a34b5b9f8d0e52fa910662a5d",
-    "os": "746cf01f595a59cf98f80780e359b05350f5d3d9cbe599d2412171fd490560e0"
+    "os": "a43ca9d4375b7cd96ca2c0d5d024b6d51904bb50fa6525ee1a8eb55ff81161fe"
   },
   "courses": {
     "ds": {
       "name": "数据结构",
-      "mode": "strict",
+      "mode": "progressive",
       "total": 797,
       "certified": 96,
       "pending": 0,
@@ -18,15 +18,15 @@
     },
     "coa": {
       "name": "计算机组成原理",
-      "mode": "strict",
+      "mode": "progressive",
       "total": 674,
       "certified": 112,
-      "pending": 0,
-      "held": 562
+      "pending": 1,
+      "held": 561
     },
     "net": {
       "name": "计算机网络",
-      "mode": "strict",
+      "mode": "progressive",
       "total": 639,
       "certified": 88,
       "pending": 0,
@@ -36,16 +36,16 @@
       "name": "操作系统",
       "mode": "strict",
       "total": 759,
-      "certified": 125,
+      "certified": 126,
       "pending": 0,
-      "held": 634
+      "held": 633
     }
   },
   "summary": {
     "total": 2869,
-    "certified": 422,
-    "pending": 0,
-    "held": 2447
+    "certified": 423,
+    "pending": 1,
+    "held": 2445
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -30282,12 +30282,13 @@
       "course_key": "coa",
       "chapter": "指令系统 · 程序的机器级代码表示 · 选择题",
       "question_id": "X07",
-      "source_hash": "4d94da9ca81960541e7697ee470d8520d6b48abb1f317027bc30c578734b926c",
+      "source_hash": "612f80a2fb7736373adecd7591e3d6c3606c2c9eb15d1baf7b915a349f53fc2a",
       "source_fidelity": "pending",
       "answer_validation": "pending",
-      "overall": "hold",
+      "overall": "pending",
       "reason_codes": [
-        "legacy_hold_recheck"
+        "legacy_hold_recheck",
+        "strict_hold"
       ],
       "q_pages": [
         186,
@@ -207443,16 +207444,11 @@
       "course_key": "os",
       "chapter": "进程与线程 · 死锁 · 选择题",
       "question_id": "X45",
-      "source_hash": "356ed49517d684eb6a9ec6299a14a0c84dc216e484a5c0e879ee2ecd9af4572b",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "structural_check",
-        "structural_error"
-      ],
+      "source_hash": "13d860bd5be9a76e1ecb2383de9efaae112779d62be8098288cf988a3fe7d2c2",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         163,
         164,
@@ -207493,48 +207489,42 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-26T16:54:52.081163+00:00",
       "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
+        "original_page_review": {
+          "source_uid": "408:cs408-os::进程与线程 · 死锁 · 选择题::X45",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-26T16:54:52.081163+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_169.png",
+              "sha256": "28e9287649fb0280a47a89993a408228d7889bc3d953f4cda5de649869d9855b"
+            }
           ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_177.png",
+              "sha256": "4002203a80bc8f57f1e71cc55417a64fd339b4ddfbee9ec897c90164758590d2"
+            }
           ],
-          "source_hash": "356ed49517d684eb6a9ec6299a14a0c84dc216e484a5c0e879ee2ecd9af4572b",
-          "choices": [
-            "B",
-            "B"
+          "final_action": "patch",
+          "content_match": false,
+          "options_match": false,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [
+            "table_ocr_flattened",
+            "missing_options_C_D",
+            "process_subscripts_lost"
           ],
-          "confidence": [
-            0.0,
-            0.0
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "B",
-            "B"
-          ],
-          "blind_confidence": [
-            0.0,
-            0.0
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;structural_check;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+          "rationale": "重建后复核：原书题页169（书164页）表格为P₀/P₁/P₂三行，选项A-D为1/2/3/4；答案页177（书172页）45.B。",
+          "post_patch_verified": true,
+          "source_hash": "13d860bd5be9a76e1ecb2383de9efaae112779d62be8098288cf988a3fe7d2c2"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "structural_error"
+      "certification_profile": "objective_full"
     },
     "408:cs408-os::进程与线程 · 进程与线程简介 · 解答题::A01": {
       "source_uid": "408:cs408-os::进程与线程 · 进程与线程简介 · 解答题::A01",

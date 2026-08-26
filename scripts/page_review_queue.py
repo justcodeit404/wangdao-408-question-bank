@@ -30,6 +30,11 @@ def _uid(course: str, chapter: str, qid: str) -> str:
     return f"408:cs408-{course}::{chapter}::{qid}"
 
 
+def _review_rank(review: dict[str, Any]) -> str:
+    reviewed_at = str(review.get("reviewed_at") or "")
+    return "" if reviewed_at.startswith("migrated:") else reviewed_at
+
+
 def _write(path: Path, value: dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     handle, name = tempfile.mkstemp(prefix=f".{path.name}.", suffix=".tmp", dir=str(path.parent))
@@ -68,7 +73,9 @@ def sync_queue(
     latest: dict[str, dict[str, Any]] = {}
     for row in (evidence.get("records", []) if isinstance(evidence, dict) else []):
         if isinstance(row, dict) and row.get("source_uid"):
-            latest[str(row["source_uid"])] = row
+            uid = str(row["source_uid"])
+            if uid not in latest or _review_rank(row) >= _review_rank(latest[uid]):
+                latest[uid] = row
 
     for row in queue["items"]:
         if not isinstance(row, dict):

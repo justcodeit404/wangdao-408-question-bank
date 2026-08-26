@@ -1,25 +1,25 @@
 {
   "schema_version": 2,
   "status": "published",
-  "generated_at": "2026-08-26T16:47:26+00:00",
+  "generated_at": "2026-08-26T16:57:21+00:00",
   "round_id": "ledger",
   "summary": {
     "total": 2869,
-    "certified": 422,
-    "pending": 0,
-    "held": 2447
+    "certified": 423,
+    "pending": 1,
+    "held": 2445
   },
   "published_hashes": {
     "ds": "1c86d053da78ddb9d7ea0bac5abc98ca74c23f0b736f1f440172cf2d74721ef2",
-    "coa": "8e8256d912743a1f54f01b1e6a6198d91aaf385e99792fd8b9a773f3594c90a2",
+    "coa": "9da0910b66a74dfd1476f2cc1eba97a80ebab7683b89ac2a1261278e28f5a498",
     "net": "2bc29faf5bac4ee762dd8d42920025f5abbc5c2a34b5b9f8d0e52fa910662a5d",
-    "os": "746cf01f595a59cf98f80780e359b05350f5d3d9cbe599d2412171fd490560e0"
+    "os": "a43ca9d4375b7cd96ca2c0d5d024b6d51904bb50fa6525ee1a8eb55ff81161fe"
   },
-  "ledger_sha256": "d0be2a35e80e52ca29d22d49e2703c550288ccddc078335daa275694705a2292",
+  "ledger_sha256": "3e97fd36e58a7c9310b20384c8d1500b2ce08d7f9c54e48d2209cbdaf7f30c0c",
   "courses": {
     "ds": {
       "name": "数据结构",
-      "mode": "strict",
+      "mode": "progressive",
       "total": 797,
       "certified": 96,
       "pending": 0,
@@ -27,15 +27,15 @@
     },
     "coa": {
       "name": "计算机组成原理",
-      "mode": "strict",
+      "mode": "progressive",
       "total": 674,
       "certified": 112,
-      "pending": 0,
-      "held": 562
+      "pending": 1,
+      "held": 561
     },
     "net": {
       "name": "计算机网络",
-      "mode": "strict",
+      "mode": "progressive",
       "total": 639,
       "certified": 88,
       "pending": 0,
@@ -45,9 +45,9 @@
       "name": "操作系统",
       "mode": "strict",
       "total": 759,
-      "certified": 125,
+      "certified": 126,
       "pending": 0,
-      "held": 634
+      "held": 633
     }
   },
   "records": [

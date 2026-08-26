@@ -24,6 +24,12 @@ def _now() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
 
 
+def _review_rank(record: dict[str, Any]) -> str:
+    """把迁移的历史占位记录排在真实复核记录之前。"""
+    reviewed_at = str(record.get("reviewed_at") or "")
+    return "" if reviewed_at.startswith("migrated:") else reviewed_at
+
+
 def apply(evidence_path: Path = DEFAULT_EVIDENCE, ledger_path: Path = LEDGER_PATH) -> dict[str, int]:
     evidence = _load_json(evidence_path, {})
     ledger = _load_json(ledger_path, {})
@@ -34,7 +40,9 @@ def apply(evidence_path: Path = DEFAULT_EVIDENCE, ledger_path: Path = LEDGER_PAT
     latest: dict[str, dict[str, Any]] = {}
     for record in records:
         if isinstance(record, dict) and record.get("source_uid"):
-            latest[str(record["source_uid"])] = record
+            uid = str(record["source_uid"])
+            if uid not in latest or _review_rank(record) >= _review_rank(latest[uid]):
+                latest[uid] = record
     changed = 0
     for uid, record in latest.items():
         item = items.get(uid)
