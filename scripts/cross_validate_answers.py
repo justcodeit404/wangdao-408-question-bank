@@ -9,6 +9,7 @@
 扫描版 PDF 没有文本层，因此 fresh_ocr 是必须的高置信证据。未获得 fresh_ocr
 确认、或证据冲突的题目会写入 math-bank/quality-hold.json，平台导入后自动隔离。
 """
+
 from __future__ import annotations
 
 import argparse
@@ -27,6 +28,7 @@ from utils import write_json_atomic
 sys.stdout.reconfigure(encoding="utf-8")
 
 CACHE_ROOT = REPO_ROOT / "temp" / "408-cross-validation" / "fresh_ocr"
+OCR_CACHE_PROTOCOL = "ocr-cache-v2"
 HOLD_PATH = MATH_BANK_DIR / "quality-hold.json"
 REPORT_PATH = REPORTS_DIR / "cross_validation_report.json"
 REVIEW_PATH = REPORTS_DIR / "cross_validation_review.json"
@@ -97,7 +99,9 @@ def load_json(path: Path) -> dict[str, Any]:
 
 
 def choice_groups(data: dict[str, Any]):
-    groups: dict[tuple[str, tuple[int, ...]], list[tuple[str, dict[str, Any]]]] = defaultdict(list)
+    groups: dict[tuple[str, tuple[int, ...]], list[tuple[str, dict[str, Any]]]] = (
+        defaultdict(list)
+    )
     for chapter in data.get("chapters", []):
         for q in chapter.get("questions", []):
             if q.get("type") != "选择题":
@@ -121,14 +125,44 @@ def answer_pages_from_raw(course_key: str, groups) -> list[int]:
     return sorted(pages)
 
 
+def ocr_engine_version() -> str:
+    """Identify the installed RapidOCR package; missing package is not cached."""
+    try:
+        import rapidocr_onnxruntime
+    except ImportError:
+        return "missing"
+    return str(getattr(rapidocr_onnxruntime, "__version__", "unknown"))
+
+
+def ocr_cache_valid(path: Path, image_path: Path, *, engine_version: str) -> bool:
+    """Reuse a page cache only when image hash, engine, and protocol match."""
+    if not path.is_file() or not image_path.is_file():
+        return False
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return False
+    if not isinstance(payload, dict):
+        return False
+    return (
+        payload.get("protocol") == OCR_CACHE_PROTOCOL
+        and payload.get("engine_version") == engine_version
+        and payload.get("image_sha256") == sha256_file(image_path)
+    )
+
+
 def run_fresh_ocr(course, pages: list[int], *, force: bool = False) -> str:
     cache_dir = CACHE_ROOT / course.key
     cache_dir.mkdir(parents=True, exist_ok=True)
-    todo = [
-        page
-        for page in pages
-        if force or not (cache_dir / f"page_{page:03d}.json").is_file()
-    ]
+    engine_version = ocr_engine_version()
+    todo = []
+    for page in pages:
+        image_path = course.pdf_images_dir / f"page_{page:03d}.png"
+        cache_path = cache_dir / f"page_{page:03d}.json"
+        if force or not ocr_cache_valid(
+            cache_path, image_path, engine_version=engine_version
+        ):
+            todo.append(page)
     if not todo:
         return "cached"
 
@@ -138,7 +172,10 @@ def run_fresh_ocr(course, pages: list[int], *, force: bool = False) -> str:
     from ocr_gpu import create_rapid_ocr
 
     engine, backend = create_rapid_ocr()
-    print(f"[{course.key}] fresh OCR: {len(todo)}/{len(pages)} 页，backend={backend}", flush=True)
+    print(
+        f"[{course.key}] fresh OCR: {len(todo)}/{len(pages)} 页，backend={backend}",
+        flush=True,
+    )
     for index, page in enumerate(todo, 1):
         image_path = course.pdf_images_dir / f"page_{page:03d}.png"
         if not image_path.is_file():
@@ -161,7 +198,14 @@ def run_fresh_ocr(course, pages: list[int], *, force: bool = False) -> str:
             )
         write_json_atomic(
             cache_dir / f"page_{page:03d}.json",
-            {"page": page, "backend": backend, "blocks": blocks},
+            {
+                "page": page,
+                "backend": backend,
+                "protocol": OCR_CACHE_PROTOCOL,
+                "engine_version": engine_version,
+                "image_sha256": sha256_file(image_path),
+                "blocks": blocks,
+            },
             indent=2,
             ensure_ascii=False,
         )
@@ -220,7 +264,9 @@ def validate_course(course, *, fresh_ocr: bool, force: bool = False) -> dict[str
                     "topic_title": topic,
                     "id": q.get("id"),
                     "page": q.get("page"),
-                    "source_uid": question_uid(course.key, chapter, str(q.get("id") or "")),
+                    "source_uid": question_uid(
+                        course.key, chapter, str(q.get("id") or "")
+                    ),
                     "current": current,
                     "raw_ocr": raw,
                     "fresh_ocr": fresh,
@@ -247,7 +293,9 @@ def validate_course(course, *, fresh_ocr: bool, force: bool = False) -> dict[str
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--fresh-ocr", action="store_true", help="对答案页重新运行 GPU OCR")
+    parser.add_argument(
+        "--fresh-ocr", action="store_true", help="对答案页重新运行 GPU OCR"
+    )
     parser.add_argument("--force", action="store_true", help="忽略 fresh OCR 缓存")
     parser.add_argument("--course", action="append", choices=[c.key for c in COURSES])
     args = parser.parse_args()

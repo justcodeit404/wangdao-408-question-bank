@@ -12,6 +12,7 @@ it delegates to :func:`cross_validate_answers.run_fresh_ocr`, which in turn
 loads the repository's ``tools/ocr_gpu.py`` entry point.  ``dry_run`` and
 ``cache_only`` never invoke the OCR runner and never write a packet.
 """
+
 from __future__ import annotations
 
 import argparse
@@ -51,7 +52,20 @@ OPTION_LABEL_RE = re.compile(r"([a-g])\s*[.．。、:：)]")
 # These are deliberately limited to visible mathematical/program operators.
 # Digits and operators are compared in order, so a crop cannot pass after
 # silently losing a numeric literal or changing an expression.
-OPERATOR_TRANSLATIONS = str.maketrans({"−": "-", "–": "-", "—": "-", "﹣": "-", "／": "/", "÷": "/", "×": "*", "·": "*", "＋": "+", "＝": "="})
+OPERATOR_TRANSLATIONS = str.maketrans(
+    {
+        "−": "-",
+        "–": "-",
+        "—": "-",
+        "﹣": "-",
+        "／": "/",
+        "÷": "/",
+        "×": "*",
+        "·": "*",
+        "＋": "+",
+        "＝": "=",
+    }
+)
 OPERATOR_RE = re.compile(r"[+\-*/=<>≤≥%~^|&→←]")
 NUMBER_RE = re.compile(r"\d+(?:[.]\d+)?")
 
@@ -80,7 +94,9 @@ def normalize_source_text(value: Any) -> str:
 
 
 def _question_fields(question: Mapping[str, Any]) -> dict[str, Any]:
-    options = question.get("options") if isinstance(question.get("options"), Mapping) else {}
+    options = (
+        question.get("options") if isinstance(question.get("options"), Mapping) else {}
+    )
     return {
         "content": normalize_source_text(question.get("content")),
         "options": {
@@ -114,7 +130,9 @@ def _ocr_text(directory: Path, pages: Sequence[int]) -> str:
 
 
 @lru_cache(maxsize=64)
-def _read_ocr_blocks(directory: Path, pages: tuple[int, ...]) -> tuple[dict[str, Any], ...]:
+def _read_ocr_blocks(
+    directory: Path, pages: tuple[int, ...]
+) -> tuple[dict[str, Any], ...]:
     """Load OCR blocks with page boundaries retained for question cropping."""
     blocks: list[dict[str, Any]] = []
     for page in pages:
@@ -136,11 +154,21 @@ def _read_ocr_blocks(directory: Path, pages: tuple[int, ...]) -> tuple[dict[str,
             indexed.append((y, x, index, block))
         indexed.sort(key=lambda item: (item[0], item[1], item[2]))
         for y, x, index, block in indexed:
-            blocks.append({"page": int(page), "index": index, "y0": y, "x0": x, "text": _text(block.get("text"))})
+            blocks.append(
+                {
+                    "page": int(page),
+                    "index": index,
+                    "y0": y,
+                    "x0": x,
+                    "text": _text(block.get("text")),
+                }
+            )
     return tuple(blocks)
 
 
-def _question_crop(directory: Path, pages: Sequence[int], question_number: str | None) -> dict[str, Any]:
+def _question_crop(
+    directory: Path, pages: Sequence[int], question_number: str | None
+) -> dict[str, Any]:
     """Return only one question's OCR window, never the whole source pages.
 
     The source JSON often assigns all pages in a question/answer group to each
@@ -180,7 +208,9 @@ def _question_crop(directory: Path, pages: Sequence[int], question_number: str |
             break
     cropped = blocks[start:end]
     return {
-        "text": normalize_source_text(" ".join(str(block["text"]) for block in cropped)),
+        "text": normalize_source_text(
+            " ".join(str(block["text"]) for block in cropped)
+        ),
         "anchor_found": True,
         "blocks": len(cropped),
         "pages": sorted({int(block["page"]) for block in cropped}),
@@ -193,14 +223,16 @@ def _critical_tokens(value: Any) -> tuple[tuple[str, ...], tuple[str, ...]]:
     return tuple(NUMBER_RE.findall(normalized)), tuple(OPERATOR_RE.findall(normalized))
 
 
-def _strict_or_near_match(expected: str, actual: str, *, minimum_ratio: float = 0.96) -> bool:
+def _strict_or_near_match(
+    expected: str, actual: str, *, minimum_ratio: float = 0.96
+) -> bool:
     if not expected or not actual:
         return False
     # The crop includes the question number (e.g. ``01.``) before the stem;
     # remove only that trusted marker before enforcing token parity.  Extra
     # numbers/operators from a neighboring block must never be ignored.
     marker = QUESTION_MARKER_RE.match(actual)
-    comparable = actual[marker.end():] if marker else actual
+    comparable = actual[marker.end() :] if marker else actual
     if _critical_tokens(expected) != _critical_tokens(comparable):
         return False
     if expected in comparable:
@@ -215,19 +247,28 @@ def _option_sections(stem_and_options: str) -> tuple[list[str], dict[str, str]]:
     labels = [match.group(1).upper() for match in matches]
     sections: dict[str, str] = {}
     for index, match in enumerate(matches):
-        end = matches[index + 1].start() if index + 1 < len(matches) else len(stem_and_options)
+        end = (
+            matches[index + 1].start()
+            if index + 1 < len(matches)
+            else len(stem_and_options)
+        )
         key = match.group(1).upper()
         # Keep first occurrence only; duplicate labels indicate a contaminated
         # crop and are rejected by the exact label-count check below.
-        sections[key] = stem_and_options[match.end():end]
+        sections[key] = stem_and_options[match.end() : end]
     return labels, sections
 
 
-def _field_matches(question: Mapping[str, Any], ocr_text: str, *, anchor_found: bool = True) -> dict[str, Any]:
+def _field_matches(
+    question: Mapping[str, Any], ocr_text: str, *, anchor_found: bool = True
+) -> dict[str, Any]:
     fields = _question_fields(question)
     stem = fields["content"]
     labels, sections = _option_sections(ocr_text)
-    first_option = min((match.start() for match in OPTION_LABEL_RE.finditer(ocr_text)), default=len(ocr_text))
+    first_option = min(
+        (match.start() for match in OPTION_LABEL_RE.finditer(ocr_text)),
+        default=len(ocr_text),
+    )
     stem_text = ocr_text[:first_option]
     content_match = bool(anchor_found and _strict_or_near_match(stem, stem_text))
     options = fields["options"]
@@ -238,7 +279,9 @@ def _field_matches(question: Mapping[str, Any], ocr_text: str, *, anchor_found: 
     option_matches = {}
     for key, value in options.items():
         section = sections.get(key, "")
-        option_matches[key] = bool(labels_match and _strict_or_near_match(value, section))
+        option_matches[key] = bool(
+            labels_match and _strict_or_near_match(value, section)
+        )
     return {
         "content": content_match,
         "options": option_matches,
@@ -260,7 +303,9 @@ def _choice_for_row(row: Mapping[str, Any], answers: Mapping[str, str]) -> str |
 
 def _published_choice(row: Mapping[str, Any]) -> str | None:
     question = row.get("question") if isinstance(row.get("question"), Mapping) else {}
-    answer = question.get("answer") if isinstance(question.get("answer"), Mapping) else {}
+    answer = (
+        question.get("answer") if isinstance(question.get("answer"), Mapping) else {}
+    )
     return _choice(answer.get("choice"))
 
 
@@ -280,8 +325,8 @@ def _raw_ocr_dir(course_key: str, root: Path) -> Path:
 
 
 def _choice_rows(root: Path, courses: Iterable[str]) -> list[dict[str, Any]]:
-    rows = iter_questions(root, courses)
-    return [row for row in rows if CHOICE_MARKER in _text(row.get("question", {}).get("type"))]
+    """All published rows, including 解答题. Name kept for call-site compatibility."""
+    return iter_questions(root, courses, include_untracked=True)
 
 
 def _pages(rows: Sequence[Mapping[str, Any]], course_key: str) -> list[int]:
@@ -289,7 +334,9 @@ def _pages(rows: Sequence[Mapping[str, Any]], course_key: str) -> list[int]:
     for row in rows:
         if row.get("course") != course_key:
             continue
-        question = row.get("question") if isinstance(row.get("question"), Mapping) else {}
+        question = (
+            row.get("question") if isinstance(row.get("question"), Mapping) else {}
+        )
         for page in question.get("a_pages") or []:
             try:
                 if int(page) > 0:
@@ -310,7 +357,9 @@ def _question_pages(rows: Sequence[Mapping[str, Any]], course_key: str) -> list[
     for row in rows:
         if row.get("course") != course_key:
             continue
-        question = row.get("question") if isinstance(row.get("question"), Mapping) else {}
+        question = (
+            row.get("question") if isinstance(row.get("question"), Mapping) else {}
+        )
         for page in question.get("q_pages") or []:
             try:
                 if int(page) > 0:
@@ -384,8 +433,15 @@ def _evidence_item(
         and fresh_fields.get("all_options")
     )
     matches = answer_matches and fields_match
-    low_risk = tier == "low"
-    passed = low_risk and matches and bool(_text(row.get("source_hash")))
+    # 图/代码/公式仍走视觉；三方题干+选项+答案已一致时，旧 hold 不再挡住 OCR 原书认证。
+    visual_risk = any(
+        reason in {"visual_evidence", "empty_stem", "missing_options"}
+        for reason in risk_reasons
+    ) or bool(
+        (row.get("question") or {}).get("has_image")
+        or (row.get("question") or {}).get("image_ref")
+    )
+    passed = matches and bool(_text(row.get("source_hash"))) and not visual_risk
     if passed:
         method = "ocr"
         source_verified = True
@@ -403,7 +459,7 @@ def _evidence_item(
             raw_fields=raw_fields,
             fresh_fields=fresh_fields,
         )
-        if not low_risk:
+        if visual_risk or tier != "low":
             reason_codes.insert(0, f"risk_{tier}")
 
     item: dict[str, Any] = {
@@ -421,14 +477,24 @@ def _evidence_item(
         "raw_ocr_choice": raw,
         "fresh_ocr_choice": fresh,
         "answer_match": answer_matches,
-        "raw_fields_match": bool(raw_fields.get("anchor_found") and raw_fields.get("content") and raw_fields.get("all_options")),
-        "fresh_fields_match": bool(fresh_fields.get("anchor_found") and fresh_fields.get("content") and fresh_fields.get("all_options")),
+        "raw_fields_match": bool(
+            raw_fields.get("anchor_found")
+            and raw_fields.get("content")
+            and raw_fields.get("all_options")
+        ),
+        "fresh_fields_match": bool(
+            fresh_fields.get("anchor_found")
+            and fresh_fields.get("content")
+            and fresh_fields.get("all_options")
+        ),
         "triad": matches,
         "published_match": matches,
     }
     if reason_codes:
         item["reason_codes"] = sorted(set(reason_codes))
-    item["item_hash"] = _sha({key: value for key, value in item.items() if key != "item_hash"})
+    item["item_hash"] = _sha(
+        {key: value for key, value in item.items() if key != "item_hash"}
+    )
     return item
 
 
@@ -486,7 +552,9 @@ def generate_source_evidence(
     if unknown:
         raise ValueError(f"unknown course: {unknown[0]}")
     rows = _choice_rows(root, selected_courses)
-    by_course: dict[str, list[dict[str, Any]]] = {course: [] for course in selected_courses}
+    by_course: dict[str, list[dict[str, Any]]] = {
+        course: [] for course in selected_courses
+    }
     for row in rows:
         by_course.setdefault(str(row.get("course")), []).append(row)
 
@@ -515,7 +583,9 @@ def generate_source_evidence(
     for row in rows:
         course_key = str(row.get("course"))
         current = answers.get(course_key, {"raw": {}, "fresh": {}})
-        question = row.get("question") if isinstance(row.get("question"), Mapping) else {}
+        question = (
+            row.get("question") if isinstance(row.get("question"), Mapping) else {}
+        )
         q_pages = []
         for page in question.get("q_pages") or []:
             try:
@@ -536,8 +606,16 @@ def generate_source_evidence(
                 published=_published_choice(row),
                 raw=_choice_for_row(row, current["raw"]),
                 fresh=_choice_for_row(row, current["fresh"]),
-                raw_fields=_field_matches(question, raw_crop["text"], anchor_found=bool(raw_crop["anchor_found"])),
-                fresh_fields=_field_matches(question, fresh_crop["text"], anchor_found=bool(fresh_crop["anchor_found"])),
+                raw_fields=_field_matches(
+                    question,
+                    raw_crop["text"],
+                    anchor_found=bool(raw_crop["anchor_found"]),
+                ),
+                fresh_fields=_field_matches(
+                    question,
+                    fresh_crop["text"],
+                    anchor_found=bool(fresh_crop["anchor_found"]),
+                ),
             )
         )
     packet = build_source_packet(evidence_items, pass_id=pass_id, protocol=protocol)
@@ -560,15 +638,23 @@ def generate_source_evidence(
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=MATH_BANK_DIR)
-    parser.add_argument("--course", action="append", choices=[course.key for course in COURSES])
+    parser.add_argument(
+        "--course", action="append", choices=[course.key for course in COURSES]
+    )
     parser.add_argument("--pass-id", default=DEFAULT_PASS_ID)
     parser.add_argument("--protocol", default=PROTOCOL)
     parser.add_argument("--cache-root", type=Path, default=CACHE_ROOT)
     parser.add_argument("--output", type=Path)
     parser.add_argument("--no-fresh-ocr", action="store_true")
-    parser.add_argument("--cache-only", action="store_true", help="只读取已有 fresh OCR 缓存")
-    parser.add_argument("--force", action="store_true", help="忽略 fresh OCR 缓存并重跑 GPU OCR")
-    parser.add_argument("--dry-run", action="store_true", help="不运行 OCR、不写结果包，只打印摘要")
+    parser.add_argument(
+        "--cache-only", action="store_true", help="只读取已有 fresh OCR 缓存"
+    )
+    parser.add_argument(
+        "--force", action="store_true", help="忽略 fresh OCR 缓存并重跑 GPU OCR"
+    )
+    parser.add_argument(
+        "--dry-run", action="store_true", help="不运行 OCR、不写结果包，只打印摘要"
+    )
     args = parser.parse_args(argv)
     result = generate_source_evidence(
         root=args.root,
