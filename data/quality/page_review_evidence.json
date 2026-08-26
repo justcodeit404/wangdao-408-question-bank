@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "protocol": "codex-original-page-review-v1",
-  "updated_at": "2026-08-26T18:06:00.083845+00:00",
+  "updated_at": "2026-08-26T18:10:57.399047+00:00",
   "records": [
     {
       "source_uid": "408:cs408-coa::中央处理器 · 异常和中断机制 · 选择题::X01",
@@ -3298,6 +3298,65 @@
       "source_hash": "4f75b5fd7e4abbb195f09627c396d7eca9ab1dea2dde7c92afe0d5455732e946"
     },
     {
+      "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X11_2",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T04:20:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_166.png",
+          "sha256": "10e8f810f711c66457c8b9e9d482cf41afee4f86b5aa9165a044577f71380425"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_171.png",
+          "sha256": "7b82534d76298c3a44ff7de2ee71593c1212a893d7f0dc912479ac424854704f"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": true,
+      "options_match": false,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "application_subquestions_collapsed",
+        "diagram_text_loss"
+      ],
+      "rationale": "亲眼核对原书题页166与答案页171：X11_2是含报文图和三个小问的综合题，发布结构把图示/小问混入选项且解析不完整，无法安全重构，继续隔离。",
+      "source_hash": "c425c9411c68aa1e252b9d551733592c1c8821568992dff91a4d3decbe331ccc"
+    },
+    {
+      "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X27",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T04:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_158.png",
+          "sha256": "f8a2747c9d2954158a349a3f5121b89c53d77e6b0f30174e9ba5c610c14c1cb3"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_172.png",
+          "sha256": "6d798d5d5e4d2cbf724c056695fc93aaa75967103293a35c696ff2c9f51c475e"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": true,
+      "options_match": false,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [
+        "multi_part_options_collapsed"
+      ],
+      "rationale": "亲眼核对原书题页158与答案页172：X27答案为D、A，但原书为两个独立小问各四个选项，发布结构已把第二组并入D，无法在不改变交互语义的情况下安全修补，继续隔离。",
+      "source_hash": "9b0399687f6b869f4378e4be41742ed3d74caae4921520bd3dbfcdc8799149ce"
+    },
+    {
       "source_uid": "408:cs408-net::计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题::X06",
       "protocol": "codex-original-page-review-v1",
       "reviewer": "codex-vision",
@@ -4275,26 +4334,48 @@
       "reviewed_at": "2026-08-27T03:40:00+00:00",
       "q_pages_viewed": [
         {
-          "path": "apps/bank-408/assets/pdf_images/os/page_335.png",
-          "sha256": "c2e9e2ae62540d4c1f74af96c71f21a7c14f0e98f2454b6978f3e9222e3cc9e8"
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_334.png",
+          "sha256": "6b622e9c2ee89dcd18eb09de817c1c1f4acceb1288d1c5b756a5b7b71b90d0f0",
+          "page": 334
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_335.png",
+          "sha256": "c2e9e2ae62540d4c1f74af96c71f21a7c14f0e98f2454b6978f3e9222e3cc9e8",
+          "page": 335
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_336.png",
+          "sha256": "fcd745f77f5aa04f72a85edbab259644ce4dbe920790f92c6fa77c3df8410b20",
+          "page": 336
         }
       ],
       "a_pages_viewed": [
         {
-          "path": "apps/bank-408/assets/pdf_images/os/page_340.png",
-          "sha256": "0f7a8ce6c42c532333508df6118ff1765990e63598ebea0a174dae4a935ea84a"
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_339.png",
+          "sha256": "456fede90e201dbbeb9c44a4cf8bc7cd12b32e578791ab52ffe43e8cdaa422ef",
+          "page": 339
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_340.png",
+          "sha256": "0f7a8ce6c42c532333508df6118ff1765990e63598ebea0a174dae4a935ea84a",
+          "page": 340
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_341.png",
+          "sha256": "31b63ccf4d945ae9750cd0e85af8da79bc3317f4c20f7f32cd0326d9111e8add",
+          "page": 341
         }
       ],
       "final_action": "patch",
-      "content_match": true,
-      "options_match": false,
-      "answer_match": true,
-      "explanation_match": true,
-      "image_match": true,
+      "content_match": null,
+      "options_match": null,
+      "answer_match": null,
+      "explanation_match": null,
+      "image_match": null,
       "detected_errors": [
-        "missing_option_D"
+        "persisted_page_review_patch"
       ],
-      "rationale": "亲眼核对原书题页335与答案页340：X10选项D为max(T₁, T₂+T₃)，答案为D；已补齐发布版缺失选项并二查。",
+      "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
       "post_patch_verified": true,
       "source_hash": "84ffd8af8d6687d6c7a6f23950b51bade4691b6f91478ee4531b2cbf1f36057c"
     },
