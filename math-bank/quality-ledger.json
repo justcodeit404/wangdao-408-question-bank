@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-26T18:39:45+00:00",
+  "generated_at": "2026-08-26T18:42:02+00:00",
   "published_hashes": {
     "ds": "a40686840e5043561d7f7159fbd779725ffa65c56bfdd79a2683965b6aed0771",
     "coa": "8f9ea82d6d82e53ea38daf200ae95a361b5c43742f0ce9881b207f671f7f06f7",
@@ -20,9 +20,9 @@
       "name": "计算机组成原理",
       "mode": "strict",
       "total": 674,
-      "certified": 166,
+      "certified": 170,
       "pending": 0,
-      "held": 508
+      "held": 504
     },
     "net": {
       "name": "计算机网络",
@@ -43,9 +43,9 @@
   },
   "summary": {
     "total": 2869,
-    "certified": 515,
+    "certified": 519,
     "pending": 0,
-    "held": 2354
+    "held": 2350
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -39790,14 +39790,10 @@
       "chapter": "数据的表示和运算 · 运算方法和运算电路 · 选择题",
       "question_id": "X21",
       "source_hash": "27af710df3aa2b34732c41b520c40d35110e3b41eb137ad14d8dea4822b6bc34",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         49,
         50,
@@ -39822,7 +39818,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T07:12:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -39860,10 +39856,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::数据的表示和运算 · 运算方法和运算电路 · 选择题::X21",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T07:12:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_050.png",
+              "sha256": "8b17870120da934db5bd3f68f3b136cbda3c03fb744f0f1869357796e5a363dd"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_055.png",
+              "sha256": "535c283e7287580136d68024969b469db01012b54d090687de042a404d11546e"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页50与答案页55：X21 补码减法溢出判断题干、选项及解析忠实，答案为A。",
+          "source_hash": "27af710df3aa2b34732c41b520c40d35110e3b41eb137ad14d8dea4822b6bc34"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::数据的表示和运算 · 运算方法和运算电路 · 选择题::X22": {
       "source_uid": "408:cs408-coa::数据的表示和运算 · 运算方法和运算电路 · 选择题::X22",
@@ -40146,13 +40168,10 @@
       "chapter": "数据的表示和运算 · 运算方法和运算电路 · 选择题",
       "question_id": "X26",
       "source_hash": "eef3d7d80f2053669c8c10a8784ba327c7d56f53b7af627cd494160caf5d3dc9",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         49,
         50,
@@ -40177,7 +40196,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T07:13:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -40215,10 +40234,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_content_mismatch;raw_content_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_content_mismatch;raw_content_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::数据的表示和运算 · 运算方法和运算电路 · 选择题::X26",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T07:13:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_051.png",
+              "sha256": "c2114fd788afde2b07c614308ded5af2af7bd15931a96b2ff42090241737c15b"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_056.png",
+              "sha256": "f41d031a2c37c74796b63f4474b9edf4c410752b193350ee73a33644f8dd2895"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页51与答案页56：X26 8位补码乘法溢出题干、选项及解析忠实，答案为B。",
+          "source_hash": "eef3d7d80f2053669c8c10a8784ba327c7d56f53b7af627cd494160caf5d3dc9"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::数据的表示和运算 · 运算方法和运算电路 · 选择题::X27": {
       "source_uid": "408:cs408-coa::数据的表示和运算 · 运算方法和运算电路 · 选择题::X27",
@@ -40226,13 +40271,10 @@
       "chapter": "数据的表示和运算 · 运算方法和运算电路 · 选择题",
       "question_id": "X27",
       "source_hash": "a266daeb945627c81b5b22d751a4d480be72ffc25c0b5f24806201eac6057c25",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         49,
         50,
@@ -40257,7 +40299,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T07:14:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -40295,10 +40337,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::数据的表示和运算 · 运算方法和运算电路 · 选择题::X27",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T07:14:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_051.png",
+              "sha256": "c2114fd788afde2b07c614308ded5af2af7bd15931a96b2ff42090241737c15b"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_056.png",
+              "sha256": "f41d031a2c37c74796b63f4474b9edf4c410752b193350ee73a33644f8dd2895"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页51与答案页56：X27 补码移位运算题干、选项及解析忠实，答案为A。",
+          "source_hash": "a266daeb945627c81b5b22d751a4d480be72ffc25c0b5f24806201eac6057c25"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::数据的表示和运算 · 运算方法和运算电路 · 选择题::X28": {
       "source_uid": "408:cs408-coa::数据的表示和运算 · 运算方法和运算电路 · 选择题::X28",
@@ -40306,13 +40374,10 @@
       "chapter": "数据的表示和运算 · 运算方法和运算电路 · 选择题",
       "question_id": "X28",
       "source_hash": "b09695fbc13f1651f7b00af4cab8019ec79839bf1d007b1ab6227c32526ccc29",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         49,
         50,
@@ -40337,7 +40402,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T07:15:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -40375,10 +40440,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::数据的表示和运算 · 运算方法和运算电路 · 选择题::X28",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T07:15:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_051.png",
+              "sha256": "c2114fd788afde2b07c614308ded5af2af7bd15931a96b2ff42090241737c15b"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_056.png",
+              "sha256": "f41d031a2c37c74796b63f4474b9edf4c410752b193350ee73a33644f8dd2895"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页51与答案页56：X28 定点补码加减溢出题干、选项及解析忠实，答案为C。",
+          "source_hash": "b09695fbc13f1651f7b00af4cab8019ec79839bf1d007b1ab6227c32526ccc29"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::数据的表示和运算 · 运算方法和运算电路 · 选择题::X29": {
       "source_uid": "408:cs408-coa::数据的表示和运算 · 运算方法和运算电路 · 选择题::X29",
