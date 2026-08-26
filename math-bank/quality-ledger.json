@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-26T20:49:17+00:00",
+  "generated_at": "2026-08-26T20:53:09+00:00",
   "published_hashes": {
     "ds": "a40686840e5043561d7f7159fbd779725ffa65c56bfdd79a2683965b6aed0771",
     "coa": "8f9ea82d6d82e53ea38daf200ae95a361b5c43742f0ce9881b207f671f7f06f7",
@@ -12,9 +12,9 @@
       "name": "数据结构",
       "mode": "strict",
       "total": 797,
-      "certified": 135,
+      "certified": 142,
       "pending": 0,
-      "held": 662
+      "held": 655
     },
     "coa": {
       "name": "计算机组成原理",
@@ -43,9 +43,9 @@
   },
   "summary": {
     "total": 2869,
-    "certified": 890,
+    "certified": 897,
     "pending": 0,
-    "held": 1979
+    "held": 1972
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -112466,13 +112466,10 @@
       "chapter": "线性表 · 线性表的顺序表示 · 选择题",
       "question_id": "X01",
       "source_hash": "3b95c7c9591b1ec54f7fc6d0a5c9bff3d1e70094f85001b7003feda94a0a00d9",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         23,
         24,
@@ -112501,7 +112498,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T22:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -112539,10 +112536,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::线性表 · 线性表的顺序表示 · 选择题::X01",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T22:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_023.png",
+              "sha256": "be2e683c78a05460f5e72a02a6fc50ce56cc0cb0b2ba59f29597ab7c9dbe82bc"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_026.png",
+              "sha256": "e7025142c7963217951d082d1c944489a7a84df04e9038ad971d54ee36c26935"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页18与答案解析页21：X01顺序存储优点题干、选项和解析忠实，答案页标注01.A，与发布答案A一致。",
+          "source_hash": "3b95c7c9591b1ec54f7fc6d0a5c9bff3d1e70094f85001b7003feda94a0a00d9"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::线性表 · 线性表的顺序表示 · 选择题::X02": {
       "source_uid": "408:cs408-ds::线性表 · 线性表的顺序表示 · 选择题::X02",
@@ -112550,13 +112573,10 @@
       "chapter": "线性表 · 线性表的顺序表示 · 选择题",
       "question_id": "X02",
       "source_hash": "835905d1fbe63458767a4ce489685a3b43b5803cb3938c12b2ece1043e814257",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         23,
         24,
@@ -112585,7 +112605,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T22:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -112608,10 +112628,36 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::线性表 · 线性表的顺序表示 · 选择题::X02",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T22:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_023.png",
+              "sha256": "be2e683c78a05460f5e72a02a6fc50ce56cc0cb0b2ba59f29597ab7c9dbe82bc"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_026.png",
+              "sha256": "e7025142c7963217951d082d1c944489a7a84df04e9038ad971d54ee36c26935"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页18与答案解析页21：X02顺序表性质题干、选项和解析忠实，答案页标注02.C，与发布答案C一致。",
+          "source_hash": "835905d1fbe63458767a4ce489685a3b43b5803cb3938c12b2ece1043e814257"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::线性表 · 线性表的顺序表示 · 选择题::X03": {
       "source_uid": "408:cs408-ds::线性表 · 线性表的顺序表示 · 选择题::X03",
@@ -112700,13 +112746,10 @@
       "chapter": "线性表 · 线性表的顺序表示 · 选择题",
       "question_id": "X04",
       "source_hash": "6866d76dedfff8721e571d9253b139cf3ba605ded33b1d2052754e876f634b97",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         23,
         24,
@@ -112735,7 +112778,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T22:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -112773,10 +112816,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::线性表 · 线性表的顺序表示 · 选择题::X04",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T22:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_023.png",
+              "sha256": "be2e683c78a05460f5e72a02a6fc50ce56cc0cb0b2ba59f29597ab7c9dbe82bc"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_026.png",
+              "sha256": "e7025142c7963217951d082d1c944489a7a84df04e9038ad971d54ee36c26935"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页19与答案解析页21：X04存储空间因素题干、选项和解析忠实，答案页标注04.B，与发布答案B一致。",
+          "source_hash": "6866d76dedfff8721e571d9253b139cf3ba605ded33b1d2052754e876f634b97"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::线性表 · 线性表的顺序表示 · 选择题::X05": {
       "source_uid": "408:cs408-ds::线性表 · 线性表的顺序表示 · 选择题::X05",
@@ -112784,13 +112853,10 @@
       "chapter": "线性表 · 线性表的顺序表示 · 选择题",
       "question_id": "X05",
       "source_hash": "ca63cff9334bdb3036fb78c7d46b55a41f5f007c98e0a3871abcb7a01948e056",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         23,
         24,
@@ -112819,7 +112885,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T22:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -112857,10 +112923,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::线性表 · 线性表的顺序表示 · 选择题::X05",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T22:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_023.png",
+              "sha256": "be2e683c78a05460f5e72a02a6fc50ce56cc0cb0b2ba59f29597ab7c9dbe82bc"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_027.png",
+              "sha256": "aaa9ee90151d6403be1127951084829faba12559012a1d8425145e7840336d00"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页19与答案解析页22：X05按序号访问效率题干、选项和解析忠实，答案页标注05.D，与发布答案D一致。",
+          "source_hash": "ca63cff9334bdb3036fb78c7d46b55a41f5f007c98e0a3871abcb7a01948e056"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::线性表 · 线性表的顺序表示 · 选择题::X06": {
       "source_uid": "408:cs408-ds::线性表 · 线性表的顺序表示 · 选择题::X06",
@@ -112868,13 +112960,10 @@
       "chapter": "线性表 · 线性表的顺序表示 · 选择题",
       "question_id": "X06",
       "source_hash": "c0040529d8b6350fa9537c5536750a5897a7b1a104e1398b8a58eebb6816197f",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         23,
         24,
@@ -112903,7 +112992,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T22:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -112941,10 +113030,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::线性表 · 线性表的顺序表示 · 选择题::X06",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T22:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_023.png",
+              "sha256": "be2e683c78a05460f5e72a02a6fc50ce56cc0cb0b2ba59f29597ab7c9dbe82bc"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_027.png",
+              "sha256": "aaa9ee90151d6403be1127951084829faba12559012a1d8425145e7840336d00"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页19与答案解析页22：X06顺序表末端操作题干、选项和解析忠实，答案页标注06.A，与发布答案A一致。",
+          "source_hash": "c0040529d8b6350fa9537c5536750a5897a7b1a104e1398b8a58eebb6816197f"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::线性表 · 线性表的顺序表示 · 选择题::X07": {
       "source_uid": "408:cs408-ds::线性表 · 线性表的顺序表示 · 选择题::X07",
@@ -113175,13 +113290,10 @@
       "chapter": "线性表 · 线性表的顺序表示 · 选择题",
       "question_id": "X10",
       "source_hash": "550220444cb8665cb404b4d18117fc1b093be50768cee90939008020368dabef",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         23,
         24,
@@ -113210,7 +113322,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T22:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -113248,10 +113360,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::线性表 · 线性表的顺序表示 · 选择题::X10",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T22:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_024.png",
+              "sha256": "6ccb34236f43e7334542c1937473809c7cfed9881d6e8353d6c671cea602a739"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_027.png",
+              "sha256": "aaa9ee90151d6403be1127951084829faba12559012a1d8425145e7840336d00"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页19与答案解析页22：X10访问/插入复杂度题干、选项和解析忠实，答案页标注10.C，与发布答案C一致。",
+          "source_hash": "550220444cb8665cb404b4d18117fc1b093be50768cee90939008020368dabef"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::线性表 · 线性表的顺序表示 · 选择题::X11": {
       "source_uid": "408:cs408-ds::线性表 · 线性表的顺序表示 · 选择题::X11",
@@ -113412,13 +113550,10 @@
       "chapter": "线性表 · 线性表的顺序表示 · 选择题",
       "question_id": "X13",
       "source_hash": "267ba70a6c598001ddda9318ed6b65dd5ff59e88bc857e36589f89c29afa4876",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         23,
         24,
@@ -113447,7 +113582,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T22:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -113485,10 +113620,36 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::线性表 · 线性表的顺序表示 · 选择题::X13",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T22:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_024.png",
+              "sha256": "6ccb34236f43e7334542c1937473809c7cfed9881d6e8353d6c671cea602a739"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_027.png",
+              "sha256": "aaa9ee90151d6403be1127951084829faba12559012a1d8425145e7840336d00"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题目页20–21与答案解析页22：X13有序表操作复杂度题干、选项和完整解析忠实，答案页标注13.D，与发布答案D一致。",
+          "source_hash": "267ba70a6c598001ddda9318ed6b65dd5ff59e88bc857e36589f89c29afa4876"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::绪论 · 数据结构的基本概念 · 选择题::X01": {
       "source_uid": "408:cs408-ds::绪论 · 数据结构的基本概念 · 选择题::X01",
