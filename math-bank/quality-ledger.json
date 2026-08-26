@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-26T22:19:55+00:00",
+  "generated_at": "2026-08-26T22:22:28+00:00",
   "published_hashes": {
     "ds": "a40686840e5043561d7f7159fbd779725ffa65c56bfdd79a2683965b6aed0771",
     "coa": "8f9ea82d6d82e53ea38daf200ae95a361b5c43742f0ce9881b207f671f7f06f7",
@@ -12,9 +12,9 @@
       "name": "数据结构",
       "mode": "strict",
       "total": 797,
-      "certified": 234,
+      "certified": 250,
       "pending": 0,
-      "held": 563
+      "held": 547
     },
     "coa": {
       "name": "计算机组成原理",
@@ -43,9 +43,9 @@
   },
   "summary": {
     "total": 2869,
-    "certified": 1076,
+    "certified": 1092,
     "pending": 0,
-    "held": 1793
+    "held": 1777
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -53723,7 +53723,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T22:19:50.212343+00:00",
+      "verified_at": "2026-08-26T22:22:22.604472+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -53766,7 +53766,7 @@
           "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X07",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-26T22:19:50.212343+00:00",
+          "reviewed_at": "2026-08-26T22:22:22.604472+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/coa/page_300.png",
@@ -103131,13 +103131,10 @@
       "chapter": "树与二叉树 · 二叉树的概念 · 选择题",
       "question_id": "X01",
       "source_hash": "e7661d7e4ec1adf3771bc6da40440e13e6395e39180cadfc7bf883ca2c5fd4b7",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         138,
         139,
@@ -103158,7 +103155,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T07:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -103196,10 +103193,84 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X01",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T07:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_138.png",
+              "sha256": "0b51fccc67b5a94a88cda575cae9d6091faa00c483c662010cde3613b586e44a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_139.png",
+              "sha256": "3207129455e3e45244c352a8a7633651da546a65d9357027c59c1e1e0cdebe38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_140.png",
+              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_140.png",
+              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_141.png",
+              "sha256": "3f0e77ae9bfe8fdba6dbf2caab0da06d790c49774ac2734b475d9bcef0ac8b76"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_142.png",
+              "sha256": "0b16124db42c50ecf7e9f119d21693e07306c686dd51e93be22080196eb06650"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_143.png",
+              "sha256": "3ba7ac4a51d5e245595a957a245de1305f4f59325d2ccbf630019c05980235c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_144.png",
+              "sha256": "9cf6f07992145df1176edf860d8ddd66c99f8971f956d12b911abd4b144e6bb7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_145.png",
+              "sha256": "da09be5ba5cef96fcb91792981665e5a6e4821e5b2b39e90db1ca4155bab3749"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_146.png",
+              "sha256": "52ef1a6dc4a594c7496f660461a227c08a6ba7adda31517b564655a495ea6a0b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_147.png",
+              "sha256": "7d3abdbd4d504ddd96addece876e3016244ce9fdfe8415d5f74bf3929748b121"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_148.png",
+              "sha256": "9fd0a5f3def06bc715bcd0a753da87cf3856154552e48c0d5cdb585a9b51d235"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_149.png",
+              "sha256": "4550be1e71f7c921b6fc1b3c3dd28157d6d16a6ca0ca54af1e4666a33e0b4bac"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_150.png",
+              "sha256": "9543698629130212bc20ad0e4b19324b6575489575d939e9ab30f62a9e6c9400"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页133-135与答案页135-145逐题核对：题干、选项、答案和解析与发布内容一致（公式排版差异不改变语义）。",
+          "source_hash": "e7661d7e4ec1adf3771bc6da40440e13e6395e39180cadfc7bf883ca2c5fd4b7"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X02": {
       "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X02",
@@ -103207,13 +103278,10 @@
       "chapter": "树与二叉树 · 二叉树的概念 · 选择题",
       "question_id": "X02",
       "source_hash": "5186eb773acf674fdd211bc4ccfe597748d2ad5191ee2ee898b59e32a99bddec",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         138,
         139,
@@ -103234,7 +103302,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T07:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -103272,10 +103340,84 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X02",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T07:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_138.png",
+              "sha256": "0b51fccc67b5a94a88cda575cae9d6091faa00c483c662010cde3613b586e44a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_139.png",
+              "sha256": "3207129455e3e45244c352a8a7633651da546a65d9357027c59c1e1e0cdebe38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_140.png",
+              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_140.png",
+              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_141.png",
+              "sha256": "3f0e77ae9bfe8fdba6dbf2caab0da06d790c49774ac2734b475d9bcef0ac8b76"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_142.png",
+              "sha256": "0b16124db42c50ecf7e9f119d21693e07306c686dd51e93be22080196eb06650"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_143.png",
+              "sha256": "3ba7ac4a51d5e245595a957a245de1305f4f59325d2ccbf630019c05980235c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_144.png",
+              "sha256": "9cf6f07992145df1176edf860d8ddd66c99f8971f956d12b911abd4b144e6bb7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_145.png",
+              "sha256": "da09be5ba5cef96fcb91792981665e5a6e4821e5b2b39e90db1ca4155bab3749"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_146.png",
+              "sha256": "52ef1a6dc4a594c7496f660461a227c08a6ba7adda31517b564655a495ea6a0b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_147.png",
+              "sha256": "7d3abdbd4d504ddd96addece876e3016244ce9fdfe8415d5f74bf3929748b121"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_148.png",
+              "sha256": "9fd0a5f3def06bc715bcd0a753da87cf3856154552e48c0d5cdb585a9b51d235"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_149.png",
+              "sha256": "4550be1e71f7c921b6fc1b3c3dd28157d6d16a6ca0ca54af1e4666a33e0b4bac"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_150.png",
+              "sha256": "9543698629130212bc20ad0e4b19324b6575489575d939e9ab30f62a9e6c9400"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页133-135与答案页135-145逐题核对：题干、选项、答案和解析与发布内容一致（公式排版差异不改变语义）。",
+          "source_hash": "5186eb773acf674fdd211bc4ccfe597748d2ad5191ee2ee898b59e32a99bddec"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X03": {
       "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X03",
@@ -103283,14 +103425,10 @@
       "chapter": "树与二叉树 · 二叉树的概念 · 选择题",
       "question_id": "X03",
       "source_hash": "c961f9cedf3472ec8bc67034386ea3ec1ecdc6ed93cd36ba7475d58edbf65eb4",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         138,
         139,
@@ -103311,7 +103449,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T07:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -103349,10 +103487,84 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X03",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T07:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_138.png",
+              "sha256": "0b51fccc67b5a94a88cda575cae9d6091faa00c483c662010cde3613b586e44a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_139.png",
+              "sha256": "3207129455e3e45244c352a8a7633651da546a65d9357027c59c1e1e0cdebe38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_140.png",
+              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_140.png",
+              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_141.png",
+              "sha256": "3f0e77ae9bfe8fdba6dbf2caab0da06d790c49774ac2734b475d9bcef0ac8b76"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_142.png",
+              "sha256": "0b16124db42c50ecf7e9f119d21693e07306c686dd51e93be22080196eb06650"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_143.png",
+              "sha256": "3ba7ac4a51d5e245595a957a245de1305f4f59325d2ccbf630019c05980235c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_144.png",
+              "sha256": "9cf6f07992145df1176edf860d8ddd66c99f8971f956d12b911abd4b144e6bb7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_145.png",
+              "sha256": "da09be5ba5cef96fcb91792981665e5a6e4821e5b2b39e90db1ca4155bab3749"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_146.png",
+              "sha256": "52ef1a6dc4a594c7496f660461a227c08a6ba7adda31517b564655a495ea6a0b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_147.png",
+              "sha256": "7d3abdbd4d504ddd96addece876e3016244ce9fdfe8415d5f74bf3929748b121"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_148.png",
+              "sha256": "9fd0a5f3def06bc715bcd0a753da87cf3856154552e48c0d5cdb585a9b51d235"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_149.png",
+              "sha256": "4550be1e71f7c921b6fc1b3c3dd28157d6d16a6ca0ca54af1e4666a33e0b4bac"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_150.png",
+              "sha256": "9543698629130212bc20ad0e4b19324b6575489575d939e9ab30f62a9e6c9400"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页133-135与答案页135-145逐题核对：题干、选项、答案和解析与发布内容一致（公式排版差异不改变语义）。",
+          "source_hash": "c961f9cedf3472ec8bc67034386ea3ec1ecdc6ed93cd36ba7475d58edbf65eb4"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X04": {
       "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X04",
@@ -103360,13 +103572,10 @@
       "chapter": "树与二叉树 · 二叉树的概念 · 选择题",
       "question_id": "X04",
       "source_hash": "e8d798701e680e11bf96c4cdf90a1f9fd1bda2c5713ba9a84b9cca3f6cfb0ddb",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         138,
         139,
@@ -103387,7 +103596,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T07:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -103425,10 +103634,84 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X04",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T07:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_138.png",
+              "sha256": "0b51fccc67b5a94a88cda575cae9d6091faa00c483c662010cde3613b586e44a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_139.png",
+              "sha256": "3207129455e3e45244c352a8a7633651da546a65d9357027c59c1e1e0cdebe38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_140.png",
+              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_140.png",
+              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_141.png",
+              "sha256": "3f0e77ae9bfe8fdba6dbf2caab0da06d790c49774ac2734b475d9bcef0ac8b76"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_142.png",
+              "sha256": "0b16124db42c50ecf7e9f119d21693e07306c686dd51e93be22080196eb06650"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_143.png",
+              "sha256": "3ba7ac4a51d5e245595a957a245de1305f4f59325d2ccbf630019c05980235c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_144.png",
+              "sha256": "9cf6f07992145df1176edf860d8ddd66c99f8971f956d12b911abd4b144e6bb7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_145.png",
+              "sha256": "da09be5ba5cef96fcb91792981665e5a6e4821e5b2b39e90db1ca4155bab3749"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_146.png",
+              "sha256": "52ef1a6dc4a594c7496f660461a227c08a6ba7adda31517b564655a495ea6a0b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_147.png",
+              "sha256": "7d3abdbd4d504ddd96addece876e3016244ce9fdfe8415d5f74bf3929748b121"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_148.png",
+              "sha256": "9fd0a5f3def06bc715bcd0a753da87cf3856154552e48c0d5cdb585a9b51d235"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_149.png",
+              "sha256": "4550be1e71f7c921b6fc1b3c3dd28157d6d16a6ca0ca54af1e4666a33e0b4bac"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_150.png",
+              "sha256": "9543698629130212bc20ad0e4b19324b6575489575d939e9ab30f62a9e6c9400"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页133-135与答案页135-145逐题核对：题干、选项、答案和解析与发布内容一致（公式排版差异不改变语义）。",
+          "source_hash": "e8d798701e680e11bf96c4cdf90a1f9fd1bda2c5713ba9a84b9cca3f6cfb0ddb"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X05": {
       "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X05",
@@ -103436,13 +103719,10 @@
       "chapter": "树与二叉树 · 二叉树的概念 · 选择题",
       "question_id": "X05",
       "source_hash": "58105930456f75c5a09d1601957b2fcce8d32db45863a451b876b2b243bf68f4",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         138,
         139,
@@ -103463,7 +103743,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T07:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -103501,10 +103781,84 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X05",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T07:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_138.png",
+              "sha256": "0b51fccc67b5a94a88cda575cae9d6091faa00c483c662010cde3613b586e44a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_139.png",
+              "sha256": "3207129455e3e45244c352a8a7633651da546a65d9357027c59c1e1e0cdebe38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_140.png",
+              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_140.png",
+              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_141.png",
+              "sha256": "3f0e77ae9bfe8fdba6dbf2caab0da06d790c49774ac2734b475d9bcef0ac8b76"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_142.png",
+              "sha256": "0b16124db42c50ecf7e9f119d21693e07306c686dd51e93be22080196eb06650"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_143.png",
+              "sha256": "3ba7ac4a51d5e245595a957a245de1305f4f59325d2ccbf630019c05980235c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_144.png",
+              "sha256": "9cf6f07992145df1176edf860d8ddd66c99f8971f956d12b911abd4b144e6bb7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_145.png",
+              "sha256": "da09be5ba5cef96fcb91792981665e5a6e4821e5b2b39e90db1ca4155bab3749"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_146.png",
+              "sha256": "52ef1a6dc4a594c7496f660461a227c08a6ba7adda31517b564655a495ea6a0b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_147.png",
+              "sha256": "7d3abdbd4d504ddd96addece876e3016244ce9fdfe8415d5f74bf3929748b121"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_148.png",
+              "sha256": "9fd0a5f3def06bc715bcd0a753da87cf3856154552e48c0d5cdb585a9b51d235"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_149.png",
+              "sha256": "4550be1e71f7c921b6fc1b3c3dd28157d6d16a6ca0ca54af1e4666a33e0b4bac"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_150.png",
+              "sha256": "9543698629130212bc20ad0e4b19324b6575489575d939e9ab30f62a9e6c9400"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页133-135与答案页135-145逐题核对：题干、选项、答案和解析与发布内容一致（公式排版差异不改变语义）。",
+          "source_hash": "58105930456f75c5a09d1601957b2fcce8d32db45863a451b876b2b243bf68f4"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X06": {
       "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X06",
@@ -103723,13 +104077,10 @@
       "chapter": "树与二叉树 · 二叉树的概念 · 选择题",
       "question_id": "X09",
       "source_hash": "aed0fd355702a82c241c50c615cd38df0a628afdc9fc01b587c008172054527e",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         138,
         139,
@@ -103750,7 +104101,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T07:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -103788,10 +104139,84 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X09",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T07:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_138.png",
+              "sha256": "0b51fccc67b5a94a88cda575cae9d6091faa00c483c662010cde3613b586e44a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_139.png",
+              "sha256": "3207129455e3e45244c352a8a7633651da546a65d9357027c59c1e1e0cdebe38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_140.png",
+              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_140.png",
+              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_141.png",
+              "sha256": "3f0e77ae9bfe8fdba6dbf2caab0da06d790c49774ac2734b475d9bcef0ac8b76"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_142.png",
+              "sha256": "0b16124db42c50ecf7e9f119d21693e07306c686dd51e93be22080196eb06650"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_143.png",
+              "sha256": "3ba7ac4a51d5e245595a957a245de1305f4f59325d2ccbf630019c05980235c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_144.png",
+              "sha256": "9cf6f07992145df1176edf860d8ddd66c99f8971f956d12b911abd4b144e6bb7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_145.png",
+              "sha256": "da09be5ba5cef96fcb91792981665e5a6e4821e5b2b39e90db1ca4155bab3749"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_146.png",
+              "sha256": "52ef1a6dc4a594c7496f660461a227c08a6ba7adda31517b564655a495ea6a0b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_147.png",
+              "sha256": "7d3abdbd4d504ddd96addece876e3016244ce9fdfe8415d5f74bf3929748b121"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_148.png",
+              "sha256": "9fd0a5f3def06bc715bcd0a753da87cf3856154552e48c0d5cdb585a9b51d235"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_149.png",
+              "sha256": "4550be1e71f7c921b6fc1b3c3dd28157d6d16a6ca0ca54af1e4666a33e0b4bac"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_150.png",
+              "sha256": "9543698629130212bc20ad0e4b19324b6575489575d939e9ab30f62a9e6c9400"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页133-135与答案页135-145逐题核对：题干、选项、答案和解析与发布内容一致（公式排版差异不改变语义）。",
+          "source_hash": "aed0fd355702a82c241c50c615cd38df0a628afdc9fc01b587c008172054527e"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X10": {
       "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X10",
@@ -103799,14 +104224,10 @@
       "chapter": "树与二叉树 · 二叉树的概念 · 选择题",
       "question_id": "X10",
       "source_hash": "71ef17e59b1db8096a5446fc8614836dfb8fee3154688b16045e858cb5f3950b",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         138,
         139,
@@ -103827,7 +104248,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T07:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -103865,10 +104286,84 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "legacy_hold_recheck;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X10",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T07:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_138.png",
+              "sha256": "0b51fccc67b5a94a88cda575cae9d6091faa00c483c662010cde3613b586e44a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_139.png",
+              "sha256": "3207129455e3e45244c352a8a7633651da546a65d9357027c59c1e1e0cdebe38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_140.png",
+              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_140.png",
+              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_141.png",
+              "sha256": "3f0e77ae9bfe8fdba6dbf2caab0da06d790c49774ac2734b475d9bcef0ac8b76"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_142.png",
+              "sha256": "0b16124db42c50ecf7e9f119d21693e07306c686dd51e93be22080196eb06650"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_143.png",
+              "sha256": "3ba7ac4a51d5e245595a957a245de1305f4f59325d2ccbf630019c05980235c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_144.png",
+              "sha256": "9cf6f07992145df1176edf860d8ddd66c99f8971f956d12b911abd4b144e6bb7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_145.png",
+              "sha256": "da09be5ba5cef96fcb91792981665e5a6e4821e5b2b39e90db1ca4155bab3749"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_146.png",
+              "sha256": "52ef1a6dc4a594c7496f660461a227c08a6ba7adda31517b564655a495ea6a0b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_147.png",
+              "sha256": "7d3abdbd4d504ddd96addece876e3016244ce9fdfe8415d5f74bf3929748b121"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_148.png",
+              "sha256": "9fd0a5f3def06bc715bcd0a753da87cf3856154552e48c0d5cdb585a9b51d235"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_149.png",
+              "sha256": "4550be1e71f7c921b6fc1b3c3dd28157d6d16a6ca0ca54af1e4666a33e0b4bac"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_150.png",
+              "sha256": "9543698629130212bc20ad0e4b19324b6575489575d939e9ab30f62a9e6c9400"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页133-135与答案页135-145逐题核对：题干、选项、答案和解析与发布内容一致（公式排版差异不改变语义）。",
+          "source_hash": "71ef17e59b1db8096a5446fc8614836dfb8fee3154688b16045e858cb5f3950b"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X11": {
       "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X11",
@@ -103876,14 +104371,10 @@
       "chapter": "树与二叉树 · 二叉树的概念 · 选择题",
       "question_id": "X11",
       "source_hash": "0311461cf4a74c2cd1943a577870f196fe50d36d258851e0889b74b4d4360937",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         138,
         139,
@@ -103904,7 +104395,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T07:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -103942,10 +104433,84 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X11",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T07:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_138.png",
+              "sha256": "0b51fccc67b5a94a88cda575cae9d6091faa00c483c662010cde3613b586e44a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_139.png",
+              "sha256": "3207129455e3e45244c352a8a7633651da546a65d9357027c59c1e1e0cdebe38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_140.png",
+              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_140.png",
+              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_141.png",
+              "sha256": "3f0e77ae9bfe8fdba6dbf2caab0da06d790c49774ac2734b475d9bcef0ac8b76"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_142.png",
+              "sha256": "0b16124db42c50ecf7e9f119d21693e07306c686dd51e93be22080196eb06650"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_143.png",
+              "sha256": "3ba7ac4a51d5e245595a957a245de1305f4f59325d2ccbf630019c05980235c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_144.png",
+              "sha256": "9cf6f07992145df1176edf860d8ddd66c99f8971f956d12b911abd4b144e6bb7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_145.png",
+              "sha256": "da09be5ba5cef96fcb91792981665e5a6e4821e5b2b39e90db1ca4155bab3749"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_146.png",
+              "sha256": "52ef1a6dc4a594c7496f660461a227c08a6ba7adda31517b564655a495ea6a0b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_147.png",
+              "sha256": "7d3abdbd4d504ddd96addece876e3016244ce9fdfe8415d5f74bf3929748b121"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_148.png",
+              "sha256": "9fd0a5f3def06bc715bcd0a753da87cf3856154552e48c0d5cdb585a9b51d235"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_149.png",
+              "sha256": "4550be1e71f7c921b6fc1b3c3dd28157d6d16a6ca0ca54af1e4666a33e0b4bac"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_150.png",
+              "sha256": "9543698629130212bc20ad0e4b19324b6575489575d939e9ab30f62a9e6c9400"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页133-135与答案页135-145逐题核对：题干、选项、答案和解析与发布内容一致（公式排版差异不改变语义）。",
+          "source_hash": "0311461cf4a74c2cd1943a577870f196fe50d36d258851e0889b74b4d4360937"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X12": {
       "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X12",
@@ -104179,13 +104744,10 @@
       "chapter": "树与二叉树 · 二叉树的概念 · 选择题",
       "question_id": "X15",
       "source_hash": "d2fe16e45b687ad4e69c3c3d6ed4f8e8c71d4e683cfba4f1c4f21351446f2b0a",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         138,
         139,
@@ -104206,7 +104768,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T07:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -104229,10 +104791,84 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X15",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T07:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_138.png",
+              "sha256": "0b51fccc67b5a94a88cda575cae9d6091faa00c483c662010cde3613b586e44a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_139.png",
+              "sha256": "3207129455e3e45244c352a8a7633651da546a65d9357027c59c1e1e0cdebe38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_140.png",
+              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_140.png",
+              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_141.png",
+              "sha256": "3f0e77ae9bfe8fdba6dbf2caab0da06d790c49774ac2734b475d9bcef0ac8b76"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_142.png",
+              "sha256": "0b16124db42c50ecf7e9f119d21693e07306c686dd51e93be22080196eb06650"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_143.png",
+              "sha256": "3ba7ac4a51d5e245595a957a245de1305f4f59325d2ccbf630019c05980235c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_144.png",
+              "sha256": "9cf6f07992145df1176edf860d8ddd66c99f8971f956d12b911abd4b144e6bb7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_145.png",
+              "sha256": "da09be5ba5cef96fcb91792981665e5a6e4821e5b2b39e90db1ca4155bab3749"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_146.png",
+              "sha256": "52ef1a6dc4a594c7496f660461a227c08a6ba7adda31517b564655a495ea6a0b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_147.png",
+              "sha256": "7d3abdbd4d504ddd96addece876e3016244ce9fdfe8415d5f74bf3929748b121"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_148.png",
+              "sha256": "9fd0a5f3def06bc715bcd0a753da87cf3856154552e48c0d5cdb585a9b51d235"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_149.png",
+              "sha256": "4550be1e71f7c921b6fc1b3c3dd28157d6d16a6ca0ca54af1e4666a33e0b4bac"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_150.png",
+              "sha256": "9543698629130212bc20ad0e4b19324b6575489575d939e9ab30f62a9e6c9400"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页133-135与答案页135-145逐题核对：题干、选项、答案和解析与发布内容一致（公式排版差异不改变语义）。",
+          "source_hash": "d2fe16e45b687ad4e69c3c3d6ed4f8e8c71d4e683cfba4f1c4f21351446f2b0a"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X16": {
       "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X16",
@@ -104437,13 +105073,10 @@
       "chapter": "树与二叉树 · 二叉树的概念 · 选择题",
       "question_id": "X19",
       "source_hash": "ae25b7d7bc3c24e34ee58ea465207dce1b2a2c5647b8c2562a07b442df6fda4f",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         138,
         139,
@@ -104464,7 +105097,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T07:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -104487,10 +105120,84 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X19",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T07:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_138.png",
+              "sha256": "0b51fccc67b5a94a88cda575cae9d6091faa00c483c662010cde3613b586e44a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_139.png",
+              "sha256": "3207129455e3e45244c352a8a7633651da546a65d9357027c59c1e1e0cdebe38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_140.png",
+              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_140.png",
+              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_141.png",
+              "sha256": "3f0e77ae9bfe8fdba6dbf2caab0da06d790c49774ac2734b475d9bcef0ac8b76"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_142.png",
+              "sha256": "0b16124db42c50ecf7e9f119d21693e07306c686dd51e93be22080196eb06650"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_143.png",
+              "sha256": "3ba7ac4a51d5e245595a957a245de1305f4f59325d2ccbf630019c05980235c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_144.png",
+              "sha256": "9cf6f07992145df1176edf860d8ddd66c99f8971f956d12b911abd4b144e6bb7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_145.png",
+              "sha256": "da09be5ba5cef96fcb91792981665e5a6e4821e5b2b39e90db1ca4155bab3749"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_146.png",
+              "sha256": "52ef1a6dc4a594c7496f660461a227c08a6ba7adda31517b564655a495ea6a0b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_147.png",
+              "sha256": "7d3abdbd4d504ddd96addece876e3016244ce9fdfe8415d5f74bf3929748b121"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_148.png",
+              "sha256": "9fd0a5f3def06bc715bcd0a753da87cf3856154552e48c0d5cdb585a9b51d235"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_149.png",
+              "sha256": "4550be1e71f7c921b6fc1b3c3dd28157d6d16a6ca0ca54af1e4666a33e0b4bac"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_150.png",
+              "sha256": "9543698629130212bc20ad0e4b19324b6575489575d939e9ab30f62a9e6c9400"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页133-135与答案页135-145逐题核对：题干、选项、答案和解析与发布内容一致（公式排版差异不改变语义）。",
+          "source_hash": "ae25b7d7bc3c24e34ee58ea465207dce1b2a2c5647b8c2562a07b442df6fda4f"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X20": {
       "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X20",
@@ -104498,14 +105205,10 @@
       "chapter": "树与二叉树 · 二叉树的概念 · 选择题",
       "question_id": "X20",
       "source_hash": "577a54ae7b54373b6dbfb60fbcf421ab0fa53fade2ceb3341a72966ded930bbf",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         138,
         139,
@@ -104526,7 +105229,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T07:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -104564,10 +105267,84 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X20",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T07:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_138.png",
+              "sha256": "0b51fccc67b5a94a88cda575cae9d6091faa00c483c662010cde3613b586e44a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_139.png",
+              "sha256": "3207129455e3e45244c352a8a7633651da546a65d9357027c59c1e1e0cdebe38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_140.png",
+              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_140.png",
+              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_141.png",
+              "sha256": "3f0e77ae9bfe8fdba6dbf2caab0da06d790c49774ac2734b475d9bcef0ac8b76"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_142.png",
+              "sha256": "0b16124db42c50ecf7e9f119d21693e07306c686dd51e93be22080196eb06650"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_143.png",
+              "sha256": "3ba7ac4a51d5e245595a957a245de1305f4f59325d2ccbf630019c05980235c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_144.png",
+              "sha256": "9cf6f07992145df1176edf860d8ddd66c99f8971f956d12b911abd4b144e6bb7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_145.png",
+              "sha256": "da09be5ba5cef96fcb91792981665e5a6e4821e5b2b39e90db1ca4155bab3749"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_146.png",
+              "sha256": "52ef1a6dc4a594c7496f660461a227c08a6ba7adda31517b564655a495ea6a0b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_147.png",
+              "sha256": "7d3abdbd4d504ddd96addece876e3016244ce9fdfe8415d5f74bf3929748b121"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_148.png",
+              "sha256": "9fd0a5f3def06bc715bcd0a753da87cf3856154552e48c0d5cdb585a9b51d235"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_149.png",
+              "sha256": "4550be1e71f7c921b6fc1b3c3dd28157d6d16a6ca0ca54af1e4666a33e0b4bac"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_150.png",
+              "sha256": "9543698629130212bc20ad0e4b19324b6575489575d939e9ab30f62a9e6c9400"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页133-135与答案页135-145逐题核对：题干、选项、答案和解析与发布内容一致（公式排版差异不改变语义）。",
+          "source_hash": "577a54ae7b54373b6dbfb60fbcf421ab0fa53fade2ceb3341a72966ded930bbf"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X21": {
       "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X21",
@@ -104651,13 +105428,10 @@
       "chapter": "树与二叉树 · 二叉树的概念 · 选择题",
       "question_id": "X22",
       "source_hash": "e3061b6dad766e91566295c82ba127a5b9dfebb02102ab0b3dd6559a641a3ecf",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         138,
         139,
@@ -104678,7 +105452,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T07:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -104701,10 +105475,84 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X22",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T07:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_138.png",
+              "sha256": "0b51fccc67b5a94a88cda575cae9d6091faa00c483c662010cde3613b586e44a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_139.png",
+              "sha256": "3207129455e3e45244c352a8a7633651da546a65d9357027c59c1e1e0cdebe38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_140.png",
+              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_140.png",
+              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_141.png",
+              "sha256": "3f0e77ae9bfe8fdba6dbf2caab0da06d790c49774ac2734b475d9bcef0ac8b76"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_142.png",
+              "sha256": "0b16124db42c50ecf7e9f119d21693e07306c686dd51e93be22080196eb06650"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_143.png",
+              "sha256": "3ba7ac4a51d5e245595a957a245de1305f4f59325d2ccbf630019c05980235c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_144.png",
+              "sha256": "9cf6f07992145df1176edf860d8ddd66c99f8971f956d12b911abd4b144e6bb7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_145.png",
+              "sha256": "da09be5ba5cef96fcb91792981665e5a6e4821e5b2b39e90db1ca4155bab3749"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_146.png",
+              "sha256": "52ef1a6dc4a594c7496f660461a227c08a6ba7adda31517b564655a495ea6a0b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_147.png",
+              "sha256": "7d3abdbd4d504ddd96addece876e3016244ce9fdfe8415d5f74bf3929748b121"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_148.png",
+              "sha256": "9fd0a5f3def06bc715bcd0a753da87cf3856154552e48c0d5cdb585a9b51d235"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_149.png",
+              "sha256": "4550be1e71f7c921b6fc1b3c3dd28157d6d16a6ca0ca54af1e4666a33e0b4bac"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_150.png",
+              "sha256": "9543698629130212bc20ad0e4b19324b6575489575d939e9ab30f62a9e6c9400"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页133-135与答案页135-145逐题核对：题干、选项、答案和解析与发布内容一致（公式排版差异不改变语义）。",
+          "source_hash": "e3061b6dad766e91566295c82ba127a5b9dfebb02102ab0b3dd6559a641a3ecf"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X23": {
       "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X23",
@@ -104788,14 +105636,10 @@
       "chapter": "树与二叉树 · 二叉树的概念 · 选择题",
       "question_id": "X24",
       "source_hash": "639b6b9d47d33621d8d4185aa07f18fa666f1ac4993ef6cf305dab49d9511246",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         138,
         139,
@@ -104816,7 +105660,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T07:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -104854,10 +105698,84 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X24",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T07:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_138.png",
+              "sha256": "0b51fccc67b5a94a88cda575cae9d6091faa00c483c662010cde3613b586e44a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_139.png",
+              "sha256": "3207129455e3e45244c352a8a7633651da546a65d9357027c59c1e1e0cdebe38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_140.png",
+              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_140.png",
+              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_141.png",
+              "sha256": "3f0e77ae9bfe8fdba6dbf2caab0da06d790c49774ac2734b475d9bcef0ac8b76"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_142.png",
+              "sha256": "0b16124db42c50ecf7e9f119d21693e07306c686dd51e93be22080196eb06650"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_143.png",
+              "sha256": "3ba7ac4a51d5e245595a957a245de1305f4f59325d2ccbf630019c05980235c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_144.png",
+              "sha256": "9cf6f07992145df1176edf860d8ddd66c99f8971f956d12b911abd4b144e6bb7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_145.png",
+              "sha256": "da09be5ba5cef96fcb91792981665e5a6e4821e5b2b39e90db1ca4155bab3749"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_146.png",
+              "sha256": "52ef1a6dc4a594c7496f660461a227c08a6ba7adda31517b564655a495ea6a0b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_147.png",
+              "sha256": "7d3abdbd4d504ddd96addece876e3016244ce9fdfe8415d5f74bf3929748b121"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_148.png",
+              "sha256": "9fd0a5f3def06bc715bcd0a753da87cf3856154552e48c0d5cdb585a9b51d235"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_149.png",
+              "sha256": "4550be1e71f7c921b6fc1b3c3dd28157d6d16a6ca0ca54af1e4666a33e0b4bac"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_150.png",
+              "sha256": "9543698629130212bc20ad0e4b19324b6575489575d939e9ab30f62a9e6c9400"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页133-135与答案页135-145逐题核对：题干、选项、答案和解析与发布内容一致（公式排版差异不改变语义）。",
+          "source_hash": "639b6b9d47d33621d8d4185aa07f18fa666f1ac4993ef6cf305dab49d9511246"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X25": {
       "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X25",
@@ -105089,13 +106007,10 @@
       "chapter": "树与二叉树 · 二叉树的概念 · 选择题",
       "question_id": "X28",
       "source_hash": "8d24407c60b9e14ac6ec82f67bab98ee6a615cc8e2439abaf8fd0721832d2588",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         138,
         139,
@@ -105116,7 +106031,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T07:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -105139,10 +106054,84 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X28",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T07:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_138.png",
+              "sha256": "0b51fccc67b5a94a88cda575cae9d6091faa00c483c662010cde3613b586e44a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_139.png",
+              "sha256": "3207129455e3e45244c352a8a7633651da546a65d9357027c59c1e1e0cdebe38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_140.png",
+              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_140.png",
+              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_141.png",
+              "sha256": "3f0e77ae9bfe8fdba6dbf2caab0da06d790c49774ac2734b475d9bcef0ac8b76"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_142.png",
+              "sha256": "0b16124db42c50ecf7e9f119d21693e07306c686dd51e93be22080196eb06650"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_143.png",
+              "sha256": "3ba7ac4a51d5e245595a957a245de1305f4f59325d2ccbf630019c05980235c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_144.png",
+              "sha256": "9cf6f07992145df1176edf860d8ddd66c99f8971f956d12b911abd4b144e6bb7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_145.png",
+              "sha256": "da09be5ba5cef96fcb91792981665e5a6e4821e5b2b39e90db1ca4155bab3749"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_146.png",
+              "sha256": "52ef1a6dc4a594c7496f660461a227c08a6ba7adda31517b564655a495ea6a0b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_147.png",
+              "sha256": "7d3abdbd4d504ddd96addece876e3016244ce9fdfe8415d5f74bf3929748b121"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_148.png",
+              "sha256": "9fd0a5f3def06bc715bcd0a753da87cf3856154552e48c0d5cdb585a9b51d235"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_149.png",
+              "sha256": "4550be1e71f7c921b6fc1b3c3dd28157d6d16a6ca0ca54af1e4666a33e0b4bac"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_150.png",
+              "sha256": "9543698629130212bc20ad0e4b19324b6575489575d939e9ab30f62a9e6c9400"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页133-135与答案页135-145逐题核对：题干、选项、答案和解析与发布内容一致（公式排版差异不改变语义）。",
+          "source_hash": "8d24407c60b9e14ac6ec82f67bab98ee6a615cc8e2439abaf8fd0721832d2588"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X29": {
       "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X29",
@@ -105150,14 +106139,10 @@
       "chapter": "树与二叉树 · 二叉树的概念 · 选择题",
       "question_id": "X29",
       "source_hash": "a82aa30a6c35da7c97469596736093d01d0200237b719de3a82364b13ce991e6",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         138,
         139,
@@ -105178,7 +106163,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T07:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -105216,10 +106201,84 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X29",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T07:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_138.png",
+              "sha256": "0b51fccc67b5a94a88cda575cae9d6091faa00c483c662010cde3613b586e44a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_139.png",
+              "sha256": "3207129455e3e45244c352a8a7633651da546a65d9357027c59c1e1e0cdebe38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_140.png",
+              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_140.png",
+              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_141.png",
+              "sha256": "3f0e77ae9bfe8fdba6dbf2caab0da06d790c49774ac2734b475d9bcef0ac8b76"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_142.png",
+              "sha256": "0b16124db42c50ecf7e9f119d21693e07306c686dd51e93be22080196eb06650"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_143.png",
+              "sha256": "3ba7ac4a51d5e245595a957a245de1305f4f59325d2ccbf630019c05980235c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_144.png",
+              "sha256": "9cf6f07992145df1176edf860d8ddd66c99f8971f956d12b911abd4b144e6bb7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_145.png",
+              "sha256": "da09be5ba5cef96fcb91792981665e5a6e4821e5b2b39e90db1ca4155bab3749"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_146.png",
+              "sha256": "52ef1a6dc4a594c7496f660461a227c08a6ba7adda31517b564655a495ea6a0b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_147.png",
+              "sha256": "7d3abdbd4d504ddd96addece876e3016244ce9fdfe8415d5f74bf3929748b121"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_148.png",
+              "sha256": "9fd0a5f3def06bc715bcd0a753da87cf3856154552e48c0d5cdb585a9b51d235"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_149.png",
+              "sha256": "4550be1e71f7c921b6fc1b3c3dd28157d6d16a6ca0ca54af1e4666a33e0b4bac"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_150.png",
+              "sha256": "9543698629130212bc20ad0e4b19324b6575489575d939e9ab30f62a9e6c9400"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页133-135与答案页135-145逐题核对：题干、选项、答案和解析与发布内容一致（公式排版差异不改变语义）。",
+          "source_hash": "a82aa30a6c35da7c97469596736093d01d0200237b719de3a82364b13ce991e6"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X30": {
       "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X30",
@@ -105227,14 +106286,10 @@
       "chapter": "树与二叉树 · 二叉树的概念 · 选择题",
       "question_id": "X30",
       "source_hash": "e8e9a849da9b4c54c3a2e3a840e018429480fe7140c7ad9b84de1e7236b39f67",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         138,
         139,
@@ -105255,7 +106310,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-28T07:30:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -105293,10 +106348,84 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X30",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-28T07:30:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_138.png",
+              "sha256": "0b51fccc67b5a94a88cda575cae9d6091faa00c483c662010cde3613b586e44a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_139.png",
+              "sha256": "3207129455e3e45244c352a8a7633651da546a65d9357027c59c1e1e0cdebe38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_140.png",
+              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_140.png",
+              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_141.png",
+              "sha256": "3f0e77ae9bfe8fdba6dbf2caab0da06d790c49774ac2734b475d9bcef0ac8b76"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_142.png",
+              "sha256": "0b16124db42c50ecf7e9f119d21693e07306c686dd51e93be22080196eb06650"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_143.png",
+              "sha256": "3ba7ac4a51d5e245595a957a245de1305f4f59325d2ccbf630019c05980235c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_144.png",
+              "sha256": "9cf6f07992145df1176edf860d8ddd66c99f8971f956d12b911abd4b144e6bb7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_145.png",
+              "sha256": "da09be5ba5cef96fcb91792981665e5a6e4821e5b2b39e90db1ca4155bab3749"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_146.png",
+              "sha256": "52ef1a6dc4a594c7496f660461a227c08a6ba7adda31517b564655a495ea6a0b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_147.png",
+              "sha256": "7d3abdbd4d504ddd96addece876e3016244ce9fdfe8415d5f74bf3929748b121"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_148.png",
+              "sha256": "9fd0a5f3def06bc715bcd0a753da87cf3856154552e48c0d5cdb585a9b51d235"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_149.png",
+              "sha256": "4550be1e71f7c921b6fc1b3c3dd28157d6d16a6ca0ca54af1e4666a33e0b4bac"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_150.png",
+              "sha256": "9543698629130212bc20ad0e4b19324b6575489575d939e9ab30f62a9e6c9400"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "原书题目页133-135与答案页135-145逐题核对：题干、选项、答案和解析与发布内容一致（公式排版差异不改变语义）。",
+          "source_hash": "e8e9a849da9b4c54c3a2e3a840e018429480fe7140c7ad9b84de1e7236b39f67"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::树与二叉树 · 二叉树的遍历和线索二叉树 · 解答题::A01": {
       "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的遍历和线索二叉树 · 解答题::A01",
