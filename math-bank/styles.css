@@ -1843,6 +1843,33 @@ body.compact-view .question-row .row-tags .row-tag { display: none; }
   letter-spacing: -0.01em;
 }
 
+.q-text .stem-table {
+  margin: 12px 0;
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: normal;
+}
+
+.q-text .stem-table table {
+  border-collapse: collapse;
+  width: max-content;
+  font-size: 0.92em;
+  font-weight: 400;
+}
+
+.q-text .stem-table th,
+.q-text .stem-table td {
+  border: 1px solid var(--border);
+  padding: 4px 8px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.q-text .stem-table th {
+  background: var(--bg-muted, var(--surface-2, #f4f4f5));
+  font-weight: 600;
+}
+
 .modal-content .q-options {
   margin-bottom: 20px;
   display: flex;

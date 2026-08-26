@@ -2193,10 +2193,79 @@ function questionBodyHtml(q, mode) {
   `;
 }
 
+function isPipeRow(line) {
+  const t = String(line || '').trim();
+  return t.startsWith('|') && t.endsWith('|') && t.length > 1;
+}
+
+function splitPipeRow(line) {
+  const t = String(line || '').trim();
+  const inner = t.startsWith('|') ? t.slice(1) : t;
+  const body = inner.endsWith('|') ? inner.slice(0, -1) : inner;
+  return body.split('|').map((cell) => cell.trim());
+}
+
+function isSepRow(line) {
+  const cells = splitPipeRow(line);
+  return cells.length > 0 && cells.every((cell) => /^:?-+:?$/.test(cell.replace(/\s/g, '')));
+}
+
+function stemTableHtml(lines) {
+  const rows = lines.filter((line) => !isSepRow(line)).map(splitPipeRow);
+  if (!rows.length) return escapeHtml(lines.join('\n'));
+  const head = rows[0] || [];
+  const body = rows.slice(1);
+  const th = head.map((cell) => '<th>' + (escapeHtml(cell) || '&nbsp;') + '</th>').join('');
+  const tr = body.map((row) => '<tr>' + row.map((cell) => '<td>' + (escapeHtml(cell) || '&nbsp;') + '</td>').join('') + '</tr>').join('');
+  return '<div class="stem-table"><table><thead><tr>' + th + '</tr></thead><tbody>' + tr + '</tbody></table></div>';
+}
+
+function fillStemText(el, raw) {
+  const text = prepareMathText(raw);
+  const lines = String(text || '').split('\n');
+  // 题干可含多个 markdown 管道表；表前/表间/表后文字仍走 .stem-prose 纯文本
+  const parts = [];
+  let prose = [];
+  const flushProse = () => {
+    const t = prose.join('\n').replace(/^\n+|\n+$/g, '');
+    prose = [];
+    if (t) parts.push({ type: 'prose', text: t });
+  };
+  let i = 0;
+  while (i < lines.length) {
+    if (isPipeRow(lines[i]) && isSepRow(lines[i + 1] || '')) {
+      flushProse();
+      let end = i;
+      while (end < lines.length && isPipeRow(lines[end])) end += 1;
+      parts.push({ type: 'table', lines: lines.slice(i, end) });
+      i = end;
+    } else {
+      prose.push(lines[i]);
+      i += 1;
+    }
+  }
+  flushProse();
+  if (!parts.some((p) => p.type === 'table')) {
+    el.textContent = text;
+    return;
+  }
+  el.innerHTML = parts
+    .map((p) => (p.type === 'table' ? stemTableHtml(p.lines) : '<div class="stem-prose"></div>'))
+    .join('');
+  const proses = el.querySelectorAll('.stem-prose');
+  let pi = 0;
+  parts.forEach((p) => {
+    if (p.type === 'prose' && proses[pi]) {
+      proses[pi].textContent = p.text;
+      pi += 1;
+    }
+  });
+}
+
 function renderQuestionBody(container, q, mode) {
   container._submitted = false;
   const qtext = container.querySelector('[data-role="qtext"]');
-  if (qtext) { qtext.textContent = prepareMathText(q.content); renderKatex(qtext); }
+  if (qtext) { fillStemText(qtext, q.content); renderKatex(qtext); }
 
   if (q.options) {
     const optMathEls = container.querySelectorAll('.opt-math');
@@ -3533,6 +3602,11 @@ function highlightText(element, term) {
 // ========================
 function renderKatex(element) {
   if (!element || !window.katex) return;
+  if (element.querySelector && element.querySelector('table')) {
+    // 含表格时 prose 与单元格分开渲染；单元格里的 $...$ 公式也要走 KaTeX
+    element.querySelectorAll('.stem-prose, .stem-table th, .stem-table td').forEach(renderKatex);
+    return;
+  }
   let text = element.textContent;
   if (!text) return;
 
@@ -4460,7 +4534,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=43').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=45').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {
