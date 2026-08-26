@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-26T18:32:58+00:00",
+  "generated_at": "2026-08-26T18:34:37+00:00",
   "published_hashes": {
     "ds": "a40686840e5043561d7f7159fbd779725ffa65c56bfdd79a2683965b6aed0771",
     "coa": "8f9ea82d6d82e53ea38daf200ae95a361b5c43742f0ce9881b207f671f7f06f7",
@@ -20,9 +20,9 @@
       "name": "计算机组成原理",
       "mode": "strict",
       "total": 674,
-      "certified": 133,
+      "certified": 143,
       "pending": 0,
-      "held": 541
+      "held": 531
     },
     "net": {
       "name": "计算机网络",
@@ -43,9 +43,9 @@
   },
   "summary": {
     "total": 2869,
-    "certified": 482,
+    "certified": 492,
     "pending": 0,
-    "held": 2387
+    "held": 2377
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -31311,14 +31311,10 @@
       "chapter": "数据的表示和运算 · 数制与编码 · 选择题",
       "question_id": "X09",
       "source_hash": "cd6c514844870b969e6e302482d024075e8a4ab49b28444de6666e99f98056f8",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         32,
         33,
@@ -31343,7 +31339,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T06:20:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -31381,10 +31377,44 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X09",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T06:20:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_032.png",
+              "sha256": "5f983dade9d215e3a5048f71434bdce794f896ce2ed6ef66ba5c625447d95737"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_033.png",
+              "sha256": "5c09832f429095c3b8d3dd83ea45aad4f75e5a0e0d7801d890f219c50316e795"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_034.png",
+              "sha256": "bdc8521ad1f5a1ed31f710e33b26fea25f3783985a6cab1bfe400cd9f52b177f"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_035.png",
+              "sha256": "fb61c618d5d4e2f386a96f76bba0dccc9c8986fafa5553dccfb54629dd03179f"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页32-34与答案页35：X09题干、64位定点数负数选项及解析忠实，答案为C。",
+          "source_hash": "cd6c514844870b969e6e302482d024075e8a4ab49b28444de6666e99f98056f8"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X10": {
       "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X10",
@@ -31392,14 +31422,10 @@
       "chapter": "数据的表示和运算 · 数制与编码 · 选择题",
       "question_id": "X10",
       "source_hash": "dc5682dddd20a5de3184bd8bf5097761b4a21f15e4ae8afe6822989b0398ccc0",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         32,
         33,
@@ -31424,7 +31450,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T06:21:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -31462,10 +31488,44 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X10",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T06:21:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_032.png",
+              "sha256": "5f983dade9d215e3a5048f71434bdce794f896ce2ed6ef66ba5c625447d95737"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_033.png",
+              "sha256": "5c09832f429095c3b8d3dd83ea45aad4f75e5a0e0d7801d890f219c50316e795"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_034.png",
+              "sha256": "bdc8521ad1f5a1ed31f710e33b26fea25f3783985a6cab1bfe400cd9f52b177f"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_035.png",
+              "sha256": "fb61c618d5d4e2f386a96f76bba0dccc9c8986fafa5553dccfb54629dd03179f"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页32-34与答案页35：X10题干、补码与移码关系选项及解析忠实，答案为B。",
+          "source_hash": "dc5682dddd20a5de3184bd8bf5097761b4a21f15e4ae8afe6822989b0398ccc0"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X11": {
       "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X11",
@@ -31473,14 +31533,10 @@
       "chapter": "数据的表示和运算 · 数制与编码 · 选择题",
       "question_id": "X11",
       "source_hash": "af29f827ff93aa162cef1e61c8759a5d3c212a96a833ae810710d20cad41bb3c",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         32,
         33,
@@ -31505,7 +31561,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T06:22:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -31543,10 +31599,44 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X11",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T06:22:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_032.png",
+              "sha256": "5f983dade9d215e3a5048f71434bdce794f896ce2ed6ef66ba5c625447d95737"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_033.png",
+              "sha256": "5c09832f429095c3b8d3dd83ea45aad4f75e5a0e0d7801d890f219c50316e795"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_034.png",
+              "sha256": "bdc8521ad1f5a1ed31f710e33b26fea25f3783985a6cab1bfe400cd9f52b177f"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_035.png",
+              "sha256": "fb61c618d5d4e2f386a96f76bba0dccc9c8986fafa5553dccfb54629dd03179f"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页32-34与答案页35：X11题干、原码位条件选项及解析忠实，答案为C。",
+          "source_hash": "af29f827ff93aa162cef1e61c8759a5d3c212a96a833ae810710d20cad41bb3c"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X12": {
       "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X12",
@@ -31634,14 +31724,10 @@
       "chapter": "数据的表示和运算 · 数制与编码 · 选择题",
       "question_id": "X13",
       "source_hash": "df8cd7e0e8db9df1046594893c2cf51611820db49a2c5a75e93804000c573e81",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         32,
         33,
@@ -31666,7 +31752,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T06:23:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -31704,10 +31790,44 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X13",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T06:23:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_032.png",
+              "sha256": "5f983dade9d215e3a5048f71434bdce794f896ce2ed6ef66ba5c625447d95737"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_033.png",
+              "sha256": "5c09832f429095c3b8d3dd83ea45aad4f75e5a0e0d7801d890f219c50316e795"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_034.png",
+              "sha256": "bdc8521ad1f5a1ed31f710e33b26fea25f3783985a6cab1bfe400cd9f52b177f"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_035.png",
+              "sha256": "fb61c618d5d4e2f386a96f76bba0dccc9c8986fafa5553dccfb54629dd03179f"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页32-34与答案页35：X13题干、绝对值与补码条件选项及解析忠实，答案为D。",
+          "source_hash": "df8cd7e0e8db9df1046594893c2cf51611820db49a2c5a75e93804000c573e81"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X14": {
       "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X14",
@@ -31715,14 +31835,10 @@
       "chapter": "数据的表示和运算 · 数制与编码 · 选择题",
       "question_id": "X14",
       "source_hash": "9b280011d64023087b2b2b99a6e1578de2587e178f35abaeba516b38379b73f6",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         32,
         33,
@@ -31747,7 +31863,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T06:24:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -31785,10 +31901,44 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X14",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T06:24:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_032.png",
+              "sha256": "5f983dade9d215e3a5048f71434bdce794f896ce2ed6ef66ba5c625447d95737"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_033.png",
+              "sha256": "5c09832f429095c3b8d3dd83ea45aad4f75e5a0e0d7801d890f219c50316e795"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_034.png",
+              "sha256": "bdc8521ad1f5a1ed31f710e33b26fea25f3783985a6cab1bfe400cd9f52b177f"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_036.png",
+              "sha256": "363c5e15180bb88b8c944f26ef9517371b4e1f5274605bf5d94e21e57f4bc0d7"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页32-34与答案页36：X14题干、8位补码十六进制选项及解析忠实，答案为B。",
+          "source_hash": "9b280011d64023087b2b2b99a6e1578de2587e178f35abaeba516b38379b73f6"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X15": {
       "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X15",
@@ -31876,14 +32026,10 @@
       "chapter": "数据的表示和运算 · 数制与编码 · 选择题",
       "question_id": "X16",
       "source_hash": "fd1788deef229d87936149a90412e8f71b1aa6c7292cd450fc78d7fbd3683a5d",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         32,
         33,
@@ -31908,7 +32054,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T06:25:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -31946,10 +32092,44 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X16",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T06:25:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_032.png",
+              "sha256": "5f983dade9d215e3a5048f71434bdce794f896ce2ed6ef66ba5c625447d95737"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_033.png",
+              "sha256": "5c09832f429095c3b8d3dd83ea45aad4f75e5a0e0d7801d890f219c50316e795"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_034.png",
+              "sha256": "bdc8521ad1f5a1ed31f710e33b26fea25f3783985a6cab1bfe400cd9f52b177f"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_036.png",
+              "sha256": "363c5e15180bb88b8c944f26ef9517371b4e1f5274605bf5d94e21e57f4bc0d7"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页32-34与答案页36：X16题干、等于负零的机器数选项及解析忠实，答案为A。",
+          "source_hash": "fd1788deef229d87936149a90412e8f71b1aa6c7292cd450fc78d7fbd3683a5d"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X17": {
       "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X17",
@@ -31957,14 +32137,10 @@
       "chapter": "数据的表示和运算 · 数制与编码 · 选择题",
       "question_id": "X17",
       "source_hash": "209ccab13e998da4031eb5a3b32abb01ac892a615abcb74f650dcbd28bf47261",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         32,
         33,
@@ -31989,7 +32165,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T06:26:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -32027,10 +32203,44 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X17",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T06:26:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_032.png",
+              "sha256": "5f983dade9d215e3a5048f71434bdce794f896ce2ed6ef66ba5c625447d95737"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_033.png",
+              "sha256": "5c09832f429095c3b8d3dd83ea45aad4f75e5a0e0d7801d890f219c50316e795"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_034.png",
+              "sha256": "bdc8521ad1f5a1ed31f710e33b26fea25f3783985a6cab1bfe400cd9f52b177f"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_036.png",
+              "sha256": "363c5e15180bb88b8c944f26ef9517371b4e1f5274605bf5d94e21e57f4bc0d7"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页32-34与答案页36：X17题干、+127编码选项及解析忠实，答案为D。",
+          "source_hash": "209ccab13e998da4031eb5a3b32abb01ac892a615abcb74f650dcbd28bf47261"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X18": {
       "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X18",
@@ -32038,14 +32248,10 @@
       "chapter": "数据的表示和运算 · 数制与编码 · 选择题",
       "question_id": "X18",
       "source_hash": "01a872252ac120a2f304598b207a25f718f83c8239c9c75ab0f9f2493e7577a4",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         32,
         33,
@@ -32070,7 +32276,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T06:27:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -32108,10 +32314,44 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X18",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T06:27:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_032.png",
+              "sha256": "5f983dade9d215e3a5048f71434bdce794f896ce2ed6ef66ba5c625447d95737"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_033.png",
+              "sha256": "5c09832f429095c3b8d3dd83ea45aad4f75e5a0e0d7801d890f219c50316e795"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_034.png",
+              "sha256": "bdc8521ad1f5a1ed31f710e33b26fea25f3783985a6cab1bfe400cd9f52b177f"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_036.png",
+              "sha256": "363c5e15180bb88b8c944f26ef9517371b4e1f5274605bf5d94e21e57f4bc0d7"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页32-34与答案页36：X18题干、-1的编码选项及解析忠实，答案为B。",
+          "source_hash": "01a872252ac120a2f304598b207a25f718f83c8239c9c75ab0f9f2493e7577a4"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X19": {
       "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X19",
@@ -32119,15 +32359,10 @@
       "chapter": "数据的表示和运算 · 数制与编码 · 选择题",
       "question_id": "X19",
       "source_hash": "c0b5ebbc73044797f12f5d9394d0172b7fb0649b42ad04f750c16efda5cfc3e7",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         32,
         33,
@@ -32152,7 +32387,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T06:28:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -32190,10 +32425,44 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X19",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T06:28:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_032.png",
+              "sha256": "5f983dade9d215e3a5048f71434bdce794f896ce2ed6ef66ba5c625447d95737"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_033.png",
+              "sha256": "5c09832f429095c3b8d3dd83ea45aad4f75e5a0e0d7801d890f219c50316e795"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_034.png",
+              "sha256": "bdc8521ad1f5a1ed31f710e33b26fea25f3783985a6cab1bfe400cd9f52b177f"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_036.png",
+              "sha256": "363c5e15180bb88b8c944f26ef9517371b4e1f5274605bf5d94e21e57f4bc0d7"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页32-34与答案页36：X19题干、-128移码选项及解析忠实，答案为D。",
+          "source_hash": "c0b5ebbc73044797f12f5d9394d0172b7fb0649b42ad04f750c16efda5cfc3e7"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X20": {
       "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X20",
@@ -32586,14 +32855,10 @@
       "chapter": "数据的表示和运算 · 数制与编码 · 选择题",
       "question_id": "X25",
       "source_hash": "40f244ade41196ccf9b826f48a9f8b2f14f6bdb15c013294b9e5b4a5178eb11e",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         32,
         33,
@@ -32618,7 +32883,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T06:29:00+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -32656,10 +32921,44 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;raw_content_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;raw_content_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X25",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T06:29:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_032.png",
+              "sha256": "5f983dade9d215e3a5048f71434bdce794f896ce2ed6ef66ba5c625447d95737"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_033.png",
+              "sha256": "5c09832f429095c3b8d3dd83ea45aad4f75e5a0e0d7801d890f219c50316e795"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_034.png",
+              "sha256": "bdc8521ad1f5a1ed31f710e33b26fea25f3783985a6cab1bfe400cd9f52b177f"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_036.png",
+              "sha256": "363c5e15180bb88b8c944f26ef9517371b4e1f5274605bf5d94e21e57f4bc0d7"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "亲眼核对原书题页32-34与答案页36：X25题干、主存地址表示选项及解析忠实，答案为D。",
+          "source_hash": "40f244ade41196ccf9b826f48a9f8b2f14f6bdb15c013294b9e5b4a5178eb11e"
+        }
       },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X26": {
       "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X26",
