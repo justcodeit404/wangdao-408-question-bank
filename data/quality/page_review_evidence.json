@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "protocol": "codex-original-page-review-v1",
-  "updated_at": "2026-08-26T18:44:07.166399+00:00",
+  "updated_at": "2026-08-26T18:46:18.974437+00:00",
   "records": [
     {
       "source_uid": "408:cs408-coa::中央处理器 · 异常和中断机制 · 选择题::X01",
@@ -1787,6 +1787,199 @@
       "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
       "post_patch_verified": true,
       "source_hash": "d8ea94f71ae3b9f2efa74ee1df9607afbe4372dd3b45ccff50045c388c7a2e4c"
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 浮点数的表示与运算 · 选择题::X14",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T07:36:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_067.png",
+          "sha256": "2432de46130953cf0a8682ba0cc3b08088a8c5bfd9cdc5f95022d1b0a7d62a95"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_073.png",
+          "sha256": "730872a7fe861500c3a39344856040073edb8a71afb7f15788e63847983ee5e6"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题页67与答案页73：X14 浮点加法对阶题干、选项及解析忠实，答案为B。",
+      "source_hash": "fbe95e18b0cda705c4cf078332c04c77fd6a0d7e1c9e3cc41b308442ede6fc5b"
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 浮点数的表示与运算 · 选择题::X15",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T07:37:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_067.png",
+          "sha256": "2432de46130953cf0a8682ba0cc3b08088a8c5bfd9cdc5f95022d1b0a7d62a95"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_073.png",
+          "sha256": "730872a7fe861500c3a39344856040073edb8a71afb7f15788e63847983ee5e6"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题页67与答案页73：X15 IEEE754非规格化浮点数题干、选项及解析忠实，答案为A。",
+      "source_hash": "ef04eca28168b3c5b30568a645765415fcf94a7dac900161fb267f4a20d2deea"
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 浮点数的表示与运算 · 选择题::X16",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T07:38:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_067.png",
+          "sha256": "2432de46130953cf0a8682ba0cc3b08088a8c5bfd9cdc5f95022d1b0a7d62a95"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_073.png",
+          "sha256": "730872a7fe861500c3a39344856040073edb8a71afb7f15788e63847983ee5e6"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题页67与答案页73：X16 IEEE754对阶隐含位处理题干、选项及解析忠实，答案为C。",
+      "source_hash": "1d2accd5e4d58e49918af790e0fcfc35a916661cde574bb87dc9aecdff6002d0"
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 浮点数的表示与运算 · 选择题::X17",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T07:39:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_067.png",
+          "sha256": "2432de46130953cf0a8682ba0cc3b08088a8c5bfd9cdc5f95022d1b0a7d62a95"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_073.png",
+          "sha256": "730872a7fe861500c3a39344856040073edb8a71afb7f15788e63847983ee5e6"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题页67与答案页73：X17 浮点加减阶码差阈值题干、选项及解析忠实，答案为B。",
+      "source_hash": "07f9e0d8df44bcd13049d40781025b144b92210aa42dd2081ea8ab7fc5c97494"
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 浮点数的表示与运算 · 选择题::X20",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T07:40:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_067.png",
+          "sha256": "2432de46130953cf0a8682ba0cc3b08088a8c5bfd9cdc5f95022d1b0a7d62a95"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_068.png",
+          "sha256": "96755d56bae26b85d949c088994b7e8775628c16bfa9d7e757e95217b4e714d5"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_073.png",
+          "sha256": "730872a7fe861500c3a39344856040073edb8a71afb7f15788e63847983ee5e6"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题页67-68与答案页73：X20 浮点结合律判断题干、代码和选项及解析忠实，答案为D。",
+      "source_hash": "3040f9a597e6095f05b360b125e689b3a182e09146a673e351476228d270c062"
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 浮点数的表示与运算 · 选择题::X21",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T07:41:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_068.png",
+          "sha256": "96755d56bae26b85d949c088994b7e8775628c16bfa9d7e757e95217b4e714d5"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_073.png",
+          "sha256": "730872a7fe861500c3a39344856040073edb8a71afb7f15788e63847983ee5e6"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题页68与答案页73：X21 按字节编址二维数组小端存储题干、代码和选项及解析忠实，答案为A。",
+      "source_hash": "b560d216515f720fc19108363ee834c6f27f6d3dd7e67c7657384d6b666f5d02"
+    },
+    {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 浮点数的表示与运算 · 选择题::X22",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T07:42:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_068.png",
+          "sha256": "96755d56bae26b85d949c088994b7e8775628c16bfa9d7e757e95217b4e714d5"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_073.png",
+          "sha256": "730872a7fe861500c3a39344856040073edb8a71afb7f15788e63847983ee5e6"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题页68与答案页73：X22 小端方式存储整数题干、选项及解析忠实，答案为D。",
+      "source_hash": "8f1fe1762d5d1de2003c426bd8e10c0163e624596fb2d76a5ca4d8c9e69c6b7e"
     },
     {
       "source_uid": "408:cs408-coa::数据的表示和运算 · 浮点数的表示与运算 · 选择题::X26",
