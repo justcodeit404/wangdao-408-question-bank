@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "protocol": "codex-original-page-review-v1",
-  "updated_at": "2026-08-26T16:37:51.259409+00:00",
+  "updated_at": "2026-08-26T16:40:42.207872+00:00",
   "records": [
     {
       "source_uid": "408:cs408-coa::中央处理器 · 异常和中断机制 · 选择题::X01",
@@ -830,6 +830,34 @@
       "source_hash": "90a1aacaa40cca79f6f617981ea21b3f3dd3ee63b0028676f1f62a726d9f4bc6"
     },
     {
+      "source_uid": "408:cs408-ds::查找 · 树形查找 · 选择题::X19",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T16:40:28.992889+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_297.png",
+          "sha256": "bcba4f10032bba732af71b5a9fe6a0167628f43812b351666eae134819663294"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_302.png",
+          "sha256": "6a44710bb16c4305115d6327d4d85b948f1f8a56a6e81d446f10b518897a5bac"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": true,
+      "options_match": false,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": false,
+      "detected_errors": [
+        "diagram_options_not_representable_without_image_ref"
+      ],
+      "rationale": "原书297页四个红黑树图示选项，答案页302页19.A；当前题库选项字段无法无损表达图示，保持hold。"
+    },
+    {
       "source_uid": "408:cs408-ds::查找 · 顺序查找和折半查找 · 选择题::X23",
       "protocol": "codex-original-page-review-v1",
       "reviewer": "codex-vision",
@@ -1093,6 +1121,34 @@
       "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
       "post_patch_verified": true,
       "source_hash": "91eb226cd6a4c4a0a44bcb4331fa7d1869657c2cdd74744a85e30258fe85500f"
+    },
+    {
+      "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题::X33",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T16:39:40.581612+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_154.png",
+          "sha256": "b326bf90d4201e092d444698c366e699e613801c01ef3c0c0aa5d9b7ca82b319"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_161.png",
+          "sha256": "cd94b5ff0f02436ae71dd381587f17ac405f5e7c52cc68e9933a8ea438f14636"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": true,
+      "options_match": false,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": false,
+      "detected_errors": [
+        "diagram_options_not_representable_without_image_ref"
+      ],
+      "rationale": "原书154页选项A-D均为线索二叉树图示，答案页161页33.D；当前结构不能无损表达图示，保持hold。"
     },
     {
       "source_uid": "408:cs408-ds::线性表 · 线性表的链式表示 · 选择题::X06",
