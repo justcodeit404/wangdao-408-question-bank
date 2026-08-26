@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "protocol": "codex-original-page-review-v1",
-  "updated_at": "2026-08-26T17:58:45.751487+00:00",
+  "updated_at": "2026-08-26T18:02:48.730881+00:00",
   "records": [
     {
       "source_uid": "408:cs408-coa::中央处理器 · 异常和中断机制 · 选择题::X01",
@@ -3728,26 +3728,48 @@
       "reviewed_at": "2026-08-27T02:40:00+00:00",
       "q_pages_viewed": [
         {
-          "path": "apps/bank-408/assets/pdf_images/os/page_306.png",
-          "sha256": "095a2a5e5bcaae0c3582578bea71dfd52b9356d2f87bea4bd8c70060f5230b45"
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_305.png",
+          "sha256": "26adfdfbfe1f5e644a91e75717c09c2362949d2a47798d605a8f079a91c87cc3",
+          "page": 305
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_306.png",
+          "sha256": "095a2a5e5bcaae0c3582578bea71dfd52b9356d2f87bea4bd8c70060f5230b45",
+          "page": 306
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_307.png",
+          "sha256": "08c9fae06e0b78b2ee2581624742aa2daff5bde6f7f9163753efee1e0b09d0a8",
+          "page": 307
         }
       ],
       "a_pages_viewed": [
         {
-          "path": "apps/bank-408/assets/pdf_images/os/page_308.png",
-          "sha256": "92d0dfdd806e4dda073c18323985efdbd77e5c65fe3a90dbc23eb4a7854cb156"
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_307.png",
+          "sha256": "08c9fae06e0b78b2ee2581624742aa2daff5bde6f7f9163753efee1e0b09d0a8",
+          "page": 307
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_308.png",
+          "sha256": "92d0dfdd806e4dda073c18323985efdbd77e5c65fe3a90dbc23eb4a7854cb156",
+          "page": 308
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_309.png",
+          "sha256": "9713087736c6a6f1dd8b20dc972763981f76ddf2c2c9c028f96af7c9da53eff6",
+          "page": 309
         }
       ],
       "final_action": "patch",
-      "content_match": true,
-      "options_match": false,
-      "answer_match": true,
-      "explanation_match": true,
-      "image_match": true,
+      "content_match": null,
+      "options_match": null,
+      "answer_match": null,
+      "explanation_match": null,
+      "image_match": null,
       "detected_errors": [
-        "duplicate_option_D"
+        "persisted_page_review_patch"
       ],
-      "rationale": "亲眼核对原书题页306与答案页308：X15答案为B；原书D为仅II、III、IV，发布版误录为仅I、III、IV，已修补并二查。",
+      "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
       "post_patch_verified": true,
       "source_hash": "e708e3c11f586aad1c13e6047034caf8529e69c90cb3ef7aeb1a61701e54feab"
     },
@@ -4114,6 +4136,115 @@
       "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
       "post_patch_verified": true,
       "source_hash": "922646b8a642d0e5a8a5960d9bf1c242a867396837c91fafc8dffb30f70cec4f"
+    },
+    {
+      "source_uid": "408:cs408-os::输入/输出管理 · 磁盘和固态硬盘 · 选择题::X06",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T03:20:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_353.png",
+          "sha256": "550b65a1b917ed280d2fe81e3e32dd72f2ec379f44d348a4f8f0d2c8f8453839"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_358.png",
+          "sha256": "a4de6e9877ef99ba16288de0c4e95aba7b53017dc2c92c287364081b469a1460"
+        }
+      ],
+      "final_action": "patch",
+      "content_match": true,
+      "options_match": false,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [
+        "missing_option_D"
+      ],
+      "rationale": "亲眼核对原书题页353与答案页358：X06选项D为磁道、答案为A；已补齐发布版缺失选项并二查。",
+      "post_patch_verified": true,
+      "source_hash": "9e9f5480b24d88cd6b38831f72c4878befa66b1eb5a1a9aa93eb805b9aecb353"
+    },
+    {
+      "source_uid": "408:cs408-os::输入/输出管理 · 磁盘和固态硬盘 · 选择题::X06",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "migrated:page_review_patches.json",
+      "q_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_353.png",
+          "sha256": "550b65a1b917ed280d2fe81e3e32dd72f2ec379f44d348a4f8f0d2c8f8453839",
+          "page": 353
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_354.png",
+          "sha256": "8f128a0fe0dc07328ab5816ee5bda8ffc4d31c8b5ea2ab44563cb088d90b6396",
+          "page": 354
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_355.png",
+          "sha256": "93a926e0b6d78f0d6eb8fe32a837b6ba34a3ee1a2811cac16ca600a30bb7670f",
+          "page": 355
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_357.png",
+          "sha256": "f49f81e3a735a53bbae2f0526833ab09a8b48854a0eba83556cdfd9185f4a411",
+          "page": 357
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_358.png",
+          "sha256": "a4de6e9877ef99ba16288de0c4e95aba7b53017dc2c92c287364081b469a1460",
+          "page": 358
+        },
+        {
+          "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_359.png",
+          "sha256": "a33ae5eb5677e9361b02e5f474835e20b07136ce8b4bce71f1300ee4744413a9",
+          "page": 359
+        }
+      ],
+      "final_action": "patch",
+      "content_match": null,
+      "options_match": null,
+      "answer_match": null,
+      "explanation_match": null,
+      "image_match": null,
+      "detected_errors": [
+        "persisted_page_review_patch"
+      ],
+      "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
+      "post_patch_verified": true,
+      "source_hash": "9e9f5480b24d88cd6b38831f72c4878befa66b1eb5a1a9aa93eb805b9aecb353"
+    },
+    {
+      "source_uid": "408:cs408-os::输入/输出管理 · 磁盘和固态硬盘 · 选择题::X10",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-27T03:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_353.png",
+          "sha256": "550b65a1b917ed280d2fe81e3e32dd72f2ec379f44d348a4f8f0d2c8f8453839"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/os/page_358.png",
+          "sha256": "a4de6e9877ef99ba16288de0c4e95aba7b53017dc2c92c287364081b469a1460"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题页353与答案页358：X10四个选项及解析忠实，答案为D。",
+      "source_hash": "f5ea5f58c3f5e3c701ef7be342fbb9a85e7b8ccb3d6bd02c24fbf262cc67a513"
     },
     {
       "source_uid": "408:cs408-os::进程与线程 · CPU调度 · 选择题::X16",
