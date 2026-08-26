@@ -540,3 +540,23 @@ def test_real_courses_two_level_tree_no_choice_l3_name():
         assert out["totalFromL2"] == out["total"], course_name
         assert out["l2Count"] > 0, course_name
         assert out["l1Count"] > 0, course_name
+
+
+def test_l1_chapter_deep_link_kept():
+    """平台「去刷题」整章深链：无 '|' 的 l1 章名应保留，未知章名清空。"""
+    path = DATA_FILES["数据结构"]
+    if not path.is_file():
+        pytest.skip("missing data-ds.json")
+    out = _node_eval(
+        """
+        const filtered = api.filterCourseDataToChoices(DATA);
+        const l1 = filtered.chapters[0].l1_name;
+        const ok = api.sanitizeSelectedChapter(l1, filtered.chapters, true);
+        const bad = api.sanitizeSelectedChapter('不存在的章名', filtered.chapters, true);
+        return { l1, ok, bad };
+        """,
+        data_path=path,
+    )
+    assert out["ok"]["cleared"] is False
+    assert out["ok"]["selectedChapter"] == out["l1"]
+    assert out["bad"]["cleared"] is True

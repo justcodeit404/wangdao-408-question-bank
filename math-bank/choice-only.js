@@ -290,6 +290,12 @@
     if (String(selectedChapter).indexOf('解答') !== -1) {
       return { selectedChapter: '', cleared: true };
     }
+    // 整章（l1，如 树与二叉树）深链：保留原值，由 filterQuestions 前缀匹配
+    var sel = String(selectedChapter);
+    if (sel.indexOf('|') === -1) {
+      var hit = (chapters || []).some(function (ch) { return ch.l1_name === sel; });
+      if (hit) return { selectedChapter: sel, cleared: false };
+    }
     var normalized = normalizeToFilterKey(selectedChapter, chapters, choiceOnly);
     if (normalized) {
       return {

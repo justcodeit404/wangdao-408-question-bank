@@ -1363,9 +1363,11 @@ function renderChapters() {
 
   for (const [l1Name, l1Node] of tree.entries()) {
     const l1Wrap = document.createElement('div');
-    const l1Btn = makeToggle(l1Name, l1Node.total, 'tree-l1', l1Name);
+    const l1Active = selectedChapter === l1Name;
+    const l1Btn = makeToggle(l1Name, l1Node.total, 'tree-l1' + (l1Active ? ' active' : ''), l1Name);
+    if (l1Active) l1Btn.classList.add('expanded');
     const l1Children = document.createElement('div');
-    l1Children.className = 'tree-children';
+    l1Children.className = 'tree-children' + (l1Active ? ' show' : '');
 
     l1Btn.onclick = (e) => {
       e.stopPropagation();
@@ -1400,7 +1402,7 @@ function renderChapters() {
 
   updateChapterCursorUI();
 
-  let matchedSelected = !selectedChapter;
+  let matchedSelected = !selectedChapter || tree.has(selectedChapter);
   if (selectedChapter) {
     const buttons = container.querySelectorAll('.tree-l2.leaf');
     for (const btn of buttons) {
@@ -1619,7 +1621,12 @@ function filterQuestions(source, opts) {
   const tokenSplitRe = /[\s,.;:!?。，；：！？、（）()\[\]"'"]+/;
   return source.filter(q => {
     if (!qualityVisible(q)) return false;
-    if (opts.chapter && q.chapterKey !== opts.chapter) return false;
+    // 章级深链（如 树与二叉树，无 '|'）：匹配该章所有小节
+    if (opts.chapter) {
+      if (opts.chapter.indexOf('|') === -1) {
+        if (String(q.chapterKey || '').split('|')[0] !== opts.chapter) return false;
+      } else if (q.chapterKey !== opts.chapter) return false;
+    }
     if (opts.type && q.type !== opts.type) return false;
     if (opts.feature === 'sub' && !q.sub_questions) return false;
     if (opts.feature === 'image' && !q.has_image) return false;
