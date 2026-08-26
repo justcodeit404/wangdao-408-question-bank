@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "protocol": "codex-original-page-review-v1",
-  "updated_at": "2026-08-26T22:17:53.555594+00:00",
+  "updated_at": "2026-08-26T22:19:54.289051+00:00",
   "records": [
     {
       "source_uid": "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01",
@@ -24604,6 +24604,49 @@
       "source_hash": "ab8a1f99f0cc3f1cf745a6e6a15aeeabd4277b0e017837ab3177a1ed14143fc1"
     },
     {
+      "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X07",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-26T22:19:50.212343+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_300.png",
+          "sha256": "6fbafbcb25362a30e3e5a540f5989055803fa46768adcc8f76359b29c0d50f3b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_301.png",
+          "sha256": "0bcbed181bab7844b3073bc20dfc7d3f5c5b5d4fbf12a063f1fb49fb087ba35f"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+          "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+          "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_303.png",
+          "sha256": "cbf3d00a05c77235829a8419cbea755064fb678c719a12bddff19ff35f6e864f"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/coa/page_304.png",
+          "sha256": "57a23f0aa37c3c8a03f6d4a7cd20837357232c3e15af02eba5301b4189f43fb6"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "亲眼核对原书题目页296与答案解析页298：题干、选项、解析忠实，答案页标注07.D，与发布答案D一致。",
+      "source_hash": "ab8a1f99f0cc3f1cf745a6e6a15aeeabd4277b0e017837ab3177a1ed14143fc1"
+    },
+    {
       "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X08",
       "protocol": "codex-original-page-review-v1",
       "reviewer": "codex-vision",
@@ -33478,6 +33521,1430 @@
       "source_hash": "7e767bcd905ce53abb43c68ff5402167a9651e915bfa7a1dbdcf20dddbaec872"
     },
     {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 队列 · 选择题::X01",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T07:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_087.png",
+          "sha256": "6c16d25ccf9f8a5faf4fadbf46ec5d2a39f1756a1f27d4af23d8abe19386ec64"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_088.png",
+          "sha256": "6a8da0c352c1dbeda033fd705e1449b784f0ef0de562c637fce4e4e082328dad"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_090.png",
+          "sha256": "aee067825e6434d0019e2c2f79eabbe776b734ca5ed361e086b15ca4d70c38c6"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_091.png",
+          "sha256": "6193c97501c25474a8c6b62956bf4b5f468fffd2fece30ccb606d07302bc686b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_092.png",
+          "sha256": "6eb6fe9bf0efc4d56e7a4b0e3aadcee5f9f8183ed68630a74a445887dd4d430e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_093.png",
+          "sha256": "fd4dfbb024ee7b0cd0982f7adbbd8a1738408a7e33b9387e49f47a0fb50162cc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_094.png",
+          "sha256": "db64c1ec0bd9d98bafd8d4e7319f12b8f17110d12b96276bca2a831914036188"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_095.png",
+          "sha256": "4902b9ff92149823e76dea7a290ac455fb13b16b4f43a2185120e492b5617629"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_096.png",
+          "sha256": "dd224ac0d1a42012b58194603c9f88ea66c5640bc5a166937c800b5627ab0ee2"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_097.png",
+          "sha256": "10460d8e03ce87f6a9505bb9cfd1cd099812d113b39b3b2345d5d579f587bccc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_098.png",
+          "sha256": "eebd819e9fbc3e68e3370dc750e1020deee90cb08cd358b96d4e2c0c860eb449"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "原书题目页82-84与答案页84-93逐题核对：题干、选项、答案和解析与发布内容一致（括号/下标等仅排版字形差异）。",
+      "source_hash": "dc90978b9f2e2a06545810c1865c941d13576029993e0e8fcfb934f31263f577"
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 队列 · 选择题::X02",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T07:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_087.png",
+          "sha256": "6c16d25ccf9f8a5faf4fadbf46ec5d2a39f1756a1f27d4af23d8abe19386ec64"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_088.png",
+          "sha256": "6a8da0c352c1dbeda033fd705e1449b784f0ef0de562c637fce4e4e082328dad"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_090.png",
+          "sha256": "aee067825e6434d0019e2c2f79eabbe776b734ca5ed361e086b15ca4d70c38c6"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_091.png",
+          "sha256": "6193c97501c25474a8c6b62956bf4b5f468fffd2fece30ccb606d07302bc686b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_092.png",
+          "sha256": "6eb6fe9bf0efc4d56e7a4b0e3aadcee5f9f8183ed68630a74a445887dd4d430e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_093.png",
+          "sha256": "fd4dfbb024ee7b0cd0982f7adbbd8a1738408a7e33b9387e49f47a0fb50162cc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_094.png",
+          "sha256": "db64c1ec0bd9d98bafd8d4e7319f12b8f17110d12b96276bca2a831914036188"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_095.png",
+          "sha256": "4902b9ff92149823e76dea7a290ac455fb13b16b4f43a2185120e492b5617629"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_096.png",
+          "sha256": "dd224ac0d1a42012b58194603c9f88ea66c5640bc5a166937c800b5627ab0ee2"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_097.png",
+          "sha256": "10460d8e03ce87f6a9505bb9cfd1cd099812d113b39b3b2345d5d579f587bccc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_098.png",
+          "sha256": "eebd819e9fbc3e68e3370dc750e1020deee90cb08cd358b96d4e2c0c860eb449"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "原书题目页82-84与答案页84-93逐题核对：题干、选项、答案和解析与发布内容一致（括号/下标等仅排版字形差异）。",
+      "source_hash": "48444cd19ad39ac7657feaba2bbef8f4c7fa318cbd2fad3284b8a426e5ff303f"
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 队列 · 选择题::X03",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T07:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_087.png",
+          "sha256": "6c16d25ccf9f8a5faf4fadbf46ec5d2a39f1756a1f27d4af23d8abe19386ec64"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_088.png",
+          "sha256": "6a8da0c352c1dbeda033fd705e1449b784f0ef0de562c637fce4e4e082328dad"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_090.png",
+          "sha256": "aee067825e6434d0019e2c2f79eabbe776b734ca5ed361e086b15ca4d70c38c6"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_091.png",
+          "sha256": "6193c97501c25474a8c6b62956bf4b5f468fffd2fece30ccb606d07302bc686b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_092.png",
+          "sha256": "6eb6fe9bf0efc4d56e7a4b0e3aadcee5f9f8183ed68630a74a445887dd4d430e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_093.png",
+          "sha256": "fd4dfbb024ee7b0cd0982f7adbbd8a1738408a7e33b9387e49f47a0fb50162cc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_094.png",
+          "sha256": "db64c1ec0bd9d98bafd8d4e7319f12b8f17110d12b96276bca2a831914036188"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_095.png",
+          "sha256": "4902b9ff92149823e76dea7a290ac455fb13b16b4f43a2185120e492b5617629"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_096.png",
+          "sha256": "dd224ac0d1a42012b58194603c9f88ea66c5640bc5a166937c800b5627ab0ee2"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_097.png",
+          "sha256": "10460d8e03ce87f6a9505bb9cfd1cd099812d113b39b3b2345d5d579f587bccc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_098.png",
+          "sha256": "eebd819e9fbc3e68e3370dc750e1020deee90cb08cd358b96d4e2c0c860eb449"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "原书题目页82-84与答案页84-93逐题核对：题干、选项、答案和解析与发布内容一致（括号/下标等仅排版字形差异）。",
+      "source_hash": "882d24637264b1914b63ef199d77087208a10bd21f965cfc44fe2bc7245df528"
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 队列 · 选择题::X04",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T07:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_087.png",
+          "sha256": "6c16d25ccf9f8a5faf4fadbf46ec5d2a39f1756a1f27d4af23d8abe19386ec64"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_088.png",
+          "sha256": "6a8da0c352c1dbeda033fd705e1449b784f0ef0de562c637fce4e4e082328dad"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_090.png",
+          "sha256": "aee067825e6434d0019e2c2f79eabbe776b734ca5ed361e086b15ca4d70c38c6"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_091.png",
+          "sha256": "6193c97501c25474a8c6b62956bf4b5f468fffd2fece30ccb606d07302bc686b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_092.png",
+          "sha256": "6eb6fe9bf0efc4d56e7a4b0e3aadcee5f9f8183ed68630a74a445887dd4d430e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_093.png",
+          "sha256": "fd4dfbb024ee7b0cd0982f7adbbd8a1738408a7e33b9387e49f47a0fb50162cc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_094.png",
+          "sha256": "db64c1ec0bd9d98bafd8d4e7319f12b8f17110d12b96276bca2a831914036188"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_095.png",
+          "sha256": "4902b9ff92149823e76dea7a290ac455fb13b16b4f43a2185120e492b5617629"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_096.png",
+          "sha256": "dd224ac0d1a42012b58194603c9f88ea66c5640bc5a166937c800b5627ab0ee2"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_097.png",
+          "sha256": "10460d8e03ce87f6a9505bb9cfd1cd099812d113b39b3b2345d5d579f587bccc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_098.png",
+          "sha256": "eebd819e9fbc3e68e3370dc750e1020deee90cb08cd358b96d4e2c0c860eb449"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "原书题目页82-84与答案页84-93逐题核对：题干、选项、答案和解析与发布内容一致（括号/下标等仅排版字形差异）。",
+      "source_hash": "0df9891b1fe95c3cfb4fb6505ffc4767d99feac8e99b385f347b92f2b46faf9d"
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 队列 · 选择题::X05",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T07:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_087.png",
+          "sha256": "6c16d25ccf9f8a5faf4fadbf46ec5d2a39f1756a1f27d4af23d8abe19386ec64"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_088.png",
+          "sha256": "6a8da0c352c1dbeda033fd705e1449b784f0ef0de562c637fce4e4e082328dad"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_090.png",
+          "sha256": "aee067825e6434d0019e2c2f79eabbe776b734ca5ed361e086b15ca4d70c38c6"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_091.png",
+          "sha256": "6193c97501c25474a8c6b62956bf4b5f468fffd2fece30ccb606d07302bc686b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_092.png",
+          "sha256": "6eb6fe9bf0efc4d56e7a4b0e3aadcee5f9f8183ed68630a74a445887dd4d430e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_093.png",
+          "sha256": "fd4dfbb024ee7b0cd0982f7adbbd8a1738408a7e33b9387e49f47a0fb50162cc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_094.png",
+          "sha256": "db64c1ec0bd9d98bafd8d4e7319f12b8f17110d12b96276bca2a831914036188"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_095.png",
+          "sha256": "4902b9ff92149823e76dea7a290ac455fb13b16b4f43a2185120e492b5617629"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_096.png",
+          "sha256": "dd224ac0d1a42012b58194603c9f88ea66c5640bc5a166937c800b5627ab0ee2"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_097.png",
+          "sha256": "10460d8e03ce87f6a9505bb9cfd1cd099812d113b39b3b2345d5d579f587bccc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_098.png",
+          "sha256": "eebd819e9fbc3e68e3370dc750e1020deee90cb08cd358b96d4e2c0c860eb449"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "原书题目页82-84与答案页84-93逐题核对：题干、选项、答案和解析与发布内容一致（括号/下标等仅排版字形差异）。",
+      "source_hash": "ad11ea9e9903c9dde2f353123d052fd41e823868fd5dfa0426cce940985610ca"
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 队列 · 选择题::X06",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T07:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_087.png",
+          "sha256": "6c16d25ccf9f8a5faf4fadbf46ec5d2a39f1756a1f27d4af23d8abe19386ec64"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_088.png",
+          "sha256": "6a8da0c352c1dbeda033fd705e1449b784f0ef0de562c637fce4e4e082328dad"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_090.png",
+          "sha256": "aee067825e6434d0019e2c2f79eabbe776b734ca5ed361e086b15ca4d70c38c6"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_091.png",
+          "sha256": "6193c97501c25474a8c6b62956bf4b5f468fffd2fece30ccb606d07302bc686b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_092.png",
+          "sha256": "6eb6fe9bf0efc4d56e7a4b0e3aadcee5f9f8183ed68630a74a445887dd4d430e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_093.png",
+          "sha256": "fd4dfbb024ee7b0cd0982f7adbbd8a1738408a7e33b9387e49f47a0fb50162cc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_094.png",
+          "sha256": "db64c1ec0bd9d98bafd8d4e7319f12b8f17110d12b96276bca2a831914036188"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_095.png",
+          "sha256": "4902b9ff92149823e76dea7a290ac455fb13b16b4f43a2185120e492b5617629"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_096.png",
+          "sha256": "dd224ac0d1a42012b58194603c9f88ea66c5640bc5a166937c800b5627ab0ee2"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_097.png",
+          "sha256": "10460d8e03ce87f6a9505bb9cfd1cd099812d113b39b3b2345d5d579f587bccc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_098.png",
+          "sha256": "eebd819e9fbc3e68e3370dc750e1020deee90cb08cd358b96d4e2c0c860eb449"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "原书题目页82-84与答案页84-93逐题核对：题干、选项、答案和解析与发布内容一致（括号/下标等仅排版字形差异）。",
+      "source_hash": "71272dec0f82c2ae5e3e0d724b05b1d0de3a20f93dee60391a21ad4da7189459"
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 队列 · 选择题::X07",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T07:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_087.png",
+          "sha256": "6c16d25ccf9f8a5faf4fadbf46ec5d2a39f1756a1f27d4af23d8abe19386ec64"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_088.png",
+          "sha256": "6a8da0c352c1dbeda033fd705e1449b784f0ef0de562c637fce4e4e082328dad"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_090.png",
+          "sha256": "aee067825e6434d0019e2c2f79eabbe776b734ca5ed361e086b15ca4d70c38c6"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_091.png",
+          "sha256": "6193c97501c25474a8c6b62956bf4b5f468fffd2fece30ccb606d07302bc686b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_092.png",
+          "sha256": "6eb6fe9bf0efc4d56e7a4b0e3aadcee5f9f8183ed68630a74a445887dd4d430e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_093.png",
+          "sha256": "fd4dfbb024ee7b0cd0982f7adbbd8a1738408a7e33b9387e49f47a0fb50162cc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_094.png",
+          "sha256": "db64c1ec0bd9d98bafd8d4e7319f12b8f17110d12b96276bca2a831914036188"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_095.png",
+          "sha256": "4902b9ff92149823e76dea7a290ac455fb13b16b4f43a2185120e492b5617629"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_096.png",
+          "sha256": "dd224ac0d1a42012b58194603c9f88ea66c5640bc5a166937c800b5627ab0ee2"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_097.png",
+          "sha256": "10460d8e03ce87f6a9505bb9cfd1cd099812d113b39b3b2345d5d579f587bccc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_098.png",
+          "sha256": "eebd819e9fbc3e68e3370dc750e1020deee90cb08cd358b96d4e2c0c860eb449"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "原书题目页82-84与答案页84-93逐题核对：题干、选项、答案和解析与发布内容一致（括号/下标等仅排版字形差异）。",
+      "source_hash": "5b2c311d8888a7a9b4740bda0ab735d1c056a2f5670d9ba1fc5e7441c312c350"
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 队列 · 选择题::X08",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T07:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_087.png",
+          "sha256": "6c16d25ccf9f8a5faf4fadbf46ec5d2a39f1756a1f27d4af23d8abe19386ec64"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_088.png",
+          "sha256": "6a8da0c352c1dbeda033fd705e1449b784f0ef0de562c637fce4e4e082328dad"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_090.png",
+          "sha256": "aee067825e6434d0019e2c2f79eabbe776b734ca5ed361e086b15ca4d70c38c6"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_091.png",
+          "sha256": "6193c97501c25474a8c6b62956bf4b5f468fffd2fece30ccb606d07302bc686b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_092.png",
+          "sha256": "6eb6fe9bf0efc4d56e7a4b0e3aadcee5f9f8183ed68630a74a445887dd4d430e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_093.png",
+          "sha256": "fd4dfbb024ee7b0cd0982f7adbbd8a1738408a7e33b9387e49f47a0fb50162cc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_094.png",
+          "sha256": "db64c1ec0bd9d98bafd8d4e7319f12b8f17110d12b96276bca2a831914036188"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_095.png",
+          "sha256": "4902b9ff92149823e76dea7a290ac455fb13b16b4f43a2185120e492b5617629"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_096.png",
+          "sha256": "dd224ac0d1a42012b58194603c9f88ea66c5640bc5a166937c800b5627ab0ee2"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_097.png",
+          "sha256": "10460d8e03ce87f6a9505bb9cfd1cd099812d113b39b3b2345d5d579f587bccc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_098.png",
+          "sha256": "eebd819e9fbc3e68e3370dc750e1020deee90cb08cd358b96d4e2c0c860eb449"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "原书题目页82-84与答案页84-93逐题核对：题干、选项、答案和解析与发布内容一致（括号/下标等仅排版字形差异）。",
+      "source_hash": "6624362e0e3c268522d7b763ba41114cca682664117b72171828783b4be718df"
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 队列 · 选择题::X09",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T07:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_087.png",
+          "sha256": "6c16d25ccf9f8a5faf4fadbf46ec5d2a39f1756a1f27d4af23d8abe19386ec64"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_088.png",
+          "sha256": "6a8da0c352c1dbeda033fd705e1449b784f0ef0de562c637fce4e4e082328dad"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_090.png",
+          "sha256": "aee067825e6434d0019e2c2f79eabbe776b734ca5ed361e086b15ca4d70c38c6"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_091.png",
+          "sha256": "6193c97501c25474a8c6b62956bf4b5f468fffd2fece30ccb606d07302bc686b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_092.png",
+          "sha256": "6eb6fe9bf0efc4d56e7a4b0e3aadcee5f9f8183ed68630a74a445887dd4d430e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_093.png",
+          "sha256": "fd4dfbb024ee7b0cd0982f7adbbd8a1738408a7e33b9387e49f47a0fb50162cc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_094.png",
+          "sha256": "db64c1ec0bd9d98bafd8d4e7319f12b8f17110d12b96276bca2a831914036188"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_095.png",
+          "sha256": "4902b9ff92149823e76dea7a290ac455fb13b16b4f43a2185120e492b5617629"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_096.png",
+          "sha256": "dd224ac0d1a42012b58194603c9f88ea66c5640bc5a166937c800b5627ab0ee2"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_097.png",
+          "sha256": "10460d8e03ce87f6a9505bb9cfd1cd099812d113b39b3b2345d5d579f587bccc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_098.png",
+          "sha256": "eebd819e9fbc3e68e3370dc750e1020deee90cb08cd358b96d4e2c0c860eb449"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "原书题目页82-84与答案页84-93逐题核对：题干、选项、答案和解析与发布内容一致（括号/下标等仅排版字形差异）。",
+      "source_hash": "727b186b49fb1f453df72f1bb66fcbae5c0af95142fd00d7bbd6e4a978ef6784"
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 队列 · 选择题::X10",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T07:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_087.png",
+          "sha256": "6c16d25ccf9f8a5faf4fadbf46ec5d2a39f1756a1f27d4af23d8abe19386ec64"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_088.png",
+          "sha256": "6a8da0c352c1dbeda033fd705e1449b784f0ef0de562c637fce4e4e082328dad"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_090.png",
+          "sha256": "aee067825e6434d0019e2c2f79eabbe776b734ca5ed361e086b15ca4d70c38c6"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_091.png",
+          "sha256": "6193c97501c25474a8c6b62956bf4b5f468fffd2fece30ccb606d07302bc686b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_092.png",
+          "sha256": "6eb6fe9bf0efc4d56e7a4b0e3aadcee5f9f8183ed68630a74a445887dd4d430e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_093.png",
+          "sha256": "fd4dfbb024ee7b0cd0982f7adbbd8a1738408a7e33b9387e49f47a0fb50162cc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_094.png",
+          "sha256": "db64c1ec0bd9d98bafd8d4e7319f12b8f17110d12b96276bca2a831914036188"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_095.png",
+          "sha256": "4902b9ff92149823e76dea7a290ac455fb13b16b4f43a2185120e492b5617629"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_096.png",
+          "sha256": "dd224ac0d1a42012b58194603c9f88ea66c5640bc5a166937c800b5627ab0ee2"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_097.png",
+          "sha256": "10460d8e03ce87f6a9505bb9cfd1cd099812d113b39b3b2345d5d579f587bccc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_098.png",
+          "sha256": "eebd819e9fbc3e68e3370dc750e1020deee90cb08cd358b96d4e2c0c860eb449"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "原书题目页82-84与答案页84-93逐题核对：题干、选项、答案和解析与发布内容一致（括号/下标等仅排版字形差异）。",
+      "source_hash": "e97bbb0cb4a696af649d78adc52e0ecce3a93cef6ccc7c7f0c77db8cde160c67"
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 队列 · 选择题::X11",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T07:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_087.png",
+          "sha256": "6c16d25ccf9f8a5faf4fadbf46ec5d2a39f1756a1f27d4af23d8abe19386ec64"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_088.png",
+          "sha256": "6a8da0c352c1dbeda033fd705e1449b784f0ef0de562c637fce4e4e082328dad"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_090.png",
+          "sha256": "aee067825e6434d0019e2c2f79eabbe776b734ca5ed361e086b15ca4d70c38c6"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_091.png",
+          "sha256": "6193c97501c25474a8c6b62956bf4b5f468fffd2fece30ccb606d07302bc686b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_092.png",
+          "sha256": "6eb6fe9bf0efc4d56e7a4b0e3aadcee5f9f8183ed68630a74a445887dd4d430e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_093.png",
+          "sha256": "fd4dfbb024ee7b0cd0982f7adbbd8a1738408a7e33b9387e49f47a0fb50162cc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_094.png",
+          "sha256": "db64c1ec0bd9d98bafd8d4e7319f12b8f17110d12b96276bca2a831914036188"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_095.png",
+          "sha256": "4902b9ff92149823e76dea7a290ac455fb13b16b4f43a2185120e492b5617629"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_096.png",
+          "sha256": "dd224ac0d1a42012b58194603c9f88ea66c5640bc5a166937c800b5627ab0ee2"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_097.png",
+          "sha256": "10460d8e03ce87f6a9505bb9cfd1cd099812d113b39b3b2345d5d579f587bccc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_098.png",
+          "sha256": "eebd819e9fbc3e68e3370dc750e1020deee90cb08cd358b96d4e2c0c860eb449"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": false,
+      "options_match": false,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "published_source_text_not_verbatim"
+      ],
+      "rationale": "原书答案页85对第11题解析完整说明链式队列长度、访问和复杂度；发布解析在“对”处截断，不能认证。",
+      "source_hash": "20ae54210e34f2b086b3693146e8cc1cd5c4a357845aa73f1caf9a6ff0dc3540"
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 队列 · 选择题::X12",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T07:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_087.png",
+          "sha256": "6c16d25ccf9f8a5faf4fadbf46ec5d2a39f1756a1f27d4af23d8abe19386ec64"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_088.png",
+          "sha256": "6a8da0c352c1dbeda033fd705e1449b784f0ef0de562c637fce4e4e082328dad"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_090.png",
+          "sha256": "aee067825e6434d0019e2c2f79eabbe776b734ca5ed361e086b15ca4d70c38c6"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_091.png",
+          "sha256": "6193c97501c25474a8c6b62956bf4b5f468fffd2fece30ccb606d07302bc686b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_092.png",
+          "sha256": "6eb6fe9bf0efc4d56e7a4b0e3aadcee5f9f8183ed68630a74a445887dd4d430e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_093.png",
+          "sha256": "fd4dfbb024ee7b0cd0982f7adbbd8a1738408a7e33b9387e49f47a0fb50162cc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_094.png",
+          "sha256": "db64c1ec0bd9d98bafd8d4e7319f12b8f17110d12b96276bca2a831914036188"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_095.png",
+          "sha256": "4902b9ff92149823e76dea7a290ac455fb13b16b4f43a2185120e492b5617629"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_096.png",
+          "sha256": "dd224ac0d1a42012b58194603c9f88ea66c5640bc5a166937c800b5627ab0ee2"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_097.png",
+          "sha256": "10460d8e03ce87f6a9505bb9cfd1cd099812d113b39b3b2345d5d579f587bccc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_098.png",
+          "sha256": "eebd819e9fbc3e68e3370dc750e1020deee90cb08cd358b96d4e2c0c860eb449"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "原书题目页82-84与答案页84-93逐题核对：题干、选项、答案和解析与发布内容一致（括号/下标等仅排版字形差异）。",
+      "source_hash": "f72a3a160ec0f59f84efa36817ee5f8aa169ca4975ca5c5f23cf783e98a7d355"
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 队列 · 选择题::X13",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T07:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_087.png",
+          "sha256": "6c16d25ccf9f8a5faf4fadbf46ec5d2a39f1756a1f27d4af23d8abe19386ec64"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_088.png",
+          "sha256": "6a8da0c352c1dbeda033fd705e1449b784f0ef0de562c637fce4e4e082328dad"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_090.png",
+          "sha256": "aee067825e6434d0019e2c2f79eabbe776b734ca5ed361e086b15ca4d70c38c6"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_091.png",
+          "sha256": "6193c97501c25474a8c6b62956bf4b5f468fffd2fece30ccb606d07302bc686b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_092.png",
+          "sha256": "6eb6fe9bf0efc4d56e7a4b0e3aadcee5f9f8183ed68630a74a445887dd4d430e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_093.png",
+          "sha256": "fd4dfbb024ee7b0cd0982f7adbbd8a1738408a7e33b9387e49f47a0fb50162cc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_094.png",
+          "sha256": "db64c1ec0bd9d98bafd8d4e7319f12b8f17110d12b96276bca2a831914036188"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_095.png",
+          "sha256": "4902b9ff92149823e76dea7a290ac455fb13b16b4f43a2185120e492b5617629"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_096.png",
+          "sha256": "dd224ac0d1a42012b58194603c9f88ea66c5640bc5a166937c800b5627ab0ee2"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_097.png",
+          "sha256": "10460d8e03ce87f6a9505bb9cfd1cd099812d113b39b3b2345d5d579f587bccc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_098.png",
+          "sha256": "eebd819e9fbc3e68e3370dc750e1020deee90cb08cd358b96d4e2c0c860eb449"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "原书题目页82-84与答案页84-93逐题核对：题干、选项、答案和解析与发布内容一致（括号/下标等仅排版字形差异）。",
+      "source_hash": "d514094300befd6484379815b9972b3235e6f4a1a5308ce0b082ab2602fb7eaa"
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 队列 · 选择题::X14",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T07:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_087.png",
+          "sha256": "6c16d25ccf9f8a5faf4fadbf46ec5d2a39f1756a1f27d4af23d8abe19386ec64"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_088.png",
+          "sha256": "6a8da0c352c1dbeda033fd705e1449b784f0ef0de562c637fce4e4e082328dad"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_090.png",
+          "sha256": "aee067825e6434d0019e2c2f79eabbe776b734ca5ed361e086b15ca4d70c38c6"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_091.png",
+          "sha256": "6193c97501c25474a8c6b62956bf4b5f468fffd2fece30ccb606d07302bc686b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_092.png",
+          "sha256": "6eb6fe9bf0efc4d56e7a4b0e3aadcee5f9f8183ed68630a74a445887dd4d430e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_093.png",
+          "sha256": "fd4dfbb024ee7b0cd0982f7adbbd8a1738408a7e33b9387e49f47a0fb50162cc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_094.png",
+          "sha256": "db64c1ec0bd9d98bafd8d4e7319f12b8f17110d12b96276bca2a831914036188"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_095.png",
+          "sha256": "4902b9ff92149823e76dea7a290ac455fb13b16b4f43a2185120e492b5617629"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_096.png",
+          "sha256": "dd224ac0d1a42012b58194603c9f88ea66c5640bc5a166937c800b5627ab0ee2"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_097.png",
+          "sha256": "10460d8e03ce87f6a9505bb9cfd1cd099812d113b39b3b2345d5d579f587bccc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_098.png",
+          "sha256": "eebd819e9fbc3e68e3370dc750e1020deee90cb08cd358b96d4e2c0c860eb449"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "原书题目页82-84与答案页84-93逐题核对：题干、选项、答案和解析与发布内容一致（括号/下标等仅排版字形差异）。",
+      "source_hash": "1f8c41e211d8c456614b01d35ce2a3bd58a132148b5140c71097cc77049b0370"
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 队列 · 选择题::X15",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T07:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_087.png",
+          "sha256": "6c16d25ccf9f8a5faf4fadbf46ec5d2a39f1756a1f27d4af23d8abe19386ec64"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_088.png",
+          "sha256": "6a8da0c352c1dbeda033fd705e1449b784f0ef0de562c637fce4e4e082328dad"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_090.png",
+          "sha256": "aee067825e6434d0019e2c2f79eabbe776b734ca5ed361e086b15ca4d70c38c6"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_091.png",
+          "sha256": "6193c97501c25474a8c6b62956bf4b5f468fffd2fece30ccb606d07302bc686b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_092.png",
+          "sha256": "6eb6fe9bf0efc4d56e7a4b0e3aadcee5f9f8183ed68630a74a445887dd4d430e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_093.png",
+          "sha256": "fd4dfbb024ee7b0cd0982f7adbbd8a1738408a7e33b9387e49f47a0fb50162cc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_094.png",
+          "sha256": "db64c1ec0bd9d98bafd8d4e7319f12b8f17110d12b96276bca2a831914036188"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_095.png",
+          "sha256": "4902b9ff92149823e76dea7a290ac455fb13b16b4f43a2185120e492b5617629"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_096.png",
+          "sha256": "dd224ac0d1a42012b58194603c9f88ea66c5640bc5a166937c800b5627ab0ee2"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_097.png",
+          "sha256": "10460d8e03ce87f6a9505bb9cfd1cd099812d113b39b3b2345d5d579f587bccc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_098.png",
+          "sha256": "eebd819e9fbc3e68e3370dc750e1020deee90cb08cd358b96d4e2c0c860eb449"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "原书题目页82-84与答案页84-93逐题核对：题干、选项、答案和解析与发布内容一致（括号/下标等仅排版字形差异）。",
+      "source_hash": "d5248b0fcb20ec66b502321b8c155bfe93afd0430bbf1ca90448ac4fa330339c"
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 队列 · 选择题::X16",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T07:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_087.png",
+          "sha256": "6c16d25ccf9f8a5faf4fadbf46ec5d2a39f1756a1f27d4af23d8abe19386ec64"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_088.png",
+          "sha256": "6a8da0c352c1dbeda033fd705e1449b784f0ef0de562c637fce4e4e082328dad"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_090.png",
+          "sha256": "aee067825e6434d0019e2c2f79eabbe776b734ca5ed361e086b15ca4d70c38c6"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_091.png",
+          "sha256": "6193c97501c25474a8c6b62956bf4b5f468fffd2fece30ccb606d07302bc686b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_092.png",
+          "sha256": "6eb6fe9bf0efc4d56e7a4b0e3aadcee5f9f8183ed68630a74a445887dd4d430e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_093.png",
+          "sha256": "fd4dfbb024ee7b0cd0982f7adbbd8a1738408a7e33b9387e49f47a0fb50162cc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_094.png",
+          "sha256": "db64c1ec0bd9d98bafd8d4e7319f12b8f17110d12b96276bca2a831914036188"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_095.png",
+          "sha256": "4902b9ff92149823e76dea7a290ac455fb13b16b4f43a2185120e492b5617629"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_096.png",
+          "sha256": "dd224ac0d1a42012b58194603c9f88ea66c5640bc5a166937c800b5627ab0ee2"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_097.png",
+          "sha256": "10460d8e03ce87f6a9505bb9cfd1cd099812d113b39b3b2345d5d579f587bccc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_098.png",
+          "sha256": "eebd819e9fbc3e68e3370dc750e1020deee90cb08cd358b96d4e2c0c860eb449"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "原书题目页82-84与答案页84-93逐题核对：题干、选项、答案和解析与发布内容一致（括号/下标等仅排版字形差异）。",
+      "source_hash": "207f93713abf4f592471ee3548c7744d64665de54e817cd22ca87a925abec754"
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 队列 · 选择题::X17",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T07:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_087.png",
+          "sha256": "6c16d25ccf9f8a5faf4fadbf46ec5d2a39f1756a1f27d4af23d8abe19386ec64"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_088.png",
+          "sha256": "6a8da0c352c1dbeda033fd705e1449b784f0ef0de562c637fce4e4e082328dad"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_090.png",
+          "sha256": "aee067825e6434d0019e2c2f79eabbe776b734ca5ed361e086b15ca4d70c38c6"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_091.png",
+          "sha256": "6193c97501c25474a8c6b62956bf4b5f468fffd2fece30ccb606d07302bc686b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_092.png",
+          "sha256": "6eb6fe9bf0efc4d56e7a4b0e3aadcee5f9f8183ed68630a74a445887dd4d430e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_093.png",
+          "sha256": "fd4dfbb024ee7b0cd0982f7adbbd8a1738408a7e33b9387e49f47a0fb50162cc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_094.png",
+          "sha256": "db64c1ec0bd9d98bafd8d4e7319f12b8f17110d12b96276bca2a831914036188"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_095.png",
+          "sha256": "4902b9ff92149823e76dea7a290ac455fb13b16b4f43a2185120e492b5617629"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_096.png",
+          "sha256": "dd224ac0d1a42012b58194603c9f88ea66c5640bc5a166937c800b5627ab0ee2"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_097.png",
+          "sha256": "10460d8e03ce87f6a9505bb9cfd1cd099812d113b39b3b2345d5d579f587bccc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_098.png",
+          "sha256": "eebd819e9fbc3e68e3370dc750e1020deee90cb08cd358b96d4e2c0c860eb449"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "原书题目页82-84与答案页84-93逐题核对：题干、选项、答案和解析与发布内容一致（括号/下标等仅排版字形差异）。",
+      "source_hash": "47cee4b1626af1de71b9592186fc96baec0bedb7aa2f4c4c5e6d16571b121153"
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 队列 · 选择题::X19",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T07:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_087.png",
+          "sha256": "6c16d25ccf9f8a5faf4fadbf46ec5d2a39f1756a1f27d4af23d8abe19386ec64"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_088.png",
+          "sha256": "6a8da0c352c1dbeda033fd705e1449b784f0ef0de562c637fce4e4e082328dad"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_090.png",
+          "sha256": "aee067825e6434d0019e2c2f79eabbe776b734ca5ed361e086b15ca4d70c38c6"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_091.png",
+          "sha256": "6193c97501c25474a8c6b62956bf4b5f468fffd2fece30ccb606d07302bc686b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_092.png",
+          "sha256": "6eb6fe9bf0efc4d56e7a4b0e3aadcee5f9f8183ed68630a74a445887dd4d430e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_093.png",
+          "sha256": "fd4dfbb024ee7b0cd0982f7adbbd8a1738408a7e33b9387e49f47a0fb50162cc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_094.png",
+          "sha256": "db64c1ec0bd9d98bafd8d4e7319f12b8f17110d12b96276bca2a831914036188"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_095.png",
+          "sha256": "4902b9ff92149823e76dea7a290ac455fb13b16b4f43a2185120e492b5617629"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_096.png",
+          "sha256": "dd224ac0d1a42012b58194603c9f88ea66c5640bc5a166937c800b5627ab0ee2"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_097.png",
+          "sha256": "10460d8e03ce87f6a9505bb9cfd1cd099812d113b39b3b2345d5d579f587bccc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_098.png",
+          "sha256": "eebd819e9fbc3e68e3370dc750e1020deee90cb08cd358b96d4e2c0c860eb449"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "原书题目页82-84与答案页84-93逐题核对：题干、选项、答案和解析与发布内容一致（括号/下标等仅排版字形差异）。",
+      "source_hash": "e67adfd3dc77d99ca64b0385440beba73a56016d8dbe0ab77aa27efbe450641c"
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 队列 · 选择题::X20",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T07:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_087.png",
+          "sha256": "6c16d25ccf9f8a5faf4fadbf46ec5d2a39f1756a1f27d4af23d8abe19386ec64"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_088.png",
+          "sha256": "6a8da0c352c1dbeda033fd705e1449b784f0ef0de562c637fce4e4e082328dad"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_090.png",
+          "sha256": "aee067825e6434d0019e2c2f79eabbe776b734ca5ed361e086b15ca4d70c38c6"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_091.png",
+          "sha256": "6193c97501c25474a8c6b62956bf4b5f468fffd2fece30ccb606d07302bc686b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_092.png",
+          "sha256": "6eb6fe9bf0efc4d56e7a4b0e3aadcee5f9f8183ed68630a74a445887dd4d430e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_093.png",
+          "sha256": "fd4dfbb024ee7b0cd0982f7adbbd8a1738408a7e33b9387e49f47a0fb50162cc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_094.png",
+          "sha256": "db64c1ec0bd9d98bafd8d4e7319f12b8f17110d12b96276bca2a831914036188"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_095.png",
+          "sha256": "4902b9ff92149823e76dea7a290ac455fb13b16b4f43a2185120e492b5617629"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_096.png",
+          "sha256": "dd224ac0d1a42012b58194603c9f88ea66c5640bc5a166937c800b5627ab0ee2"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_097.png",
+          "sha256": "10460d8e03ce87f6a9505bb9cfd1cd099812d113b39b3b2345d5d579f587bccc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_098.png",
+          "sha256": "eebd819e9fbc3e68e3370dc750e1020deee90cb08cd358b96d4e2c0c860eb449"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "原书题目页82-84与答案页84-93逐题核对：题干、选项、答案和解析与发布内容一致（括号/下标等仅排版字形差异）。",
+      "source_hash": "5ba454e5cd2e34956f54387fc2b03b647070145bf8585e5ad8d70500ffe54084"
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 队列 · 选择题::X21",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T07:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_087.png",
+          "sha256": "6c16d25ccf9f8a5faf4fadbf46ec5d2a39f1756a1f27d4af23d8abe19386ec64"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_088.png",
+          "sha256": "6a8da0c352c1dbeda033fd705e1449b784f0ef0de562c637fce4e4e082328dad"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_090.png",
+          "sha256": "aee067825e6434d0019e2c2f79eabbe776b734ca5ed361e086b15ca4d70c38c6"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_091.png",
+          "sha256": "6193c97501c25474a8c6b62956bf4b5f468fffd2fece30ccb606d07302bc686b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_092.png",
+          "sha256": "6eb6fe9bf0efc4d56e7a4b0e3aadcee5f9f8183ed68630a74a445887dd4d430e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_093.png",
+          "sha256": "fd4dfbb024ee7b0cd0982f7adbbd8a1738408a7e33b9387e49f47a0fb50162cc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_094.png",
+          "sha256": "db64c1ec0bd9d98bafd8d4e7319f12b8f17110d12b96276bca2a831914036188"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_095.png",
+          "sha256": "4902b9ff92149823e76dea7a290ac455fb13b16b4f43a2185120e492b5617629"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_096.png",
+          "sha256": "dd224ac0d1a42012b58194603c9f88ea66c5640bc5a166937c800b5627ab0ee2"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_097.png",
+          "sha256": "10460d8e03ce87f6a9505bb9cfd1cd099812d113b39b3b2345d5d579f587bccc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_098.png",
+          "sha256": "eebd819e9fbc3e68e3370dc750e1020deee90cb08cd358b96d4e2c0c860eb449"
+        }
+      ],
+      "final_action": "hold",
+      "content_match": false,
+      "options_match": false,
+      "answer_match": true,
+      "explanation_match": false,
+      "image_match": true,
+      "detected_errors": [
+        "published_source_text_not_verbatim"
+      ],
+      "rationale": "原书题面与解析均为数组下标数字0，发布文本多处OCR成字母O，属于字符语义错误，继续hold。",
+      "source_hash": "312de84f22577e3af23f03cb2daea77de237db824d41ee48a29daa48a100f0be"
+    },
+    {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 队列 · 选择题::X22",
       "protocol": "codex-original-page-review-v1",
       "reviewer": "codex-vision",
@@ -33528,6 +34995,148 @@
       "rationale": "migrated from page_review_patches.json; patch was reported as post-patch rechecked",
       "post_patch_verified": true,
       "source_hash": "e764cc5c24d3906a72d3759050497eb8c8c591881ab745478da04cbdd7944a73"
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 队列 · 选择题::X23",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T07:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_087.png",
+          "sha256": "6c16d25ccf9f8a5faf4fadbf46ec5d2a39f1756a1f27d4af23d8abe19386ec64"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_088.png",
+          "sha256": "6a8da0c352c1dbeda033fd705e1449b784f0ef0de562c637fce4e4e082328dad"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_090.png",
+          "sha256": "aee067825e6434d0019e2c2f79eabbe776b734ca5ed361e086b15ca4d70c38c6"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_091.png",
+          "sha256": "6193c97501c25474a8c6b62956bf4b5f468fffd2fece30ccb606d07302bc686b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_092.png",
+          "sha256": "6eb6fe9bf0efc4d56e7a4b0e3aadcee5f9f8183ed68630a74a445887dd4d430e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_093.png",
+          "sha256": "fd4dfbb024ee7b0cd0982f7adbbd8a1738408a7e33b9387e49f47a0fb50162cc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_094.png",
+          "sha256": "db64c1ec0bd9d98bafd8d4e7319f12b8f17110d12b96276bca2a831914036188"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_095.png",
+          "sha256": "4902b9ff92149823e76dea7a290ac455fb13b16b4f43a2185120e492b5617629"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_096.png",
+          "sha256": "dd224ac0d1a42012b58194603c9f88ea66c5640bc5a166937c800b5627ab0ee2"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_097.png",
+          "sha256": "10460d8e03ce87f6a9505bb9cfd1cd099812d113b39b3b2345d5d579f587bccc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_098.png",
+          "sha256": "eebd819e9fbc3e68e3370dc750e1020deee90cb08cd358b96d4e2c0c860eb449"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "原书题目页82-84与答案页84-93逐题核对：题干、选项、答案和解析与发布内容一致（括号/下标等仅排版字形差异）。",
+      "source_hash": "96bb3521572fd650dcb97d1d164b0bd69d7e247499ab2fb7b5e4b3ca6efa6325"
+    },
+    {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 队列 · 选择题::X24",
+      "protocol": "codex-original-page-review-v1",
+      "reviewer": "codex-vision",
+      "reviewed_at": "2026-08-28T07:00:00+00:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_087.png",
+          "sha256": "6c16d25ccf9f8a5faf4fadbf46ec5d2a39f1756a1f27d4af23d8abe19386ec64"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_088.png",
+          "sha256": "6a8da0c352c1dbeda033fd705e1449b784f0ef0de562c637fce4e4e082328dad"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_089.png",
+          "sha256": "954120964b71d89cde4056650386dbd75e9bff3510c6cc3a1cd740c39e6fb27e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_090.png",
+          "sha256": "aee067825e6434d0019e2c2f79eabbe776b734ca5ed361e086b15ca4d70c38c6"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_091.png",
+          "sha256": "6193c97501c25474a8c6b62956bf4b5f468fffd2fece30ccb606d07302bc686b"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_092.png",
+          "sha256": "6eb6fe9bf0efc4d56e7a4b0e3aadcee5f9f8183ed68630a74a445887dd4d430e"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_093.png",
+          "sha256": "fd4dfbb024ee7b0cd0982f7adbbd8a1738408a7e33b9387e49f47a0fb50162cc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_094.png",
+          "sha256": "db64c1ec0bd9d98bafd8d4e7319f12b8f17110d12b96276bca2a831914036188"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_095.png",
+          "sha256": "4902b9ff92149823e76dea7a290ac455fb13b16b4f43a2185120e492b5617629"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_096.png",
+          "sha256": "dd224ac0d1a42012b58194603c9f88ea66c5640bc5a166937c800b5627ab0ee2"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_097.png",
+          "sha256": "10460d8e03ce87f6a9505bb9cfd1cd099812d113b39b3b2345d5d579f587bccc"
+        },
+        {
+          "path": "apps/bank-408/assets/pdf_images/ds/page_098.png",
+          "sha256": "eebd819e9fbc3e68e3370dc750e1020deee90cb08cd358b96d4e2c0c860eb449"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "原书题目页82-84与答案页84-93逐题核对：题干、选项、答案和解析与发布内容一致（括号/下标等仅排版字形差异）。",
+      "source_hash": "2484e6828dfed405ac16b7478c123ca222fd45dd7a9210ba8f53a3cdd3bcc842"
     },
     {
       "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X27",
