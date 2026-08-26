@@ -152,6 +152,7 @@ def iter_questions(
     courses: Iterable[str] = COURSES,
     *,
     include_untracked: bool = False,
+    holds_only: bool = False,
 ) -> list[dict[str, Any]]:
     """Load ledger-backed rows; untracked published questions are omitted by default."""
     ledger = _read(root / "quality-ledger.json", {})
@@ -197,6 +198,8 @@ def iter_questions(
                         )
                     if not include_untracked:
                         continue
+                if holds_only and str(item.get("overall") or "") != "hold":
+                    continue
                 tier, score, reasons = _risk(item, question)
                 published_hash = ledger_source_hash or current_source_hash
                 rows.append(
@@ -437,6 +440,7 @@ def initialize(
     batch_size: int | None = None,
     kind: str = "both",
     include_untracked: bool = False,
+    holds_only: bool = False,
 ) -> dict[str, Any]:
     if kind not in {"blind", "visual", "both"}:
         raise ValueError("kind must be blind, visual, or both")
@@ -445,14 +449,22 @@ def initialize(
     if blind_size < 1 or visual_size < 1:
         raise ValueError("batch_size must be positive")
     course_list = tuple(courses)
-    all_rows = iter_questions(root, course_list, include_untracked=True)
+    all_rows = iter_questions(
+        root, course_list, include_untracked=True, holds_only=holds_only
+    )
     omitted = [row for row in all_rows if not row.get("tracked")]
     rows = (
         all_rows
         if include_untracked
         else [row for row in all_rows if row.get("tracked")]
     )
-    if kind == "visual":
+    if kind == "blind":
+        rows = [
+            row
+            for row in rows
+            if "选择" in str((row.get("question") or {}).get("type") or "")
+        ]
+    if kind == "visual" and not holds_only:
         rows = [row for row in rows if row["risk_tier"] != "low"]
     manifest = _manifest(rows, pass_id, blind_size)
     state = {
@@ -461,6 +473,7 @@ def initialize(
         "visual_batch_size": visual_size,
         "courses": sorted(set(course_list)),
         "include_untracked": include_untracked,
+        "holds_only": holds_only,
         "omitted_untracked": len(omitted),
         "omitted_uids": [row["source_uid"] for row in omitted],
         "next_index": 0,
@@ -498,9 +511,18 @@ def resume(
             if isinstance(x, Mapping)
         ]
     rows = iter_questions(
-        root, tracked_courses, include_untracked=bool(state.get("include_untracked"))
+        root,
+        tracked_courses,
+        include_untracked=bool(state.get("include_untracked")),
+        holds_only=bool(state.get("holds_only")),
     )
-    if state_kind == "visual":
+    if state_kind == "blind":
+        rows = [
+            row
+            for row in rows
+            if "选择" in str((row.get("question") or {}).get("type") or "")
+        ]
+    if state_kind == "visual" and not state.get("holds_only"):
         rows = [row for row in rows if row["risk_tier"] != "low"]
     manifest_default = 8 if state_kind == "visual" else 50
     current = _manifest(
