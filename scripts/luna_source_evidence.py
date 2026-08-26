@@ -16,9 +16,12 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter
+from difflib import SequenceMatcher
+from functools import lru_cache
 import hashlib
 import json
 from pathlib import Path
+import re
 import unicodedata
 from typing import Any, Callable, Iterable, Mapping, Sequence
 
@@ -39,6 +42,18 @@ PROTOCOL = "luna-review-v1"
 DEFAULT_PASS_ID = "source-ocr"
 OCR_CONFIDENCE = 0.99
 CHOICE_MARKER = "选择"
+QUESTION_MARKER_RE = re.compile(r"^\s*(\d{1,3})\s*[.．。、:：)]")
+ANSWER_HEADING_RE = re.compile(r"答案\s*(与|及)?\s*解析")
+# Whitespace is removed by ``normalize_source_text``.  Do not require a
+# word-boundary here: OCR commonly emits ``A.1B.2C.3`` for a two-column
+# option row, where the next label is directly adjacent to the prior value.
+OPTION_LABEL_RE = re.compile(r"([a-g])\s*[.．。、:：)]")
+# These are deliberately limited to visible mathematical/program operators.
+# Digits and operators are compared in order, so a crop cannot pass after
+# silently losing a numeric literal or changing an expression.
+OPERATOR_TRANSLATIONS = str.maketrans({"−": "-", "–": "-", "—": "-", "﹣": "-", "／": "/", "÷": "/", "×": "*", "·": "*", "＋": "+", "＝": "="})
+OPERATOR_RE = re.compile(r"[+\-*/=<>≤≥%~^|&→←]")
+NUMBER_RE = re.compile(r"\d+(?:[.]\d+)?")
 
 
 def _canonical(value: Any) -> str:
@@ -61,7 +76,7 @@ def _choice(value: Any) -> str | None:
 def normalize_source_text(value: Any) -> str:
     """Normalize OCR/published text without inventing or dropping content."""
     normalized = unicodedata.normalize("NFKC", str(value or "")).casefold()
-    return "".join(normalized.split())
+    return "".join(normalized.split()).translate(OPERATOR_TRANSLATIONS)
 
 
 def _question_fields(question: Mapping[str, Any]) -> dict[str, Any]:
@@ -98,18 +113,139 @@ def _ocr_text(directory: Path, pages: Sequence[int]) -> str:
     return normalize_source_text(" ".join(item[2] for item in blocks))
 
 
-def _field_matches(question: Mapping[str, Any], ocr_text: str) -> dict[str, Any]:
+@lru_cache(maxsize=64)
+def _read_ocr_blocks(directory: Path, pages: tuple[int, ...]) -> tuple[dict[str, Any], ...]:
+    """Load OCR blocks with page boundaries retained for question cropping."""
+    blocks: list[dict[str, Any]] = []
+    for page in pages:
+        path = directory / f"page_{int(page):03d}.json"
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError, ValueError):
+            continue
+        page_blocks = payload.get("blocks", []) if isinstance(payload, Mapping) else []
+        indexed: list[tuple[float, float, int, Mapping[str, Any]]] = []
+        for index, block in enumerate(page_blocks):
+            if not isinstance(block, Mapping) or not _text(block.get("text")):
+                continue
+            try:
+                y = float(block.get("y0") or 0)
+                x = float(block.get("x0") or 0)
+            except (TypeError, ValueError):
+                y, x = 0.0, 0.0
+            indexed.append((y, x, index, block))
+        indexed.sort(key=lambda item: (item[0], item[1], item[2]))
+        for y, x, index, block in indexed:
+            blocks.append({"page": int(page), "index": index, "y0": y, "x0": x, "text": _text(block.get("text"))})
+    return tuple(blocks)
+
+
+def _question_crop(directory: Path, pages: Sequence[int], question_number: str | None) -> dict[str, Any]:
+    """Return only one question's OCR window, never the whole source pages.
+
+    The source JSON often assigns all pages in a question/answer group to each
+    question.  A page-wide substring check therefore mixes adjacent questions
+    and diagrams.  A numeric question marker is a hard boundary: start at the
+    requested marker and stop before the next marker or an answer heading.
+    Missing markers intentionally produce an untrusted crop; callers must not
+    auto-verify it.
+    """
+    blocks = _read_ocr_blocks(directory, tuple(int(page) for page in pages))
+    target = int(question_number) if str(question_number or "").isdigit() else None
+    start: int | None = None
+    answer_heading: int | None = None
+    for index, block in enumerate(blocks):
+        text = _text(block.get("text"))
+        if ANSWER_HEADING_RE.search(text):
+            answer_heading = index if answer_heading is None else answer_heading
+        marker = QUESTION_MARKER_RE.match(text)
+        if target is not None and marker and int(marker.group(1)) == target:
+            # Prefer the first target marker before the answer section.  A
+            # second marker after the answer heading is the answer key.
+            if answer_heading is None or index < answer_heading:
+                start = index
+                break
+    if start is None:
+        return {"text": "", "anchor_found": False, "blocks": 0, "pages": []}
+
+    end = len(blocks)
+    for index in range(start + 1, len(blocks)):
+        text = _text(blocks[index].get("text"))
+        if ANSWER_HEADING_RE.search(text):
+            end = index
+            break
+        marker = QUESTION_MARKER_RE.match(text)
+        if marker:
+            end = index
+            break
+    cropped = blocks[start:end]
+    return {
+        "text": normalize_source_text(" ".join(str(block["text"]) for block in cropped)),
+        "anchor_found": True,
+        "blocks": len(cropped),
+        "pages": sorted({int(block["page"]) for block in cropped}),
+    }
+
+
+def _critical_tokens(value: Any) -> tuple[tuple[str, ...], tuple[str, ...]]:
+    """Extract ordered numeric/operator tokens that fuzzy text may not drop."""
+    normalized = normalize_source_text(value)
+    return tuple(NUMBER_RE.findall(normalized)), tuple(OPERATOR_RE.findall(normalized))
+
+
+def _strict_or_near_match(expected: str, actual: str, *, minimum_ratio: float = 0.96) -> bool:
+    if not expected or not actual:
+        return False
+    # The crop includes the question number (e.g. ``01.``) before the stem;
+    # remove only that trusted marker before enforcing token parity.  Extra
+    # numbers/operators from a neighboring block must never be ignored.
+    marker = QUESTION_MARKER_RE.match(actual)
+    comparable = actual[marker.end():] if marker else actual
+    if _critical_tokens(expected) != _critical_tokens(comparable):
+        return False
+    if expected in comparable:
+        return True
+    # Fallback is intentionally narrow.  It tolerates one or two OCR glyph
+    # substitutions while retaining exact number/operator sequences.
+    return SequenceMatcher(None, expected, comparable).ratio() >= minimum_ratio
+
+
+def _option_sections(stem_and_options: str) -> tuple[list[str], dict[str, str]]:
+    matches = list(OPTION_LABEL_RE.finditer(stem_and_options))
+    labels = [match.group(1).upper() for match in matches]
+    sections: dict[str, str] = {}
+    for index, match in enumerate(matches):
+        end = matches[index + 1].start() if index + 1 < len(matches) else len(stem_and_options)
+        key = match.group(1).upper()
+        # Keep first occurrence only; duplicate labels indicate a contaminated
+        # crop and are rejected by the exact label-count check below.
+        sections[key] = stem_and_options[match.end():end]
+    return labels, sections
+
+
+def _field_matches(question: Mapping[str, Any], ocr_text: str, *, anchor_found: bool = True) -> dict[str, Any]:
     fields = _question_fields(question)
     stem = fields["content"]
-    content_match = bool(stem and stem in ocr_text)
+    labels, sections = _option_sections(ocr_text)
+    first_option = min((match.start() for match in OPTION_LABEL_RE.finditer(ocr_text)), default=len(ocr_text))
+    stem_text = ocr_text[:first_option]
+    content_match = bool(anchor_found and _strict_or_near_match(stem, stem_text))
     options = fields["options"]
-    option_matches = {
-        key: bool(value and value in ocr_text) for key, value in options.items()
-    }
+    expected_labels = list(options)
+    # Exact label cardinality prevents a neighboring question's options from
+    # satisfying a partial mapping, while preserving A/B/C/D/E distinctions.
+    labels_match = bool(options) and sorted(labels) == sorted(expected_labels)
+    option_matches = {}
+    for key, value in options.items():
+        section = sections.get(key, "")
+        option_matches[key] = bool(labels_match and _strict_or_near_match(value, section))
     return {
         "content": content_match,
         "options": option_matches,
-        "all_options": bool(options) and all(option_matches.values()),
+        "all_options": bool(options) and labels_match and all(option_matches.values()),
+        "anchor_found": anchor_found,
+        "labels": labels,
+        "labels_match": labels_match,
         "published_fields": fields,
     }
 
@@ -163,6 +299,27 @@ def _pages(rows: Sequence[Mapping[str, Any]], course_key: str) -> list[int]:
     return sorted(result)
 
 
+def _question_pages(rows: Sequence[Mapping[str, Any]], course_key: str) -> list[int]:
+    """Return source pages needed for question-field evidence.
+
+    Fresh OCR used to run only on answer pages, while field matching read
+    ``q_pages``.  That made every fresh field check empty and inflated
+    ``visual_pending`` even when the answer triad agreed.
+    """
+    result: set[int] = set()
+    for row in rows:
+        if row.get("course") != course_key:
+            continue
+        question = row.get("question") if isinstance(row.get("question"), Mapping) else {}
+        for page in question.get("q_pages") or []:
+            try:
+                if int(page) > 0:
+                    result.add(int(page))
+            except (TypeError, ValueError):
+                continue
+    return sorted(result)
+
+
 def _load_answers(directory: Path, pages: Sequence[int]) -> dict[str, str]:
     if not directory.is_dir():
         return {}
@@ -194,6 +351,8 @@ def _pending_reasons(
     if published and raw and fresh and raw != fresh:
         reasons.append("ocr_disagreement")
     for label, fields in (("raw", raw_fields), ("fresh", fresh_fields)):
+        if not fields.get("anchor_found"):
+            reasons.append(f"{label}_question_anchor_missing")
         if not fields.get("content"):
             reasons.append(f"{label}_content_mismatch")
         if not fields.get("all_options"):
@@ -217,8 +376,10 @@ def _evidence_item(
     risk_reasons = [str(value) for value in row.get("risk_reasons") or [] if str(value)]
     answer_matches = bool(published and published == raw == fresh)
     fields_match = bool(
-        raw_fields.get("content")
+        raw_fields.get("anchor_found")
+        and raw_fields.get("content")
         and raw_fields.get("all_options")
+        and fresh_fields.get("anchor_found")
         and fresh_fields.get("content")
         and fresh_fields.get("all_options")
     )
@@ -260,8 +421,8 @@ def _evidence_item(
         "raw_ocr_choice": raw,
         "fresh_ocr_choice": fresh,
         "answer_match": answer_matches,
-        "raw_fields_match": fields_match and bool(raw_fields.get("content") and raw_fields.get("all_options")),
-        "fresh_fields_match": fields_match and bool(fresh_fields.get("content") and fresh_fields.get("all_options")),
+        "raw_fields_match": bool(raw_fields.get("anchor_found") and raw_fields.get("content") and raw_fields.get("all_options")),
+        "fresh_fields_match": bool(fresh_fields.get("anchor_found") and fresh_fields.get("content") and fresh_fields.get("all_options")),
         "triad": matches,
         "published_match": matches,
     }
@@ -333,7 +494,9 @@ def generate_source_evidence(
     runner = ocr_runner or run_fresh_ocr
     if fresh_ocr and not cache_only and not dry_run:
         for course_key in selected_courses:
-            pages = _pages(by_course.get(course_key, []), course_key)
+            answer_pages = _pages(by_course.get(course_key, []), course_key)
+            question_pages = _question_pages(by_course.get(course_key, []), course_key)
+            pages = sorted(set(answer_pages) | set(question_pages))
             if not pages:
                 continue
             course = COURSE_BY_KEY[course_key]
@@ -362,8 +525,9 @@ def generate_source_evidence(
                 continue
         raw_dir = _raw_ocr_dir(course_key, root)
         fresh_dir = cache_root / course_key
-        raw_qtext = _ocr_text(raw_dir, q_pages)
-        fresh_qtext = _ocr_text(fresh_dir, q_pages)
+        question_number = answer_number(question.get("id"))
+        raw_crop = _question_crop(raw_dir, q_pages, question_number)
+        fresh_crop = _question_crop(fresh_dir, q_pages, question_number)
         evidence_items.append(
             _evidence_item(
                 row,
@@ -372,8 +536,8 @@ def generate_source_evidence(
                 published=_published_choice(row),
                 raw=_choice_for_row(row, current["raw"]),
                 fresh=_choice_for_row(row, current["fresh"]),
-                raw_fields=_field_matches(question, raw_qtext),
-                fresh_fields=_field_matches(question, fresh_qtext),
+                raw_fields=_field_matches(question, raw_crop["text"], anchor_found=bool(raw_crop["anchor_found"])),
+                fresh_fields=_field_matches(question, fresh_crop["text"], anchor_found=bool(fresh_crop["anchor_found"])),
             )
         )
     packet = build_source_packet(evidence_items, pass_id=pass_id, protocol=protocol)

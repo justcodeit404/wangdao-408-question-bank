@@ -84,7 +84,9 @@ def test_low_risk_triads_produce_ingest_compatible_ocr_evidence(tmp_path):
         ocr_runner=runner,
     )
     item = result["packet"]["items"][0]
-    assert calls == [("ds", [2], False)]
+    # Fresh OCR must cover both answer pages (answer triad) and question pages
+    # (stem/option evidence); answer-only OCR leaves every field unmatched.
+    assert calls == [("ds", [1, 2], False)]
     assert item["method"] == "ocr"
     assert item["source_verified"] is True
     assert item["confidence"] >= 0.8
@@ -153,3 +155,51 @@ def test_dry_run_never_calls_runner_or_writes_output(tmp_path):
     )
     assert result["summary"]["dry_run"] is True
     assert not output.exists()
+
+
+def test_question_crop_stops_at_next_question_and_keeps_cross_page_window(tmp_path):
+    ocr = tmp_path / "ocr"
+    page = ocr / "page_001.json"
+    page.parent.mkdir(parents=True)
+    page.write_text(
+        json.dumps(
+            {
+                "blocks": [
+                    {"text": "01. 2+3=5", "x0": 0, "y0": 10},
+                    {"text": "A. 1", "x0": 0, "y0": 20},
+                    {"text": "B. 2", "x0": 0, "y0": 30},
+                    {"text": "C. 3", "x0": 0, "y0": 40},
+                    {"text": "D. 4", "x0": 0, "y0": 50},
+                    {"text": "02. 2+3=6", "x0": 0, "y0": 60},
+                ]
+            },
+            ensure_ascii=False,
+        ),
+        encoding="utf-8",
+    )
+    crop = luna._question_crop(ocr, [1], "01")
+    assert crop["anchor_found"] is True
+    assert "2+3=5" in crop["text"]
+    assert "2+3=6" not in crop["text"]
+
+
+def test_numeric_and_operator_changes_never_pass_near_match():
+    question = {
+        "content": "计算 2+3=5。",
+        "options": {"A": "正确", "B": "错误"},
+    }
+    changed_number = "01. 计算 2+4=5。 A. 正确 B. 错误"
+    changed_operator = "01. 计算 2*3=5。 A. 正确 B. 错误"
+    for text in (changed_number, changed_operator):
+        fields = luna._field_matches(question, luna.normalize_source_text(text))
+        assert fields["content"] is False
+        assert fields["all_options"] is True
+
+
+def test_option_letter_set_is_exact_not_satisfied_by_neighboring_labels():
+    question = {"content": "选择正确项", "options": {"A": "甲", "B": "乙", "C": "丙", "D": "丁"}}
+    text = luna.normalize_source_text("01.选择正确项 A.甲 B.乙 C.丙 E.丁")
+    fields = luna._field_matches(question, text)
+    assert fields["labels"] == ["A", "B", "C", "E"]
+    assert fields["labels_match"] is False
+    assert fields["all_options"] is False
