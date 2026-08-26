@@ -1,0 +1,243 @@
+{
+  "protocol": "codex-original-page-review-v1",
+  "items": [
+    {
+      "course": "coa",
+      "chapter": "中央处理器 · 异常和中断机制 · 选择题",
+      "qid": "X01",
+      "fields": {
+        "options": {
+          "C": "一定是出现某种异常情况才会发生“自陷”",
+          "D": "“自陷”发生后CPU将进入操作系统内核程序执行"
+        }
+      }
+    },
+    {
+      "course": "coa",
+      "chapter": "中央处理器 · 异常和中断机制 · 选择题",
+      "qid": "X09",
+      "fields": {
+        "content": "异常或中断处理结束后，返回到被中断原程序继续执行的指令地址称为“断点”，下列关于“断点”的说法中，错误的是（）。",
+        "options": {
+          "A": "“陷阱”类异常的断点为陷阱指令下一条指令的地址",
+          "B": "“故障”类异常的断点为当前发生异常的指令的地址",
+          "C": "外部中断的断点总是当前刚执行完的指令的地址",
+          "D": "“终止”类异常的断点可以是当前指令或下一条指令的地址"
+        }
+      }
+    },
+    {
+      "course": "coa",
+      "chapter": "中央处理器 · 控制器的功能和工作原理 · 选择题",
+      "qid": "X26",
+      "fields": {
+        "options": {
+          "A": "仅I、II",
+          "B": "仅I、IV",
+          "C": "仅III、IV",
+          "D": "仅II、III、IV"
+        },
+        "choice": "B"
+      }
+    },
+    {
+      "course": "coa",
+      "chapter": "存储系统 · 主存储器 · 选择题",
+      "qid": "X17",
+      "fields": {
+        "options": {
+          "C": "DRAM需要定期刷新，而SDRAM不需要定期刷新"
+        }
+      }
+    },
+    {
+      "course": "coa",
+      "chapter": "存储系统 · 主存储器 · 选择题",
+      "qid": "X29",
+      "fields": {
+        "options": {
+          "D": "仅II、III和IV"
+        }
+      }
+    },
+    {
+      "course": "coa",
+      "chapter": "存储系统 · 主存储器 · 选择题",
+      "qid": "X34",
+      "fields": {
+        "options": {
+          "A": "8004和8008",
+          "B": "8002和8007",
+          "C": "8001和8008",
+          "D": "8000和8004"
+        }
+      }
+    },
+    {
+      "course": "coa",
+      "chapter": "指令系统 · 寻址方式 · 选择题",
+      "qid": "X19",
+      "fields": {
+        "options": {
+          "A": "C000 FF00H",
+          "B": "C000 FEFFH",
+          "C": "BFFF FF00H",
+          "D": "BFFF FEFFH"
+        }
+      }
+    },
+    {
+      "course": "coa",
+      "chapter": "指令系统 · 寻址方式 · 选择题",
+      "qid": "X25",
+      "fields": {
+        "options": {
+          "D": "CF+SF+ZF=1"
+        }
+      }
+    },
+    {
+      "course": "coa",
+      "chapter": "指令系统 · 程序的机器级代码表示 · 选择题",
+      "qid": "X01",
+      "fields": {
+        "options": {
+          "A": "R[ax]=7FCEH, OF=1，SF=0，CF=0，ZF=0",
+          "B": "R[ax]=7FCEH, OF=1，SF=1，CF=1，ZF=0",
+          "C": "R[ax]=17FCEH, OF=1，SF=0，CF=0，ZF=0",
+          "D": "R[ax]=17FCEH, OF=0，SF=0，CF=1，ZF=0"
+        },
+        "choice": "A"
+      }
+    },
+    {
+      "course": "coa",
+      "chapter": "数据的表示和运算 · 浮点数的表示与运算 · 选择题",
+      "qid": "X12",
+      "fields": {
+        "options": {
+          "A": "+16",
+          "B": "+8",
+          "C": "-16",
+          "D": "-8"
+        }
+      }
+    },
+    {
+      "course": "coa",
+      "chapter": "数据的表示和运算 · 浮点数的表示与运算 · 选择题",
+      "qid": "X26",
+      "fields": {
+        "options": {
+          "A": "00111 1100010",
+          "B": "00111 0100010",
+          "C": "01000 0100010",
+          "D": "发生溢出"
+        }
+      }
+    },
+    {
+      "course": "ds",
+      "chapter": "线性表 · 线性表的链式表示 · 选择题",
+      "qid": "X15",
+      "fields": {
+        "options": {
+          "A": "p->prior=q; q->prior=p->prior; p->prior->next=q; q->next=p;",
+          "B": "q->prior=p->prior; p->prior->next=q; q->next=p; p->prior=q;",
+          "C": "q->next=p; p->next=q; p->prior->next=q; q->next=p;",
+          "D": "p->prior->next=q; q->next=p; q->prior=p->prior; p->prior=q;"
+        },
+        "choice": "D"
+      }
+    },
+    {
+      "course": "ds",
+      "chapter": "线性表 · 线性表的链式表示 · 选择题",
+      "qid": "X16",
+      "fields": {
+        "options": {
+          "A": "p->prior->next=p->next; p->next->prior=p->prior;",
+          "B": "p->prior=p->prior->prior; p->prior->next=p;",
+          "C": "p->next->prior=p; p->next=p->next->next;",
+          "D": "p->next=p->next->next; p->prior=p->prior->prior;"
+        },
+        "choice": "A"
+      }
+    },
+    {
+      "course": "ds",
+      "chapter": "线性表 · 线性表的链式表示 · 选择题",
+      "qid": "X32",
+      "fields": {
+        "content": "【2016统考真题】已知一个带有表头结点的双向循环链表L，其结点结构为prev|data|next，其中prev和next分别是指向其直接前驱和直接后继结点的指针。现要删除指针p所指的结点，正确的语句序列是（）。",
+        "options": {
+          "A": "p->next->prev=p->prev; p->prev=p->prev->next; free(p);",
+          "B": "p->next->prev=p->next; p->prev->next=p->next; free(p);",
+          "C": "p->next->prev=p->prev; p->prev=p->next; free(p);",
+          "D": "p->next->prev=p->prev; p->prev->next=p->next; free(p);"
+        },
+        "choice": "D"
+      }
+    },
+    {
+      "course": "coa",
+      "chapter": "输入/输出系统 · I/O接口 · 选择题",
+      "qid": "X13",
+      "fields": {
+        "options": {
+          "A": "仅I、II",
+          "B": "仅I、III",
+          "C": "仅II、III",
+          "D": "I、II和III"
+        },
+        "choice": "A"
+      }
+    },
+    {
+      "course": "ds",
+      "chapter": "栈、队列和数组 · 栈和队列的应用 · 选择题",
+      "qid": "X14",
+      "fields": {
+        "content": "【2014统考真题】假设栈的初始为空，将中缀表达式a/b+(c*d-e*f)/g转换为等价的后缀表达式的过程中，当扫描到*时，栈中的元素依次是（）。"
+      }
+    },
+    {
+      "course": "ds",
+      "chapter": "栈、队列和数组 · 栈和队列的应用 · 选择题",
+      "qid": "X16",
+      "fields": {
+        "options": {
+          "D": "5"
+        }
+      }
+    },
+    {
+      "course": "coa",
+      "chapter": "输入/输出系统 · I/O方式 · 选择题",
+      "qid": "X45",
+      "fields": {
+        "options": {
+          "A": "仅I、II",
+          "B": "仅I、III",
+          "C": "仅II、III",
+          "D": "I、II和III"
+        },
+        "choice": "C"
+      }
+    },
+    {
+      "course": "ds",
+      "chapter": "栈、队列和数组 · 队列 · 选择题",
+      "qid": "X22",
+      "fields": {
+        "options": {
+          "A": "队空：end1==end2； 队满：end1==(end2+1)mod n",
+          "B": "队空：end1==end2； 队满：end2==(end1+1)mod n",
+          "C": "队空：end2==(end1+1)mod n； 队满：end1==end2",
+          "D": "队空：end1==(end2+1)mod n； 队满：end1==end2"
+        },
+        "choice": "A"
+      }
+    }
+  ]
+}
