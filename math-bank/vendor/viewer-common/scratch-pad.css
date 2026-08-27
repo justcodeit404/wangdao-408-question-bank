@@ -49,6 +49,9 @@
   overscroll-behavior: contain;
 }
 
+/* display:flex 会压过 UA 的 [hidden] 规则，收起时必须显式隐藏 */
+.vsp-panel[hidden] { display: none; }
+
 [data-theme="light"] .vsp-panel {
   --vsp-text: var(--text, #172033);
   --vsp-bg: var(--bg, #f5f7fa);

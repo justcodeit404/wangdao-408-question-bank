@@ -6,8 +6,8 @@
 [data-theme="dark"] {
   color-scheme: dark;
   --radius-sm: 6px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
   --radius-xl: 14px;
   --radius-full: 9999px;
 
@@ -42,21 +42,21 @@
   --slate-950: var(--zinc-950);
 
   /* Math-bank green accent */
-  --accent-raw: #5cb88a;
-  --accent-raw-hover: #6fc897;
-  --accent-raw-soft: rgb(92 184 138 / 0.14);
-  --accent-raw-soft-text: #8fd4ae;
+  --accent-raw: #8695e9;
+  --accent-raw-hover: #9aa8f0;
+  --accent-raw-soft: rgb(134 149 233 / 0.14);
+  --accent-raw-soft-text: #a8b4f2;
 
   --indigo-50: var(--accent-raw-soft);
-  --indigo-100: rgb(92 184 138 / 0.22);
-  --indigo-500: #5cb88a;
-  --indigo-600: #5cb88a;
-  --indigo-700: #3d7a5c;
+  --indigo-100: rgb(134 149 233 / 0.22);
+  --indigo-500: #8695e9;
+  --indigo-600: #8695e9;
+  --indigo-700: #5b6dd2;
 
-  --emerald-50: rgb(92 184 138 / 0.12);
-  --emerald-100: rgb(92 184 138 / 0.2);
-  --emerald-500: #5cb88a;
-  --emerald-600: #3d7a5c;
+  --emerald-50: rgb(112 219 176 / 0.12);
+  --emerald-100: rgb(112 219 176 / 0.2);
+  --emerald-500: #8695e9;
+  --emerald-600: #4aa87e;
 
   --amber-50: rgb(224 163 92 / 0.12);
   --amber-100: rgb(224 163 92 / 0.2);
@@ -73,18 +73,18 @@
   --surface-elevated: #151816;
   --surface-secondary: #151816;
   --surface-hover: #212624;
-  --surface-active: rgb(92 184 138 / 0.14);
+  --surface-active: rgb(134 149 233 / 0.14);
   --text-primary: #e9e7e2;
   --text-secondary: #a8a69f;
   --text-tertiary: #6e716c;
   --border: #2a2f2c;
   --border-strong: #3a423d;
-  --accent: #5cb88a;
-  --accent-hover: #6fc897;
-  --accent-soft: rgb(92 184 138 / 0.14);
-  --accent-soft-text: #8fd4ae;
-  --success: #5cb88a;
-  --success-soft: rgb(92 184 138 / 0.14);
+  --accent: #8695e9;
+  --accent-hover: #9aa8f0;
+  --accent-soft: rgb(134 149 233 / 0.14);
+  --accent-soft-text: #a8b4f2;
+  --success: #70dbb0;
+  --success-soft: rgb(112 219 176 / 0.14);
   --warning: #e0a35c;
   --warning-soft: rgb(224 163 92 / 0.14);
   --danger: #f07178;
@@ -102,32 +102,32 @@
 
 [data-theme="light"] {
   color-scheme: light;
-  --bg: #f3f4f2;
+  --bg: #fafafa;
   --surface: #ffffff;
   --surface-elevated: #ffffff;
-  --surface-secondary: #f0f2ef;
-  --surface-hover: #f0f2ef;
-  --surface-active: rgb(47 143 98 / 0.1);
-  --text-primary: #141614;
-  --text-secondary: #4f544f;
-  --text-tertiary: #7a807a;
-  --border: #e0e4df;
-  --border-strong: #c5cbc4;
-  --accent: #2f8f62;
-  --accent-hover: #268456;
-  --accent-raw: #2f8f62;
-  --accent-raw-hover: #268456;
-  --accent-raw-soft: rgb(47 143 98 / 0.1);
-  --accent-raw-soft-text: #1f6b48;
-  --accent-soft: rgb(47 143 98 / 0.1);
-  --accent-soft-text: #1f6b48;
+  --surface-secondary: #f4f4f5;
+  --surface-hover: #f4f4f5;
+  --surface-active: rgb(91 109 210 / 0.1);
+  --text-primary: #18181b;
+  --text-secondary: #52525b;
+  --text-tertiary: #71717a;
+  --border: #e4e4e7;
+  --border-strong: #d4d4d8;
+  --accent: #5b6dd2;
+  --accent-hover: #4a5cc0;
+  --accent-raw: #5b6dd2;
+  --accent-raw-hover: #4a5cc0;
+  --accent-raw-soft: rgb(91 109 210 / 0.1);
+  --accent-raw-soft-text: #4353b8;
+  --accent-soft: rgb(91 109 210 / 0.1);
+  --accent-soft-text: #4353b8;
   --indigo-50: var(--accent-soft);
-  --indigo-100: rgb(47 143 98 / 0.16);
-  --indigo-500: #2f8f62;
-  --indigo-600: #2f8f62;
-  --indigo-700: #1f6b48;
-  --success: #2f8f62;
-  --success-soft: rgb(47 143 98 / 0.1);
+  --indigo-100: rgb(91 109 210 / 0.16);
+  --indigo-500: #5b6dd2;
+  --indigo-600: #5b6dd2;
+  --indigo-700: #4353b8;
+  --success: #0e9478;
+  --success-soft: rgb(14 148 120 / 0.1);
   --warning: #c4842e;
   --warning-soft: rgb(196 132 46 / 0.12);
   --danger: #d64550;
@@ -2659,3 +2659,62 @@ select:focus-visible {
 
 /* Ensure [hidden] attribute hides elements even when other display rules apply */
 [hidden] { display: none !important; }
+/* ══════════════════════════════════════════════════════════════
+   iPad / 触屏布局层（2026-08-26）：JS 零改动，纯 CSS
+   - 769–1023px：侧栏收为抽屉、单列卡片流、次级按钮收进「更多」
+   - ≤1023px：详情/练习弹窗全屏化 + 底部操作栏 safe-area
+   ══════════════════════════════════════════════════════════════ */
+@media (min-width: 769px) and (max-width: 1023px) {
+  .sidebar {
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    z-index: 999;
+    transform: translateX(-100%);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar.open ~ .sidebar-overlay { display: block; }
+  .toggle-sidebar { display: inline-flex; }
+
+  /* 次级按钮收进「更多」（菜单项已覆盖：随机/视图/导出/导入/备份/笔记） */
+  .topbar-actions .btn-secondary:not(#btnMoreMobile),
+  .topbar-actions #sortSelect { display: none; }
+  #btnMoreMobile { display: inline-flex !important; }
+  .mobile-more-wrap { display: inline-flex; position: relative; }
+
+  .topbar { flex-wrap: wrap; height: auto; padding: 8px 12px; gap: 8px; }
+  .question-grid { grid-template-columns: 1fr; }
+
+  .btn, .pill-select { min-height: 40px; }
+  .tree-l1 { padding: 10px 12px; }
+  .tree-l2 { padding: 9px 10px 9px 22px; }
+}
+
+@media (max-width: 1023px) {
+  .question-card:active { transform: scale(0.99); }
+  .content { padding-bottom: calc(20px + env(safe-area-inset-bottom)); }
+
+  /* 弹窗默认变底部 sheet */
+  .modal-overlay { padding: 0; align-items: flex-end; }
+  .modal-box {
+    max-width: none;
+    border-radius: 16px 16px 0 0;
+    max-height: 94vh;
+    max-height: 94dvh;
+  }
+  /* 做题核心页（详情 / 练习）全屏化 */
+  #detailModal.modal-overlay, #practiceModal.modal-overlay { align-items: stretch; }
+  #detailModal .modal-box, #practiceModal .modal-box {
+    height: 100vh;
+    height: 100dvh;
+    max-height: none;
+    border-radius: 0;
+    border: 0;
+  }
+  .modal-footer {
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    gap: 12px;
+  }
+  .modal-footer button { min-height: 48px; font-size: 0.95rem; }
+  .mastery-btn { min-height: 44px; }
+}

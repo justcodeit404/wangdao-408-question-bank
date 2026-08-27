@@ -416,7 +416,8 @@
   function isolateToolbar(controller, toolbar) {
     toolbar.addEventListener('selectstart', function (event) { event.preventDefault(); });
     toolbar.addEventListener('pointerdown', function (event) {
-      if (ink.acceptDrawPointer(asDrawPointer(event), controller.stylusPreferred)) return;
+      // 工具栏始终可用：无视「仅笔」设置放行正常手指点按，只拦手掌级触摸（否则 iPad 默认仅笔模式下所有按钮手指点不动）
+      if (ink.acceptDrawPointer(asDrawPointer(event), false)) return;
       controller.blockToolClick = true;
       event.preventDefault();
       event.stopPropagation();
