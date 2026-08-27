@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-27T02:17:32+00:00",
+  "generated_at": "2026-08-27T02:21:41+00:00",
   "published_hashes": {
     "ds": "a40686840e5043561d7f7159fbd779725ffa65c56bfdd79a2683965b6aed0771",
     "coa": "8f9ea82d6d82e53ea38daf200ae95a361b5c43742f0ce9881b207f671f7f06f7",
@@ -43,9 +43,9 @@
   },
   "summary": {
     "total": 2869,
-    "certified": 1898,
+    "certified": 1911,
     "pending": 0,
-    "held": 971
+    "held": 958
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -56598,7 +56598,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-27T02:17:08.813886+00:00",
+      "verified_at": "2026-08-27T02:21:17.565381+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -56641,7 +56641,7 @@
           "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X07",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:08.813886+00:00",
+          "reviewed_at": "2026-08-27T02:21:17.565381+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/coa/page_300.png",
@@ -69017,12 +69017,9 @@
       "question_id": "X01",
       "source_hash": "a71a51a16727ff762fe1643d2f90c60c44bbeaab6ab667aa363d34ea6e5f8cae",
       "source_fidelity": "verified",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         211,
         212,
@@ -69042,7 +69039,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T00:00:00+08:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -69065,7 +69062,78 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::图 · 图的存储及基本操作 · 选择题::X01",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T00:00:00+08:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_211.png",
+              "sha256": "327b45798bc6b350c2ec97b1a41b4af10a7a01aef393e6ac287536d28858a4e9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_212.png",
+              "sha256": "ab8bbe66cedcb7066734e9a3b88dc06987e1186d4d76384348e5e1188bef69fd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_213.png",
+              "sha256": "fd375cf5560ca3bf6758224ac82a2c1b745923cf6f1f570a631338bc027a0c19"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_214.png",
+              "sha256": "562c46d7cc52d8f5fa6193fa5f09767991e0a696b79a89e8f6399e059e145dea"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_215.png",
+              "sha256": "63f6b59fd57152aa70aaaa2e180c53cc6a39d907d201f92e8b42172d55a87ff0"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_215.png",
+              "sha256": "63f6b59fd57152aa70aaaa2e180c53cc6a39d907d201f92e8b42172d55a87ff0"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_216.png",
+              "sha256": "0c234f1c76656c7ab773070ec7021e49c2f4bc1392c4b66abfbe9e3e675d00c9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_217.png",
+              "sha256": "01aa79bf8f44a1919aa00f16dd1a87ec918d2101e7f1e28761e3ea20c99ad5c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_218.png",
+              "sha256": "1ffd47ed36d552115bba77f328db028042164f246be4eaface111c32aa8161ce"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_219.png",
+              "sha256": "58ea1cf0809640fa157c4d07451acad6942bd20015fd4c2fbc1fb796b1240282"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_220.png",
+              "sha256": "5daa39f0953d5a2be4d02f88a2ce131c9e8f995c5322eb9e14d3723c316c9acb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_221.png",
+              "sha256": "0a45838116e06c895746252c6c7b6ea1fde13f2df504b04320974d49b19e6e67"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_222.png",
+              "sha256": "0cb6792f08a183410eddf0bf3ca3d92298ca65a2c41421c74ceec4398e4d7e35"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "题目页与答案页逐项核对，发布题干、选项、答案和解析一致。",
+          "source_hash": "a71a51a16727ff762fe1643d2f90c60c44bbeaab6ab667aa363d34ea6e5f8cae"
+        }
       },
       "certification_profile": "objective_full",
       "primary_hold_reason": "strict_hold"
@@ -69076,14 +69144,10 @@
       "chapter": "图 · 图的存储及基本操作 · 选择题",
       "question_id": "X02",
       "source_hash": "7d7ab680330085ef60d277960f87f6598572816691a57414c4efdb51511d9c51",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         211,
         212,
@@ -69103,7 +69167,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T00:00:00+08:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -69141,7 +69205,78 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::图 · 图的存储及基本操作 · 选择题::X02",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T00:00:00+08:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_211.png",
+              "sha256": "327b45798bc6b350c2ec97b1a41b4af10a7a01aef393e6ac287536d28858a4e9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_212.png",
+              "sha256": "ab8bbe66cedcb7066734e9a3b88dc06987e1186d4d76384348e5e1188bef69fd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_213.png",
+              "sha256": "fd375cf5560ca3bf6758224ac82a2c1b745923cf6f1f570a631338bc027a0c19"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_214.png",
+              "sha256": "562c46d7cc52d8f5fa6193fa5f09767991e0a696b79a89e8f6399e059e145dea"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_215.png",
+              "sha256": "63f6b59fd57152aa70aaaa2e180c53cc6a39d907d201f92e8b42172d55a87ff0"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_215.png",
+              "sha256": "63f6b59fd57152aa70aaaa2e180c53cc6a39d907d201f92e8b42172d55a87ff0"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_216.png",
+              "sha256": "0c234f1c76656c7ab773070ec7021e49c2f4bc1392c4b66abfbe9e3e675d00c9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_217.png",
+              "sha256": "01aa79bf8f44a1919aa00f16dd1a87ec918d2101e7f1e28761e3ea20c99ad5c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_218.png",
+              "sha256": "1ffd47ed36d552115bba77f328db028042164f246be4eaface111c32aa8161ce"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_219.png",
+              "sha256": "58ea1cf0809640fa157c4d07451acad6942bd20015fd4c2fbc1fb796b1240282"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_220.png",
+              "sha256": "5daa39f0953d5a2be4d02f88a2ce131c9e8f995c5322eb9e14d3723c316c9acb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_221.png",
+              "sha256": "0a45838116e06c895746252c6c7b6ea1fde13f2df504b04320974d49b19e6e67"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_222.png",
+              "sha256": "0cb6792f08a183410eddf0bf3ca3d92298ca65a2c41421c74ceec4398e4d7e35"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "题目页与答案页逐项核对，发布题干、选项、答案和解析一致。",
+          "source_hash": "7d7ab680330085ef60d277960f87f6598572816691a57414c4efdb51511d9c51"
+        }
       },
       "certification_profile": "objective_full",
       "primary_hold_reason": "source_conflict"
@@ -69152,14 +69287,10 @@
       "chapter": "图 · 图的存储及基本操作 · 选择题",
       "question_id": "X03",
       "source_hash": "2642bb68d96eed83062ba1e6393c796079b87a2fdfcc1372ce014ee9ccdd9c9b",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         211,
         212,
@@ -69179,7 +69310,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T00:00:00+08:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -69217,7 +69348,78 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::图 · 图的存储及基本操作 · 选择题::X03",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T00:00:00+08:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_211.png",
+              "sha256": "327b45798bc6b350c2ec97b1a41b4af10a7a01aef393e6ac287536d28858a4e9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_212.png",
+              "sha256": "ab8bbe66cedcb7066734e9a3b88dc06987e1186d4d76384348e5e1188bef69fd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_213.png",
+              "sha256": "fd375cf5560ca3bf6758224ac82a2c1b745923cf6f1f570a631338bc027a0c19"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_214.png",
+              "sha256": "562c46d7cc52d8f5fa6193fa5f09767991e0a696b79a89e8f6399e059e145dea"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_215.png",
+              "sha256": "63f6b59fd57152aa70aaaa2e180c53cc6a39d907d201f92e8b42172d55a87ff0"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_215.png",
+              "sha256": "63f6b59fd57152aa70aaaa2e180c53cc6a39d907d201f92e8b42172d55a87ff0"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_216.png",
+              "sha256": "0c234f1c76656c7ab773070ec7021e49c2f4bc1392c4b66abfbe9e3e675d00c9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_217.png",
+              "sha256": "01aa79bf8f44a1919aa00f16dd1a87ec918d2101e7f1e28761e3ea20c99ad5c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_218.png",
+              "sha256": "1ffd47ed36d552115bba77f328db028042164f246be4eaface111c32aa8161ce"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_219.png",
+              "sha256": "58ea1cf0809640fa157c4d07451acad6942bd20015fd4c2fbc1fb796b1240282"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_220.png",
+              "sha256": "5daa39f0953d5a2be4d02f88a2ce131c9e8f995c5322eb9e14d3723c316c9acb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_221.png",
+              "sha256": "0a45838116e06c895746252c6c7b6ea1fde13f2df504b04320974d49b19e6e67"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_222.png",
+              "sha256": "0cb6792f08a183410eddf0bf3ca3d92298ca65a2c41421c74ceec4398e4d7e35"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "题目页与答案页逐项核对，发布题干、选项、答案和解析一致。",
+          "source_hash": "2642bb68d96eed83062ba1e6393c796079b87a2fdfcc1372ce014ee9ccdd9c9b"
+        }
       },
       "certification_profile": "objective_full",
       "primary_hold_reason": "source_conflict"
@@ -69229,12 +69431,9 @@
       "question_id": "X04",
       "source_hash": "98e28dee2e0db7fc759909a949927cf3b1e53f931e997341222a2b899fcf8959",
       "source_fidelity": "verified",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         211,
         212,
@@ -69254,7 +69453,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T00:00:00+08:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -69277,7 +69476,78 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::图 · 图的存储及基本操作 · 选择题::X04",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T00:00:00+08:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_211.png",
+              "sha256": "327b45798bc6b350c2ec97b1a41b4af10a7a01aef393e6ac287536d28858a4e9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_212.png",
+              "sha256": "ab8bbe66cedcb7066734e9a3b88dc06987e1186d4d76384348e5e1188bef69fd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_213.png",
+              "sha256": "fd375cf5560ca3bf6758224ac82a2c1b745923cf6f1f570a631338bc027a0c19"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_214.png",
+              "sha256": "562c46d7cc52d8f5fa6193fa5f09767991e0a696b79a89e8f6399e059e145dea"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_215.png",
+              "sha256": "63f6b59fd57152aa70aaaa2e180c53cc6a39d907d201f92e8b42172d55a87ff0"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_215.png",
+              "sha256": "63f6b59fd57152aa70aaaa2e180c53cc6a39d907d201f92e8b42172d55a87ff0"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_216.png",
+              "sha256": "0c234f1c76656c7ab773070ec7021e49c2f4bc1392c4b66abfbe9e3e675d00c9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_217.png",
+              "sha256": "01aa79bf8f44a1919aa00f16dd1a87ec918d2101e7f1e28761e3ea20c99ad5c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_218.png",
+              "sha256": "1ffd47ed36d552115bba77f328db028042164f246be4eaface111c32aa8161ce"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_219.png",
+              "sha256": "58ea1cf0809640fa157c4d07451acad6942bd20015fd4c2fbc1fb796b1240282"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_220.png",
+              "sha256": "5daa39f0953d5a2be4d02f88a2ce131c9e8f995c5322eb9e14d3723c316c9acb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_221.png",
+              "sha256": "0a45838116e06c895746252c6c7b6ea1fde13f2df504b04320974d49b19e6e67"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_222.png",
+              "sha256": "0cb6792f08a183410eddf0bf3ca3d92298ca65a2c41421c74ceec4398e4d7e35"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "题目页与答案页逐项核对，发布题干、选项、答案和解析一致。",
+          "source_hash": "98e28dee2e0db7fc759909a949927cf3b1e53f931e997341222a2b899fcf8959"
+        }
       },
       "certification_profile": "objective_full",
       "primary_hold_reason": "strict_hold"
@@ -69288,14 +69558,10 @@
       "chapter": "图 · 图的存储及基本操作 · 选择题",
       "question_id": "X05",
       "source_hash": "f83b78f366cc25c176eeaea5a94b7b7c414f955cbee997d8fd77863d653e1dd4",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         211,
         212,
@@ -69315,7 +69581,7 @@
       ],
       "has_image": false,
       "answer_choice": "BD",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T00:00:00+08:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -69353,7 +69619,78 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::图 · 图的存储及基本操作 · 选择题::X05",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T00:00:00+08:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_211.png",
+              "sha256": "327b45798bc6b350c2ec97b1a41b4af10a7a01aef393e6ac287536d28858a4e9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_212.png",
+              "sha256": "ab8bbe66cedcb7066734e9a3b88dc06987e1186d4d76384348e5e1188bef69fd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_213.png",
+              "sha256": "fd375cf5560ca3bf6758224ac82a2c1b745923cf6f1f570a631338bc027a0c19"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_214.png",
+              "sha256": "562c46d7cc52d8f5fa6193fa5f09767991e0a696b79a89e8f6399e059e145dea"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_215.png",
+              "sha256": "63f6b59fd57152aa70aaaa2e180c53cc6a39d907d201f92e8b42172d55a87ff0"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_215.png",
+              "sha256": "63f6b59fd57152aa70aaaa2e180c53cc6a39d907d201f92e8b42172d55a87ff0"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_216.png",
+              "sha256": "0c234f1c76656c7ab773070ec7021e49c2f4bc1392c4b66abfbe9e3e675d00c9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_217.png",
+              "sha256": "01aa79bf8f44a1919aa00f16dd1a87ec918d2101e7f1e28761e3ea20c99ad5c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_218.png",
+              "sha256": "1ffd47ed36d552115bba77f328db028042164f246be4eaface111c32aa8161ce"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_219.png",
+              "sha256": "58ea1cf0809640fa157c4d07451acad6942bd20015fd4c2fbc1fb796b1240282"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_220.png",
+              "sha256": "5daa39f0953d5a2be4d02f88a2ce131c9e8f995c5322eb9e14d3723c316c9acb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_221.png",
+              "sha256": "0a45838116e06c895746252c6c7b6ea1fde13f2df504b04320974d49b19e6e67"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_222.png",
+              "sha256": "0cb6792f08a183410eddf0bf3ca3d92298ca65a2c41421c74ceec4398e4d7e35"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "题目页与答案页逐项核对，发布题干、选项、答案和解析一致。",
+          "source_hash": "f83b78f366cc25c176eeaea5a94b7b7c414f955cbee997d8fd77863d653e1dd4"
+        }
       },
       "certification_profile": "objective_full",
       "primary_hold_reason": "source_conflict"
@@ -69441,14 +69778,10 @@
       "chapter": "图 · 图的存储及基本操作 · 选择题",
       "question_id": "X07",
       "source_hash": "f7f84ab925f77dd59eb5cc292d5f3df4b7d6101b7ca2aafdcade0b2767dc7119",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         211,
         212,
@@ -69468,7 +69801,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T00:00:00+08:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -69506,7 +69839,78 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::图 · 图的存储及基本操作 · 选择题::X07",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T00:00:00+08:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_211.png",
+              "sha256": "327b45798bc6b350c2ec97b1a41b4af10a7a01aef393e6ac287536d28858a4e9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_212.png",
+              "sha256": "ab8bbe66cedcb7066734e9a3b88dc06987e1186d4d76384348e5e1188bef69fd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_213.png",
+              "sha256": "fd375cf5560ca3bf6758224ac82a2c1b745923cf6f1f570a631338bc027a0c19"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_214.png",
+              "sha256": "562c46d7cc52d8f5fa6193fa5f09767991e0a696b79a89e8f6399e059e145dea"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_215.png",
+              "sha256": "63f6b59fd57152aa70aaaa2e180c53cc6a39d907d201f92e8b42172d55a87ff0"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_215.png",
+              "sha256": "63f6b59fd57152aa70aaaa2e180c53cc6a39d907d201f92e8b42172d55a87ff0"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_216.png",
+              "sha256": "0c234f1c76656c7ab773070ec7021e49c2f4bc1392c4b66abfbe9e3e675d00c9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_217.png",
+              "sha256": "01aa79bf8f44a1919aa00f16dd1a87ec918d2101e7f1e28761e3ea20c99ad5c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_218.png",
+              "sha256": "1ffd47ed36d552115bba77f328db028042164f246be4eaface111c32aa8161ce"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_219.png",
+              "sha256": "58ea1cf0809640fa157c4d07451acad6942bd20015fd4c2fbc1fb796b1240282"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_220.png",
+              "sha256": "5daa39f0953d5a2be4d02f88a2ce131c9e8f995c5322eb9e14d3723c316c9acb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_221.png",
+              "sha256": "0a45838116e06c895746252c6c7b6ea1fde13f2df504b04320974d49b19e6e67"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_222.png",
+              "sha256": "0cb6792f08a183410eddf0bf3ca3d92298ca65a2c41421c74ceec4398e4d7e35"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "题目页与答案页逐项核对，发布题干、选项、答案和解析一致。",
+          "source_hash": "f7f84ab925f77dd59eb5cc292d5f3df4b7d6101b7ca2aafdcade0b2767dc7119"
+        }
       },
       "certification_profile": "objective_full",
       "primary_hold_reason": "source_conflict"
@@ -69652,13 +70056,10 @@
       "chapter": "图 · 图的存储及基本操作 · 选择题",
       "question_id": "X10",
       "source_hash": "566e543674028ba47d97295d1bdaae5b1a1f58c35ba755f61947a095bfd57fc6",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         211,
         212,
@@ -69678,7 +70079,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T00:00:00+08:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -69701,7 +70102,78 @@
           "reason": "stale_source_hash"
         },
         "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch"
+        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::图 · 图的存储及基本操作 · 选择题::X10",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T00:00:00+08:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_211.png",
+              "sha256": "327b45798bc6b350c2ec97b1a41b4af10a7a01aef393e6ac287536d28858a4e9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_212.png",
+              "sha256": "ab8bbe66cedcb7066734e9a3b88dc06987e1186d4d76384348e5e1188bef69fd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_213.png",
+              "sha256": "fd375cf5560ca3bf6758224ac82a2c1b745923cf6f1f570a631338bc027a0c19"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_214.png",
+              "sha256": "562c46d7cc52d8f5fa6193fa5f09767991e0a696b79a89e8f6399e059e145dea"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_215.png",
+              "sha256": "63f6b59fd57152aa70aaaa2e180c53cc6a39d907d201f92e8b42172d55a87ff0"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_215.png",
+              "sha256": "63f6b59fd57152aa70aaaa2e180c53cc6a39d907d201f92e8b42172d55a87ff0"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_216.png",
+              "sha256": "0c234f1c76656c7ab773070ec7021e49c2f4bc1392c4b66abfbe9e3e675d00c9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_217.png",
+              "sha256": "01aa79bf8f44a1919aa00f16dd1a87ec918d2101e7f1e28761e3ea20c99ad5c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_218.png",
+              "sha256": "1ffd47ed36d552115bba77f328db028042164f246be4eaface111c32aa8161ce"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_219.png",
+              "sha256": "58ea1cf0809640fa157c4d07451acad6942bd20015fd4c2fbc1fb796b1240282"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_220.png",
+              "sha256": "5daa39f0953d5a2be4d02f88a2ce131c9e8f995c5322eb9e14d3723c316c9acb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_221.png",
+              "sha256": "0a45838116e06c895746252c6c7b6ea1fde13f2df504b04320974d49b19e6e67"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_222.png",
+              "sha256": "0cb6792f08a183410eddf0bf3ca3d92298ca65a2c41421c74ceec4398e4d7e35"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "题目页与答案页逐项核对，发布题干、选项、答案和解析一致。",
+          "source_hash": "566e543674028ba47d97295d1bdaae5b1a1f58c35ba755f61947a095bfd57fc6"
+        }
       },
       "certification_profile": "objective_full",
       "primary_hold_reason": "strict_hold"
@@ -69771,14 +70243,10 @@
       "chapter": "图 · 图的存储及基本操作 · 选择题",
       "question_id": "X12",
       "source_hash": "eab6d77aca8e32b5c2186fa4fc20c392f3f36eeb12c2a73e3947c3146120743d",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         211,
         212,
@@ -69798,7 +70266,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T00:00:00+08:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -69836,7 +70304,78 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::图 · 图的存储及基本操作 · 选择题::X12",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T00:00:00+08:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_211.png",
+              "sha256": "327b45798bc6b350c2ec97b1a41b4af10a7a01aef393e6ac287536d28858a4e9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_212.png",
+              "sha256": "ab8bbe66cedcb7066734e9a3b88dc06987e1186d4d76384348e5e1188bef69fd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_213.png",
+              "sha256": "fd375cf5560ca3bf6758224ac82a2c1b745923cf6f1f570a631338bc027a0c19"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_214.png",
+              "sha256": "562c46d7cc52d8f5fa6193fa5f09767991e0a696b79a89e8f6399e059e145dea"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_215.png",
+              "sha256": "63f6b59fd57152aa70aaaa2e180c53cc6a39d907d201f92e8b42172d55a87ff0"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_215.png",
+              "sha256": "63f6b59fd57152aa70aaaa2e180c53cc6a39d907d201f92e8b42172d55a87ff0"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_216.png",
+              "sha256": "0c234f1c76656c7ab773070ec7021e49c2f4bc1392c4b66abfbe9e3e675d00c9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_217.png",
+              "sha256": "01aa79bf8f44a1919aa00f16dd1a87ec918d2101e7f1e28761e3ea20c99ad5c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_218.png",
+              "sha256": "1ffd47ed36d552115bba77f328db028042164f246be4eaface111c32aa8161ce"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_219.png",
+              "sha256": "58ea1cf0809640fa157c4d07451acad6942bd20015fd4c2fbc1fb796b1240282"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_220.png",
+              "sha256": "5daa39f0953d5a2be4d02f88a2ce131c9e8f995c5322eb9e14d3723c316c9acb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_221.png",
+              "sha256": "0a45838116e06c895746252c6c7b6ea1fde13f2df504b04320974d49b19e6e67"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_222.png",
+              "sha256": "0cb6792f08a183410eddf0bf3ca3d92298ca65a2c41421c74ceec4398e4d7e35"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "题目页与答案页逐项核对，发布题干、选项、答案和解析一致。",
+          "source_hash": "eab6d77aca8e32b5c2186fa4fc20c392f3f36eeb12c2a73e3947c3146120743d"
+        }
       },
       "certification_profile": "objective_full",
       "primary_hold_reason": "source_conflict"
@@ -69847,14 +70386,10 @@
       "chapter": "图 · 图的存储及基本操作 · 选择题",
       "question_id": "X13",
       "source_hash": "b99fe0ef38d9f0968cf688331cb02747d522036fe89ce0d3b291d1e2b20973f7",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         211,
         212,
@@ -69874,7 +70409,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T00:00:00+08:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -69912,7 +70447,78 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::图 · 图的存储及基本操作 · 选择题::X13",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T00:00:00+08:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_211.png",
+              "sha256": "327b45798bc6b350c2ec97b1a41b4af10a7a01aef393e6ac287536d28858a4e9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_212.png",
+              "sha256": "ab8bbe66cedcb7066734e9a3b88dc06987e1186d4d76384348e5e1188bef69fd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_213.png",
+              "sha256": "fd375cf5560ca3bf6758224ac82a2c1b745923cf6f1f570a631338bc027a0c19"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_214.png",
+              "sha256": "562c46d7cc52d8f5fa6193fa5f09767991e0a696b79a89e8f6399e059e145dea"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_215.png",
+              "sha256": "63f6b59fd57152aa70aaaa2e180c53cc6a39d907d201f92e8b42172d55a87ff0"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_215.png",
+              "sha256": "63f6b59fd57152aa70aaaa2e180c53cc6a39d907d201f92e8b42172d55a87ff0"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_216.png",
+              "sha256": "0c234f1c76656c7ab773070ec7021e49c2f4bc1392c4b66abfbe9e3e675d00c9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_217.png",
+              "sha256": "01aa79bf8f44a1919aa00f16dd1a87ec918d2101e7f1e28761e3ea20c99ad5c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_218.png",
+              "sha256": "1ffd47ed36d552115bba77f328db028042164f246be4eaface111c32aa8161ce"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_219.png",
+              "sha256": "58ea1cf0809640fa157c4d07451acad6942bd20015fd4c2fbc1fb796b1240282"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_220.png",
+              "sha256": "5daa39f0953d5a2be4d02f88a2ce131c9e8f995c5322eb9e14d3723c316c9acb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_221.png",
+              "sha256": "0a45838116e06c895746252c6c7b6ea1fde13f2df504b04320974d49b19e6e67"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_222.png",
+              "sha256": "0cb6792f08a183410eddf0bf3ca3d92298ca65a2c41421c74ceec4398e4d7e35"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "题目页与答案页逐项核对，发布题干、选项、答案和解析一致。",
+          "source_hash": "b99fe0ef38d9f0968cf688331cb02747d522036fe89ce0d3b291d1e2b20973f7"
+        }
       },
       "certification_profile": "objective_full",
       "primary_hold_reason": "source_conflict"
@@ -69923,14 +70529,10 @@
       "chapter": "图 · 图的存储及基本操作 · 选择题",
       "question_id": "X14",
       "source_hash": "56f0f67be4dfd80aa2d695dee2ccf613ad4c719dcb3ff80bb576e5478c9dca49",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         211,
         212,
@@ -69950,7 +70552,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T00:00:00+08:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -69988,7 +70590,78 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::图 · 图的存储及基本操作 · 选择题::X14",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T00:00:00+08:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_211.png",
+              "sha256": "327b45798bc6b350c2ec97b1a41b4af10a7a01aef393e6ac287536d28858a4e9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_212.png",
+              "sha256": "ab8bbe66cedcb7066734e9a3b88dc06987e1186d4d76384348e5e1188bef69fd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_213.png",
+              "sha256": "fd375cf5560ca3bf6758224ac82a2c1b745923cf6f1f570a631338bc027a0c19"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_214.png",
+              "sha256": "562c46d7cc52d8f5fa6193fa5f09767991e0a696b79a89e8f6399e059e145dea"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_215.png",
+              "sha256": "63f6b59fd57152aa70aaaa2e180c53cc6a39d907d201f92e8b42172d55a87ff0"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_215.png",
+              "sha256": "63f6b59fd57152aa70aaaa2e180c53cc6a39d907d201f92e8b42172d55a87ff0"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_216.png",
+              "sha256": "0c234f1c76656c7ab773070ec7021e49c2f4bc1392c4b66abfbe9e3e675d00c9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_217.png",
+              "sha256": "01aa79bf8f44a1919aa00f16dd1a87ec918d2101e7f1e28761e3ea20c99ad5c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_218.png",
+              "sha256": "1ffd47ed36d552115bba77f328db028042164f246be4eaface111c32aa8161ce"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_219.png",
+              "sha256": "58ea1cf0809640fa157c4d07451acad6942bd20015fd4c2fbc1fb796b1240282"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_220.png",
+              "sha256": "5daa39f0953d5a2be4d02f88a2ce131c9e8f995c5322eb9e14d3723c316c9acb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_221.png",
+              "sha256": "0a45838116e06c895746252c6c7b6ea1fde13f2df504b04320974d49b19e6e67"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_222.png",
+              "sha256": "0cb6792f08a183410eddf0bf3ca3d92298ca65a2c41421c74ceec4398e4d7e35"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "题目页与答案页逐项核对，发布题干、选项、答案和解析一致。",
+          "source_hash": "56f0f67be4dfd80aa2d695dee2ccf613ad4c719dcb3ff80bb576e5478c9dca49"
+        }
       },
       "certification_profile": "objective_full",
       "primary_hold_reason": "source_conflict"
@@ -69999,14 +70672,10 @@
       "chapter": "图 · 图的存储及基本操作 · 选择题",
       "question_id": "X15",
       "source_hash": "83b87d3e7daf9478bfe492a23e8a60cc9232d549afb3f30cce568f63b5235638",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         211,
         212,
@@ -70026,7 +70695,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T00:00:00+08:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -70064,7 +70733,78 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::图 · 图的存储及基本操作 · 选择题::X15",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T00:00:00+08:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_211.png",
+              "sha256": "327b45798bc6b350c2ec97b1a41b4af10a7a01aef393e6ac287536d28858a4e9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_212.png",
+              "sha256": "ab8bbe66cedcb7066734e9a3b88dc06987e1186d4d76384348e5e1188bef69fd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_213.png",
+              "sha256": "fd375cf5560ca3bf6758224ac82a2c1b745923cf6f1f570a631338bc027a0c19"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_214.png",
+              "sha256": "562c46d7cc52d8f5fa6193fa5f09767991e0a696b79a89e8f6399e059e145dea"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_215.png",
+              "sha256": "63f6b59fd57152aa70aaaa2e180c53cc6a39d907d201f92e8b42172d55a87ff0"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_215.png",
+              "sha256": "63f6b59fd57152aa70aaaa2e180c53cc6a39d907d201f92e8b42172d55a87ff0"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_216.png",
+              "sha256": "0c234f1c76656c7ab773070ec7021e49c2f4bc1392c4b66abfbe9e3e675d00c9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_217.png",
+              "sha256": "01aa79bf8f44a1919aa00f16dd1a87ec918d2101e7f1e28761e3ea20c99ad5c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_218.png",
+              "sha256": "1ffd47ed36d552115bba77f328db028042164f246be4eaface111c32aa8161ce"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_219.png",
+              "sha256": "58ea1cf0809640fa157c4d07451acad6942bd20015fd4c2fbc1fb796b1240282"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_220.png",
+              "sha256": "5daa39f0953d5a2be4d02f88a2ce131c9e8f995c5322eb9e14d3723c316c9acb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_221.png",
+              "sha256": "0a45838116e06c895746252c6c7b6ea1fde13f2df504b04320974d49b19e6e67"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_222.png",
+              "sha256": "0cb6792f08a183410eddf0bf3ca3d92298ca65a2c41421c74ceec4398e4d7e35"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "题目页与答案页逐项核对，发布题干、选项、答案和解析一致。",
+          "source_hash": "83b87d3e7daf9478bfe492a23e8a60cc9232d549afb3f30cce568f63b5235638"
+        }
       },
       "certification_profile": "objective_full",
       "primary_hold_reason": "source_conflict"
@@ -70075,14 +70815,10 @@
       "chapter": "图 · 图的存储及基本操作 · 选择题",
       "question_id": "X16",
       "source_hash": "f399883b14233d4ece055a4d8b036e27fe7ce1cd49cb1a9a5364627bbcd551a0",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         211,
         212,
@@ -70102,7 +70838,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T00:00:00+08:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -70140,7 +70876,78 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::图 · 图的存储及基本操作 · 选择题::X16",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T00:00:00+08:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_211.png",
+              "sha256": "327b45798bc6b350c2ec97b1a41b4af10a7a01aef393e6ac287536d28858a4e9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_212.png",
+              "sha256": "ab8bbe66cedcb7066734e9a3b88dc06987e1186d4d76384348e5e1188bef69fd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_213.png",
+              "sha256": "fd375cf5560ca3bf6758224ac82a2c1b745923cf6f1f570a631338bc027a0c19"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_214.png",
+              "sha256": "562c46d7cc52d8f5fa6193fa5f09767991e0a696b79a89e8f6399e059e145dea"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_215.png",
+              "sha256": "63f6b59fd57152aa70aaaa2e180c53cc6a39d907d201f92e8b42172d55a87ff0"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_215.png",
+              "sha256": "63f6b59fd57152aa70aaaa2e180c53cc6a39d907d201f92e8b42172d55a87ff0"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_216.png",
+              "sha256": "0c234f1c76656c7ab773070ec7021e49c2f4bc1392c4b66abfbe9e3e675d00c9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_217.png",
+              "sha256": "01aa79bf8f44a1919aa00f16dd1a87ec918d2101e7f1e28761e3ea20c99ad5c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_218.png",
+              "sha256": "1ffd47ed36d552115bba77f328db028042164f246be4eaface111c32aa8161ce"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_219.png",
+              "sha256": "58ea1cf0809640fa157c4d07451acad6942bd20015fd4c2fbc1fb796b1240282"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_220.png",
+              "sha256": "5daa39f0953d5a2be4d02f88a2ce131c9e8f995c5322eb9e14d3723c316c9acb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_221.png",
+              "sha256": "0a45838116e06c895746252c6c7b6ea1fde13f2df504b04320974d49b19e6e67"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_222.png",
+              "sha256": "0cb6792f08a183410eddf0bf3ca3d92298ca65a2c41421c74ceec4398e4d7e35"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "题目页与答案页逐项核对，发布题干、选项、答案和解析一致。",
+          "source_hash": "f399883b14233d4ece055a4d8b036e27fe7ce1cd49cb1a9a5364627bbcd551a0"
+        }
       },
       "certification_profile": "objective_full",
       "primary_hold_reason": "source_conflict"
@@ -70151,14 +70958,10 @@
       "chapter": "图 · 图的存储及基本操作 · 选择题",
       "question_id": "X17",
       "source_hash": "f0777795125ae244e4a53bad20ab2d537d64c270361a0111ed120a69ea627fb6",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         211,
         212,
@@ -70178,7 +70981,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-08-27T00:00:00+08:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -70216,7 +71019,78 @@
           "reason": "existing_hold"
         },
         "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
+        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::图 · 图的存储及基本操作 · 选择题::X17",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "codex-vision",
+          "reviewed_at": "2026-08-27T00:00:00+08:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_211.png",
+              "sha256": "327b45798bc6b350c2ec97b1a41b4af10a7a01aef393e6ac287536d28858a4e9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_212.png",
+              "sha256": "ab8bbe66cedcb7066734e9a3b88dc06987e1186d4d76384348e5e1188bef69fd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_213.png",
+              "sha256": "fd375cf5560ca3bf6758224ac82a2c1b745923cf6f1f570a631338bc027a0c19"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_214.png",
+              "sha256": "562c46d7cc52d8f5fa6193fa5f09767991e0a696b79a89e8f6399e059e145dea"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_215.png",
+              "sha256": "63f6b59fd57152aa70aaaa2e180c53cc6a39d907d201f92e8b42172d55a87ff0"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_215.png",
+              "sha256": "63f6b59fd57152aa70aaaa2e180c53cc6a39d907d201f92e8b42172d55a87ff0"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_216.png",
+              "sha256": "0c234f1c76656c7ab773070ec7021e49c2f4bc1392c4b66abfbe9e3e675d00c9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_217.png",
+              "sha256": "01aa79bf8f44a1919aa00f16dd1a87ec918d2101e7f1e28761e3ea20c99ad5c7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_218.png",
+              "sha256": "1ffd47ed36d552115bba77f328db028042164f246be4eaface111c32aa8161ce"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_219.png",
+              "sha256": "58ea1cf0809640fa157c4d07451acad6942bd20015fd4c2fbc1fb796b1240282"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_220.png",
+              "sha256": "5daa39f0953d5a2be4d02f88a2ce131c9e8f995c5322eb9e14d3723c316c9acb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_221.png",
+              "sha256": "0a45838116e06c895746252c6c7b6ea1fde13f2df504b04320974d49b19e6e67"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_222.png",
+              "sha256": "0cb6792f08a183410eddf0bf3ca3d92298ca65a2c41421c74ceec4398e4d7e35"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "题目页与答案页逐项核对，发布题干、选项、答案和解析一致。",
+          "source_hash": "f0777795125ae244e4a53bad20ab2d537d64c270361a0111ed120a69ea627fb6"
+        }
       },
       "certification_profile": "objective_full",
       "primary_hold_reason": "source_conflict"
@@ -138010,7 +138884,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-27T02:17:18.958208+00:00",
+      "verified_at": "2026-08-27T02:21:27.836383+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -138053,7 +138927,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X01",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:18.958208+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.836383+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_251.png",
@@ -138118,7 +138992,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-27T02:17:18.961873+00:00",
+      "verified_at": "2026-08-27T02:21:27.839341+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -138161,7 +139035,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X02",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:18.961873+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.839341+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_251.png",
@@ -138226,7 +139100,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-27T02:17:18.964335+00:00",
+      "verified_at": "2026-08-27T02:21:27.842305+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -138269,7 +139143,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X03",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:18.964335+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.842305+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_251.png",
@@ -138334,7 +139208,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-27T02:17:18.968586+00:00",
+      "verified_at": "2026-08-27T02:21:27.845237+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -138377,7 +139251,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X04",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:18.968586+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.845237+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_251.png",
@@ -138442,7 +139316,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-27T02:17:18.971787+00:00",
+      "verified_at": "2026-08-27T02:21:27.848168+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -138485,7 +139359,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X05",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:18.971787+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.848168+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_251.png",
@@ -138550,7 +139424,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-27T02:17:18.975000+00:00",
+      "verified_at": "2026-08-27T02:21:27.850678+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -138593,7 +139467,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X06",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:18.975000+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.850678+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_251.png",
@@ -138658,7 +139532,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-27T02:17:18.978622+00:00",
+      "verified_at": "2026-08-27T02:21:27.852633+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -138701,7 +139575,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X07",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:18.978622+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.852633+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_251.png",
@@ -138770,7 +139644,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-27T02:17:18.984077+00:00",
+      "verified_at": "2026-08-27T02:21:27.857519+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -138813,7 +139687,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X08",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:18.984077+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.857519+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_252.png",
@@ -138878,7 +139752,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-27T02:17:18.986557+00:00",
+      "verified_at": "2026-08-27T02:21:27.860505+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -138921,7 +139795,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X09",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:18.986557+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.860505+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_252.png",
@@ -138986,7 +139860,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-27T02:17:18.990558+00:00",
+      "verified_at": "2026-08-27T02:21:27.862460+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -139029,7 +139903,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X10",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:18.990558+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.862460+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_252.png",
@@ -139094,7 +139968,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-27T02:17:18.993491+00:00",
+      "verified_at": "2026-08-27T02:21:27.865392+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -139137,7 +140011,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X11",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:18.993491+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.865392+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_252.png",
@@ -139202,7 +140076,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-27T02:17:18.996423+00:00",
+      "verified_at": "2026-08-27T02:21:27.868323+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -139245,7 +140119,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X12",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:18.996423+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.868323+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_252.png",
@@ -139562,7 +140436,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-27T02:17:19.001890+00:00",
+      "verified_at": "2026-08-27T02:21:27.874288+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -139605,7 +140479,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X16",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.001890+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.874288+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_252.png",
@@ -139670,7 +140544,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-27T02:17:19.004822+00:00",
+      "verified_at": "2026-08-27T02:21:27.876242+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -139713,7 +140587,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X17",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.004822+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.876242+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_252.png",
@@ -139865,7 +140739,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-27T02:17:19.007754+00:00",
+      "verified_at": "2026-08-27T02:21:27.880219+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -139908,7 +140782,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X19",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.007754+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.880219+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_252.png",
@@ -139973,7 +140847,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-27T02:17:19.100761+00:00",
+      "verified_at": "2026-08-27T02:21:27.971613+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -140001,7 +140875,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X20",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.100761+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.971613+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_253.png",
@@ -140153,7 +141027,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-27T02:17:19.014586+00:00",
+      "verified_at": "2026-08-27T02:21:27.886084+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -140196,7 +141070,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X22",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.014586+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.886084+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_253.png",
@@ -140261,7 +141135,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-27T02:17:19.017416+00:00",
+      "verified_at": "2026-08-27T02:21:27.889540+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -140304,7 +141178,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X23",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.017416+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.889540+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_253.png",
@@ -140369,7 +141243,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-27T02:17:19.019922+00:00",
+      "verified_at": "2026-08-27T02:21:27.893007+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -140412,7 +141286,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X24",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.019922+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.893007+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_253.png",
@@ -140477,7 +141351,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-27T02:17:19.023125+00:00",
+      "verified_at": "2026-08-27T02:21:27.896028+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -140520,7 +141394,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X25",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.023125+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.896028+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_253.png",
@@ -140585,7 +141459,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-27T02:17:19.104232+00:00",
+      "verified_at": "2026-08-27T02:21:27.974802+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -140613,7 +141487,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X26",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.104232+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.974802+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_253.png",
@@ -140678,7 +141552,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-27T02:17:19.027224+00:00",
+      "verified_at": "2026-08-27T02:21:27.899596+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -140721,7 +141595,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X27",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.027224+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.899596+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_253.png",
@@ -140786,7 +141660,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-27T02:17:19.029740+00:00",
+      "verified_at": "2026-08-27T02:21:27.901679+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -140829,7 +141703,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X28",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.029740+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.901679+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_253.png",
@@ -140894,7 +141768,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-27T02:17:19.107164+00:00",
+      "verified_at": "2026-08-27T02:21:27.977521+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -140922,7 +141796,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X29",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.107164+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.977521+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_254.png",
@@ -140987,7 +141861,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-27T02:17:19.032848+00:00",
+      "verified_at": "2026-08-27T02:21:27.904093+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -141030,7 +141904,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X30",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.032848+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.904093+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_253.png",
@@ -141095,7 +141969,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-27T02:17:19.036069+00:00",
+      "verified_at": "2026-08-27T02:21:27.907776+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -141138,7 +142012,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X31",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.036069+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.907776+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_254.png",
@@ -141203,7 +142077,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-27T02:17:19.039859+00:00",
+      "verified_at": "2026-08-27T02:21:27.910738+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -141246,7 +142120,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X32",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.039859+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.910738+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_254.png",
@@ -141394,7 +142268,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-27T02:17:19.042458+00:00",
+      "verified_at": "2026-08-27T02:21:27.914238+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -141437,7 +142311,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X34",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.042458+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.914238+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_254.png",
@@ -141667,7 +142541,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-27T02:17:19.045556+00:00",
+      "verified_at": "2026-08-27T02:21:27.916663+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -141710,7 +142584,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X37",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.045556+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.916663+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_254.png",
@@ -141775,7 +142649,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-27T02:17:19.048064+00:00",
+      "verified_at": "2026-08-27T02:21:27.919524+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -141818,7 +142692,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X38",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.048064+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.919524+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_254.png",
@@ -141887,7 +142761,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-27T02:17:19.052796+00:00",
+      "verified_at": "2026-08-27T02:21:27.924650+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -141930,7 +142804,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X39",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.052796+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.924650+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_255.png",
@@ -142078,7 +142952,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-27T02:17:19.056041+00:00",
+      "verified_at": "2026-08-27T02:21:27.926644+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -142121,7 +142995,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X41",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.056041+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.926644+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_255.png",
@@ -142186,7 +143060,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-27T02:17:19.059523+00:00",
+      "verified_at": "2026-08-27T02:21:27.929619+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -142229,7 +143103,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X42",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.059523+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.929619+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_255.png",
@@ -142294,7 +143168,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-27T02:17:19.063027+00:00",
+      "verified_at": "2026-08-27T02:21:27.933728+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -142337,7 +143211,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X43",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.063027+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.933728+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_255.png",
@@ -142402,7 +143276,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-27T02:17:19.065546+00:00",
+      "verified_at": "2026-08-27T02:21:27.936904+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -142445,7 +143319,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X44",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.065546+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.936904+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_255.png",
@@ -142510,7 +143384,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-27T02:17:19.068149+00:00",
+      "verified_at": "2026-08-27T02:21:27.939580+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -142553,7 +143427,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X45",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.068149+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.939580+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_255.png",
@@ -142618,7 +143492,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-27T02:17:19.071834+00:00",
+      "verified_at": "2026-08-27T02:21:27.941868+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -142661,7 +143535,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X46",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.071834+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.941868+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_255.png",
@@ -142726,7 +143600,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-27T02:17:19.110739+00:00",
+      "verified_at": "2026-08-27T02:21:27.980598+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -142754,7 +143628,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X47",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.110739+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.980598+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_256.png",
@@ -142819,7 +143693,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-27T02:17:19.075942+00:00",
+      "verified_at": "2026-08-27T02:21:27.944394+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -142862,7 +143736,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X49",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.075942+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.944394+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_256.png",
@@ -142997,7 +143871,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-27T02:17:19.115957+00:00",
+      "verified_at": "2026-08-27T02:21:27.986271+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -143025,7 +143899,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X51",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.115957+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.986271+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_256.png",
@@ -143090,7 +143964,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-27T02:17:19.079498+00:00",
+      "verified_at": "2026-08-27T02:21:27.947876+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -143133,7 +144007,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X52",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.079498+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.947876+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_256.png",
@@ -143198,7 +144072,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-27T02:17:19.082449+00:00",
+      "verified_at": "2026-08-27T02:21:27.950384+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -143241,7 +144115,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X53",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.082449+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.950384+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_256.png",
@@ -143306,7 +144180,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-27T02:17:19.085493+00:00",
+      "verified_at": "2026-08-27T02:21:27.953770+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -143349,7 +144223,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X54",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.085493+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.953770+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_257.png",
@@ -143414,7 +144288,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-27T02:17:19.088076+00:00",
+      "verified_at": "2026-08-27T02:21:27.956949+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -143457,7 +144331,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X55",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.088076+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.956949+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_257.png",
@@ -143522,7 +144396,7 @@
       ],
       "has_image": true,
       "answer_choice": "C",
-      "verified_at": "2026-08-27T02:17:19.119552+00:00",
+      "verified_at": "2026-08-27T02:21:27.987930+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -143550,7 +144424,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X56",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.119552+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.987930+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_257.png",
@@ -143784,7 +144658,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-27T02:17:19.094612+00:00",
+      "verified_at": "2026-08-27T02:21:27.964579+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -143827,7 +144701,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X59",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.094612+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.964579+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_257.png",
@@ -143892,7 +144766,7 @@
       ],
       "has_image": true,
       "answer_choice": "A",
-      "verified_at": "2026-08-27T02:17:19.123176+00:00",
+      "verified_at": "2026-08-27T02:21:27.991522+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -143920,7 +144794,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X60",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.123176+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.991522+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_257.png",
@@ -143989,7 +144863,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-27T02:17:19.097665+00:00",
+      "verified_at": "2026-08-27T02:21:27.967842+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -144032,7 +144906,7 @@
           "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X61",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:19.097665+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.967842+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_258.png",
@@ -172989,7 +173863,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-27T02:17:18.242063+00:00",
+      "verified_at": "2026-08-27T02:21:27.118519+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -173032,7 +173906,7 @@
           "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X01",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:18.242063+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.118519+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_156.png",
@@ -173108,7 +173982,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-27T02:17:18.245065+00:00",
+      "verified_at": "2026-08-27T02:21:27.122413+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -173151,7 +174025,7 @@
           "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X02",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:18.245065+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.122413+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_156.png",
@@ -173331,7 +174205,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-27T02:17:18.248046+00:00",
+      "verified_at": "2026-08-27T02:21:27.124781+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -173374,7 +174248,7 @@
           "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X04",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:18.248046+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.124781+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_156.png",
@@ -173450,7 +174324,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-27T02:17:18.250553+00:00",
+      "verified_at": "2026-08-27T02:21:27.127981+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -173493,7 +174367,7 @@
           "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X05",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:18.250553+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.127981+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_156.png",
@@ -173569,7 +174443,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-27T02:17:18.253661+00:00",
+      "verified_at": "2026-08-27T02:21:27.130833+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -173612,7 +174486,7 @@
           "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X06",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:18.253661+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.130833+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_156.png",
@@ -173792,7 +174666,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-27T02:17:18.257013+00:00",
+      "verified_at": "2026-08-27T02:21:27.133115+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -173835,7 +174709,7 @@
           "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X08",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:18.257013+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.133115+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_157.png",
@@ -174007,7 +174881,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-27T02:17:18.262605+00:00",
+      "verified_at": "2026-08-27T02:21:27.139592+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -174050,7 +174924,7 @@
           "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X10",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:18.262605+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.139592+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_157.png",
@@ -174126,7 +175000,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-27T02:17:18.265589+00:00",
+      "verified_at": "2026-08-27T02:21:27.143027+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -174169,7 +175043,7 @@
           "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X11",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:18.265589+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.143027+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_157.png",
@@ -174519,7 +175393,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-27T02:17:18.267576+00:00",
+      "verified_at": "2026-08-27T02:21:27.145040+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -174562,7 +175436,7 @@
           "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X14",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:18.267576+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.145040+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_157.png",
@@ -174638,7 +175512,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-27T02:17:18.270591+00:00",
+      "verified_at": "2026-08-27T02:21:27.149348+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -174681,7 +175555,7 @@
           "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X15",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:18.270591+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.149348+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_157.png",
@@ -174757,7 +175631,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-27T02:17:18.273711+00:00",
+      "verified_at": "2026-08-27T02:21:27.151416+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -174800,7 +175674,7 @@
           "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X16",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:18.273711+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.151416+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_157.png",
@@ -174876,7 +175750,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-27T02:17:18.275742+00:00",
+      "verified_at": "2026-08-27T02:21:27.154630+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -174919,7 +175793,7 @@
           "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X17",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:18.275742+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.154630+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_157.png",
@@ -174995,7 +175869,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-27T02:17:18.278705+00:00",
+      "verified_at": "2026-08-27T02:21:27.157678+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -175038,7 +175912,7 @@
           "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X18",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:18.278705+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.157678+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_157.png",
@@ -175306,7 +176180,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-27T02:17:18.287373+00:00",
+      "verified_at": "2026-08-27T02:21:27.166458+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -175349,7 +176223,7 @@
           "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X21",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:18.287373+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.166458+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_158.png",
@@ -175425,7 +176299,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-27T02:17:18.289859+00:00",
+      "verified_at": "2026-08-27T02:21:27.169295+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -175468,7 +176342,7 @@
           "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X22",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:18.289859+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.169295+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_158.png",
@@ -175544,7 +176418,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-27T02:17:18.292965+00:00",
+      "verified_at": "2026-08-27T02:21:27.172467+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -175587,7 +176461,7 @@
           "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X23",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:18.292965+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.172467+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_158.png",
@@ -175663,7 +176537,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-27T02:17:18.295002+00:00",
+      "verified_at": "2026-08-27T02:21:27.175917+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -175706,7 +176580,7 @@
           "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X24",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:18.295002+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.175917+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_158.png",
@@ -176057,7 +176931,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-27T02:17:18.298209+00:00",
+      "verified_at": "2026-08-27T02:21:27.179458+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -176100,7 +176974,7 @@
           "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X28",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:18.298209+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.179458+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_158.png",
@@ -176176,7 +177050,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-27T02:17:18.301774+00:00",
+      "verified_at": "2026-08-27T02:21:27.183067+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -176219,7 +177093,7 @@
           "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X29",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:18.301774+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.183067+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_159.png",
@@ -176295,7 +177169,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-27T02:17:18.303895+00:00",
+      "verified_at": "2026-08-27T02:21:27.186891+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -176338,7 +177212,7 @@
           "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X30",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:18.303895+00:00",
+          "reviewed_at": "2026-08-27T02:21:27.186891+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_159.png",
@@ -209268,7 +210142,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-27T02:17:30.651815+00:00",
+      "verified_at": "2026-08-27T02:21:39.350632+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -209311,7 +210185,7 @@
           "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X01",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:30.651815+00:00",
+          "reviewed_at": "2026-08-27T02:21:39.350632+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_231.png",
@@ -209384,7 +210258,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-27T02:17:30.654948+00:00",
+      "verified_at": "2026-08-27T02:21:39.353684+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -209427,7 +210301,7 @@
           "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X02",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:30.654948+00:00",
+          "reviewed_at": "2026-08-27T02:21:39.353684+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_231.png",
@@ -209500,7 +210374,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-27T02:17:30.657210+00:00",
+      "verified_at": "2026-08-27T02:21:39.356758+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -209528,7 +210402,7 @@
           "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X03",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:30.657210+00:00",
+          "reviewed_at": "2026-08-27T02:21:39.356758+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_231.png",
@@ -209601,7 +210475,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-27T02:17:30.661182+00:00",
+      "verified_at": "2026-08-27T02:21:39.359257+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -209644,7 +210518,7 @@
           "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X04",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:30.661182+00:00",
+          "reviewed_at": "2026-08-27T02:21:39.359257+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_231.png",
@@ -209717,7 +210591,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-27T02:17:30.663241+00:00",
+      "verified_at": "2026-08-27T02:21:39.362337+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -209760,7 +210634,7 @@
           "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X05",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:30.663241+00:00",
+          "reviewed_at": "2026-08-27T02:21:39.362337+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_231.png",
@@ -209833,7 +210707,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-27T02:17:30.666725+00:00",
+      "verified_at": "2026-08-27T02:21:39.365620+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -209876,7 +210750,7 @@
           "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X06",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:30.666725+00:00",
+          "reviewed_at": "2026-08-27T02:21:39.365620+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_231.png",
@@ -210026,7 +210900,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-27T02:17:30.669780+00:00",
+      "verified_at": "2026-08-27T02:21:39.368052+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -210069,7 +210943,7 @@
           "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X08",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:30.669780+00:00",
+          "reviewed_at": "2026-08-27T02:21:39.368052+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_231.png",
@@ -210142,7 +211016,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-27T02:17:30.672798+00:00",
+      "verified_at": "2026-08-27T02:21:39.371691+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -210185,7 +211059,7 @@
           "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X09",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:30.672798+00:00",
+          "reviewed_at": "2026-08-27T02:21:39.371691+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_231.png",
@@ -210537,7 +211411,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-27T02:17:30.680844+00:00",
+      "verified_at": "2026-08-27T02:21:39.380297+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -210565,7 +211439,7 @@
           "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X13",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:30.680844+00:00",
+          "reviewed_at": "2026-08-27T02:21:39.380297+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_232.png",
@@ -210638,7 +211512,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-27T02:17:30.682885+00:00",
+      "verified_at": "2026-08-27T02:21:39.383351+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -210681,7 +211555,7 @@
           "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X14",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:30.682885+00:00",
+          "reviewed_at": "2026-08-27T02:21:39.383351+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_232.png",
@@ -210754,7 +211628,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-27T02:17:30.685870+00:00",
+      "verified_at": "2026-08-27T02:21:39.386421+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -210797,7 +211671,7 @@
           "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X15",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:30.685870+00:00",
+          "reviewed_at": "2026-08-27T02:21:39.386421+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_232.png",
@@ -210963,7 +211837,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-27T02:17:30.688254+00:00",
+      "verified_at": "2026-08-27T02:21:39.390436+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -211006,7 +211880,7 @@
           "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X17",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:30.688254+00:00",
+          "reviewed_at": "2026-08-27T02:21:39.390436+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_232.png",
@@ -211079,7 +211953,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-27T02:17:30.690783+00:00",
+      "verified_at": "2026-08-27T02:21:39.394478+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -211107,7 +211981,7 @@
           "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X18",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:30.690783+00:00",
+          "reviewed_at": "2026-08-27T02:21:39.394478+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_232.png",
@@ -211271,7 +212145,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-27T02:17:30.693200+00:00",
+      "verified_at": "2026-08-27T02:21:39.396552+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -211314,7 +212188,7 @@
           "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X20",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:30.693200+00:00",
+          "reviewed_at": "2026-08-27T02:21:39.396552+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_232.png",
@@ -211387,7 +212261,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-27T02:17:30.696230+00:00",
+      "verified_at": "2026-08-27T02:21:39.399563+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -211430,7 +212304,7 @@
           "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X21",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:30.696230+00:00",
+          "reviewed_at": "2026-08-27T02:21:39.399563+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_233.png",
@@ -211596,7 +212470,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-27T02:17:30.698244+00:00",
+      "verified_at": "2026-08-27T02:21:39.402598+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -211639,7 +212513,7 @@
           "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X23",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:30.698244+00:00",
+          "reviewed_at": "2026-08-27T02:21:39.402598+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_233.png",
@@ -211712,7 +212586,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-27T02:17:30.702447+00:00",
+      "verified_at": "2026-08-27T02:21:39.405672+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -211755,7 +212629,7 @@
           "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X24",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:30.702447+00:00",
+          "reviewed_at": "2026-08-27T02:21:39.405672+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_233.png",
@@ -212010,7 +212884,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-27T02:17:30.705505+00:00",
+      "verified_at": "2026-08-27T02:21:39.409604+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -212053,7 +212927,7 @@
           "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X27",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:30.705505+00:00",
+          "reviewed_at": "2026-08-27T02:21:39.409604+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_233.png",
@@ -212126,7 +213000,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-27T02:17:30.708781+00:00",
+      "verified_at": "2026-08-27T02:21:39.413176+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -212169,7 +213043,7 @@
           "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X28",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:30.708781+00:00",
+          "reviewed_at": "2026-08-27T02:21:39.413176+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_233.png",
@@ -212413,7 +213287,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-27T02:17:30.718609+00:00",
+      "verified_at": "2026-08-27T02:21:39.421228+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -212456,7 +213330,7 @@
           "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X31",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:30.718609+00:00",
+          "reviewed_at": "2026-08-27T02:21:39.421228+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_233.png",
@@ -212529,7 +213403,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-27T02:17:30.721733+00:00",
+      "verified_at": "2026-08-27T02:21:39.424726+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -212572,7 +213446,7 @@
           "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X32",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:30.721733+00:00",
+          "reviewed_at": "2026-08-27T02:21:39.424726+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_233.png",
@@ -212645,7 +213519,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-27T02:17:30.724092+00:00",
+      "verified_at": "2026-08-27T02:21:39.427803+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -212688,7 +213562,7 @@
           "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X33",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:30.724092+00:00",
+          "reviewed_at": "2026-08-27T02:21:39.427803+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_233.png",
@@ -212947,7 +213821,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-27T02:17:30.733135+00:00",
+      "verified_at": "2026-08-27T02:21:39.437486+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -212990,7 +213864,7 @@
           "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X36",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:30.733135+00:00",
+          "reviewed_at": "2026-08-27T02:21:39.437486+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_234.png",
@@ -213063,7 +213937,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-27T02:17:30.735261+00:00",
+      "verified_at": "2026-08-27T02:21:39.440328+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -213106,7 +213980,7 @@
           "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X37",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:30.735261+00:00",
+          "reviewed_at": "2026-08-27T02:21:39.440328+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_234.png",
@@ -213272,7 +214146,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-27T02:17:30.741552+00:00",
+      "verified_at": "2026-08-27T02:21:39.447337+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -213315,7 +214189,7 @@
           "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X39",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:30.741552+00:00",
+          "reviewed_at": "2026-08-27T02:21:39.447337+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_234.png",
@@ -213573,7 +214447,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-27T02:17:30.746953+00:00",
+      "verified_at": "2026-08-27T02:21:39.452619+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -213616,7 +214490,7 @@
           "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X42",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:30.746953+00:00",
+          "reviewed_at": "2026-08-27T02:21:39.452619+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_234.png",
@@ -213782,7 +214656,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-27T02:17:30.752314+00:00",
+      "verified_at": "2026-08-27T02:21:39.460424+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -213810,7 +214684,7 @@
           "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X44",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:30.752314+00:00",
+          "reviewed_at": "2026-08-27T02:21:39.460424+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_235.png",
@@ -213883,7 +214757,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-27T02:17:30.755410+00:00",
+      "verified_at": "2026-08-27T02:21:39.465262+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -213926,7 +214800,7 @@
           "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X45",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:30.755410+00:00",
+          "reviewed_at": "2026-08-27T02:21:39.465262+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_235.png",
@@ -214093,7 +214967,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-27T02:17:30.760874+00:00",
+      "verified_at": "2026-08-27T02:21:39.470582+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -214136,7 +215010,7 @@
           "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X47",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:30.760874+00:00",
+          "reviewed_at": "2026-08-27T02:21:39.470582+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_235.png",
@@ -214302,7 +215176,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-27T02:17:30.766253+00:00",
+      "verified_at": "2026-08-27T02:21:39.478272+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -214345,7 +215219,7 @@
           "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X49",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:30.766253+00:00",
+          "reviewed_at": "2026-08-27T02:21:39.478272+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_235.png",
@@ -214495,7 +215369,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-27T02:17:30.769464+00:00",
+      "verified_at": "2026-08-27T02:21:39.481709+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -214538,7 +215412,7 @@
           "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X51",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:30.769464+00:00",
+          "reviewed_at": "2026-08-27T02:21:39.481709+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_235.png",
@@ -214798,7 +215672,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-27T02:17:30.776998+00:00",
+      "verified_at": "2026-08-27T02:21:39.490414+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -214826,7 +215700,7 @@
           "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X54",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:30.776998+00:00",
+          "reviewed_at": "2026-08-27T02:21:39.490414+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_236.png",
@@ -214993,7 +215867,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-27T02:17:30.782526+00:00",
+      "verified_at": "2026-08-27T02:21:39.496582+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -215036,7 +215910,7 @@
           "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X56",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:30.782526+00:00",
+          "reviewed_at": "2026-08-27T02:21:39.496582+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_236.png",
@@ -215109,7 +215983,7 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-27T02:17:30.785830+00:00",
+      "verified_at": "2026-08-27T02:21:39.499288+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -215152,7 +216026,7 @@
           "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X57",
           "protocol": "codex-original-page-review-v1",
           "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T02:17:30.785830+00:00",
+          "reviewed_at": "2026-08-27T02:21:39.499288+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_236.png",
