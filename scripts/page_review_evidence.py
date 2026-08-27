@@ -174,6 +174,19 @@ def sync(
     previous: dict[str, Any] = {}
     if output_path.is_file():
         previous = json.loads(output_path.read_text(encoding="utf-8"))
+    # 只保留当前审核队列中的稳定 UID。临时批次若发生终端编码损坏，
+    # 其记录不能进入正式证据，也不能阻断后续账本重建。
+    queue_data = json.loads(queue_path.read_text(encoding="utf-8")) if queue_path.is_file() else {}
+    valid_uids = {
+        str(row.get("source_uid"))
+        for row in queue_data.get("items", [])
+        if isinstance(row, dict) and row.get("source_uid")
+    }
+    if valid_uids and isinstance(previous.get("records"), list):
+        previous["records"] = [
+            row for row in previous["records"]
+            if isinstance(row, dict) and str(row.get("source_uid")) in valid_uids
+        ]
     # 支持按批次持久化审核记录：主文件保留历史记录，reviews_*.jsonl
     # 由断点审核批次追加；按路径排序后再合并，保证可复现且不依赖写入顺序。
     input_paths = [input_path]
