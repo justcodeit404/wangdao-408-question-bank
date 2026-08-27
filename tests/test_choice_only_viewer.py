@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parent.parent
 CHOICE_ONLY_JS = ROOT / "math-bank" / "choice-only.js"
 APP_JS = ROOT / "math-bank" / "app.js"
 INDEX_HTML = ROOT / "math-bank" / "index.html"
+SW_JS = ROOT / "math-bank" / "sw.js"
 DATA_FILES = {
     "数据结构": ROOT / "math-bank" / "data-ds.json",
     "计算机组成原理": ROOT / "math-bank" / "data-coa.json",
@@ -417,6 +418,23 @@ def test_index_html_version_and_assets():
     assert int(vers[0]) >= 38
     assert "显示答案（解答题）" not in html
     assert "解答题 0" not in html
+
+
+def test_viewer_release_version_is_consistent_across_shell_sw_and_registration():
+    """HTML、SW 预缓存和注册脚本必须指向同一发布版本。"""
+    import re
+
+    html = INDEX_HTML.read_text(encoding="utf-8")
+    app = APP_JS.read_text(encoding="utf-8")
+    sw = SW_JS.read_text(encoding="utf-8")
+    html_versions = re.findall(r"\?v=(\d+)", html)
+    assert html_versions and len(set(html_versions)) == 1
+    version = html_versions[0]
+    assert f"__BANK_DATA_VER__='{version}'" in html
+    assert f"register('./sw.js?v={version}')" in app
+    assert f"wd408-ui-v{version}" in sw
+    for asset in ("styles.css", "app.js", "data.js"):
+        assert f"./{asset}?v={version}" in sw
 
 
 def test_filter_preserves_question_ids():
