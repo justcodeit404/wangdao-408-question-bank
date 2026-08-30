@@ -227,6 +227,122 @@
     return prefersStylusByDevice(device);
   }
 
+
+  // ---- InkDocument v1（三端统一格式）----
+  var INK_VERSION = 1;
+
+  function normalizePoint(p) {
+    return { x: Number(p.x) || 0, y: Number(p.y) || 0 };
+  }
+
+  // 把归一化笔画序列化成 InkDocument v1（platform-v2 / 小程序 可读并恢复书写）。
+  function serializeDocument(strokes, width, height, meta) {
+    var w = Math.max(1, Math.round(Number(width) || 1));
+    var h = Math.max(1, Math.round(Number(height) || 1));
+    return {
+      version: INK_VERSION,
+      width: w,
+      height: h,
+      aspectRatio: Math.round((h / w) * 1000) / 1000,
+      strokes: (strokes || []).map(function (s) {
+        return {
+          tool: isInkTool(s && s.tool) ? s.tool : 'pencil',
+          points: (s.points || []).map(normalizePoint),
+        };
+      }),
+      meta: meta || {},
+    };
+  }
+
+  // 解析 InkDocument v1；非法/空返回 null（可安全降级为空白草稿）。
+  function parseDocument(raw) {
+    if (!raw || typeof raw !== 'object') return null;
+    if (raw.version !== INK_VERSION) return null;
+    var strokes = Array.isArray(raw.strokes) ? raw.strokes : [];
+    var ok = strokes.every(function (s) {
+      return s && (s.tool === 'pencil' || s.tool === 'eraser') &&
+        Array.isArray(s.points) && s.points.length > 0 &&
+        s.points.every(function (p) { return p && isFinite(Number(p.x)) && isFinite(Number(p.y)); });
+    });
+    if (!ok || !strokes.length) return null;
+    var width = Number(raw.width) > 0 ? Number(raw.width) : 1000;
+    var height = Number(raw.height) > 0 ? Number(raw.height) : 1000;
+    return {
+      version: INK_VERSION,
+      width: width,
+      height: height,
+      aspectRatio: Number(raw.aspectRatio) || Math.round((height / width) * 1000) / 1000,
+      strokes: strokes.map(function (s) {
+        return { tool: s.tool, points: s.points.map(normalizePoint) };
+      }),
+      meta: raw.meta || {},
+    };
+  }
+
+  // 把 InkDocument 画到指定尺寸的 canvas context（白底、高对比；橡皮用白色 source-over 覆盖）。
+  function paintDocument(context, doc, outWidth, outHeight, inkColor) {
+    var color = inkColor || '#1f2937';
+    (doc.strokes || []).forEach(function (stroke) {
+      var style = stroke.tool === 'eraser'
+        ? { composite: 'source-over', color: '#ffffff', width: 18 }
+        : { composite: 'source-over', color: color, width: 2.2 };
+      var points = stroke.points.map(function (p) { return { x: p.x * outWidth, y: p.y * outHeight }; });
+      var segments = smoothControlPoints(points);
+      context.save();
+      context.globalCompositeOperation = style.composite;
+      context.strokeStyle = style.color;
+      context.lineWidth = style.width;
+      context.lineCap = 'round';
+      context.lineJoin = 'round';
+      context.beginPath();
+      context.moveTo(points[0].x, points[0].y);
+      if (points.length === 1) {
+        context.lineTo(points[0].x + 0.01, points[0].y);
+      } else if (!segments.length) {
+        for (var i = 1; i < points.length; i++) context.lineTo(points[i].x, points[i].y);
+      } else {
+        for (var seg = 0; seg < segments.length; seg++) {
+          context.quadraticCurveTo(segments[seg].control.x, segments[seg].control.y, segments[seg].to.x, segments[seg].to.y);
+        }
+        var last = points[points.length - 1];
+        context.lineTo(last.x, last.y);
+      }
+      context.stroke();
+      context.restore();
+    });
+  }
+
+  // 导出白底高对比 PNG（限制像素与体积，避免透明背景导致视觉模型识别异常）。
+  function documentToPng(doc, maxDim) {
+    maxDim = maxDim || 1400;
+    var scale = Math.min(1, maxDim / Math.max(doc.width, doc.height));
+    var outWidth = Math.max(1, Math.round(doc.width * scale));
+    var outHeight = Math.max(1, Math.round(doc.height * scale));
+    return new Promise(function (resolve, reject) {
+      var canvas = document.createElement('canvas');
+      canvas.width = outWidth;
+      canvas.height = outHeight;
+      var context = canvas.getContext('2d');
+      if (!context) return reject(new Error('canvas 不可用'));
+      context.fillStyle = '#ffffff';
+      context.fillRect(0, 0, outWidth, outHeight);
+      paintDocument(context, doc, outWidth, outHeight, '#1f2937');
+      if (typeof canvas.toBlob === 'function') {
+        canvas.toBlob(function (blob) {
+          if (blob) resolve(blob);
+          else reject(new Error('导出 PNG 失败'));
+        }, 'image/png');
+        return;
+      }
+      // 老浏览器兜底：dataURL
+      var url = canvas.toDataURL('image/png');
+      var bin = atob(url.split(',')[1] || '');
+      var arr = new Uint8Array(bin.length);
+      for (var idx = 0; idx < bin.length; idx++) arr[idx] = bin.charCodeAt(idx);
+      resolve(new Blob([arr], { type: 'image/png' }));
+    });
+  }
+
   return {
     INK_TOOLS: INK_TOOLS,
     PALM_CONTACT_PX: PALM_CONTACT_PX,
@@ -256,5 +372,9 @@
     pinchViewport: pinchViewport,
     smoothControlPoints: smoothControlPoints,
     createSession: createSession,
+    serializeDocument: serializeDocument,
+    parseDocument: parseDocument,
+    paintDocument: paintDocument,
+    documentToPng: documentToPng,
   };
 });

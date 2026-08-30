@@ -247,3 +247,25 @@
   #screenPractice.vsp-split.vsp-max { grid-template-rows: auto minmax(0, 1fr) !important; }
   #screenPractice.vsp-split.vsp-max > .vsp-panel { grid-column: 1; grid-row: 2; }
 }
+
+/* ---- 题目笔记（question-notes.js）---- */
+.vn-note { border-top: 1px solid var(--border, #2a2f2c); padding-top: 8px; margin-top: 8px; }
+.vn-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+.vn-actions .vsp-tool-btn { flex: 0 0 auto; }
+.vn-save { color: var(--text, #e9e7e2); }
+.vn-recognize { color: var(--accent-light, #9aa8f0); }
+.vn-status { font-size: 12px; line-height: 1.5; margin-top: 6px; color: var(--text-dim, #a8a69f); white-space: pre-wrap; }
+.vn-status.vn-error { color: var(--danger, #f07178); }
+.vn-result { margin-top: 8px; }
+.vn-row { display: flex; align-items: flex-start; gap: 8px; flex-wrap: wrap; }
+.vn-thumb { max-width: 120px; max-height: 120px; border: 1px solid var(--border, #2a2f2c); border-radius: 6px; background: #fff; }
+.vn-badge { font-size: 12px; padding: 2px 8px; border-radius: 999px; background: var(--surface-hover, #212624); color: var(--text-dim, #a8a69f); }
+.vn-badge-success { background: rgb(112 219 176 / .16); color: var(--success, #70dbb0); }
+.vn-badge-failed { background: rgb(240 113 120 / .16); color: var(--danger, #f07178); }
+.vn-admin-hint { font-size: 12px; color: var(--warning, #e0a35c); margin-bottom: 6px; }
+.vn-md { font-size: 14px; line-height: 1.7; margin-top: 8px; padding: 8px; background: var(--bg-elevated, #151816); border-radius: 6px; word-break: break-word; }
+.vn-md .katex { font-size: 1.05em; }
+.vn-textarea { width: 100%; min-height: 120px; margin-top: 8px; padding: 8px; font-family: var(--mono, ui-monospace, Consolas, monospace); font-size: 13px; border: 1px solid var(--border, #2a2f2c); border-radius: 6px; background: var(--bg-elevated, #151816); color: var(--text, #e9e7e2); resize: vertical; }
+.vn-ops { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+.vn-hidden { display: none !important; }
+.vn-danger { color: var(--danger, #f07178); }

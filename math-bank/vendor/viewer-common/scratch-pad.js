@@ -150,21 +150,33 @@
     });
   }
 
-  function questionId(controller) {
+  function questionMeta(controller) {
     var question = null;
     if (controller.kind === 'detail') question = global.currentModalQuestion;
     if (controller.kind !== 'detail' && global.practiceQueue) {
       question = global.practiceQueue[global.practiceIndex];
     }
+    var uid = null, chapter = '', title = '';
     if (question) {
-      if (question.uid) return String(question.uid);
-      if (typeof global.questionKey === 'function') return String(global.questionKey(question));
-      if (question.id != null) return String(question.id);
+      if (question.uid) uid = String(question.uid);
+      else if (typeof global.questionKey === 'function') uid = String(global.questionKey(question));
+      else if (question.id != null) uid = String(question.id);
+      if (question.chapter) chapter = String(question.chapter);
+      if (question.title) title = String(question.title);
     }
-    var card = controller.content.querySelector('.q-card[data-uid]');
-    if (card) return String(card.getAttribute('data-uid'));
-    var text = String(controller.content.textContent || '').replace(/\s+/g, ' ').trim();
-    return text ? text.slice(0, 160) : null;
+    if (!uid) {
+      var card = controller.content.querySelector('.q-card[data-uid]');
+      if (card) uid = String(card.getAttribute('data-uid'));
+    }
+    if (!title) {
+      var text = String(controller.content.textContent || '').replace(/\s+/g, ' ').trim();
+      if (text) title = text.slice(0, 160);
+    }
+    return { uid: uid, chapter: chapter, title: title };
+  }
+
+  function questionId(controller) {
+    return questionMeta(controller).uid;
   }
 
   function active(controller) {
@@ -252,7 +264,12 @@
       return;
     }
     controller.wasActive = true;
-    if (controller.session.setQuestion(questionId(controller))) {
+    var nextUid = questionId(controller);
+    if (controller.session.questionId !== nextUid) {
+      // 切题前先持久化未保存笔迹（viewer-common question-notes.js 挂的钩子）
+      if (typeof controller.beforeQuestionChange === 'function') controller.beforeQuestionChange();
+    }
+    if (controller.session.setQuestion(nextUid)) {
       resetViewport(controller);
       close(controller);
     }
@@ -456,7 +473,11 @@
     surface.appendChild(controller.canvas);
     var footer = document.createElement('div');
     footer.className = 'vsp-footer';
+    controller.footer = footer;
     panel.append(toolbar, surface, footer);
+    if (global.ViewerQuestionNotes && global.ViewerQuestionNotes.ready) {
+      global.ViewerQuestionNotes.init(controller);
+    }
     isolateToolbar(controller, toolbar);
     panel.addEventListener('selectstart', function (event) { event.preventDefault(); });
     controller.stylusPreferred = loadStylusPreferred();
@@ -556,7 +577,7 @@
     syncAll();
   }
 
-  global.ViewerScratchPad = { ready: true, sync: syncAll };
+  global.ViewerScratchPad = { ready: true, sync: syncAll, questionMeta: questionMeta };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true });
   else init();
 })(window);
