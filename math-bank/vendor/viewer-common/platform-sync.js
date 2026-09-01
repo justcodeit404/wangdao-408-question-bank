@@ -277,14 +277,14 @@
       var link = document.createElement('link');
       link.id = 'viewer-scratch-pad-css';
       link.rel = 'stylesheet';
-      link.href = base + 'scratch-pad.css?v=5';
+      link.href = base + 'scratch-pad.css?v=6';
       document.head.appendChild(link);
     }
     function loadPad() {
       if (global.ViewerScratchPad || document.getElementById('viewer-scratch-pad-js')) return;
       var pad = document.createElement('script');
       pad.id = 'viewer-scratch-pad-js';
-      pad.src = base + 'scratch-pad.js?v=5';
+      pad.src = base + 'scratch-pad.js?v=6';
       document.head.appendChild(pad);
     }
     if (global.ViewerScratchInk) return loadPad();
@@ -292,7 +292,7 @@
     if (existing) return existing.addEventListener('load', loadPad, { once: true });
     var inkScript = document.createElement('script');
     inkScript.id = 'viewer-scratch-ink-js';
-    inkScript.src = base + 'scratch-ink.js?v=5';
+    inkScript.src = base + 'scratch-ink.js?v=6';
     inkScript.addEventListener('load', loadPad, { once: true });
     document.head.appendChild(inkScript);
   }

@@ -46,11 +46,18 @@
     return stroke;
   }
 
-  function addInkPoint(stroke, point) {
-    var last = stroke.points[stroke.points.length - 1];
-    if (last && last.x === point.x && last.y === point.y) return stroke;
-    return withAppearance(stroke, stroke.points.concat([point]));
-  }
+    function addInkPoint(stroke, point) {
+      var last = stroke.points[stroke.points.length - 1];
+      if (last && last.x === point.x && last.y === point.y) return stroke;
+      return withAppearance(stroke, stroke.points.concat([point]));
+    }
+
+    function appendInkPoint(stroke, point) {
+      var last = stroke.points[stroke.points.length - 1];
+      if (last && last.x === point.x && last.y === point.y) return false;
+      stroke.points.push(point);
+      return true;
+    }
 
   function dropLastStroke(strokes) {
     return strokes.slice(0, -1);
@@ -113,11 +120,11 @@
         liveStroke = beginStroke(point, tool || session.tool, appearance);
         return liveStroke;
       },
-      add: function (point) {
-        if (!liveStroke) return null;
-        liveStroke = addInkPoint(liveStroke, point);
-        return liveStroke;
-      },
+        add: function (point) {
+          if (!liveStroke) return null;
+          appendInkPoint(liveStroke, point);
+          return liveStroke;
+        },
       finish: function () {
         if (!liveStroke) return null;
         session.strokes.push(liveStroke);
@@ -271,7 +278,27 @@
     return false;
   }
 
-  function paintInkPath(ctx, points, style, scale) {
+    var MAX_DPR = 2;
+
+    function clampDpr(dpr) {
+      if (!isFinite(dpr) || dpr < 1) return 1;
+      if (dpr > MAX_DPR) return MAX_DPR;
+      return dpr;
+    }
+
+    function fitCanvas(canvas, cssWidth, cssHeight, dpr) {
+      var used = clampDpr(dpr);
+      var width = Math.max(1, Math.round(Number(cssWidth) * used));
+      var height = Math.max(1, Math.round(Number(cssHeight) * used));
+      var resized = canvas.width !== width || canvas.height !== height;
+      if (resized) {
+        canvas.width = width;
+        canvas.height = height;
+      }
+      return { resized: resized, dpr: used, width: width, height: height };
+    }
+
+    function paintInkPath(ctx, points, style, scale) {
     if (!points.length) return;
     scale = scale || 1;
     ctx.save();
@@ -472,9 +499,13 @@
     isInkTool: isInkTool,
     toolWidth: toolWidth,
     inkStyle: inkStyle,
-    beginStroke: beginStroke,
-    addInkPoint: addInkPoint,
-    dropLastStroke: dropLastStroke,
+      beginStroke: beginStroke,
+      addInkPoint: addInkPoint,
+      appendInkPoint: appendInkPoint,
+      MAX_DPR: MAX_DPR,
+      clampDpr: clampDpr,
+      fitCanvas: fitCanvas,
+      dropLastStroke: dropLastStroke,
     toNormPoint: toNormPoint,
     toCssPoint: toCssPoint,
     splitRatio: splitRatio,

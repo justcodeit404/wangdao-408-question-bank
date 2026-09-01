@@ -233,29 +233,91 @@
   }
 
   function stroke(context, item, scale) {
-    var runtime = context.canvas ? context.canvas.getBoundingClientRect() : null;
-    var points = item.points;
     var style = ink.inkStyle(item.tool, isDark() ? '#E2E8F0' : '#172033', { color: item.color, width: item.width });
-    ink.paintInkPath(context, points, style, scale || 1);
-    void runtime;
+    ink.paintInkPath(context, item.points, style, scale || 1);
   }
 
-  function repaint(controller) {
+  function mapPaperPoint(point, width, height, vp) {
+    var screen = ink.normToScreen(point, width, height, vp);
+    if (point.p == null) return screen;
+    return { x: screen.x, y: screen.y, p: point.p };
+  }
+
+  function rebuildCommitted(controller, rect, dpr) {
+    var canvas = controller.canvas;
+    var layer = controller.committed || document.createElement('canvas');
+    controller.committed = layer;
+    layer.width = canvas.width;
+    layer.height = canvas.height;
+    var ctx = layer.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, rect.width, rect.height);
+    var vp = controller.viewport || ink.IDENTITY_VIEWPORT;
+    controller.session.strokes.forEach(function (item) {
+      stroke(ctx, {
+        tool: item.tool,
+        color: item.color,
+        width: item.width,
+        points: paperToScreen(item.points, rect.width, rect.height, vp),
+      }, vp.scale);
+    });
+  }
+
+  function blitDisplay(controller, rect, dpr) {
+    var canvas = controller.canvas;
+    var ctx = canvas.getContext('2d');
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (controller.committed) ctx.drawImage(controller.committed, 0, 0);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var live = controller.session.live();
+    if (!live) {
+      controller.liveDrawn = 0;
+      return;
+    }
+    var vp = controller.viewport || ink.IDENTITY_VIEWPORT;
+    stroke(ctx, {
+      tool: live.tool,
+      color: live.color,
+      width: live.width,
+      points: paperToScreen(live.points, rect.width, rect.height, vp),
+    }, vp.scale);
+    controller.liveDrawn = live.points.length;
+  }
+
+  function paintLiveDelta(controller, rect, dpr) {
+    var live = controller.session.live();
+    if (!live || !live.points.length) return;
+    var ctx = controller.canvas.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var vp = controller.viewport || ink.IDENTITY_VIEWPORT;
+    var style = ink.inkStyle(live.tool, isDark() ? '#E2E8F0' : '#172033', { color: live.color, width: live.width });
+    var drawn = controller.liveDrawn || 0;
+    var points = live.points;
+    if (drawn <= 0) {
+      ink.paintInkPath(ctx, [mapPaperPoint(points[0], rect.width, rect.height, vp)], style, vp.scale);
+      drawn = 1;
+    }
+    for (var i = drawn; i < points.length; i++) {
+      ink.paintInkPath(ctx, [
+        mapPaperPoint(points[i - 1], rect.width, rect.height, vp),
+        mapPaperPoint(points[i], rect.width, rect.height, vp),
+      ], style, vp.scale);
+    }
+    controller.liveDrawn = points.length;
+  }
+
+  function repaint(controller, mode) {
     var canvas = controller.canvas;
     var rect = canvas.getBoundingClientRect();
     if (!rect.width || !rect.height) return;
-    var ratio = global.devicePixelRatio || 1;
-    var vp = controller.viewport || ink.IDENTITY_VIEWPORT;
-    canvas.width = Math.round(rect.width * ratio);
-    canvas.height = Math.round(rect.height * ratio);
-    var context = canvas.getContext('2d');
-    context.setTransform(ratio, 0, 0, ratio, 0, 0);
-    context.clearRect(0, 0, rect.width, rect.height);
-    controller.session.strokes.forEach(function (item) {
-      stroke(context, { tool: item.tool, color: item.color, width: item.width, points: paperToScreen(item.points, rect.width, rect.height, vp) }, vp.scale);
-    });
-    var live = controller.session.live();
-    if (live) stroke(context, { tool: live.tool, color: live.color, width: live.width, points: paperToScreen(live.points, rect.width, rect.height, vp) }, vp.scale);
+    var fitted = ink.fitCanvas(canvas, rect.width, rect.height, global.devicePixelRatio || 1);
+    if (mode !== 'live' || fitted.resized || !controller.committed) {
+      rebuildCommitted(controller, rect, fitted.dpr);
+      blitDisplay(controller, rect, fitted.dpr);
+      return;
+    }
+    paintLiveDelta(controller, rect, fitted.dpr);
   }
 
   function close(controller) {
@@ -455,7 +517,7 @@
       }
       if (event.pointerId !== drawingId) return;
       appendSamples(event);
-      repaint(controller);
+      repaint(controller, 'live');
     });
     function endPointer(event) {
       var kind = pointers[event.pointerId] ? pointers[event.pointerId].kind : drawingKind;
