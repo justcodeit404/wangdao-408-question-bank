@@ -7,6 +7,10 @@
   var controllers = [];
   var SPLIT_KEY = 'vsp:split';
   var FINGER_KEY = 'scratch:finger-write';
+  var PREFS_KEY = 'vsp:prefs';
+  var PENCIL_COLORS = ['#1C1917', '#1D4ED8', '#BE123C', '#047857'];
+  var HIGHLIGHTER_COLORS = ['rgba(250, 204, 21, 0.42)', 'rgba(74, 222, 128, 0.38)', 'rgba(244, 114, 182, 0.38)', 'rgba(96, 165, 250, 0.38)'];
+  var WIDTH_KEYS = ['fine', 'medium', 'bold'];
   var MIN_RATIO = 0.3;
   var MAX_RATIO = 0.85;
 
@@ -24,6 +28,33 @@
     } catch (error) {
       return;
     }
+  }
+
+  function loadPrefs() {
+    try {
+      var raw = JSON.parse(global.localStorage.getItem(PREFS_KEY) || '');
+      var color = PENCIL_COLORS.indexOf(raw.color) >= 0 ? raw.color : PENCIL_COLORS[0];
+      var hlColor = HIGHLIGHTER_COLORS.indexOf(raw.hlColor) >= 0 ? raw.hlColor : HIGHLIGHTER_COLORS[0];
+      var widthKey = WIDTH_KEYS.indexOf(raw.widthKey) >= 0 ? raw.widthKey : 'medium';
+      return { color: color, hlColor: hlColor, widthKey: widthKey };
+    } catch (error) {
+      return { color: PENCIL_COLORS[0], hlColor: HIGHLIGHTER_COLORS[0], widthKey: 'medium' };
+    }
+  }
+
+  function storePrefs(prefs) {
+    try { global.localStorage.setItem(PREFS_KEY, JSON.stringify(prefs)); } catch (error) { /* quota */ }
+  }
+
+  function resolvedPencilColor(color) {
+    if (color === PENCIL_COLORS[0] && isDark()) return '#E2E8F0';
+    return color;
+  }
+
+  function appearanceFor(tool, prefs) {
+    if (tool === 'highlighter') return { color: prefs.hlColor, width: ink.toolWidth(tool, prefs.widthKey) };
+    if (tool === 'eraser') return { width: ink.toolWidth(tool, prefs.widthKey) };
+    return { color: resolvedPencilColor(prefs.color), width: ink.toolWidth(tool, prefs.widthKey) };
   }
 
   function loadStylusPreferred() {
@@ -195,35 +226,18 @@
 
   function paperToScreen(points, width, height, vp) {
     return points.map(function (point) {
-      return ink.normToScreen(point, width, height, vp);
+      var screen = ink.normToScreen(point, width, height, vp);
+      if (point.p == null) return screen;
+      return { x: screen.x, y: screen.y, p: point.p };
     });
   }
 
-  function stroke(context, points, tool, scale) {
-    if (!points.length) return;
-    var style = ink.inkStyle(tool, isDark() ? '#E2E8F0' : '#172033');
-    var segments = ink.smoothControlPoints(points);
-    context.save();
-    context.globalCompositeOperation = style.composite;
-    context.strokeStyle = style.color;
-    context.lineWidth = style.width * (scale || 1);
-    context.lineCap = 'round';
-    context.lineJoin = 'round';
-    context.beginPath();
-    context.moveTo(points[0].x, points[0].y);
-    if (points.length === 1) {
-      context.lineTo(points[0].x + 0.01, points[0].y);
-    } else if (!segments.length) {
-      for (var index = 1; index < points.length; index++) context.lineTo(points[index].x, points[index].y);
-    } else {
-      for (var seg = 0; seg < segments.length; seg++) {
-        context.quadraticCurveTo(segments[seg].control.x, segments[seg].control.y, segments[seg].to.x, segments[seg].to.y);
-      }
-      var last = points[points.length - 1];
-      context.lineTo(last.x, last.y);
-    }
-    context.stroke();
-    context.restore();
+  function stroke(context, item, scale) {
+    var runtime = context.canvas ? context.canvas.getBoundingClientRect() : null;
+    var points = item.points;
+    var style = ink.inkStyle(item.tool, isDark() ? '#E2E8F0' : '#172033', { color: item.color, width: item.width });
+    ink.paintInkPath(context, points, style, scale || 1);
+    void runtime;
   }
 
   function repaint(controller) {
@@ -238,10 +252,10 @@
     context.setTransform(ratio, 0, 0, ratio, 0, 0);
     context.clearRect(0, 0, rect.width, rect.height);
     controller.session.strokes.forEach(function (item) {
-      stroke(context, paperToScreen(item.points, rect.width, rect.height, vp), item.tool, vp.scale);
+      stroke(context, { tool: item.tool, color: item.color, width: item.width, points: paperToScreen(item.points, rect.width, rect.height, vp) }, vp.scale);
     });
     var live = controller.session.live();
-    if (live) stroke(context, paperToScreen(live.points, rect.width, rect.height, vp), live.tool, vp.scale);
+    if (live) stroke(context, { tool: live.tool, color: live.color, width: live.width, points: paperToScreen(live.points, rect.width, rect.height, vp) }, vp.scale);
   }
 
   function close(controller) {
@@ -279,7 +293,28 @@
     controller.session.tool = tool;
     controller.panel.setAttribute('data-tool', tool);
     controller.pencil.setAttribute('aria-pressed', String(tool === 'pencil'));
+    if (controller.highlighter) controller.highlighter.setAttribute('aria-pressed', String(tool === 'highlighter'));
     controller.eraser.setAttribute('aria-pressed', String(tool === 'eraser'));
+    syncSwatches(controller);
+  }
+
+  function syncSwatches(controller) {
+    var tool = controller.session.tool;
+    var colors = tool === 'highlighter' ? HIGHLIGHTER_COLORS : PENCIL_COLORS;
+    var active = tool === 'highlighter' ? controller.prefs.hlColor : controller.prefs.color;
+    if (controller.colorRow) {
+      controller.colorRow.hidden = tool === 'eraser';
+      Array.prototype.forEach.call(controller.colorRow.querySelectorAll('.vsp-color'), function (dot, index) {
+        dot.style.background = colors[index].indexOf('rgba') === 0 ? colors[index].replace(/[\d.]+\)$/, '1)') : colors[index];
+        dot.setAttribute('aria-pressed', String(colors[index] === active));
+        dot.dataset.color = colors[index];
+      });
+    }
+    if (controller.widthRow) {
+      Array.prototype.forEach.call(controller.widthRow.querySelectorAll('.vsp-width'), function (btn) {
+        btn.setAttribute('aria-pressed', String(btn.dataset.width === controller.prefs.widthKey));
+      });
+    }
   }
 
   function localPoint(canvas, event) {
@@ -303,6 +338,7 @@
 
   function wireCanvas(controller) {
     var pointers = Object.create(null);
+    var fingerMeta = Object.create(null);
     var drawingId = null;
     var drawingKind = null;
     var pinchPair = null;
@@ -321,18 +357,23 @@
       if (drawingKind !== 'pen') abortDraw();
     }
 
+    function beginStyled(paper) {
+      controller.session.begin(paper, controller.session.tool, appearanceFor(controller.session.tool, controller.prefs));
+    }
+
     function adoptDraw(event, local) {
       var kind = ink.parsePointerKind(event.pointerType);
       var paper = ink.screenToNorm(local.x, local.y, local.width, local.height, controller.viewport);
-      if (ink.resumeLiveStroke(kind, !!controller.session.live())) {
+      var live = controller.session.live();
+      var last = live && live.points.length ? live.points[live.points.length - 1] : null;
+      paper = ink.withPointPressure(paper, ink.pointPressure(kind, event.pressure, last, paper));
+      if (ink.resumeLiveStroke(kind, !!live)) {
         drawingId = event.pointerId;
         drawingKind = kind;
-        var live = controller.session.live();
-        var last = live && live.points.length ? live.points[live.points.length - 1] : null;
         if (ink.shouldJoinPenStroke(last, paper)) controller.session.add(paper);
         else {
           controller.session.finish();
-          controller.session.begin(paper);
+          beginStyled(paper);
         }
         return;
       }
@@ -340,22 +381,26 @@
       if (!ink.acceptDrawPointer(asDrawPointer(event), controller.stylusPreferred)) return;
       drawingId = event.pointerId;
       drawingKind = kind;
-      controller.session.begin(paper);
+      beginStyled(paper);
     }
 
     function appendSamples(event) {
       var rect = controller.canvas.getBoundingClientRect();
+      var kind = ink.parsePointerKind(event.pointerType);
       var batch = typeof event.getCoalescedEvents === 'function' ? event.getCoalescedEvents() : [];
       if (!batch.length) batch = [event];
       for (var index = 0; index < batch.length; index++) {
         var sample = batch[index];
-        controller.session.add(ink.screenToNorm(
+        var paper = ink.screenToNorm(
           sample.clientX - rect.left,
           sample.clientY - rect.top,
           rect.width,
           rect.height,
           controller.viewport,
-        ));
+        );
+        var live = controller.session.live();
+        var last = live && live.points.length ? live.points[live.points.length - 1] : null;
+        controller.session.add(ink.withPointPressure(paper, ink.pointPressure(kind, sample.pressure, last, paper)));
       }
     }
 
@@ -367,6 +412,9 @@
       controller.canvas.setPointerCapture(event.pointerId);
       var local = localPoint(controller.canvas, event);
       pointers[event.pointerId] = { x: local.x, y: local.y, kind: ink.parsePointerKind(event.pointerType) };
+      if (ink.parsePointerKind(event.pointerType) === 'touch') {
+        fingerMeta[event.pointerId] = { x: local.x, y: local.y, t: Date.now(), moved: false };
+      }
       if (touchPointerIds(pointers).length >= 2) {
         startPinch();
         return;
@@ -390,10 +438,15 @@
       var previous = { x: current.x, y: current.y };
       current.x = local.x;
       current.y = local.y;
+      var meta = fingerMeta[event.pointerId];
+      if (meta && Math.hypot(local.x - meta.x, local.y - meta.y) > ink.TAP_MAX_MOVE_PX) meta.moved = true;
       if (pinchPair && (event.pointerId === pinchPair[0] || event.pointerId === pinchPair[1])) {
         var first = pointers[pinchPair[0]];
         var second = pointers[pinchPair[1]];
+        var metaA = fingerMeta[pinchPair[0]];
+        var metaB = fingerMeta[pinchPair[1]];
         if (!first || !second) return;
+        if (!metaA || !metaB || (!metaA.moved && !metaB.moved)) return;
         var prevA = event.pointerId === pinchPair[0] ? previous : first;
         var prevB = event.pointerId === pinchPair[1] ? previous : second;
         controller.viewport = ink.pinchViewport(controller.viewport, prevA, prevB, first, second);
@@ -406,10 +459,24 @@
     });
     function endPointer(event) {
       var kind = pointers[event.pointerId] ? pointers[event.pointerId].kind : drawingKind;
+      var liftedMeta = fingerMeta[event.pointerId];
       delete pointers[event.pointerId];
       if (pinchPair && (event.pointerId === pinchPair[0] || event.pointerId === pinchPair[1])) {
-        pinchPair = null;
+        var otherId = event.pointerId === pinchPair[0] ? pinchPair[1] : pinchPair[0];
+        var otherMeta = fingerMeta[otherId];
+        var otherDown = pointers[otherId];
+        if (!otherDown && liftedMeta && otherMeta && !liftedMeta.moved && !otherMeta.moved) {
+          var now = Date.now();
+          if (ink.isTwoFingerTap({ dx: 0, dy: 0, ms: now - liftedMeta.t }, { dx: 0, dy: 0, ms: now - otherMeta.t })) {
+            controller.session.undo();
+          }
+          delete fingerMeta[pinchPair[0]];
+          delete fingerMeta[pinchPair[1]];
+          pinchPair = null;
+        }
         if (touchPointerIds(pointers).length >= 2) startPinch();
+      } else {
+        delete fingerMeta[event.pointerId];
       }
       if (event.pointerId !== drawingId) return;
       var end = event.type === 'pointercancel' ? 'cancel' : 'up';
@@ -456,15 +523,49 @@
     resetViewport(controller);
     var toolbar = document.createElement('div');
     toolbar.className = 'vsp-toolbar';
+    controller.prefs = loadPrefs();
     controller.pencil = button('铅笔', 'vsp-tool-btn');
+    controller.highlighter = button('荧光笔', 'vsp-tool-btn');
     controller.eraser = button('橡皮', 'vsp-tool-btn');
     var undo = button('撤销', 'vsp-tool-btn');
+    var redo = button('重做', 'vsp-tool-btn');
     var clear = button('清空', 'vsp-tool-btn');
     controller.maxBtn = button('放大', 'vsp-tool-btn');
     controller.maxBtn.setAttribute('aria-pressed', 'false');
     controller.penOnly = button('仅笔', 'vsp-tool-btn');
     var collapse = button('收起', 'vsp-tool-btn');
-    toolbar.append(controller.pencil, controller.eraser, controller.penOnly, undo, clear, controller.maxBtn, collapse);
+    controller.colorRow = document.createElement('div');
+    controller.colorRow.className = 'vsp-swatches';
+    PENCIL_COLORS.forEach(function (color, index) {
+      var dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'vsp-color';
+      dot.setAttribute('aria-label', '颜色' + (index + 1));
+      controller.colorRow.appendChild(dot);
+      dot.addEventListener('click', function () {
+        if (controller.session.tool === 'highlighter') controller.prefs.hlColor = dot.dataset.color;
+        else controller.prefs.color = dot.dataset.color;
+        storePrefs(controller.prefs);
+        syncSwatches(controller);
+      });
+    });
+    controller.widthRow = document.createElement('div');
+    controller.widthRow.className = 'vsp-swatches';
+    WIDTH_KEYS.forEach(function (key) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'vsp-width';
+      btn.dataset.width = key;
+      btn.setAttribute('aria-label', key === 'fine' ? '细笔' : key === 'medium' ? '中笔' : '粗笔');
+      btn.innerHTML = '<span></span>';
+      controller.widthRow.appendChild(btn);
+      btn.addEventListener('click', function () {
+        controller.prefs.widthKey = key;
+        storePrefs(controller.prefs);
+        syncSwatches(controller);
+      });
+    });
+    toolbar.append(controller.pencil, controller.highlighter, controller.eraser, controller.colorRow, controller.widthRow, controller.penOnly, undo, redo, clear, controller.maxBtn, collapse);
     var surface = document.createElement('div');
     surface.className = 'vsp-surface';
     controller.canvas = document.createElement('canvas');
@@ -484,6 +585,7 @@
     controller.penOnly.setAttribute('aria-pressed', String(controller.stylusPreferred));
     controller.penOnly.setAttribute('aria-label', '仅触控笔书写');
     controller.pencil.addEventListener('click', function () { setTool(controller, 'pencil'); });
+    controller.highlighter.addEventListener('click', function () { setTool(controller, 'highlighter'); });
     controller.eraser.addEventListener('click', function () { setTool(controller, 'eraser'); });
     controller.penOnly.addEventListener('click', function () {
       controller.stylusPreferred = !controller.stylusPreferred;
@@ -491,6 +593,7 @@
       storeFingerWrite(!controller.stylusPreferred);
     });
     undo.addEventListener('click', function () { controller.session.undo(); repaint(controller); });
+    redo.addEventListener('click', function () { controller.session.redo(); repaint(controller); });
     clear.addEventListener('click', function () { controller.session.clear(); repaint(controller); });
     controller.maxBtn.addEventListener('click', function () {
       setMaxed(controller, !controller.split.classList.contains('vsp-max'));

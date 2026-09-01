@@ -4,26 +4,52 @@
 })(typeof window !== 'undefined' ? window : globalThis, function () {
   'use strict';
 
-  var INK_TOOLS = ['pencil', 'eraser'];
+  var INK_TOOLS = ['pencil', 'highlighter', 'eraser'];
+  var DEFAULT_HIGHLIGHTER = 'rgba(250, 204, 21, 0.42)';
+  var PENCIL_WIDTHS = { fine: 1.3, medium: 2.2, bold: 3.8 };
+  var HIGHLIGHTER_WIDTHS = { fine: 8, medium: 14, bold: 22 };
+  var ERASER_WIDTHS = { fine: 10, medium: 16, bold: 28 };
+  var TAP_MAX_MS = 280;
+  var TAP_MAX_MOVE_PX = 14;
 
   function isInkTool(value) {
-    return value === 'pencil' || value === 'eraser';
+    return value === 'pencil' || value === 'highlighter' || value === 'eraser';
   }
 
-  function inkStyle(tool, ink) {
-    return tool === 'eraser'
-      ? { composite: 'destination-out', color: '#000000', width: 16 }
-      : { composite: 'source-over', color: ink, width: 2.2 };
+  function toolWidth(tool, key) {
+    if (tool === 'eraser') return ERASER_WIDTHS[key] || 16;
+    if (tool === 'highlighter') return HIGHLIGHTER_WIDTHS[key] || 14;
+    return PENCIL_WIDTHS[key] || 2.2;
   }
 
-  function beginStroke(point, tool) {
-    return { tool: tool, points: [point] };
+  function inkStyle(tool, ink, appearance) {
+    appearance = appearance || {};
+    if (tool === 'eraser') return { composite: 'destination-out', color: '#000000', width: appearance.width || 16 };
+    if (tool === 'highlighter') {
+      return { composite: 'source-over', color: appearance.color || DEFAULT_HIGHLIGHTER, width: appearance.width || 14 };
+    }
+    return { composite: 'source-over', color: appearance.color || ink, width: appearance.width || 2.2 };
+  }
+
+  function withAppearance(stroke, points) {
+    var next = { tool: stroke.tool, points: points };
+    if (stroke.color) next.color = stroke.color;
+    if (stroke.width != null) next.width = stroke.width;
+    return next;
+  }
+
+  function beginStroke(point, tool, appearance) {
+    appearance = appearance || {};
+    var stroke = { tool: tool, points: [point] };
+    if (appearance.color) stroke.color = appearance.color;
+    if (appearance.width != null) stroke.width = appearance.width;
+    return stroke;
   }
 
   function addInkPoint(stroke, point) {
     var last = stroke.points[stroke.points.length - 1];
     if (last && last.x === point.x && last.y === point.y) return stroke;
-    return { tool: stroke.tool, points: stroke.points.concat([point]) };
+    return withAppearance(stroke, stroke.points.concat([point]));
   }
 
   function dropLastStroke(strokes) {
@@ -61,6 +87,7 @@
       setQuestion: function (id) {
         if (id === session.questionId) return false;
         session.strokes = [];
+        session.redoStack = [];
         session.tool = 'pencil';
         session.open = false;
         session.questionId = id;
@@ -76,13 +103,14 @@
       },
       reset: function () {
         session.strokes = [];
+        session.redoStack = [];
         session.tool = 'pencil';
         session.open = false;
         session.questionId = null;
         liveStroke = null;
       },
-      begin: function (point) {
-        liveStroke = beginStroke(point, session.tool);
+      begin: function (point, tool, appearance) {
+        liveStroke = beginStroke(point, tool || session.tool, appearance);
         return liveStroke;
       },
       add: function (point) {
@@ -93,6 +121,7 @@
       finish: function () {
         if (!liveStroke) return null;
         session.strokes.push(liveStroke);
+        session.redoStack = [];
         var finished = liveStroke;
         liveStroke = null;
         return finished;
@@ -103,13 +132,25 @@
       live: function () {
         return liveStroke;
       },
+      redoStack: [],
       undo: function () {
         liveStroke = null;
+        if (!session.strokes.length) return;
+        session.redoStack.push(session.strokes[session.strokes.length - 1]);
         session.strokes = dropLastStroke(session.strokes);
+      },
+      redo: function () {
+        liveStroke = null;
+        if (!session.redoStack.length) return;
+        session.strokes = session.strokes.concat([session.redoStack.pop()]);
+      },
+      clearRedo: function () {
+        session.redoStack = [];
       },
       clear: function () {
         liveStroke = null;
         session.strokes = [];
+        session.redoStack = [];
       },
       replay: function (width, height) {
         return session.strokes.map(function (stroke) {
@@ -184,6 +225,90 @@
     return segments;
   }
 
+  function clamp01(value) {
+    if (value < 0) return 0;
+    if (value > 1) return 1;
+    return value;
+  }
+
+  function samplePenPressure(kind, pressure) {
+    if (kind !== 'pen') return null;
+    if (!isFinite(pressure) || pressure <= 0) return 0.45;
+    return clamp01(Math.max(0.08, pressure));
+  }
+
+  function velocityPressure(prev, next) {
+    var dist = Math.hypot(next.x - prev.x, next.y - prev.y);
+    var t = Math.min(1, dist / 0.04);
+    return 0.82 - 0.5 * t;
+  }
+
+  function pointPressure(kind, pressure, prev, next) {
+    var sampled = samplePenPressure(kind, pressure);
+    if (sampled != null) return sampled;
+    return prev ? velocityPressure(prev, next) : 0.55;
+  }
+
+  function widthFromPressure(base, pressure) {
+    var p = isFinite(pressure) ? clamp01(pressure) : 0.55;
+    return base * (0.38 + 1.15 * p);
+  }
+
+  function withPointPressure(point, pressure) {
+    return { x: point.x, y: point.y, p: clamp01(pressure) };
+  }
+
+  function isTwoFingerTap(a, b, maxMs, maxMove) {
+    maxMs = maxMs == null ? TAP_MAX_MS : maxMs;
+    maxMove = maxMove == null ? TAP_MAX_MOVE_PX : maxMove;
+    return a.ms <= maxMs && b.ms <= maxMs
+      && Math.hypot(a.dx, a.dy) <= maxMove
+      && Math.hypot(b.dx, b.dy) <= maxMove;
+  }
+
+  function hasVariablePressure(points) {
+    for (var i = 0; i < points.length; i++) if (points[i].p != null) return true;
+    return false;
+  }
+
+  function paintInkPath(ctx, points, style, scale) {
+    if (!points.length) return;
+    scale = scale || 1;
+    ctx.save();
+    ctx.globalCompositeOperation = style.composite;
+    ctx.strokeStyle = style.color;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    if (points.length === 1 || !hasVariablePressure(points)) {
+      var segments = smoothControlPoints(points);
+      ctx.lineWidth = style.width * scale;
+      ctx.beginPath();
+      ctx.moveTo(points[0].x, points[0].y);
+      if (points.length === 1) ctx.lineTo(points[0].x + 0.01, points[0].y);
+      else if (!segments.length) {
+        for (var i = 1; i < points.length; i++) ctx.lineTo(points[i].x, points[i].y);
+      } else {
+        for (var seg = 0; seg < segments.length; seg++) {
+          ctx.quadraticCurveTo(segments[seg].control.x, segments[seg].control.y, segments[seg].to.x, segments[seg].to.y);
+        }
+        ctx.lineTo(points[points.length - 1].x, points[points.length - 1].y);
+      }
+      ctx.stroke();
+      ctx.restore();
+      return;
+    }
+    for (var index = 1; index < points.length; index++) {
+      var from = points[index - 1];
+      var to = points[index];
+      ctx.lineWidth = ((widthFromPressure(style.width, from.p || 0.55) + widthFromPressure(style.width, to.p || 0.55)) / 2) * scale;
+      ctx.beginPath();
+      ctx.moveTo(from.x, from.y);
+      ctx.lineTo(to.x, to.y);
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
   function parsePointerKind(pointerType) {
     if (pointerType === 'pen' || pointerType === 'touch') return pointerType;
     return 'mouse';
@@ -232,7 +357,10 @@
   var INK_VERSION = 1;
 
   function normalizePoint(p) {
-    return { x: Number(p.x) || 0, y: Number(p.y) || 0 };
+    var point = { x: Number(p.x) || 0, y: Number(p.y) || 0 };
+    var pressure = Number(p.p);
+    if (isFinite(pressure)) point.p = clamp01(pressure);
+    return point;
   }
 
   // 把归一化笔画序列化成 InkDocument v1（platform-v2 / 小程序 可读并恢复书写）。
@@ -245,10 +373,13 @@
       height: h,
       aspectRatio: Math.round((h / w) * 1000) / 1000,
       strokes: (strokes || []).map(function (s) {
-        return {
+        var stroke = {
           tool: isInkTool(s && s.tool) ? s.tool : 'pencil',
           points: (s.points || []).map(normalizePoint),
         };
+        if (s && s.color) stroke.color = s.color;
+        if (s && s.width != null) stroke.width = s.width;
+        return stroke;
       }),
       meta: meta || {},
     };
@@ -260,7 +391,7 @@
     if (raw.version !== INK_VERSION) return null;
     var strokes = Array.isArray(raw.strokes) ? raw.strokes : [];
     var ok = strokes.every(function (s) {
-      return s && (s.tool === 'pencil' || s.tool === 'eraser') &&
+      return s && isInkTool(s.tool) &&
         Array.isArray(s.points) && s.points.length > 0 &&
         s.points.every(function (p) { return p && isFinite(Number(p.x)) && isFinite(Number(p.y)); });
     });
@@ -273,7 +404,10 @@
       height: height,
       aspectRatio: Number(raw.aspectRatio) || Math.round((height / width) * 1000) / 1000,
       strokes: strokes.map(function (s) {
-        return { tool: s.tool, points: s.points.map(normalizePoint) };
+        var stroke = { tool: s.tool, points: s.points.map(normalizePoint) };
+        if (s.color) stroke.color = s.color;
+        if (s.width != null) stroke.width = s.width;
+        return stroke;
       }),
       meta: raw.meta || {},
     };
@@ -284,31 +418,14 @@
     var color = inkColor || '#1f2937';
     (doc.strokes || []).forEach(function (stroke) {
       var style = stroke.tool === 'eraser'
-        ? { composite: 'source-over', color: '#ffffff', width: 18 }
-        : { composite: 'source-over', color: color, width: 2.2 };
-      var points = stroke.points.map(function (p) { return { x: p.x * outWidth, y: p.y * outHeight }; });
-      var segments = smoothControlPoints(points);
-      context.save();
-      context.globalCompositeOperation = style.composite;
-      context.strokeStyle = style.color;
-      context.lineWidth = style.width;
-      context.lineCap = 'round';
-      context.lineJoin = 'round';
-      context.beginPath();
-      context.moveTo(points[0].x, points[0].y);
-      if (points.length === 1) {
-        context.lineTo(points[0].x + 0.01, points[0].y);
-      } else if (!segments.length) {
-        for (var i = 1; i < points.length; i++) context.lineTo(points[i].x, points[i].y);
-      } else {
-        for (var seg = 0; seg < segments.length; seg++) {
-          context.quadraticCurveTo(segments[seg].control.x, segments[seg].control.y, segments[seg].to.x, segments[seg].to.y);
-        }
-        var last = points[points.length - 1];
-        context.lineTo(last.x, last.y);
-      }
-      context.stroke();
-      context.restore();
+        ? { composite: 'source-over', color: '#ffffff', width: stroke.width || 18 }
+        : inkStyle(stroke.tool === 'highlighter' ? 'highlighter' : 'pencil', color, { color: stroke.color, width: stroke.width });
+      var points = stroke.points.map(function (p) {
+        var mapped = { x: p.x * outWidth, y: p.y * outHeight };
+        if (p.p != null) mapped.p = p.p;
+        return mapped;
+      });
+      paintInkPath(context, points, style, 1);
     });
   }
 
@@ -345,11 +462,15 @@
 
   return {
     INK_TOOLS: INK_TOOLS,
+    DEFAULT_HIGHLIGHTER: DEFAULT_HIGHLIGHTER,
+    TAP_MAX_MS: TAP_MAX_MS,
+    TAP_MAX_MOVE_PX: TAP_MAX_MOVE_PX,
     PALM_CONTACT_PX: PALM_CONTACT_PX,
     MIN_SCALE: MIN_SCALE,
     MAX_SCALE: MAX_SCALE,
     IDENTITY_VIEWPORT: IDENTITY_VIEWPORT,
     isInkTool: isInkTool,
+    toolWidth: toolWidth,
     inkStyle: inkStyle,
     beginStroke: beginStroke,
     addInkPoint: addInkPoint,
@@ -371,6 +492,14 @@
     normToScreen: normToScreen,
     pinchViewport: pinchViewport,
     smoothControlPoints: smoothControlPoints,
+    clamp01: clamp01,
+    samplePenPressure: samplePenPressure,
+    velocityPressure: velocityPressure,
+    pointPressure: pointPressure,
+    widthFromPressure: widthFromPressure,
+    withPointPressure: withPointPressure,
+    isTwoFingerTap: isTwoFingerTap,
+    paintInkPath: paintInkPath,
     createSession: createSession,
     serializeDocument: serializeDocument,
     parseDocument: parseDocument,
