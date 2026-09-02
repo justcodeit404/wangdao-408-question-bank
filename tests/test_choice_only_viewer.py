@@ -38,9 +38,7 @@ def _node_eval(expr: str, *, data: dict | None = None, data_path: Path | None = 
         if data_path is not None:
             data_load = f"const DATA = JSON.parse(require('fs').readFileSync({json.dumps(str(data_path))}, 'utf8'));"
         elif data is not None:
-            tmp_data = (
-                Path(tempfile.gettempdir()) / f"bank408-choice-only-{id(data)}.json"
-            )
+            tmp_data = Path(tempfile.gettempdir()) / f"bank408-choice-only-{id(data)}.json"
             tmp_data.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
             data_load = f"const DATA = JSON.parse(require('fs').readFileSync({json.dumps(str(tmp_data))}, 'utf8'));"
         else:
@@ -193,9 +191,7 @@ def test_stats_only_show_choice_when_essay_zero():
 
 
 def test_empty_essay_chapter_not_in_tree():
-    data = _sample_course(
-        choice_n=5, essay_n=0, empty_essay_chapter=True, orphan_parent=True
-    )
+    data = _sample_course(choice_n=5, essay_n=0, empty_essay_chapter=True, orphan_parent=True)
     out = _node_eval(
         """
         const filtered = api.filterCourseDataToChoices(DATA);
@@ -337,9 +333,7 @@ def test_app_js_no_hardcoded_essay_stat():
     assert (
         "makeToggle(" in text
         and "tree-l3"
-        not in text.split("function renderChapters")[1].split(
-            "function computeChapterMastery"
-        )[0]
+        not in text.split("function renderChapters")[1].split("function computeChapterMastery")[0]
     )
     assert "selectChapter(filterKey, l2Btn)" in text
 
@@ -347,15 +341,11 @@ def test_app_js_no_hardcoded_essay_stat():
 def test_choice_detail_binds_reveal_answer():
     """选择题详情也要绑「显示答案」，不能只靠点选项才揭晓。"""
     text = APP_JS.read_text(encoding="utf-8")
-    fn = text.split("function bindDetailInteractions")[1].split(
-        "function renderModalContent"
-    )[0]
+    fn = text.split("function bindDetailInteractions")[1].split("function renderModalContent")[0]
     assert "bindRevealAnswer(container)" in fn
     ordered, _, rest = fn.partition("if (q.type === '选择题' && isOrderedChoice(q))")
     assert "bindRevealAnswer(container)" in ordered
-    assert (
-        "bindRevealAnswer(container)" not in rest.split("if (q.type === '选择题')")[-1]
-    )
+    assert "bindRevealAnswer(container)" not in rest.split("if (q.type === '选择题')")[-1]
 
 
 def test_ds_x22_ternary_tree_explanation_not_ocr_garbage():
@@ -435,6 +425,10 @@ def test_viewer_release_version_is_consistent_across_shell_sw_and_registration()
     assert f"wd408-ui-v{version}" in sw
     for asset in ("styles.css", "app.js", "data.js"):
         assert f"./{asset}?v={version}" in sw
+    assert "function bankAssetQuery" in app
+    assert "function resolveImageSrc" in app
+    src = app[app.index("function resolveImageSrc") : app.index("function imageHtml")]
+    assert "bankAssetQuery()" in src
 
 
 def test_filter_preserves_question_ids():

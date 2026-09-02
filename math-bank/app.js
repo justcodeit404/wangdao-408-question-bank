@@ -2708,22 +2708,30 @@ function nextQuestion() {
   }
 }
 
+function bankAssetQuery() {
+  const ver = (typeof window !== 'undefined' && window.__BANK_DATA_VER__)
+    ? String(window.__BANK_DATA_VER__)
+    : '';
+  return ver ? ('?v=' + ver) : '';
+}
+
 /** 题图路径：相对当前页，兼容 /banks/408/ 挂载与本地根路径 */
 function resolveImageSrc(imageRef) {
   if (!imageRef) return '';
+  const q = bankAssetQuery();
   if (imageRef.cropped) {
     const rel = String(imageRef.cropped).replace(/^\/+/, '');
     // 平台挂载下用绝对路径，避免相对路径在子路由失效
     if (typeof location !== 'undefined' && (location.pathname || '').indexOf('/banks/408') === 0) {
-      return '/banks/408/' + rel;
+      return '/banks/408/' + rel + q;
     }
-    return rel;
+    return rel + q;
   }
   const page = String(imageRef.page).padStart(3, '0');
   if (typeof location !== 'undefined' && (location.pathname || '').indexOf('/banks/408') === 0) {
-    return `/banks/408/../pdf_images/page_${page}.png`;
+    return `/banks/408/../pdf_images/page_${page}.png` + q;
   }
-  return `../pdf_images/page_${page}.png`;
+  return `../pdf_images/page_${page}.png` + q;
 }
 
 function imageHtml(imageRef) {
@@ -4544,7 +4552,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=50').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=51').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {
