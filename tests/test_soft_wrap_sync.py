@@ -85,14 +85,30 @@ def test_x05_sequential_storage_stem_keeps_array_table():
         and "gdbhefca" in json.dumps(q.get("options") or {}, ensure_ascii=False)
     )
     content = question["content"]
+    expl = str((question.get("answer") or {}).get("explanation") or "")
     assert "一维数组" in content
     assert question.get("has_image") is True
-    assert (question.get("image_ref") or {}).get(
-        "cropped"
-    ) == "crops/ds/page_152_X05.png"
+    assert (question.get("image_ref") or {}).get("cropped") == "crops/ds/page_152_X05.png"
     assert "D b C d e f g h" not in content
     assert "|" not in content
-    assert "2i+1和2i+2" not in str((question.get("answer") or {}).get("explanation"))
+    assert "2i+1和2i+2" not in expl
+    assert "gdbhefca" in expl
+    assert "7:f" in expl
+    assert "12:h" in expl
+    assert "原书" in expl
+    crop = COURSES["ds"][1].parent / "crops" / "ds" / "page_152_X05.png"
+    assert crop.is_file()
+
+
+def test_x05_corrected_sequential_array_postorder_is_gdbhefca():
+    arr = [None, "a", "b", "c", "d", "∧", "e", "f", "g", "∧", "∧", "∧", "h"]
+
+    def post(i: int) -> str:
+        if i >= len(arr) or arr[i] in {None, "∧"}:
+            return ""
+        return post(2 * i) + post(2 * i + 1) + arr[i]
+
+    assert post(1) == "gdbhefca"
 
 
 def test_quality_ledger_hashes_match_all_published_json():
