@@ -123,6 +123,16 @@ let practiceTimer = null;       // setInterval 句柄
 let practiceDeadline = 0;       // 限时模式的截止时间戳
 let qualityLedger = null;
 
+function ledgerFromHoldList(hold) {
+  const items = {};
+  const uids = (hold && Array.isArray(hold.source_uids)) ? hold.source_uids : [];
+  for (let i = 0; i < uids.length; i++) {
+    const uid = uids[i];
+    if (uid) items[uid] = { overall: 'hold' };
+  }
+  return { items: items };
+}
+
 async function loadQualityLedger() {
   if (qualityLedger) return qualityLedger;
   if (window.__QUALITY_LEDGER__) {
@@ -131,20 +141,14 @@ async function loadQualityLedger() {
   }
   try {
     if (window.location.protocol === 'file:') {
-      await new Promise((resolve, reject) => {
-        const script = document.createElement('script');
-        script.src = 'quality-ledger.js';
-        script.onload = resolve;
-        script.onerror = reject;
-        document.head.appendChild(script);
-      });
-      qualityLedger = window.__QUALITY_LEDGER__ || null;
+      // file:// 无法 fetch JSON；完整 quality-ledger.js ~8MB，不阻塞本地预览
+      qualityLedger = { items: {} };
     } else {
-      const response = await fetch('quality-ledger.json', { cache: 'no-store' });
-      if (response.ok) qualityLedger = await response.json();
+      const response = await fetch('quality-hold.json');
+      if (response.ok) qualityLedger = ledgerFromHoldList(await response.json());
     }
   } catch (e) {
-    console.warn('[bank-408] quality ledger unavailable; keeping progressive view', e);
+    console.warn('[bank-408] quality hold unavailable; keeping progressive view', e);
   }
   return qualityLedger;
 }
@@ -1144,16 +1148,18 @@ function buildAllQuestions() {
 }
 
 async function init() {
-  await loadQualityLedger();
   loadStatus();
   restoreFromUrl();
   renderCourseTabs();
   renderMobileCourseSelect();
 
   const course = getCurrentCourse();
+  const ledgerPromise = loadQualityLedger();
   if (course) {
     document.getElementById('resultText').textContent = '正在加载课程数据…';
-    await loadBankData(course);
+    await Promise.all([ledgerPromise, loadBankData(course)]);
+  } else {
+    await ledgerPromise;
   }
 
   currentChapters = getCurrentChapters();
@@ -4552,7 +4558,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=51').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=52').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {
