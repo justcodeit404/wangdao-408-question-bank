@@ -2615,6 +2615,16 @@ function getCurrentDetailQuestion() {
   return currentModalQuestion;
 }
 
+function getActiveQuestion() {
+  const detail = document.getElementById('detailModal');
+  const practice = document.getElementById('practiceModal');
+  if (detail && detail.classList.contains('active')) return getCurrentDetailQuestion();
+  if (practice && practice.classList.contains('active') && practiceQueue[practiceIndex]) {
+    return practiceQueue[practiceIndex];
+  }
+  return null;
+}
+
 function toggleDetailFavorite() {
   const q = getCurrentDetailQuestion();
   if (!q) return;

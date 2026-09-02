@@ -82,6 +82,26 @@
     return ratio;
   }
 
+  function resolveQuestionUid(input) {
+    input = input || {};
+    var question = input.question || null;
+    if (!question && typeof input.getActiveQuestion === 'function') {
+      try { question = input.getActiveQuestion(); } catch (error) { question = null; }
+    }
+    if (question) {
+      if (question.uid) return String(question.uid);
+      if (typeof input.questionKey === 'function') {
+        try {
+          var keyed = input.questionKey(question);
+          if (keyed != null && keyed !== '') return String(keyed);
+        } catch (error) { /* fall through */ }
+      }
+      if (question.id != null) return String(question.id);
+    }
+    if (input.contentUid) return String(input.contentUid);
+    return null;
+  }
+
   function createSession() {
     var liveStroke = null;
     // Mutable by design: one session accumulates pointer input without replacing UI references.
@@ -509,6 +529,7 @@
     toNormPoint: toNormPoint,
     toCssPoint: toCssPoint,
     splitRatio: splitRatio,
+    resolveQuestionUid: resolveQuestionUid,
     parsePointerKind: parsePointerKind,
     commitStrokeOnEnd: commitStrokeOnEnd,
     resumeLiveStroke: resumeLiveStroke,

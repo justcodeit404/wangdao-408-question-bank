@@ -181,23 +181,38 @@
     });
   }
 
-  function questionMeta(controller) {
-    var question = null;
-    if (controller.kind === 'detail') question = global.currentModalQuestion;
-    if (controller.kind !== 'detail' && global.practiceQueue) {
-      question = global.practiceQueue[global.practiceIndex];
+  function hostQuestion(controller) {
+    if (typeof global.getActiveQuestion === 'function') {
+      try {
+        var active = global.getActiveQuestion();
+        if (active) return active;
+      } catch (error) { /* host getter optional */ }
     }
-    var uid = null, chapter = '', title = '';
+    if (controller.kind === 'detail' && typeof global.getCurrentDetailQuestion === 'function') {
+      try { return global.getCurrentDetailQuestion(); } catch (error) { /* optional */ }
+    }
+    if (controller.kind === 'detail') return global.currentModalQuestion || null;
+    if (global.practiceQueue) return global.practiceQueue[global.practiceIndex] || null;
+    return null;
+  }
+
+  function contentUid(controller) {
+    var el = controller.content.querySelector('[data-uid]');
+    if (!el) return null;
+    return el.getAttribute('data-uid');
+  }
+
+  function questionMeta(controller) {
+    var question = hostQuestion(controller);
+    var uid = ink.resolveQuestionUid({
+      question: question,
+      questionKey: global.questionKey,
+      contentUid: contentUid(controller),
+    });
+    var chapter = '', title = '';
     if (question) {
-      if (question.uid) uid = String(question.uid);
-      else if (typeof global.questionKey === 'function') uid = String(global.questionKey(question));
-      else if (question.id != null) uid = String(question.id);
       if (question.chapter) chapter = String(question.chapter);
       if (question.title) title = String(question.title);
-    }
-    if (!uid) {
-      var card = controller.content.querySelector('.q-card[data-uid]');
-      if (card) uid = String(card.getAttribute('data-uid'));
     }
     if (!title) {
       var text = String(controller.content.textContent || '').replace(/\s+/g, ' ').trim();
@@ -235,12 +250,6 @@
   function stroke(context, item, scale) {
     var style = ink.inkStyle(item.tool, isDark() ? '#E2E8F0' : '#172033', { color: item.color, width: item.width });
     ink.paintInkPath(context, item.points, style, scale || 1);
-  }
-
-  function mapPaperPoint(point, width, height, vp) {
-    var screen = ink.normToScreen(point, width, height, vp);
-    if (point.p == null) return screen;
-    return { x: screen.x, y: screen.y, p: point.p };
   }
 
   function rebuildCommitted(controller, rect, dpr) {
@@ -285,28 +294,6 @@
     controller.liveDrawn = live.points.length;
   }
 
-  function paintLiveDelta(controller, rect, dpr) {
-    var live = controller.session.live();
-    if (!live || !live.points.length) return;
-    var ctx = controller.canvas.getContext('2d');
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    var vp = controller.viewport || ink.IDENTITY_VIEWPORT;
-    var style = ink.inkStyle(live.tool, isDark() ? '#E2E8F0' : '#172033', { color: live.color, width: live.width });
-    var drawn = controller.liveDrawn || 0;
-    var points = live.points;
-    if (drawn <= 0) {
-      ink.paintInkPath(ctx, [mapPaperPoint(points[0], rect.width, rect.height, vp)], style, vp.scale);
-      drawn = 1;
-    }
-    for (var i = drawn; i < points.length; i++) {
-      ink.paintInkPath(ctx, [
-        mapPaperPoint(points[i - 1], rect.width, rect.height, vp),
-        mapPaperPoint(points[i], rect.width, rect.height, vp),
-      ], style, vp.scale);
-    }
-    controller.liveDrawn = points.length;
-  }
-
   function repaint(controller, mode) {
     var canvas = controller.canvas;
     var rect = canvas.getBoundingClientRect();
@@ -314,10 +301,8 @@
     var fitted = ink.fitCanvas(canvas, rect.width, rect.height, global.devicePixelRatio || 1);
     if (mode !== 'live' || fitted.resized || !controller.committed) {
       rebuildCommitted(controller, rect, fitted.dpr);
-      blitDisplay(controller, rect, fitted.dpr);
-      return;
     }
-    paintLiveDelta(controller, rect, fitted.dpr);
+    blitDisplay(controller, rect, fitted.dpr);
   }
 
   function close(controller) {
@@ -345,9 +330,16 @@
       // 切题前先持久化未保存笔迹（viewer-common question-notes.js 挂的钩子）
       if (typeof controller.beforeQuestionChange === 'function') controller.beforeQuestionChange();
     }
+    var wasOpen = controller.session.open;
     if (controller.session.setQuestion(nextUid)) {
       resetViewport(controller);
-      close(controller);
+      controller.committed = null;
+      if (wasOpen) {
+        controller.session.openPad();
+        repaint(controller);
+      } else {
+        close(controller);
+      }
     }
   }
 
@@ -725,7 +717,7 @@
     if (detail) attach('detail', detail, document.getElementById('modalContent'), detail.querySelector('.modal-header-actions') || detail.querySelector('.modal-header'), detail.querySelector('.modal-box'));
     if (practice) attach('practice', practice, document.getElementById('practiceContent'), practice.querySelector('.modal-header'), practice.querySelector('.modal-box'));
     if (politics) attach('politics', politics, document.getElementById('pracBody'), politics.querySelector('.prac-header'), politics);
-    ['renderModalContent', 'renderPractice', 'closeModal', 'closePractice', 'showScreen'].forEach(wrap);
+    ['renderModalContent', 'renderPractice', 'nextPractice', 'prevPractice', 'closeModal', 'closePractice', 'showScreen'].forEach(wrap);
     global.addEventListener('resize', syncAll);
     global.addEventListener('orientationchange', syncAll);
     ['pagehide', 'beforeunload'].forEach(function (name) {
