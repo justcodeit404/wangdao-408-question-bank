@@ -391,6 +391,49 @@
     return { wrap: wrap, doSave: doSave, setStatus: setStatus, renderResult: renderResult };
   }
 
+  var IMPORT_CHUNK = 100;
+
+  function normalizeTextItem(raw) {
+    if (!raw || typeof raw !== 'object') return null;
+    var markdown = String(raw.markdown || '').trim();
+    if (!markdown) return null;
+    var bank = String(raw.bank || '').trim();
+    if (!bank) return null;
+    return {
+      bank: bank.slice(0, 32),
+      source_uid: String(raw.source_uid || '').slice(0, 256),
+      chapter: String(raw.chapter || '').slice(0, 256),
+      title: String(raw.title || '').slice(0, 2000),
+      markdown: markdown.slice(0, 20000),
+    };
+  }
+
+  async function importTextNotes(rawItems) {
+    if (!onPlatformHost()) return { ok: false, saved: 0, skipped: 0, unresolved: 0 };
+    var auth = await ensureAuthed();
+    if (!auth.ok) return { ok: false, saved: 0, skipped: 0, unresolved: 0 };
+    var items = [];
+    var source = Array.isArray(rawItems) ? rawItems : [];
+    for (var i = 0; i < source.length; i++) {
+      var item = normalizeTextItem(source[i]);
+      if (item) items.push(item);
+    }
+    if (!items.length) return { ok: true, saved: 0, skipped: 0, unresolved: 0 };
+    var saved = 0, skipped = 0, unresolved = 0;
+    for (var offset = 0; offset < items.length; offset += IMPORT_CHUNK) {
+      var chunk = items.slice(offset, offset + IMPORT_CHUNK);
+      var res = await api('/api/notes/import-text', {
+        method: 'POST',
+        body: JSON.stringify({ items: chunk }),
+      }, auth);
+      if (!res.ok || !res.data) return { ok: false, saved: saved, skipped: skipped, unresolved: unresolved, status: res.status };
+      saved += Number(res.data.saved) || 0;
+      skipped += Number(res.data.skipped) || 0;
+      unresolved += Number(res.data.unresolved) || 0;
+    }
+    return { ok: true, saved: saved, skipped: skipped, unresolved: unresolved };
+  }
+
   function init(controller) {
     if (!controller || controller.noteUI) return;
     var ui = buildNoteUI(controller);
@@ -419,6 +462,7 @@
     renderMarkdown: renderMarkdown,
     enqueue: enqueue,
     readQueue: readQueue,
+    importTextNotes: importTextNotes,
   };
 
   // 平台挂载模式下打开时自动补传本地暂存

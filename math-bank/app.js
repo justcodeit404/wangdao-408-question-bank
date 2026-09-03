@@ -656,6 +656,39 @@ function setNote(q, text) {
   saveNotes();
 }
 
+function textNotePayload(q, markdown) {
+  const md = String(markdown || '').trim();
+  if (!md) return null;
+  return {
+    bank: platformBankCode(q),
+    source_uid: platformSourceUid(q),
+    chapter: q.chapter || '',
+    title: String(q.content || '').slice(0, 2000),
+    markdown: md.slice(0, 20000),
+  };
+}
+
+function flushLocalTextNotes() {
+  const api = window.ViewerQuestionNotes;
+  if (!api || !api.importTextNotes) return;
+  if (!window.ViewerPlatformSync || !ViewerPlatformSync.onPlatformHost || !ViewerPlatformSync.onPlatformHost()) return;
+  const items = [];
+  allQuestions.forEach((q) => {
+    const payload = textNotePayload(q, getNote(q));
+    if (payload) items.push(payload);
+  });
+  if (!items.length) return;
+  api.importTextNotes(items);
+}
+
+function syncOneTextNote(q) {
+  const api = window.ViewerQuestionNotes;
+  if (!api || !api.importTextNotes) return;
+  const payload = textNotePayload(q, getNote(q));
+  if (!payload) return;
+  api.importTextNotes([payload]);
+}
+
 // 取得题目的复习记录；若无记录则返回初始结构
 function getReview(q) {
   const key = questionKey(q);
@@ -1184,6 +1217,7 @@ async function init() {
 
   // 打开、切回页面、重新联网及本地数据变化时自动双向同步。
   if (typeof setupAutomaticPlatformSync === 'function') setupAutomaticPlatformSync();
+  setTimeout(flushLocalTextNotes, 900);
   // 主页/链接带 ?resume=1 时自动打开上次题目
   try {
     const params = new URLSearchParams(window.location.search);
@@ -1270,6 +1304,7 @@ async function switchCourse(course) {
   applyFilters();
   updateResumeBar();
   updateChapterCursorUI();
+  setTimeout(flushLocalTextNotes, 400);
 }
 
 // ========================
@@ -2411,12 +2446,14 @@ function bindNotesUI(q) {
     saveTimer = setTimeout(() => {
       setNote(q, ta.value);
       updateStatus();
+      syncOneTextNote(q);
     }, 400);
   });
   ta.addEventListener('blur', () => {
     setNote(q, ta.value);
     updateStatus();
     updatePreview();
+    syncOneTextNote(q);
   });
 
   const copyBtn = document.getElementById('btnCopyQ');
@@ -4558,7 +4595,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=52').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=53').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {
