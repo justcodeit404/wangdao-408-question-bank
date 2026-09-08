@@ -59,6 +59,22 @@ def test_ds_2012_preorder_uses_latin_a_not_alpha():
     assert "b,c,d,e,a" in compact
 
 
+def test_ds_2022_inorder_neighbors_split_roman_items():
+    question = _q("ds", "二叉树的遍历和线索二叉树", "X41")
+    content = question["content"]
+    assert "Iq是p的双亲" not in content
+    assert "I. q是p的双亲" in content
+    assert "II. q是p的右孩子" in content
+    assert "III. q是p的右兄弟" in content
+    assert "IV. q是p的双亲的双亲" in content
+    expl = (question.get("answer") or {}).get("explanation") or ""
+    assert "α是p的双亲" not in expl
+    assert "{p,9)" not in expl
+    assert "{p,q}" in expl
+    assert "说法III不可能" in expl
+    assert expl.rstrip().endswith("说法III不可能。")
+
+
 def test_ds_2024_inorder_uses_q_not_nine():
     question = _q("ds", "二叉树的遍历和线索二叉树", "X43")
     compact = question["content"].replace(" ", "").replace("\n", "")
@@ -71,7 +87,7 @@ def test_ds_2024_inorder_uses_q_not_nine():
 
 def test_page_review_manifest_is_valid_and_unique():
     patches = load_page_review_patches()
-    assert len(patches) == 48
+    assert len(patches) == 49
     assert all(len(key) == 3 for key in patches)
 
 
