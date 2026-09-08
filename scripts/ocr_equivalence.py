@@ -42,6 +42,14 @@ NUMBER_RE = re.compile(r"\d+(?:[.]\d+)?")
 OPERATOR_RE = re.compile(r"[+\-*/=<>≤≥%~^|&]")
 NEGATION_RE = re.compile(r"不|非|无|未|没|not|no|never")
 CHOICE_RE = re.compile(r"[A-G]")
+# After casefold: complexity O( vs digit 0(, code-like l vs 1, roman i/l runs.
+_COMPLEXITY_O_RE = re.compile(r"(?<![a-z0-9])o\(")
+_COMPLEXITY_ZERO_RE = re.compile(r"(?<![a-z0-9])0\(")
+_CODELIKE_L_RE = re.compile(
+    r"(?<=[a-z0-9])l(?=[a-z0-9\-])|(?<=[a-z0-9\-])l(?=[a-z0-9])|(?<=[a-z0-9\-])l$"
+)
+_CODELIKE_ONE_RE = re.compile(r"(?<=[a-z])1(?=[a-z0-9\-])|(?<=[a-z0-9\-])1(?=[a-z])|(?<=[a-z\-])1$")
+_ROMAN_IL_RUN_RE = re.compile(r"[il]{2,}")
 
 
 def _strip_latex_wrap(value: str) -> str:
@@ -70,6 +78,22 @@ def _tokens(value: str) -> tuple[tuple[str, ...], tuple[str, ...], int]:
     )
 
 
+def _glyph_profile(value: str) -> tuple[int, int, int, int, tuple[str, ...]]:
+    """Fingerprint OCR-confusable glyphs; unequal profiles ⇒ semantic conflict."""
+    return (
+        len(_COMPLEXITY_O_RE.findall(value)),
+        len(_COMPLEXITY_ZERO_RE.findall(value)),
+        len(_CODELIKE_L_RE.findall(value)),
+        len(_CODELIKE_ONE_RE.findall(value)),
+        tuple(_ROMAN_IL_RUN_RE.findall(value)),
+    )
+
+
+def _glyphs_conflict(left: str, right: str) -> bool:
+    """True when O/0, code-like l/1, or roman IIl-style runs disagree."""
+    return _glyph_profile(left) != _glyph_profile(right)
+
+
 def source_texts_equivalent(left: Any, right: Any) -> bool:
     """True only when remaining differences are format, not meaning."""
     a = canonical_source_text(left)
@@ -79,6 +103,9 @@ def source_texts_equivalent(left: Any, right: Any) -> bool:
     if a == b:
         return True
     if _tokens(a) != _tokens(b):
+        return False
+    # Substring near-match must not hide glyph confusions (III ⊂ IIIIl, etc.).
+    if _glyphs_conflict(a, b):
         return False
     return a in b or b in a
 
