@@ -1,8 +1,25 @@
 import hashlib
+import json
+from pathlib import Path
 
 import pytest
 
-from vision_quality_gate import VisionConflictError, apply_patch_to_question, compare_results, index_batch_results, retryable_conflict, select_rotating, source_hash, summarize_round
+from vision_quality_gate import (
+    VisionConflictError,
+    VisionInfrastructureError,
+    apply_patch_to_question,
+    compare_results,
+    index_batch_results,
+    load_uids_file,
+    require_distinct_models,
+    retryable_conflict,
+    run_gate,
+    select_by_uids,
+    select_full_candidates,
+    select_rotating,
+    source_hash,
+    summarize_round,
+)
 
 
 def _rows(count=20):
@@ -33,7 +50,10 @@ def test_rotation_does_not_repeat_before_coverage():
 
 def test_rotation_starts_new_epoch_after_full_coverage():
     rows = _rows(5)
-    state = {"verified": {row["source_uid"]: source_hash(row["question"]) for row in rows}, "epoch": 0}
+    state = {
+        "verified": {row["source_uid"]: source_hash(row["question"]) for row in rows},
+        "epoch": 0,
+    }
     selected = select_rotating(rows, state, 5, "round-2")
     assert len(selected) == 5
     assert state["epoch"] == 1
@@ -41,7 +61,14 @@ def test_rotation_starts_new_epoch_after_full_coverage():
 
 def test_dual_consensus_produces_exact_patch():
     row = _rows(1)[0]
-    first = {"content": "新题干", "options": row["question"]["options"], "answer_choice": "C", "explanation": "新解析", "requires_image": False, "confidence": 0.99}
+    first = {
+        "content": "新题干",
+        "options": row["question"]["options"],
+        "answer_choice": "C",
+        "explanation": "新解析",
+        "requires_image": False,
+        "confidence": 0.99,
+    }
     second = dict(first)
     result = compare_results(row, first, second, "C")
     assert result["status"] == "auto_fixed"
@@ -50,7 +77,14 @@ def test_dual_consensus_produces_exact_patch():
 
 def test_ocr_mismatch_does_not_block_dual_consensus():
     row = _rows(1)[0]
-    result = {"content": "题干0", "options": row["question"]["options"], "answer_choice": "C", "explanation": "解析", "requires_image": False, "confidence": 0.99}
+    result = {
+        "content": "题干0",
+        "options": row["question"]["options"],
+        "answer_choice": "C",
+        "explanation": "解析",
+        "requires_image": False,
+        "confidence": 0.99,
+    }
     decided = compare_results(row, result, result, "A")
     assert decided["status"] == "verified"
     assert decided["consensus"]["answer.choice"] == "C"
@@ -58,14 +92,28 @@ def test_ocr_mismatch_does_not_block_dual_consensus():
 
 def test_empty_answer_is_conflict():
     row = _rows(1)[0]
-    result = {"content": "题干0", "options": row["question"]["options"], "answer_choice": "", "explanation": "解析", "requires_image": False, "confidence": 0.99}
+    result = {
+        "content": "题干0",
+        "options": row["question"]["options"],
+        "answer_choice": "",
+        "explanation": "解析",
+        "requires_image": False,
+        "confidence": 0.99,
+    }
     with pytest.raises(VisionConflictError, match="答案"):
         compare_results(row, result, result, None)
 
 
 def test_low_confidence_isolation():
     row = _rows(1)[0]
-    result = {"content": "题干0", "options": row["question"]["options"], "answer_choice": "C", "explanation": "解析", "requires_image": False, "confidence": 0.4}
+    result = {
+        "content": "题干0",
+        "options": row["question"]["options"],
+        "answer_choice": "C",
+        "explanation": "解析",
+        "requires_image": False,
+        "confidence": 0.4,
+    }
     with pytest.raises(VisionConflictError, match="置信度"):
         compare_results(row, result, result, "C")
 
@@ -89,12 +137,28 @@ def test_index_batch_results_fills_missing_uid_in_order():
 
 
 def test_summarize_round_counts_hold_reasons():
-    digest = summarize_round([
-        {"selection": "rotation", "status": "verified"},
-        {"selection": "rotation", "status": "auto_fixed", "source_uid": "a"},
-        {"selection": "rotation", "status": "held", "reason": "双模型字段冲突: content", "source_uid": "b", "course_key": "ds", "chapter": "绪论"},
-        {"selection": "rotation", "status": "held", "reason": "双模型字段冲突: content", "source_uid": "c", "course_key": "ds", "chapter": "绪论"},
-    ])
+    digest = summarize_round(
+        [
+            {"selection": "rotation", "status": "verified"},
+            {"selection": "rotation", "status": "auto_fixed", "source_uid": "a"},
+            {
+                "selection": "rotation",
+                "status": "held",
+                "reason": "双模型字段冲突: content",
+                "source_uid": "b",
+                "course_key": "ds",
+                "chapter": "绪论",
+            },
+            {
+                "selection": "rotation",
+                "status": "held",
+                "reason": "双模型字段冲突: content",
+                "source_uid": "c",
+                "course_key": "ds",
+                "chapter": "绪论",
+            },
+        ]
+    )
     assert digest["sample_total"] == 4
     assert digest["held"] == 2
     assert digest["hold_reasons"]["双模型字段冲突: content"] == 2
@@ -114,3 +178,48 @@ def test_patched_hash_does_not_resample():
     state = {"verified": {rows[0]["source_uid"]: source_hash(patched_q)}, "epoch": 0}
     selected = select_rotating(rows, state, 1, "round-2")
     assert rows[0]["source_uid"] not in {row["source_uid"] for row in selected}
+
+
+def test_require_distinct_models_rejects_equal_pair():
+    with pytest.raises(VisionInfrastructureError, match="不同视觉模型"):
+        require_distinct_models(("same", "same"))
+
+
+def test_live_run_rejects_equal_models_not_only_full(monkeypatch):
+    """Any live API path (rotation default) must refuse models[0]==models[1]."""
+    monkeypatch.setattr(
+        "vision_quality_gate._api_config",
+        lambda: ("fake-key", "https://example.invalid/v1", ("same", "same")),
+    )
+
+    def boom_client():
+        raise AssertionError("client_factory must not run after model gate")
+
+    with pytest.raises(VisionInfrastructureError, match="不同视觉模型"):
+        run_gate(client_factory=boom_client, full=False)
+
+
+def test_full_selection_includes_hold_uid_with_matching_verified_hash():
+    rows = _rows(3)
+    hold_uid = rows[1]["source_uid"]
+    verified = {row["source_uid"]: source_hash(row["question"]) for row in rows}
+    selected = select_full_candidates(rows, verified, hold_uids={hold_uid})
+    selected_uids = {row["source_uid"] for row in selected}
+    assert hold_uid in selected_uids
+    assert rows[0]["source_uid"] not in selected_uids
+    assert rows[2]["source_uid"] not in selected_uids
+
+
+def test_uids_file_selects_intersection_with_choice_rows(tmp_path: Path):
+    rows = _rows(4)
+    wanted = [rows[0]["source_uid"], rows[2]["source_uid"], "408:missing::ghost"]
+    path = tmp_path / "uids.json"
+    path.write_text(json.dumps(wanted), encoding="utf-8")
+    uids = load_uids_file(path)
+    selected = select_by_uids(rows, uids)
+    assert [row["source_uid"] for row in selected] == [rows[0]["source_uid"], rows[2]["source_uid"]]
+    assert load_uids_file(path) == {
+        rows[0]["source_uid"],
+        rows[2]["source_uid"],
+        "408:missing::ghost",
+    }
