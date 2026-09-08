@@ -8,7 +8,7 @@ import json
 import re
 from collections.abc import Mapping
 from pathlib import Path
-from typing import Final
+from typing import Final, Literal
 
 from config import COURSES, MATH_BANK_DIR
 from utils import write_json_atomic
@@ -19,6 +19,18 @@ OCR_NOISE_RE: Final[re.Pattern[str]] = re.compile(
 )
 TRUNC_STEM_RE: Final[re.Pattern[str]] = re.compile(r"当扫描到时")
 TRUNC_STEM_OK_RE: Final[re.Pattern[str]] = re.compile(r"当扫描到\s+\S+\s*时")
+
+HoldBucket = Literal["structural", "source_conflict", "answer_only", "non_choice"]
+SOURCE_CONFLICT_REASON_CODES: Final[frozenset[str]] = frozenset(
+    {
+        "luna_source_conflict",
+        "source_conflict",
+        "source_unreadable",
+        "model_conflict",
+        "ocr_stem_or_options_mismatch",
+        "luna_stale_source_hash",
+    }
+)
 
 
 def source_uid(course_key: str, chapter: str, qid: str) -> str:
@@ -83,9 +95,7 @@ def _choice_should_hold(question: Mapping[str, object]) -> bool:
         return True
     if any(not str(value or "").strip() for value in options.values()):
         return True
-    bodies = [
-        str(value).strip() for value in options.values() if str(value or "").strip()
-    ]
+    bodies = [str(value).strip() for value in options.values() if str(value or "").strip()]
     if len(bodies) != len(set(bodies)):
         return True
     choice = str(_answer_obj(question).get("choice") or "").strip().upper()
@@ -100,6 +110,34 @@ def _choice_should_hold(question: Mapping[str, object]) -> bool:
         ]
     )
     return bool(OCR_NOISE_RE.search(blob))
+
+
+def classify_hold_bucket(
+    question: Mapping[str, object],
+    ledger_item: Mapping[str, object],
+) -> HoldBucket:
+    """Partition one hold row into recovery bucket (live ledger definitions).
+
+    Order: non_choice → structural → source_conflict → answer_only.
+    Dual luna source+answer stays source_conflict. Does not use
+    primary_hold_reason==answer_conflict as the answer_only detector.
+    Residual choice holds (e.g. pending/pending) default to source_conflict
+    so the four buckets cover the full hold population.
+    """
+    qtype = str(question.get("type") or "")
+    if "选择" not in qtype:
+        return "non_choice"
+    if _choice_should_hold(question):
+        return "structural"
+    codes = {str(code) for code in (ledger_item.get("reason_codes") or []) if str(code).strip()}
+    source_fidelity = str(ledger_item.get("source_fidelity") or "")
+    if source_fidelity == "conflict" or bool(codes & SOURCE_CONFLICT_REASON_CODES):
+        return "source_conflict"
+    answer_validation = str(ledger_item.get("answer_validation") or "")
+    if source_fidelity == "verified" and answer_validation == "conflict":
+        return "answer_only"
+    # Choice hold outside answer_only: still needs stem/source recovery path.
+    return "source_conflict"
 
 
 def collect_all_hold_uids() -> frozenset[str]:
