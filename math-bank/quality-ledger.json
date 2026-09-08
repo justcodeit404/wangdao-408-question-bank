@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-08T02:52:54+00:00",
+  "generated_at": "2026-09-08T08:05:24+00:00",
   "published_hashes": {
-    "ds": "a2f7cc77abbb607dd19a7510cf2497d79f499177b36831cb3ec0d00aaf639dc3",
-    "coa": "8f9ea82d6d82e53ea38daf200ae95a361b5c43742f0ce9881b207f671f7f06f7",
+    "ds": "84cb9c652b34f650f77556c47462a7936dce508aa43c5675a888dd90bde7e5e6",
+    "coa": "3ba94639390b1e6bb8cea4c953c2eb4f1b5a401fe2e03394e778840fabe4fb3d",
     "net": "0fc4432f9af3214d9d5628799a687af65394f1f32fd0f87deb86500c484ba17a",
     "os": "1ddd5c333a9107366647956ca55ed6e1d401a06cb99cbffb22e33b25c71feb9a"
   },
@@ -12,9 +12,9 @@
       "name": "数据结构",
       "mode": "strict",
       "total": 797,
-      "certified": 455,
+      "certified": 451,
       "pending": 0,
-      "held": 342
+      "held": 346
     },
     "coa": {
       "name": "计算机组成原理",
@@ -43,9 +43,9 @@
   },
   "summary": {
     "total": 2869,
-    "certified": 1978,
+    "certified": 1974,
     "pending": 0,
-    "held": 891
+    "held": 895
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -6701,14 +6701,12 @@
       "course_key": "coa",
       "chapter": "中央处理器 · 指令流水线 · 选择题",
       "question_id": "X03",
-      "source_hash": "99aaed92552ba37388c65e1fc09a1e3597d0317b461691100694e04541065b50",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "3c7f37edd0fc7c62aa6fc706819b580468d2c49b8a7460a6c8b770fbcb07d973",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         260,
@@ -6732,48 +6730,9 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "99aaed92552ba37388c65e1fc09a1e3597d0317b461691100694e04541065b50",
-          "choices": [
-            "B",
-            "B"
-          ],
-          "confidence": [
-            0.99,
-            0.0
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "B",
-            "B"
-          ],
-          "blind_confidence": [
-            0.99,
-            0.0
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::中央处理器 · 指令流水线 · 选择题::X04": {
       "source_uid": "408:cs408-coa::中央处理器 · 指令流水线 · 选择题::X04",
@@ -6922,14 +6881,12 @@
       "course_key": "coa",
       "chapter": "中央处理器 · 指令流水线 · 选择题",
       "question_id": "X05",
-      "source_hash": "1fd17e610207d99014891c9c48d752eb2500c6419fe5c3fd6a35b93598a4e195",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "4199de245efc427040a1ffe3dc2e44b9682fca3ab8611c7d0fa81ba00ed7c9f4",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         260,
@@ -6953,48 +6910,9 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "1fd17e610207d99014891c9c48d752eb2500c6419fe5c3fd6a35b93598a4e195",
-          "choices": [
-            "D",
-            "D"
-          ],
-          "confidence": [
-            0.96,
-            0.0
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "D",
-            "D"
-          ],
-          "blind_confidence": [
-            0.96,
-            0.0
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::中央处理器 · 指令流水线 · 选择题::X06": {
       "source_uid": "408:cs408-coa::中央处理器 · 指令流水线 · 选择题::X06",
@@ -7395,14 +7313,12 @@
       "course_key": "coa",
       "chapter": "中央处理器 · 指令流水线 · 选择题",
       "question_id": "X09",
-      "source_hash": "caf0e3d1d77d3de544ef771653588c37cc343911e77d7293d6d5d3adb6fc818e",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "ef2ba5e2df705980e9840e51798899af276747735b1565c3abf7050e3ef5dde0",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         260,
@@ -7426,48 +7342,9 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "caf0e3d1d77d3de544ef771653588c37cc343911e77d7293d6d5d3adb6fc818e",
-          "choices": [
-            "D",
-            "D"
-          ],
-          "confidence": [
-            0.9,
-            0.0
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "D",
-            "D"
-          ],
-          "blind_confidence": [
-            0.9,
-            0.0
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::中央处理器 · 指令流水线 · 选择题::X10": {
       "source_uid": "408:cs408-coa::中央处理器 · 指令流水线 · 选择题::X10",
@@ -7616,13 +7493,12 @@
       "course_key": "coa",
       "chapter": "中央处理器 · 指令流水线 · 选择题",
       "question_id": "X11",
-      "source_hash": "0f4b899b4f200f20e283ffdb2df82f0c4ca0016f8732596e6d4251a2ec97c9cf",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "ec95522c9554b3ef71e2afe630760524f1f1364fd0f0bf3853a0527d5f9433e9",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         260,
@@ -7646,33 +7522,9 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "0f4b899b4f200f20e283ffdb2df82f0c4ca0016f8732596e6d4251a2ec97c9cf",
-          "choices": [],
-          "confidence": [],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "status": "hold",
-          "reason": "stale_source_hash"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_options_mismatch;raw_options_mismatch;ocr_stem_or_options_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::中央处理器 · 指令流水线 · 选择题::X12": {
       "source_uid": "408:cs408-coa::中央处理器 · 指令流水线 · 选择题::X12",
@@ -7836,14 +7688,12 @@
       "course_key": "coa",
       "chapter": "中央处理器 · 指令流水线 · 选择题",
       "question_id": "X13",
-      "source_hash": "93212a1dee176734bfb3acfe446f0e209fb50760c287452b12661f283fa7cb33",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "2e11adca06762a8a54d8deb9f0d3561427a3c549e3ce73449c9ce15c374a58a4",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         260,
@@ -7867,62 +7717,21 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "93212a1dee176734bfb3acfe446f0e209fb50760c287452b12661f283fa7cb33",
-          "choices": [
-            "D",
-            "D"
-          ],
-          "confidence": [
-            0.0,
-            0.95
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "D",
-            "D"
-          ],
-          "blind_confidence": [
-            0.0,
-            0.95
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::中央处理器 · 指令流水线 · 选择题::X14": {
       "source_uid": "408:cs408-coa::中央处理器 · 指令流水线 · 选择题::X14",
       "course_key": "coa",
       "chapter": "中央处理器 · 指令流水线 · 选择题",
       "question_id": "X14",
-      "source_hash": "8b93ae82cc5f5ce7479fe567c5626852f8a97507a6897d2043c6455e880522ff",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "91680951839267501ad9ff84b46c01c11368a1dbc3a7f4bf9d4da4c53bf1c0a1",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         260,
@@ -7946,62 +7755,21 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "8b93ae82cc5f5ce7479fe567c5626852f8a97507a6897d2043c6455e880522ff",
-          "choices": [
-            "D",
-            "D"
-          ],
-          "confidence": [
-            0.0,
-            0.96
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "D",
-            "D"
-          ],
-          "blind_confidence": [
-            0.0,
-            0.96
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::中央处理器 · 指令流水线 · 选择题::X15": {
       "source_uid": "408:cs408-coa::中央处理器 · 指令流水线 · 选择题::X15",
       "course_key": "coa",
       "chapter": "中央处理器 · 指令流水线 · 选择题",
       "question_id": "X15",
-      "source_hash": "8a6e431be48598539a266f2f679d3b37fed1a8e766e5bafdfb3db9c4686e461e",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "ddfd3a755516526f8bbb61f6cb72e10fc11b0b72e93b98a39bdf5b9bced250a6",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         260,
@@ -8025,48 +7793,9 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "8a6e431be48598539a266f2f679d3b37fed1a8e766e5bafdfb3db9c4686e461e",
-          "choices": [
-            "C",
-            "C"
-          ],
-          "confidence": [
-            0.0,
-            0.93
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "C",
-            "C"
-          ],
-          "blind_confidence": [
-            0.0,
-            0.93
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::中央处理器 · 指令流水线 · 选择题::X16": {
       "source_uid": "408:cs408-coa::中央处理器 · 指令流水线 · 选择题::X16",
@@ -9000,14 +8729,12 @@
       "course_key": "coa",
       "chapter": "中央处理器 · 指令流水线 · 选择题",
       "question_id": "X22",
-      "source_hash": "f50b5f7c4d9cbab2cc6a194f330505e824f58304fb107c82353bda8bc40f0be6",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "b5e2b84258594907796ab0e089e8b5de5f2544194b42c8c4af039301a204b414",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         260,
@@ -9031,48 +8758,9 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "f50b5f7c4d9cbab2cc6a194f330505e824f58304fb107c82353bda8bc40f0be6",
-          "choices": [
-            "D",
-            "D"
-          ],
-          "confidence": [
-            0.0,
-            0.99
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "D",
-            "D"
-          ],
-          "blind_confidence": [
-            0.0,
-            0.99
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::中央处理器 · 指令流水线 · 选择题::X23": {
       "source_uid": "408:cs408-coa::中央处理器 · 指令流水线 · 选择题::X23",
@@ -9236,15 +8924,12 @@
       "course_key": "coa",
       "chapter": "中央处理器 · 指令流水线 · 选择题",
       "question_id": "X24",
-      "source_hash": "d134df1acef780e5d95333a33043cb918308890d99789963591a372a57da3a61",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "ff86bdc0e92afd21f208375b3e691c9f6aa45ec0299cbf0b826c39880da88820",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         260,
@@ -9268,48 +8953,9 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "d134df1acef780e5d95333a33043cb918308890d99789963591a372a57da3a61",
-          "choices": [
-            "B",
-            "B"
-          ],
-          "confidence": [
-            0.0,
-            0.96
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "B",
-            "B"
-          ],
-          "blind_confidence": [
-            0.0,
-            0.96
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::中央处理器 · 指令流水线 · 选择题::X25": {
       "source_uid": "408:cs408-coa::中央处理器 · 指令流水线 · 选择题::X25",
@@ -9787,14 +9433,12 @@
       "course_key": "coa",
       "chapter": "中央处理器 · 指令流水线 · 选择题",
       "question_id": "X28",
-      "source_hash": "250e5645b39363de2d95f804ed4d040537892494c1139049bf28ecf183fbec0b",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "d780c8d94e3e6a9b77ec303f6d3266539e6e8b9e20dff4cd0df1d2d9d36405f2",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         260,
@@ -9818,48 +9462,9 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "250e5645b39363de2d95f804ed4d040537892494c1139049bf28ecf183fbec0b",
-          "choices": [
-            "C",
-            "C"
-          ],
-          "confidence": [
-            0.0,
-            0.95
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "C",
-            "C"
-          ],
-          "blind_confidence": [
-            0.0,
-            0.95
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::中央处理器 · 指令流水线 · 选择题::X29": {
       "source_uid": "408:cs408-coa::中央处理器 · 指令流水线 · 选择题::X29",
@@ -10008,14 +9613,12 @@
       "course_key": "coa",
       "chapter": "中央处理器 · 指令流水线 · 选择题",
       "question_id": "X30",
-      "source_hash": "9547aec35474d08d73939e88301feec43078513f390a60f1c74b9edf0f2d4017",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "5a9aa949cf07fadbe73c9b194be4a9c2c4ce4752a83638095edbd3d5967cb654",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         260,
@@ -10039,48 +9642,9 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "9547aec35474d08d73939e88301feec43078513f390a60f1c74b9edf0f2d4017",
-          "choices": [
-            "C",
-            "C"
-          ],
-          "confidence": [
-            0.0,
-            0.83
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "C",
-            "C"
-          ],
-          "blind_confidence": [
-            0.0,
-            0.83
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;raw_content_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::中央处理器 · 指令流水线 · 选择题::X31": {
       "source_uid": "408:cs408-coa::中央处理器 · 指令流水线 · 选择题::X31",
@@ -12632,13 +12196,12 @@
       "course_key": "coa",
       "chapter": "中央处理器 · 控制器的功能和工作原理 · 选择题",
       "question_id": "X18",
-      "source_hash": "a949891eab7347c5c389c1d5ba5e952e4ac846b6922567e923af9543a7d59fab",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "85023f189a6f9d2a6d5ae8412a2b0c35e190e7289b067ce5106686bf31a3d0db",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         239,
@@ -12657,33 +12220,9 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "a949891eab7347c5c389c1d5ba5e952e4ac846b6922567e923af9543a7d59fab",
-          "choices": [],
-          "confidence": [],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "status": "hold",
-          "reason": "stale_source_hash"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;ocr_answer_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::中央处理器 · 控制器的功能和工作原理 · 选择题::X19": {
       "source_uid": "408:cs408-coa::中央处理器 · 控制器的功能和工作原理 · 选择题::X19",
@@ -12806,13 +12345,12 @@
       "course_key": "coa",
       "chapter": "中央处理器 · 控制器的功能和工作原理 · 选择题",
       "question_id": "X20",
-      "source_hash": "61688be755c5abe547dff88dab5b2d884e7026b019e2486c802c30c702260b7c",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "67bc4008f216d79ddf68d125e08ba8e7a80e9929f991ef847fffb03a46b75857",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         239,
@@ -12831,33 +12369,9 @@
       ],
       "has_image": true,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "61688be755c5abe547dff88dab5b2d884e7026b019e2486c802c30c702260b7c",
-          "choices": [],
-          "confidence": [],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "status": "hold",
-          "reason": "stale_source_hash"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;raw_content_mismatch;risk_medium;ocr_stem_or_options_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::中央处理器 · 控制器的功能和工作原理 · 选择题::X21": {
       "source_uid": "408:cs408-coa::中央处理器 · 控制器的功能和工作原理 · 选择题::X21",
@@ -14453,14 +13967,12 @@
       "course_key": "coa",
       "chapter": "中央处理器 · 数据通路的功能和基本结构 · 选择题",
       "question_id": "X06",
-      "source_hash": "1468b5a11101647f06d048f90f1a52649a0da4593697a3363d9326e8bb53012b",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "e9fcea2de40529cb96ddcefde33536129452e77644cc70404fcbc6c60bfba730",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         218,
@@ -14490,48 +14002,9 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "1468b5a11101647f06d048f90f1a52649a0da4593697a3363d9326e8bb53012b",
-          "choices": [
-            "B",
-            "B"
-          ],
-          "confidence": [
-            0.99,
-            0.0
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "B",
-            "B"
-          ],
-          "blind_confidence": [
-            0.99,
-            0.0
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::中央处理器 · 数据通路的功能和基本结构 · 选择题::X07": {
       "source_uid": "408:cs408-coa::中央处理器 · 数据通路的功能和基本结构 · 选择题::X07",
@@ -14623,14 +14096,12 @@
       "course_key": "coa",
       "chapter": "中央处理器 · 数据通路的功能和基本结构 · 选择题",
       "question_id": "X08",
-      "source_hash": "5db34388524826976819c2aa7d8346206b7e36309c500dd5e2a110a6f06314d3",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "0de0fe489fb731641160a9b3b43d1f0b3ce9b05b0d73f34de0625a03523356c4",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         218,
@@ -14660,48 +14131,9 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "5db34388524826976819c2aa7d8346206b7e36309c500dd5e2a110a6f06314d3",
-          "choices": [
-            "A",
-            "A"
-          ],
-          "confidence": [
-            0.82,
-            0.0
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "A",
-            "A"
-          ],
-          "blind_confidence": [
-            0.82,
-            0.0
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::中央处理器 · 数据通路的功能和基本结构 · 选择题::X09": {
       "source_uid": "408:cs408-coa::中央处理器 · 数据通路的功能和基本结构 · 选择题::X09",
@@ -15457,14 +14889,12 @@
       "course_key": "coa",
       "chapter": "中央处理器 · 数据通路的功能和基本结构 · 选择题",
       "question_id": "X18",
-      "source_hash": "1f3911d6ed06a01b3c7a2d0ac135f33563643e0d624c1ac8e59f6d17c59739a1",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "ddc10b98299451d65b60c3db5f72fca0c3062c28c64c2e648401da6e57a8f61b",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         218,
@@ -15494,48 +14924,9 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "1f3911d6ed06a01b3c7a2d0ac135f33563643e0d624c1ac8e59f6d17c59739a1",
-          "choices": [
-            "B",
-            "B"
-          ],
-          "confidence": [
-            0.99,
-            0.0
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "B",
-            "B"
-          ],
-          "blind_confidence": [
-            0.99,
-            0.0
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 主存储器 · 解答题::A01": {
       "source_uid": "408:cs408-coa::存储系统 · 主存储器 · 解答题::A01",
@@ -26795,14 +26186,12 @@
       "course_key": "coa",
       "chapter": "存储系统 · 虚拟存储器 · 选择题",
       "question_id": "X19",
-      "source_hash": "be591a54a693a08db6001d1f1c5074634d583a36dc67edf2ce2c357c309ec107",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "790c74d8eb3d231962e454aed5eaa681f55fbf6f2a5dd564fedc698b0a9078ba",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         140,
@@ -26827,48 +26216,9 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "be591a54a693a08db6001d1f1c5074634d583a36dc67edf2ce2c357c309ec107",
-          "choices": [
-            "C",
-            "C"
-          ],
-          "confidence": [
-            0.0,
-            0.95
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "C",
-            "C"
-          ],
-          "blind_confidence": [
-            0.0,
-            0.95
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 虚拟存储器 · 选择题::X20": {
       "source_uid": "408:cs408-coa::存储系统 · 虚拟存储器 · 选择题::X20",
@@ -31464,14 +30814,12 @@
       "course_key": "coa",
       "chapter": "总线 · 总线事务和定时 · 选择题",
       "question_id": "X04",
-      "source_hash": "7edc4a78c39212a53e84c7ccdf200df67388bcac18801a286d9724740c043236",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "21033d4a0e0f26ddc7e835b066e22acfd0f2ea647e9305b645245c1a1323295a",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         291,
@@ -31489,48 +30837,9 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "7edc4a78c39212a53e84c7ccdf200df67388bcac18801a286d9724740c043236",
-          "choices": [
-            "D",
-            "D"
-          ],
-          "confidence": [
-            0.0,
-            0.95
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "D",
-            "D"
-          ],
-          "blind_confidence": [
-            0.0,
-            0.95
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X05": {
       "source_uid": "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X05",
@@ -33083,14 +32392,12 @@
       "course_key": "coa",
       "chapter": "总线 · 总线事务和定时 · 选择题",
       "question_id": "X20",
-      "source_hash": "b2a37fe66bb1955e7e279ce0b81f9c75a49939c3c7491f8cce3a2f6a6e01050a",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "6e5d401d2fc8dba87a277236d690ca515214a64d26d9f05c98988702bb873cd2",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         291,
@@ -33108,48 +32415,9 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "b2a37fe66bb1955e7e279ce0b81f9c75a49939c3c7491f8cce3a2f6a6e01050a",
-          "choices": [
-            "D",
-            "D"
-          ],
-          "confidence": [
-            0.0,
-            0.96
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "D",
-            "D"
-          ],
-          "blind_confidence": [
-            0.0,
-            0.96
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线概述 · 解答题::A01": {
       "source_uid": "408:cs408-coa::总线 · 总线概述 · 解答题::A01",
@@ -34332,14 +33600,12 @@
       "course_key": "coa",
       "chapter": "总线 · 总线概述 · 选择题",
       "question_id": "X11",
-      "source_hash": "ab71f699ab9489bbeaddc0408917f3570b9c36f679e800a3550f32f818127495",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "ef621bec91c76d2c108443e22c9b9fef5c615540dfe1f21e42ffcb05d3e91e3d",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         283,
@@ -34356,48 +33622,9 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "ab71f699ab9489bbeaddc0408917f3570b9c36f679e800a3550f32f818127495",
-          "choices": [
-            "D",
-            "D"
-          ],
-          "confidence": [
-            0.0,
-            0.98
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "D",
-            "D"
-          ],
-          "blind_confidence": [
-            0.0,
-            0.98
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线概述 · 选择题::X12": {
       "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X12",
@@ -34935,13 +34162,12 @@
       "course_key": "coa",
       "chapter": "总线 · 总线概述 · 选择题",
       "question_id": "X17",
-      "source_hash": "45602826b957a8437d7ebaf70569f71b71cdd5bf6dff9e3ace394debd9dbe130",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "ed43f4f926eda3b9d80855275d59bbb187a0b5c5391de4d51c1c4dcae5750772",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         283,
@@ -34958,33 +34184,9 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "45602826b957a8437d7ebaf70569f71b71cdd5bf6dff9e3ace394debd9dbe130",
-          "choices": [],
-          "confidence": [],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "status": "hold",
-          "reason": "stale_source_hash"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;ocr_answer_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线概述 · 选择题::X18": {
       "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X18",
@@ -35708,14 +34910,12 @@
       "course_key": "coa",
       "chapter": "总线 · 总线概述 · 选择题",
       "question_id": "X24",
-      "source_hash": "d350de477fc3453034a4e0ff11da382312429e2d9a943e075d79e4941276f5e1",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "9f865e8aa9854298147829da3b23a10d85026d96501b8f0b3c4d16e00fafb643",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         283,
@@ -35732,48 +34932,9 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "d350de477fc3453034a4e0ff11da382312429e2d9a943e075d79e4941276f5e1",
-          "choices": [
-            "B",
-            "B"
-          ],
-          "confidence": [
-            0.0,
-            0.94
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "B",
-            "B"
-          ],
-          "blind_confidence": [
-            0.0,
-            0.94
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线概述 · 选择题::X25": {
       "source_uid": "408:cs408-coa::总线 · 总线概述 · 选择题::X25",
@@ -42259,14 +41420,12 @@
       "course_key": "coa",
       "chapter": "指令系统 · 指令系统 · 选择题",
       "question_id": "X07",
-      "source_hash": "2a90deb954eba0c5e2333134ff4dc44c36c38304df51992289355eaa22869e8c",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "d85597754db70a4484fc6df43660ad8f0609dbc500bc708584a29cffb1bcbf17",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         156,
@@ -42284,48 +41443,9 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "2a90deb954eba0c5e2333134ff4dc44c36c38304df51992289355eaa22869e8c",
-          "choices": [
-            "B",
-            "B"
-          ],
-          "confidence": [
-            0.99,
-            0.0
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "B",
-            "B"
-          ],
-          "blind_confidence": [
-            0.99,
-            0.0
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::指令系统 · 指令系统 · 选择题::X08": {
       "source_uid": "408:cs408-coa::指令系统 · 指令系统 · 选择题::X08",
@@ -42698,14 +41818,12 @@
       "course_key": "coa",
       "chapter": "指令系统 · 指令系统 · 选择题",
       "question_id": "X11",
-      "source_hash": "9346c02d19e15c2c797ed5b2da6683ca00eebca8f0e10b5beacc44870287cda8",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "f039bbb028e115c2a760a24044db9b91dbd3446f07eac0dff29de704231886af",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         156,
@@ -42723,63 +41841,21 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "9346c02d19e15c2c797ed5b2da6683ca00eebca8f0e10b5beacc44870287cda8",
-          "choices": [
-            "D",
-            "B"
-          ],
-          "confidence": [
-            0.99,
-            0.0
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "D",
-            "B"
-          ],
-          "blind_confidence": [
-            0.99,
-            0.0
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::指令系统 · 指令系统 · 选择题::X12": {
       "source_uid": "408:cs408-coa::指令系统 · 指令系统 · 选择题::X12",
       "course_key": "coa",
       "chapter": "指令系统 · 指令系统 · 选择题",
       "question_id": "X12",
-      "source_hash": "7cfc38efe3c7b4871ffbda6d61eef29cdfb2a64cf6996c82ec775a08e3ebb52b",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "da2995e97c886169476626a45ed01ebbfe95802bb4056c673bdfd638b07f4b75",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         156,
@@ -42797,48 +41873,9 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "7cfc38efe3c7b4871ffbda6d61eef29cdfb2a64cf6996c82ec775a08e3ebb52b",
-          "choices": [
-            "B",
-            "D"
-          ],
-          "confidence": [
-            0.98,
-            0.0
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "B",
-            "D"
-          ],
-          "blind_confidence": [
-            0.98,
-            0.0
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::指令系统 · 指令系统 · 选择题::X13": {
       "source_uid": "408:cs408-coa::指令系统 · 指令系统 · 选择题::X13",
@@ -43099,13 +42136,12 @@
       "course_key": "coa",
       "chapter": "指令系统 · 指令系统 · 选择题",
       "question_id": "X15",
-      "source_hash": "0c5d70729de37351f841949b64c824115a7a0a325588add89060bb3d25aa7ed8",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "77b64d479c5f32167df9fe67e70800baa539c2cc7a2e56ce269d4ff9b3e93a5e",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         156,
@@ -43123,33 +42159,9 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "0c5d70729de37351f841949b64c824115a7a0a325588add89060bb3d25aa7ed8",
-          "choices": [],
-          "confidence": [],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "status": "hold",
-          "reason": "stale_source_hash"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;ocr_answer_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::指令系统 · 指令系统 · 选择题::X16": {
       "source_uid": "408:cs408-coa::指令系统 · 指令系统 · 选择题::X16",
@@ -43832,15 +42844,12 @@
       "course_key": "coa",
       "chapter": "指令系统 · 程序的机器级代码表示 · 选择题",
       "question_id": "X04",
-      "source_hash": "2bc7f212e3ab4f6ed005378af02bf14dd21fb4c5196808dc16a8df67e5a892c6",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "6ce603364d022cc833e2cdef1d170df5eb47d5a65593e96781ebcd960159b9a9",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         186,
@@ -43860,48 +42869,9 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "2bc7f212e3ab4f6ed005378af02bf14dd21fb4c5196808dc16a8df67e5a892c6",
-          "choices": [
-            "A",
-            "A"
-          ],
-          "confidence": [
-            0.99,
-            0.0
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "A",
-            "A"
-          ],
-          "blind_confidence": [
-            0.99,
-            0.0
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 选择题::X05": {
       "source_uid": "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 选择题::X05",
@@ -44142,13 +43112,12 @@
       "course_key": "coa",
       "chapter": "指令系统 · 程序的机器级代码表示 · 选择题",
       "question_id": "X07",
-      "source_hash": "c2c989027a8ae4395b63d606be9fb0c3bffee5d5767a7e2173a88fc5ad76468f",
+      "source_hash": "acc4f48b9c57cd53fa1dd18f797cc06b822cc5e98b1f9ce7e2595fed87ebd451",
       "source_fidelity": "pending",
       "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "legacy_hold_recheck",
-        "strict_hold"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         186,
@@ -44170,8 +43139,7 @@
       "answer_choice": "C",
       "verified_at": null,
       "evidence": {},
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 选择题::X08": {
       "source_uid": "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 选择题::X08",
@@ -49880,13 +48848,12 @@
       "course_key": "coa",
       "chapter": "数据的表示和运算 · 浮点数的表示与运算 · 选择题",
       "question_id": "X09",
-      "source_hash": "3a13565bd7351e96b0a9da840670aff1b9516de192649aa802d2ac24731eb41f",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "4862b3389bfa4ca4213380b38df0e3c8315cb07e3e34e1727b4c727b1fa70621",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         66,
@@ -49914,33 +48881,9 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "3a13565bd7351e96b0a9da840670aff1b9516de192649aa802d2ac24731eb41f",
-          "choices": [],
-          "confidence": [],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "status": "hold",
-          "reason": "stale_source_hash"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_options_mismatch;raw_options_mismatch;ocr_stem_or_options_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::数据的表示和运算 · 浮点数的表示与运算 · 选择题::X10": {
       "source_uid": "408:cs408-coa::数据的表示和运算 · 浮点数的表示与运算 · 选择题::X10",
@@ -64162,13 +63105,12 @@
       "course_key": "coa",
       "chapter": "输入/输出系统 · I/O方式 · 选择题",
       "question_id": "X03",
-      "source_hash": "76f461769e2ab506d3eccc3205d0e1cdb08aa0c403005fb775b82b0970e9b6c9",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "1c4a8a47eefbdee28f6dce7b96d60f8159f8ab534d7f5c1403c621faaa4a6b5b",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         314,
@@ -64197,33 +63139,9 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "76f461769e2ab506d3eccc3205d0e1cdb08aa0c403005fb775b82b0970e9b6c9",
-          "choices": [],
-          "confidence": [],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "status": "hold",
-          "reason": "stale_source_hash"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_options_mismatch;raw_options_mismatch;ocr_stem_or_options_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::输入/输出系统 · I/O方式 · 选择题::X04": {
       "source_uid": "408:cs408-coa::输入/输出系统 · I/O方式 · 选择题::X04",
@@ -64397,13 +63315,12 @@
       "course_key": "coa",
       "chapter": "输入/输出系统 · I/O方式 · 选择题",
       "question_id": "X05",
-      "source_hash": "dfae1ba713043094a8bc34bd2952a31f102a3b84e5785cc762d3135e13cde5e5",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "6fd93477846b732828fe9b27827c54acbd7f7fd7ad1b4a86f2df8efbb0200a89",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "luna_stale_source_hash",
-        "strict_hold"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         314,
@@ -64432,33 +63349,9 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "dfae1ba713043094a8bc34bd2952a31f102a3b84e5785cc762d3135e13cde5e5",
-          "choices": [],
-          "confidence": [],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "status": "hold",
-          "reason": "stale_source_hash"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;ocr_answer_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "strict_hold"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::输入/输出系统 · I/O方式 · 选择题::X06": {
       "source_uid": "408:cs408-coa::输入/输出系统 · I/O方式 · 选择题::X06",
@@ -69388,15 +68281,12 @@
       "course_key": "coa",
       "chapter": "输入/输出系统 · I/O方式 · 选择题",
       "question_id": "X34",
-      "source_hash": "f578b82b76e2e0a17fc488536e891ec68c97138c9f6fe317fbe3a56124423a7d",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "cf0da535dda0a230cfa0f10c343151deafb95fd88a55001b26d8dc3f80bcecc7",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         314,
@@ -69425,48 +68315,9 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "f578b82b76e2e0a17fc488536e891ec68c97138c9f6fe317fbe3a56124423a7d",
-          "choices": [
-            "D",
-            "A"
-          ],
-          "confidence": [
-            0.0,
-            0.99
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "D",
-            "A"
-          ],
-          "blind_confidence": [
-            0.0,
-            0.99
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::输入/输出系统 · I/O方式 · 选择题::X35": {
       "source_uid": "408:cs408-coa::输入/输出系统 · I/O方式 · 选择题::X35",
@@ -72619,15 +71470,12 @@
       "course_key": "coa",
       "chapter": "输入/输出系统 · I/O方式 · 选择题",
       "question_id": "X54",
-      "source_hash": "b267a47ee40046a303c28dd33c993c1be9ee8d829dcd59c2d3f01b7d2b286f11",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "aea49268e4d983fa9af4e7940316f8648149afbfe163d42faa45dcbc973da756",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         314,
@@ -72656,48 +71504,9 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "b267a47ee40046a303c28dd33c993c1be9ee8d829dcd59c2d3f01b7d2b286f11",
-          "choices": [
-            "B",
-            "B"
-          ],
-          "confidence": [
-            0.8,
-            0.0
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "B",
-            "B"
-          ],
-          "blind_confidence": [
-            0.8,
-            0.0
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-coa::输入/输出系统 · I/O方式 · 选择题::X55": {
       "source_uid": "408:cs408-coa::输入/输出系统 · I/O方式 · 选择题::X55",
@@ -73469,15 +72278,12 @@
       "course_key": "ds",
       "chapter": "串 · 串的模式匹配 · 选择题",
       "question_id": "X07",
-      "source_hash": "52e146337e5b74bbe9e5f11874571c356cb9af65518d9da213eabc5f5f23f28d",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "29138a1eb4a6134c9f172097e67c50677f7456ce058fdaee9b701773fa1b3747",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         123,
@@ -73494,48 +72300,9 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "52e146337e5b74bbe9e5f11874571c356cb9af65518d9da213eabc5f5f23f28d",
-          "choices": [
-            "B",
-            "B"
-          ],
-          "confidence": [
-            0.96,
-            0.0
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "B",
-            "B"
-          ],
-          "blind_confidence": [
-            0.96,
-            0.0
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "legacy_hold_recheck;luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;raw_ocr_mismatch;risk_critical;ocr_answer_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::串 · 串的模式匹配 · 选择题::X08": {
       "source_uid": "408:cs408-ds::串 · 串的模式匹配 · 选择题::X08",
@@ -104211,14 +102978,12 @@
       "course_key": "ds",
       "chapter": "排序 · 选择排序 · 选择题",
       "question_id": "X18",
-      "source_hash": "e1f5b72fb245cea0ba3c944069869beb49a4a6376e84937bc9df9d2addb46261",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "5baf592fabe41901e106644fccf0adcd6ecf861449c8afd41e27e52deebae010",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         359,
@@ -104240,48 +103005,9 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "e1f5b72fb245cea0ba3c944069869beb49a4a6376e84937bc9df9d2addb46261",
-          "choices": [
-            "B",
-            "B"
-          ],
-          "confidence": [
-            0.95,
-            0.95
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "B",
-            "B"
-          ],
-          "blind_confidence": [
-            0.95,
-            0.95
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_ocr_mismatch;fresh_options_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "source_conflict"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::排序 · 选择排序 · 选择题::X19": {
       "source_uid": "408:cs408-ds::排序 · 选择排序 · 选择题::X19",
@@ -111467,15 +110193,12 @@
       "course_key": "ds",
       "chapter": "查找 · 树形查找 · 选择题",
       "question_id": "X19",
-      "source_hash": "5f9a282982aea9028fdc6d864b8cb2109a00028dd633e502d6e9c3070ebdab74",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "6d97d294c409c182c7dbeea02f78f5ca8cb9897ca12af009629a91000d9000af",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "structural_check",
-        "structural_error"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         296,
@@ -111502,48 +110225,9 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "5f9a282982aea9028fdc6d864b8cb2109a00028dd633e502d6e9c3070ebdab74",
-          "choices": [
-            "",
-            ""
-          ],
-          "confidence": [
-            0.05,
-            0.05
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "",
-            ""
-          ],
-          "blind_confidence": [
-            0.05,
-            0.05
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;structural_check;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "structural_error"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::查找 · 树形查找 · 选择题::X20": {
       "source_uid": "408:cs408-ds::查找 · 树形查找 · 选择题::X20",
@@ -111631,15 +110315,12 @@
       "course_key": "ds",
       "chapter": "查找 · 树形查找 · 选择题",
       "question_id": "X21",
-      "source_hash": "18add68039cc28bc3e163756c67d22058497ca35e40bcefc5b666c39e8e80ca3",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "a065f23b9a88339f2bd8617fcbac7770c086de30b8f6ff9376e233d40dc86b5c",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "structural_check",
-        "structural_error"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         296,
@@ -111666,48 +110347,9 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "18add68039cc28bc3e163756c67d22058497ca35e40bcefc5b666c39e8e80ca3",
-          "choices": [
-            "",
-            ""
-          ],
-          "confidence": [
-            0.05,
-            0.05
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "",
-            ""
-          ],
-          "blind_confidence": [
-            0.05,
-            0.05
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;structural_check;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "structural_error"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::查找 · 树形查找 · 选择题::X22": {
       "source_uid": "408:cs408-ds::查找 · 树形查找 · 选择题::X22",
@@ -111780,15 +110422,12 @@
       "course_key": "ds",
       "chapter": "查找 · 树形查找 · 选择题",
       "question_id": "X23",
-      "source_hash": "f62a15a7b5ec6c9a0ca84d0fff77c0a8e9f0f65f138cd419177fcc04e47a16a5",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "f6b305d8b4accc542f73042dae1594eefed9fe01573e3d66a91aa42bdd506da2",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "structural_check",
-        "structural_error"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         296,
@@ -111815,48 +110454,9 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "f62a15a7b5ec6c9a0ca84d0fff77c0a8e9f0f65f138cd419177fcc04e47a16a5",
-          "choices": [
-            "",
-            ""
-          ],
-          "confidence": [
-            0.05,
-            0.05
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "",
-            ""
-          ],
-          "blind_confidence": [
-            0.05,
-            0.05
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;structural_check;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "structural_error"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::查找 · 树形查找 · 选择题::X24": {
       "source_uid": "408:cs408-ds::查找 · 树形查找 · 选择题::X24",
@@ -115706,15 +114306,12 @@
       "course_key": "ds",
       "chapter": "查找 · 顺序查找和折半查找 · 选择题",
       "question_id": "X23",
-      "source_hash": "9d9a191853010fa6f8c1ddace840982951b440c356f663fe467e5f78b0909589",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "a779eecea6735cc1d46c0511897b65f90fdb9d5c2839e24c5e56bc22a7e66326",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "structural_check",
-        "structural_error"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         274,
@@ -115745,48 +114342,9 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "9d9a191853010fa6f8c1ddace840982951b440c356f663fe467e5f78b0909589",
-          "choices": [
-            "",
-            ""
-          ],
-          "confidence": [
-            0.05,
-            0.05
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "",
-            ""
-          ],
-          "blind_confidence": [
-            0.05,
-            0.05
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;structural_check;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "structural_error"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::查找 · 顺序查找和折半查找 · 选择题::X24": {
       "source_uid": "408:cs408-ds::查找 · 顺序查找和折半查找 · 选择题::X24",
@@ -120054,10 +118612,10 @@
       "course_key": "ds",
       "chapter": "栈、队列和数组 · 栈 · 选择题",
       "question_id": "X14",
-      "source_hash": "8e1c92f61b1060dd71aa29975d0ad77304098c6163a722e0f64c6f4d925971cf",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
+      "source_hash": "9a6f08ae8de34375c7c3f0af24a0049b06285d33db5ba92a1d62d2db5e36a22e",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
+      "overall": "hold",
       "reason_codes": [],
       "q_pages": [
         72,
@@ -120081,114 +118639,8 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-28T06:30:00+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "8e1c92f61b1060dd71aa29975d0ad77304098c6163a722e0f64c6f4d925971cf",
-          "choices": [],
-          "confidence": [],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "status": "hold",
-          "reason": "stale_source_hash"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_stale_source_hash;fresh_ocr_mismatch;raw_ocr_mismatch;ocr_answer_mismatch",
-        "original_page_review": {
-          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X14",
-          "protocol": "codex-original-page-review-v1",
-          "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-28T06:30:00+00:00",
-          "q_pages_viewed": [
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_072.png",
-              "sha256": "e29868c3139ccdba635f2eed13d04f2985111c0d46f9cbecfbbc4810dfe73af9"
-            },
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_073.png",
-              "sha256": "d084f605084aefd40ed8a084df913148b70b18459f1edd515339a8c5571050f8"
-            },
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
-              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
-            }
-          ],
-          "a_pages_viewed": [
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
-              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
-            },
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_075.png",
-              "sha256": "ea0723b16dc3242cad3241caf4206ad1a14bbe9a0e5f66faf55b6a21c3645071"
-            },
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_076.png",
-              "sha256": "953e4a071b6551197ee7356111d5112227fc93a50e75cd0e08034d5762c30913"
-            },
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_077.png",
-              "sha256": "e7a0a9dadc123277d003ffbd51bdad0be15c851fade3dbc6bef2ce55640fc48b"
-            },
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_078.png",
-              "sha256": "80610f6523291d5ae69f73e5610d63520022e522fda7a293f25da8009c8b73b5"
-            },
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_079.png",
-              "sha256": "21e293b356b1923b0720dc76aecd6d279280ee6019c530c689849cd59871fedb"
-            },
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_080.png",
-              "sha256": "408ac3c3671a278718066a9ad4f74a13a4e4898e86c32c6c1e029667840a1e2a"
-            },
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_081.png",
-              "sha256": "5cff68031e5a2cf2bb47f163f459f28f2540a241a3cb4ff3fc319341acf94a09"
-            },
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_082.png",
-              "sha256": "b93c14e992a12da45cfb48247d99c57b104ffe223b8c9261cd3b8a753bdb1a2d"
-            },
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_083.png",
-              "sha256": "0ec3aea6e085258fe8e60a3e70e26a712fd19dee9c8fa661cf36246a6195df38"
-            },
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_084.png",
-              "sha256": "e10049ae74cb72983f225fdfa16196a8bcf04e8519283bc61679783a172d318d"
-            },
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_085.png",
-              "sha256": "c2bcc32db42133525bc6f43e037824dd56ed53ba9f0ef3cf38fa025d4b6e4dd4"
-            },
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_086.png",
-              "sha256": "d2fbb7ac7febc3e3eae4aadf41ef0088add1265c9eb21a62a537ffb7217a0218"
-            }
-          ],
-          "final_action": "certify",
-          "content_match": true,
-          "options_match": true,
-          "answer_match": true,
-          "explanation_match": true,
-          "image_match": true,
-          "detected_errors": [],
-          "rationale": "原书题目页67-69与答案页69-81逐题核对：题干、选项、答案和解析与发布内容一致。",
-          "source_hash": "8e1c92f61b1060dd71aa29975d0ad77304098c6163a722e0f64c6f4d925971cf"
-        }
-      },
+      "verified_at": null,
+      "evidence": {},
       "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X15": {
@@ -129678,10 +128130,10 @@
       "course_key": "ds",
       "chapter": "树与二叉树 · 二叉树的概念 · 选择题",
       "question_id": "X11",
-      "source_hash": "0311461cf4a74c2cd1943a577870f196fe50d36d258851e0889b74b4d4360937",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
+      "source_hash": "8cb5965c47b66b642fea97da62a4380182d0b75a26844e46b28fa371a525a543",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
+      "overall": "hold",
       "reason_codes": [],
       "q_pages": [
         138,
@@ -129703,121 +128155,8 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-28T07:30:00+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "0311461cf4a74c2cd1943a577870f196fe50d36d258851e0889b74b4d4360937",
-          "choices": [
-            "C",
-            "A"
-          ],
-          "confidence": [
-            0.95,
-            1.0
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "C",
-            "A"
-          ],
-          "blind_confidence": [
-            0.95,
-            1.0
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;fresh_options_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch",
-        "original_page_review": {
-          "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X11",
-          "protocol": "codex-original-page-review-v1",
-          "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-28T07:30:00+00:00",
-          "q_pages_viewed": [
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_138.png",
-              "sha256": "0b51fccc67b5a94a88cda575cae9d6091faa00c483c662010cde3613b586e44a"
-            },
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_139.png",
-              "sha256": "3207129455e3e45244c352a8a7633651da546a65d9357027c59c1e1e0cdebe38"
-            },
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_140.png",
-              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99"
-            }
-          ],
-          "a_pages_viewed": [
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_140.png",
-              "sha256": "c80331ceab5fed09b5a0a6fab4b56787e48b265bc4c45d1b0b7187548baf8f99"
-            },
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_141.png",
-              "sha256": "3f0e77ae9bfe8fdba6dbf2caab0da06d790c49774ac2734b475d9bcef0ac8b76"
-            },
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_142.png",
-              "sha256": "0b16124db42c50ecf7e9f119d21693e07306c686dd51e93be22080196eb06650"
-            },
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_143.png",
-              "sha256": "3ba7ac4a51d5e245595a957a245de1305f4f59325d2ccbf630019c05980235c7"
-            },
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_144.png",
-              "sha256": "9cf6f07992145df1176edf860d8ddd66c99f8971f956d12b911abd4b144e6bb7"
-            },
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_145.png",
-              "sha256": "da09be5ba5cef96fcb91792981665e5a6e4821e5b2b39e90db1ca4155bab3749"
-            },
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_146.png",
-              "sha256": "52ef1a6dc4a594c7496f660461a227c08a6ba7adda31517b564655a495ea6a0b"
-            },
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_147.png",
-              "sha256": "7d3abdbd4d504ddd96addece876e3016244ce9fdfe8415d5f74bf3929748b121"
-            },
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_148.png",
-              "sha256": "9fd0a5f3def06bc715bcd0a753da87cf3856154552e48c0d5cdb585a9b51d235"
-            },
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_149.png",
-              "sha256": "4550be1e71f7c921b6fc1b3c3dd28157d6d16a6ca0ca54af1e4666a33e0b4bac"
-            },
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_150.png",
-              "sha256": "9543698629130212bc20ad0e4b19324b6575489575d939e9ab30f62a9e6c9400"
-            }
-          ],
-          "final_action": "certify",
-          "content_match": true,
-          "options_match": true,
-          "answer_match": true,
-          "explanation_match": true,
-          "image_match": true,
-          "detected_errors": [],
-          "rationale": "原书题目页133-135与答案页135-145逐题核对：题干、选项、答案和解析与发布内容一致（公式排版差异不改变语义）。",
-          "source_hash": "0311461cf4a74c2cd1943a577870f196fe50d36d258851e0889b74b4d4360937"
-        }
-      },
+      "verified_at": null,
+      "evidence": {},
       "certification_profile": "objective_full"
     },
     "408:cs408-ds::树与二叉树 · 二叉树的概念 · 选择题::X12": {
@@ -133394,10 +131733,10 @@
       "course_key": "ds",
       "chapter": "树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题",
       "question_id": "X05",
-      "source_hash": "abdac30849525f4d4340bb8d65a09108a10e6f004949b9c3ecce3003d06d1a6f",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
+      "source_hash": "11365e941245fb0890dde4d4584fef85d268196c2694c71036316fede408e3eb",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
+      "overall": "hold",
       "reason_codes": [],
       "q_pages": [
         151,
@@ -133432,38 +131771,8 @@
       ],
       "has_image": true,
       "answer_choice": "C",
-      "verified_at": "2026-08-28T17:00:00+00:00",
-      "evidence": {
-        "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;risk_medium;ocr_stem_or_options_mismatch",
-        "original_page_review": {
-          "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题::X05",
-          "protocol": "codex-original-page-review-v1",
-          "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-28T17:00:00+00:00",
-          "q_pages_viewed": [
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_152.png",
-              "sha256": "cdb420f43716ed34393412ebf6f1934ed168a5fda2b8e9eab5f4aa75c7668b11"
-            }
-          ],
-          "a_pages_viewed": [
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_158.png",
-              "sha256": "0932a6a00d6726a60afbb0aaef4ba0dd958e9e265c45577878f54a5186cb9f86"
-            }
-          ],
-          "final_action": "certify",
-          "content_match": true,
-          "options_match": true,
-          "answer_match": true,
-          "explanation_match": true,
-          "image_match": true,
-          "detected_errors": [],
-          "rationale": "亲眼核对原书题目页与答案页，字段一致。",
-          "source_hash": "abdac30849525f4d4340bb8d65a09108a10e6f004949b9c3ecce3003d06d1a6f"
-        }
-      },
+      "verified_at": null,
+      "evidence": {},
       "certification_profile": "objective_full"
     },
     "408:cs408-ds::树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题::X06": {
@@ -137067,15 +135376,12 @@
       "course_key": "ds",
       "chapter": "树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题",
       "question_id": "X33",
-      "source_hash": "78f492535e88df6822607d196a78e797ef9167ed402fa9f536f672169adb085b",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "efb46ed0c91670a7fe05ad2f684a2c26613ca37279e120ef904bb23d4f4aa23e",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "structural_check",
-        "structural_error"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         151,
@@ -137110,48 +135416,9 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "78f492535e88df6822607d196a78e797ef9167ed402fa9f536f672169adb085b",
-          "choices": [
-            "",
-            ""
-          ],
-          "confidence": [
-            0.05,
-            0.05
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "",
-            ""
-          ],
-          "blind_confidence": [
-            0.05,
-            0.05
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;structural_check;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "structural_error"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题::X34": {
       "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题::X34",
@@ -141196,15 +139463,12 @@
       "course_key": "ds",
       "chapter": "树与二叉树 · 树与二叉树的应用 · 选择题",
       "question_id": "X02",
-      "source_hash": "201bea71776975de5939dfb662d7e20d8c430a3b1f6ae95886ee007df018c935",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
+      "source_hash": "05f7ff10e88a79cf4cf98a0098f61057de48820806e902af3f605176166b3eed",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
       "overall": "hold",
       "reason_codes": [
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "structural_check",
-        "structural_error"
+        "legacy_hold_recheck"
       ],
       "q_pages": [
         190,
@@ -141225,48 +139489,9 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "201bea71776975de5939dfb662d7e20d8c430a3b1f6ae95886ee007df018c935",
-          "choices": [
-            "",
-            ""
-          ],
-          "confidence": [
-            0.05,
-            0.05
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "",
-            ""
-          ],
-          "blind_confidence": [
-            0.05,
-            0.05
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_answer_conflict;luna_source_conflict;structural_check;fresh_content_mismatch;fresh_ocr_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_ocr_mismatch;raw_options_mismatch;risk_critical;ocr_answer_mismatch"
-      },
-      "certification_profile": "objective_full",
-      "primary_hold_reason": "structural_error"
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
     },
     "408:cs408-ds::树与二叉树 · 树与二叉树的应用 · 选择题::X03": {
       "source_uid": "408:cs408-ds::树与二叉树 · 树与二叉树的应用 · 选择题::X03",
@@ -144180,10 +142405,10 @@
       "course_key": "ds",
       "chapter": "树与二叉树 · 树的基本概念 · 选择题",
       "question_id": "X08",
-      "source_hash": "94e3be89ed528583f24366d811ea7d83b58aa55e115d4cc0bbc32f0462444e05",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
+      "source_hash": "d21c68826af2900511fcee1940cefa4f6853a63f1dca78b28479021472b136c5",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
+      "overall": "hold",
       "reason_codes": [],
       "q_pages": [
         131,
@@ -144199,97 +142424,8 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": "2026-08-27T15:30:00+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "94e3be89ed528583f24366d811ea7d83b58aa55e115d4cc0bbc32f0462444e05",
-          "choices": [
-            "D",
-            "D"
-          ],
-          "confidence": [
-            0.99,
-            1.0
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "D",
-            "D"
-          ],
-          "blind_confidence": [
-            0.99,
-            1.0
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
-        },
-        "human_action": "hold",
-        "human_evidence": "luna_source_conflict;fresh_content_mismatch;fresh_options_mismatch;raw_content_mismatch;raw_options_mismatch;risk_critical;ocr_stem_or_options_mismatch",
-        "original_page_review": {
-          "source_uid": "408:cs408-ds::树与二叉树 · 树的基本概念 · 选择题::X08",
-          "protocol": "codex-original-page-review-v1",
-          "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T15:30:00+00:00",
-          "q_pages_viewed": [
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_131.png",
-              "sha256": "640f8f54877ddfe11059ce1dc2dc80814bbd5b2114289f57a289b72d2a965427"
-            },
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_132.png",
-              "sha256": "4047b9b9edaf115c2a091e93656d75eb5ab70dfa70cbae10da571db5da5ca867"
-            }
-          ],
-          "a_pages_viewed": [
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_132.png",
-              "sha256": "4047b9b9edaf115c2a091e93656d75eb5ab70dfa70cbae10da571db5da5ca867"
-            },
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_133.png",
-              "sha256": "9c06a5cdb1e4b0856ff5339b11b075f913606589ec1853f436307f36ef5daca8"
-            },
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_134.png",
-              "sha256": "d49a1d03ba0e8e696839281abfe118f6d68d28fe6f9c4dba045ad6b2737d1b73"
-            },
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_135.png",
-              "sha256": "66c8e9a5cf7511990f996a5fcf339c307bd5f6ef5c3ae657297d2e0655d2afe9"
-            },
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_136.png",
-              "sha256": "3098b24819d77f4e05595f80b30c056957e0b23bcc867afc32d7c3fc6c0336fd"
-            },
-            {
-              "path": "apps/bank-408/assets/pdf_images/ds/page_137.png",
-              "sha256": "962b8eb28c80919bc4481054f2632135f8032f81ddc1ad61453f014896abe3fd"
-            }
-          ],
-          "final_action": "certify",
-          "content_match": true,
-          "options_match": true,
-          "answer_match": true,
-          "explanation_match": true,
-          "image_match": true,
-          "detected_errors": [],
-          "rationale": "亲眼核对原书题目页126–127与答案解析页127–132：X08题干、选项及解析忠实，原书答案为D。",
-          "source_hash": "94e3be89ed528583f24366d811ea7d83b58aa55e115d4cc0bbc32f0462444e05"
-        }
-      },
+      "verified_at": null,
+      "evidence": {},
       "certification_profile": "objective_full"
     },
     "408:cs408-ds::树与二叉树 · 树的基本概念 · 选择题::X09": {

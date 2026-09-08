@@ -1,0 +1,41 @@
+Task 5: 408 OCR Avoidance — doubao-work visual patches for held choice stems
+================================================================================
+
+1. apply_patches
+   - 返回值: applied 44
+   - 来源: apps/bank-408/data/quality/vision_patches.json (doubao-work / doubao-work-self)
+   - 未跑 OCR（run_ocr.py 禁止）
+
+2. merge_courses.py
+   - 参数: output/questions_all.json（与 build_all.py 第 99 行一致）
+   - 输出: 已合并 4 门课,共 2869 题
+     - 数据结构: 56 节, 797 题
+     - 计算机组成原理: 42 节, 674 题
+     - 计算机网络: 44 节, 639 题
+     - 操作系统: 28 节, 759 题
+   - 生成 math-bank/data-{ds,coa,net,os}.json/.js + data.js
+
+3. quality_ledger.py
+   - total: 2869
+   - certified: 1974
+   - pending: 0
+   - held: 895
+   - ledger: math-bank/quality-ledger.json
+
+4. residual (看不清 skipped)
+   - 文件: .omo/evidence/408-ocr-avoidance/residual-source-conflicts.json
+   - uid:
+     - 408:cs408-coa::中央处理器 · 控制器的功能和工作原理 · 选择题::X06
+
+5. 读图覆盖
+   - manifest 总数: 471
+   - done: 470
+   - skipped: 1 (上述 residual uid)
+   - done+skipped: 471 (全部覆盖)
+
+6. 禁止项确认
+   - 未跑 run_ocr.py
+   - 未跑 build_all.py（仅单独执行 merge_courses.py + quality_ledger.py）
+   - 未跑 oneoff
+   - 未 certify
+   - 未 git push
