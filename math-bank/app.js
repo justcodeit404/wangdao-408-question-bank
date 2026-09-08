@@ -139,16 +139,26 @@ async function loadQualityLedger() {
     qualityLedger = window.__QUALITY_LEDGER__;
     return qualityLedger;
   }
+  // file://：无法 fetch；空 items = 本地预览放行全部题目
+  // HTTP(S)：hold 拉取失败 → failClosed，qualityVisible 全 false（生产不得放行）
   try {
     if (window.location.protocol === 'file:') {
-      // file:// 无法 fetch JSON；完整 quality-ledger.js ~8MB，不阻塞本地预览
       qualityLedger = { items: {} };
     } else {
       const response = await fetch('quality-hold.json');
-      if (response.ok) qualityLedger = ledgerFromHoldList(await response.json());
+      if (response.ok) {
+        qualityLedger = ledgerFromHoldList(await response.json());
+      } else {
+        qualityLedger = { items: {}, failClosed: true };
+      }
     }
   } catch (e) {
-    console.warn('[bank-408] quality hold unavailable; keeping progressive view', e);
+    console.warn('[bank-408] quality hold unavailable; fail-closed', e);
+    if (window.location.protocol === 'file:') {
+      qualityLedger = { items: {} };
+    } else {
+      qualityLedger = { items: {}, failClosed: true };
+    }
   }
   return qualityLedger;
 }
@@ -159,6 +169,7 @@ function qualityForQuestion(q) {
 }
 
 function qualityVisible(q) {
+  if (qualityLedger && qualityLedger.failClosed) return false;
   const item = qualityForQuestion(q);
   if (!item) return true;
   if (item.overall === 'hold') return false;
