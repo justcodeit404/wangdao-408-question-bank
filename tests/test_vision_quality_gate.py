@@ -1,12 +1,17 @@
 import hashlib
 import json
+import os
 from pathlib import Path
 
 import pytest
 
 from vision_quality_gate import (
+    DOUBAO_DEFAULT_BASE_URL,
+    DOUBAO_DEFAULT_MODELS,
+    OPEN_PLATFORM_MODELS,
     VisionConflictError,
     VisionInfrastructureError,
+    _api_config,
     apply_patch_to_question,
     compare_results,
     index_batch_results,
@@ -183,6 +188,69 @@ def test_patched_hash_does_not_resample():
 def test_require_distinct_models_rejects_equal_pair():
     with pytest.raises(VisionInfrastructureError, match="不同视觉模型"):
         require_distinct_models(("same", "same"))
+
+
+def test_api_config_prefers_doubao_ark_over_moonshot_and_strips_coding_plan(
+    monkeypatch,
+):
+    monkeypatch.setenv("ARK_API_KEY", "ark-test-key")
+    monkeypatch.setenv("DOUBAO_API_KEY", "doubao-should-lose-to-ark")
+    monkeypatch.setenv("MOONSHOT_API_KEY", "moonshot-should-lose")
+    monkeypatch.setenv("KIMI_CODE_API_KEY", "coding-plan-must-not-win")
+    monkeypatch.setenv("KIMI_CODE_KEY_FILE", "C:\\fake\\kimi.key")
+
+    key, base, models = _api_config()
+
+    assert key == "ark-test-key"
+    assert base == DOUBAO_DEFAULT_BASE_URL
+    assert models == DOUBAO_DEFAULT_MODELS
+    assert models[0] != models[1]
+    require_distinct_models(models)
+    assert "KIMI_CODE_API_KEY" not in os.environ
+    assert "KIMI_CODE_KEY_FILE" not in os.environ
+
+
+def test_api_config_doubao_api_key_alias_and_custom_models(monkeypatch):
+    monkeypatch.delenv("ARK_API_KEY", raising=False)
+    monkeypatch.setenv("DOUBAO_API_KEY", "doubao-alias-key")
+    monkeypatch.setenv("DOUBAO_BASE_URL", "https://ark.example/v3/")
+    monkeypatch.setenv("DOUBAO_MODEL", "doubao-model-a")
+    monkeypatch.setenv("DOUBAO_MODEL_B", "doubao-model-b")
+    monkeypatch.setenv("MOONSHOT_API_KEY", "moonshot-should-lose")
+
+    key, base, models = _api_config()
+
+    assert key == "doubao-alias-key"
+    assert base == "https://ark.example/v3"
+    assert models == ("doubao-model-a", "doubao-model-b")
+    require_distinct_models(models)
+
+
+def test_api_config_doubao_equal_custom_models_fail_distinct_check(monkeypatch):
+    monkeypatch.delenv("ARK_API_KEY", raising=False)
+    monkeypatch.setenv("DOUBAO_API_KEY", "doubao-key")
+    monkeypatch.setenv("DOUBAO_MODEL", "same-vision")
+    monkeypatch.setenv("DOUBAO_MODEL_B", "same-vision")
+
+    _, _, models = _api_config()
+    assert models[0] == models[1]
+    with pytest.raises(VisionInfrastructureError, match="不同视觉模型"):
+        require_distinct_models(models)
+
+
+def test_api_config_moonshot_when_no_doubao_ignores_coding_plan(monkeypatch):
+    monkeypatch.delenv("ARK_API_KEY", raising=False)
+    monkeypatch.delenv("DOUBAO_API_KEY", raising=False)
+    monkeypatch.setenv("MOONSHOT_API_KEY", "moonshot-key")
+    monkeypatch.setenv("KIMI_CODE_API_KEY", "coding-plan-must-not-win")
+
+    key, base, models = _api_config()
+
+    assert key == "moonshot-key"
+    assert base == "https://api.moonshot.cn/v1"
+    assert models == OPEN_PLATFORM_MODELS
+    assert models[0] != models[1]
+    assert "KIMI_CODE_API_KEY" not in os.environ
 
 
 def test_live_run_rejects_equal_models_not_only_full(monkeypatch):

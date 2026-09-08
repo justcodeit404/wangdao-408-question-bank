@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """408 题库全自动章节抽检门禁。
 
-这个脚本只把原书页面当作事实来源：Coding Plan 的 K2.6（或显式开启
-Thinking 时的 K2.7）负责独立读取题目和答案裁图。模型无法一致确认的题目会
+这个脚本只把原书页面当作事实来源：两个不同视觉模型独立读取题目和答案裁图。
+Provider 顺序：火山方舟/豆包（ARK_API_KEY 或 DOUBAO_API_KEY）→ Moonshot Open
+Platform（MOONSHOT_API_KEY）。禁止 Kimi Coding Plan。模型无法一致确认的题目会
 进入 quality-hold；网络/API 故障直接阻断构建，不会修改发布题库。
 
 默认由 build_all.py 在 merge 前调用。脚本也可单独用于测试，模型客户端可注入，
@@ -50,14 +51,17 @@ HOLD_PATH = MATH_BANK_DIR / "quality-hold.json"
 TEMP_ROOT = Path(__file__).resolve().parents[2] / "temp" / "408-vision-audit"
 
 OPEN_PLATFORM_MODELS = ("kimi-k3", "kimi-k2.6")
-# Coding Plan 默认用 kimi-for-coding + thinking=disabled，由服务端路由到 K2.6，
-# 做两次盲审以避免 K3/K2.7 Thinking 的高 token 消耗。
-# 显式设置 KIMI_CODE_THINKING=on 才使用 K2.7 Code。
+DOUBAO_DEFAULT_BASE_URL = "https://ark.cn-beijing.volces.com/api/v3"
+DOUBAO_DEFAULT_MODELS = (
+    "doubao-1-5-vision-pro-32k-250115",
+    "doubao-1-5-thinking-vision-pro",
+)
+# 历史 Coding Plan 模型前缀仍用于 request 侧 temperature/extra_body 门控；
+# _api_config 不再选择 Coding Plan（会 pop KIMI_CODE_*）。
 CODING_PLAN_DEFAULT_MODEL = "kimi-for-coding"
 DEFAULT_PER_CHAPTER = 5
 DEFAULT_BATCH_SIZE = 5
-# Coding Plan 的视觉模型会对读图任务给出保守的自评置信度；真正的门禁条件
-# 是双模型字段一致。低于 0.5 仍视为看不清。
+# 视觉模型自评置信度偏保守；真正门禁是双模型字段一致。低于 0.5 仍视为看不清。
 MIN_CONFIDENCE = 0.5
 PASS_STATUSES = {"verified", "auto_fixed"}
 
@@ -188,29 +192,27 @@ def _priority_uids() -> set[str]:
 
 
 def _api_config() -> tuple[str, str, tuple[str, str]]:
-    """根据显式环境变量选择 Open Platform 或 Coding Plan。"""
-    coding_key = os.getenv("KIMI_CODE_API_KEY", "").strip()
-    key_file = os.getenv("KIMI_CODE_KEY_FILE", "").strip()
-    if not coding_key and key_file:
-        path = Path(key_file)
-        if path.is_file():
-            coding_key = next(
-                (
-                    line.strip()
-                    for line in path.read_text(encoding="utf-8").splitlines()
-                    if line.strip()
-                ),
-                "",
-            )
-    open_key = os.getenv("MOONSHOT_API_KEY", "").strip()
-    if coding_key:
-        model_a = os.getenv("KIMI_CODE_MODEL", CODING_PLAN_DEFAULT_MODEL).strip()
-        model_b = os.getenv("KIMI_CODE_MODEL_B", model_a).strip()
+    """Provider 顺序：Doubao Ark → Moonshot Open Platform。永不选 Kimi Coding Plan。"""
+    # Coding Plan 默认 B=A，且会抢占选择；进程内清掉，避免误用。
+    os.environ.pop("KIMI_CODE_API_KEY", None)
+    os.environ.pop("KIMI_CODE_KEY_FILE", None)
+
+    doubao_key = os.getenv("ARK_API_KEY", "").strip() or os.getenv("DOUBAO_API_KEY", "").strip()
+    if doubao_key:
+        model_a = (
+            os.getenv("DOUBAO_MODEL", DOUBAO_DEFAULT_MODELS[0]).strip() or DOUBAO_DEFAULT_MODELS[0]
+        )
+        model_b = (
+            os.getenv("DOUBAO_MODEL_B", DOUBAO_DEFAULT_MODELS[1]).strip()
+            or DOUBAO_DEFAULT_MODELS[1]
+        )
         return (
-            coding_key,
-            os.getenv("KIMI_CODE_BASE_URL", "https://api.kimi.com/coding/v1").rstrip("/"),
+            doubao_key,
+            os.getenv("DOUBAO_BASE_URL", DOUBAO_DEFAULT_BASE_URL).rstrip("/"),
             (model_a, model_b),
         )
+
+    open_key = os.getenv("MOONSHOT_API_KEY", "").strip()
     if open_key:
         return (
             open_key,
@@ -224,7 +226,9 @@ def require_distinct_models(models: tuple[str, str]) -> None:
     """Live API 路径一律要求两个不同视觉模型（rotation / priority / full / uids-file）。"""
     if models[0] == models[1]:
         raise VisionInfrastructureError(
-            "原书核对必须配置两个不同视觉模型（KIMI_CODE_MODEL_B 不能等于模型 A；Open Platform 用 kimi-k3 + kimi-k2.6）"
+            "原书核对必须配置两个不同视觉模型"
+            "（Doubao: DOUBAO_MODEL ≠ DOUBAO_MODEL_B；"
+            "Open Platform: kimi-k3 + kimi-k2.6）"
         )
 
 
@@ -862,7 +866,7 @@ def run_gate(
     api_key, base_url, models = _api_config()
     if not api_key and client_factory is None:
         raise VisionInfrastructureError(
-            "未配置 KIMI_CODE_API_KEY 或 MOONSHOT_API_KEY，拒绝生成未核验发布包"
+            "未配置 ARK_API_KEY/DOUBAO_API_KEY 或 MOONSHOT_API_KEY，拒绝生成未核验发布包"
         )
     require_distinct_models(models)
     client = client_factory() if client_factory else OpenAI(api_key=api_key, base_url=base_url)
