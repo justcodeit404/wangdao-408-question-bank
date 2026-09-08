@@ -59,9 +59,19 @@ def test_ds_2012_preorder_uses_latin_a_not_alpha():
     assert "b,c,d,e,a" in compact
 
 
+def test_ds_2024_inorder_uses_q_not_nine():
+    question = _q("ds", "二叉树的遍历和线索二叉树", "X43")
+    compact = question["content"].replace(" ", "").replace("\n", "")
+    assert "P,V,9" not in compact
+    assert "p,v,q" in compact
+    expl = (question.get("answer") or {}).get("explanation") or ""
+    assert "因此g不存在" not in expl
+    assert "因此q不存在" in expl
+
+
 def test_page_review_manifest_is_valid_and_unique():
     patches = load_page_review_patches()
-    assert len(patches) == 47
+    assert len(patches) == 48
     assert all(len(key) == 3 for key in patches)
 
 
