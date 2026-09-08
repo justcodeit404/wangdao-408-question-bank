@@ -1,0 +1,21 @@
+task: structural-8 choice holds
+date: 2026-09-08
+apply_patches: 8
+
+UIDs fixed (pass _choice_should_hold + certified):
+  408:cs408-ds::图 · 图的存储及基本操作 · 选择题::X06
+  408:cs408-net::传输层 · TCP · 选择题::X18
+  408:cs408-net::网络层 · IPv4 · 选择题::X27
+  408:cs408-net::计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题::X23
+  408:cs408-net::计算机网络体系结构 · 计算机网络概述 · 选择题::X06
+  408:cs408-os::内存管理 · 内存管理概念 · 选择题::X58
+  408:cs408-os::进程与线程 · CPU调度 · 选择题::X16
+
+UID type-reclass (no longer 选择; still ledger hold, not certified):
+  408:cs408-net::网络层 · IPv4 · 选择题::X11_2 -> type=综合应用题
+
+still_hold among 8: only X11_2
+certify: 7 via ingest_quality_decisions evidence=official_book_answer_override; structural-fix
+ledger after: total=2869 certified=2448 pending=0 held=421
+code: apply_patches copies patch["type"] onto question
+patches: data/quality/vision_patches.json models=[doubao-work,structural-fix] status=auto_fixed

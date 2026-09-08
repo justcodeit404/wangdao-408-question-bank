@@ -11686,6 +11686,219 @@
           "D": "哈夫曼树图：3与5合并为8，8与6合并为14，14与9合并为23，23与12合并为35（构造顺序：3+5, 6+8, 9+14, 12+23）"
         }
       }
+    },
+    {
+      "source_uid": "408:cs408-ds::图 · 图的存储及基本操作 · 选择题::X06",
+      "course_key": "ds",
+      "chapter": "图 · 图的存储及基本操作 · 选择题",
+      "question_id": "X06",
+      "source_hash": "1813de3a87e9a44cb65e582cf1c25bbed23a0a7a37220b191fce502d1790a3d8",
+      "status": "auto_fixed",
+      "models": [
+        "doubao-work",
+        "structural-fix"
+      ],
+      "fields": {
+        "content": true,
+        "options": true
+      },
+      "patch": {
+        "content": "从邻接矩阵\nA = [[0, 1, 0],\n     [1, 0, 1],\n     [0, 1, 0]]\n可以看出，该图共有（①）个顶点；若该图是有向图，则该图共有（②）条弧；若该图是无向图，则共有（③）条边。\n① A.9 B.3 C.5 D.1 E.以上答案均不正确\n② A.5 B.4 C.3 D.2 E.以上答案均不正确\n③ A.5 B.4 C.3 D.2 E.以上答案均不正确",
+        "options": {
+          "A": "9",
+          "B": "3",
+          "C": "5",
+          "D": "1",
+          "E": "以上答案均不正确"
+        },
+        "answer": {
+          "choice": "BBD"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X18",
+      "course_key": "net",
+      "chapter": "传输层 · TCP · 选择题",
+      "question_id": "X18",
+      "source_hash": "a22fb76dc1828b37aa9389934f38b309d6e4d3124afe7c427907384bf3fa66ff",
+      "status": "auto_fixed",
+      "models": [
+        "doubao-work",
+        "structural-fix"
+      ],
+      "fields": {
+        "content": true,
+        "options": true
+      },
+      "patch": {
+        "content": "TCP使用三次握手协议来建立连接，设A、B双方发送报文的初始序号分别为X和Y，A发送（①）的报文给B，B接收到报文后发送（②）的报文给A，然后A发送一个确认报文给B便建立了连接（注意，ACK的下标为捎带的序号）。\n① A. SYN=1，序号=X  B. SYN=1，序号=X+1，ACKx=1\n② A. SYN=1，序号=X+1，ACKx=1  B. SYN=1，序号=X，ACKx+1=1  C. SYN=1，序号=Y，ACKx+1=1  D. SYN=1，序号=Y，ACKy+1=1",
+        "options": {
+          "A": "SYN=1，序号=X",
+          "B": "SYN=1，序号=X+1，ACKx=1",
+          "C": "SYN=1，序号=Y，ACKx+1=1",
+          "D": "SYN=1，序号=Y，ACKy+1=1"
+        },
+        "answer": {
+          "choice": "AC"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X11_2",
+      "course_key": "net",
+      "chapter": "网络层 · IPv4 · 选择题",
+      "question_id": "X11_2",
+      "source_hash": "e4dc311e6091a99f233bf6a2754c92a3705a6d09cb7a72967eb3148404092216",
+      "status": "auto_fixed",
+      "models": [
+        "doubao-work",
+        "structural-fix"
+      ],
+      "fields": {
+        "type": true
+      },
+      "patch": {
+        "type": "综合应用题"
+      }
+    },
+    {
+      "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X27",
+      "course_key": "net",
+      "chapter": "网络层 · IPv4 · 选择题",
+      "question_id": "X27",
+      "source_hash": "39405f01b82311134d6bdcf771d40abb63dc74d8a0664f6366a596f40a278514",
+      "status": "auto_fixed",
+      "models": [
+        "doubao-work",
+        "structural-fix"
+      ],
+      "fields": {
+        "content": true,
+        "options": true
+      },
+      "patch": {
+        "content": "CIDR地址块192.168.10.0/20所包含的IP地址范围是（①）。与地址192.16.0.19/28同属于一个子网的主机地址是（②）。\n① A.192.168.0.0 ~192.168.12.255 B.192.168.10.0~192.168.13.255 C.192.168.10.0 ~192.168.14.255 D.192.168.0.0~ 192.168.15.255\n② A.192.16.0.17 B.192.16.0.31 C.192.16.0.15 D.192.16.0.14",
+        "options": {
+          "A": "192.168.0.0 ~192.168.12.255",
+          "B": "192.168.10.0~192.168.13.255",
+          "C": "192.168.10.0 ~192.168.14.255",
+          "D": "192.168.0.0~ 192.168.15.255"
+        },
+        "answer": {
+          "choice": "DA"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-net::计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题::X23",
+      "course_key": "net",
+      "chapter": "计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题",
+      "question_id": "X23",
+      "source_hash": "b0a4128382ad698359f3fda29a87dd313efd9e2f6772d7a8bd81410863e4180f",
+      "status": "auto_fixed",
+      "models": [
+        "doubao-work",
+        "structural-fix"
+      ],
+      "fields": {
+        "content": true,
+        "options": true
+      },
+      "patch": {
+        "content": "在OSI参考模型中，提供流量控制功能的层是第（①）层；提供建立、维护和拆除端到端的连接的层是（②）；为数据分组提供在网络中路由功能的是（③）；传输层提供（④）的数据传送；为网络层实体提供数据发送和接收功能及过程的是（⑤）。\n① A.1、2、3 B.2、3、4 C.3、4、5 D.4、5、6\n② A.物理层 B.数据链路层 C.会话层 D.传输层\n③ A.物理层 B.数据链路层 C.网络层 D.传输层\n④ A.主机进程之间 B.网络之间 C.数据链路之间 D.物理线路之间\n⑤ A.物理层 B.数据链路层 C.会话层 D.传输层",
+        "options": {
+          "A": "主机进程之间",
+          "B": "网络之间",
+          "C": "数据链路之间",
+          "D": "物理线路之间"
+        },
+        "answer": {
+          "choice": "BDCAB"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-net::计算机网络体系结构 · 计算机网络概述 · 选择题::X06",
+      "course_key": "net",
+      "chapter": "计算机网络体系结构 · 计算机网络概述 · 选择题",
+      "question_id": "X06",
+      "source_hash": "2c4af34510986fc4792adbc942889afbf5e10a6216818d8b6b331a0423e1e77e",
+      "status": "auto_fixed",
+      "models": [
+        "doubao-work",
+        "structural-fix"
+      ],
+      "fields": {
+        "content": true,
+        "options": true
+      },
+      "patch": {
+        "content": "不同的数据交换方式有不同的性能。为了使数据在网络传输期间的时延最小，首选的交换方式是（①）；为保证数据无差错地传送，不应选用的交换方式是（②）；分组交换对报文交换的主要改进是（③），这种改进产生的直接结果是（④）。\n① A.电路交换 B.报文交换 C.分组交换\n② A.电路交换 B.报文交换 C.分组交换\n③ A.传输单位更小且有固定的最大长度 B.传输单位更大且有固定的最大长度 C.减少传输时延 D.增加传输时延\n④ A.降低了差错率 B.提高了差错率 C.减小了传输时延 D.提高了数据传输速率",
+        "options": {
+          "A": "传输单位更小且有固定的最大长度",
+          "B": "传输单位更大且有固定的最大长度",
+          "C": "减少传输时延",
+          "D": "增加传输时延"
+        },
+        "answer": {
+          "choice": "AAAC"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-os::内存管理 · 内存管理概念 · 选择题::X58",
+      "course_key": "os",
+      "chapter": "内存管理 · 内存管理概念 · 选择题",
+      "question_id": "X58",
+      "source_hash": "4570b149a8280fd2e0624b9127b0bf446905ae20818de5e9e6c7d6d485286414",
+      "status": "auto_fixed",
+      "models": [
+        "doubao-work",
+        "structural-fix"
+      ],
+      "fields": {
+        "options": true
+      },
+      "patch": {
+        "options": {
+          "A": "I、II、IV",
+          "B": "II、III",
+          "C": "II、III。",
+          "D": "仅I"
+        },
+        "answer": {
+          "choice": "A"
+        }
+      }
+    },
+    {
+      "source_uid": "408:cs408-os::进程与线程 · CPU调度 · 选择题::X16",
+      "course_key": "os",
+      "chapter": "进程与线程 · CPU调度 · 选择题",
+      "question_id": "X16",
+      "source_hash": "20fb881dba434d8165548bfc5259b2d2d66906b61f13a0f0f4b76b9d493bdc52",
+      "status": "auto_fixed",
+      "models": [
+        "doubao-work",
+        "structural-fix"
+      ],
+      "fields": {
+        "options": true,
+        "answer": true
+      },
+      "patch": {
+        "options": {
+          "A": "FCFS调度算法",
+          "B": "短作业优先调度算法",
+          "C": "基于优先权的剥夺调度算法",
+          "D": "时间片轮转调度算法",
+          "E": "多级反馈队列调度算法"
+        },
+        "answer": {
+          "choice": "BCDE"
+        }
+      }
     }
   ]
 }

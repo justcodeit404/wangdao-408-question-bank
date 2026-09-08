@@ -727,7 +727,7 @@ def apply_patches() -> int:
                 if not item:
                     continue
                 expected = item.get("patch") or {}
-                for field in ("content", "options"):
+                for field in ("content", "options", "type"):
                     if field in expected:
                         question[field] = expected[field]
                         changed = True
