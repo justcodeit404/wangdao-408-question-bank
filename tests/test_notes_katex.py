@@ -67,8 +67,10 @@ def test_notes_preview_wired_in_viewer():
 
     m = re.search(r"__BANK_DATA_VER__='(\d+)'", html)
     assert m, "missing __BANK_DATA_VER__"
+    ver = m.group(1)
     sw = (ROOT / "math-bank" / "sw.js").read_text(encoding="utf-8")
-    assert f"wd408-ui-v{m.group(1)}" in sw
+    assert f"wd408-ui-v{ver}" in sw
+    assert f"sw.js?v={ver}" in js, "SW 注册串必须与 __BANK_DATA_VER__ 一致"
 
 
 def test_prepare_note_math_bare_log_and_delimited():
