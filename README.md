@@ -31,9 +31,7 @@
 │   └── reports/              # 质量报告、补全清单等
 ├── math-bank/                # 前端题库页面（HTML/CSS/JS）
 ├── tests/                    # 回归测试
-├── assets/pdf_images/{ds,coa,net,os}/  # PDF 切页图片（自行准备）
-├── screenshots/              # 本地截图/验证图片（不提交）
-└── tmp/                      # 临时/备份文件（不提交）
+└── assets/pdf_images/{ds,coa,net,os}/  # PDF 切页图片（自行准备）
 ```
 
 ## 构建
