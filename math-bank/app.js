@@ -232,7 +232,8 @@ function questionKey(q) { return q.chapter + '::' + q.id; }
 function displayId(q) { return (q.id || '').replace(/^[XA]/, ''); }
 
 const OCR_CODE_LINE_RE = /\b(?:void|int|char|float|double|for|while|if|else|return|printf|scanf|typedef|struct)\b|[{};]|\+\+|--/;
-const OCR_STRUCTURAL_START_RE = /^(?:[①-⑳]|[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ]+[.．、]?|I{1,4}[.．、]|V?I{0,3}[.．、]|[（(]?\d+[)）.．、]|[A-D][.．、]|题目图片：|答案图片：|解析图片：)/;
+const OCR_STRUCTURAL_START_RE = /^(?:[①-⑳]|[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ]+[.．、]?|(?:I{1,3}|IV|VI{0,3}|IX)[.．、]|[（(]?\d+[)）.．、]|[A-D][.．、]|题目图片：|答案图片：|解析图片：)/;
+const OCR_ASSET_CAPTION_RE = /^(?:题目图片|答案图片|解析图片|题图|答图)\s*[：:]/;
 const OCR_TABLE_HINT_RE = /(?:如下表|下表|表所示|如下图|下图|图所示)/;
 
 function looksLikeOcrCodeLine(line) {
@@ -244,6 +245,7 @@ function isOcrStructuralBreak(lines, index, hasTableOrFigure) {
   const right = String(lines[index + 1] || '').trim();
   if (!left || !right) return true;
   if (looksLikeOcrCodeLine(left) || looksLikeOcrCodeLine(right)) return true;
+  if (OCR_ASSET_CAPTION_RE.test(left) || OCR_ASSET_CAPTION_RE.test(right)) return true;
   if (OCR_STRUCTURAL_START_RE.test(right)) return true;
   if (/^(?:\||表头|指令类型|项目|名称|地址|序号|时间|操作)/.test(right)) return true;
   if (left.endsWith('：') || left.endsWith(':')) return true;
@@ -2012,8 +2014,7 @@ function showChoiceFeedback(container, q, isCorrect, seq) {
     }
     const expl = fb.querySelector('[data-role="feedbackExplain"]');
     if (expl && q.answer && q.answer.explanation) {
-      expl.textContent = '解析：' + prepareMathText(q.answer.explanation);
-      renderKatex(expl);
+      fillExplanation(expl, q.answer.explanation, '解析：');
     }
   }
   showPracticeMastery(container);
@@ -2083,8 +2084,7 @@ function revealAnswerBox(container, q) {
   if (!ansBox) return;
   if (q && q.answer) {
     if (ansText && q.answer.explanation) {
-      ansText.textContent = prepareMathText(q.answer.explanation);
-      renderKatex(ansText);
+      fillExplanation(ansText, q.answer.explanation);
     }
     ansBox.hidden = false;
     if (toggle) toggle.style.display = 'none';
@@ -2117,8 +2117,7 @@ function bindPracticeInteractions(container, q) {
           }
           const expl = fb.querySelector('[data-role="feedbackExplain"]');
           if (expl && q.answer && q.answer.explanation) {
-            expl.textContent = '解析：' + prepareMathText(q.answer.explanation);
-            renderKatex(expl);
+            fillExplanation(expl, q.answer.explanation, '解析：');
           }
         }
 
@@ -2184,8 +2183,7 @@ function restorePracticeState(container, q) {
       }
       const expl = fb.querySelector('[data-role="feedbackExplain"]');
       if (expl && q.answer && q.answer.explanation) {
-        expl.textContent = '解析：' + prepareMathText(q.answer.explanation);
-        renderKatex(expl);
+        fillExplanation(expl, q.answer.explanation, '解析：');
       }
     }
   } else {
@@ -2195,8 +2193,7 @@ function restorePracticeState(container, q) {
     if (btn) { btn.disabled = true; btn.parentElement.style.display = 'none'; }
     if (ansBox) ansBox.hidden = false;
     if (ansText && q.answer && q.answer.explanation) {
-      ansText.textContent = prepareMathText(q.answer.explanation);
-      renderKatex(ansText);
+      fillExplanation(ansText, q.answer.explanation);
     }
   }
 }
@@ -2786,6 +2783,44 @@ function resolveImageSrc(imageRef) {
     return `/banks/408/../pdf_images/page_${page}.png` + q;
   }
   return `../pdf_images/page_${page}.png` + q;
+}
+
+function fillExplanation(el, expl, prefix) {
+  if (!el) return;
+  const raw = String(expl || '');
+  if (!raw.trim()) {
+    el.textContent = prefix || '';
+    return;
+  }
+  const assetRe = /(?:题目图片|答案图片|解析图片|题图|答图)\s*[：:]\s*(\S+?\.(?:png|jpe?g|webp|gif))/gi;
+  const assets = [];
+  const prose = raw.replace(assetRe, (_, path) => {
+    assets.push(String(path).replace(/[.,;，。；]+$/, ''));
+    return '\n';
+  });
+  const text = String(prefix || '') + prepareMathText(prose);
+  el.replaceChildren();
+  if (text.trim()) {
+    const wrap = document.createElement('div');
+    wrap.textContent = text.trim();
+    renderKatex(wrap);
+    el.appendChild(wrap);
+  }
+  for (const path of assets) {
+    const src = resolveImageSrc({ cropped: path });
+    if (!src) continue;
+    const fig = document.createElement('figure');
+    fig.className = 'q-image q-image-inline';
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = '解析配图';
+    img.loading = 'eager';
+    img.decoding = 'async';
+    img.addEventListener('click', () => zoomImage(img.src));
+    img.addEventListener('error', () => fig.classList.add('is-broken'));
+    fig.appendChild(img);
+    el.appendChild(fig);
+  }
 }
 
 function imageHtml(imageRef) {
@@ -4606,7 +4641,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=58').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=59').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {

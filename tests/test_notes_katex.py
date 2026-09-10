@@ -110,11 +110,24 @@ def test_prepare_math_reflows_prose_but_preserves_structure():
     assert "某程序如下表所示。\nA 1 2" in table
 
 
+def test_prepare_math_keeps_iv_and_answer_image_lines():
+    iv, img = _eval_prepare(
+        [
+            "III. 高度为h（h>0）的完全二叉树对应的森林所含的树的个数一定是h\n"
+            "IV. 一棵树中的叶子数一定等于与其对应的二叉树的叶子数",
+            "只有满二叉树才具有性质III，如下图所示。\n"
+            "答案图片：crops/ds/page_181_X01_1.png\n"
+            "在树转换为二叉树时，若有几个叶结点具有共同的双亲",
+        ]
+    )
+    assert "\nIV. " in iv
+    assert "是hIV." not in iv.replace(" ", "")
+    assert "\n答案图片：crops/ds/page_181_X01_1.png\n" in img
+
+
 def test_prepare_math_keeps_unicode_superscripts_out_of_bare_tex():
     """¹ 不得变成裸 ^{1}，否则解析里 3ⁱ⁻¹ 会显示成 3ⁱ⁻^{1}。"""
-    out = _eval_prepare(
-        ["这棵树的第i（i≥1）层最多有3ⁱ⁻¹个结点。则3⁰+3¹+…+3ʰ⁻¹=(3ʰ-1)/2"]
-    )[0]
+    out = _eval_prepare(["这棵树的第i（i≥1）层最多有3ⁱ⁻¹个结点。则3⁰+3¹+…+3ʰ⁻¹=(3ʰ-1)/2"])[0]
     assert "^{1}" not in out
     assert "^{0}" not in out
     assert "ⁱ" in out
