@@ -108,9 +108,24 @@ def test_ds_2024_inorder_uses_q_not_nine():
     assert "因此q不存在" in expl
 
 
+def test_ds_forest_x01_roman_items_and_floor_log():
+    question = _q("ds", "树、森林", "X01")
+    content = question["content"]
+    assert "I对于" not in content
+    assert "I. 对于有n个结点的二叉树，其高度为 ⌊log₂ n⌋" in content
+    assert "II. 完全二叉树中，若一个结点没有左孩子，则它必是叶结点" in content
+    assert "III. 高度为h（h>0）的完全二叉树对应的森林所含的树的个数一定是h" in content
+    assert "IV. 一棵树中的叶子数一定等于与其对应的二叉树的叶子数" in content
+    assert content.count("III.") == 1
+    assert "log2n" not in content.replace(" ", "")
+    patches = load_page_review_patches()
+    fields = patches[("ds", "树与二叉树 · 树、森林 · 选择题", "X01")]
+    assert fields["content"] == content
+
+
 def test_page_review_manifest_is_valid_and_unique():
     patches = load_page_review_patches()
-    assert len(patches) == 51
+    assert len(patches) == 52
     assert all(len(key) == 3 for key in patches)
 
 
