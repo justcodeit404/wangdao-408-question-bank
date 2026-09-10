@@ -130,9 +130,26 @@ def test_ds_forest_x01_roman_items_and_floor_log():
     assert (crop_dir / "page_181_X01_forest.png").is_file()
 
 
+def test_ds_forest_x03_keeps_m_subscripts():
+    question = _q("ds", "树、森林", "X03")
+    content = question["content"].replace(" ", "").replace("\n", "")
+    assert "M1、M2和M3" in content
+    assert "M,M2和M3" not in content
+    assert question["options"]["A"] == "M1"
+    assert question["options"]["B"] == "M1 + M2"
+    assert question["options"]["C"] == "M3"
+    assert question["options"]["D"] == "M2 + M3"
+    assert question["answer"]["choice"] == "D"
+    assert "M2+M3" in (question["answer"]["explanation"] or "").replace(" ", "")
+    patches = load_page_review_patches()
+    fields = patches[("ds", "树与二叉树 · 树、森林 · 选择题", "X03")]
+    assert fields["options"]["D"] == "M2 + M3"
+    assert fields["choice"] == "D"
+
+
 def test_page_review_manifest_is_valid_and_unique():
     patches = load_page_review_patches()
-    assert len(patches) == 52
+    assert len(patches) == 53
     assert all(len(key) == 3 for key in patches)
 
 

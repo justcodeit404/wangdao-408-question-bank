@@ -1,14 +1,14 @@
-﻿// 王道 408 题库 Service Worker
+// 王道 408 题库 Service Worker
 // JS/CSS/HTML + 题库数据 JSON：Network-First（避免题干修了仍显示旧缓存）
 // 其它同源静态：Stale-While-Revalidate
 
-const CACHE_NAME = 'wd408-ui-v61';
+const CACHE_NAME = 'wd408-ui-v62';
 const APP_SHELL = [
   './',
   './index.html',
-  './styles.css?v=61',
-  './app.js?v=61',
-  './data.js?v=61',
+  './styles.css?v=62',
+  './app.js?v=62',
+  './data.js?v=62',
   './manifest.json'
 ];
 
