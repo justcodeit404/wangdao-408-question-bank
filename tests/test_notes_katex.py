@@ -122,6 +122,10 @@ def test_prepare_math_keeps_iv_and_answer_image_lines():
     )
     assert "\nIV. " in iv
     assert "是hIV." not in iv.replace(" ", "")
+    glued = _eval_prepare(
+        ["III. 高度为h（h>0）的完全二叉树对应的森林所含的树的个数一定是h IV. 一棵树中的叶子数"]
+    )[0]
+    assert "\nIV. " in glued
     assert "\n答案图片：crops/ds/page_181_X01_1.png\n" in img
 
 

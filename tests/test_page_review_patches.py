@@ -123,11 +123,10 @@ def test_ds_forest_x01_roman_items_and_floor_log():
     assert fields["content"] == content
     expl = (question.get("answer") or {}).get("explanation") or ""
     assert "答案图片：crops/ds/page_181_X01_1.png" in expl
-    assert "答案图片：crops/ds/page_181_X01_2.png" in expl
+    assert "page_181_X01_2" not in expl
     assert expl == fields["explanation"]
     crop_dir = BANK / "crops" / "ds"
     assert (crop_dir / "page_181_X01_1.png").is_file()
-    assert (crop_dir / "page_181_X01_2.png").is_file()
 
 
 def test_page_review_manifest_is_valid_and_unique():

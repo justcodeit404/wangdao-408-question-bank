@@ -279,9 +279,16 @@ function reflowOcrSoftWraps(text) {
   return out.join('\n');
 }
 
+function splitRomanItems(text) {
+  return String(text || '')
+    .replace(/[\u2028\u2029]/g, '\n')
+    .replace(/(?<=\S)[ \t]+(?=(?:I{1,3}|IV)\. )/g, '\n');
+}
+
 function normalizeDisplayText(text) {
   if (!text) return text;
   text = reflowOcrSoftWraps(text);
+  text = splitRomanItems(text);
   // 修复 OCR 导致的括号左右不一致：如 （) 或 (） 统一为 （）
   return text.replace(/（\s*\)/g, '（）').replace(/\(\s*）/g, '（）');
 }
@@ -2785,6 +2792,22 @@ function resolveImageSrc(imageRef) {
   return `../pdf_images/page_${page}.png` + q;
 }
 
+function appendExplainImage(el, path) {
+  const src = resolveImageSrc({ cropped: path });
+  if (!src) return;
+  const fig = document.createElement('figure');
+  fig.className = 'q-image q-image-inline';
+  const img = document.createElement('img');
+  img.src = src;
+  img.alt = '解析配图';
+  img.loading = 'eager';
+  img.decoding = 'async';
+  img.addEventListener('click', () => zoomImage(img.src));
+  img.addEventListener('error', () => fig.classList.add('is-broken'));
+  fig.appendChild(img);
+  el.appendChild(fig);
+}
+
 function fillExplanation(el, expl, prefix) {
   if (!el) return;
   const raw = String(expl || '');
@@ -2793,33 +2816,29 @@ function fillExplanation(el, expl, prefix) {
     return;
   }
   const assetRe = /(?:题目图片|答案图片|解析图片|题图|答图)\s*[：:]\s*(\S+?\.(?:png|jpe?g|webp|gif))/gi;
-  const assets = [];
-  const prose = raw.replace(assetRe, (_, path) => {
-    assets.push(String(path).replace(/[.,;，。；]+$/, ''));
-    return '\n';
-  });
-  const text = String(prefix || '') + prepareMathText(prose);
+  const chunks = [];
+  let last = 0;
+  let m;
+  while ((m = assetRe.exec(raw)) !== null) {
+    if (m.index > last) chunks.push({ type: 'text', value: raw.slice(last, m.index) });
+    chunks.push({ type: 'img', path: String(m[1]).replace(/[.,;，。；]+$/, '') });
+    last = m.index + m[0].length;
+  }
+  if (last < raw.length) chunks.push({ type: 'text', value: raw.slice(last) });
   el.replaceChildren();
-  if (text.trim()) {
+  let started = false;
+  for (const chunk of chunks) {
+    if (chunk.type === 'img') {
+      appendExplainImage(el, chunk.path);
+      continue;
+    }
+    const piece = (!started && prefix ? prefix : '') + prepareMathText(chunk.value);
+    started = true;
+    if (!piece.trim()) continue;
     const wrap = document.createElement('div');
-    wrap.textContent = text.trim();
+    wrap.textContent = piece.trim();
     renderKatex(wrap);
     el.appendChild(wrap);
-  }
-  for (const path of assets) {
-    const src = resolveImageSrc({ cropped: path });
-    if (!src) continue;
-    const fig = document.createElement('figure');
-    fig.className = 'q-image q-image-inline';
-    const img = document.createElement('img');
-    img.src = src;
-    img.alt = '解析配图';
-    img.loading = 'eager';
-    img.decoding = 'async';
-    img.addEventListener('click', () => zoomImage(img.src));
-    img.addEventListener('error', () => fig.classList.add('is-broken'));
-    fig.appendChild(img);
-    el.appendChild(fig);
   }
 }
 
@@ -4641,7 +4660,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=59').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=60').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {
