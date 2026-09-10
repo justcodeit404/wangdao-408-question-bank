@@ -171,6 +171,27 @@ def test_ds_forest_x19_x20_use_latin_a():
         assert "α" not in content
 
 
+def test_net_ipv4_a11_2_moved_out_of_choice():
+    data = _load("net")
+    for chapter in data["chapters"]:
+        if "IPv4" in str(chapter.get("name") or "") and "选择" in str(chapter.get("name") or ""):
+            assert all(q.get("id") != "X11_2" for q in chapter["questions"])
+    question = None
+    for chapter in data["chapters"]:
+        if "IPv4" in str(chapter.get("name") or "") and "解答" in str(chapter.get("name") or ""):
+            for q in chapter["questions"]:
+                if q.get("id") == "A11_2":
+                    question = q
+    assert question is not None
+    assert question["type"] == "解答题"
+    assert question.get("options") is None
+    assert (question.get("answer") or {}).get("choice") is None
+    expl = (question.get("answer") or {}).get("explanation") or ""
+    assert "00:00:5e:00:01:01" in expl
+    assert "380B" in expl
+    assert question.get("has_image") is True
+
+
 def test_coa_perf_x20_uses_5e5():
     content = _q("coa", "计算机的性能指标", "X20")["content"]
     assert '5x10"' not in content
