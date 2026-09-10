@@ -177,9 +177,30 @@ def test_coa_perf_x20_uses_5e5():
     assert "5×10^5" in content
 
 
+def test_ds_array_x07_has_k_and_aij():
+    content = _q("ds", "数组和特殊矩阵", "X07")["content"]
+    assert "B[k]" in content
+    assert "B[中的" not in content
+    assert "áij" not in content
+
+
+def test_os_deadlock_x40_has_r1_p1():
+    content = _q("os", "死锁", "X40")["content"]
+    assert "R,,R2" not in content
+    assert "P,P2" not in content
+    assert "R1,R2和R3" in content
+    assert "P1申请R1" in content
+
+
+def test_net_tcp_x15_power():
+    content = _q("net", "TCP", "X15")["content"]
+    assert '5x10"' not in content
+    assert "5×10^9" in content
+
+
 def test_page_review_manifest_is_valid_and_unique():
     patches = load_page_review_patches()
-    assert len(patches) == 64
+    assert len(patches) == 73
     assert all(len(key) == 3 for key in patches)
 
 
