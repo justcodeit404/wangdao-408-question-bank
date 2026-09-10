@@ -221,7 +221,7 @@ def test_net_tcp_x15_power():
 
 def test_page_review_manifest_is_valid_and_unique():
     patches = load_page_review_patches()
-    assert len(patches) == 109
+    assert len(patches) == 148
     assert all(len(key) == 3 for key in patches)
 
 
