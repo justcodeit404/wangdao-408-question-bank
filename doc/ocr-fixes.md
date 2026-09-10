@@ -30,7 +30,7 @@
 | 现象 | 题干「分别为 M,M2和M3」；选项 A=`M`、B=`M + M2`、D=`M2 + M`。解析已是 `M2+M3`，与题干/选项不一致。 |
 | 原书 | `assets/pdf_images/ds/page_177.png`：`M₁、M₂ 和 M₃`；A=`M₁` B=`M₁+M₂` C=`M₃` D=`M₂+M₃`；答案 D |
 | 修复 | `page_review_patches.json` 增补 X03：content/options/choice/explanation 对齐原书；重建 `output/questions.json` → `math-bank/data-ds.json`；缓存戳 61→62；回归测试 `test_ds_forest_x03_keeps_m_subscripts` |
-| 上云 | 见下方部署条目 |
+| 上云 | 2026-09-10 已部署 release `20260910T144824Z-bb2ca1906f56` |
 
 **正确题干**
 
