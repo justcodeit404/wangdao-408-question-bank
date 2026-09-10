@@ -70,6 +70,18 @@ def test_ds_x12_preorder_uses_latin_a_not_alpha():
         assert "α" not in option
 
 
+def test_ds_x33_2010_threaded_tree_stem_not_ocr_null():
+    question = _q("ds", "二叉树的遍历和线索二叉树", "X33")
+    compact = question["content"].replace(" ", "").replace("\n", "")
+    assert "Null" not in question["content"]
+    assert "A.B.C" not in compact
+    assert "后序线索树定义的是" in compact
+    assert question.get("has_image") is True
+    assert (question.get("image_ref") or {}).get("cropped") == "crops/ds/page_154_X33.png"
+    expl = (question.get("answer") or {}).get("explanation") or ""
+    assert "题目图片：crops/ds/page_154_X33.png" in expl
+
+
 def test_ds_2022_inorder_neighbors_split_roman_items():
     question = _q("ds", "二叉树的遍历和线索二叉树", "X41")
     content = question["content"]
@@ -98,7 +110,7 @@ def test_ds_2024_inorder_uses_q_not_nine():
 
 def test_page_review_manifest_is_valid_and_unique():
     patches = load_page_review_patches()
-    assert len(patches) == 50
+    assert len(patches) == 51
     assert all(len(key) == 3 for key in patches)
 
 
