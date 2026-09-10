@@ -147,9 +147,39 @@ def test_ds_forest_x03_keeps_m_subscripts():
     assert fields["choice"] == "D"
 
 
+def test_ds_stack_x12_variable_is_x_not_8():
+    question = _q("ds", "栈 · 选择题", "X12")
+    content = question["content"]
+    assert "变量8" not in content
+    assert "变量x的值" in content
+    assert "Pop(st, x)" in content
+
+
+def test_ds_queue_x21_uses_digit_zero():
+    question = _q("ds", "队列 · 选择题", "X21")
+    content = question["content"]
+    assert "A[O" not in content
+    assert "A[0]" in content
+    assert question["options"]["B"] == "0,n-1"
+    assert question["options"]["D"] == "n-1,n-1"
+    assert question["answer"]["choice"] == "B"
+
+
+def test_ds_forest_x19_x20_use_latin_a():
+    for qid in ("X19", "X20"):
+        content = _q("ds", "树、森林", qid)["content"]
+        assert "α" not in content
+
+
+def test_coa_perf_x20_uses_5e5():
+    content = _q("coa", "计算机的性能指标", "X20")["content"]
+    assert '5x10"' not in content
+    assert "5×10^5" in content
+
+
 def test_page_review_manifest_is_valid_and_unique():
     patches = load_page_review_patches()
-    assert len(patches) == 53
+    assert len(patches) == 64
     assert all(len(key) == 3 for key in patches)
 
 

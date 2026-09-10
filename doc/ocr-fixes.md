@@ -10,7 +10,7 @@
 
    ```powershell
    # 在 apps/bank-408
-   ..\platform-v2\backend\.venv\Scripts\python.exe scripts\fix_questions.py output\questions.json
+   ..\platform-v2\backend\.venv\Scripts\python.exe scripts\fix_questions.py
    ..\platform-v2\backend\.venv\Scripts\python.exe scripts\merge_courses.py output\questions_all.json
    ..\platform-v2\backend\.venv\Scripts\python.exe -m pytest tests\test_page_review_patches.py tests\test_notes_katex.py -q
    ```
@@ -39,3 +39,27 @@
 二叉树根结点的右子树上的结点数是（）。
 A. M1    B. M1 + M2    C. M3    D. M2 + M3
 ```
+
+---
+
+## 2026-09-10 · 全库扫描 · 选择题 OCR 二次修复
+
+全库模式扫描后，对照原书页图修复下列**选择题**（解答题大量乱码已在 hold，另案处理）：
+
+| 课程 | 题 | 错误 → 正确 |
+|------|----|-------------|
+| ds 栈 X12 | 变量8 → 变量x；Pop(st，x) → Pop(st, x) |
+| ds 栈 X17/X20/X21 | `",` 省略号 → `…`；`P的值` → `P1的值` |
+| ds 队列 X21 | `A[O]`/`O,n-1`/`n-l` → `A[0]`/`0,n-1`/`n-1` |
+| ds 链式 X06 | `在α和p之间` → `在q和p之间` |
+| ds 链式 X17 | `插入指针α` → `插入指针q` |
+| ds 二叉树 X08 | `1,2,",n` → `1,2,…,n` |
+| ds 森林 X19/X20 | 遍历序列 `α` → 拉丁 `a` |
+| ds 树形查找 X15 | `高度为〇`、`1,2,3,"` → `高度为0`、`1,2,3,…` |
+| coa 性能 X20 | `5x10"` → `5×10^5` |
+
+- 缓存戳 62→63
+- 回归：`test_ds_stack_x12_variable_is_x_not_8` 等
+
+**仍待处理（解答题 hold，模式扫描命中）**：`",` 省略号、α/a、`1ist`、代码乱码等，多见于线性表/图/排序解答题；需按原书页逐题重做 vision hold 修复，不在本批选择题补丁范围内。
+
