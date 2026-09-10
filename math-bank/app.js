@@ -282,7 +282,8 @@ function reflowOcrSoftWraps(text) {
 function splitRomanItems(text) {
   return String(text || '')
     .replace(/[\u2028\u2029]/g, '\n')
-    .replace(/(?<=\S)[ \t]+(?=(?:I{1,3}|IV)\. )/g, '\n');
+    .replace(/(?<=\S)[ \t]+(?=(?:I{1,3}|IV)\. )/g, '\n')
+    .replace(/\n+(?=(?:I{1,3}|IV)\. )/g, '\n');
 }
 
 function normalizeDisplayText(text) {
@@ -4660,7 +4661,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=60').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=61').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {

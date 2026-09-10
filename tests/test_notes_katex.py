@@ -116,7 +116,7 @@ def test_prepare_math_keeps_iv_and_answer_image_lines():
             "III. 高度为h（h>0）的完全二叉树对应的森林所含的树的个数一定是h\n"
             "IV. 一棵树中的叶子数一定等于与其对应的二叉树的叶子数",
             "只有满二叉树才具有性质III，如下图所示。\n"
-            "答案图片：crops/ds/page_181_X01_1.png\n"
+            "答案图片：crops/ds/page_181_X01_forest.png\n"
             "在树转换为二叉树时，若有几个叶结点具有共同的双亲",
         ]
     )
@@ -126,7 +126,7 @@ def test_prepare_math_keeps_iv_and_answer_image_lines():
         ["III. 高度为h（h>0）的完全二叉树对应的森林所含的树的个数一定是h IV. 一棵树中的叶子数"]
     )[0]
     assert "\nIV. " in glued
-    assert "\n答案图片：crops/ds/page_181_X01_1.png\n" in img
+    assert "\n答案图片：crops/ds/page_181_X01_forest.png\n" in img
 
 
 def test_prepare_math_keeps_unicode_superscripts_out_of_bare_tex():
