@@ -291,3 +291,32 @@ os：X07/X09/X10/X18/X31（运行环境等）、X41/X51/X55/X56/X73（进程）�
 
 累计本轮连抽约 2520 道选择题，修复约 143 题。**连续五批标准达成**：20270112–16 均 20/20 无病征，停止抽样。补丁共 233 条。缓存 69→70。
 
+---
+
+## 质检工具与验收边界（2026-09-11）
+
+### 脚本
+| 脚本 | 用途 |
+|------|------|
+| `scripts/scan_patterns.py` | 全库扫描高置信 OCR 病征（`Il.`/`Po`/`μus`/III 重复等） |
+| `scripts/scan_option_mismatch.py` | 疑似选项串题/主题不匹配 |
+| `scripts/merge_patches.py` | 合并 `page_review_patches.json` 重复 key |
+| `scripts/bump_bank_version.py` | 按 `data.js` hash 自动 bump 缓存 |
+| `scripts/rebuild_bank.ps1` | 一键：合并补丁 → 修题 → 合并 → 测试 → 扫描 |
+
+### 推荐流程
+1. 先跑 `scan_patterns.py` + `scan_option_mismatch.py`，对照原书改补丁
+2. 抽样 20 题（`temp/sample20_choice.py`）做**验收**，不靠它发现
+3. `powershell -File scripts/rebuild_bank.ps1` 一键重建
+4. pack/上云
+
+### 验收边界
+| 判定 | 举例 |
+|------|------|
+| **必修** | 选项错、罗马编号错、上标改变语义、选项串邻题 |
+| **可缓** | 全半角标点、空格、图片题 stem 拓扑标签 |
+| **不修** | 答案本身对错（除非确认原书错） |
+
+### 测试
+`test_page_review_patches.py` 的补丁数量断言已改为动态校验（非空且唯一），不再手写总数。
+

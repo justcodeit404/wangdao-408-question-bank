@@ -219,9 +219,116 @@ def test_net_tcp_x15_power():
     assert "5×10^9" in content
 
 
+def test_os_fat_x28_explicit_link_and_2_16():
+    question = _q("os", "目录与文件", "X28")
+    assert "显示链接" not in question["content"]
+    assert "显式链接" in question["content"]
+    expl = (question.get("answer") or {}).get("explanation") or ""
+    assert "216x2B" not in expl
+    assert "2^16×2B" in expl
+
+
+def test_os_thread_x71_wait_parens():
+    question = _q("os", "进程与线程简介", "X71")
+    assert question["options"]["D"] == "执行信号量的wait()操作"
+    expl = (question.get("answer") or {}).get("explanation") or ""
+    assert "waitO" not in question["options"]["D"]
+    assert "wait)" not in expl
+    assert "wait()" in expl
+
+
+def test_coa_shift_x15_keeps_x0_x1_subscripts():
+    question = _q("coa", "运算方法和运算电路", "X15")
+    assert "Xo.XX2" not in question["content"]
+    assert "x0.x1x2...xn" in question["content"]
+    assert question["options"]["A"] == "x0=x1"
+    assert question["options"]["B"] == "x0≠x1"
+    assert question["options"]["D"] == "x1=1"
+    expl = (question.get("answer") or {}).get("explanation") or ""
+    assert "x0≠x1" in expl
+
+
+def test_coa_vm_x14_add_xaddr_has_space():
+    content = _q("coa", "虚拟存储器", "X14")["content"]
+    assert "addxaddr" not in content
+    assert "add xaddr,3" in content
+
+
+def test_net_wlan_x48_uses_microseconds():
+    question = _q("net", "局域网", "X48")
+    assert "128uS" not in question["content"]
+    assert "128μs" in question["content"]
+    assert "28μs" in question["content"]
+    expl = (question.get("answer") or {}).get("explanation") or ""
+    assert "μus" not in expl
+    assert "296μs" in expl
+
+
+def test_coa_cache_x01_option_c_not_double_12mb():
+    options = _q("coa", "高速缓冲存储器", "X01")["options"]
+    assert options["C"] == "12MB-400KB+400KB"
+    assert "12MB-12MB" not in options["C"]
+
+
+def test_os_memory_x18_multiprogramming():
+    content = _q("os", "内存管理概念", "X18")["content"]
+    assert "多进程" not in content
+    assert "多道程序在内存中" in content
+
+
+def test_os_cpu_x55_roman_items_split():
+    content = _q("os", "CPU调度", "X55")["content"]
+    assert "值II." not in content
+    assert "I. 更新程序计数器的值" in content
+    assert "II. 更新栈基址寄存器的值" in content
+    assert "III. 更新页表基地址寄存器的值" in content
+
+
+def test_ds_algo_x06_multiplies_by_3():
+    content = _q("ds", "算法和算法评价", "X06")["content"]
+    assert "i=i*2" not in content
+    assert "i=i*3" in content
+
+
+def test_ds_graph_x09_five_vertices():
+    question = _q("ds", "图的基本概念", "X09")
+    assert "5个顶点" in question["content"]
+    assert "6个顶点" not in question["content"]
+    assert question["options"] == {"A": "6", "B": "7", "C": "8", "D": "9"}
+    assert question["answer"]["choice"] == "B"
+
+
+def test_net_routing_x04_next_hop_network_ip():
+    options = _q("net", "网络层的功能", "X04")["options"]
+    assert "MAC" not in options["D"]
+    assert "所在网络的IP地址" in options["D"]
+
+
+def test_net_stopwait_x01_option_d_has_packet():
+    options = _q("net", "流量控制与可靠传输", "X01")["options"]
+    assert options["D"] == "接收方可以不按序接收分组"
+
+
+def test_os_runtime_x01_options_not_duplicated():
+    options = _q("os", "操作系统的运行环境", "X01")["options"]
+    assert options["A"] == "I、II、III、IV"
+    assert options["B"] == "I、III"
+    assert options["C"] == "I、II、III"
+    assert options["D"] == "I"
+    assert len(set(options.values())) == 4
+
+
+def test_os_device_x31_splits_iv():
+    content = _q("os", "设备独立性软件", "X31")["content"]
+    assert "打印IV." not in content
+    assert "IV.缓冲区管理" in content
+
+
 def test_page_review_manifest_is_valid_and_unique():
     patches = load_page_review_patches()
-    assert len(patches) == 233
+    # 动态校验：非空且唯一（避免手写总数易碎）
+    assert patches
+    assert len(patches) == len(set(patches))
     assert all(len(key) == 3 for key in patches)
 
 
