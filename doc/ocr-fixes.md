@@ -2,22 +2,50 @@
 
 每次题目文本被确认 OCR 有误并修复后，在本文件追加一节；同时按 monorepo `AGENTS.md` **默认上云**（不再等主人单独说「上云」）。
 
-## 标准流程
+## 标准流程（优化后）
 
-1. 对照 `assets/pdf_images/<course>/page_N.png` 确认原书正文。
+### 发现（模式扫描优先，抽样作验收）
+
+```powershell
+# 在 apps/bank-408
+..\platform-v2\backend\.venv\Scripts\python.exe scripts\scan_patterns.py --summary
+..\platform-v2\backend\.venv\Scripts\python.exe scripts\scan_option_mismatch.py
+# 随机抽 20 题对照原书（验收用，seed 每次不同）
+..\platform-v2\backend\.venv\Scripts\python.exe scripts\sample_choice_audit.py 20270117 20
+```
+
+**验收标准**：连续 **5** 个不同 seed 的 20 题选择题批次，零高置信 OCR 缺陷后停止。  
+高置信缺陷含：下标丢失、罗马 II/III、0/O、1/l、题干/选项串题、`",` 省略号、选项污染等。  
+中文全角括号、α 装填因子、解析仅写字母等**不是**缺陷。
+
+### 修复
+
+1. 对照 `assets/pdf_images/<course>/page_N.png`（或优先 `data/ocr/<course>/page_N.json` 定位）确认原书。
 2. 在 `data/quality/page_review_patches.json` 写入持久补丁（`course` / `chapter` / `qid` / `fields`）。
-3. 重应用并合并发布数据：
+3. **同 key 已存在时合并进原条目**，勿重复追加（loader 会拒重复 key）；可用 `scripts/merge_patches.py` 去重。
+4. 一键重建（合并补丁 → fix → merge → 自动 bump 缓存 → 测试 → 扫描）：
 
    ```powershell
-   # 在 apps/bank-408
-   ..\platform-v2\backend\.venv\Scripts\python.exe scripts\fix_questions.py
-   ..\platform-v2\backend\.venv\Scripts\python.exe scripts\merge_courses.py output\questions_all.json
-   ..\platform-v2\backend\.venv\Scripts\python.exe -m pytest tests\test_page_review_patches.py tests\test_notes_katex.py -q
+   powershell -File scripts\rebuild_bank.ps1
+   # 或跳过扫描 / 带抽样：
+   powershell -File scripts\rebuild_bank.ps1 -SkipScan -SampleSeed 20270117
    ```
 
-4. 若改了 `math-bank` 题面/壳层：三处缓存戳同步 `+1`（`index.html` 全部 `?v=N` + `__BANK_DATA_VER__` + `sw.js` 的 `wd408-ui-vN`）。
 5. 在本文件追加修复条目；`git add` 相关文件并 commit（子模块 + monorepo 指针）。
 6. 按 `docs/server.md` / `apps/platform-v2/deploy/README.md`：`pack-for-upload.ps1` → scp → `apply-v2-deploy.sh`。收尾写明「云端已部署」。
+
+### 脚本一览
+
+| 脚本 | 用途 |
+|------|------|
+| `scripts/scan_patterns.py` | 高频 OCR 病征正则扫描（`--summary` / `--json`） |
+| `scripts/scan_option_mismatch.py` | 选项串题 / 主题不匹配启发式 |
+| `scripts/sample_choice_audit.py` | certified 选择题随机抽样（seed + n） |
+| `scripts/merge_patches.py` | 补丁 JSON 去重合并（`--dry-run`） |
+| `scripts/fix_questions.py` | 应用 `page_review_patches.json` 到 course out JSON |
+| `scripts/merge_courses.py` | 合并发布 `math-bank/data-*.json` + `data.js` |
+| `scripts/bump_bank_version.py` | 按 data.js hash 自动 bump 三处缓存戳 |
+| `scripts/rebuild_bank.ps1` | 上述流水线一键执行 |
 
 ---
 
@@ -293,20 +321,46 @@ os：X07/X09/X10/X18/X31（运行环境等）、X41/X51/X55/X56/X73（进程）�
 
 ---
 
-## 质检工具与验收边界（2026-09-11）
+## 2026-09-11 · 工作流优化 + 模式扫描再修 6 题
+
+### 工具链落地
+
+| 变更 | 说明 |
+|------|------|
+| `scripts/sample_choice_audit.py` | 抽样脚本正式收入 bank（替代 `temp/sample20_choice.py`） |
+| `scripts/bump_bank_version.py` | 改为哈希 `data-{ds,coa,net,os}.json`（原 `data.js` 只是加载器，内容变了也不 bump） |
+| `scripts/rebuild_bank.ps1` | 自动 bump；双 Python（MIMO 带 PIL 构建 / platform-v2 venv 跑 pytest）；路径用 `$root` 推导避免 PS5 中文乱码 |
+| `scripts/scan_patterns.py` | 去掉 `仅II`/`,…,` 等误报；容量记法 `1024x8位` 不再命中上标 |
+| `scripts/scan_option_mismatch.py` | 比特串/图注词收紧，误报从 ~41 → 个位数级 |
+
+### 本轮新修（模式扫描命中）
+
+| 课程 | 题 | 修复 |
+|------|----|------|
+| ds 树形查找 X27 | 补回 `II.`，理顺 I/II/III/IV 与 T1/T2/T3 |
+| net IPv6 X07 | `Ⅱl`→`II`，消除 III 重复 |
+| os 目录与文件 X61 | `Il.`→`III`，`fl/fdl`→`f1/fd1` |
+| os CPU调度 X47 | `1uS`→`1μs`、`P、P2`→`P1、P2`、`μus`→`μs`，表头对齐 |
+| net IPv4 X26 | 去掉串入的下一题 `27. CIDR…` |
+| net 通信基础 X25 | 去掉题干尾部 `umum` 噪声 |
+
+补丁 **252** 条。缓存 **v83**。
+
+### 质检工具与验收边界（2026-09-11）
 
 ### 脚本
 | 脚本 | 用途 |
 |------|------|
-| `scripts/scan_patterns.py` | 全库扫描高置信 OCR 病征（`Il.`/`Po`/`μus`/III 重复等） |
+| `scripts/scan_patterns.py` | 全库扫描高置信 OCR 病征（`Il.`/`Po`/`μus`/III 重复等）；`--summary` |
 | `scripts/scan_option_mismatch.py` | 疑似选项串题/主题不匹配 |
+| `scripts/sample_choice_audit.py` | certified 选择题抽样 `seed n` |
 | `scripts/merge_patches.py` | 合并 `page_review_patches.json` 重复 key |
-| `scripts/bump_bank_version.py` | 按 `data.js` hash 自动 bump 缓存 |
-| `scripts/rebuild_bank.ps1` | 一键：合并补丁 → 修题 → 合并 → 测试 → 扫描 |
+| `scripts/bump_bank_version.py` | 按四科 data-*.json hash 自动 bump 缓存 |
+| `scripts/rebuild_bank.ps1` | 一键：合并补丁 → 修题 → 合并 → 自动 bump → 测试 → 扫描 |
 
 ### 推荐流程
 1. 先跑 `scan_patterns.py` + `scan_option_mismatch.py`，对照原书改补丁
-2. 抽样 20 题（`temp/sample20_choice.py`）做**验收**，不靠它发现
+2. 抽样 20 题（`scripts/sample_choice_audit.py`）做**验收**，不靠它发现
 3. `powershell -File scripts/rebuild_bank.ps1` 一键重建
 4. pack/上云
 
@@ -315,7 +369,7 @@ os：X07/X09/X10/X18/X31（运行环境等）、X41/X51/X55/X56/X73（进程）�
 |------|------|
 | **必修** | 选项错、罗马编号错、上标改变语义、选项串邻题 |
 | **可缓** | 全半角标点、空格、图片题 stem 拓扑标签 |
-| **不修** | 答案本身对错（除非确认原书错） |
+| **不修** | 答案本身对错（除非确认原书错）；`1024x8位` 容量记法；比特串选项 |
 
 ### 测试
 `test_page_review_patches.py` 的补丁数量断言已改为动态校验（非空且唯一），不再手写总数。

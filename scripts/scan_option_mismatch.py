@@ -22,14 +22,14 @@ sys.stdout.reconfigure(encoding="utf-8")
 BANK = Path(__file__).resolve().parent.parent / "math-bank"
 COURSES = ("ds", "coa", "net", "os")
 
-FIG_NOISE = re.compile(r"图中[:：]|如图所示|网关|ack_seq|丢失$|H1 H2|时间$")
+FIG_NOISE = re.compile(r"图中[:：]|如图所示.*拓扑|ack_seq=|丢失$")
 BITSTR = re.compile(r"^[01\s]{6,}$")
 RATE = re.compile(r"\d+(\.\d+)?\s*(Mb/s|GB/s|ms|ns|μs)")
 
 # 题干关键词 → 选项应包含的关键词集合（任一即可）
+# 注意：比特串选项在编码/校验类题干下合法，勿单独判缺陷。
 STEM_OPT = [
-    (re.compile(r"端口号|端口"), re.compile(r"端口|源|目的|长度|检验"), "问端口"),
-    (re.compile(r"全双工|半双工"), re.compile(r"以太网|双工|光纤|Base"), "问双工"),
+    (re.compile(r"端口号|熟知端口"), re.compile(r"\d{1,5}|端口|源|目的"), "问端口"),
     (re.compile(r"UDP实现分用|分用时所依据"), re.compile(r"端口"), "问分用字段"),
 ]
 
@@ -56,15 +56,11 @@ def scan_course(course: str) -> list[dict]:
             if FIG_NOISE.search(opt_text):
                 reasons.append("选项含图注词")
 
-            for k, v in opts.items():
-                if BITSTR.match(str(v).replace(" ", "")):
-                    reasons.append(f"选项{k}为比特串")
-
-            # 题干问时间/速率，选项全是比特串
-            if re.search(r"时间|速率", content) and all(
+            # 比特串选项仅在题干明显问端口/时间/速率且全选项为比特串时可疑
+            if re.search(r"端口号|时间|速率", content) and all(
                 BITSTR.match(str(opts.get(k) or "").replace(" ", "")) for k in opts
             ):
-                reasons.append("题干时间/速率但选项全比特串")
+                reasons.append("题干端口/时间/速率但选项全比特串")
 
             if reasons:
                 hits.append({

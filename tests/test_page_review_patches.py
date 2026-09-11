@@ -324,6 +324,94 @@ def test_os_device_x31_splits_iv():
     assert "IV.缓冲区管理" in content
 
 
+def test_ds_tree_x06_count_is_2_n_minus_1():
+    options = _q("ds", "二叉树的概念", "X06")["options"]
+    assert options["D"] == "2^{n-1}"
+    assert "2^n-1" not in options["D"]
+
+
+def test_net_ipv4_x37_mask_224():
+    options = _q("net", "IPv4", "X37")["options"]
+    assert options["D"] == "255.255.255.224"
+
+
+def test_os_deadlock_x42_option_b_is_i_ii_iv():
+    question = _q("os", "死锁", "X42")
+    assert question["options"]["B"] == "仅I、II、IV"
+    assert question["options"]["B"] != question["options"]["D"]
+    assert "III.．" not in question["content"]
+    assert question["answer"]["choice"] == "B"
+
+
+def test_ds_sort_x03_log2_not_logz():
+    options = _q("ds", "各种内部排序算法的比较及应用", "X03")["options"]
+    assert "logzn" not in options["C"]
+    assert "log2n" in options["C"]
+
+
+def test_ds_dag_x39_outer_parens():
+    content = _q("ds", "图的应用", "X39")["content"]
+    assert "((x+y)(x+y)/x)" in content.replace(" ", "")
+
+
+def test_coa_chip_x09_is_8bit():
+    content = _q("coa", "主存储器与CPU的连接", "X09")["content"]
+    assert "32K×8位" in content
+    assert "32Kx16" not in content
+
+
+def test_ds_huffman_x05_216_nodes():
+    content = _q("ds", "树与二叉树的应用", "X05")["content"]
+    assert "216个结点" in content
+
+
+def test_coa_cache_x17_storage_hierarchy():
+    content = _q("coa", "高速缓冲存储器", "X17")["content"]
+    assert "三级存储层次" in content
+    assert "访存时直接根据" in content
+
+
+def test_ds_tree_x27_roman_ii_present():
+    question = _q("ds", "树形查找", "X27")
+    assert "II.若v是T1的叶结点" in question["content"]
+    assert "III.若v不是T1的叶结点" in question["content"]
+    assert question["content"].count("III.") == 1
+    assert question["answer"]["choice"] == "C"
+
+
+def test_net_ipv6_x07_roman_ii():
+    question = _q("net", "IPv6", "X07")
+    assert "II.IPv4首部和IPv6基本首部的长度均可变" in question["content"]
+    assert question["content"].count("III.") == 1
+
+
+def test_os_dir_x61_roman_iii_not_il():
+    question = _q("os", "目录与文件", "X61")
+    assert "III.fd1和fd2" in question["content"]
+    assert "Il." not in question["content"]
+    assert "fl的硬链接" not in question["content"]
+
+
+def test_os_sched_x47_mu_and_p1():
+    question = _q("os", "CPU调度", "X47")
+    assert "1μs" in question["content"]
+    assert "P1、P2和P3" in question["content"]
+    assert "μus" not in question["content"]
+    assert "1uS" not in question["content"]
+
+
+def test_net_ipv4_x26_no_next_question_bleed():
+    question = _q("net", "IPv4", "X26")
+    assert "27. CIDR" not in question["content"]
+    assert "200.15.10.6/29" in question["content"]
+
+
+def test_net_phy_x25_no_umum():
+    question = _q("net", "通信基础", "X25")
+    assert "umum" not in question["content"]
+    assert "差分曼彻斯特" in question["content"]
+
+
 def test_page_review_manifest_is_valid_and_unique():
     patches = load_page_review_patches()
     # 动态校验：非空且唯一（避免手写总数易碎）

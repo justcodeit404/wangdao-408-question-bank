@@ -7,13 +7,16 @@
 用法：
   python scripts/scan_patterns.py
   python scripts/scan_patterns.py --course ds
-  python scripts/scan_patterns.py --json  # 输出 JSON 便于脚本处理
+  python scripts/scan_patterns.py --json
+  python scripts/scan_patterns.py --summary   # 只按病征汇总计数
 """
 from __future__ import annotations
 
+import argparse
 import json
 import re
 import sys
+from collections import Counter
 from pathlib import Path
 
 sys.stdout.reconfigure(encoding="utf-8")
@@ -22,21 +25,51 @@ BANK = PROJECT_ROOT / "math-bank"
 COURSES = ("ds", "coa", "net", "os")
 
 # 病征：名称 -> (正则, 说明)
-# 注：只保留高置信、低误报的模式
+# 注：只保留高置信、低误报的模式；中文全角（）、α 装填因子等合法用法勿入。
 PATTERNS = {
-    "roman_ii_dup": (re.compile(r"(?:^|\n|。|\s)III\.[^\n]{0,40}\n\s*III\."), "罗马编号 III 重复出现"),
-    "roman_il": (re.compile(r"\bIl\.|\bIll\.|\bIIIl"), "罗马编号 I/l 混淆"),
-    "o_zero": (re.compile(r"\b(Po|Netl|BOH|COH|Ox[0-9A-Fa-f]|filel|readO|write0|threadl|sinI|lus|waitO)\b"), "O/0 或 l/1 混淆"),
-    "superscript_flat": (re.compile(r"(?<!\^)\b\d{1,4}[x×]\d{1,2}(?!\^)(?!\d)|\b2[0-9]{1,3}页\b|\bO\(n2\)|\bn\?-e\b"), "疑似上标丢失"),
-    "option_leak": (re.compile(r"②③|图中[:：]|如图所示.*拓扑|H1 H2|ack_seq|丢失$"), "选项/题干混入图注或后续题号"),
-    "cn_one_sep": (re.compile(r"一I/O|一I总线"), "连接符 一 疑似 —"),
-    "muus": (re.compile(r"μus"), "μus 应为 μs"),
+    "roman_ii_dup": (
+        re.compile(r"(?:^|\n|。|\s)III\.[^\n]{0,40}\n\s*III\."),
+        "罗马编号 III 重复出现",
+    ),
+    "roman_il": (
+        re.compile(r"\bIl\.|\bIll\.|\bIIIl"),
+        "罗马编号 I/l 混淆",
+    ),
+    "o_zero": (
+        re.compile(
+            r"\b(Po|Netl|BOH|COH|filel|readO|write0|threadl|sinI|lus|waitO|FO00)\b"
+            r"|\bOx[0-9A-Fa-f]{1,8}\b"
+        ),
+        "O/0 或 l/1 混淆",
+    ),
+    "superscript_flat": (
+        re.compile(
+            r"(?<!\^)\b\d{1,4}[x×]\d{1,2}(?!\^)(?!\d)(?![x×位Bbit像素])"
+            r"|\bO\(n2\)|\bn\?-e\b"
+        ),
+        "疑似上标丢失（排除 1024x8位/像素 等合法记法）",
+    ),
+    "ellipsis_comma": (
+        re.compile(r'",|"…'),
+        '省略号被 OCR 成 ",',
+    ),
+    "option_leak": (
+        re.compile(r"丢失$|如图所示.*拓扑|^\d+\.\s*[A-Z].{0,80}$"),
+        "选项/题干混入后续题号",
+    ),
+    "cn_one_sep": (
+        re.compile(r"一I/O|一I总线"),
+        "连接符 一 疑似 —",
+    ),
+    "muus": (
+        re.compile(r"μus"),
+        "μus 应为 μs",
+    ),
+    "dup_option_letter": (
+        re.compile(r"^[A-D]\.[^\n]{0,80}\n\s*[A-D]\."),
+        "选项行疑似串题重复",
+    ),
 }
-
-# 已知可忽略（全库合法）的排除
-IGNORE_RES = [
-    re.compile(r"^[0-9a-zA-Z]+$"),  # 纯字母数字
-]
 
 
 def _text(q: dict) -> str:
@@ -66,31 +99,43 @@ def scan_course(course: str) -> list[dict]:
                 if m:
                     found.append((name, desc, m.group(0)[:60]))
             if found:
-                hits.append({
-                    "course": course,
-                    "chapter": ch.get("name"),
-                    "qid": q.get("id"),
-                    "page": q.get("page"),
-                    "matches": found,
-                    "content": (q.get("content") or "")[:120].replace("\n", " / "),
-                })
+                hits.append(
+                    {
+                        "course": course,
+                        "chapter": ch.get("name"),
+                        "qid": q.get("id"),
+                        "page": q.get("page"),
+                        "matches": found,
+                        "content": (q.get("content") or "")[:120].replace("\n", " / "),
+                    }
+                )
     return hits
 
 
-def main():
-    import argparse
+def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("--course", choices=COURSES)
     p.add_argument("--json", action="store_true")
+    p.add_argument("--summary", action="store_true")
     args = p.parse_args()
 
     courses = (args.course,) if args.course else COURSES
-    all_hits = []
+    all_hits: list[dict] = []
     for c in courses:
         all_hits.extend(scan_course(c))
 
     if args.json:
         print(json.dumps(all_hits, ensure_ascii=False, indent=2))
+        return
+
+    if args.summary:
+        counter: Counter[str] = Counter()
+        for h in all_hits:
+            for name, _desc, _frag in h["matches"]:
+                counter[name] += 1
+        print(f"扫描选择题命中 {len(all_hits)} 题")
+        for name, n in counter.most_common():
+            print(f"  {name}: {n}")
         return
 
     print(f"扫描选择题命中 {len(all_hits)} 题")
