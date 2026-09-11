@@ -264,10 +264,10 @@ def test_net_wlan_x48_uses_microseconds():
     assert "296μs" in expl
 
 
-def test_coa_cache_x01_option_c_not_double_12mb():
+def test_coa_cache_x01_option_c_matches_book():
     options = _q("coa", "高速缓冲存储器", "X01")["options"]
-    assert options["C"] == "12MB-400KB+400KB"
-    assert "12MB-12MB" not in options["C"]
+    assert options["C"] == "12MB-12MB+400KB"
+    assert "12MB-400KB+400KB" not in options["C"]
 
 
 def test_os_memory_x18_multiprogramming():
@@ -493,9 +493,11 @@ def test_ds_stack_x05_function_brace():
 
 def test_ds_forest_x07_t1_subscript():
     question = _q("ds", "树、森林", "X07")
-    assert "子树T1的根" in question["options"]["B"]
-    assert "子树T1的根" in question["options"]["C"]
+    assert "子树$T_1$的根" in question["options"]["B"]
+    assert "子树$T_1$的根" in question["options"]["C"]
     assert "将子树T的根" not in question["options"]["B"]
+    assert "$T_{mid}$" in question["options"]["A"]
+    assert "$T_m$" in question["options"]["A"]
 
 
 def test_ds_aoe_x25_roman_iii_not_dup_ii():
