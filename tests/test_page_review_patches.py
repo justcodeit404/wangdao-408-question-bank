@@ -685,6 +685,38 @@ def test_coa_num_x34_superscripts():
     assert "232" not in options["D"]
 
 
+def test_net_ipv4_x35_2_full_stem():
+    question = _q("net", "IPv4", "X35_2")
+    assert "某路由表中有转发接口相同的4条路由表项" in question["content"]
+    assert "35.230.32.0/21" in question["content"]
+    assert not question["content"].startswith("230.32")
+
+
+def test_coa_alu_x35_full_stem_a3h_75h():
+    question = _q("coa", "运算方法和运算电路", "X35")
+    assert "[x]补=A3H" in question["content"]
+    assert "[y]补=75H" in question["content"]
+    assert "OF标志" in question["content"]
+
+
+def test_net_phy_x09_no_footnote():
+    question = _q("net", "物理层设备", "X09")
+    assert "本书4.7节" not in question["options"]["D"]
+    assert "2个端口" in question["options"]["D"]
+
+
+def test_os_sched_x29_p1_not_comma():
+    question = _q("os", "CPU调度", "X29")
+    assert "进程P1到达" in question["content"]
+    assert "进程P,到达" not in question["content"]
+
+
+def test_coa_perf_x07_roman_i_mips():
+    question = _q("coa", "计算机的性能指标", "X07")
+    assert "I. MIPS" in question["content"]
+    assert "1. MIPS" not in question["content"]
+
+
 def test_coa_float_x29_superscripts():
     options = _q("coa", "浮点数的表示与运算", "X29")["options"]
     assert options["D"] == "2^{128} - 2^{104}"
