@@ -6,9 +6,9 @@ const CACHE_NAME = 'wd408-ui-v71';
 const APP_SHELL = [
   './',
   './index.html',
-  './styles.css?v=70',
-  './app.js?v=70',
-  './data.js?v=70',
+  './styles.css?v=71',
+  './app.js?v=71',
+  './data.js?v=71',
   './manifest.json'
 ];
 
