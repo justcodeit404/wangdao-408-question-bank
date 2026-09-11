@@ -4661,7 +4661,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=114').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=117').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {
