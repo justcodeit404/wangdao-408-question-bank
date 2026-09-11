@@ -658,6 +658,33 @@ def test_os_vm_x08_roman_ii_present():
     assert question["content"].count("III．") + question["content"].count("III.") == 1
 
 
+def test_ds_hash_x13_two_blank_options():
+    question = _q("ds", "散列（Hash）表", "X13")
+    assert "①" in question["content"]
+    assert "0~16" in question["content"]
+    assert question["options"]["A"] == "17"
+    assert "②" not in question["options"]["D"]
+    assert question["answer"]["choice"] == "AC"
+
+
+def test_os_disk_x17_option_d_distinct():
+    question = _q("os", "磁盘和固态硬盘", "X17")
+    assert question["options"]["C"] != question["options"]["D"]
+    assert "bT/N+r" in question["options"]["D"]
+
+
+def test_ds_btree_x04_ceiling_not_garbled():
+    options = _q("ds", "B树 和B+树", "X04")["options"]
+    assert "⌈m/2⌉" in options["B"]
+    assert "「m/2]" not in options["B"]
+
+
+def test_coa_num_x34_superscripts():
+    options = _q("coa", "数制与编码", "X34")["options"]
+    assert options["D"] == "2^{32} - 2^{15}+1"
+    assert "232" not in options["D"]
+
+
 def test_coa_float_x29_superscripts():
     options = _q("coa", "浮点数的表示与运算", "X29")["options"]
     assert options["D"] == "2^{128} - 2^{104}"
