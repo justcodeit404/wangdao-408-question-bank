@@ -47,12 +47,30 @@ def main() -> None:
     p.add_argument("seed", nargs="?", type=int, default=20260912)
     p.add_argument("n", nargs="?", type=int, default=20)
     p.add_argument("--json", action="store_true")
+    p.add_argument(
+        "--exclude-audited",
+        action="store_true",
+        help="排除 data/quality/random-audit-ledger.json 里已抽检过的题（跨模型去重）",
+    )
     args = p.parse_args()
 
     pool = load_pool()
     if not pool:
         print("无 certified 选择题池")
         sys.exit(1)
+
+    if args.exclude_audited:
+        ledger_path = ROOT / "data" / "quality" / "random-audit-ledger.json"
+        audited = set()
+        if ledger_path.exists():
+            ledger = json.loads(ledger_path.read_text(encoding="utf-8"))
+            audited = {
+                (e.get("course"), e.get("chapter"), e.get("qid"))
+                for e in ledger.get("entries") or []
+            }
+        before = len(pool)
+        pool = [(c, ch, q) for c, ch, q in pool if (c, ch, q.get("id")) not in audited]
+        print(f"exclude-audited: {before - len(pool)}/{before} 已检题被排除")
 
     rng = random.Random(args.seed)
     picks = rng.sample(pool, min(args.n, len(pool)))
