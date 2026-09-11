@@ -28,17 +28,18 @@ def _find(data, page: int, qid: str):
 
 class TestCuratedMatrixFormulaPatches:
     def test_patch_tables_present(self):
-        assert ("ds", 109, "X03") in fq.CURATED_OPTION_PATCHES
-        assert ("ds", 109, "X03") in fq.CURATED_TEXT_PATCHES
         assert ("ds", 110, "X08") in fq.CURATED_OPTION_PATCHES
         assert ("ds", 110, "X08") in fq.CURATED_TEXT_PATCHES
 
     def test_x03_content_and_option_a(self):
+        # 2027 版原书 p104 第03题为对角元 A[i][i]，选项 A=(i+3)i/2
+        # （旧 curated 补丁按 A[i][j]/(i+1)i/2+j 修正属旧版残留，2026-09-11 对照原书撤销）
         q = _find(_load_ds(), 109, "X03")
         assert q is not None
-        assert "A[i][j]" in q["content"]
-        assert "A[][" not in q["content"]
-        assert q["options"]["A"] == "(i+1)i/2+j"
+        assert "A[i][i]" in q["content"]
+        assert "A[i][j]" not in q["content"]
+        assert q["options"]["A"] == "(i+3)i/2"
+        assert q["options"]["B"] == "(i+1)i/2"
         # 0-based 下三角按行：A[1][1] → 2
         assert "A[1][1]" in (q.get("answer") or {}).get("explanation", "")
 

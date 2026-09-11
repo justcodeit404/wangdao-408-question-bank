@@ -73,8 +73,11 @@ def test_collect_hold_uids_skips_essay_without_choice():
     assert collect_hold_uids("net", data) == frozenset()
 
 
-def test_published_hold_covers_collector_and_is_nonempty():
+def test_published_hold_covers_collector():
+    # 2026-09 起发布数据结构性破损已清零（收集器返回空集属健康状态），
+    # 金丝雀改为：4 科发布 JSON 必须都真实扫描到，且扫描结果被 hold 清单覆盖。
+    for course_key in ("ds", "coa", "net", "os"):
+        assert (HOLD_PATH.parent / f"data-{course_key}.json").is_file()
     hold = json.loads(HOLD_PATH.read_text(encoding="utf-8"))
     expected = collect_all_hold_uids()
-    assert expected
     assert expected <= set(hold["source_uids"])

@@ -284,10 +284,11 @@ def test_os_cpu_x55_roman_items_split():
     assert "III. 更新页表基地址寄存器的值" in content
 
 
-def test_ds_algo_x06_multiplies_by_3():
+def test_ds_algo_x06_multiplies_by_2():
+    # 2027 版原书 p7 为 i=i*2（第4轮抽检曾误改为 i=i*3，2026-09-11 复核放大图纠正回来）
     content = _q("ds", "算法和算法评价", "X06")["content"]
-    assert "i=i*2" not in content
-    assert "i=i*3" in content
+    assert "i=i*3" not in content
+    assert "i=i*2" in content
 
 
 def test_ds_graph_x09_five_vertices():
