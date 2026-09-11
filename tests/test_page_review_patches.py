@@ -330,9 +330,9 @@ def test_ds_tree_x06_count_is_2_n_minus_1():
     assert "2^n-1" not in options["D"]
 
 
-def test_net_ipv4_x37_mask_224():
+def test_net_ipv4_x37_mask_196():
     options = _q("net", "IPv4", "X37")["options"]
-    assert options["D"] == "255.255.255.224"
+    assert options["D"] == "255.255.255.196"
 
 
 def test_os_deadlock_x42_option_b_is_i_ii_iv():
@@ -415,6 +415,190 @@ def test_net_phy_x25_no_umum():
     question = _q("net", "通信基础", "X25")
     assert "umum" not in question["content"]
     assert "差分曼彻斯特" in question["content"]
+
+
+def test_net_ipv4_x63_mac_uses_digit_one():
+    question = _q("net", "IPv4", "X63")
+    blob = question["content"] + "".join(question["options"].values())
+    assert "HI" not in question["content"]
+    assert "主机H1" in question["content"].replace("\n", "")
+    assert "00-al-" not in blob
+    assert question["options"]["A"].startswith("00-a1-")
+    assert "H H2" not in question["content"]
+
+
+def test_ds_shortest_path_x07_stem_not_option_leak():
+    question = _q("ds", "图的应用", "X07")
+    assert "A." not in question["content"]
+    assert "Dijkstra" not in question["content"]
+    assert question["options"]["D"].startswith("Dijkstra")
+
+
+def test_ds_dfs_x08_sequences_separated():
+    question = _q("ds", "图的遍历", "X08")
+    one_line = question["content"].replace("\n", "")
+    assert "acfdeb3." not in one_line
+    assert "2. acfdeb" in one_line
+    assert "3. aedfcb" in one_line
+    assert "4. aefdbc" in one_line
+
+
+def test_os_fs_x02_options_match_book():
+    question = _q("os", "文件系统 ·", "X02")
+    assert question["options"]["A"] == "I、II和III"
+    assert question["options"]["B"] == "II、III和IV"
+    assert "仅I、II" not in question["options"]["A"]
+
+
+def test_coa_x13_complement_notation():
+    question = _q("coa", "数制与编码", "X13")
+    compact = question["content"].replace(" ", "")
+    assert "[-x*]补=[-x]补" in compact
+
+
+def test_coa_io_x06_slash_in_io_device():
+    question = _q("coa", "I/O接口", "X06")
+    assert "I/O设备" in question["options"]["C"]
+    assert "IO设备" not in question["options"]["C"]
+
+
+def test_coa_mem_x11_superscripts():
+    question = _q("coa", "存储器概述", "X11")
+    assert "°" not in "".join(question["options"].values())
+    assert question["options"]["A"] == "4×10^6B/s"
+    assert question["options"]["C"] == "8×10^6B/s"
+    assert question["options"]["D"] == "8×2^{20}B/s"
+
+
+def test_os_sync_x50_a_equals_one():
+    question = _q("os", "同步与互斥", "X50")
+    assert question["options"]["A"] == "a=1与a=2"
+    assert "a=l" not in question["options"]["A"]
+
+
+def test_ds_shortest_x09_keeps_v1_v7():
+    question = _q("ds", "图的应用", "X09")
+    compact = question["content"].replace(" ", "").replace("\n", "")
+    assert "源点v1" in compact
+    assert "顶点v7" in compact
+    assert "(v5,v7)7" in compact
+    assert question["options"]["A"].startswith("v1")
+
+
+def test_ds_stack_x05_function_brace():
+    question = _q("ds", "栈和队列的应用", "X05")
+    assert "return ((x>0)? x*f(x-1):2);\n}" in question["content"]
+    assert question["content"].index("}") < question["content"].index("int i")
+
+
+def test_ds_forest_x07_t1_subscript():
+    question = _q("ds", "树、森林", "X07")
+    assert "子树T1的根" in question["options"]["B"]
+    assert "子树T1的根" in question["options"]["C"]
+    assert "将子树T的根" not in question["options"]["B"]
+
+
+def test_ds_aoe_x25_roman_iii_not_dup_ii():
+    question = _q("ds", "图的应用", "X25")
+    lines = [ln.strip() for ln in question["content"].splitlines()]
+    assert any(ln.startswith("III.") or ln.startswith("III．") for ln in lines)
+    assert not any(
+        (ln.startswith("II.") or ln.startswith("II．"))
+        and "缩短关键路径上任意一个关键活动的持续时间可缩短关键路径长度" in ln
+        and not ln.startswith("III")
+        for ln in lines
+    )
+
+
+def test_os_mem_x71_p1_f1_not_pl_fl():
+    question = _q("os", "内存管理概念", "X71")
+    blob = question["content"] + "".join(question["options"].values())
+    assert "pl" not in blob
+    assert "fl" not in blob
+    assert "p1和p2" in question["content"].replace("\n", "")
+    assert "f1和f2" in question["content"].replace("\n", "")
+    assert question["options"]["C"].startswith("p1")
+
+
+def test_os_io_x10_t1_and_option_c():
+    question = _q("os", "设备独立性软件", "X10")
+    assert "时间为T1" in question["content"].replace("\n", "").replace(" ", "")
+    assert question["options"]["C"] == "max(T1,T3)+T2"
+    assert question["options"]["C"] != "T1"
+
+
+def test_os_sched_x18_j1_t1_subscripts():
+    question = _q("os", "CPU调度", "X18")
+    compact = question["content"].replace(" ", "").replace("\n", "")
+    assert "作业J1" in compact
+    assert "时间分别是T1" in compact
+    assert question["options"]["B"] == "(3T1+2T2+T3)/3"
+
+
+def test_coa_micro_x15_option_a_is_i_ii():
+    question = _q("coa", "控制器的功能和工作原理", "X15")
+    assert question["options"]["A"] == "I、II"
+    assert question["options"]["A"] != "III"
+
+
+def test_os_deadlock_x32_r1_p1():
+    question = _q("os", "死锁", "X32")
+    compact = question["content"].replace(" ", "").replace("\n", "")
+    assert "资源：R1" in compact
+    assert "进程P1和P2" in compact
+    assert "释放R1，则" in compact
+    assert "R1资源不足" in question["options"]["B"]
+
+
+def test_coa_alu_x20_complement_brackets():
+    question = _q("coa", "运算方法和运算电路", "X20")
+    compact = question["content"].replace(" ", "")
+    assert "[x]补=44H" in compact
+    assert "[y]补=DCH" in compact
+
+
+def test_net_tcp_x32_t_not_one():
+    question = _q("net", "TCP", "X32")
+    assert "在t时刻" in question["content"].replace("\n", "").replace(" ", "")
+    assert "从t时刻起" in question["content"].replace("\n", "").replace(" ", "")
+    assert "在1时刻" not in question["content"]
+
+
+def test_net_tcp_x18_two_blank_options():
+    question = _q("net", "TCP", "X18")
+    assert "C. SYN=1，序号=Y" in question["content"]
+    assert question["answer"]["choice"] == "AC"
+
+
+def test_coa_pipeline_x15_option_a_has_iii():
+    question = _q("coa", "指令流水线", "X15")
+    assert question["options"]["A"] == "I、II、III"
+
+
+def test_net_arq_x17_sr_window_less_than():
+    question = _q("net", "流量控制与可靠传输机制", "X17")
+    assert "小于接收窗口" in question["content"]
+    assert "等于接收窗口" not in question["content"]
+
+
+def test_ds_matrix_x03_option_a_matches_book():
+    question = _q("ds", "数组和特殊矩阵", "X03")
+    assert question["options"]["A"] == "(i+3)i/2"
+    assert "+j" not in question["options"]["A"]
+
+
+def test_net_ipv4_x69_internet_not_intermet():
+    question = _q("net", "IPv4", "X69")
+    assert "Internet" in question["content"]
+    assert "Intermet" not in question["content"]
+
+
+def test_ds_symmetric_matrix_x02_times_not_x():
+    question = _q("ds", "数组和特殊矩阵", "X02")
+    assert question["options"]["B"] == "n×n/2"
+    assert "nxn" not in question["options"]["B"]
+    assert question["options"]["C"] == "n(n+1)/2"
+    assert question["options"]["D"] == "n(n-1)/2"
 
 
 def test_page_review_manifest_is_valid_and_unique():
