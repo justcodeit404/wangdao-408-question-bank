@@ -371,6 +371,11 @@ def test_coa_cache_x17_storage_hierarchy():
     assert "访存时直接根据" in content
 
 
+def test_ds_tree_x29_option_d_is_4():
+    options = _q("ds", "二叉树的概念", "X29")["options"]
+    assert options["D"] == "4"
+
+
 def test_ds_tree_x27_roman_ii_present():
     question = _q("ds", "树形查找", "X27")
     assert "II.若v是T1的叶结点" in question["content"]
