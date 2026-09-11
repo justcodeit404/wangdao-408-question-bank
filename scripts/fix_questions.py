@@ -1688,9 +1688,13 @@ def fix_file(path, pdf_images_dir=None, course_key=None, apply_page_review_patch
                 if "content" in page_patch:
                     q["content"] = page_patch["content"]
                 if "options" in page_patch:
-                    current_options = q.get("options") or {}
+                    # 整表替换：update 会残留历史垃圾键（邻题 JSON、图注等）
+                    current_options = dict(q.get("options") or {})
                     current_options.update(page_patch["options"])
-                    q["options"] = current_options
+                    if set(page_patch["options"]) >= {"A", "B", "C", "D"}:
+                        q["options"] = {k: page_patch["options"][k] for k in "ABCD"}
+                    else:
+                        q["options"] = current_options
                 ans = q.get("answer") or {}
                 if "choice" in page_patch:
                     ans["choice"] = str(page_patch["choice"]).strip().upper()

@@ -64,7 +64,7 @@ def test_ds_x12_preorder_uses_latin_a_not_alpha():
     assert "α" not in question["content"]
     compact = question["content"].replace(" ", "").replace("\n", "")
     assert "先序序列是" in compact
-    assert "a...b" in compact or "a.…b" in compact or "...a..." in compact
+    assert "…a…b…" in compact and "…b…a…" in compact
     assert "b" in compact
     for option in question["options"].values():
         assert "α" not in option
@@ -112,7 +112,7 @@ def test_ds_forest_x01_roman_items_and_floor_log():
     question = _q("ds", "树、森林", "X01")
     content = question["content"]
     assert "I对于" not in content
-    assert "I. 对于有n个结点的二叉树，其高度为 ⌊log₂ n⌋" in content
+    assert "I. 对于有n个结点的二叉树，其高度为log₂n" in content
     assert "II. 完全二叉树中，若一个结点没有左孩子，则它必是叶结点" in content
     assert "III. 高度为h（h>0）的完全二叉树对应的森林所含的树的个数一定是h" in content
     assert "\nIV. 一棵树中的叶子数一定等于与其对应的二叉树的叶子数" in content
@@ -216,7 +216,7 @@ def test_os_deadlock_x40_has_r1_p1():
 def test_net_tcp_x15_power():
     content = _q("net", "TCP", "X15")["content"]
     assert '5x10"' not in content
-    assert "5×10^9" in content
+    assert "5×10⁹" in content
 
 
 def test_os_fat_x28_explicit_link_and_2_16():
@@ -251,7 +251,7 @@ def test_coa_shift_x15_keeps_x0_x1_subscripts():
 def test_coa_vm_x14_add_xaddr_has_space():
     content = _q("coa", "虚拟存储器", "X14")["content"]
     assert "addxaddr" not in content
-    assert "add xaddr,3" in content
+    assert "add xaddr, 3" in content
 
 
 def test_net_wlan_x48_uses_microseconds():
@@ -601,6 +601,146 @@ def test_ds_symmetric_matrix_x02_times_not_x():
     assert "nxn" not in question["options"]["B"]
     assert question["options"]["C"] == "n(n+1)/2"
     assert question["options"]["D"] == "n(n-1)/2"
+
+
+def test_ds_aoe_x22_option_d_no_figure_label():
+    question = _q("ds", "图的应用", "X22")
+    assert question["options"]["D"] == "19"
+    assert "a =" not in question["options"]["D"]
+
+
+def test_os_vfs_x12_options_are_vfs_objects():
+    question = _q("os", "文件系统", "X12")
+    assert "超级块" in question["options"]["A"]
+    assert "文件" in question["options"]["C"]
+    assert "数据" in question["options"]["D"]
+    assert "320K" not in question["options"]["D"]
+    assert question["answer"]["choice"] == "D"
+
+
+def test_ds_forest_x10_t1_subscripts():
+    question = _q("ds", "树、森林", "X10")
+    assert "若T1是由有序树T转换" in question["content"]
+    assert "T1中结点的（）序列" in question["content"]
+
+
+def test_net_ipv4_x12_option_d_is_just_r4():
+    question = _q("net", "IPv4", "X12")
+    assert question["options"]["D"] == "R4"
+    assert "目的网络" not in question["options"]["D"]
+    assert "132.0.0.0/8" in question["content"]
+
+
+def test_ds_graph_x13_is_cycle_spanning_trees():
+    question = _q("ds", "图的基本概念", "X13")
+    assert "环" in question["content"]
+    assert "生成树" in question["content"]
+    assert question["options"]["B"] == "n"
+    assert question["answer"]["choice"] == "B"
+
+
+def test_os_mem_x01_option_b_is_m_over_n():
+    question = _q("os", "内存管理概念", "X01")
+    assert "M/N" in question["options"]["B"]
+    assert "MIN" not in question["options"]["B"]
+
+
+def test_os_vm_x01_option_b_is_m_over_n():
+    question = _q("os", "虚拟内存管理", "X01")
+    assert "M/N" in question["options"]["B"]
+    assert "MIN" not in question["options"]["B"]
+
+
+def test_os_vm_x08_roman_ii_present():
+    question = _q("os", "虚拟机", "X08")
+    assert "II.模块化的OS结构" in question["content"]
+    assert question["content"].count("III.") == 1
+    assert question["content"].count("III．") + question["content"].count("III.") == 1
+
+
+def test_coa_float_x29_superscripts():
+    options = _q("coa", "浮点数的表示与运算", "X29")["options"]
+    assert options["D"] == "2^{128} - 2^{104}"
+    assert "2128" not in options["D"]
+
+
+def test_os_vm_x07_roman_iii():
+    question = _q("os", "虚拟机", "X07")
+    assert "III.微内核结构没有单一内核稳定" in question["content"]
+    assert question["content"].count("III.") == 1
+    assert "II.添加系统服务时不必修改内核" in question["content"]
+    assert question["options"]["A"] == "I、III、IV"
+
+
+def test_os_deadlock_x35_option_d_no_table():
+    question = _q("os", "死锁", "X35")
+    assert question["options"]["D"] == "不存在"
+    assert "已分配资源" not in question["options"]["D"]
+    assert "已分配资源" in question["content"]
+
+
+def test_net_phy_x01_no_qam_footnote():
+    question = _q("net", "通信基础", "X01")
+    assert "16-QAM" not in question["options"]["D"]
+    assert "波特率" in question["options"]["D"]
+
+
+def test_net_udp_x08_zero_byte_not_letter_o():
+    question = _q("net", "UDP", "X08")
+    assert "全0B" in question["options"]["A"]
+    assert "全OB" not in question["options"]["A"]
+
+
+def test_os_sched_x42_options_use_p1():
+    question = _q("os", "CPU调度", "X42")
+    assert question["options"]["A"] == "P1>P2>P3"
+    assert question["options"]["B"] == "P3>P2>P1"
+    assert "P>" not in question["options"]["A"].replace("P1>", "").replace("P2>", "").replace("P3>", "")
+
+
+def test_net_phy_x02_options_only_abcd():
+    question = _q("net", "通信基础", "X02")
+    assert set(question["options"]) == {"A", "B", "C", "D"}
+    assert question["options"]["A"] == "信道带宽和信噪比"
+    assert question["answer"]["choice"] == "A"
+
+
+def test_os_proc_x65_no_split_qu():
+    question = _q("os", "进程与线程简介", "X65")
+    assert "区III" not in question["content"]
+    assert "II.某进程退出临界区" in question["content"]
+
+
+def test_os_mem_x58_option_c_is_i_ii_iii():
+    question = _q("os", "内存管理概念", "X58")
+    assert question["options"]["C"] == "I、II、III"
+    assert question["options"]["B"] == "II、III"
+    assert question["options"]["C"] != question["options"]["B"]
+
+
+def test_os_sched_x40_jobs_are_p1_p2():
+    question = _q("os", "CPU调度", "X40")
+    assert "P1和P2" in question["content"]
+    assert "P2比P1晚" in question["content"]
+    assert "P2比P,晚" not in question["content"]
+
+
+def test_coa_float_x31_superscripts():
+    options = _q("coa", "浮点数的表示与运算", "X31")["options"]
+    assert options["A"] == "-1.5×2^{13}"
+    assert "213" not in options["A"]
+
+
+def test_os_sched_x03_roman_i_not_digit():
+    question = _q("os", "CPU调度", "X03")
+    assert question["options"]["A"] == "I、II"
+    assert "1、" not in question["options"]["A"]
+
+
+def test_coa_alu_x04_c0h_not_coh():
+    question = _q("coa", "运算方法和运算电路", "X04")
+    assert question["options"]["D"] == "C0H"
+    assert "COH" not in question["options"]["D"]
 
 
 def test_page_review_manifest_is_valid_and_unique():
