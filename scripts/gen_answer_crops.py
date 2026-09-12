@@ -108,12 +108,16 @@ def load_ocr_pages(ocr_dir: Path, pages: list[int]) -> dict[int, list[dict]]:
 
 
 def segment_answers(
-    lines_by_page: dict[int, list[dict]], trace: list[str] | None = None
+    lines_by_page: dict[int, list[dict]],
+    trace: list[str] | None = None,
+    stop_heading_re: re.Pattern[str] | None = None,
 ) -> dict[tuple[str, str], dict]:
     """顺序扫描小节答案页流，按答案头切分，返回 (sec, qid) -> {parts, dup}。
 
     parts: [{page, y0, y1}]（y 已含答案头/末行范围，未加 padding）。
     trace: 可选事件日志（调试提前截停/漏题用）。
+    stop_heading_re: 下一节标题行（TOC 精确节号，如 ^2\.3\s*栈…），命中即停——
+    节首页顶部常带上一节答案的续行，只能按标题行切，不能按整页切。
     """
     stream: list[dict] = []
     for p in sorted(lines_by_page):
@@ -171,9 +175,9 @@ def segment_answers(
             # 本小节答案头之前的行：上一小节的答案尾巴/题目尾巴，丢弃
             continue
 
-        if section_start.match(text):
+        if section_start.match(text) or (stop_heading_re and stop_heading_re.match(text)):
             if trace is not None:
-                trace.append(f"STOP p{ln['page']} topic_header: {text[:50]}")
+                trace.append(f"STOP p{ln['page']} heading: {text[:50]}")
             save_cur()
             break
 
@@ -374,6 +378,24 @@ figcaption{{font-size:12px;color:#374151;margin-bottom:6px}}
     REVIEW_HTML.write_text(html, encoding="utf-8")
 
 
+def load_toc_bounds(toc_json: Path) -> tuple[dict[int, int], dict[tuple[int, int], int]]:
+    """TOC → ({章号: 章首页}, {(章, 节): 节首页})，用于封顶答案页范围。"""
+    data = json.loads(toc_json.read_text(encoding="utf-8"))
+    chapter_starts: dict[int, int] = {}
+    section_starts: dict[tuple[int, int], int] = {}
+    for entry in data:
+        page = int(entry[2])
+        if entry[0] == 1:
+            m = re.search(r"第\s*(\d+)\s*章", str(entry[1]))
+            if m:
+                chapter_starts[int(m.group(1))] = page
+        elif entry[0] == 2:
+            m = re.match(r"(\d+)\.(\d+)", str(entry[1]))
+            if m:
+                section_starts.setdefault((int(m.group(1)), int(m.group(2))), page)
+    return chapter_starts, section_starts
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--course", default="ds", choices=sorted(COURSE_BY_KEY))
@@ -411,6 +433,7 @@ def main() -> None:
                 print(f"[!] {t}: 题间 a_pages 不一致 {ap} vs {g['a_pages']}，取首见")
 
     ocr_cache: dict[int, list[dict]] = {}
+    chapter_starts, section_starts = load_toc_bounds(course.toc_json)
     stats = {"cropped": 0, "parts": 0, "skipped": 0, "dup": 0, "wired": 0, "mb": 0.0}
     skips: list[str] = []
     review_items: list[dict] = []
@@ -420,12 +443,35 @@ def main() -> None:
         a_pages: list[int] = grp["a_pages"] or []
         if not a_pages:
             continue
+        # a_pages 止于「下一节试题精选」，中间夹着下一节/下一章的知识点正文；
+        # 旧逐页文字管线按页丢弃这些行，连续流却会吞进最后一个答案。
+        # 处理：答案页流延伸到下一节首页为止（上一节答案常续到该页顶部），
+        # 分段时遇到 TOC 精确节号的标题行即停。
+        m_topic = re.match(r"^(\d+)\.(\d+)\.", topic)
+        stop_heading_re = None
+        page_cap = course.total_pages
+        if m_topic:
+            ch_num, sec_num = int(m_topic.group(1)), int(m_topic.group(2))
+            next_secs = sorted((c, s) for (c, s) in section_starts if (c, s) > (ch_num, sec_num))
+            if next_secs:
+                nc, ns = next_secs[0]
+                stop_heading_re = re.compile(rf"^\s*{nc}\.{ns}\s*[^\d.]")
+                page_cap = section_starts[(nc, ns)]
+            next_chs = [p for n, p in chapter_starts.items() if n > ch_num]
+            if next_chs:
+                page_cap = min(page_cap, min(next_chs))
+        if a_pages[-1] > page_cap:
+            skipped_pages = [p for p in a_pages if p > page_cap]
+            a_pages = [p for p in a_pages if p <= page_cap]
+            print(f"[cap] {topic}: TOC 封顶，丢弃正文页 {skipped_pages[0]}-{skipped_pages[-1]}")
+        if not a_pages:
+            continue
         fetched = load_ocr_pages(course.ocr_dir, [p for p in a_pages if p not in ocr_cache])
         ocr_cache.update(fetched)
         lines_by_page = {p: ocr_cache[p] for p in a_pages if p in ocr_cache}
         if not lines_by_page:
             continue
-        spans, layout = segment_answers(lines_by_page)
+        spans, layout = segment_answers(lines_by_page, stop_heading_re=stop_heading_re)
         dup_here = sum(1 for s in spans.values() if s["dup"])
         stats["dup"] += dup_here
         if dup_here:
