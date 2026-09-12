@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 from collections import Counter
 from collections.abc import Iterator
 from datetime import datetime, timezone
@@ -48,6 +49,19 @@ def _canonical(value: Any) -> str:
     return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
 
 
+# 答案区原书截图行（gen_answer_crops.py 前置进 explanation）。截图只是同一解析的
+# 另一种展示，不改变 OCR 文字的可信度，哈希与证据比对前先剥掉，避免台账全量掉 verified。
+_ANSWER_CROP_LINE_RE = re.compile(
+    r"^(?:答案图片|解析图片|题图|答图)\s*[：:]\s*answer_crops/\S+\s*$", re.IGNORECASE
+)
+
+
+def stable_explanation(value: Any) -> str:
+    """剥掉 explanation 里的 answer_crops 图片行，返回参与哈希/比对的稳定文本。"""
+    lines = str(value or "").splitlines()
+    return "\n".join(ln for ln in lines if not _ANSWER_CROP_LINE_RE.match(ln.strip())).strip()
+
+
 def question_hash(question: Mapping[str, Any]) -> str:
     """只对会影响题目/答案可信度的内容做哈希。"""
     answer = (
@@ -60,7 +74,7 @@ def question_hash(question: Mapping[str, Any]) -> str:
         "options": question.get("options"),
         "answer": {
             "choice": answer.get("choice"),
-            "explanation": answer.get("explanation"),
+            "explanation": stable_explanation(answer.get("explanation")),
         },
         "has_image": bool(question.get("has_image")),
         "image_ref": question.get("image_ref"),
@@ -197,7 +211,7 @@ def _record_matches_current(
         answer.get("choice")
     ):
         return False
-    if "explanation" in fields and str(fields.get("explanation")) != str(
+    if "explanation" in fields and stable_explanation(fields.get("explanation")) != stable_explanation(
         answer.get("explanation")
     ):
         return False
@@ -480,12 +494,37 @@ def write_outputs(ledger: Mapping[str, Any]) -> None:
     write_text_atomic(LEDGER_JS_PATH, wrapper, encoding="utf-8")
 
 
+def refresh_published_hashes() -> int:
+    """只更新 published_hashes 并重派生兼容清单，不迁移逐题状态。
+
+    供 gen_answer_crops 改写发布 JSON 后调用：full rebuild 在纯文本管线里
+    无法复现增量累积的 vision/page_review 状态，禁止在发布流程外随意全量重建。
+    """
+    ledger = json.loads(LEDGER_PATH.read_text(encoding="utf-8"))
+    hashes = dict(ledger.get("published_hashes") or {})
+    for c in COURSES:
+        p = MATH_BANK_DIR / f"data-{c.key}.json"
+        if p.exists():
+            hashes[c.key] = sha256_file(p)
+    ledger["published_hashes"] = hashes
+    write_outputs(ledger)
+    print("published_hashes refreshed:", {k: v[:12] for k, v in hashes.items()})
+    return 0
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="重算 408 质量 ledger 和兼容清单")
     parser.add_argument(
         "--strict-course", action="append", default=[], choices=[c.key for c in COURSES]
     )
+    parser.add_argument(
+        "--refresh-hashes",
+        action="store_true",
+        help="仅按当前 data-*.json 刷新 published_hashes 并重派生 hold/verification",
+    )
     args = parser.parse_args()
+    if args.refresh_hashes:
+        return refresh_published_hashes()
     ledger = build_ledger(strict_courses=set(args.strict_course) or None)
     write_outputs(ledger)
     print(json.dumps(ledger["summary"], ensure_ascii=False, indent=2))

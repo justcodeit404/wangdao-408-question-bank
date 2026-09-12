@@ -113,6 +113,18 @@ def main():
             print('[blind-gate] 已显式跳过，ledger 保持 pending（不可宣称答案已验算）')
     run([sys.executable, 'scripts/enhance_audit.py'])
 
+    # 8. 答案区原书截图：裁图 + explanation 前置「答案图片」行（幂等）。
+    #    必须放在所有读取 explanation 的校验之后（cross_validate 对解析做全等比对）；
+    #    ledger 的逐题哈希对截图行不敏感（quality_ledger.stable_explanation），
+    #    最后 --refresh-hashes 同步发布文件哈希，避免平台导入拒绝。
+    for c in COURSES:
+        run([
+            sys.executable, 'scripts/gen_answer_crops.py',
+            '--course', c.key, '--write-expl',
+        ])
+    if not args.skip_vision_audit:
+        run([sys.executable, 'scripts/quality_ledger.py', '--refresh-hashes'])
+
     print('\n========== 构建完成 ==========')
     all_json = OUTPUT_DIR / 'questions_all.json'
     data = json.loads(all_json.read_text(encoding='utf-8'))
