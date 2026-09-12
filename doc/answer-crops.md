@@ -1,6 +1,6 @@
 # 答案区原书截图（answer_crops）
 
-> 2026-09-12 试点数据结构（ds）；主人验收后按同一管线铺开 coa / net / os。
+> 2026-09-12 试点数据结构，同日四科（ds/coa/net/os）全部铺开：2858 题 / 3221 张 / 96.5MB。
 
 ## 是什么
 
@@ -29,13 +29,20 @@ python scripts/gen_answer_crops.py --course ds --qids X01,A03 # 单题调试
 - 分段：小节答案页流式扫描，按答案头（`01. C` / `01.【解答】`）切分，跨页续行归属当前答案
   （比旧逐页解析更完整）；裁剪 x 取页内容列全宽（保插图/表格），y 按行并集 + padding，
   并对相邻答案段收口 padding、对文字下方的插图墨迹延展下边界（PIL 灰度 <185 视为墨迹）
+- **TOC 节界封顶（重要）**：qa_pairs 的 a_pages 止于「下一节试题精选」，中间夹着下一节/下一章
+  的知识点正文；旧逐页文字管线按页丢弃这些行，连续流却会把它们吞进最后一个答案（试点 ds
+  曾因此裁出整页正文）。现在答案页流延伸到下一节首页为止（上一节答案常续到该页顶部，
+  不能按整页砍），分段遇到 TOC 精确节号的标题行（如 `2.3 栈与队列`）即停，章首页另作硬封顶
 - 输出：`math-bank/answer_crops/<key>/page_NNN_<QID>_ans[_pN].jpg`（JPEG q80，宽 ≤1000px）
 - 抽查：`math-bank/answer-crop-review.html`（本地打开，点图 160% 放大）
 - 幂等：重跑安全——旧 `answer_crops` 图片行整行替换，题目图片行不动
 
-ds 试点结果：791/797 题出图（1015 张，48.8MB）；6 题无答案段回退文字
+ds 试点结果：791/797 题出图（TOC 封顶修复后 919 张 / 29.8MB）；6 题无答案段回退文字
 （2.2.3 A09、5.1.4 A04、6.2.6 A09、7.2.4 A06、8.4.3 A04、8.6.3 A04，
 多为书内本就缺答案头或答案头 OCR 损坏）。
+
+四科最终：ds 791/919 图、coa 672/740、net 636/716、os 759/846，共 2858 题 / 96.5MB；
+coa 6.2.3 有 4 个重复答案头（书内两轮答案），与文字管线同为取最后一次，图文一致。
 
 ## 质量台账配合（重要）
 
@@ -67,10 +74,10 @@ ds 试点结果：791/797 题出图（1015 张，48.8MB）；6 题无答案段�
 
 ## 铺开其余三科
 
+2026-09-12 已全部铺开（四科同批 v217 上云）。若日后需重出（如管线改进后）：
+
 ```bash
-python scripts/gen_answer_crops.py --course coa --write-expl
-python scripts/gen_answer_crops.py --course net --write-expl
-python scripts/gen_answer_crops.py --course os --write-expl
+python scripts/gen_answer_crops.py --course coa --write-expl   # net/os 同理
 python scripts/quality_ledger.py --refresh-hashes
 python scripts/bump_bank_version.py
 # 重新导入对应平台题库 + pack/apply 上云
