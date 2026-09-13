@@ -361,9 +361,11 @@ def test_coa_chip_x09_is_8bit():
     assert "32Kx16" not in content
 
 
-def test_ds_huffman_x05_216_nodes():
+def test_ds_huffman_x05_215_nodes():
+    # 原书 p190 为 215（奇数，哈夫曼树 n=2n0-1）；纠正 2026091106 批误修 215→216
     content = _q("ds", "树与二叉树的应用", "X05")["content"]
-    assert "216个结点" in content
+    assert "215个结点" in content
+    assert "216个结点" not in content
 
 
 def test_coa_cache_x17_storage_hierarchy():
