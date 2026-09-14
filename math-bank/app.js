@@ -2809,6 +2809,11 @@ function appendExplainImage(el, path) {
   el.appendChild(fig);
 }
 
+/** 答案区截图已是原书解析，OCR 正文与图重复；有答案图时不再渲文字。题目配图不触发。 */
+function shouldHideExplanationProse(expl) {
+  return /(?:答案图片|解析图片|答图)\s*[：:]\s*\S+?\.(?:png|jpe?g|webp|gif)/i.test(String(expl || ''));
+}
+
 function fillExplanation(el, expl, prefix) {
   if (!el) return;
   const raw = String(expl || '');
@@ -2816,6 +2821,7 @@ function fillExplanation(el, expl, prefix) {
     el.textContent = prefix || '';
     return;
   }
+  const hideProse = shouldHideExplanationProse(raw);
   const assetRe = /(?:题目图片|答案图片|解析图片|题图|答图)\s*[：:]\s*(\S+?\.(?:png|jpe?g|webp|gif))/gi;
   const chunks = [];
   let last = 0;
@@ -2833,6 +2839,7 @@ function fillExplanation(el, expl, prefix) {
       appendExplainImage(el, chunk.path);
       continue;
     }
+    if (hideProse) continue;
     const piece = (!started && prefix ? prefix : '') + prepareMathText(chunk.value);
     started = true;
     if (!piece.trim()) continue;
@@ -4661,7 +4668,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=218').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=219').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {
