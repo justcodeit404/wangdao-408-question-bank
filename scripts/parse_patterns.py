@@ -10,15 +10,13 @@ import re
 QUESTION_HEADER_RE = re.compile(r"^\s*0?([1-9]\d?)[\.．、]\s*(.+)$")
 
 # 排除答案短格式: 纯"01. C"，也支持多选/多空答案如 "06. B、D" / "11.B,A" / "16.B、E、C、D"
-ANSWER_SHORT_RE = re.compile(
-    r"^\s*0?([1-9]\d?)[\.．、]\s*([A-Ga-g](?:[、,，\s]+[A-Ga-g])*)\s*$"
-)
+ANSWER_SHORT_RE = re.compile(r"^\s*0?([1-9]\d?)[\.．、]\s*([A-Ga-g](?:[、,，\s]+[A-Ga-g])*)\s*$")
 
 # 选项行：A. xxx
 OPTION_LINE_RE = re.compile(r"^([A-Da-d])[\.．、]\s*(.+?)$")
 
-# 综合应用题答案头：01.【解答】
-ANS_HEADER_RE = re.compile(r"^\s*0?([1-9]\d?)[\.．、]\s*[\【\[]?解答[\】\]]?\s*$")
+# 综合应用题答案头：01.【解答】 / 统考真题常见 09.【解析】
+ANS_HEADER_RE = re.compile(r"^\s*0?([1-9]\d?)[\.．、]\s*[\【\[]?(?:解答|解析)[\】\]]?\s*$")
 
 # 应用题答案起始（无【解答】）
 APP_ANS_START_RE = re.compile(r"^\s*0?([1-9]\d?)[\.．、]\s*(.+)$")
