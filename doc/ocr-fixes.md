@@ -905,3 +905,12 @@ os：X07/X09/X10/X18/X31（运行环境等）、X41/X51/X55/X56/X73（进程）�
 - **同类**：ds 图章节 12 题（X12/X16/X20/X32/X33/X43 及 A01/A02/A09 等）同病，均沿用已有裁图。
 - **修复**：`parse_patterns.has_real_image_ref` 改为指向语优先；`detect_image_ref` 若 `crops/<course>/page_XXX_QID.png` 已存在则复用、不重裁。
 - 回归 `tests/test_parse_patterns.py`、`tests/test_page_review_patches.py`（X12 + 有向图/无向图题干挂图）。缓存戳 **v223→v224**；`fix_questions` `image_ref_added=12`。
+
+## 2026-09-16 · ds 图存储 X19/X06 · 邻接矩阵排版
+
+主人反馈 2013 统考邻接矩阵题「矩阵看起来很别扭」。
+
+- **问题**：X19 题干写成嵌套列表 `A = [[0, 1, 0, 1],\n     [0, 0, 1, 1], ...]`，换行+缩进在 viewer 里折成多行零散文本；同章 X06 的 3×3 矩阵同病。
+- **原书**：方括号矩阵；答案 C=`3,4,2,3` 不变。
+- **修复**：`page_review_patches.json` 将 X19/X06 的矩阵改为 KaTeX 显示公式 `$$A=\begin{bmatrix}…\end{bmatrix}$$`（viewer 已支持 `$$`）。重建 `data-ds.json`/`data.js`；缓存 **v224→v225**。
+- 回归 `test_ds_graph_storage_x19_x06_use_katex_matrix`、`test_ds_graph_storage_x19_stem_keeps_2013_tag_and_answer`。

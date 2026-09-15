@@ -216,6 +216,27 @@ def test_ds_forest_x19_x20_use_latin_a():
         assert "α" not in content
 
 
+def test_ds_graph_storage_x19_x06_use_katex_matrix():
+    """邻接矩阵题干用 KaTeX bmatrix，禁止退回嵌套列表排版。"""
+    for qid, rows in (
+        ("X19", (4, 4)),
+        ("X06", (3, 3)),
+    ):
+        content = _q("ds", "图的存储及基本操作", qid)["content"]
+        assert "[[0" not in content
+        assert "$$A=\\begin{bmatrix}" in content
+        assert content.count("&") >= rows[0] * (rows[1] - 1)
+        assert content.count("\\\\") >= rows[0] - 1
+        assert "\\end{bmatrix}$$" in content
+
+
+def test_ds_graph_storage_x19_stem_keeps_2013_tag_and_answer():
+    question = _q("ds", "图的存储及基本操作", "X19")
+    assert question["content"].startswith("【2013统考真题】")
+    assert question["options"]["C"] == "3,4,2,3"
+    assert question["answer"]["choice"] == "C"
+
+
 def test_net_ipv4_a11_2_moved_out_of_choice():
     data = _load("net")
     for chapter in data["chapters"]:
