@@ -350,10 +350,11 @@ function prepareMathText(text) {
     s = s.replace(/(?<![\\$])log\s*2\s*\(\s*([^)]+?)\s*\)/gi, (_, inner) => '$' + TEX_BS + 'log_2(' + inner + ')$');
     s = s.replace(/(?<![\\$])log\s*2\s*(\d+[A-Za-z]?)/gi, (_, n) => '$' + TEX_BS + 'log_2 ' + n + '$');
     s = s.replace(/(?<![\\$])log\s*2\s*([Vv])/g, (_, v) => '$' + TEX_BS + 'log_2 ' + v + '$');
-    s = s.replace(/n²/g, '$n^{2}$');
-    s = s.replace(/n³/g, '$n^{3}$');
+    // 先字面量 n^{2} 后 Unicode ²：顺序反过来会让 n² → $n^{2}$ 再被 \bn\^\{2\} 二次包裹成 $$...$$（块级居中）
     s = s.replace(/\bn\^\{2\}/g, '$n^{2}$');
     s = s.replace(/\bn\^\{3\}/g, '$n^{3}$');
+    s = s.replace(/n²/g, '$n^{2}$');
+    s = s.replace(/n³/g, '$n^{3}$');
     s = s.replace(/\bn\^\{1\/3\}/g, '$n^{1/3}$');
     s = s.replace(/\bn\^\{1\/2\}/g, '$n^{1/2}$');
     s = s.replace(/(?<![$\w\\])(\d+)\^\{([^}]+)\}/g, (_, a, b) => '$' + a + '^{' + b + '}$');
@@ -4668,7 +4669,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=223').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=224').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {

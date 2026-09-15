@@ -216,3 +216,24 @@ def test_katex_runs_in_prose_between_tables():
     )
     assert res["tableCount"] == 2
     assert any("MATH[I:" in p and "n^{2}" in p for p in res["proseHtml"])
+
+
+def test_unicode_superscript_wraps_once_and_stays_inline():
+    # 回归：n² 曾被 n²→$n^{2}$ 再被 \bn\^{2} 二次包成 $$n^{2}$$（块级居中）
+    (res,) = _eval_fill(["n²"])
+    assert res["textAfterFill"] == "$n^{2}$"
+    assert "MATH[I:n^{2}]" in res["finalHtml"]
+    assert "MATH[D:" not in res["finalHtml"]
+
+
+def test_unicode_superscript_cube_wraps_once():
+    (res,) = _eval_fill(["n³"])
+    assert res["textAfterFill"] == "$n^{3}$"
+    assert "MATH[I:n^{3}]" in res["finalHtml"]
+    assert "MATH[D:" not in res["finalHtml"]
+
+
+def test_literal_superscript_wraps_once():
+    (res,) = _eval_fill(["n^{2}"])
+    assert res["textAfterFill"] == "$n^{2}$"
+    assert "MATH[D:" not in res["finalHtml"]
