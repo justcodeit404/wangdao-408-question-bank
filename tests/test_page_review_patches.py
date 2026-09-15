@@ -70,6 +70,51 @@ def test_ds_x12_preorder_uses_latin_a_not_alpha():
         assert "α" not in option
 
 
+def test_ds_graph_scc_x12_keeps_stem_figure():
+    """「右图所示的有向图」不得被「有向图」假阳性打成无图。"""
+    from fix_questions import detect_image_ref
+
+    question = _q("ds", "图的基本概念", "X12")
+    assert "右图" in question["content"]
+    assert "有向图" in question["content"]
+    assert question.get("has_image") is True
+    assert (question.get("image_ref") or {}).get("cropped") == "crops/ds/page_203_X12.png"
+    crop = BANK / "crops/ds/page_203_X12.png"
+    assert crop.exists() and crop.stat().st_size > 0
+
+    ref = detect_image_ref(
+        {
+            "id": "X12",
+            "content": question["content"],
+            "page": 203,
+            "bbox": question.get("bbox"),
+        },
+        BANK,
+        course_key="ds",
+    )
+    assert ref and ref["cropped"] == "crops/ds/page_203_X12.png"
+
+
+def test_ds_directed_graph_figure_stems_keep_crops():
+    """题干同时出现「右图/下图」和「有向图/无向图」时必须挂上裁图。"""
+    data = _load("ds")
+    missing = []
+    for chapter in data["chapters"]:
+        for question in chapter["questions"]:
+            content = question.get("content") or ""
+            if not any(m in content for m in ("右图", "下图", "如下图", "如图")):
+                continue
+            if "有向图" not in content and "无向图" not in content:
+                continue
+            ref = question.get("image_ref") or {}
+            cropped = ref.get("cropped") if isinstance(ref, dict) else ref
+            if not question.get("has_image") or not cropped:
+                missing.append(f"{chapter.get('name')} {question.get('id')}")
+                continue
+            assert (BANK / cropped).exists(), cropped
+    assert not missing, missing
+
+
 def test_ds_x33_2010_threaded_tree_stem_not_ocr_null():
     question = _q("ds", "二叉树的遍历和线索二叉树", "X33")
     compact = question["content"].replace(" ", "").replace("\n", "")

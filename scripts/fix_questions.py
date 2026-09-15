@@ -1479,16 +1479,33 @@ def crop_question_image(page_path, page, bbox, course_key, qid, content=""):
     return out_path
 
 
+def existing_stem_crop(course_key, page, qid):
+    """已有 auto_recrop / 人工裁图优先于按 bbox 重裁，避免盖掉更准的图。"""
+    if not course_key or page is None or not qid:
+        return None
+    try:
+        page_i = int(page)
+    except (TypeError, ValueError):
+        return None
+    path = MATH_BANK_DIR / "crops" / course_key / f"page_{page_i:03d}_{qid}.png"
+    if not path.exists():
+        return None
+    return path.relative_to(MATH_BANK_DIR).as_posix()
+
+
 def detect_image_ref(q, pdf_images_dir, course_key=None):
     """如果题干含图标记且所在页有截图，返回 image_ref。
-    优先按题目 bbox 裁剪出精准截图；没有 bbox 时回退到整页原图。"""
+    优先沿用已有裁图；否则按题目 bbox 裁剪；没有 bbox 时回退到整页原图。"""
     content = q.get("content") or ""
     if not has_real_image_ref(content):
         return None
     page = q.get("page")
     if not page:
         return None
-    page_file = f"page_{page:03d}.png"
+    existing = existing_stem_crop(course_key, page, q.get("id"))
+    if existing:
+        return {"page": page, "note": "题干含图，沿用已有裁图", "cropped": existing}
+    page_file = f"page_{int(page):03d}.png"
     candidates = [
         pdf_images_dir / page_file,
         PROJECT_ROOT / "assets/pdf_images/ds" / page_file,

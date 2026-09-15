@@ -13,6 +13,7 @@ from parse_patterns import (
     answer_header_re,
     chapter_header_re,
     is_page_noise,
+    has_real_image_ref,
 )
 
 
@@ -102,6 +103,22 @@ class TestPageNoise:
     def test_regex_exposed(self):
         # 暴露原始正则，供需要精细控制的调用方使用
         assert PAGE_NOISE_RE.match("2027年计算机组成原理考研复习指导")
+
+
+class TestHasRealImageRef:
+    def test_right_figure_in_directed_graph(self):
+        assert has_real_image_ref("在右图所示的有向图中，共有（）个强连通分量。")
+
+    def test_as_shown_figure_in_directed_graph(self):
+        assert has_real_image_ref(
+            "已知带权有向图G的邻接矩阵如下图所示，请画出该带权有向图G。"
+        )
+
+    def test_graph_term_without_figure_marker(self):
+        assert not has_real_image_ref(
+            "对于一个有n个顶点的图：若是连通无向图，其边的个数至少为（）；"
+            "若是强连通有向图，则其边的个数至少为（）。"
+        )
 
 
 if __name__ == "__main__":

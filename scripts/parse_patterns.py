@@ -71,13 +71,19 @@ IMAGE_FALSE_POSITIVES = [
 
 
 def has_real_image_ref(content):
-    """判断题干是否真正指向附图（而非章节术语中的"图"字）。"""
+    """判断题干是否真正指向附图（而非章节术语中的"图"字）。
+
+    「右图 / 如下图」等指向语优先于「有向图 / 无向图」等主题词。
+    否则「在右图所示的有向图中」会被假阳性表误判成无图。
+    """
     if not content:
         return False
+    if any(m in content for m in IMAGE_MARKERS):
+        return True
     for fp in IMAGE_FALSE_POSITIVES:
         if fp in content:
             return False
-    return any(m in content for m in IMAGE_MARKERS)
+    return False
 
 
 def extract_answer_choice(line):

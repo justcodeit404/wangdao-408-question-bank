@@ -896,3 +896,12 @@ os：X07/X09/X10/X18/X31（运行环境等）、X41/X51/X55/X56/X73（进程）�
 - **正确推导**：最坏情况 n−1 个顶点成完全图、第 n 个孤立，再加 1 条边必连通。本题 n=5，C(4,2)+1=6+1=7，答案 B 本来就是对的，只是解析错。
 - **修复**：page_review_patches.json 给 ds / 图 · 图的基本概念 · 选择题 / X09 补 explanation 字段（原题干/选项/choice 早已补丁正确，无需改）。
 - 回归 	ests/test_page_review_patches.py **112** 通过；缓存 **v223**。
+
+## 2026-09-15 · ds 图 X12 等「右图+有向图」题干丢配图
+
+主人反馈「在右图所示的有向图中，共有（）个强连通分量」详情页没有图。
+
+- **问题**：裁图 `crops/ds/page_203_X12.png` 早已存在且正确，但发布数据 `has_image=false`、`image_ref=null`。根因是 `has_real_image_ref` 先匹配假阳性词「有向图/无向图」再看「右图/下图」，「在右图所示的有向图中」被整题判成无图；后续 rebuild 冲掉 auto_recrop 写进 JSON 的挂图，磁盘裁图还在。
+- **同类**：ds 图章节 12 题（X12/X16/X20/X32/X33/X43 及 A01/A02/A09 等）同病，均沿用已有裁图。
+- **修复**：`parse_patterns.has_real_image_ref` 改为指向语优先；`detect_image_ref` 若 `crops/<course>/page_XXX_QID.png` 已存在则复用、不重裁。
+- 回归 `tests/test_parse_patterns.py`、`tests/test_page_review_patches.py`（X12 + 有向图/无向图题干挂图）。缓存戳 **v223→v224**；`fix_questions` `image_ref_added=12`。
