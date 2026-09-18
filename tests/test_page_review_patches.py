@@ -892,6 +892,16 @@ def test_page_review_manifest_is_valid_and_unique():
     assert all(len(key) == 3 for key in patches)
 
 
+def test_ds_bfs_x01_no_blank_line_before_iv():
+    """页眉「第6章图 219」删除后不得在 III/IV 之间留下空行。"""
+    question = _q("ds", "图的遍历", "X01")
+    content = question["content"]
+    assert "\n\n" not in content
+    assert "第6章" not in content
+    assert "IV．实现图的广度优先算法" in content
+    assert content.count("\n") == 4
+
+
 def test_page_review_manifest_is_applied_by_fix_file(tmp_path):
     (course, chapter, qid), fields = next(iter(load_page_review_patches().items()))
     path = tmp_path / f"questions_{course}.json"
