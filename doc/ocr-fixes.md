@@ -914,3 +914,13 @@ os：X07/X09/X10/X18/X31（运行环境等）、X41/X51/X55/X56/X73（进程）�
 - **原书**：方括号矩阵；答案 C=`3,4,2,3` 不变。
 - **修复**：`page_review_patches.json` 将 X19/X06 的矩阵改为 KaTeX 显示公式 `$$A=\begin{bmatrix}…\end{bmatrix}$$`（viewer 已支持 `$$`）。重建 `data-ds.json`/`data.js`；缓存 **v224→v225**。
 - 回归 `test_ds_graph_storage_x19_x06_use_katex_matrix`、`test_ds_graph_storage_x19_stem_keeps_2013_tag_and_answer`。
+
+## 2026-09-18 · ds 图存储 X08（p212）邻接矩阵平方元素 OCR 缺下标（缓存 v225→v226）
+
+主人反馈题干「若矩阵 A²的某元素α²;=3」看不懂。
+
+- **问题**：拉丁字母 $a$ 被识成希腊 α，下标 `i,j` 整体丢失只剩 `;`；解析同句同样损伤（`A"的元素α";,`）。
+- **原书证据**：page_212 题干为 $a^2_{i,j}=3$；答案裁图 page_215_X08_ans.jpg 解析为「Aⁿ的元素aⁿᵢ,ⱼ等于从顶点i到j的长度为n的路径的数目，因此a²ᵢ,ⱼ=3…」。
+- **修复**：`page_review_patches.json` 给 ds / 图 · 图的存储及基本操作 · 选择题 / X08 补 content + explanation（公式用行内 KaTeX `$a_{i,j}^{2}=3$`）。答案 A、选项不变。
+- 回归 `test_ds_graph_storage_x08_adjacency_square_element`；缓存 **v225→v226**。
+- 注：本次重建时本机 OCR 输入较上次发布有漂移，`gen_answer_crops` 新认出 92 题的答案段；为避免顺带改动 92 题解析，已将这些 explanation 还原为云端已发布文本，仅 X08 进本次发布。

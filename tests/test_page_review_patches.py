@@ -237,6 +237,19 @@ def test_ds_graph_storage_x19_stem_keeps_2013_tag_and_answer():
     assert question["answer"]["choice"] == "C"
 
 
+def test_ds_graph_storage_x08_adjacency_square_element():
+    question = _q("ds", "图的存储及基本操作", "X08")
+    content = question["content"]
+    assert "α²" not in content
+    assert "²;" not in content
+    assert "$a_{i,j}^{2}=3$" in content
+    assert question["answer"]["choice"] == "A"
+    expl = (question.get("answer") or {}).get("explanation") or ""
+    assert "α" not in expl
+    assert "$A^n$的元素$a_{i,j}^{n}$" in expl
+    assert "$a_{i,j}^{2}=3$" in expl
+
+
 def test_net_ipv4_a11_2_moved_out_of_choice():
     data = _load("net")
     for chapter in data["chapters"]:
