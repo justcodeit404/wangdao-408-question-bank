@@ -57,7 +57,7 @@
 | 题号 | X01（原书第 218–219 页跨页） |
 | 现象 | 题干 III 与 IV 之间多空一行。OCR 将页眉 `第6章图 219` 扫入题干；`clean_content` 删掉该行后保留 `\n\n`（只压缩 `\n{3,}`）。 |
 | 修复 | `page_review_patches.json` 增补 X01 content：III/IV 改为单换行；`rebuild_bank.ps1` 重建；缓存戳 226→227；回归 `test_ds_bfs_x01_no_blank_line_before_iv`（118 passed） |
-| 上云 | 2026-09-10 待 pack/apply 后回填 release |
+| 上云 | 2026-09-18 已部署 release `20260918T130250Z-78f80706b813`（缓存 v227） |
 
 ---
 
