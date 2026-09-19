@@ -429,7 +429,11 @@ const NOTE_IMG_RE = /!\[([^\]]*)\]\((noteimg:[A-Za-z0-9]+|data:image\/(?:png|jpe
 function storeNoteImage(dataUrl) {
   const token = 'noteimg:' + Date.now().toString(36) + Math.floor(Math.random() * 1e6).toString(36);
   noteImagesMap[token] = dataUrl;
-  saveNoteImages();
+  if (!saveNoteImages()) {
+    // 存储失败：回滚并返回 null，调用方退回内联 base64，绝不静默丢图
+    delete noteImagesMap[token];
+    return null;
+  }
   return token;
 }
 
@@ -444,29 +448,35 @@ function stripNoteImages(text) {
     .replace(/!\[([^\]]*)\]\((?:noteimg:[A-Za-z0-9]+|data:image\/[^)]+)\)/g, '（图片）');
 }
 
-/** 旧版笔记把 base64 直接内联在文本里：搬到图片 map 并换成短占位符（幂等，只跑一次有改动才存） */
+/** 旧版笔记把 base64 直接内联在文本里：搬到图片 map 并换成短占位符（幂等，只跑一次有改动才存）。
+ *  存不下就保留内联形态，不丢图。 */
 function migrateLegacyNoteImages() {
   let changed = false;
   Object.keys(notesMap).forEach((key) => {
     const text = notesMap[key];
     if (typeof text !== 'string' || text.indexOf('data:image/') === -1) return;
     notesMap[key] = text.replace(/!\[([^\]]*)\]\(data:image\/(?:png|jpeg);base64,[^)\s]+\)/g, (m, alt, ref) => {
+      const token = storeNoteImage(ref);
+      if (!token) return m;
       changed = true;
-      return `![${alt}](${storeNoteImage(ref)})`;
+      return `![${alt}](${token})`;
     });
   });
   if (changed) saveNotes();
 }
 
-/** 删除笔记时回收不再被任何笔记引用的图片 */
+/** 删除笔记时回收不再被任何笔记引用的图片。
+ *  从盘上重新读笔记/图片再合并内存，避免旧标签页凭过期内存把别的标签页刚存的图回收掉。 */
 function gcNoteImages() {
+  const freshNotes = loadSharded(NOTES_KEY);
   const referenced = new Set();
-  Object.values(notesMap).forEach((text) => {
+  Object.values(freshNotes).forEach((text) => {
     if (typeof text !== 'string') return;
     let m;
     const re = /!\[([^\]]*)\]\((noteimg:[A-Za-z0-9]+)\)/g;
     while ((m = re.exec(text)) !== null) referenced.add(m[2]);
   });
+  noteImagesMap = Object.assign({}, readNoteImagesFresh(), noteImagesMap);
   let changed = false;
   Object.keys(noteImagesMap).forEach((token) => {
     if (!referenced.has(token)) { delete noteImagesMap[token]; changed = true; }
@@ -845,7 +855,11 @@ function saveNotes() {
   safeSetItem(NOTES_KEY, JSON.stringify(notesMap));
 }
 function saveNoteImages() {
-  saveSharded(NOTE_IMAGES_KEY, noteImagesMap);
+  return saveSharded(NOTE_IMAGES_KEY, noteImagesMap);
+}
+
+function readNoteImagesFresh() {
+  return loadSharded(NOTE_IMAGES_KEY);
 }
 function saveIssues() {
   safeSetItem(ISSUES_KEY, JSON.stringify(issuesMap));
@@ -1066,7 +1080,8 @@ function importProgress(file) {
         saveNotes();
       }
       if (data.noteImages && typeof data.noteImages === 'object') {
-        noteImagesMap = data.noteImages;
+        // 合并而非整体覆盖：旧备份里没有图片字段，避免把现有图库清空
+        noteImagesMap = Object.assign({}, noteImagesMap, data.noteImages);
         saveNoteImages();
       }
       if (data.issues && typeof data.issues === 'object') {
@@ -2703,7 +2718,8 @@ function bindNotesUI(q) {
     e.preventDefault();
     processNoteImage(item.getAsFile())
       .then((dataUrl) => {
-        insertTextAtCursor(ta, `![图片](${storeNoteImage(dataUrl)})`);
+        const token = storeNoteImage(dataUrl);
+        insertTextAtCursor(ta, token ? `![图片](${token})` : `![图片](${dataUrl})`);
         maybeConvertNoteImage(ta, dataUrl);
       })
       .catch((err) => flashToast((err && err.message) || '图片插入失败'));
@@ -2725,7 +2741,8 @@ function bindNotesUI(q) {
       if (!file) return;
       processNoteImage(file)
         .then((dataUrl) => {
-          insertTextAtCursor(ta, `![图片](${storeNoteImage(dataUrl)})`);
+          const token = storeNoteImage(dataUrl);
+          insertTextAtCursor(ta, token ? `![图片](${token})` : `![图片](${dataUrl})`);
           maybeConvertNoteImage(ta, dataUrl);
         })
         .catch((err) => flashToast((err && err.message) || '图片插入失败'));
@@ -4928,7 +4945,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=229').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=230').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {
