@@ -56,11 +56,15 @@ def test_notes_preview_wired_in_viewer():
     css = STYLES.read_text(encoding="utf-8")
     assert 'id="notesPreview"' in js
     assert "function prepareNoteMath" in js
-    assert "renderKatex(preview)" in js
-    assert "preview.textContent = prepareNoteMath(text)" in js
+    assert "renderNotePreview(preview, text)" in js
+    # 图片预览：文本段仍走 prepareNoteMath + KaTeX，data: 内联图渲染为 <img>
+    assert "appendNoteTextSegment" in js
+    assert "renderKatex(span)" in js
+    assert "data:image/" in js
     assert "updatePreview" in js
     assert ".q-notes-preview" in css
     assert ".q-notes.has-note-preview .q-notes-preview" in css
+    assert ".note-img" in css
     html = (ROOT / "math-bank" / "index.html").read_text(encoding="utf-8")
     assert "app.js?v=" in html
     import re

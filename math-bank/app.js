@@ -372,6 +372,86 @@ function prepareNoteMath(text) {
   return t.replace(/(?<![\\A-Za-z$])log\s*(?=_|\{)/g, TEX_BS + 'log');
 }
 
+// ========================
+// 笔记图片：粘贴/插入 → 压缩为 dataURL 内联 ![](...)，仅本浏览器保存
+// ========================
+
+/** 图片等比压缩到最长边 1200px、JPEG q0.8（canvas 输出 dataURL 不含 ) 与空白，可安全内联 markdown）。 */
+function processNoteImage(file) {
+  return new Promise((resolve, reject) => {
+    if (!file || !file.type || !file.type.startsWith('image/')) {
+      reject(new Error('不是图片文件'));
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const img = new Image();
+      img.onload = () => {
+        const MAX = 1200;
+        let w = img.width, h = img.height;
+        if (!w || !h) { reject(new Error('图片解码失败')); return; }
+        if (Math.max(w, h) > MAX) {
+          const scale = MAX / Math.max(w, h);
+          w = Math.round(w * scale);
+          h = Math.round(h * scale);
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = w;
+        canvas.height = h;
+        canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+        resolve(canvas.toDataURL('image/jpeg', 0.8));
+      };
+      img.onerror = () => reject(new Error('图片解码失败'));
+      img.src = reader.result;
+    };
+    reader.onerror = () => reject(new Error('图片读取失败'));
+    reader.readAsDataURL(file);
+  });
+}
+
+/** 在光标处插入片段（图片 markdown 独占一行），并触发 input 走防抖保存。 */
+function insertTextAtCursor(ta, snippet) {
+  const start = ta.selectionStart != null ? ta.selectionStart : ta.value.length;
+  const end = ta.selectionEnd != null ? ta.selectionEnd : start;
+  const before = ta.value.slice(0, start);
+  const after = ta.value.slice(end);
+  const lead = before && !before.endsWith('\n') ? '\n' : '';
+  const tail = after && !after.startsWith('\n') ? '\n' : '';
+  ta.value = before + lead + snippet + tail + after;
+  const pos = (before + lead + snippet).length;
+  ta.setSelectionRange(pos, pos);
+  ta.dispatchEvent(new Event('input', { bubbles: true }));
+}
+
+// 仅放行我们自己生成的 data:image/(png|jpeg) 内联图，其他地址一律不渲染（防 XSS）
+const NOTE_IMG_RE = /!\[([^\]]*)\]\((data:image\/(?:png|jpeg);base64,[^)\s]+)\)/g;
+
+function appendNoteTextSegment(el, segment) {
+  if (!segment) return;
+  const span = document.createElement('span');
+  span.textContent = prepareNoteMath(segment);
+  renderKatex(span);
+  el.appendChild(span);
+}
+
+/** 笔记预览：图片渲染为 <img>，文本段转义后走 KaTeX；数学公式跨图片的边界情况不渲染（可接受）。 */
+function renderNotePreview(el, text) {
+  el.innerHTML = '';
+  let last = 0;
+  let m;
+  while ((m = NOTE_IMG_RE.exec(text)) !== null) {
+    if (m.index > last) appendNoteTextSegment(el, text.slice(last, m.index));
+    const img = document.createElement('img');
+    img.className = 'note-img';
+    img.alt = m[1] || '笔记图片';
+    img.src = m[2];
+    el.appendChild(img);
+    last = NOTE_IMG_RE.lastIndex;
+  }
+  NOTE_IMG_RE.lastIndex = 0;
+  if (last < text.length) appendNoteTextSegment(el, text.slice(last));
+}
+
 function getTotalPages() { return Math.ceil(filteredQuestions.length / pageSize) || 1; }
 
 function shuffleArray(arr) {
@@ -679,7 +759,10 @@ function setNote(q, text) {
 }
 
 function textNotePayload(q, markdown) {
-  const md = String(markdown || '').trim();
+  // 平台文本笔记限 20000 字符，内联图片只存本浏览器：同步时替换为占位
+  const md = String(markdown || '')
+    .replace(/!\[([^\]]*)\]\(data:image\/[^)]+\)/g, '（图片）')
+    .trim();
   if (!md) return null;
   return {
     bank: platformBankCode(q),
@@ -2403,10 +2486,12 @@ function renderModalContent(q) {
     ${questionBodyHtml(q)}
     <details class="q-notes" id="detailNotes">
       <summary>📝 我的笔记 <span class="notes-status" id="notesStatus"></span></summary>
-      <textarea id="notesTextarea" placeholder="记录思路、口诀、易错点。公式：$h=\\log_2 n$ 或 \\(h=\\log_2 n\\)" rows="6"></textarea>
-      <p class="q-notes-hint">公式用 $...$ / $$...$$ / \\(...\\)。下方实时预览。</p>
+      <textarea id="notesTextarea" placeholder="记录思路、口诀、易错点。公式：$h=\\log_2 n$；可直接粘贴图片" rows="6"></textarea>
+      <p class="q-notes-hint">公式用 $...$ / $$...$$ / \\(...\\)；图片直接粘贴或点下方按钮插入，存在本浏览器。下方实时预览。</p>
       <div class="q-notes-preview" id="notesPreview" hidden></div>
       <div class="q-notes-actions">
+        <button type="button" class="btn btn-secondary btn-sm" id="btnInsertNoteImg">🖼 插入图片</button>
+        <input type="file" id="noteImgInput" accept="image/*" hidden>
         <button type="button" class="btn btn-secondary btn-sm" id="btnCopyQ">📋 复制题目</button>
         <button type="button" class="btn btn-secondary btn-sm" id="btnReportIssue">⚠ 报告错误</button>
       </div>
@@ -2449,8 +2534,7 @@ function bindNotesUI(q) {
       notesDetails.classList.remove('has-note-preview');
       return;
     }
-    preview.textContent = prepareNoteMath(text);
-    renderKatex(preview);
+    renderNotePreview(preview, text);
     preview.hidden = false;
     notesDetails.classList.add('has-note-preview');
   };
@@ -2466,12 +2550,36 @@ function bindNotesUI(q) {
       syncOneTextNote(q);
     }, 400);
   });
+  ta.addEventListener('paste', (e) => {
+    const items = e.clipboardData && e.clipboardData.items;
+    if (!items) return;
+    const item = Array.from(items).find((it) => it.kind === 'file' && it.type && it.type.startsWith('image/'));
+    if (!item) return;
+    e.preventDefault();
+    processNoteImage(item.getAsFile())
+      .then((dataUrl) => insertTextAtCursor(ta, `![图片](${dataUrl})`))
+      .catch((err) => flashToast((err && err.message) || '图片插入失败'));
+  });
   ta.addEventListener('blur', () => {
     setNote(q, ta.value);
     updateStatus();
     updatePreview();
     syncOneTextNote(q);
   });
+
+  const imgBtn = document.getElementById('btnInsertNoteImg');
+  const imgInput = document.getElementById('noteImgInput');
+  if (imgBtn && imgInput) {
+    imgBtn.onclick = () => imgInput.click();
+    imgInput.onchange = () => {
+      const file = imgInput.files && imgInput.files[0];
+      imgInput.value = '';
+      if (!file) return;
+      processNoteImage(file)
+        .then((dataUrl) => insertTextAtCursor(ta, `![图片](${dataUrl})`))
+        .catch((err) => flashToast((err && err.message) || '图片插入失败'));
+    };
+  }
 
   const copyBtn = document.getElementById('btnCopyQ');
   if (copyBtn) copyBtn.onclick = () => copyQuestionToClipboard(q);
@@ -4669,7 +4777,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=227').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=228').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {

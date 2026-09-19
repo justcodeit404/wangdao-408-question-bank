@@ -645,6 +645,15 @@ img, svg { display: block; }
   word-break: break-word;
 }
 .q-notes.has-note-preview .q-notes-preview { display: block; }
+.q-notes-preview .note-img {
+  display: block;
+  max-width: 100%;
+  max-height: 320px;
+  margin: 6px 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: zoom-in;
+}
 .q-notes-hint {
   margin: 0 14px 8px;
   font-size: 0.75rem;
