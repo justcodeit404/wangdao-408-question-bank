@@ -57,10 +57,12 @@ def test_notes_preview_wired_in_viewer():
     assert 'id="notesPreview"' in js
     assert "function prepareNoteMath" in js
     assert "renderNotePreview(preview, text)" in js
-    # 图片预览：文本段仍走 prepareNoteMath + KaTeX，data: 内联图渲染为 <img>
+    # 图片预览：文本段仍走 prepareNoteMath + KaTeX；笔记里只存 noteimg: 短占位符，本体在分片 map
     assert "appendNoteTextSegment" in js
     assert "renderKatex(span)" in js
-    assert "data:image/" in js
+    assert "noteimg:" in js
+    assert "storeNoteImage" in js
+    assert "migrateLegacyNoteImages" in js
     assert "updatePreview" in js
     assert ".q-notes-preview" in css
     assert ".q-notes.has-note-preview .q-notes-preview" in css

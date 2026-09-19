@@ -654,6 +654,15 @@ img, svg { display: block; }
   border-radius: var(--radius-sm);
   cursor: zoom-in;
 }
+.q-notes-preview .note-img-missing {
+  display: inline-block;
+  margin: 6px 0;
+  padding: 4px 10px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-tertiary);
+  font-size: 0.8rem;
+}
 .q-notes-hint {
   margin: 0 14px 8px;
   font-size: 0.75rem;

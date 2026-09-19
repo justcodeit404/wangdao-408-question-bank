@@ -423,8 +423,56 @@ function insertTextAtCursor(ta, snippet) {
   ta.dispatchEvent(new Event('input', { bubbles: true }));
 }
 
-// 仅放行我们自己生成的 data:image/(png|jpeg) 内联图，其他地址一律不渲染（防 XSS）
-const NOTE_IMG_RE = /!\[([^\]]*)\]\((data:image\/(?:png|jpeg);base64,[^)\s]+)\)/g;
+// 图片在笔记文本里只存短占位符 `![图片](noteimg:xxx)`，本体在 noteImagesMap；兼容识别旧的 data: 内联图
+const NOTE_IMG_RE = /!\[([^\]]*)\]\((noteimg:[A-Za-z0-9]+|data:image\/(?:png|jpeg);base64,[^)\s]+)\)/g;
+
+function storeNoteImage(dataUrl) {
+  const token = 'noteimg:' + Date.now().toString(36) + Math.floor(Math.random() * 1e6).toString(36);
+  noteImagesMap[token] = dataUrl;
+  saveNoteImages();
+  return token;
+}
+
+function resolveNoteImage(ref) {
+  if (ref.indexOf('noteimg:') === 0) return noteImagesMap[ref] || null;
+  return ref.indexOf('data:image/') === 0 ? ref : null;
+}
+
+/** 同步/导出用：把图片占位符替换为（图片），避免大 base64 进平台或剪贴板 */
+function stripNoteImages(text) {
+  return String(text == null ? '' : text)
+    .replace(/!\[([^\]]*)\]\((?:noteimg:[A-Za-z0-9]+|data:image\/[^)]+)\)/g, '（图片）');
+}
+
+/** 旧版笔记把 base64 直接内联在文本里：搬到图片 map 并换成短占位符（幂等，只跑一次有改动才存） */
+function migrateLegacyNoteImages() {
+  let changed = false;
+  Object.keys(notesMap).forEach((key) => {
+    const text = notesMap[key];
+    if (typeof text !== 'string' || text.indexOf('data:image/') === -1) return;
+    notesMap[key] = text.replace(/!\[([^\]]*)\]\(data:image\/(?:png|jpeg);base64,[^)\s]+\)/g, (m, alt, ref) => {
+      changed = true;
+      return `![${alt}](${storeNoteImage(ref)})`;
+    });
+  });
+  if (changed) saveNotes();
+}
+
+/** 删除笔记时回收不再被任何笔记引用的图片 */
+function gcNoteImages() {
+  const referenced = new Set();
+  Object.values(notesMap).forEach((text) => {
+    if (typeof text !== 'string') return;
+    let m;
+    const re = /!\[([^\]]*)\]\((noteimg:[A-Za-z0-9]+)\)/g;
+    while ((m = re.exec(text)) !== null) referenced.add(m[2]);
+  });
+  let changed = false;
+  Object.keys(noteImagesMap).forEach((token) => {
+    if (!referenced.has(token)) { delete noteImagesMap[token]; changed = true; }
+  });
+  if (changed) saveNoteImages();
+}
 
 function appendNoteTextSegment(el, segment) {
   if (!segment) return;
@@ -441,11 +489,19 @@ function renderNotePreview(el, text) {
   let m;
   while ((m = NOTE_IMG_RE.exec(text)) !== null) {
     if (m.index > last) appendNoteTextSegment(el, text.slice(last, m.index));
-    const img = document.createElement('img');
-    img.className = 'note-img';
-    img.alt = m[1] || '笔记图片';
-    img.src = m[2];
-    el.appendChild(img);
+    const dataUrl = resolveNoteImage(m[2]);
+    if (dataUrl) {
+      const img = document.createElement('img');
+      img.className = 'note-img';
+      img.alt = m[1] || '笔记图片';
+      img.src = dataUrl;
+      el.appendChild(img);
+    } else {
+      const missing = document.createElement('span');
+      missing.className = 'note-img-missing';
+      missing.textContent = '（图片缺失）';
+      el.appendChild(missing);
+    }
     last = NOTE_IMG_RE.lastIndex;
   }
   NOTE_IMG_RE.lastIndex = 0;
@@ -540,6 +596,9 @@ const MS_PER_DAY = 86400000;
 // 个人笔记：按题目 key 存到 localStorage
 const NOTES_KEY = 'mathbank_notes_v1';
 let notesMap = {};
+// 笔记图片本体：token → dataURL，笔记文本里只存 `![图片](noteimg:xxx)` 短占位符
+const NOTE_IMAGES_KEY = 'mathbank_note_imgs_v1';
+let noteImagesMap = {};
 
 // 题目纠错反馈：按题目 key 累积 issue 字符串数组
 const ISSUES_KEY = 'mathbank_issues_v1';
@@ -638,6 +697,8 @@ function loadStatus() {
     const rraw = localStorage.getItem(REVIEW_KEY);
     reviewMap = rraw ? JSON.parse(rraw) : {};
     notesMap = loadSharded(NOTES_KEY);
+    noteImagesMap = loadSharded(NOTE_IMAGES_KEY);
+    migrateLegacyNoteImages();
     const iraw = localStorage.getItem(ISSUES_KEY);
     issuesMap = iraw ? JSON.parse(iraw) : {};
     const qraw = localStorage.getItem(ISSUE_QUEUE_KEY);
@@ -706,6 +767,9 @@ function saveReview() {
 function saveNotes() {
   safeSetItem(NOTES_KEY, JSON.stringify(notesMap));
 }
+function saveNoteImages() {
+  saveSharded(NOTE_IMAGES_KEY, noteImagesMap);
+}
 function saveIssues() {
   safeSetItem(ISSUES_KEY, JSON.stringify(issuesMap));
 }
@@ -756,13 +820,12 @@ function setNote(q, text) {
   const key = questionKey(q);
   if (text) notesMap[key] = text; else delete notesMap[key];
   saveNotes();
+  if (!text) gcNoteImages();
 }
 
 function textNotePayload(q, markdown) {
-  // 平台文本笔记限 20000 字符，内联图片只存本浏览器：同步时替换为占位
-  const md = String(markdown || '')
-    .replace(/!\[([^\]]*)\]\(data:image\/[^)]+\)/g, '（图片）')
-    .trim();
+  // 平台文本笔记限 20000 字符，图片只存本浏览器：同步时替换为占位
+  const md = stripNoteImages(markdown).trim();
   if (!md) return null;
   return {
     bank: platformBankCode(q),
@@ -867,6 +930,7 @@ function buildFullExportPayload() {
     practice: practiceMap,
     review: reviewMap,
     notes: notesMap,
+    noteImages: noteImagesMap,
     issues: issuesMap,
     issueQueue: issueQueue,
     wrongLog: wrongLog,
@@ -923,6 +987,10 @@ function importProgress(file) {
       if (data.notes && typeof data.notes === 'object') {
         notesMap = data.notes;
         saveNotes();
+      }
+      if (data.noteImages && typeof data.noteImages === 'object') {
+        noteImagesMap = data.noteImages;
+        saveNoteImages();
       }
       if (data.issues && typeof data.issues === 'object') {
         issuesMap = data.issues;
@@ -2557,7 +2625,7 @@ function bindNotesUI(q) {
     if (!item) return;
     e.preventDefault();
     processNoteImage(item.getAsFile())
-      .then((dataUrl) => insertTextAtCursor(ta, `![图片](${dataUrl})`))
+      .then((dataUrl) => insertTextAtCursor(ta, `![图片](${storeNoteImage(dataUrl)})`))
       .catch((err) => flashToast((err && err.message) || '图片插入失败'));
   });
   ta.addEventListener('blur', () => {
@@ -2576,7 +2644,7 @@ function bindNotesUI(q) {
       imgInput.value = '';
       if (!file) return;
       processNoteImage(file)
-        .then((dataUrl) => insertTextAtCursor(ta, `![图片](${dataUrl})`))
+        .then((dataUrl) => insertTextAtCursor(ta, `![图片](${storeNoteImage(dataUrl)})`))
         .catch((err) => flashToast((err && err.message) || '图片插入失败'));
     };
   }
@@ -2603,7 +2671,7 @@ function copyQuestionToClipboard(q) {
   if (q.answer && q.answer.choice) lines.push('', `答案：${q.answer.choice}`);
   if (q.answer && q.answer.explanation) lines.push(`解析：${q.answer.explanation}`);
   const note = getNote(q);
-  if (note) lines.push('', `笔记：${note}`);
+  if (note) lines.push('', `笔记：${stripNoteImages(note)}`);
   const text = lines.join('\n');
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(text).then(() => flashToast('已复制到剪贴板'), () => fallbackCopy(text));
@@ -2738,7 +2806,7 @@ function exportNotesAsMarkdown() {
       lines.push(`### ${displayId(q)} · 第 ${q.page} 页`);
       if (q.content) lines.push('', '> ' + q.content.replace(/\n/g, '\n> '));
       lines.push('', '**笔记：**', '');
-      lines.push(notesMap[questionKey(q)]);
+      lines.push(stripNoteImages(notesMap[questionKey(q)]));
       lines.push('');
     });
   }
@@ -3321,7 +3389,7 @@ function exportWrongBook() {
       if (q && q.answer && q.answer.explanation) lines.push(`**解析**：${q.answer.explanation}`);
       lines.push('', `> ❌ 错题次数：${it.count}　|　上次：${new Date(it.lastAt).toLocaleString()}`);
       const note = notesMap[it.key];
-      if (note) lines.push('', `> 📝 笔记：${note}`);
+      if (note) lines.push('', `> 📝 笔记：${stripNoteImages(note)}`);
       lines.push('', '---', '');
     }
   }
@@ -4777,7 +4845,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=228').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=229').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {
