@@ -476,10 +476,59 @@ function gcNoteImages() {
 
 function appendNoteTextSegment(el, segment) {
   if (!segment) return;
-  const span = document.createElement('span');
-  span.textContent = prepareNoteMath(segment);
-  renderKatex(span);
-  el.appendChild(span);
+  const lines = segment.split('\n');
+  const isSep = (s) => s.includes('-') && /^\s*\|?[\s\-:|]+\|?\s*$/.test(s);
+  const flushText = (arr) => {
+    if (!arr.length) return;
+    const span = document.createElement('span');
+    span.textContent = prepareNoteMath(arr.join('\n'));
+    renderKatex(span);
+    el.appendChild(span);
+  };
+  const buildNoteTable = (rows) => {
+    const cells = (r) => r.trim().replace(/^\||\|$/g, '').split('|').map((s) => s.trim());
+    const table = document.createElement('table');
+    table.className = 'note-table';
+    const headTr = document.createElement('tr');
+    cells(rows[0]).forEach((c) => {
+      const th = document.createElement('th');
+      th.textContent = c;
+      renderKatex(th);
+      headTr.appendChild(th);
+    });
+    const thead = document.createElement('thead');
+    thead.appendChild(headTr);
+    table.appendChild(thead);
+    const tbody = document.createElement('tbody');
+    rows.slice(1).forEach((r) => {
+      const tr = document.createElement('tr');
+      cells(r).forEach((c) => {
+        const td = document.createElement('td');
+        td.textContent = c;
+        renderKatex(td);
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+    return table;
+  };
+  let buf = [];
+  let i = 0;
+  while (i < lines.length) {
+    if (lines[i].includes('|') && i + 1 < lines.length && isSep(lines[i + 1])) {
+      flushText(buf);
+      buf = [];
+      const rows = [lines[i]];
+      i += 2; // 跳过分隔行
+      while (i < lines.length && lines[i].includes('|')) { rows.push(lines[i]); i++; }
+      el.appendChild(buildNoteTable(rows));
+    } else {
+      buf.push(lines[i]);
+      i++;
+    }
+  }
+  flushText(buf);
 }
 
 /** 笔记预览：图片渲染为 <img>，文本段转义后走 KaTeX；数学公式跨图片的边界情况不渲染（可接受）。 */
@@ -506,6 +555,34 @@ function renderNotePreview(el, text) {
   }
   NOTE_IMG_RE.lastIndex = 0;
   if (last < text.length) appendNoteTextSegment(el, text.slice(last));
+}
+
+/** 平台挂载 + 已登录：把刚插入的图片送视觉模型复现为 Markdown（表格→Markdown 表格），
+ *  成功后追加到笔记里供校对；任何失败静默（图片本体已在笔记中，不丢内容）。 */
+function maybeConvertNoteImage(ta, dataUrl) {
+  if (!window.ViewerPlatformSync || !ViewerPlatformSync.onPlatformHost || !ViewerPlatformSync.onPlatformHost()) return;
+  var sync = window.ViewerPlatformSync;
+  var authP = sync.ensureAuth ? sync.ensureAuth() : Promise.resolve(null);
+  authP.then(function (auth) {
+    if (auth && auth.ok === false) return null;
+    var headers = {};
+    if (auth && auth.token) headers.Authorization = 'Bearer ' + auth.token;
+    return fetch(dataUrl)
+      .then(function (r) { return r.blob(); })
+      .then(function (blob) {
+        var form = new FormData();
+        form.append('image', blob, 'note.jpg');
+        return fetch('/api/notes/image-to-markdown', { method: 'POST', credentials: 'include', headers: headers, body: form });
+      });
+  }).then(function (res) {
+    if (!res || !res.ok) return null;
+    return res.json();
+  }).then(function (data) {
+    var md = ((data && data.markdown) || '').trim();
+    if (!md) return;
+    insertTextAtCursor(ta, md);
+    flashToast('图片已转为文字，请校对');
+  }).catch(function () { /* 转换是增值路径，失败静默 */ });
 }
 
 function getTotalPages() { return Math.ceil(filteredQuestions.length / pageSize) || 1; }
@@ -2625,7 +2702,10 @@ function bindNotesUI(q) {
     if (!item) return;
     e.preventDefault();
     processNoteImage(item.getAsFile())
-      .then((dataUrl) => insertTextAtCursor(ta, `![图片](${storeNoteImage(dataUrl)})`))
+      .then((dataUrl) => {
+        insertTextAtCursor(ta, `![图片](${storeNoteImage(dataUrl)})`);
+        maybeConvertNoteImage(ta, dataUrl);
+      })
       .catch((err) => flashToast((err && err.message) || '图片插入失败'));
   });
   ta.addEventListener('blur', () => {
@@ -2644,7 +2724,10 @@ function bindNotesUI(q) {
       imgInput.value = '';
       if (!file) return;
       processNoteImage(file)
-        .then((dataUrl) => insertTextAtCursor(ta, `![图片](${storeNoteImage(dataUrl)})`))
+        .then((dataUrl) => {
+          insertTextAtCursor(ta, `![图片](${storeNoteImage(dataUrl)})`);
+          maybeConvertNoteImage(ta, dataUrl);
+        })
         .catch((err) => flashToast((err && err.message) || '图片插入失败'));
     };
   }

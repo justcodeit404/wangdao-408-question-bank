@@ -663,6 +663,23 @@ img, svg { display: block; }
   color: var(--text-tertiary);
   font-size: 0.8rem;
 }
+.q-notes-preview .note-table {
+  border-collapse: collapse;
+  margin: 6px 0;
+  font-size: 0.85rem;
+  max-width: 100%;
+}
+.q-notes-preview .note-table th,
+.q-notes-preview .note-table td {
+  border: 1px solid var(--border);
+  padding: 4px 10px;
+  text-align: left;
+  line-height: 1.5;
+}
+.q-notes-preview .note-table th {
+  background: var(--surface);
+  font-weight: 600;
+}
 .q-notes-hint {
   margin: 0 14px 8px;
   font-size: 0.75rem;
