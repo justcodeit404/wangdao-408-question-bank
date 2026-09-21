@@ -927,6 +927,21 @@ os：X07/X09/X10/X18/X31（运行环境等）、X41/X51/X55/X56/X73（进程）�
 - **修复**：`page_review_patches.json` 将 X19/X06 的矩阵改为 KaTeX 显示公式 `$$A=\begin{bmatrix}…\end{bmatrix}$$`（viewer 已支持 `$$`）。重建 `data-ds.json`/`data.js`；缓存 **v224→v225**。
 - 回归 `test_ds_graph_storage_x19_x06_use_katex_matrix`、`test_ds_graph_storage_x19_stem_keeps_2013_tag_and_answer`。
 
+## 2026-09-21 · 批量补漏图 12 题（缓存 v232→v233）
+
+主人反馈 X31 缺图后要求全库排查，审计确认另有 12 题应挂未挂。
+
+| 类型 | 题 | 修复 |
+|------|-----|------|
+| 树形选项图未挂 | ds X02 p190 / X23 p276 / X19 p297 / X21 p298 / X23 p298 | 裁图原已在 `crops/ds/`；content 加「（见下图）」+ explanation `题目图片：` |
+| 连环题 | net X59 p162「在上题的图中」 | 重裁并挂 `page_162_X59.png`（与 X58 同拓扑；旧 X58 裁图过窄一并刷新） |
+| 解答题源页有图 | ds A09 p249、ds A02 p225→226、coa A05 p143→144、net A03 p302、net A06 p206、net A18 p169 | 从 pdf_images 裁图；清理题干 OCR 碎片；挂图 |
+
+- 补丁：`page_review_patches.json` 合并 12 条；`rebuild_bank.ps1` → `image_ref_added=12`；缓存 **v232→v233**
+- 回归 `test_page_review_patches.py` + `test_notes_katex.py` **118** 通过
+- 未处理：net A11「见图4.5」教材 IP 首部；概念题原书无图者；coa X17/X29 等 orphan crop 实为文字选项截图
+- 上云：见本日 release（pack 后回填）
+
 ## 2026-09-20 · ds 图的应用 X31（p245）AOE 真题缺图 + 图注扫入题干（缓存 v230→v232）
 
 主人反馈 2013 统考 AOE 题「怎么没有图」，题干里还混着 `d=4 / b=8 / h=9 / f=10`。
