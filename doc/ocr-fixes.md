@@ -927,6 +927,14 @@ os：X07/X09/X10/X18/X31（运行环境等）、X41/X51/X55/X56/X73（进程）�
 - **修复**：`page_review_patches.json` 将 X19/X06 的矩阵改为 KaTeX 显示公式 `$$A=\begin{bmatrix}…\end{bmatrix}$$`（viewer 已支持 `$$`）。重建 `data-ds.json`/`data.js`；缓存 **v224→v225**。
 - 回归 `test_ds_graph_storage_x19_x06_use_katex_matrix`、`test_ds_graph_storage_x19_stem_keeps_2013_tag_and_answer`。
 
+## 2026-09-21 · ds 图的应用 X40（p246）Kruskal 图文不一致（缓存 v234→v235）
+
+主人反馈：「答案和题目不相符」。
+
+- **问题**：题图边权为 b-f=5、e-f=6、d-f=7、a-e=9、c-e=10、…，**图中无 b–d 边**。按 Kruskal 应得 `(b,f),(e,f),(d,f),(a,e),(c,e)`。原书选项/解析却写 `(b,d)` 且答案 A——与本页配图矛盾（原书/部分真题汇编沿用另一套边标号）。
+- **修复**：`page_review_patches.json` 重写 X40 options/choice/explanation，与题图自洽；答案 A = `(b,f),(e,f),(d,f),(a,e),(c,e)`；解析注明图文勘误。缓存 **v234→v235**；回归 118 通过。
+- 上云：见当日 pack release。
+
 ## 2026-09-21 · ds 图的应用 X40（p246）Kruskal「如右所示」缺图（缓存 v233→v234）
 
 主人反馈：2020 统考「已知无向图G如右所示…Kruskal…」无图。
