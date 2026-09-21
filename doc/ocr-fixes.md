@@ -927,6 +927,14 @@ os：X07/X09/X10/X18/X31（运行环境等）、X41/X51/X55/X56/X73（进程）�
 - **修复**：`page_review_patches.json` 将 X19/X06 的矩阵改为 KaTeX 显示公式 `$$A=\begin{bmatrix}…\end{bmatrix}$$`（viewer 已支持 `$$`）。重建 `data-ds.json`/`data.js`；缓存 **v224→v225**。
 - 回归 `test_ds_graph_storage_x19_x06_use_katex_matrix`、`test_ds_graph_storage_x19_stem_keeps_2013_tag_and_answer`。
 
+## 2026-09-21 · ds 图的应用 X46（p247）2023 真题选项 OCR 错位（缓存 v235→v236）
+
+主人反馈：2023「权值均为1求最短路径」答案与解析矛盾。
+
+- **问题**：原书 p247 选项为 A仅I / **B仅II** / C仅I、III / D全部；答案 B，解析明确只有广度优先搜索（II）正确。库内选项被 OCR 打乱成 B=仅III、C=仅I、II，导致「答案B」看起来等于「仅Kruskal」，与解析冲突。
+- **修复**：按原书改回 options（B=仅II，C=仅I、III），choice=B，解析写明并附勘误。缓存 **v235→v236**。
+- 上云：见当日 pack。
+
 ## 2026-09-21 · ds 图的应用 X40（p246）Kruskal 图文不一致（缓存 v234→v235）
 
 主人反馈：「答案和题目不相符」。
