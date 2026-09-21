@@ -927,6 +927,15 @@ os：X07/X09/X10/X18/X31（运行环境等）、X41/X51/X55/X56/X73（进程）�
 - **修复**：`page_review_patches.json` 将 X19/X06 的矩阵改为 KaTeX 显示公式 `$$A=\begin{bmatrix}…\end{bmatrix}$$`（viewer 已支持 `$$`）。重建 `data-ds.json`/`data.js`；缓存 **v224→v225**。
 - 回归 `test_ds_graph_storage_x19_x06_use_katex_matrix`、`test_ds_graph_storage_x19_stem_keeps_2013_tag_and_answer`。
 
+## 2026-09-21 · ds 图的应用 X40（p246）Kruskal「如右所示」缺图（缓存 v233→v234）
+
+主人反馈：2020 统考「已知无向图G如右所示…Kruskal…」无图。
+
+- **问题**：题干「如右所示」不在 `IMAGE_MARKERS`（仅有「右图」）；尾部残留 OCR「20」；`crops/ds/page_246_X40.png` 不存在。
+- **原书**：page_246 右下无向带权图（顶点 a–f）；答案 A `(b,f),(b,d),(a,e),(c,e),(b,e)`。
+- **修复**：裁图 `page_246_X40.png`；`page_review_patches.json` 合并 content/explanation（清「20」+ `题目图片：`）；`parse_patterns.IMAGE_MARKERS` 增加「如右所示/如左所示/右侧有向/下列AOE/下列二叉树/下列四个选项」等（不用裸词「右侧」，避免哲学家「右侧筷子」误伤）。`image_ref_added=1`；缓存 **v233→v234**；回归 118 通过。
+- 上云：2026-09-21 已部署 release `20260921T072753Z-38226f569590` 后续 release（见当日最终 pack）。
+
 ## 2026-09-21 · 批量补漏图 12 题（缓存 v232→v233）
 
 主人反馈 X31 缺图后要求全库排查，审计确认另有 12 题应挂未挂。
