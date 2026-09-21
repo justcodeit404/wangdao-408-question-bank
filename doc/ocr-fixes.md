@@ -940,7 +940,7 @@ os：X07/X09/X10/X18/X31（运行环境等）、X41/X51/X55/X56/X73（进程）�
 - 补丁：`page_review_patches.json` 合并 12 条；`rebuild_bank.ps1` → `image_ref_added=12`；缓存 **v232→v233**
 - 回归 `test_page_review_patches.py` + `test_notes_katex.py` **118** 通过
 - 未处理：net A11「见图4.5」教材 IP 首部；概念题原书无图者；coa X17/X29 等 orphan crop 实为文字选项截图
-- 上云：见本日 release（pack 后回填）
+- 上云：2026-09-21 已部署 release `20260921T072753Z-38226f569590`（缓存 v233）
 
 ## 2026-09-20 · ds 图的应用 X31（p245）AOE 真题缺图 + 图注扫入题干（缓存 v230→v232）
 
