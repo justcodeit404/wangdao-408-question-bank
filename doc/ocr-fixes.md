@@ -927,6 +927,19 @@ os：X07/X09/X10/X18/X31（运行环境等）、X41/X51/X55/X56/X73（进程）�
 - **修复**：`page_review_patches.json` 将 X19/X06 的矩阵改为 KaTeX 显示公式 `$$A=\begin{bmatrix}…\end{bmatrix}$$`（viewer 已支持 `$$`）。重建 `data-ds.json`/`data.js`；缓存 **v224→v225**。
 - 回归 `test_ds_graph_storage_x19_x06_use_katex_matrix`、`test_ds_graph_storage_x19_stem_keeps_2013_tag_and_answer`。
 
+## 2026-09-20 · ds 图的应用 X31（p245）AOE 真题缺图 + 图注扫入题干（缓存 v230→v232）
+
+主人反馈 2013 统考 AOE 题「怎么没有图」，题干里还混着 `d=4 / b=8 / h=9 / f=10`。
+
+- **问题**：原书 page_245 第 31 题下方有完整 AOE 网（顶点 1–6，活动 a–h）；OCR 把图上边权扫进题干，且题干写「下列AOE网」（非「下图/右图」），`has_real_image_ref` 不命中 → `has_image=false`、无 `crops/ds/page_245_X31.png`。
+- **原书**：题干为「下列AOE网表示一项包含8个活动的工程…」；选项 A c和e / B d和c / C f和d / D f和h；答案 C。关键路径 b-d-c-g、b-d-e-h、b-f-h（解析里 `bjfh` 为 OCR 讹字，已订正 `bfh`）。
+- **修复**：
+  1. 裁图 `math-bank/crops/ds/page_245_X31.png`（源页 `assets/pdf_images/ds/page_245.png`，框选 AOE 网）。
+  2. `page_review_patches.json` 增补 ds / 图 · 图的应用 · 选择题 / X31：content 去掉图注污染并加「（见下图）」；explanation 保留答案图 + 增加 `题目图片：crops/ds/page_245_X31.png`，`bjfh`→`bfh`。
+  3. `rebuild_bank.ps1` 重建：`image_ref_added=1`，发布数据 `has_image=true` 且 `image_ref.cropped` 指向裁图；缓存戳 **v230→v232**（中间 v231 为首轮重建）。
+- 回归 `tests/test_page_review_patches.py` + `tests/test_notes_katex.py` **118** 通过。
+- 上云：随本次 pack 部署（见 monorepo 收尾说明）。
+
 ## 2026-09-18 · ds 图存储 X08（p212）邻接矩阵平方元素 OCR 缺下标（缓存 v225→v226）
 
 主人反馈题干「若矩阵 A²的某元素α²;=3」看不懂。
