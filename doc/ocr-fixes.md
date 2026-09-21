@@ -938,7 +938,7 @@ os：X07/X09/X10/X18/X31（运行环境等）、X41/X51/X55/X56/X73（进程）�
   2. `page_review_patches.json` 增补 ds / 图 · 图的应用 · 选择题 / X31：content 去掉图注污染并加「（见下图）」；explanation 保留答案图 + 增加 `题目图片：crops/ds/page_245_X31.png`，`bjfh`→`bfh`。
   3. `rebuild_bank.ps1` 重建：`image_ref_added=1`，发布数据 `has_image=true` 且 `image_ref.cropped` 指向裁图；缓存戳 **v230→v232**（中间 v231 为首轮重建）。
 - 回归 `tests/test_page_review_patches.py` + `tests/test_notes_katex.py` **118** 通过。
-- 上云：随本次 pack 部署（见 monorepo 收尾说明）。
+- 上云：2026-09-21 已部署 release `20260921T060656Z-106568ad7719`（缓存 v232；`/banks/408` 挂新 release）。
 
 ## 2026-09-18 · ds 图存储 X08（p212）邻接矩阵平方元素 OCR 缺下标（缓存 v225→v226）
 
