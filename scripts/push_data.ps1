@@ -91,9 +91,11 @@ $ordered = @($toPush | Where-Object { $_ -like "data-*" }) + @($toPush | Where-O
 $src = $ordered | ForEach-Object { Join-Path $Bank $_ }
 Invoke-WithRetry "scp" { & $Scp -C $src "${Server}:${RemoteDir}/" }
 
-# ---- remote verify in ONE ssh: stamp matches + changed data json reachable ----
+# ---- remote verify in ONE ssh over HTTP (what users actually get), not the file on disk:
+# a full platform release can re-point /banks/408 at a release-internal dir and silently
+# shadow the shared folder; only the HTTP view catches that ----
 $checkNames = @($ordered | Where-Object { $_ -like "data-*.json" }) -join " "
-$remoteScript = "set -e; grep -o '__BANK_DATA_VER__[^;]*' $RemoteDir/index.html | head -1 | grep -o '[0-9]\+' | head -1; for f in $checkNames; do printf '%s ' `$f; curl -sS -o /dev/null -w '%{http_code}\n' http://127.0.0.1:8000/banks/408/`$f; done"
+$remoteScript = "set -e; curl -sS http://127.0.0.1:8000/banks/408/index.html | grep -o '__BANK_DATA_VER__[^;]*' | head -1 | grep -o '[0-9]\+' | head -1; for f in $checkNames; do printf '%s ' `$f; curl -sS -o /dev/null -w '%{http_code}\n' http://127.0.0.1:8000/banks/408/`$f; done"
 $remoteOut = $null
 for ($i = 1; $i -le 5 -and -not $remoteOut; $i++) {
     $remoteOut = & $Ssh $Server $remoteScript 2>$null
