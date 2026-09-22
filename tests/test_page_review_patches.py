@@ -575,6 +575,17 @@ def test_ds_shortest_x09_answer_has_graph_figure():
     assert (BANK / "crops/ds/page_252_X09_fig.png").is_file()
 
 
+def test_ds_critical_path_x23_stem_joined_and_answer_figure():
+    question = _q("ds", "图的应用", "X23")
+    content = question["content"]
+    assert "<V1,\n" not in content
+    assert "<V6,\n" not in content
+    assert "<V8,V10>2" in content
+    expl = question["answer"]["explanation"]
+    assert "答案图片：crops/ds/page_254_X23_fig.png" in expl
+    assert (BANK / "crops/ds/page_254_X23_fig.png").is_file()
+
+
 def test_ds_stack_x05_function_brace():
     question = _q("ds", "栈和队列的应用", "X05")
     assert "return ((x>0)? x*f(x-1):2);\n}" in question["content"]
@@ -844,7 +855,9 @@ def test_os_sched_x42_options_use_p1():
     question = _q("os", "CPU调度", "X42")
     assert question["options"]["A"] == "P1>P2>P3"
     assert question["options"]["B"] == "P3>P2>P1"
-    assert "P>" not in question["options"]["A"].replace("P1>", "").replace("P2>", "").replace("P3>", "")
+    assert "P>" not in question["options"]["A"].replace("P1>", "").replace("P2>", "").replace(
+        "P3>", ""
+    )
 
 
 def test_net_phy_x02_options_only_abcd():
