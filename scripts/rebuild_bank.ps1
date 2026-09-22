@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env pwsh
+#!/usr/bin/env pwsh
 # bank-408 one-shot rebuild + auto cache bump
 # Usage:
 #   powershell -File scripts/rebuild_bank.ps1
@@ -34,6 +34,10 @@ if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 Write-Host "==> apply patches (fix_questions.py)" -ForegroundColor Cyan
 & $buildPy scripts/fix_questions.py
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+Write-Host "==> normalize OCR spaces (normalize_spaces.py --apply)" -ForegroundColor Cyan
+& $buildPy scripts/normalize_spaces.py --apply
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 Write-Host "==> merge_courses.py" -ForegroundColor Cyan

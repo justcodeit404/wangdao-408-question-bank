@@ -1000,3 +1000,15 @@ os：X07/X09/X10/X18/X31（运行环境等）、X41/X51/X55/X56/X73（进程）�
   2. `page_review_patches.json` 合并 X09 explanation：补 `答案图片：answer_crops/ds/page_251_X09_ans.jpg` + `答案图片：crops/ds/page_252_X09_fig.png`（`crops/` 路径可躲过 `gen_answer_crops --write-expl` 冲刷）。
   3. 回归 `test_ds_shortest_x09_answer_has_graph_figure`。缓存 **v236→v237**；`rebuild_bank.ps1` 后 119 通过。
 - 上云：2026-09-22 已部署 release `20260922T130727Z-451f01aead41`（缓存 v237）
+
+## 2026-09-22 · 全库 OCR 遗留空格批量规范化（缓存 v237→v239）
+
+主人反馈：「有不少的题目有莫名其妙的空格」（例：ds 图的应用 X23 p244「V= {V1,V2, V3, V4…」）。
+
+- **根因**：王道 PDF 内嵌文本层为扫描+OCR 产物，数学/中英混排空隙被不一致保留（「V= {」有空格、「G=(V,E)」又没空格）；解析管线忠实携带，四科 2870 题中 2469 题受影响。
+- **原书核对**：p244 原书实为「V = {v1, v2, v3…」全部带空隙——OCR 无法忠实还原排版，统一按数字题库惯例**去空格**求一致（「（）」已与多数派 2140:133 对齐）。
+- **修复**：新增 `scripts/normalize_spaces.py`（幂等、只删不增），接入 `rebuild_bank.ps1`（fix_questions 与 merge_courses 之间，补丁文本同样兜底规范化）：
+  - R1 CJK↔CJK、R2 CJK↔ASCII 字母数字、R3 `,;=` 后空格、R4 `O (n`→`O(n`（后随开括号如 `return ((` 则保留）、R5 字母数字前 `,;=` 空格；
+  - 守卫不删：两 ASCII 字母间（`int n`）、函数调用实参（`Pop(st, x)`）、指令助记符（`add xaddr, 3`）、代码语句 `;` 后（`…); Push`）、选项标签/罗马数字/圈码序号前（`电路交换 B.…`、`临界区⏎III.…`）、`题目图片：`/`答案图片：` 引用行。
+- **验证**：与云端已发布数据逐题 diff，**全部差异仅空白字符**（0 处非空白差异）；`test_page_review_patches.py`+`test_notes_katex.py` 119 通过；三处缓存戳一致（v239）。
+- 上云：待部署
