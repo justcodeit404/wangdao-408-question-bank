@@ -994,10 +994,9 @@ os：X07/X09/X10/X18/X31（运行环境等）、X41/X51/X55/X56/X73（进程）�
 
 主人反馈：「原本这道题没有图片吗」——解析写「题目所描述的图G 如下图所示」，页面却无图。
 
-- **问题**：题干用 V/E 纯文字定义，本无题图（has_image=false 正确）。但原书 **p252 顶部**有完整带权无向图（v1–v7，边权与题干一致），供解析「如下图所示」引用。该图无 OCR 文本行，落在 X09（p251 文字）与 X10（p252「10.D」）之间的空白带，gen_answer_crops 的段切分按答案头行边界，图被夹出裁图；explanation 也未像同章其它题那样挂 答案图片：。
+- **问题**：题干用 V/E 纯文字定义，本无题图（`has_image=false` 正确）。但原书 **p252 顶部**有完整带权无向图（v1–v7，边权与题干一致），供解析「如下图所示」引用。该图无 OCR 文本行，落在 X09（p251 文字）与 X10（p252「10.D」）之间的空白带，`gen_answer_crops` 的段切分按答案头行边界，图被夹出裁图；explanation 也未像同章其它题那样挂 `答案图片：`。
 - **修复**：
-  1. 从 ssets/pdf_images/ds/page_252.png 裁出示意图 → math-bank/crops/ds/page_252_X09_fig.png（886×216）。
-  2. page_review_patches.json 合并 X09 explanation：补 答案图片：answer_crops/ds/page_251_X09_ans.jpg + 答案图片：crops/ds/page_252_X09_fig.png（crops/ 路径可躲过 gen_answer_crops --write-expl 冲刷）。
-  3. 回归 	est_ds_shortest_x09_answer_has_graph_figure。缓存 **v236→v237**；
-ebuild_bank.ps1 后 119 通过。
-
+  1. 从 `assets/pdf_images/ds/page_252.png` 裁出示意图 → `math-bank/crops/ds/page_252_X09_fig.png`（886×216）。
+  2. `page_review_patches.json` 合并 X09 explanation：补 `答案图片：answer_crops/ds/page_251_X09_ans.jpg` + `答案图片：crops/ds/page_252_X09_fig.png`（`crops/` 路径可躲过 `gen_answer_crops --write-expl` 冲刷）。
+  3. 回归 `test_ds_shortest_x09_answer_has_graph_figure`。缓存 **v236→v237**；`rebuild_bank.ps1` 后 119 通过。
+- 上云：2026-09-22 已部署 release `20260922T130727Z-451f01aead41`（缓存 v237）
