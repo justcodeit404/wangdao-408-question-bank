@@ -989,3 +989,15 @@ os：X07/X09/X10/X18/X31（运行环境等）、X41/X51/X55/X56/X73（进程）�
 - **修复**：`page_review_patches.json` 给 ds / 图 · 图的存储及基本操作 · 选择题 / X08 补 content + explanation（公式用行内 KaTeX `$a_{i,j}^{2}=3$`）。答案 A、选项不变。
 - 回归 `test_ds_graph_storage_x08_adjacency_square_element`；缓存 **v225→v226**。
 - 注：本次重建时本机 OCR 输入较上次发布有漂移，`gen_answer_crops` 新认出 92 题的答案段；为避免顺带改动 92 题解析，已将这些 explanation 还原为云端已发布文本，仅 X08 进本次发布。
+
+## 2026-09-22 · ds 图的应用 X09（p251–252）答案示意图未挂（缓存 v236→v237）
+
+主人反馈：「原本这道题没有图片吗」——解析写「题目所描述的图G 如下图所示」，页面却无图。
+
+- **问题**：题干用 V/E 纯文字定义，本无题图（has_image=false 正确）。但原书 **p252 顶部**有完整带权无向图（v1–v7，边权与题干一致），供解析「如下图所示」引用。该图无 OCR 文本行，落在 X09（p251 文字）与 X10（p252「10.D」）之间的空白带，gen_answer_crops 的段切分按答案头行边界，图被夹出裁图；explanation 也未像同章其它题那样挂 答案图片：。
+- **修复**：
+  1. 从 ssets/pdf_images/ds/page_252.png 裁出示意图 → math-bank/crops/ds/page_252_X09_fig.png（886×216）。
+  2. page_review_patches.json 合并 X09 explanation：补 答案图片：answer_crops/ds/page_251_X09_ans.jpg + 答案图片：crops/ds/page_252_X09_fig.png（crops/ 路径可躲过 gen_answer_crops --write-expl 冲刷）。
+  3. 回归 	est_ds_shortest_x09_answer_has_graph_figure。缓存 **v236→v237**；
+ebuild_bank.ps1 后 119 通过。
+

@@ -567,6 +567,14 @@ def test_ds_shortest_x09_keeps_v1_v7():
     assert question["options"]["A"].startswith("v1")
 
 
+def test_ds_shortest_x09_answer_has_graph_figure():
+    question = _q("ds", "图的应用", "X09")
+    expl = question["answer"]["explanation"]
+    assert "答案图片：answer_crops/ds/page_251_X09_ans.jpg" in expl
+    assert "答案图片：crops/ds/page_252_X09_fig.png" in expl
+    assert (BANK / "crops/ds/page_252_X09_fig.png").is_file()
+
+
 def test_ds_stack_x05_function_brace():
     question = _q("ds", "栈和队列的应用", "X05")
     assert "return ((x>0)? x*f(x-1):2);\n}" in question["content"]
