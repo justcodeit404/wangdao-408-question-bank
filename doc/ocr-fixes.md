@@ -1023,4 +1023,4 @@ os：X07/X09/X10/X18/X31（运行环境等）、X41/X51/X55/X56/X73（进程）�
   1. 边表收成一行，按答案图补 `<V8,V10>2`。
   2. 从 `assets/pdf_images/ds/page_254.png` 裁出示意图 → `math-bank/crops/ds/page_254_X23_fig.png`，explanation 增加 `答案图片：crops/ds/page_254_X23_fig.png`。
   3. 回归 `test_ds_critical_path_x23_stem_joined_and_answer_figure`。
-- 上云：待本次 pack/apply
+- 上云：2026-09-22 已部署 release `20260922T140151Z-dc7d7d37bde6`（缓存 v240）
