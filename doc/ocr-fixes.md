@@ -1024,3 +1024,11 @@ os：X07/X09/X10/X18/X31（运行环境等）、X41/X51/X55/X56/X73（进程）�
   2. 从 `assets/pdf_images/ds/page_254.png` 裁出示意图 → `math-bank/crops/ds/page_254_X23_fig.png`，explanation 增加 `答案图片：crops/ds/page_254_X23_fig.png`。
   3. 回归 `test_ds_critical_path_x23_stem_joined_and_answer_figure`。
 - 上云：2026-09-22 已部署 release `20260922T140151Z-dc7d7d37bde6`（缓存 v240）
+
+## 2026-09-22 · ds 图的应用 X40（p246）Kruskal 选项误改回滚（缓存 v240→v241）
+
+主人反馈：「这一题有错误」（选项出现不存在的边 (e,f)）。
+
+- **问题**：2026-09-21「Kruskal 图文不一致」补丁把权 6 的边误判为 (e,f)，并重写四选项全含 (e,f)/(d,f) 入选序列，还写了错误「图文勘误」称原书 (b,d) 有误。**原书配图与答案页一致：权 6 边是 (b,d)，图中并无 (e,f)**；(d,f) 权 7 在 Kruskal 第二步后会成环，必须跳过。
+- **原书**（p246 选项 / p257 答案）：A (b,f),(b,d),(a,e),(c,e),(b,e)；B (b,f),(b,d),(b,e),(a,e),(c,e)；C (a,e),(b,e),(c,e),(b,d),(b,f)；D (a,e),(c,e),(b,e),(b,f),(b,d)；答案 **A**。解析步骤：①(b,f) ②(b,d) ③跳过(d,f) ④(a,e) ⑤(c,e) ⑥(b,e)。
+- **修复**：page_review_patches.json 按原书/	ests/fixtures/test_raw.json 恢复四选项与正确 Kruskal 解析，删除错误「图文勘误」。缓存 **v240→v241**；回归 	est_page_review_patches.py + 	est_notes_katex.py **120** 通过。
