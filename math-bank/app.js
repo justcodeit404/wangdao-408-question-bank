@@ -567,14 +567,17 @@ function renderNotePreview(el, text) {
   if (last < text.length) appendNoteTextSegment(el, text.slice(last));
 }
 
-/** 平台挂载 + 已登录：把刚插入的图片送视觉模型复现为 Markdown（表格→Markdown 表格），
- *  成功后追加到笔记里供校对；任何失败静默（图片本体已在笔记中，不丢内容）。 */
-function maybeConvertNoteImage(ta, dataUrl) {
-  if (!window.ViewerPlatformSync || !ViewerPlatformSync.onPlatformHost || !ViewerPlatformSync.onPlatformHost()) return;
+/** 平台挂载 + 已登录：把图片送视觉模型复现为 Markdown（表格→Markdown 表格）。
+ *  返回 Promise：{ok:true, markdown} 或 {ok:false, status}
+ *  （status: not_platform / not_logged_in / HTTP 状态码 / error / empty）。 */
+function convertNoteImageDataUrl(dataUrl) {
+  if (!window.ViewerPlatformSync || !ViewerPlatformSync.onPlatformHost || !ViewerPlatformSync.onPlatformHost()) {
+    return Promise.resolve({ ok: false, status: 'not_platform' });
+  }
   var sync = window.ViewerPlatformSync;
   var authP = sync.ensureAuth ? sync.ensureAuth() : Promise.resolve(null);
-  authP.then(function (auth) {
-    if (auth && auth.ok === false) return null;
+  return authP.then(function (auth) {
+    if (auth && auth.ok === false) return { ok: false, status: 'not_logged_in' };
     var headers = {};
     if (auth && auth.token) headers.Authorization = 'Bearer ' + auth.token;
     return fetch(dataUrl)
@@ -583,16 +586,67 @@ function maybeConvertNoteImage(ta, dataUrl) {
         var form = new FormData();
         form.append('image', blob, 'note.jpg');
         return fetch('/api/notes/image-to-markdown', { method: 'POST', credentials: 'include', headers: headers, body: form });
+      })
+      .then(function (res) {
+        if (!res.ok) return { ok: false, status: res.status };
+        return res.json().then(function (data) {
+          var md = ((data && data.markdown) || '').trim();
+          return md ? { ok: true, markdown: md } : { ok: false, status: 'empty' };
+        });
       });
-  }).then(function (res) {
-    if (!res || !res.ok) return null;
-    return res.json();
-  }).then(function (data) {
-    var md = ((data && data.markdown) || '').trim();
-    if (!md) return;
-    insertTextAtCursor(ta, md);
-    flashToast('图片已转为文字，请校对');
-  }).catch(function () { /* 转换是增值路径，失败静默 */ });
+  }).catch(function () { return { ok: false, status: 'error' }; });
+}
+
+let _noteConvertNotPlatformToasted = false;
+/** 转文字失败的分级提示；图片本体已保存，不影响笔记。not_platform 每次会话只提示一次。 */
+function noteImageConvertFailToast(status) {
+  if (status === 'not_platform') {
+    if (_noteConvertNotPlatformToasted) return;
+    _noteConvertNotPlatformToasted = true;
+    flashToast('图片已保存；转文字需从学习平台打开题库');
+    return;
+  }
+  var msg = {
+    not_logged_in: '图片已保存；转文字需先登录学习平台',
+    empty: '图片已保存；转文字结果为空，可重试',
+    error: '图片已保存；转文字失败，可稍后重试',
+  }[status];
+  if (!msg) {
+    if (status === 403) msg = '图片已保存；转文字仅管理员可用';
+    else if (status === 503) msg = '图片已保存；服务端未开启图片转文字';
+    else if (status === 429) msg = '图片已保存；转文字限流，请稍后重试';
+    else msg = '图片已保存；转文字失败（' + status + '），可稍后重试';
+  }
+  flashToast(msg);
+}
+
+/** 插入图片后的增值路径：成功追加 Markdown 供校对；失败按原因提示（不再静默，方便定位前提缺失）。 */
+function maybeConvertNoteImage(ta, dataUrl) {
+  convertNoteImageDataUrl(dataUrl).then(function (r) {
+    if (r.ok) {
+      insertTextAtCursor(ta, r.markdown);
+      flashToast('图片已转为文字，请校对');
+    } else {
+      noteImageConvertFailToast(r.status);
+    }
+  });
+}
+
+/** 「📝 图中文字」按钮：对笔记里已存在的图片补转文字，成功后追加到光标处，图片占位符保留。 */
+function convertFirstNoteImage(ta) {
+  var m = /!\[[^\]]*\]\((noteimg:[A-Za-z0-9]+)\)/.exec(ta.value || '');
+  if (!m) { flashToast('笔记里没有可转换的图片'); return; }
+  var dataUrl = resolveNoteImage(m[1]);
+  if (!dataUrl) { flashToast('图片本体缺失，无法转换'); return; }
+  flashToast('正在转换图片文字…');
+  convertNoteImageDataUrl(dataUrl).then(function (r) {
+    if (r.ok) {
+      insertTextAtCursor(ta, '\n' + r.markdown);
+      flashToast('图片已转为文字，请校对');
+    } else {
+      noteImageConvertFailToast(r.status);
+    }
+  });
 }
 
 function getTotalPages() { return Math.ceil(filteredQuestions.length / pageSize) || 1; }
@@ -2651,6 +2705,7 @@ function renderModalContent(q) {
       <div class="q-notes-preview" id="notesPreview" hidden></div>
       <div class="q-notes-actions">
         <button type="button" class="btn btn-secondary btn-sm" id="btnInsertNoteImg">🖼 插入图片</button>
+        <button type="button" class="btn btn-secondary btn-sm" id="btnConvertNoteImg" title="把笔记里已插入的图片转为文字">📝 图中文字</button>
         <input type="file" id="noteImgInput" accept="image/*" hidden>
         <button type="button" class="btn btn-secondary btn-sm" id="btnCopyQ">📋 复制题目</button>
         <button type="button" class="btn btn-secondary btn-sm" id="btnReportIssue">⚠ 报告错误</button>
@@ -2748,6 +2803,9 @@ function bindNotesUI(q) {
         .catch((err) => flashToast((err && err.message) || '图片插入失败'));
     };
   }
+
+  const convertImgBtn = document.getElementById('btnConvertNoteImg');
+  if (convertImgBtn) convertImgBtn.onclick = () => convertFirstNoteImage(ta);
 
   const copyBtn = document.getElementById('btnCopyQ');
   if (copyBtn) copyBtn.onclick = () => copyQuestionToClipboard(q);
@@ -4945,7 +5003,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=244').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=246').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {
