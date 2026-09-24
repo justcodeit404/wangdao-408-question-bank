@@ -1923,17 +1923,10 @@ function renderStats() {
 // ========================
 // Filtering & Search
 // ========================
-const CONTENT_ISSUE_TYPES = new Set(['stem', 'options', 'answer', 'explanation', 'image']);
-
-function reportedContentIssue(q) {
-  const items = issuesMap[questionKey(q)] || [];
-  return items.some((it) => !it || !it.type || CONTENT_ISSUE_TYPES.has(it.type));
-}
-
 function filterQuestions(source, opts) {
   const tokenSplitRe = /[\s,.;:!?。，；：！？、（）()\[\]"'"]+/;
   return source.filter(q => {
-    if (!qualityVisible(q) || reportedContentIssue(q)) return false;
+    if (!qualityVisible(q)) return false;
     // 章级深链（如 树与二叉树，无 '|'）：匹配该章所有小节
     if (opts.chapter) {
       if (opts.chapter.indexOf('|') === -1) {
@@ -2813,7 +2806,7 @@ function reportQuestionIssue(q) {
   issueQueue.push(payload);
   saveIssueQueue();
   submitQuestionIssueQueue({silent: false});
-  flashToast(isPlatformHost() ? '已提交，这题先从练习里拿掉' : '已记下，这题先从练习里拿掉');
+  flashToast(isPlatformHost() ? '已提交错误反馈' : '已保存反馈；从平台打开题库后自动补传');
 }
 
 function buildQuestionIssuePayload(q, issueType, description, at) {
@@ -3643,7 +3636,7 @@ function flattenCourseQuestions(courseData, courseName) {
       const tokens = new Set();
       entry._searchText.split(tokenSplitRe).forEach(t => { if (t.length > 1) tokens.add(t); });
       entry._searchTokens = tokens;
-      if (qualityVisible(entry) && !reportedContentIssue(entry)) out.push(entry);
+      if (qualityVisible(entry)) out.push(entry);
     });
   });
   return out;
@@ -3894,7 +3887,7 @@ async function resumePractice(saved) {
       }
     } catch (e) { console.warn(e); }
   }
-  practiceQueue = (saved.ids || []).map(k => idMap.get(k)).filter(q => q && !reportedContentIssue(q));
+  practiceQueue = (saved.ids || []).map(k => idMap.get(k)).filter(Boolean);
   if (practiceQueue.length === 0) return false;
   practiceIndex = Math.min(saved.index || 0, practiceQueue.length - 1);
   // 恢复已作答结果
@@ -4952,7 +4945,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=245').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=244').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {
