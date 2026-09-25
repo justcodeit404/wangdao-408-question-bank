@@ -1077,3 +1077,12 @@ os：X07/X09/X10/X18/X31（运行环境等）、X41/X51/X55/X56/X73（进程）�
 - **修复**：按源页重裁 → 752×318（x148–900, y146–464），完整覆盖 A/B/C/D 四棵树，不带 22 题题干行。强制缓存 **v248→v249**。
 - 回归 test_notes_katex.py 6 通过（test_page_review_patches.py 2 个失败为存量，与本次无关）。
 - 上云：2026-09-25 题图 scp 热更 + push_data（remote __BANK_DATA_VER__=249）
+
+## 2026-09-25 · ds 查找 X32（p299，2020 统考真题）题干缺配图（缓存 v249→v250）
+
+主人反馈：「这一题少图」（题干「不能生成右边二叉排序树」，右侧树图缺失）。
+
+- **核查**：X32（p299）右侧有一棵 BST（根 4，左 2 右 5，2 的左右子 1、3），无 OCR 文本行；题干写「右边二叉排序树」不含 FIG_MARK（下图/右图/如图），`has_real_image_ref` 不命中 → `has_image=false`、无裁图。与 p245 X31 同类。
+- **修复**（同 X31 流程）：源页裁图 `crops/ds/page_299_X32.png`（172×148，x808–980, y800–948，完整收 4/2/5/1/3 五结点，不带 33 题树顶）；`page_review_patches.json` 增补 X32：content 加「（见下图）」、explanation 补 `题目图片：crops/ds/page_299_X32.png`；rebuild_bank 重建 `image_ref_added=1`，数据 hash 变化自动 bump **v249→v250**。
+- 回归 test_page_review_patches + test_notes_katex **120 通过**（重建顺带治好了 2 个存量失败）。
+- 上云：2026-09-25 题图 scp 热更 + push_data（remote __BANK_DATA_VER__=250）
