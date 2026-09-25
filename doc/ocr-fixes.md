@@ -1086,3 +1086,12 @@ os：X07/X09/X10/X18/X31（运行环境等）、X41/X51/X55/X56/X73（进程）�
 - **修复**（同 X31 流程）：源页裁图 `crops/ds/page_299_X32.png`（172×148，x808–980, y800–948，完整收 4/2/5/1/3 五结点，不带 33 题树顶）；`page_review_patches.json` 增补 X32：content 加「（见下图）」、explanation 补 `题目图片：crops/ds/page_299_X32.png`；rebuild_bank 重建 `image_ref_added=1`，数据 hash 变化自动 bump **v249→v250**。
 - 回归 test_page_review_patches + test_notes_katex **120 通过**（重建顺带治好了 2 个存量失败）。
 - 上云：2026-09-25 题图 scp 热更 + push_data（remote __BANK_DATA_VER__=250）
+
+## 2026-09-25 · ds 查找 散列 X16（p327）题干/解析公式未渲染（缓存 v250→v251）
+
+主人反馈：散列表平方探测题（p327 第 16 题）「有公式没有渲染」——OCR 文本里 $H(key)=key\%17$、$H_i(key)=(H(key)\pm i^2)\%17$ 是纯文本，渲染启发式不命中。
+
+- **核查**：源页 assets/pdf_images/ds/page_327.png 确为 H(key)=key%17 与 H_i(key)=(H(key)±i²)%17；行内公式须手写 `$...$` 定界符（渲染器只认 `$...$`/`$$...$$`/`\(...\)` + n²/log2/O() 等少数启发式）。
+- **修复**：`page_review_patches.json` X16 条目更新——content 两处公式加 `$...$`（`\%`/`\pm`），explanation 的 7 处取模运算同加；构建产物 math-bank/data-ds.json 定点同步该补丁（build_all 当前因存量补丁 X08 目标缺失而中断，待另行排查），`quality_ledger.py --refresh-hashes` 重算 published_hashes。数据 hash 变化自动 bump **v250→v251**。
+- 回归 tests/：321 通过；1 个失败 test_curated_complete_binary_tree_formula（p139 X20 选项空格漂移）为存量，与本次无关。
+- 上云：2026-09-25 push_data 热更（remote __BANK_DATA_VER__=251）
