@@ -1,4 +1,4 @@
-﻿# 408 bank content hot-update: scp only changed data files to the cloud shared dir.
+# 408 bank content hot-update: scp only changed data files to the cloud shared dir.
 # No platform release, no service restart. For content/data fixes only;
 # shell code changes (js/html/viewer) still go through the full pack + apply release.
 # Usage (from apps/bank-408):  powershell -File scripts/push_data.ps1
@@ -64,7 +64,8 @@ if (Test-Path -LiteralPath $StateFile) {
 $new = @{}
 $toPush = New-Object System.Collections.Generic.List[string]
 foreach ($key in $Courses) {
-    foreach ($ext in @("json", "json.gz")) {
+    # ponytail: 云 nginx 未开 gzip_static 且 viewer 不引用 .gz，只推 json（.gz 留本地无用，2026-09-27 起停推）
+    foreach ($ext in @("json")) {
         $name = "data-$key.$ext"
         $p = Join-Path $Bank $name
         if (-not (Test-Path -LiteralPath $p)) { continue }
