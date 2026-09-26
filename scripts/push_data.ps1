@@ -1,4 +1,4 @@
-# 408 bank content hot-update: scp only changed data files to the cloud shared dir.
+﻿# 408 bank content hot-update: scp only changed data files to the cloud shared dir.
 # No platform release, no service restart. For content/data fixes only;
 # shell code changes (js/html/viewer) still go through the full pack + apply release.
 # Usage (from apps/bank-408):  powershell -File scripts/push_data.ps1
