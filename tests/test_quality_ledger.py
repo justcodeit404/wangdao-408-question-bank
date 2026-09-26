@@ -82,6 +82,10 @@ def _configure_published_bank(monkeypatch, tmp_path, data):
     (bank_dir / "data-ds.json").write_text(json.dumps(data), encoding="utf-8")
     monkeypatch.setattr(quality_ledger, "MATH_BANK_DIR", bank_dir)
     monkeypatch.setattr(quality_ledger, "LEDGER_PATH", bank_dir / "quality-ledger.json")
+    monkeypatch.setattr(
+        quality_ledger, "PUBLISHED_LEDGER_PATH", bank_dir / "quality-ledger.published.json"
+    )
+    monkeypatch.setattr(quality_ledger, "LEDGER_JS_PATH", bank_dir / "quality-ledger.js")
     monkeypatch.setattr(quality_ledger, "HOLD_PATH", bank_dir / "quality-hold.json")
     monkeypatch.setattr(
         quality_ledger, "VERIFICATION_PATH", bank_dir / "quality-verification.json"

@@ -87,7 +87,7 @@ def main():
     # 5. 原书视觉抽检门禁；必须在 merge 前应用持久化补丁，避免 OCR 重建覆盖修复。
     if args.skip_vision_audit:
         MATH_BANK_DIR.mkdir(parents=True, exist_ok=True)
-        (MATH_BANK_DIR / 'quality-verification.json').write_text(
+        (Path(__file__).resolve().parents[1] / 'data' / 'quality' / 'quality-verification.json').write_text(
             json.dumps({'schema_version': 1, 'status': 'unverified', 'reason': 'explicit_skip'}, ensure_ascii=False, indent=2),
             encoding='utf-8',
         )

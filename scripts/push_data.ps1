@@ -75,8 +75,7 @@ foreach ($key in $Courses) {
 }
 # small entry/manifest files: push every time so stamps and data always land together
 foreach ($name in @("index.html", "sw.js", "app.js", "data.js", "choice-only.js",
-                    "quality-ledger.js", "quality-verification.json", "quality-ledger.json",
-                    "quality-hold.json", "manifest.json")) {
+                    "quality-ledger.json", "quality-hold.json", "manifest.json")) {
     $p = Join-Path $Bank $name
     if (Test-Path -LiteralPath $p) { $toPush.Add($name) }
 }

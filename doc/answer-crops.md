@@ -34,7 +34,7 @@ python scripts/gen_answer_crops.py --course ds --qids X01,A03 # 单题调试
   曾因此裁出整页正文）。现在答案页流延伸到下一节首页为止（上一节答案常续到该页顶部，
   不能按整页砍），分段遇到 TOC 精确节号的标题行（如 `2.3 栈与队列`）即停，章首页另作硬封顶
 - 输出：`math-bank/answer_crops/<key>/page_NNN_<QID>_ans[_pN].jpg`（JPEG q80，宽 ≤1000px）
-- 抽查：`math-bank/answer-crop-review.html`（本地打开，点图 160% 放大）
+- 抽查：`output/qa/answer-crop-review.html`（本地打开，点图 160% 放大）
 - 幂等：重跑安全——旧 `answer_crops` 图片行整行替换，题目图片行不动
 
 ds 试点结果：791/797 题出图（TOC 封顶修复后 919 张 / 29.8MB）；6 题无答案段回退文字

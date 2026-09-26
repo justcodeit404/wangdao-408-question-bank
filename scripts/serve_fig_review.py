@@ -33,6 +33,7 @@ from urllib.parse import parse_qs, urlparse
 
 ROOT = Path(__file__).resolve().parents[1]  # apps/bank-408
 BANK = ROOT / "math-bank"
+QA_DIR = ROOT / "output" / "qa"
 PDF_ROOT = ROOT / "assets" / "pdf_images"
 THUMB_DIR = BANK / "fig-review-pages"
 
@@ -306,7 +307,7 @@ def save_crop(
         # refresh fig-review-data.json snapshot
         try:
             items = collect_items()
-            (BANK / "fig-review-data.json").write_text(
+            (QA_DIR / "fig-review-data.json").write_text(
                 json.dumps(
                     {"generated": True, "count": len(items), "items": items},
                     ensure_ascii=False,
@@ -329,7 +330,7 @@ def save_crop(
 
 def ensure_html() -> None:
     """If fig-review.html missing, tell user to open after first serve (we ship HTML)."""
-    html = BANK / "fig-review.html"
+    html = QA_DIR / "fig-review.html"
     if not html.exists():
         print("missing fig-review.html — run will write bundled page on first start")
 
@@ -428,7 +429,9 @@ class Handler(SimpleHTTPRequestHandler):
         return super().do_GET()
 
     def _serve_nocache(self, rel: str):
-        f = BANK / rel
+        f = QA_DIR / rel
+        if not f.is_file():
+            f = BANK / rel
         if not f.exists() or not f.is_file():
             self.send_error(404)
             return

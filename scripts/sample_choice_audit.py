@@ -16,7 +16,7 @@ from pathlib import Path
 sys.stdout.reconfigure(encoding="utf-8")
 ROOT = Path(__file__).resolve().parent.parent
 BANK = ROOT / "math-bank"
-LEDGER_PATH = BANK / "quality-ledger.json"
+LEDGER_PATH = ROOT / "data" / "quality" / "quality-ledger.json"
 COURSES = ("ds", "coa", "net", "os")
 
 

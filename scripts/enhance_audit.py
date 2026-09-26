@@ -42,7 +42,7 @@ CRITICAL_ISSUES = {
     "vision_verification_stale",
 }
 
-REGRESSIONS_PATH = MATH_BANK_DIR / "quality_regressions.json"
+REGRESSIONS_PATH = Path(__file__).resolve().parent.parent / "data" / "quality" / "quality_regressions.json"
 
 
 def _questions(data: dict[str, Any]):
@@ -136,7 +136,7 @@ def audit_file(course) -> dict[str, Any]:
     image_count = 0
 
     # 发布门禁必须由本次视觉抽检 manifest 锁定实际读取的 data-*.json 哈希。
-    verification_path = MATH_BANK_DIR / "quality-verification.json"
+    verification_path = Path(__file__).resolve().parent.parent / "data" / "quality" / "quality-verification.json"
     if not verification_path.is_file():
         issues["vision_verification_manifest_missing"].append({"path": str(verification_path)})
     else:

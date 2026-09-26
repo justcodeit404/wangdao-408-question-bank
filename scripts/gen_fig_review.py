@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """Generate bank-408 figure crop review gallery (crop vs PDF page side-by-side)."""
 from __future__ import annotations
 
@@ -9,8 +9,9 @@ from pathlib import Path
 ROOT = Path(r"C:\Users\16416\Desktop\考研\apps\bank-408")
 BANK = ROOT / "math-bank"
 PDF_ROOT = ROOT / "assets" / "pdf_images"
-OUT_HTML = BANK / "fig-review.html"
-OUT_JSON = BANK / "fig-review-data.json"
+QA_DIR = ROOT / "output" / "qa"
+OUT_HTML = QA_DIR / "fig-review.html"
+OUT_JSON = QA_DIR / "fig-review-data.json"
 # lightweight page thumbs for review (not full 500KB pages)
 THUMB_DIR = BANK / "fig-review-pages"
 
@@ -480,6 +481,7 @@ fetch(DATA_URL).then(r=>r.json()).then(data=>{ items=data.items||data; render();
 
 
 def main():
+    QA_DIR.mkdir(parents=True, exist_ok=True)
     items = collect()
     n_pages = build_page_thumbs(items)
     OUT_JSON.write_text(

@@ -14,7 +14,7 @@ from typing import Any
 from config import MATH_BANK_DIR, PROJECT_ROOT
 
 DEFAULT_QUEUE = PROJECT_ROOT.parents[1] / "temp" / "page-review" / "queue.json"
-DEFAULT_LEDGER = MATH_BANK_DIR / "quality-ledger.json"
+DEFAULT_LEDGER = PROJECT_ROOT / "data" / "quality" / "quality-ledger.json"
 DEFAULT_PATCHES = PROJECT_ROOT / "data" / "quality" / "page_review_patches.json"
 DEFAULT_EVIDENCE = PROJECT_ROOT / "data" / "quality" / "page_review_evidence.json"
 

@@ -51,8 +51,8 @@ def test_same_level_floor_log_is_correct_in_generated_bank():
     assert question is not None
     assert question["options"] == {
         "A": "⌊log₂p⌋ = ⌊log₂q⌋",
-        "B": "log₂p = log₂q",
-        "C": "⌊log₂p⌋ + 1 = ⌊log₂q⌋",
+        "B": "log₂p=log₂q",
+        "C": "⌊log₂p⌋ + 1= ⌊log₂q⌋",
         "D": "⌊log₂p⌋ = ⌊log₂q⌋ + 1",
     }
     assert question["answer"]["choice"] == "A"

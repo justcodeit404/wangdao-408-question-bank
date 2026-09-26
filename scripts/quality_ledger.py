@@ -23,14 +23,40 @@ from luna_review_v2 import apply_v2_fields
 from quality_hold import _choice_should_hold, source_uid
 from utils import write_json_atomic, write_text_atomic
 
-LEDGER_PATH = MATH_BANK_DIR / "quality-ledger.json"
+DATA_QUALITY_DIR = Path(__file__).resolve().parents[1] / "data" / "quality"
+# 全量 ledger（含本机证据路径）只落本地 data/quality，不进发布目录。
+LEDGER_PATH = DATA_QUALITY_DIR / "quality-ledger.json"
+# quality-verification 只是给旧构建/追溯用的派生清单，同样不发布。
+VERIFICATION_PATH = DATA_QUALITY_DIR / "quality-verification.json"
+# QA 页（window.__QUALITY_LEDGER__）用的本地脚本副本。
+LEDGER_JS_PATH = DATA_QUALITY_DIR / "quality-ledger.js"
+# 发布副本：平台后端按 bank 路径读它，必须剥掉本机绝对路径。
+PUBLISHED_LEDGER_PATH = MATH_BANK_DIR / "quality-ledger.json"
 HOLD_PATH = MATH_BANK_DIR / "quality-hold.json"
-VERIFICATION_PATH = MATH_BANK_DIR / "quality-verification.json"
-LEDGER_JS_PATH = MATH_BANK_DIR / "quality-ledger.js"
 PAGE_REVIEW_EVIDENCE_PATH = Path(__file__).resolve().parents[1] / "data" / "quality" / "page_review_evidence.json"
 
 TERMINAL_SOURCE = {"verified", "conflict"}
 TERMINAL_ANSWER = {"verified", "conflict"}
+
+
+_LOCAL_ABS_PATH_RE = re.compile(r"^[A-Za-z]:[\\/]")
+
+
+def strip_local_paths(obj: Any) -> Any:
+    """发布副本剥掉本机绝对路径（隐私）；全量 ledger 保留在 data/quality。"""
+    if isinstance(obj, dict):
+        return {
+            key: strip_local_paths(value)
+            for key, value in obj.items()
+            if not (
+                key == "path"
+                and isinstance(value, str)
+                and _LOCAL_ABS_PATH_RE.match(value)
+            )
+        }
+    if isinstance(obj, list):
+        return [strip_local_paths(value) for value in obj]
+    return obj
 
 
 def _sha256_bytes(value: bytes) -> str:
@@ -485,12 +511,15 @@ def derive_manifests(
 
 def write_outputs(ledger: Mapping[str, Any]) -> None:
     MATH_BANK_DIR.mkdir(parents=True, exist_ok=True)
+    DATA_QUALITY_DIR.mkdir(parents=True, exist_ok=True)
     hold, verification = derive_manifests(ledger)
     write_json_atomic(LEDGER_PATH, ledger, indent=2, ensure_ascii=False)
-    write_json_atomic(HOLD_PATH, hold, indent=2, ensure_ascii=False)
     write_json_atomic(VERIFICATION_PATH, verification, indent=2, ensure_ascii=False)
+    write_json_atomic(HOLD_PATH, hold, indent=2, ensure_ascii=False)
+    published = strip_local_paths(ledger)
+    write_json_atomic(PUBLISHED_LEDGER_PATH, published, indent=2, ensure_ascii=False)
     wrapper = "// Auto-generated; do not edit by hand.\nwindow.__QUALITY_LEDGER__ = "
-    wrapper += json.dumps(ledger, ensure_ascii=False, separators=(",", ":")) + ";\n"
+    wrapper += json.dumps(published, ensure_ascii=False, separators=(",", ":")) + ";\n"
     write_text_atomic(LEDGER_JS_PATH, wrapper, encoding="utf-8")
 
 

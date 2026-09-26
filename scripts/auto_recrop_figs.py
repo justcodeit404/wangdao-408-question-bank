@@ -13,7 +13,7 @@
 写回:
   math-bank/crops/{course}/page_XXX_ID.png
   math-bank/data-*.json / .js / .json.gz（若已有 gz）
-  math-bank/fig-review-data.json（若存在审查页数据）
+  output/qa/fig-review-data.json（若存在审查页数据）
 """
 
 from __future__ import annotations
@@ -1404,7 +1404,7 @@ def main():
             from serve_fig_review import collect_items  # type: ignore
 
             snap = collect_items()
-            (BANK / "fig-review-data.json").write_text(
+            (Path(__file__).resolve().parents[1] / "output" / "qa" / "fig-review-data.json").write_text(
                 json.dumps(
                     {"generated": True, "count": len(snap), "items": snap},
                     ensure_ascii=False,

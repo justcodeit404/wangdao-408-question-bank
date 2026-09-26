@@ -155,7 +155,12 @@ def iter_questions(
     holds_only: bool = False,
 ) -> list[dict[str, Any]]:
     """Load ledger-backed rows; untracked published questions are omitted by default."""
-    ledger = _read(root / "quality-ledger.json", {})
+    ledger_path = (
+        Path(__file__).resolve().parents[1] / "data" / "quality" / "quality-ledger.json"
+        if root == DEFAULT_ROOT
+        else root / "quality-ledger.json"
+    )
+    ledger = _read(ledger_path, {})
     ledger_items = ledger.get("items") if isinstance(ledger, Mapping) else {}
     ledger_items = ledger_items if isinstance(ledger_items, Mapping) else {}
     rows: list[dict[str, Any]] = []

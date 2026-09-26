@@ -45,7 +45,7 @@ except Exception:  # pragma: no cover - 测试可注入 client
 sys.stdout.reconfigure(encoding="utf-8")
 
 STATE_PATH = REPORTS_DIR / "quality_verification_state.json"
-MANIFEST_PATH = MATH_BANK_DIR / "quality-verification.json"
+MANIFEST_PATH = Path(__file__).resolve().parent.parent / "data" / "quality" / "quality-verification.json"
 PATCH_PATH = Path(__file__).resolve().parent.parent / "data" / "quality" / "vision_patches.json"
 HOLD_PATH = MATH_BANK_DIR / "quality-hold.json"
 TEMP_ROOT = Path(__file__).resolve().parents[2] / "temp" / "408-vision-audit"
@@ -770,7 +770,7 @@ def refresh_verified_for_patches(state: dict[str, Any]) -> int:
 
 
 def _append_regressions(items: list[dict[str, Any]]) -> None:
-    path = MATH_BANK_DIR / "quality_regressions.json"
+    path = Path(__file__).resolve().parent.parent / "data" / "quality" / "quality_regressions.json"
     current = _load_json(path, [])
     if isinstance(current, dict):
         rows = current.setdefault("items", [])

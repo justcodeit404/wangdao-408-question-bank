@@ -53,7 +53,7 @@ from parse_patterns import (  # noqa: E402
 from parse_questions import get_block_text, group_to_lines  # noqa: E402
 
 BANK_DIR = PROJECT_ROOT / "math-bank"
-REVIEW_HTML = BANK_DIR / "answer-crop-review.html"
+REVIEW_HTML = PROJECT_ROOT / "output" / "qa" / "answer-crop-review.html"
 REPORT_PATH = PROJECT_ROOT / "output" / "reports" / "answer_crops_report.json"
 
 MAX_WIDTH = 1000          # 裁剪图最大宽度（像素），超出等比缩小
@@ -348,7 +348,7 @@ def write_review_html(items: list[dict], stats: dict, key: str, course_name: str
     cards = []
     for it in items:
         srcs = "".join(
-            f'<img loading="lazy" src="{r}" alt="{it["qid"]}" '
+            f'<img loading="lazy" src="../math-bank/{r}" alt="{it["qid"]}" '
             f'onclick="this.classList.toggle(\'zoomed\')">'
             for r in it["rels"]
         )
@@ -375,6 +375,7 @@ figcaption{{font-size:12px;color:#374151;margin-bottom:6px}}
 总体积 {stats["mb"]:.1f} MB。点击图片切换 160% 放大。</div>
 <div class="grid">{"".join(cards)}</div>
 </body></html>"""
+    REVIEW_HTML.parent.mkdir(parents=True, exist_ok=True)
     REVIEW_HTML.write_text(html, encoding="utf-8")
 
 
