@@ -7,7 +7,7 @@
 
   var QUEUE_KEY = 'vn:notes:queue';
   var QUEUE_VERSION = 1;
-  var MAX_QUEUE = 50;
+  var MAX_QUEUE = 200;
   var NOTE_PREFIX = 'vn:note:';          // 幂等键前缀 note:{bank}:{uid}
 
   // ---- 平台 / 登录 / 管理员探测 ----
@@ -40,8 +40,27 @@
     }
   }
 
+  // ponytail: 队列超限不再截断——截断即静默丢未同步原稿。localStorage 全库上限约 5-10MB，
+  // 墨迹 JSON 体积大，真正根治需迁 IndexedDB；当前用徽标 + console.warn 提醒及时同步止损。
+  var queueBadgeEl = null;
+
+  function updateQueueBadge() {
+    if (!queueBadgeEl) return;
+    var n = readQueue().length;
+    queueBadgeEl.hidden = n === 0;
+    queueBadgeEl.textContent = n > 0 ? '本地暂存 ' + n + ' 条未同步笔记，请打开学习平台同步' : '';
+  }
+
   function writeQueue(entries) {
-    try { global.localStorage.setItem(QUEUE_KEY, JSON.stringify(entries.slice(-MAX_QUEUE))); } catch (e) { /* quota */ }
+    if (entries.length > MAX_QUEUE) {
+      console.warn('[viewer-notes] 本地暂存队列已达 ' + entries.length + ' 条（告警阈值 ' + MAX_QUEUE + '），未截断；请尽快打开学习平台同步');
+    }
+    try {
+      global.localStorage.setItem(QUEUE_KEY, JSON.stringify(entries));
+    } catch (e) {
+      console.warn('[viewer-notes] 本地存储空间不足，笔记暂存失败，即将丢失数据：' + e);
+    }
+    updateQueueBadge();
   }
 
   function queueKey(meta) {
@@ -255,6 +274,11 @@
   function buildNoteUI(controller) {
     var wrap = document.createElement('div');
     wrap.className = 'vn-note';
+    var queueBadge = document.createElement('div');
+    queueBadge.className = 'vn-queue-badge';
+    queueBadge.hidden = true;
+    queueBadgeEl = queueBadge;
+    updateQueueBadge();
     var actions = document.createElement('div');
     actions.className = 'vn-actions';
     var saveBtn = button('保存原稿', 'vsp-tool-btn vn-save', '保存笔记原稿');
@@ -266,7 +290,7 @@
     var result = document.createElement('div');
     result.className = 'vn-result';
     result.hidden = true;
-    wrap.append(actions, status, result);
+    wrap.append(queueBadge, actions, status, result);
 
     function setStatus(text, isError) {
       status.hidden = false;
@@ -462,6 +486,7 @@
     renderMarkdown: renderMarkdown,
     enqueue: enqueue,
     readQueue: readQueue,
+    updateQueueBadge: updateQueueBadge,
     importTextNotes: importTextNotes,
   };
 
