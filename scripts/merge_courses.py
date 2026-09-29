@@ -36,6 +36,35 @@ def escape_script_tag(s):
     return s.replace('</script>', '<\\/script>')
 
 
+# 与 math-bank/choice-only.js isChoiceQuestionType 对齐。
+# viewer 只展示选择题（加载层过滤），data.js manifest 的 question_count 必须
+# 烘焙选择题口径，否则未加载科目的课程 tab 会显示含解答题的原始总题数。
+_CHOICE_TYPES = frozenset({
+    'single_choice', 'multiple_choice', 'ordered_choice', '选择题',
+    'multiple', 'multi', 'single', '单选', '多选',
+})
+
+
+def _is_choice_type(t):
+    t = str(t or '').strip()
+    if not t:
+        return False
+    low = t.lower()
+    if t in _CHOICE_TYPES or low in _CHOICE_TYPES:
+        return True
+    if '选择' in t and '解答' not in t:
+        return True
+    if low == 'choice' or low.endswith('_choice') or low.endswith('choice'):
+        if low.count('choice') == 1 and len(low) <= 32:
+            return True
+    return False
+
+
+def _choice_total(chapters):
+    return sum(1 for ch in chapters for q in ch.get('questions', [])
+               if _is_choice_type(q.get('type')))
+
+
 def main():
     if len(sys.argv) < 2:
         print('Usage: python scripts/merge_courses.py output/questions_all.json')
@@ -120,7 +149,7 @@ window.__COURSE_CACHE__[{course_name}] = {data};
             'file': file_name,
             'js_file': js_file_name,
             'chapter_count': len(cd['chapters']),
-            'question_count': cd['total_questions'],
+            'question_count': _choice_total(cd['chapters']),
         })
 
     loader = bank_dir / 'data.js'

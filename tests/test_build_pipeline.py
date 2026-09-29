@@ -5,6 +5,7 @@
 """
 import json
 import os
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -12,6 +13,20 @@ from pathlib import Path
 import pytest
 
 from reshape_by_l2 import uniquify_ids
+
+
+def is_choice_type(t):
+    """与 math-bank/choice-only.js isChoiceQuestionType 对齐（子集断言用）。"""
+    t = str(t or '').strip()
+    if not t:
+        return False
+    low = t.lower()
+    if t in {'single_choice', 'multiple_choice', 'ordered_choice', '选择题',
+             'multiple', 'multi', 'single', '单选', '多选'}:
+        return True
+    if '选择' in t and '解答' not in t:
+        return True
+    return low == 'choice' or low.endswith('choice')
 
 
 @pytest.fixture
@@ -167,6 +182,26 @@ def test_reshape_uniquifies_ids_after_l3_merge():
     uniquify_ids(questions)
 
     assert [q['id'] for q in questions] == ['A01', 'A02', 'A01_2', 'A01_3']
+
+
+def test_data_js_manifest_bakes_choice_counts():
+    """data.js manifest 的 question_count 必须是选择题口径（viewer choice-only），
+    否则未加载科目的课程 tab 会显示含解答题的原始总题数。"""
+    bank = Path(__file__).resolve().parent.parent / 'math-bank'
+    loader = (bank / 'data.js').read_text(encoding='utf-8')
+    m = re.search(r'window\.__COURSE_MANIFEST__\s*=\s*(\[.*?\]);', loader, re.S)
+    assert m, 'data.js manifest not found'
+    manifest = json.loads(m.group(1))
+    assert manifest, 'empty manifest'
+    for course in manifest:
+        data = json.loads((bank / course['file']).read_text(encoding='utf-8'))
+        choice_n = sum(
+            1 for ch in data['chapters'] for q in ch.get('questions', [])
+            if is_choice_type(q.get('type'))
+        )
+        assert course['question_count'] == choice_n, (
+            f"{course['name']}: manifest={course['question_count']} 选择题实际={choice_n}"
+        )
 
 
 if __name__ == '__main__':
