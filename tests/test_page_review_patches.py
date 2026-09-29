@@ -1,4 +1,5 @@
 import json
+import re
 from pathlib import Path
 
 import pytest
@@ -169,8 +170,11 @@ def test_ds_forest_x01_roman_items_and_floor_log():
     assert fields["content"] == content
     expl = (question.get("answer") or {}).get("explanation") or ""
     assert "答案图片：crops/ds/page_181_X01_forest.png" in expl
+    # explanation = 答案截图行（answer_crops，gen_answer_crops 维护）+ 补丁正文
+    assert "答案图片：answer_crops/ds/" in expl
     assert "page_181_X01_1.png" not in expl
-    assert expl == fields["explanation"]
+    body = re.sub(r"^答案图片：answer_crops/.*\n?", "", expl).strip("\n")
+    assert body == fields["explanation"]
     crop_dir = BANK / "crops" / "ds"
     assert (crop_dir / "page_181_X01_forest.png").is_file()
 

@@ -1095,3 +1095,13 @@ os：X07/X09/X10/X18/X31（运行环境等）、X41/X51/X55/X56/X73（进程）�
 - **修复**：`page_review_patches.json` X16 条目更新——content 两处公式加 `$...$`（`\%`/`\pm`），explanation 的 7 处取模运算同加；构建产物 math-bank/data-ds.json 定点同步该补丁（build_all 当前因存量补丁 X08 目标缺失而中断，待另行排查），`quality_ledger.py --refresh-hashes` 重算 published_hashes。数据 hash 变化自动 bump **v250→v251**。
 - 回归 tests/：321 通过；1 个失败 test_curated_complete_binary_tree_formula（p139 X20 选项空格漂移）为存量，与本次无关。
 - 上云：2026-09-25 push_data 热更（remote __BANK_DATA_VER__=251）
+
+## 2026-09-29 · 249 题答案截图行丢失大修复（缓存 v251→v253）
+
+主人发现：「不是所有题答案都是图片」。核查：全库 2870 题中 248 题 explanation 不含「答案图片」行（按 `答案图片：answer_crops/` 精确口径云上 249 题）。
+
+- **根因**：9 月中旬后的 OCR 修复补丁（`page_review_patches.json` 240 条 explanation 整段替换，其中 212 条未含图片行；另有 36 题被 fix_questions.py 内 curated text/answer 补丁整段覆盖）把 09-12 铺开的 `答案图片：answer_crops/...` 行冲掉；热更流程（fix+merge+push_data）不重跑 `gen_answer_crops --write-expl`，丢行永久化。
+- **根因修复**：`fix_questions.py` 增加守卫——循环开头快照 explanation 中的 answer_crops 图片行，补丁应用后若丢行自动prepend回去（curated/page 补丁全覆盖）。**今后任何整段替换补丁都不会再丢图行**。
+- **数据恢复**：四科重跑 `gen_answer_crops --write-expl`（幂等重裁+回写，coa 673 / ds 795 / os 759 / net 636 题回写）；4 题（ds 5.1 X08、5.1 A04、6.2 X05、8.2 X13）因当前 OCR 答案头损坏无法分段，使用 9 月原始裁图人工补行（逐张看图核对题号与内容一致）。恢复以云备份文本为准（曾误用 `output/questions.json` 文本全量回写导致 719 题 curated 文本被旧 OCR 文本覆盖，已从云端拉回修正；教训：**bank 数据是 curated 真理源，questions.json 只是中间态，两者已漂移**——build_all 因 ds 5.1 X08 补丁目标在中间态缺失而中断的存量问题仍在，待重建管线另行排查）。
+- **测试**：`test_page_review_patches.py::test_ds_forest_x01` 的 `expl == 补丁原文` 精确断言改为「剥掉 answer_crops 行后等于补丁原文」（行为变化：explanation 现在 = 图行 + 补丁正文）。回归 tests/ **322 全通过**；`quality_ledger.py --refresh-hashes` 已刷。
+- 上云：2026-09-29 push_data 热更（remote __BANK_DATA_VER__=253）

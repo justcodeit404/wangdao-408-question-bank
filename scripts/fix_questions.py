@@ -20,6 +20,9 @@ sys.stdout.reconfigure(encoding="utf-8")
 
 PAGE_REVIEW_PATCHES_PATH = PROJECT_ROOT / "data" / "quality" / "page_review_patches.json"
 PAGE_REVIEW_PATCH_FIELDS = {"content", "options", "choice", "explanation"}
+ANSWER_CROP_LINE_RE = re.compile(
+    r"^(?:答案图片|解析图片|题图|答图)\s*[：:]\s*answer_crops/", re.MULTILINE
+)
 
 
 def load_page_review_patches(path=PAGE_REVIEW_PATCHES_PATH):
@@ -1575,6 +1578,8 @@ def fix_file(path, pdf_images_dir=None, course_key=None, apply_page_review_patch
 
             ans = q.get("answer") or {}
             expl = (ans.get("explanation") or "").strip()
+            # 快照既有答案图片行：下游补丁整段替换 explanation 时若未带上它们，会被静默丢掉
+            answer_crop_lines = [m.group(0) for m in ANSWER_CROP_LINE_RE.finditer(expl)]
 
             # 1. 提取缺失的选择题答案
             if q.get("type") == "选择题" and not ans.get("choice") and expl:
@@ -1708,6 +1713,16 @@ def fix_file(path, pdf_images_dir=None, course_key=None, apply_page_review_patch
                         )
                 applied_page_patches.add(page_patch_key)
                 fixes["page_review_patched"] += 1
+            ans = q.get("answer") or {}
+            if answer_crop_lines and not ANSWER_CROP_LINE_RE.search(
+                ans.get("explanation") or ""
+            ):
+                ans["explanation"] = (
+                    "\n".join(answer_crop_lines)
+                    + "\n\n"
+                    + (ans.get("explanation") or "").strip()
+                )
+                q["answer"] = ans
             if ans.get("explanation"):
                 ans["explanation"] = fix_code_in_content(
                     fix_common_ocr_errors(clean_content(ans["explanation"]))
