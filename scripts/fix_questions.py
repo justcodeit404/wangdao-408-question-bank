@@ -21,7 +21,7 @@ sys.stdout.reconfigure(encoding="utf-8")
 PAGE_REVIEW_PATCHES_PATH = PROJECT_ROOT / "data" / "quality" / "page_review_patches.json"
 PAGE_REVIEW_PATCH_FIELDS = {"content", "options", "choice", "explanation"}
 ANSWER_CROP_LINE_RE = re.compile(
-    r"^(?:答案图片|解析图片|题图|答图)\s*[：:]\s*answer_crops/", re.MULTILINE
+    r"^(?:答案图片|解析图片|题图|答图)\s*[：:]\s*answer_crops/[^\n]*", re.MULTILINE
 )
 
 

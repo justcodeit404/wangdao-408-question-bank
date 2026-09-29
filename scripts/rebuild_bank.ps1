@@ -44,6 +44,14 @@ Write-Host "==> merge_courses.py" -ForegroundColor Cyan
 & $buildPy scripts/merge_courses.py output/questions_all.json
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
+# wire_explanation rebuilds 答案图片 lines from real crops; without this step,
+# curated patches that replace answer wholesale silently drop the lines (2026-09-29 incident)
+Write-Host "==> wire answer crops + explanations (gen_answer_crops.py --write-expl x4)" -ForegroundColor Cyan
+foreach ($k in @("ds", "coa", "net", "os")) {
+    & $buildPy scripts/gen_answer_crops.py --course $k --write-expl
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+}
+
 Write-Host "==> bump cache version (data content hash)" -ForegroundColor Cyan
 & $buildPy scripts/bump_bank_version.py
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }

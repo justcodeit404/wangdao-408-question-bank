@@ -1115,3 +1115,13 @@ os：X07/X09/X10/X18/X31（运行环境等）、X41/X51/X55/X56/X73（进程）�
 - **管线存量问题（复现）**：rebuild_bank 仍在 fix_questions 严格校验处中断——ds 中间态 `output/questions.json` 与 curated 真理源 math-bank 已漂移（794 题中 764 题内容不同；中间态缺「树与二叉树·树的基本概念·X08」、多出 3 个游离 A01/X03_2）。**全量重建会把旧 OCR 文本灌回 math-bank，绝对不可跑**。本次按 X16 先例定点同步：补丁直写 `math-bank/data-ds.json`（+重出 data-ds.js 包装、data-ds.json.gz 预压缩——本地 serve_bank 优先吃 .gz，不重生成本地验证会看到旧数据）、`bump_bank_version.py` 自动 bump、`quality_ledger.py --refresh-hashes`。补丁留在 manifest，待管线修复后自然生效。
 - 回归 test_page_review_patches + test_notes_katex **120 通过**；本地 8899 端口实测渲染：题干三行表格分行正常、答案 A + 解析图正常。
 - 上云：2026-09-29 push_data 热更（remote __BANK_DATA_VER__=254）
+
+## 2026-09-29 · 重建管线修复：中间态反向同步 + 答案图行双 bug 根治（缓存 v254→v257）
+
+承接上条（X23 定点同步时暴露的存量问题）：`rebuild_bank.ps1` 在 fix_questions 严格校验处中断，ds 中间态与产物漂移 764/794 题。本次根治，今后 OCR 修复回到标准补丁→重建→热更流程，不再需要定点同步：
+
+- **`scripts/resync_intermediate_from_bank.py`（新）**：中间态 `output/questions*.json` 从 curated 产物 math-bank 反向重建（章节/题目键完全一致；key 由 `config.COURSES` 映射）。09-29 事故的中间态是中断的 OCR 重解析产物，顺跑只会把旧 OCR 文本灌回产品，反向同步是唯一安全方向。已一次性 resync 四科。
+- **bug1：`fix_questions.py` 的 `ANSWER_CROP_LINE_RE` 只匹配前缀**（`answer_crops/` 后无 `[^\n]*`），09-29 新增的解释保护守卫快照的是残行「答案图片：answer_crops/」，补丁整段替换 explanation 时把 89 题的图行削成空路径。已补 `[^\n]*`。
+- **bug2：`apply_curated_choice/application_patches` 的 `update(patch)` 整段覆盖 answer**——4 道误分类移动题（ds 栈 A03、树基本概念 X08、图存储 X05、排序插入 X13）补丁自带无图行 explanation，每次重建静默丢图行；09-29 后无成功重建故未暴露。**`rebuild_bank.ps1` 在 merge 后增跑 `gen_answer_crops.py --write-expl`×4**（按真实裁图重写图行，幂等），从流程上兜住一切丢行路径（这正是 09-29 手工执行的那步，此前不在重建脚本里）。
+- **验证**：重建幂等性以云端 v254 产物为基准逐项 diff——修复后差异收敛为 17 题图行间空行规范化（`\n`→`\n\n`，viewer 按行解析无影响），其余字节级一致；测试 120 通过；`quality_ledger.py --refresh-hashes` 已刷。
+- 上云：2026-09-29 push_data 热更（remote __BANK_DATA_VER__=257）
