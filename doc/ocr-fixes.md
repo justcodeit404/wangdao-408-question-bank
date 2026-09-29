@@ -1105,3 +1105,13 @@ os：X07/X09/X10/X18/X31（运行环境等）、X41/X51/X55/X56/X73（进程）�
 - **数据恢复**：四科重跑 `gen_answer_crops --write-expl`（幂等重裁+回写，coa 673 / ds 795 / os 759 / net 636 题回写）；4 题（ds 5.1 X08、5.1 A04、6.2 X05、8.2 X13）因当前 OCR 答案头损坏无法分段，使用 9 月原始裁图人工补行（逐张看图核对题号与内容一致）。恢复以云备份文本为准（曾误用 `output/questions.json` 文本全量回写导致 719 题 curated 文本被旧 OCR 文本覆盖，已从云端拉回修正；教训：**bank 数据是 curated 真理源，questions.json 只是中间态，两者已漂移**——build_all 因 ds 5.1 X08 补丁目标在中间态缺失而中断的存量问题仍在，待重建管线另行排查）。
 - **测试**：`test_page_review_patches.py::test_ds_forest_x01` 的 `expl == 补丁原文` 精确断言改为「剥掉 answer_crops 行后等于补丁原文」（行为变化：explanation 现在 = 图行 + 补丁正文）。回归 tests/ **322 全通过**；`quality_ledger.py --refresh-hashes` 已刷。
 - 上云：2026-09-29 push_data 热更（remote __BANK_DATA_VER__=253）
+
+## 2026-09-29 · ds 排序·各种内部排序算法的比较及应用 X23（p381，2025 统考真题）题干乱空格（缓存 v253→v254）
+
+主人反馈：「这一题有莫名其妙的空格」（表格被压成一行、逗号全半角混排）。
+
+- **核查**：源页 page_381.png 表格三行数值与库内一致，仅格式坏——OCR 把表格压平进正文，全角逗号「，」与半角逗号混用导致渲染空隙；选项/答案（A 希尔排序）无误。顺带发现 explanation 事实错误：「符合增量缩小至 1 的结果」不成立（第 2 趟并非全局有序）；手工验证实际递量为 **d=3 → d=2**（d=3 对下标模 3 分组插入精确得第 1 趟；d=2 对下标模 2 分组插入精确得第 2 趟），一并改正。
+- **修复**：`page_review_patches.json` 增补 X23（content 三行 `\n\n` 分行 + 逗号统一无空格半角；explanation 重写 d=3→d=2 推导）。
+- **管线存量问题（复现）**：rebuild_bank 仍在 fix_questions 严格校验处中断——ds 中间态 `output/questions.json` 与 curated 真理源 math-bank 已漂移（794 题中 764 题内容不同；中间态缺「树与二叉树·树的基本概念·X08」、多出 3 个游离 A01/X03_2）。**全量重建会把旧 OCR 文本灌回 math-bank，绝对不可跑**。本次按 X16 先例定点同步：补丁直写 `math-bank/data-ds.json`（+重出 data-ds.js 包装、data-ds.json.gz 预压缩——本地 serve_bank 优先吃 .gz，不重生成本地验证会看到旧数据）、`bump_bank_version.py` 自动 bump、`quality_ledger.py --refresh-hashes`。补丁留在 manifest，待管线修复后自然生效。
+- 回归 test_page_review_patches + test_notes_katex **120 通过**；本地 8899 端口实测渲染：题干三行表格分行正常、答案 A + 解析图正常。
+- 上云：2026-09-29 push_data 热更（remote __BANK_DATA_VER__=254）
