@@ -1125,3 +1125,13 @@ os：X07/X09/X10/X18/X31（运行环境等）、X41/X51/X55/X56/X73（进程）�
 - **bug2：`apply_curated_choice/application_patches` 的 `update(patch)` 整段覆盖 answer**——4 道误分类移动题（ds 栈 A03、树基本概念 X08、图存储 X05、排序插入 X13）补丁自带无图行 explanation，每次重建静默丢图行；09-29 后无成功重建故未暴露。**`rebuild_bank.ps1` 在 merge 后增跑 `gen_answer_crops.py --write-expl`×4**（按真实裁图重写图行，幂等），从流程上兜住一切丢行路径（这正是 09-29 手工执行的那步，此前不在重建脚本里）。
 - **验证**：重建幂等性以云端 v254 产物为基准逐项 diff——修复后差异收敛为 17 题图行间空行规范化（`\n`→`\n\n`，viewer 按行解析无影响），其余字节级一致；测试 120 通过；`quality_ledger.py --refresh-hashes` 已刷。
 - 上云：2026-09-29 push_data 热更（remote __BANK_DATA_VER__=257）
+
+## 2026-09-30 · coa 计算机系统概述·计算机的性能指标 X09（p13–14）表格题干渲染修复（缓存 v259→v260）
+
+| 项 | 值 |
+|----|-----|
+| 课程 / 章节 | coa · 计算机系统概述 · 计算机的性能指标 · 选择题 |
+| 题号 | X09（原书第 13–14 页跨页） |
+| 现象 | 题干表格以裸管道文本内嵌，构建产物中表头与首行数据间换行丢失，整表挤成一段（viewer 退化为纯文本折行）。题目数据、选项、答案 D 均与原书一致，仅显示问题。 |
+| 修复 | `page_review_patches.json` 中 X09 content 的表格改为标准 markdown 管道表（行首末 `\|` + `\| --- \|` 分隔行），viewer `fillStemText` 即渲染为真表格；`rebuild_bank.ps1` 重建（120 passed），浏览器实测渲染正常。 |
+| 备注 | 全库另有 6 道同类裸管道表格题干（coa X15、net X27、os X26/X28/X35/X36/X52）未动，待主人点名再统一修。 |
