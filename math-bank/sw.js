@@ -2,13 +2,13 @@
 // JS/CSS/HTML + 题库数据 JSON：Network-First（避免题干修了仍显示旧缓存）
 // 其它同源静态：Stale-While-Revalidate
 
-const CACHE_NAME = 'wd408-ui-v290';
+const CACHE_NAME = 'wd408-ui-v291';
 const APP_SHELL = [
   './',
   './index.html',
-  './styles.css?v=290',
-  './app.js?v=290',
-  './data.js?v=290',
+  './styles.css?v=291',
+  './app.js?v=291',
+  './data.js?v=291',
   './manifest.json'
 ];
 
