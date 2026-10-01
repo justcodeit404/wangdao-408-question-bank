@@ -1172,3 +1172,12 @@ X45 修复后全库搜同图族（Switch/Hub 拓扑），又发现 3 道同病�
 
 - `page_review_patches.json` 新增 3 条 content 补丁；`rebuild_bank.ps1` 重建（120 passed，v262→v263）。
 - 上云：2026-10-01 push_data 热更（remote __BANK_DATA_VER__=263）
+
+## 2026-10-01 · net 数据链路层·设备 X23（p128）补配拓扑图（缓存 v263→v264）
+
+承接上一条 X23 遗留：题干 prose 无"如下图"类标记，当年管线漏裁图（has_image=False），题目不可作答。
+
+- **人工校准框**：`fig_manual_boxes.json` 增 `net:128:X23 = [195,733,838,878]`（经三次裁图迭代核对，完整含 R2/Switch/Hub/H1–H4 及全部 IP 标注，不含选项行）。
+- **auto_recrop_figs.py 小改**：`collect_targets` 原要求题干含 FIG_MARK 才入选；现人工框显式声明（非 drop）即视为图题——否则无标记题永远进不了裁图管线。改动对存量 43 框行为不变（它们本来就有图标记）。
+- 裁图落 `math-bank/crops/net/page_128_X23.png`，data-net.json 已写 has_image/image_ref；bump v263→v264；test_notes_katex 6 passed。
+- **crops 不在 push_data 热更清单**（只推 data-*.json+壳），本次 png 已手动 scp 至云 `shared/banks/banks/bank-408/crops/net/` 并 HTTP 验证 200；data-net.json 走标准热更（remote v264）。

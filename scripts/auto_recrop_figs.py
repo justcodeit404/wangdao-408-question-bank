@@ -1060,9 +1060,15 @@ def collect_targets(course_filter: str | None, only: set[str] | None):
                         (float(bb[1]), float(bb[3]))
                     )
                 ok, cropped = looks_fig(q)
+                key = f"{code}:{q.get('page')}:{q.get('id')}"
+                manual = manual_boxes.get(key)
+                # 人工框显式声明该题有图（题干可无"如下图"类标记，如 X23）
+                if not ok and manual and not (
+                    isinstance(manual, dict) and manual.get("drop")
+                ):
+                    ok, cropped = True, cropped
                 if not ok:
                     continue
-                key = f"{code}:{q.get('page')}:{q.get('id')}"
                 if only and key not in only and f"{key}:{ch_name}" not in only:
                     # also allow course:page:id match
                     if key not in only:
