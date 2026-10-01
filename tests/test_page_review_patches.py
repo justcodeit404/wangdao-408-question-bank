@@ -34,10 +34,12 @@ def test_coa_trap_has_split_option_d():
 
 
 def test_coa_visible_registers_options_and_answer():
+    # 2021 统考真题，原书（page_242/243）选项：C=仅II、IV，D=仅III、IV，答案 D
     question = _q("coa", "控制器的功能和工作原理", "X26")
+    assert question["options"]["C"] == "仅II、IV"
+    assert question["options"]["D"] == "仅III、IV"
     assert question["options"]["B"] != question["options"]["C"]
-    assert "III" in question["options"]["C"]
-    assert question["answer"]["choice"] == "B"
+    assert question["answer"]["choice"] == "D"
 
 
 def test_ds_scan_star_stem_not_truncated():
