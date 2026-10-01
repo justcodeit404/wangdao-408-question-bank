@@ -1181,3 +1181,17 @@ X45 修复后全库搜同图族（Switch/Hub 拓扑），又发现 3 道同病�
 - **auto_recrop_figs.py 小改**：`collect_targets` 原要求题干含 FIG_MARK 才入选；现人工框显式声明（非 drop）即视为图题——否则无标记题永远进不了裁图管线。改动对存量 43 框行为不变（它们本来就有图标记）。
 - 裁图落 `math-bank/crops/net/page_128_X23.png`，data-net.json 已写 has_image/image_ref；bump v263→v264；test_notes_katex 6 passed。
 - **crops 不在 push_data 热更清单**（只推 data-*.json+壳），本次 png 已手动 scp 至云 `shared/banks/banks/bank-408/crops/net/` 并 HTTP 验证 200；data-net.json 走标准热更（remote v264）。
+
+## 2026-10-01 · 随机抽检第二批 20 题（seed 20261002）：ds 链式表示 X16 高危修复 + os 死锁 X36 表格（缓存 v264→v265）
+
+主人要求继续查质量。第二批 20 题（`sample_choice_audit.py 20261002 20`）逐题对照源页：
+
+| 结果 | 数量 |
+|------|------|
+| 逐字一致、无缺陷 | 19/20 |
+| 高危已修复 | 1（ds 链式表示 X16） |
+
+- **ds 线性表 · 线性表的链式表示 · 选择题 X16（p46）**：选项 D 赋值左右字段被历史补丁写反——库内 `p->next=p->next->next; p->prior=p->prior->prior;`，原书（p46 原生分辨率核实）为 `p->next=p->prior->prior; p->prior=p->next->next;`。错误源自早期 page_review_patches 补丁本身（OCR 行缺失后人工补写写反）。已改正补丁，重建后产物与原书一致。
+- **os 进程与线程 · 死锁 · 选择题 X36（p167，2012 统考）**：5 进程银行家算法题，两级表头（已分配资源/资源最大需求 × R1 R2 R3）的资源表此前被压平成裸管道文本（数值全对，仅结构丢失）。顺手把 content 补丁升级为标准 markdown 管道表（单列头合并写法「已分配资源 R1 R2 R3」），viewer 渲染为真表格。
+- 另有 3 题 q_lookup 工具侧异常（--uid 未命中/--crop 错位，subagent 已改用手动定位源页完成核对，题目本身无问题）；net UDP X13「IV．目的MAC地址V.」为罗马数字项空格惯例，不修。
+- `rebuild_bank.ps1` 重建（120 passed，v264→v265）；上云：2026-10-01 push_data 热更（remote __BANK_DATA_VER__=265，data-ds/data-os/data-net 均 200）。
