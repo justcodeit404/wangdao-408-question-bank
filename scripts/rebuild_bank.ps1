@@ -52,6 +52,15 @@ foreach ($k in @("ds", "coa", "net", "os")) {
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 }
 
+# ponytail: gen_answer_crops drops isolated 1-3 digit lines as page numbers,
+# so opcode ranges like 000/110 get clipped. Overrides win after regen.
+# Ceiling: one jpg per known clip; upgrade is to stop treating content-column
+# digits as page numbers.
+$cropOverride = Join-Path $root "data\quality\answer_crop_overrides"
+if (Test-Path -LiteralPath $cropOverride) {
+    Copy-Item -Path (Join-Path $cropOverride "*") -Destination (Join-Path $root "math-bank\answer_crops") -Recurse -Force
+}
+
 Write-Host "==> bump cache version (data content hash)" -ForegroundColor Cyan
 & $buildPy scripts/bump_bank_version.py
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
