@@ -489,6 +489,11 @@ def main() -> None:
             seg_qid = qid[1:] if len(qid) > 1 and qid[0] in "XA" else qid
             # 拆分子问（fix_questions 拆出的 A01_2 等）与母题共用同一答案段
             seg_qid = re.sub(r"_\d+$", "", seg_qid)
+            # ponytail: 运算方法解答题库号比原书综合应用题号大 2，A03 对应原书 01。
+            # 库号是进度 key，不能改。不改定位的话答案图挂到 2011 年那题（原书 03）。
+            # 同节 A04–A06 若抽到再同样改。
+            if topic == "2.2.5 本节习题精选" and qid == "A03":
+                seg_qid = "01"
             span = spans.get((sec, seg_qid))
             if not span:
                 stats["skipped"] += 1
