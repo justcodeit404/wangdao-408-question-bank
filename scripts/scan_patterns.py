@@ -71,6 +71,14 @@ PATTERNS = {
     ),
 }
 
+# 只打在解析字段上的病征：解答题也要扫（串正文/串下题主要发生在解析里）。
+EXPL_PATTERNS = {
+    "expl_bleed": (
+        re.compile(r"考点追踪|本节是|【解析】|答案与解析"),
+        "解析串入教材正文/下一题解析",
+    ),
+}
+
 
 def _text(q: dict) -> str:
     opts = q.get("options") or {}
@@ -90,14 +98,18 @@ def scan_course(course: str) -> list[dict]:
     hits = []
     for ch in data.get("chapters") or []:
         for q in ch.get("questions") or []:
-            if q.get("type") != "选择题":
-                continue
             text = _text(q)
             found = []
-            for name, (rx, desc) in PATTERNS.items():
-                m = rx.search(text)
+            expl = str((q.get("answer") or {}).get("explanation") or "")
+            for name, (rx, desc) in EXPL_PATTERNS.items():
+                m = rx.search(expl)
                 if m:
                     found.append((name, desc, m.group(0)[:60]))
+            if q.get("type") == "选择题":
+                for name, (rx, desc) in PATTERNS.items():
+                    m = rx.search(text)
+                    if m:
+                        found.append((name, desc, m.group(0)[:60]))
             if found:
                 hits.append(
                     {
