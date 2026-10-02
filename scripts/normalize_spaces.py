@@ -53,7 +53,7 @@ _PUNCT3 = ",;="
 # （n）/(n) 序号前的分隔符不删
 _LABEL_RX = re.compile(
     r"[ \t\n]+(?=(?:[A-Da-d][\.、．)]|"
-    r"(?:X|IX|IV|V?I{1,3})[\.、．)]|"
+    r"(?:X|IX|VIII|VII|VI|IV|V|III|II|I)[\.、．)]|"
     r"[①②③④⑤⑥⑦⑧⑨⑩]|\([0-9]+\)|（[0-9]+）))")
 
 IMAGE_REF_RE = re.compile(r"^[ \t]*(题目图片|答案图片)：[^\n]*$", re.M)
