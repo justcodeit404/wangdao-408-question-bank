@@ -6,6 +6,7 @@
 4. 清理空 explanation 占位符
 """
 
+import copy
 import json
 import re
 import sys
@@ -617,6 +618,62 @@ CURATED_APPLICATION_PATCHES = {
         },
     },
 }
+
+
+# 抽取阶段整题丢失、但原书确实存在的题（按原书页图逐题核对后收录）。
+# key: (course_key, 章节名, qid)；fix_file 在对应章节内按题号顺序插入（幂等）。
+# 首个案例：coa 性能指标 X18 题号块 OCR 为空（【】）被丢弃，平台侧已按坏数据导入
+# （题干缺主语、年份误作 2018），此处按原书补回。
+CURATED_INSERTS = {
+    ("coa", "计算机系统概述 · 计算机的性能指标 · 选择题", "X18"): {
+        "id": "X18",
+        "type": "选择题",
+        "content": "【2021统考真题】2017年公布的全球超级计算机TOP 500排名中，我国“神威·太湖之光”超级计算机蝉联第一，其浮点运算速度为93.0146PFLOPS，说明该计算机每秒完成的浮点操作次数约为（）。",
+        "options": {
+            "A": "9.3×10^13次",
+            "B": "9.3×10^15次",
+            "C": "9.3千万亿次",
+            "D": "9.3亿亿次",
+        },
+        "sub_questions": None,
+        "page": 20,
+        "bbox": [153.0, 303.0, 954.0, 418.0],
+        "has_image": False,
+        "image_ref": None,
+        "topic_title": "1.3.2 本节习题精选",
+        "answer": {
+            "choice": "D",
+            "explanation": "PFLOPS=每秒千万亿（10^15）次浮点运算。故93.0146PFLOPS≈每秒9.3×10^16次浮点运算，即每秒9.3亿亿次浮点运算。",
+        },
+        "q_pages": [20],
+        "a_pages": [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+    },
+}
+
+
+def _qid_number(qid: str) -> int | None:
+    m = re.search(r"(\d+)$", str(qid or ""))
+    return int(m.group(1)) if m else None
+
+
+def apply_curated_inserts(chapter: dict, course_key: str | None, fixes: dict) -> None:
+    """把 CURATED_INSERTS 中属于本章且尚不存在的题按题号插入；已存在则跳过。"""
+    chapter_name = str(chapter.get("name") or "").strip()
+    existing = {str(q.get("id") or "") for q in chapter.get("questions", [])}
+    for (key, ch_name, qid), question in CURATED_INSERTS.items():
+        if key != course_key or ch_name != chapter_name or qid in existing:
+            continue
+        num = _qid_number(qid)
+        pos = len(chapter["questions"])
+        if num is not None:
+            for i, q in enumerate(chapter["questions"]):
+                n = _qid_number(str(q.get("id") or ""))
+                if n is not None and n < num:
+                    pos = i + 1
+        chapter["questions"].insert(pos, copy.deepcopy(question))
+        chapter["question_count"] = len(chapter["questions"])
+        existing.add(qid)
+        fixes["curated_inserted"] += 1
 
 
 def apply_curated_choice_patches(data, course_key):
@@ -1564,6 +1621,7 @@ def fix_file(path, pdf_images_dir=None, course_key=None, apply_page_review_patch
         "curated_text_patched": 0,
         "curated_answer_patched": 0,
         "page_review_patched": 0,
+        "curated_inserted": 0,
     }
 
     for ch in data.get("chapters", []):
@@ -1768,6 +1826,8 @@ def fix_file(path, pdf_images_dir=None, course_key=None, apply_page_review_patch
                 ):
                     q["answer"] = None
                     fixes["empty_explanation_cleaned"] += 1
+
+        apply_curated_inserts(ch, course_key, fixes)
 
     missing_page_patches = sorted(set(course_page_patches) - applied_page_patches)
     # 真实 output 构建必须覆盖该课程的所有补丁；小型 fixture 可以显式
