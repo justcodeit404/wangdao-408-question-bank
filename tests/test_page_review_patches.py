@@ -440,10 +440,11 @@ def test_ds_dag_x39_outer_parens():
     assert "((x+y)(x+y)/x)" in content.replace(" ", "")
 
 
-def test_coa_chip_x09_is_8bit():
+def test_coa_chip_x09_is_16bit():
+    # 2027版原书 page_100 题干印 32K×16 位，答案解析同为 32K×16，以原书为准
     content = _q("coa", "主存储器与CPU的连接", "X09")["content"]
-    assert "32K×8位" in content
-    assert "32Kx16" not in content
+    assert "32K×16位" in content
+    assert "32K×8位" not in content
 
 
 def test_ds_huffman_x05_215_nodes():
