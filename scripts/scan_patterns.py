@@ -79,6 +79,39 @@ EXPL_PATTERNS = {
     ),
 }
 
+# 全题型（含解答题）都打的病征，打在 content+options+explanation 全文上。
+ALL_PATTERNS = {
+    "reg_l1_o0": (
+        re.compile(
+            r"\bR[lI][a-z]+out\b"
+            r"|\((?:R[lIiOo])\)"
+            r"|(?<![A-Za-z0-9])R[lI](?![A-Za-z0-9])"
+            r"|(?<![A-Za-z0-9])RO(?![A-Za-z0-9])"
+        ),
+        "寄存器名 l/1、O/0 混淆（R1out/(R1)/(R0) 类）",
+    ),
+    "dot_in_digits": (
+        re.compile(r"\d·\d|·[01]{2,}|[01]{2,}·"),
+        "数字/二进制串中的 ·（省略号/点号压扁嫌疑）",
+    ),
+    "degree_prime": (
+        re.compile(r"\d°|\d'(?!\d)"),
+        "数字后的 °/' 疑上标压扁",
+    ),
+    "latex_shell": (
+        re.compile(r"\$[^$\n]{1,60}\$"),
+        "LaTeX 壳残留",
+    ),
+    "zero_sign_nosub": (
+        re.compile(r"\[[-+]0\]=(?![原反补移])"),
+        "±0 机器数疑丢「原/反/补/移」下标",
+    ),
+    "ellipsis_junk": (
+        re.compile(r"、\.|,,|;;|ffx|\d{3,},{2,}"),
+        "省略号/分隔符烂码（.,、ffx 类）",
+    ),
+}
+
 
 def _text(q: dict) -> str:
     opts = q.get("options") or {}
@@ -110,6 +143,32 @@ def scan_course(course: str) -> list[dict]:
                     m = rx.search(text)
                     if m:
                         found.append((name, desc, m.group(0)[:60]))
+            for name, (rx, desc) in ALL_PATTERNS.items():
+                m = rx.search(text)
+                if m:
+                    found.append((name, desc, m.group(0)[:60]))
+            # 自定义检查：解析截断嫌疑 / 题干未闭合括号
+            body_lines = [
+                l
+                for l in expl.split("\n")
+                if l.strip() and not l.strip().startswith("答案图片")
+            ]
+            img_lines = expl.count("答案图片：")
+            if body_lines:
+                tail = body_lines[-1].rstrip()
+                if tail[-1] not in "。！？：；）」…|" and img_lines < 2:
+                    found.append(
+                        (
+                            "expl_truncated",
+                            "解析末行无终止标点且无第二张答案图",
+                            tail[-40:],
+                        )
+                    )
+            content_str = (q.get("content") or "").rstrip()
+            if content_str.endswith("（"):
+                found.append(
+                    ("content_open_paren", "题干以未闭合（结尾", content_str[-20:])
+                )
             if found:
                 hits.append(
                     {
