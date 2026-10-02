@@ -310,7 +310,7 @@ def test_os_fat_x28_explicit_link_and_2_16():
     assert "显式链接" in question["content"]
     expl = (question.get("answer") or {}).get("explanation") or ""
     assert "216x2B" not in expl
-    assert "2^16×2B" in expl
+    assert "2^{16}×2B" in expl
 
 
 def test_os_thread_x71_wait_parens():
