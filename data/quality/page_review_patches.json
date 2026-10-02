@@ -7751,6 +7751,23 @@
       "fields": {
         "explanation": "答案图片：answer_crops/coa/page_129_X19_ans.jpg\n\n组相联映射的主存地址结构为：标记 +Cache组号+块内地址。Cache块大小增加一倍，则字块内地址的位数增加1位。Cache组数=(Cache总容量/Cache块大小)/n，所以Cache组数减少一半；Cache组号=主存块号MODCache组数，所以Cache组号也减少1位。主存总容量不变，则主存地址总长度不变，字块内地址和Cache组号一个增1位，一个减1位，因此标记字段的位数不变。"
       }
+    },
+    {
+      "course": "coa",
+      "chapter": "中央处理器 · 数据通路的功能和基本结构 · 解答题",
+      "qid": "A03",
+      "fields": {
+        "content": "设有如下图所示的单总线结构，分析指令ADD(R0),R1[即实现((R0))+(R1)→(R0)］的指令流程和控制信号。\n\n控制信号→ 指令译码/控制器总线IRin\nIR\nAdIRout\nPCin\nPC+1 PC\nPCout\nMARout MARin\nMemR- 主MAR存MDRoutE MDRin\nMemW MDR\nMDRinE MDRout\nROin\nRo\nR0out\n...\nR-1in\nRx-1\nRr-1out\nYin\nY\nALUin控制信号ALU",
+        "explanation": "答案图片：answer_crops/coa/page_229_A03_ans.jpg\n\n指令ADD(R0),R1的功能是把R0的内容作为地址送到主存中取得一个操作数，再与R1中的内容相加，最后将结果送回主存，即实现((R0))+(R1)→(R0)。其流程和控制信号如下。1）取指周期：公共操作。时序微操作有效控制信号具体功能1(PC)→MAR PCout, MARin将PC经内部总线送至MAR\n2 M(MAR)→MDR,Read MemR,MARout,MDRinE主存通过数据总线将MAR所指单元的内容送至MDR\n3(MDR)→IR MDRout, IRin将MDR的内容送至IR\n4指令译码操作字开始控制CU\n5(PC)+1→PC当PC加1有效时，使PC内容加1\n2）取数周期：完成取数操作，被加数在主存中，加数已经放在寄存器R1中。时序微操作有效控制信号具体功能\n(R0)→MAR R0out,MARin将R0中的地址（形式地址）送至存储器地址寄存器主存通过数据总线将MAR所指单元的内容（有效地址）送2 M(MAR)→MDR MemR, MARout, MDRinE至MDR中3(MDR)→Y MDRout, Yin将MDR中数据通过数据总线送至Y\n3）执行周期：完成加法运算，并将结果返回主存。时序微操作有效控制信号具体功能R1out,ALUin，CU向ALU\n1(R1)+(Y)→Z R1的内容和Y的内容相加，结果送至寄存器Z发ADD控制信号2(Z)→MDR Zout, MDRin将运算结果送至MDR\nMemW, MDRoutE,\n3(MDR)→M(MAR) 向主存写入数据MARout"
+      }
+    },
+    {
+      "course": "coa",
+      "chapter": "数据的表示和运算 · 数制与编码 · 选择题",
+      "qid": "X16",
+      "fields": {
+        "explanation": "答案图片：answer_crops/coa/page_036_X16_ans.jpg\n\n值等于-0说明只可能是原码或反码(因为补码和移码表示0时是唯一的,没有+0和-0之分)，\n[-0]原=10000000，[-0]反=11111111。"
+      }
     }
   ]
 }
