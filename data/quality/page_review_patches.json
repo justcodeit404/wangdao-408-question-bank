@@ -8658,6 +8658,30 @@
       "fields": {
         "explanation": "答案图片：answer_crops/net/page_261_X02_ans.jpg\n\nTCP中端口号80标识Web服务器端的HTTP进程，客户端访问Web服务器的HTTP进程的端口号由客户端的操作系统动态分配。因此答案为选项C。"
       }
+    },
+    {
+      "course": "net",
+      "chapter": "网络层 · 路由算法与路由协议 · 选择题",
+      "qid": "X04",
+      "fields": {
+        "explanation": "答案图片：answer_crops/net/page_208_X04_ans.jpg\n\n在链路状态算法中，路由器通过交换每个节点到邻居节点的代价来构建一个完整的网络拓扑结构。然后，路由器使用Dijkstra最短路径算法来计算到所有节点的最短路径。"
+      }
+    },
+    {
+      "course": "net",
+      "chapter": "数据链路层 · 局域网 · 选择题",
+      "qid": "X37",
+      "fields": {
+        "explanation": "答案图片：answer_crops/net/page_114_X37_ans.jpg\n答案图片：answer_crops/net/page_115_X37_ans_p2.jpg\n\n有关最短帧长的题要抓住两个公式来分析：①发送帧的时间≥争用期的时间；②最短帧长=数据传输速率×争用期的时间。题中，最短帧长减少800比特，则发送帧的时间减少0.8μs，要使①和②依然成立，就需要至少将争用期（信号的往返时间）的时间减少0.8μs，所以往返传播的总距离至少需要减少200000km/s×0.8μs=160m，即单程距离至少需要减少80m。"
+      }
+    },
+    {
+      "course": "net",
+      "chapter": "物理层 · 通信基础 · 选择题",
+      "qid": "X24",
+      "fields": {
+        "explanation": "答案图片：answer_crops/net/page_045_X24_ans.jpg\n\n设信号状态数为V。无噪声信道的极限速率（奈奎斯特定理）为2Wlog₂V；有噪声信道的极限速率（香农定理）为Wlog₂(1+S/N)。已知信噪比为30dB，可得S/N=1000，要求：2Wlog₂V≥Wlog₂(1001)≈W×10，化简得log₂V≥5，求得V≥32。因此，信号状态数至少为32。"
+      }
     }
   ]
 }
