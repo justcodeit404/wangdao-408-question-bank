@@ -2720,7 +2720,8 @@
       "chapter": "网络层 · IPv6 · 选择题",
       "qid": "X07",
       "fields": {
-        "content": "【2023统考真题】下列关于IPv4和IPv6的叙述中，正确的是（）。\nI.IPv6地址空间是IPv4地址空间的2^96倍\nII.IPv4首部和IPv6基本首部的长度均可变\nIII.IPv4向IPv6过渡可以采用双协议栈和隧道技术\nIV.IPv6首部的Hop Limit字段等价于IPv4首部的TTL字段"
+        "content": "【2023统考真题】下列关于IPv4和IPv6的叙述中，正确的是（）。\nI.IPv6地址空间是IPv4地址空间的2^96倍\nII.IPv4首部和IPv6基本首部的长度均可变\nIII.IPv4向IPv6过渡可以采用双协议栈和隧道技术\nIV.IPv6首部的Hop Limit字段等价于IPv4首部的TTL字段",
+        "explanation": "答案图片：answer_crops/net/page_191_X07_ans.jpg\n\nIPv4地址占32位，地址空间为2^32；IPv6地址占128位，地址空间为2^128，IPv6地址空间是IPv4地址空间的2^96倍，说法I错误。IPv4首部长度是4B的倍数，长度可变；IPv6基本首部长度是40B,不可变，说法II错误。IPv4向IPv6过渡可以采用双协议栈(设备同时支持IPv4和IPv6)和隧道技术（IPv6数据报封装IPv4的数据部分），说法III正确。IPv6首部的HopLimit字段和IPv4首部的TTL字段都用于限制数据报在网络中经过的路由器数量，说法IV正确。"
       }
     },
     {
@@ -8590,6 +8591,38 @@
       "qid": "X42",
       "fields": {
         "explanation": "答案图片：answer_crops/net/page_115_X42_ans.jpg\n\n802.11帧首部的地址字段最常用的两种情况如下表所示。去往AP 来自AP 地址1 地址2 地址3 地址4\n0 1 接收地址=目的地址 发送地址=AP地址 源地址 —\n1 0 接收地址=AP地址 发送地址=源地址 目的地址 —\n帧F是由H站发送到AP的，即“去往AP=1”而“来自AP=0”。因此，地址1是AP的MAC地址，地址2是H站的MAC地址，地址3是R站的MAC地址。"
+      }
+    },
+    {
+      "course": "net",
+      "chapter": "网络层 · IPv4 · 选择题",
+      "qid": "X15",
+      "fields": {
+        "explanation": "答案图片：answer_crops/net/page_171_X15_ans.jpg\n\n10.255.255.255为A类地址，主机号全1，代表网络广播，为广播地址。192.168.24.59/30为CIDR地址，只有后面2位为主机号，而59用二进制表示为00111011，可知主机号全1，代表网络广播，为广播地址。224.105.5.211为D类多播地址。"
+      }
+    },
+    {
+      "course": "net",
+      "chapter": "网络层 · IPv6 · 选择题",
+      "qid": "X01",
+      "fields": {
+        "explanation": "答案图片：answer_crops/net/page_190_X01_ans.jpg\n\nIPv6的地址用16B（128比特）表示，比IPv4长得多，地址空间是IPv4的2^96倍。"
+      }
+    },
+    {
+      "course": "net",
+      "chapter": "物理层 · 通信基础 · 选择题",
+      "qid": "X15",
+      "fields": {
+        "explanation": "答案图片：answer_crops/net/page_045_X15_ans.jpg\n\n每个信号有8x2=16种变化，每个码元携带log₂16=4比特信息，则信息传输速率为1200x4=4800b/s。"
+      }
+    },
+    {
+      "course": "net",
+      "chapter": "数据链路层 · 局域网 · 选择题",
+      "qid": "X14",
+      "fields": {
+        "explanation": "答案图片：answer_crops/net/page_112_X14_ans.jpg\n\n来回路程=10000×2m，RTT=10000x2÷(200x10^6)=10^-4s，最小帧长=WRTT=1000bit。"
       }
     }
   ]
