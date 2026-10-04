@@ -2576,8 +2576,145 @@ function stemTableHtml(lines) {
   return '<div class="stem-table"><table><thead><tr>' + th + '</tr></thead><tbody>' + tr + '</tbody></table></div>';
 }
 
-function fillStemText(el, raw) {
-  const text = prepareMathText(raw);
+// ponytail: same splitter copied in platform katex.ts, miniapp render-math.ts, zhenti format.ts
+const STEM_CODE_KW = /^(#include|#define|unsigned|signed|short|int|char|float|double|void|struct|typedef|sizeof|switch|return|printf|scanf|while|else|for|if)\b/;
+const STEM_CODE_BREAK = /[\u3400-\u9fff\u3000-\u303f\uff00-\uffef\u2018\u2019\u201c\u201d]/;
+
+function stemCodeKwLen(s, i) {
+  if (i > 0 && /[A-Za-z0-9_]/.test(s[i - 1])) return 0;
+  const m = STEM_CODE_KW.exec(s.slice(i));
+  if (!m) return 0;
+  const after = s[i + m[0].length];
+  if (after && /[\u3400-\u9fff]/.test(after)) return 0;
+  return m[0].length;
+}
+
+function stemCodeRunEnd(s, start) {
+  let i = start;
+  let paren = 0;
+  let brace = 0;
+  let bracket = 0;
+  let str = null;
+  while (i < s.length) {
+    const c = s[i];
+    if (str) {
+      if (c === '\\' && i + 1 < s.length) { i += 2; continue; }
+      if (c === str) str = null;
+      i += 1;
+      continue;
+    }
+    if (c === "'") {
+      const lit = /^'(?:\\.|[^'\\])'/.exec(s.slice(i));
+      if (lit) { i += lit[0].length; continue; }
+      i += 1;
+      continue;
+    }
+    if (c === '"') { str = '"'; i += 1; continue; }
+    if (c === '(') paren += 1;
+    else if (c === ')') paren = Math.max(0, paren - 1);
+    else if (c === '{') brace += 1;
+    else if (c === '}') brace = Math.max(0, brace - 1);
+    else if (c === '[') bracket += 1;
+    else if (c === ']') bracket = Math.max(0, bracket - 1);
+    else if (STEM_CODE_BREAK.test(c)) break;
+    i += 1;
+  }
+  while (i > start && /\s/.test(s[i - 1])) i -= 1;
+  return i;
+}
+
+function stemCodeStartEnd(s, i) {
+  const n = stemCodeKwLen(s, i);
+  if (!n) return 0;
+  const kw = s.slice(i, i + n);
+  const end = stemCodeRunEnd(s, i);
+  if (end <= i + n) return 0;
+  const chunk = s.slice(i, end);
+  if (/[;{]/.test(chunk) || kw === '#include' || kw === '#define') return end;
+  return 0;
+}
+
+function spaceLoneEquals(line) {
+  let out = '';
+  for (let i = 0; i < line.length; i += 1) {
+    const c = line[i];
+    if (c !== '=') { out += c; continue; }
+    const prev = line[i - 1] || '';
+    const next = line[i + 1] || '';
+    if ('!=<>+-*/%&|^'.includes(prev) || next === '=') { out += c; continue; }
+    out += out.endsWith(' ') ? '= ' : ' = ';
+    if (next === ' ') i += 1;
+  }
+  return out.replace(/[ \t]{2,}/g, ' ').trim();
+}
+
+function reflowCollapsedCode(text) {
+  const lines = [];
+  let buf = '';
+  let paren = 0;
+  let brace = 0;
+  let bracket = 0;
+  let str = null;
+  let i = 0;
+  while (i < text.length) {
+    const c = text[i];
+    if (str) {
+      buf += c;
+      if (c === '\\' && i + 1 < text.length) { buf += text[i + 1]; i += 2; continue; }
+      if (c === str) str = null;
+      i += 1;
+      continue;
+    }
+    if (c === '"') { str = '"'; buf += c; i += 1; continue; }
+    if (c === '(') paren += 1;
+    else if (c === ')') paren = Math.max(0, paren - 1);
+    else if (c === '{') brace += 1;
+    else if (c === '}') brace = Math.max(0, brace - 1);
+    else if (c === '[') bracket += 1;
+    else if (c === ']') bracket = Math.max(0, bracket - 1);
+    buf += c;
+    if (paren === 0 && brace === 0 && bracket === 0 && c === ';') {
+      const line = spaceLoneEquals(buf);
+      if (line) lines.push(line);
+      buf = '';
+    }
+    i += 1;
+  }
+  const tail = spaceLoneEquals(buf);
+  if (tail) lines.push(tail);
+  return lines.join('\n');
+}
+
+function formatStemCode(raw) {
+  const text = String(raw || '').replace(/\r\n/g, '\n').trim();
+  if (!text) return '';
+  if (text.includes('\n')) return text.split('\n').map(spaceLoneEquals).filter(Boolean).join('\n');
+  return reflowCollapsedCode(text);
+}
+
+function splitStemCode(src) {
+  const s = String(src || '');
+  const parts = [];
+  let i = 0;
+  let proseAt = 0;
+  while (i < s.length) {
+    const end = stemCodeStartEnd(s, i);
+    if (end) {
+      const head = s.slice(proseAt, i).replace(/^\n+|\n+$/g, '');
+      if (head.trim()) parts.push({ kind: 'prose', text: head });
+      parts.push({ kind: 'code', text: formatStemCode(s.slice(i, end)) });
+      i = end;
+      proseAt = end;
+      continue;
+    }
+    i += 1;
+  }
+  const tail = s.slice(proseAt).replace(/^\n+|\n+$/g, '');
+  if (tail.trim()) parts.push({ kind: 'prose', text: tail });
+  return parts;
+}
+
+function paintPreparedStem(el, text) {
   const lines = String(text || '').split('\n');
   // 题干可含多个 markdown 管道表；表前/表间/表后文字仍走 .stem-prose 纯文本
   const parts = [];
@@ -2601,21 +2738,39 @@ function fillStemText(el, raw) {
     }
   }
   flushProse();
-  if (!parts.some((p) => p.type === 'table')) {
+  const flat = [];
+  parts.forEach((p) => {
+    if (p.type === 'table') {
+      flat.push(p);
+      return;
+    }
+    splitStemCode(p.text).forEach((seg) => {
+      flat.push(seg.kind === 'code' ? { type: 'code', text: seg.text } : { type: 'prose', text: seg.text });
+    });
+  });
+  if (!flat.some((p) => p.type === 'table' || p.type === 'code')) {
     el.textContent = text;
     return;
   }
-  el.innerHTML = parts
-    .map((p) => (p.type === 'table' ? stemTableHtml(p.lines) : '<div class="stem-prose"></div>'))
+  el.innerHTML = flat
+    .map((p) => {
+      if (p.type === 'table') return stemTableHtml(p.lines);
+      if (p.type === 'code') return '<pre class="stem-code"></pre>';
+      return '<div class="stem-prose"></div>';
+    })
     .join('');
   const proses = el.querySelectorAll('.stem-prose');
+  const codes = el.querySelectorAll('.stem-code');
   let pi = 0;
-  parts.forEach((p) => {
-    if (p.type === 'prose' && proses[pi]) {
-      proses[pi].textContent = p.text;
-      pi += 1;
-    }
+  let ci = 0;
+  flat.forEach((p) => {
+    if (p.type === 'prose' && proses[pi]) proses[pi++].textContent = p.text;
+    if (p.type === 'code' && codes[ci]) codes[ci++].textContent = p.text;
   });
+}
+
+function fillStemText(el, raw) {
+  paintPreparedStem(el, prepareMathText(raw));
 }
 
 function renderQuestionBody(container, q, mode) {
@@ -2634,7 +2789,7 @@ function renderQuestionBody(container, q, mode) {
   if (q.sub_questions) {
     const subEls = container.querySelectorAll('[data-role="sub"]');
     q.sub_questions.forEach((s, i) => {
-      if (subEls[i]) { subEls[i].textContent = prepareMathText(s); renderKatex(subEls[i]); }
+      if (subEls[i]) { paintPreparedStem(subEls[i], prepareMathText(s)); renderKatex(subEls[i]); }
     });
   }
 
@@ -3180,7 +3335,7 @@ function fillExplanation(el, expl, prefix) {
     started = true;
     if (!piece.trim()) continue;
     const wrap = document.createElement('div');
-    wrap.textContent = piece.trim();
+    paintPreparedStem(wrap, piece.trim());
     renderKatex(wrap);
     el.appendChild(wrap);
   }
@@ -4072,8 +4227,8 @@ function highlightText(element, term) {
 // ========================
 function renderKatex(element) {
   if (!element || !window.katex) return;
-  if (element.querySelector && element.querySelector('table')) {
-    // 含表格时 prose 与单元格分开渲染；单元格里的 $...$ 公式也要走 KaTeX
+  if (element.querySelector && (element.querySelector('table') || element.querySelector('.stem-code'))) {
+    // 含表格或代码块时，只对正文/单元格跑 KaTeX，代码块保持原文字
     element.querySelectorAll('.stem-prose, .stem-table th, .stem-table td').forEach(renderKatex);
     return;
   }
@@ -5004,7 +5159,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=386').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=387').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {

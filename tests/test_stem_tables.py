@@ -47,8 +47,11 @@ class FakeEl {
     this._text = '';
     this._hasTable = /<table>/.test(this._html);
     this._prose = [];
+    this._codes = [];
     const proseCount = (this._html.match(/class="stem-prose"/g) || []).length;
     for (let k = 0; k < proseCount; k++) this._prose.push(new FakeEl('div'));
+    const codeCount = (this._html.match(/class="stem-code"/g) || []).length;
+    for (let k = 0; k < codeCount; k++) this._codes.push(new FakeEl('pre'));
     this._cells = [];
     const cellRe = /<(th|td)>([\s\S]*?)<\/\1>/g;
     let m;
@@ -65,6 +68,7 @@ class FakeEl {
   }
   querySelectorAll(sel) {
     if (sel === '.stem-prose') return this._prose;
+    if (sel === '.stem-code') return this._codes || [];
     if (sel === '.stem-table th, .stem-table td') return this._cells;
     if (sel === '.stem-prose, .stem-table th, .stem-table td') {
       return this._prose.concat(this._cells);
@@ -89,11 +93,13 @@ const results = CASES.map((input) => {
   const rawHtml = el._html;
   const textAfterFill = el._text;
   const proseTexts = el._prose.map((p) => p._text);
+  const codeTexts = (el._codes || []).map((c) => c._text);
   renderKatex(el);
   return {
     usedTextPath,
     rawHtml,
     proseTexts,
+    codeTexts,
     tableCount: (rawHtml.match(/<table>/g) || []).length,
     cellsHtml: el._cells.map((c) => c.innerHTML || c._text),
     proseHtml: el._prose.map((p) => p.innerHTML || p._text),
@@ -237,3 +243,39 @@ def test_literal_superscript_wraps_once():
     (res,) = _eval_fill(["n^{2}"])
     assert res["textAfterFill"] == "$n^{2}$"
     assert "MATH[D:" not in res["finalHtml"]
+
+
+def test_collapsed_c_snippet_is_a_code_block():
+    (res,) = _eval_fill(
+        ["【2025统考真题】在32位计算机上执行下列C语言代码段后，ui的值是（）。short si= -32767;unsigned int ui=si;"]
+    )
+    assert not res["usedTextPath"]
+    assert '<pre class="stem-code">' in res["rawHtml"]
+    assert res["codeTexts"] == ["short si = -32767;\nunsigned int ui = si;"]
+    assert res["proseTexts"] == ["【2025统考真题】在32位计算机上执行下列C语言代码段后，ui的值是（）。"]
+    assert "<script>" not in res["rawHtml"]
+
+
+def test_for_header_semicolons_stay_on_one_line():
+    (res,) = _eval_fill(
+        ["时间复杂度是。int count=0, i, j; for(i=1; i*i<=n; i++) for(j=1; j<=i; j++) count ++;"]
+    )
+    code = res["codeTexts"][0]
+    assert "for(i = 1; i*i<=n; i++)" in code
+    assert code.startswith("int count = 0, i, j;")
+
+
+def test_multiline_if_stays_one_block():
+    src = '如下：\nint si=65536;\nif(i<=j-1) printf("王道");\nelse printf("计算机教育");\n结束。'
+    (res,) = _eval_fill([src])
+    assert len(res["codeTexts"]) == 1
+    assert "if(i<=j-1) printf(\"王道\");" in res["codeTexts"][0]
+    assert "else printf(\"计算机教育\");" in res["codeTexts"][0]
+    assert res["proseTexts"][0].startswith("如下：")
+    assert res["proseTexts"][-1] == "结束。"
+
+
+def test_type_word_inside_chinese_is_not_code():
+    (res,) = _eval_fill(["假定编译器规定int型和short型长度分别为32位。"])
+    assert res["usedTextPath"]
+    assert res["codeTexts"] == []
