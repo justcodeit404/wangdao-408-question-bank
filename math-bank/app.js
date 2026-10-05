@@ -3284,6 +3284,8 @@ function resolveImageSrc(imageRef) {
   return `../pdf_images/page_${page}.png` + q;
 }
 
+const ZOOM_ICON_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>';
+
 function appendExplainImage(el, path) {
   const src = resolveImageSrc({ cropped: path });
   if (!src) return;
@@ -3297,6 +3299,14 @@ function appendExplainImage(el, path) {
   img.addEventListener('click', () => zoomImage(img.src));
   img.addEventListener('error', () => fig.classList.add('is-broken'));
   fig.appendChild(img);
+  const zoom = document.createElement('span');
+  zoom.className = 'q-image-zoom';
+  zoom.innerHTML = ZOOM_ICON_SVG;
+  fig.appendChild(zoom);
+  const cap = document.createElement('figcaption');
+  cap.className = 'q-image-note';
+  cap.textContent = '解析配图';
+  fig.appendChild(cap);
   el.appendChild(fig);
 }
 
@@ -3354,7 +3364,8 @@ function imageHtml(imageRef) {
       <img src="${imgPath}" alt="${escapeHtml(pageLabel)}" loading="eager" decoding="async"
         onerror="this.closest('.q-image').classList.add('is-broken')"
         onclick="zoomImage(this.src)">
-      <figcaption class="q-image-note">题目配图 · ${escapeHtml(pageLabel)} <span class="q-image-hint">（点击放大）</span></figcaption>
+      <span class="q-image-zoom" aria-hidden="true">${ZOOM_ICON_SVG}</span>
+      <figcaption class="q-image-note">图 · ${escapeHtml(pageLabel)}</figcaption>
     </figure>
   `;
 }
@@ -3399,6 +3410,14 @@ function zoomImage(src) {
   overlay.addEventListener('click', (e) => {
     if (e.target === overlay) overlay.remove();
   });
+  const hint = document.createElement('div');
+  hint.className = 'zoom-hint';
+  hint.textContent = '滚轮缩放 · 拖动平移 · Esc 或点击空白关闭';
+  overlay.appendChild(hint);
+  const escHandler = (e) => {
+    if (e.key === 'Escape') { overlay.remove(); window.removeEventListener('keydown', escHandler); }
+  };
+  window.addEventListener('keydown', escHandler);
   document.body.appendChild(overlay);
   img.style.cursor = 'grab';
 }
@@ -5159,7 +5178,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=390').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=396').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {

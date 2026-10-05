@@ -826,19 +826,41 @@ kbd {
 .zoom-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.85);
-  z-index: 9999;
+  background: rgba(2, 6, 23, 0.92);
+  z-index: 2000;
   cursor: zoom-out;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  animation: zoomFadeIn 0.15s ease;
 }
 .zoom-overlay img {
   max-width: 95vw;
   max-height: 95vh;
   transform-origin: center center;
   transition: transform 0.05s ease-out;
+  user-select: none;
+  background: #fff;
+  border-radius: var(--radius-md);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+}
+@keyframes zoomFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.zoom-hint {
+  position: fixed;
+  left: 50%;
+  bottom: 22px;
+  transform: translateX(-50%);
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+  pointer-events: none;
   user-select: none;
 }
 
@@ -2000,12 +2022,14 @@ body.compact-view .question-row .row-tags .row-tag { display: none; }
   color: var(--text-primary);
 }
 
+/* 图题统一风格：书页截图始终白底卡片（含 dark 主题），细边框 + 轻投影 + 悬停放大镜 */
 .q-image {
-  margin: 12px 0 18px;
-  padding: 12px;
+  margin: 14px 0 20px;
+  padding: 14px 14px 8px;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  background: var(--surface);
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(15, 17, 26, 0.08);
   text-align: center;
 }
 
@@ -2027,10 +2051,42 @@ body.compact-view .question-row .row-tags .row-tag { display: none; }
 
 .q-image-note {
   display: block;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   color: var(--text-tertiary);
-  margin-top: 8px;
+  margin-top: 6px;
   text-align: center;
+  letter-spacing: 0.02em;
+}
+
+/* 悬停放大按钮（imageHtml 注入 .q-image-zoom） */
+.q-image {
+  position: relative;
+}
+
+.q-image-zoom {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(15, 17, 26, 0.55);
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  pointer-events: none;
+}
+
+.q-image-zoom svg {
+  width: 16px;
+  height: 16px;
+}
+
+.q-image:hover .q-image-zoom {
+  opacity: 1;
 }
 
 .q-image-hint {
@@ -2245,24 +2301,7 @@ body.compact-view .question-row .row-tags .row-tag { display: none; }
 
 [data-theme="dark"] .search-mark { background: var(--amber-600); color: #fff; }
 
-/* Zoom overlay */
-.zoom-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(2, 6, 23, 0.92);
-  z-index: 2000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: zoom-out;
-}
 
-.zoom-overlay img {
-  max-width: 95%;
-  max-height: 95%;
-  object-fit: contain;
-  border-radius: var(--radius-md);
-}
 
 .sidebar-overlay {
   display: none;
