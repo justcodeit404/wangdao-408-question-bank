@@ -75,7 +75,9 @@ foreach ($key in $Courses) {
     }
 }
 # small entry/manifest files: push every time so stamps and data always land together
-foreach ($name in @("index.html", "sw.js", "app.js", "data.js", "choice-only.js",
+# styles.css 一并热更：云端 408 = shared/banks/bank-408（release 是指向它的符号链接），
+# 壳样式改动也走这条通道，否则 design 变更到不了云。
+foreach ($name in @("index.html", "sw.js", "app.js", "styles.css", "data.js", "choice-only.js",
                     "quality-ledger.json", "quality-hold.json", "manifest.json")) {
     $p = Join-Path $Bank $name
     if (Test-Path -LiteralPath $p) { $toPush.Add($name) }
