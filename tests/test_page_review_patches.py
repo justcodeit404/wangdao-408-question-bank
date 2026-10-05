@@ -280,7 +280,7 @@ def test_net_ipv4_a11_2_moved_out_of_choice():
 def test_coa_perf_x20_uses_5e5():
     content = _q("coa", "计算机的性能指标", "X20")["content"]
     assert '5x10"' not in content
-    assert "5×10^5" in content
+    assert "5×10^{5}" in content
 
 
 def test_ds_array_x07_has_k_and_aij():
@@ -554,8 +554,8 @@ def test_coa_io_x06_slash_in_io_device():
 def test_coa_mem_x11_superscripts():
     question = _q("coa", "存储器概述", "X11")
     assert "°" not in "".join(question["options"].values())
-    assert question["options"]["A"] == "4×10^6B/s"
-    assert question["options"]["C"] == "8×10^6B/s"
+    assert question["options"]["A"] == "4×10^{6}B/s"
+    assert question["options"]["C"] == "8×10^{6}B/s"
     assert question["options"]["D"] == "8×2^{20}B/s"
 
 
@@ -769,7 +769,7 @@ def test_os_vm_x08_roman_ii_present():
 def test_ds_hash_x13_two_blank_options():
     question = _q("ds", "散列（Hash）表", "X13")
     assert "①" in question["content"]
-    assert "0~16" in question["content"]
+    assert "0～16" in question["content"]
     assert question["options"]["A"] == "17"
     assert "②" not in question["options"]["D"]
     assert question["answer"]["choice"] == "AC"
@@ -926,7 +926,7 @@ def test_ds_bfs_x01_no_blank_line_before_iv():
     content = question["content"]
     assert "\n\n" not in content
     assert "第6章" not in content
-    assert "IV．实现图的广度优先算法" in content
+    assert "IV.实现图的广度优先算法" in content
     assert content.count("\n") == 4
 
 
