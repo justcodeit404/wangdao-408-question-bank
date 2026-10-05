@@ -64,6 +64,35 @@ PAD_TOP_CONT = 10         # 跨页续段的上方留白
 PAD_BOTTOM = 14           # 下方留白
 MIN_PART_H = 12           # 段最小高度，低于此视为空段跳过
 
+# 增量门：答案侧（a_pages/answer）未变时跳过全部重裁（全量重裁 4 课约 28s，占重建一半以上）。
+# 裁剪参数/算法变更时递增 ALGO_TAG 强制全量。
+STATE_PATH = PROJECT_ROOT / "data" / "quality" / "answer_crop_state.json"
+ALGO_TAG = "anscrop-v1"
+
+
+def answers_fingerprint(src: dict) -> str:
+    """答案侧输入指纹：任何影响裁剪/回写的字段变化都会改 hash。"""
+    import hashlib
+
+    h = hashlib.sha1()
+    for ch in src.get("chapters", []):
+        for q in ch.get("questions", []):
+            h.update(
+                json.dumps(
+                    [
+                        q.get("topic_title"),
+                        q.get("id"),
+                        q.get("type"),
+                        q.get("a_pages"),
+                        q.get("answer"),
+                    ],
+                    ensure_ascii=False,
+                    sort_keys=True,
+                    default=str,
+                ).encode("utf-8")
+            )
+    return h.hexdigest()
+
 # 本小节答案区起始：X.Y.Z 答案与解析。比 parse_patterns.answer_header_re 宽松——
 # OCR 会把小节号与标题之间混入 ～ ~ 等杂质（如「5.1.5～答案与解析」）。
 # 注意不要加「小节号行」这类宽泛停止条件：解析正文里的 IP/版本号会被误截停
@@ -414,6 +443,43 @@ def main() -> None:
     bank_path = BANK_DIR / f"data-{key}.json"
     bank_data = json.loads(bank_path.read_text(encoding="utf-8"))
 
+    # ---- 增量门：答案侧未变且裁剪文件齐全 → 跳过重裁 ----
+    # merge_courses 已用 output/questions_*.json（explanation 带答案图片行）重写过 data-*，
+    # 跳过时无需补写；--qids/--limit 局部运行不进门（避免部分题误标全量态）。
+    state: dict = {}
+    if STATE_PATH.exists():
+        state = json.loads(STATE_PATH.read_text(encoding="utf-8"))
+    fingerprint = answers_fingerprint(src)
+    ent = state.get(key) or {}
+    if (
+        not args.dry_run
+        and not only
+        and not args.limit
+        and ent.get("algo") == ALGO_TAG
+        and ent.get("hash") == fingerprint
+        and ent.get("rels_by_q")  # 旧版 state（仅 flat rels）不进门，全量重裁一次自动升级
+        and all((PROJECT_ROOT / "math-bank" / r).exists() for r in ent.get("rels", []))
+    ):
+        # 修补 data-*：fix_questions 的 CURATED_ANSWER_PATCHES 每轮都会整段重写 explanation、
+        # 抹掉答案图片行（2026-09-29 incident 的修复职责在本脚本），skip 时必须代为补线，
+        # 否则门内会 shipped 缺行数据。用 state 里存的关系按原 wire 逻辑补，保证字节一致。
+        rels_by_q = ent["rels_by_q"]
+        for _ch, q in iter_questions(bank_data):
+            k = f"{q.get('topic_title') or ''}\u241f{q.get('id') or ''}"
+            rels = rels_by_q.get(k)
+            if rels:
+                ans = q.get("answer") or {}
+                ans["explanation"] = wire_explanation(ans.get("explanation") or "", rels)
+                q["answer"] = ans
+        # 归一化 data-* 为 write_course_json 格式，避免与 merge_courses 的 .js 包装
+        # 来回翻字节（push_data 按 hash 比对，翻字节会触发无谓热更）
+        write_course_json(BANK_DIR, key, course.name, bank_data)
+        print(
+            f"[skip] {key}: answers unchanged, {len(ent['rels'])} crops reused "
+            f"(删 {STATE_PATH.name} 或改 --qids 可强制重裁)"
+        )
+        return
+
     # (topic_title, id) -> data question（用于回写 data-<key>.json）
     bank_index: dict[tuple[str, str], dict] = {}
     for _ch, q in iter_questions(bank_data):
@@ -542,6 +608,19 @@ def main() -> None:
         )
         write_course_json(BANK_DIR, key, course.name, bank_data)
         print(f"[write] {course.out_json.name} + data-{key}.json/.js/.gz")
+
+    if not args.dry_run and not only and not args.limit:
+        state[key] = {
+            "algo": ALGO_TAG,
+            "hash": fingerprint,
+            "rels": [r for it in review_items for r in it["rels"]],
+            "rels_by_q": {
+                f"{it['topic']}\u241f{it['qid']}": it["rels"] for it in review_items
+            },
+        }
+        STATE_PATH.write_text(
+            json.dumps(state, ensure_ascii=False, indent=1), encoding="utf-8"
+        )
 
     write_review_html(review_items, stats, key, course.name)
     REPORT_PATH.parent.mkdir(parents=True, exist_ok=True)

@@ -16,10 +16,13 @@ $ErrorActionPreference = "Stop"
 $root = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
 Set-Location $root
 
-# Build python needs PIL (fix_questions recrops). Prefer MIMO_PYTHON.
+# Build python needs PIL (fix_questions recrops). Prefer MIMO_PYTHON,
+# then the monorepo root .venv (AGENTS.md 单一环境), then PATH python.
 $buildPy = $env:MIMO_PYTHON
 if (-not $buildPy) {
-    $buildPy = "python"
+    $repoRoot = Split-Path -Parent (Split-Path -Parent $root)
+    $repoVenv = Join-Path $repoRoot ".venv\Scripts\python.exe"
+    if (Test-Path -LiteralPath $repoVenv) { $buildPy = $repoVenv } else { $buildPy = "python" }
 }
 # Test python needs pytest. Derive from repo root (avoid non-ASCII in this file
 # so Windows PowerShell 5.1 does not mojibake the path).

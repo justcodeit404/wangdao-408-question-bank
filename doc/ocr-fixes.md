@@ -3090,3 +3090,12 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 
 - 选项/答案 B/解析不动；page_review_patches.json 既有 X24 条目合并补 `content`（loader 拒重复 key）。
 - rebuild_bank.ps1 重建：120 passed，缓存戳 v387→v388（index.html ?v / __BANK_DATA_VER__ / sw.js 三处一致）。
+## 2026-10-05 · 重建提速：gen_answer_crops 增量门（答案侧未变跳过重裁）
+
+主人问「修一题为什么这么久」→ 实测：全量重建 54s 中约 28s 是 4 门课无差别重裁 3226 张答案图（内容修复根本不改答案区）。
+
+- `gen_answer_crops.py` 新增答案侧指纹门：`data/quality/answer_crop_state.json` 按课记录指纹 + 每题 rels；答案（a_pages/answer）未变且裁剪文件齐全时跳过重裁（4 课 ~28s → ~0.3s），全量重建 54s → 6.5s。裁剪参数/算法变更递增 `ALGO_TAG` 强制全量；`--qids/--limit` 局部运行不进门。
+- **坑（已修）**：`fix_questions.py` 的 CURATED_ANSWER_PATCHES 每轮整段重写 explanation、确定性抹掉「答案图片」行，靠 gen 全量回写兜底；门内若只跳过重裁会 shipped 缺行数据。skip 路径现用 state 里的 rels 按原 `wire_explanation` 逻辑补线，已与全量输出做**字节级比对一致**（42.7s full vs 6.4s skip，data-* hash 全同）。
+- `rebuild_bank.ps1` python 回退链：MIMO_PYTHON → monorepo 根 `.venv` → PATH `python`（此前裸 `python` 无 PIL，白跑两次）。
+- 重建产物与云端 v388 data-* 语义+字节一致；本地缓存戳因过程性变更到 v390，热更带戳文件后云 remote=390。
+
