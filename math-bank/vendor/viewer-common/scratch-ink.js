@@ -476,8 +476,10 @@
     });
   }
 
-  // 导出白底高对比 PNG（限制像素与体积，避免透明背景导致视觉模型识别异常）。
-  function documentToPng(doc, maxDim) {
+  // 导出白底高对比位图（限制像素与体积，避免透明背景导致视觉模型识别异常）。
+  // mime 默认 PNG 兼容旧调用；手写白底图无透明需求，调用方传 image/jpeg 可显著减小体积。
+  function documentToPng(doc, maxDim, mime, quality) {
+    mime = mime || 'image/png';
     maxDim = maxDim || 1400;
     var scale = Math.min(1, maxDim / Math.max(doc.width, doc.height));
     var outWidth = Math.max(1, Math.round(doc.width * scale));
@@ -494,16 +496,16 @@
       if (typeof canvas.toBlob === 'function') {
         canvas.toBlob(function (blob) {
           if (blob) resolve(blob);
-          else reject(new Error('导出 PNG 失败'));
-        }, 'image/png');
+          else reject(new Error('导出图片失败'));
+        }, mime, quality);
         return;
       }
       // 老浏览器兜底：dataURL
-      var url = canvas.toDataURL('image/png');
+      var url = canvas.toDataURL(mime, quality);
       var bin = atob(url.split(',')[1] || '');
       var arr = new Uint8Array(bin.length);
       for (var idx = 0; idx < bin.length; idx++) arr[idx] = bin.charCodeAt(idx);
-      resolve(new Blob([arr], { type: 'image/png' }));
+      resolve(new Blob([arr], { type: mime }));
     });
   }
 

@@ -110,11 +110,15 @@
     }, auth);
   }
 
-  function saveRemote(meta, doc, pngBlob, auth) {
+  function saveRemote(meta, doc, imageBlob, auth) {
     var form = new FormData();
     form.append('ink_document', JSON.stringify(doc));
-    form.append('image', pngBlob, 'note.png');
+    form.append('image', imageBlob, 'note.jpg');
     return api('/api/notes/question/' + encodeURIComponent(meta.questionId) + '/save', { method: 'POST', body: form }, auth);
+  }
+
+  function getRemote(questionId, auth) {
+    return api('/api/notes/question/' + encodeURIComponent(questionId), {}, auth);
   }
 
   function recognizeRemote(questionId, confirm, auth) {
@@ -143,6 +147,10 @@
     return sync.ensureAuth();
   }
 
+  function currentDoc(controller) {
+    return ink.serializeDocument(controller.session.strokes, controller.canvas.width || 800, controller.canvas.height || 600, { source: 'viewer' });
+  }
+
   // 返回 { ok, queued?, saved?, note?, adminOnly?, status?, error? }
   async function saveNote(controller, opts) {
     opts = opts || {};
@@ -152,7 +160,9 @@
       : null) || {};
     if (!meta.uid) return { ok: false, error: '缺少题目 UID，无法保存笔记' };
     meta.bank = meta.bank || bankKey();
-    var doc = ink.serializeDocument(controller.session.strokes, controller.canvas.width || 800, controller.canvas.height || 600, { source: 'viewer' });
+    var doc = currentDoc(controller);
+    // 记录已持久化笔迹签名，切题/关闭时据此脏检查，避免重复入队已同步内容
+    controller.lastNoteStrokesSig = JSON.stringify(doc.strokes);
 
     if (!onPlatformHost()) {
       enqueue(meta, doc);
@@ -171,8 +181,8 @@
       return { ok: true, queued: true, message: '暂未在平台解析到该题，已暂存本地' };
     }
     meta.questionId = resolved.data.question_id;
-    var png = await ink.documentToPng(doc, 1400);
-    var saved = await saveRemote(meta, doc, png, auth);
+    var image = await ink.documentToPng(doc, 1400, 'image/jpeg', 0.85);
+    var saved = await saveRemote(meta, doc, image, auth);
     if (!saved.ok) {
       if (recognize && saved.status === 403) {
         return { ok: false, status: 403, error: '无权限保存笔记' };
@@ -196,7 +206,8 @@
     return { ok: true, saved: true, note: note };
   }
 
-  // 补传队列：只保存原稿（识别由用户后续显式触发，避免覆盖人工内容）
+  // 补传队列：只保存原稿（识别由用户后续显式触发，避免覆盖人工内容）。
+  // ponytail: 3 并发 worker——条目间无依赖，串行在队列几十条时明显拖慢首屏；失败条目保留重试。
   async function flushQueue() {
     if (!onPlatformHost()) return { ok: false, sent: 0 };
     var auth = await ensureAuthed();
@@ -205,22 +216,26 @@
     if (!entries.length) return { ok: true, sent: 0 };
     var remain = [];
     var sent = 0;
-    for (var i = 0; i < entries.length; i++) {
-      var entry = entries[i];
-      var meta = { bank: entry.bank || '', uid: entry.source_uid, chapter: entry.chapter, title: entry.title };
-      try {
-        var resolved = await resolveRemote(meta, auth);
-        if (!resolved.ok) throw new Error('resolve 404');
-        meta.questionId = resolved.data.question_id;
-        var doc = ink.parseDocument(entry.ink_document) || entry.ink_document;
-        var png = await ink.documentToPng(doc, 1400);
-        var saved = await saveRemote(meta, doc, png, auth);
-        if (!saved.ok) throw new Error('save HTTP ' + saved.status);
-        sent++;
-      } catch (e) {
-        remain.push(entry);
+    var next = 0;
+    async function worker() {
+      while (next < entries.length) {
+        var entry = entries[next++];
+        var meta = { bank: entry.bank || '', uid: entry.source_uid, chapter: entry.chapter, title: entry.title };
+        try {
+          var resolved = await resolveRemote(meta, auth);
+          if (!resolved.ok) throw new Error('resolve 404');
+          meta.questionId = resolved.data.question_id;
+          var doc = ink.parseDocument(entry.ink_document) || entry.ink_document;
+          var image = await ink.documentToPng(doc, 1400, 'image/jpeg', 0.85);
+          var saved = await saveRemote(meta, doc, image, auth);
+          if (!saved.ok) throw new Error('save HTTP ' + saved.status);
+          sent++;
+        } catch (e) {
+          remain.push(entry);
+        }
       }
     }
+    await Promise.all([worker(), worker(), worker()]);
     writeQueue(remain);
     return { ok: remain.length === 0, sent: sent, pending: remain.length };
   }
@@ -412,7 +427,7 @@
 
     saveBtn.addEventListener('click', function () { doSave(false); });
     recognizeBtn.addEventListener('click', function () { doSave(true); });
-    return { wrap: wrap, doSave: doSave, setStatus: setStatus, renderResult: renderResult };
+    return { wrap: wrap, doSave: doSave, setStatus: setStatus, renderResult: renderResult, result: result, status: status };
   }
 
   var IMPORT_CHUNK = 100;
@@ -458,12 +473,44 @@
     return { ok: true, saved: saved, skipped: skipped, unresolved: unresolved };
   }
 
+  // ---- 回显：切题 / 打开草稿板后，拉取本题已保存笔记（笔迹回放到画布 + 转写稿渲染）----
+
+  async function hydrate(controller, ui) {
+    if (!onPlatformHost()) return;
+    var meta = (global.ViewerScratchPad && global.ViewerScratchPad.questionMeta
+      ? global.ViewerScratchPad.questionMeta(controller)
+      : null) || {};
+    if (!meta.uid) return;
+    meta.bank = meta.bank || bankKey();
+    // 同题且画布已有笔迹（已回显过，或用户在回显基础上又画过）时不重复拉取
+    if (controller.hydratedFor === meta.uid && controller.session.strokes.length) return;
+    var token = (controller.hydrateToken = (controller.hydrateToken || 0) + 1);
+    var auth = await ensureAuthed();
+    if (!auth.ok || token !== controller.hydrateToken) return;
+    var resolved = await resolveRemote(meta, auth);
+    if (!resolved.ok || token !== controller.hydrateToken) return;
+    var got = await getRemote(resolved.data.question_id, auth);
+    if (token !== controller.hydrateToken) return;
+    if (!got.ok || !got.data) return; // 404 = 本题尚无笔记，保持空白即可
+    var note = got.data;
+    controller.hydratedFor = meta.uid;
+    var doc = ink.parseDocument(note.ink_document);
+    if (doc && doc.strokes.length) {
+      controller.session.strokes = doc.strokes;
+      controller.session.redoStack = [];
+      controller.lastNoteStrokesSig = JSON.stringify(currentDoc(controller).strokes);
+      if (controller.session.open && typeof controller.repaint === 'function') controller.repaint();
+    }
+    ui.renderResult(note, false);
+  }
+
   function init(controller) {
     if (!controller || controller.noteUI) return;
     var ui = buildNoteUI(controller);
     controller.noteUI = ui;
     if (controller.footer) controller.footer.appendChild(ui.wrap);
-    // 切题 / 收起前不静默丢弃未保存笔迹：有笔迹即入队
+
+    // 切题 / 收起 / 关页前不静默丢弃未保存笔迹：与上次保存/回显一致的原稿不再重复入队
     controller.beforeQuestionChange = function () {
       if (!controller.session || !controller.session.strokes || !controller.session.strokes.length) return;
       var meta = (global.ViewerScratchPad && global.ViewerScratchPad.questionMeta
@@ -471,8 +518,19 @@
         : null) || {};
       if (!meta.uid) return;
       meta.bank = meta.bank || bankKey();
-      var doc = ink.serializeDocument(controller.session.strokes, controller.canvas.width || 800, controller.canvas.height || 600, { source: 'viewer', auto: true });
+      var doc = currentDoc(controller);
+      if (JSON.stringify(doc.strokes) === controller.lastNoteStrokesSig) return;
+      doc.meta = { source: 'viewer', auto: true };
       enqueue(meta, doc);
+    };
+
+    // 切题 / 打开草稿板后：清掉上一题结果面板，回显本题已保存笔记
+    controller.afterQuestionChange = function () {
+      controller.lastNoteStrokesSig = null;
+      ui.result.hidden = true;
+      ui.result.innerHTML = '';
+      ui.status.hidden = true;
+      hydrate(controller, ui);
     };
   }
 

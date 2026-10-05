@@ -317,6 +317,8 @@
     var visible = active(controller);
     if (!visible) {
       if (controller.wasActive) {
+        // 关闭弹层/切屏同切题一样不丢未保存笔迹（question-notes.js 挂的钩子，脏检查入队）
+        if (typeof controller.beforeQuestionChange === 'function') controller.beforeQuestionChange();
         controller.session.reset();
         resetViewport(controller);
       }
@@ -340,6 +342,8 @@
       } else {
         close(controller);
       }
+      // 草稿板开着时切题：清上一题结果并回显本题已保存笔记（question-notes.js 挂的钩子）
+      if (controller.session.open && typeof controller.afterQuestionChange === 'function') controller.afterQuestionChange();
     }
   }
 
@@ -663,6 +667,8 @@
   function attach(kind, host, content, header, split) {
     if (!host || !content || !header || host.querySelector('.vsp-open-btn')) return;
     var controller = { kind: kind, host: host, content: content, split: split, session: ink.createSession(), wasActive: false };
+    // 供 question-notes.js 回显笔迹后重绘画布
+    controller.repaint = function (mode) { repaint(controller, mode); };
     controller.panel = panelFor(controller);
     controller.divider = document.createElement('div');
     controller.divider.className = 'vsp-divider';
@@ -681,6 +687,8 @@
       controller.split.classList.add('vsp-split');
       applyStoredRatio(controller);
       repaint(controller);
+      // 打开草稿板时回显本题已保存笔记（question-notes.js 挂的钩子）
+      if (typeof controller.afterQuestionChange === 'function') controller.afterQuestionChange();
     });
     new MutationObserver(function () { sync(controller); }).observe(host, { attributes: true, attributeFilter: ['class'] });
     new MutationObserver(function () { sync(controller); }).observe(content, { childList: true, subtree: true });
@@ -721,7 +729,13 @@
     global.addEventListener('resize', syncAll);
     global.addEventListener('orientationchange', syncAll);
     ['pagehide', 'beforeunload'].forEach(function (name) {
-      global.addEventListener(name, function () { controllers.forEach(function (controller) { controller.session.reset(); }); });
+      global.addEventListener(name, function () {
+        controllers.forEach(function (controller) {
+          // 关页同切题：未保存笔迹先入队再 reset，不静默丢原稿
+          if (typeof controller.beforeQuestionChange === 'function') controller.beforeQuestionChange();
+          controller.session.reset();
+        });
+      });
     });
     document.addEventListener('keydown', function (event) {
       if (event.key !== 'Escape') return;
