@@ -3175,3 +3175,10 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - 壳代码变更 → 走完整 pack + apply（release `20261005T054454Z-0419823a1bdf`）；**踩坑**：云端 408 = `shared/banks/bank-408`，release 内 math-bank 是指向它的符号链接，apply 不会更新壳文件——`push_data.ps1` 热更清单补 `styles.css`（原来只推 js/html/json，样式永远到不了云），随后热更 9 文件生效。
 - 本机验证：tests/ 325 passed（2 存量失败无关）；8080 实拍悬停图标、放大层、Esc 关闭均正常；curl 验证云端 app.js/styles.css/v396 均为新版。
 - git：bank-408 三个提交（风格四批数据 / 图题设计 / push_data 修复），父仓库同步子模块指针。
+
+## 2026-10-06 · 计组 3.2 存储系统 X24 题干断行空格（主人上报，缓存 v397→v399）
+
+- **病征**：题干「…执行下述操作：①读取…80次；②读取…60次。则①、②所花费…」被渲染成 ①、② 各自独占一行且带缩进（"莫名其妙的空格"）。
+- **根因**：历史误拆把该选择题按 4 个圈码拆成 sub_questions，fix_questions 的「选择题合并回 content」逻辑用 `\n` 拼接（`fix_questions.py:1631-1635`），断行被烘进中间层 output 与补丁 content；OCR 原文（`data/ocr/coa/page_095.json`）本是一行无空格。
+- **修复**：page_review_patches.json 中该题 content 改为与 OCR 原文一致的连续文本（①② 行内，无换行）；fix_questions + merge_courses 重建，三处缓存戳 bump_bank_version 自动 397→399。
+- 本机验证：math-bank/data-coa.json 题干已连续；tests/test_notes_katex.py 校验通过。
