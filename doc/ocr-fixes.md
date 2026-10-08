@@ -32,7 +32,7 @@
    ```
 
 5. 在本文件追加修复条目；`git add` 相关文件并 commit（子模块 + monorepo 指针）。
-6. 按 `docs/server.md` / `apps/platform-v2/deploy/README.md`：`pack-for-upload.ps1` → scp → `apply-v2-deploy.sh`。收尾写明「云端已部署」。
+6. 上云：bank-408 一律 `powershell -File scripts\push_data.ps1` 热更（数据与壳 js/html/css 同通道，带版本戳校验与远端 HTTP 复核，不重启、不发 release）。**只有 platform 本体或 bank 挂载结构变化才走 `pack-for-upload.ps1` → scp → `apply-v2-deploy.sh`**（apply 不碰 `shared/banks/bank-408`，对 bank 变更纯属仪式）。收尾写明「云端已部署」。
 
 ### 脚本一览
 
@@ -3190,3 +3190,11 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **影响面**：全库扫描同模式命中 3 题——虚拟存储器 X13、虚拟存储器 X17（| 130 | 018H | 1 | 行）、指令流水线解答 A02（| OP | Rs | Rd | OFFSET | 行）。其余含表题要么是尾行即末行、要么行长短已被 <18 规则拦住。
 - **修复**：`isOcrStructuralBreak` 增加 `left.startsWith('|')` 结构断行守卫（与右侧守卫对称）。`bump_bank_version.py --force` 399→400（三处戳对齐）。
 - 本机验证：tests/ 325 passed（2 存量失败无关）；8080 实拍 X13 四行表格完整 + 后续文字独立成行；X17 页表 4 行（含 … 行）；流水线 A02 两张表（6 行指令表 + 位段表）均完整。
+
+## 2026-10-08 · 流程优化：题目直达链接 + 表格重排回归测试 + 热更约定（缓存 v400→v401）
+
+主人反馈修复周期过长，三项优化一次落地：
+
+1. **题目直达链接**：`/banks/408/?course=…&chapter=…&q=X13` 打开即弹对应题（`openQuestionFromUrl`，chapter 用于同号题消歧，仅 id 时回退课程内首匹配）；详情弹窗头部新增「复制题目链接」按钮（`copyQuestionLink`，clipboard API + execCommand 兜底）。以后核题/报题一处跳转。
+2. **回归测试**：`tests/test_stem_table_reflow.mjs`（pytest 包装 `tests/test_stem_table_reflow.py`）——从 app.js 抽取 reflow/表格集群函数，钉住 X13 事故样例 + 全库扫描（content/解析/子问），断言「重排前后管道行序列（含单元格）不变」且「无 `|` 开头不成行的拼接残骸」。当前全库含表文本 13 段全过。
+3. **热更约定**：bank-408 一切变更（数据+壳）统一走 `push_data.ps1`，不再为壳代码跑完整 pack+apply（apply 本就不碰 shared live 文件，此前纯属仪式）。约定已写入根 AGENTS.md §6、`docs/server.md` §3、push_data.ps1 头注释、本文件标准流程。

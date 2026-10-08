@@ -1429,6 +1429,57 @@ function resumeLastPosition() {
 }
 
 // ========================
+// 题目直达链接 ?q=X13（可选 &chapter=章名消歧；同号题多，复制按钮总是带 chapter）
+// ========================
+function openQuestionFromUrl(questionId, chapterName) {
+  let q = allQuestions.find(x => String(x.id) === String(questionId) && (!chapterName || x.chapter === chapterName));
+  if (!q) q = allQuestions.find(x => String(x.id) === String(questionId));
+  if (!q) {
+    flashToast('链接中的题号不存在：' + questionId);
+    return;
+  }
+  selectedChapter = q.chapterKey || '';
+  document.getElementById('searchInput').value = '';
+  document.getElementById('typeFilter').value = '';
+  document.getElementById('featureFilter').value = '';
+  applyFilters();
+  renderChapters();
+  const idx = filteredQuestions.indexOf(q);
+  if (idx >= 0) currentPage = Math.floor(idx / pageSize) + 1;
+  renderGrid('');
+  renderPagination();
+  openDetail(q);
+  flashToast('已打开：' + q.chapter + ' · ' + q.id);
+}
+
+function copyQuestionLink() {
+  const q = getCurrentDetailQuestion();
+  if (!q) return;
+  const base = window.location.pathname.replace(/index\.html$/, '');
+  const url = base + '?course=' + encodeURIComponent(getCurrentCourse())
+    + '&chapter=' + encodeURIComponent(q.chapter)
+    + '&q=' + encodeURIComponent(q.id);
+  const done = () => flashToast('已复制题目链接');
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(new URL(url, window.location.href).href).then(done, () => fallbackCopyLink(url, done));
+  } else {
+    fallbackCopyLink(url, done);
+  }
+}
+
+function fallbackCopyLink(url, done) {
+  const ta = document.createElement('textarea');
+  ta.value = new URL(url, window.location.href).href;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy') ? done() : flashToast('复制失败，请手动复制地址栏链接'); }
+  catch (e) { flashToast('复制失败，请手动复制地址栏链接'); }
+  ta.remove();
+}
+
+// ========================
 // URL state sync
 // ========================
 function syncUrl() {
@@ -1448,6 +1499,8 @@ function syncUrl() {
   try { history.replaceState(null, '', url); } catch (e) {}
 }
 
+let pendingUrlQuestion = null; // restoreFromUrl 捕获的 ?q= 直达参数（syncUrl 会提前抹掉 URL 里的 q）
+
 function restoreFromUrl() {
   const params = new URLSearchParams(window.location.search);
   const course = params.get('course');
@@ -1457,6 +1510,8 @@ function restoreFromUrl() {
   document.getElementById('featureFilter').value = params.get('feature') || '';
   document.getElementById('searchInput').value = params.get('search') || '';
   currentPage = parseInt(params.get('page'), 10) || 1;
+  const q = params.get('q');
+  if (q) pendingUrlQuestion = { qid: q, chapter: params.get('chapter') || '' };
 }
 
 // ========================
@@ -1539,11 +1594,15 @@ async function init() {
   // 打开、切回页面、重新联网及本地数据变化时自动双向同步。
   if (typeof setupAutomaticPlatformSync === 'function') setupAutomaticPlatformSync();
   setTimeout(flushLocalTextNotes, 900);
-  // 主页/链接带 ?resume=1 时自动打开上次题目
+  // 主页/链接带 ?resume=1 时自动打开上次题目；?q=X13 直达题目（chapter 可选，同号题消歧）
   try {
     const params = new URLSearchParams(window.location.search);
     if (params.get('resume') === '1' && loadCursor()) {
       setTimeout(() => resumeLastPosition(), 120);
+    } else if (pendingUrlQuestion) {
+      const pq = pendingUrlQuestion;
+      pendingUrlQuestion = null;
+      setTimeout(() => openQuestionFromUrl(pq.qid, pq.chapter), 120);
     }
   } catch (e) {}
 }
@@ -5180,7 +5239,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=400').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=401').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {

@@ -1,6 +1,8 @@
-# 408 bank content hot-update: scp only changed data files to the cloud shared dir.
-# No platform release, no service restart. For content/data fixes only;
-# shell code changes (js/html/viewer) still go through the full pack + apply release.
+# 408 bank hot-update: scp changed data + shell files to the cloud shared dir.
+# No platform release, no service restart. Since 2026-10-08 this is the ONLY channel
+# for bank-408 changes (data and shell alike): the cloud serves shared/banks/bank-408
+# directly (release math-bank is a symlink apply never touches), so a full pack+apply
+# never updated live bank files anyway. Reserve pack+apply for platform/bank-mount changes.
 # Usage (from apps/bank-408):  powershell -File scripts/push_data.ps1
 # Optional: -Server ubuntu@122.51.26.195 -RemoteDir /home/ubuntu/kaoyan/shared/banks/bank-408
 [CmdletBinding()]
