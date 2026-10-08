@@ -248,6 +248,8 @@ function isOcrStructuralBreak(lines, index, hasTableOrFigure) {
   if (OCR_ASSET_CAPTION_RE.test(left) || OCR_ASSET_CAPTION_RE.test(right)) return true;
   if (OCR_STRUCTURAL_START_RE.test(right)) return true;
   if (/^(?:\||表头|指令类型|项目|名称|地址|序号|时间|操作)/.test(right)) return true;
+  // 管道表行不与下一行合并：行尾是 prose 时整行会被拼出表格，渲染丢行（如 TLB 表最后一行）
+  if (left.startsWith('|')) return true;
   if (left.endsWith('：') || left.endsWith(':')) return true;
   // 题干明确引出图表时，保留后续短行，避免把表格/拓扑图拼成一段。
   if (hasTableOrFigure && (OCR_TABLE_HINT_RE.test(left) || left.length < 18 || right.length < 18)) return true;
@@ -5178,7 +5180,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=399').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=400').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {

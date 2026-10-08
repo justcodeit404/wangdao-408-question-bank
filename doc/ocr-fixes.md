@@ -3182,3 +3182,11 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **根因**：历史误拆把该选择题按 4 个圈码拆成 sub_questions，fix_questions 的「选择题合并回 content」逻辑用 `\n` 拼接（`fix_questions.py:1631-1635`），断行被烘进中间层 output 与补丁 content；OCR 原文（`data/ocr/coa/page_095.json`）本是一行无空格。
 - **修复**：page_review_patches.json 中该题 content 改为与 OCR 原文一致的连续文本（①② 行内，无换行）；fix_questions + merge_courses 重建，三处缓存戳 bump_bank_version 自动 397→399。
 - 本机验证：math-bank/data-coa.json 题干已连续；tests/test_notes_katex.py 校验通过。
+
+## 2026-10-08 · 表格尾行被拼出表格致渲染丢行（主人上报 X13，壳修复，缓存 v399→v400）
+
+- **病征**：coa 虚拟存储器 X13（p141，2013 TLB 题）表格只渲染前 3 行，第 4 行「| 1 | 03FFFH | 0153H | … |」被拼进下一行正文成裸文本。数据本身是对的（10-01 已修），坏在渲染层。
+- **根因**：`app.js` `normalizeDisplayText → reflowOcrSoftWraps → isOcrStructuralBreak` 只拦「右行以 `|` 开头」，不拦「左行以 `|` 开头」。表尾行长度 ≥18 且下行不是结构行时被判定 OCR 软换行，与下一句正文拼接 → 整行不再以 `|` 结尾 → `isPipeRow` 不识别 → 表格少最后一行。
+- **影响面**：全库扫描同模式命中 3 题——虚拟存储器 X13、虚拟存储器 X17（| 130 | 018H | 1 | 行）、指令流水线解答 A02（| OP | Rs | Rd | OFFSET | 行）。其余含表题要么是尾行即末行、要么行长短已被 <18 规则拦住。
+- **修复**：`isOcrStructuralBreak` 增加 `left.startsWith('|')` 结构断行守卫（与右侧守卫对称）。`bump_bank_version.py --force` 399→400（三处戳对齐）。
+- 本机验证：tests/ 325 passed（2 存量失败无关）；8080 实拍 X13 四行表格完整 + 后续文字独立成行；X17 页表 4 行（含 … 行）；流水线 A02 两张表（6 行指令表 + 位段表）均完整。
