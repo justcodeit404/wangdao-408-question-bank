@@ -3205,3 +3205,4 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **根因**：题目跨 157→158 页，历史人工补丁（page_review_patches.json item 966）content 里 II 行后误带分页空行 `\n\n\n`（页面间隙烘进补丁）。
 - **修复**：补丁 content `\n\n\n` → `\n`；重建前发现 ds 中间态与产物漂移（X22 选项残缺触发 fix_questions 守卫），按 09-29 既定流程 `resync_intermediate_from_bank.py ds coa os net` 回同步中间态后 rebuild_bank.ps1 全管线通过（tests 120 passed）。
 - 本机验证：math-bank/data-coa.json 题干空行已消。
+- 2026-10-11 追加：主人复验发现题干与 I 之间仍有一行空行（补丁原文里 `（）。\n\nI.`），同题再修 `\n\n`→`\n`，热更 v402→v403。
