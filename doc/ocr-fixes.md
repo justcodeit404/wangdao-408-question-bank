@@ -3206,3 +3206,10 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **修复**：补丁 content `\n\n\n` → `\n`；重建前发现 ds 中间态与产物漂移（X22 选项残缺触发 fix_questions 守卫），按 09-29 既定流程 `resync_intermediate_from_bank.py ds coa os net` 回同步中间态后 rebuild_bank.ps1 全管线通过（tests 120 passed）。
 - 本机验证：math-bank/data-coa.json 题干空行已消。
 - 2026-10-11 追加：主人复验发现题干与 I 之间仍有一行空行（补丁原文里 `（）。\n\nI.`），同题再修 `\n\n`→`\n`，热更 v402→v403。
+
+## 2026-10-11 · 全库题干空行清扫（主人问「其他题有没有类似问题」，缓存 v403→v404）
+
+- **范围**：四科全库 content 含 `\n\n` 的 129 题（含罗马序号 I./II. 间、题干与 I. 间、子问 1）2）3）间、OCR 图注碎片间的分页空行）。
+- **规则**：`\n\n+` 一律收为 `\n`；**唯一例外**——markdown 表格行相邻的空行保留（os 死锁 X35 表格前后空行，表格渲染需要）。
+- **实现**：`scripts/oneoff/sweep_blank_lines.py` 扫描 math-bank 产物生成/合并 page_review 补丁（新增 19 条、其余并入已有补丁同题 content），rebuild_bank 全管线通过（tests 120 passed）。
+- 本机验证：全库仅剩 X35 一题带空行（表格例外）；抽查 ds 数组 X16 罗马四行连续。
