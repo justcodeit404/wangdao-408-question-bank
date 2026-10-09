@@ -3198,3 +3198,10 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 1. **题目直达链接**：`/banks/408/?course=…&chapter=…&q=X13` 打开即弹对应题（`openQuestionFromUrl`，chapter 用于同号题消歧，仅 id 时回退课程内首匹配）；详情弹窗头部新增「复制题目链接」按钮（`copyQuestionLink`，clipboard API + execCommand 兜底）。以后核题/报题一处跳转。
 2. **回归测试**：`tests/test_stem_table_reflow.mjs`（pytest 包装 `tests/test_stem_table_reflow.py`）——从 app.js 抽取 reflow/表格集群函数，钉住 X13 事故样例 + 全库扫描（content/解析/子问），断言「重排前后管道行序列（含单元格）不变」且「无 `|` 开头不成行的拼接残骸」。当前全库含表文本 13 段全过。
 3. **热更约定**：bank-408 一切变更（数据+壳）统一走 `push_data.ps1`，不再为壳代码跑完整 pack+apply（apply 本就不碰 shared live 文件，此前纯属仪式）。约定已写入根 AGENTS.md §6、`docs/server.md` §3、push_data.ps1 头注释、本文件标准流程。
+
+## 2026-10-11 · 计组 4.1 指令系统 X14 题干多余空行（主人上报，缓存 v401→v402）
+
+- **病征**：coa 指令系统 X14（p157，2022 统考 ISA 题）II 与 III 之间莫名多出两行空行。
+- **根因**：题目跨 157→158 页，历史人工补丁（page_review_patches.json item 966）content 里 II 行后误带分页空行 `\n\n\n`（页面间隙烘进补丁）。
+- **修复**：补丁 content `\n\n\n` → `\n`；重建前发现 ds 中间态与产物漂移（X22 选项残缺触发 fix_questions 守卫），按 09-29 既定流程 `resync_intermediate_from_bank.py ds coa os net` 回同步中间态后 rebuild_bank.ps1 全管线通过（tests 120 passed）。
+- 本机验证：math-bank/data-coa.json 题干空行已消。
