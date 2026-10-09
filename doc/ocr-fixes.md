@@ -3229,3 +3229,10 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **平台同步链路（重要）**：import_bank 有 quality-hold/ledger 哈希校验——rebuild 后必须 `quality_hold.write_manifest()` + `quality_ledger.build_ledger()` 重写两份清单，否则平台导入 400。本次本机+云端 platform DB 均已重导 408 四科（本机 2644 更新/云端 2467 更新，0 failed），云端 bank 热更 v405。
 - 本机验证：tests 120 passed；math-bank/data-ds.json 抽查 9 题全部干净；平台 DB 抽查 A15/A19/A20/A07 无碎片。
 - git：bank-408 子模块提交（page_review_patches.json + 重建产物 + 两份质量清单 + 本文档），父仓库同步子模块指针。
+
+## 2026-10-11 · 计组 4.2 寻址方式 X25 选项组合上划线渲染异常（主人上报，缓存 v404→v406）
+
+- **病征**：coa 寻址方式 X25（p168，2011 统考 bgt 转移条件题）B/C/D 选项出现贯穿整行的上划线、C/D 出现「口」豆腐块。
+- **根因**：选项文本带 Unicode 组合上划线 U+0305（SF̅ / （CF+ZF）̅），渲染层无法正确排版。
+- **修复**：对照原书 p168 实拍——B 上划线仅覆盖 SF、C/D 上划线覆盖括号内 CF+ZF / CF+SF、A 无划线——改为 KaTeX `$\overline{SF}$+ZF=1` / （$\overline{CF+ZF}$）=1 / （$\overline{CF+SF}$）=1（选项渲染 KaTeX 有先例，如 ds 树 X11 `$2^h$`）。全库扫描确认仅这一题含组合上划线字符。
+- 本机验证：data-coa.json 选项已更新；tests 120 passed。

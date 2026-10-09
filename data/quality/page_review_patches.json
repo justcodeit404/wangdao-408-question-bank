@@ -92,9 +92,9 @@
       "qid": "X25",
       "fields": {
         "options": {
-          "B": "SF̅+ZF=1",
-          "C": "（CF+ZF）̅=1",
-          "D": "（CF+SF）̅=1"
+          "B": "$\\overline{SF}$+ZF=1",
+          "C": "（$\\overline{CF+ZF}$）=1",
+          "D": "（$\\overline{CF+SF}$）=1"
         },
         "content": "【2011统考真题】某机器有一个标志寄存器，其中有进位/借位标志CF、零标志ZF、\n符号标志SF和溢出标志OF，条件转移指令bgt（无符号整数比较大于时转移）的转移条件是（）。",
         "explanation": "答案图片：answer_crops/coa/page_173_X25_ans.jpg\n答案图片：answer_crops/coa/page_174_X25_ans_p2.jpg\n\n假设两个无符号整数A和B，bgt指令会将A和B进行比较，也就是将A和B相减。若A>B，则A-B肯定无进位/借位，也不为0（为0时表示两数相等），因此CF和ZF均为0，选C。其余选项中用到了符号标志SF和溢出标志OF，SF表示结果的符号，OF是有符号整数的溢出标志。"
