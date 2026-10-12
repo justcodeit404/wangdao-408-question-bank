@@ -63,18 +63,6 @@ COURSES = [
         pdf_images_dir=_path('assets/pdf_images/coa'),
     ),
     Course(
-        key='net',
-        name='计算机网络',
-        short='计算机网络',
-        pdf=_repo_path('资料/408/27王道《计算机网络》高清带书签.pdf'),
-        ocr_dir=_path('data/ocr/net'),
-        qa_json=_path('data/qa/net_qa_pairs.json'),
-        toc_json=_path('data/toc/toc_net.json'),
-        total_pages=309,
-        out_json=_path('output/questions_net.json'),
-        pdf_images_dir=_path('assets/pdf_images/net'),
-    ),
-    Course(
         key='os',
         name='操作系统',
         short='操作系统',
@@ -85,6 +73,18 @@ COURSES = [
         total_pages=365,
         out_json=_path('output/questions_os.json'),
         pdf_images_dir=_path('assets/pdf_images/os'),
+    ),
+    Course(
+        key='net',
+        name='计算机网络',
+        short='计算机网络',
+        pdf=_repo_path('资料/408/27王道《计算机网络》高清带书签.pdf'),
+        ocr_dir=_path('data/ocr/net'),
+        qa_json=_path('data/qa/net_qa_pairs.json'),
+        toc_json=_path('data/toc/toc_net.json'),
+        total_pages=309,
+        out_json=_path('output/questions_net.json'),
+        pdf_images_dir=_path('assets/pdf_images/net'),
     ),
 ]
 

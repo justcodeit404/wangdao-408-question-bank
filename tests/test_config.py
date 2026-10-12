@@ -20,7 +20,7 @@ class TestConfig:
         assert (PROJECT_ROOT / 'scripts' / 'config.py').exists()
 
     def test_four_courses(self):
-        assert [c.key for c in COURSES] == ['ds', 'coa', 'net', 'os']
+        assert [c.key for c in COURSES] == ['ds', 'coa', 'os', 'net']
         assert {c.name for c in COURSES} == {'数据结构', '计算机组成原理', '计算机网络', '操作系统'}
 
     def test_course_paths_are_absolute(self):

@@ -232,12 +232,17 @@ function questionKey(q) { return q.chapter + '::' + q.id; }
 function displayId(q) { return (q.id || '').replace(/^[XA]/, ''); }
 
 const OCR_CODE_LINE_RE = /\b(?:void|int|char|float|double|for|while|if|else|return|printf|scanf|typedef|struct)\b|[{};]|\+\+|--/;
+// 王道流水线题：I1: add 或 I1 add。不认的话 reflow 会把指令行拼进题干，代码块也切不出来。
+const ASM_MNEMONIC = 'addi|add|subi|sub|load|store|lw|sw|beq|bne|jal|j|slli|sll|srli|srl|srai|sra|mul|div|andi|and|ori|or|xori|xor|nor|lui|slti|slt|mov|mv|li|nop|halt';
+const ASM_INSN_RE = new RegExp('^I\\d+\\s*:?\\s*(?:' + ASM_MNEMONIC + ')\\b', 'i');
+const ASM_CONT_RE = /^I\d+\s*:?\s*\S/;
 const OCR_STRUCTURAL_START_RE = /^(?:[①-⑳]|[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ]+[.．、]?|(?:I{1,3}|IV|VI{0,3}|IX)[.．、]|[（(]?\d+[)）.．、]|[A-D][.．、]|题目图片：|答案图片：|解析图片：)/;
 const OCR_ASSET_CAPTION_RE = /^(?:题目图片|答案图片|解析图片|题图|答图)\s*[：:]/;
 const OCR_TABLE_HINT_RE = /(?:如下表|下表|表所示|如下图|下图|图所示)/;
 
 function looksLikeOcrCodeLine(line) {
-  return OCR_CODE_LINE_RE.test(String(line || ''));
+  const s = String(line || '').trim();
+  return OCR_CODE_LINE_RE.test(s) || ASM_INSN_RE.test(s) || ASM_CONT_RE.test(s);
 }
 
 function isOcrStructuralBreak(lines, index, hasTableOrFigure) {
@@ -2753,17 +2758,49 @@ function formatStemCode(raw) {
   return reflowCollapsedCode(text);
 }
 
+function formatAsmBlock(raw) {
+  return String(raw || '')
+    .replace(/\r\n/g, '\n')
+    .split('\n')
+    .flatMap((line) => line.split(/(?=I\d+\s*:?\s*[A-Za-z])/))
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .join('\n');
+}
+
+function stemAsmBlockEnd(s, i) {
+  if (i > 0 && /[A-Za-z0-9_]/.test(s[i - 1])) return 0;
+  if (!ASM_INSN_RE.test(s.slice(i))) return 0;
+  let pos = i;
+  let end = i;
+  while (pos < s.length) {
+    if (pos !== i) {
+      if (s[pos - 1] !== '\n') break;
+      const indent = /^[ \t]*/.exec(s.slice(pos));
+      pos += indent ? indent[0].length : 0;
+      if (pos >= s.length || !ASM_CONT_RE.test(s.slice(pos))) break;
+    }
+    const nl = s.indexOf('\n', pos);
+    if (nl === -1) return s.length;
+    end = nl;
+    pos = nl + 1;
+  }
+  return end > i ? end : 0;
+}
+
 function splitStemCode(src) {
   const s = String(src || '');
   const parts = [];
   let i = 0;
   let proseAt = 0;
   while (i < s.length) {
-    const end = stemCodeStartEnd(s, i);
+    const cEnd = stemCodeStartEnd(s, i);
+    const end = cEnd || stemAsmBlockEnd(s, i);
     if (end) {
       const head = s.slice(proseAt, i).replace(/^\n+|\n+$/g, '');
       if (head.trim()) parts.push({ kind: 'prose', text: head });
-      parts.push({ kind: 'code', text: formatStemCode(s.slice(i, end)) });
+      const raw = s.slice(i, end);
+      parts.push({ kind: 'code', text: cEnd ? formatStemCode(raw) : formatAsmBlock(raw) });
       i = end;
       proseAt = end;
       continue;
@@ -5239,7 +5276,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=407').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=411').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {

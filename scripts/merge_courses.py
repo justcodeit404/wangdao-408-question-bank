@@ -4,11 +4,11 @@
   2. 为 math-bank 生成每门课程的独立 data-<key>.json，支持按课程懒加载
   3. 生成 math-bank/data.js 加载器（课程列表 + loadCourseData 函数）
 
-课程 key 约定：
+课程 key 约定（顺序即前端课程 tab 展示顺序）：
   ds  -> 数据结构
   coa -> 计算机组成原理
-  net -> 计算机网络
   os  -> 操作系统
+  net -> 计算机网络
 """
 import json
 import sys
