@@ -47,6 +47,14 @@ try {
     if ($LASTEXITCODE -ne 0) { Die "bump_bank_version.py failed" }
 } finally { Pop-Location }
 
+# ---- refresh quality manifests so their hashes match the data being pushed ----
+# 热更只改 data-*.json 时若不刷新清单，平台 408 导入 API 会因哈希过期直接 400。
+Push-Location $Root
+try {
+    & $Python scripts/quality_ledger.py --refresh-hashes | Write-Host
+    if ($LASTEXITCODE -ne 0) { Die "quality_ledger.py --refresh-hashes failed" }
+} finally { Pop-Location }
+
 # ---- stamp consistency: index.html __BANK_DATA_VER__ == sw.js cache name ----
 $index = (Get-Content -LiteralPath (Join-Path $Bank "index.html") -Raw -Encoding UTF8)
 $sw = (Get-Content -LiteralPath (Join-Path $Bank "sw.js") -Raw -Encoding UTF8)

@@ -279,3 +279,62 @@ def test_type_word_inside_chinese_is_not_code():
     (res,) = _eval_fill(["假定编译器规定int型和short型长度分别为32位。"])
     assert res["usedTextPath"]
     assert res["codeTexts"] == []
+
+
+def test_asm_sequence_is_a_code_block():
+    src = (
+        "需要在指令I3之前加入（）条空操作指令才能使这段程序不发生数据冒险。"
+        "I1: add r1,r0,1 #(r1)←(r0)+1\n"
+        "I2: load r3,12(r2) #(r3)←M[(r2)+12]\n"
+        "I3: add r5,r3,r1 #(r5)←(r3)+(r1)"
+    )
+    (res,) = _eval_fill([src])
+    assert '<pre class="stem-code">' in res["rawHtml"]
+    assert res["codeTexts"] == [
+        "I1: add r1,r0,1 #(r1)←(r0)+1\n"
+        "I2: load r3,12(r2) #(r3)←M[(r2)+12]\n"
+        "I3: add r5,r3,r1 #(r5)←(r3)+(r1)"
+    ]
+    assert res["proseTexts"] == ["需要在指令I3之前加入（）条空操作指令才能使这段程序不发生数据冒险。"]
+    assert "I1:" not in res["proseTexts"][0]
+
+
+def test_asm_block_leaves_following_chinese():
+    src = (
+        "执行如下指令序列。I1: add s2,s1,s0  //R[s2] ← R[s1] + R[s0]\n"
+        "I2: store s2,0(t2)  //M[R[t2] + 0] ← R[s2]\n"
+        "下列指令对中，不存在数据冒险的是（）。"
+    )
+    (res,) = _eval_fill([src])
+    assert len(res["codeTexts"]) == 1
+    assert "I1: add s2,s1,s0" in res["codeTexts"][0]
+    assert "I2: store s2,0(t2)" in res["codeTexts"][0]
+    assert "不存在数据冒险" not in res["codeTexts"][0]
+    assert res["proseTexts"][-1] == "下列指令对中，不存在数据冒险的是（）。"
+
+
+def test_asm_without_colon_is_a_code_block():
+    src = (
+        "其中s0、s1、s2、s3和t2表示寄存器编号。I1 add s2,s1,s0    // R[s2]←R[s1] + R[s0]\n"
+        "I2 load s3,0(s2)    // R[s3]←M[R[s2] + 0]\n"
+        "I3 beq t2,s3,L1    // if R[t2]=R[s3] jump to L1\n"
+        "I4 addi t2,t2,20   // R[t2]←R[t2] + 20\n"
+        "I5 L1: ……\n"
+        "若采用转发（旁路）技术处理数据冒险，则阻塞的指令有（）。"
+    )
+    (res,) = _eval_fill([src])
+    assert len(res["codeTexts"]) == 1
+    code = res["codeTexts"][0]
+    assert code.startswith("I1 add s2,s1,s0")
+    assert "I3 beq t2,s3,L1" in code
+    assert "I5 L1:" in code
+    assert "if R[t2]" in code
+    assert "阻塞的指令有" not in code
+    assert res["proseTexts"][-1] == "若采用转发（旁路）技术处理数据冒险，则阻塞的指令有（）。"
+    assert "I1 add" not in res["proseTexts"][0]
+
+
+def test_instruction_mention_without_mnemonic_is_not_code():
+    (res,) = _eval_fill(["指令I1和I3、I2和I3之间发生数据相关。"])
+    assert res["usedTextPath"]
+    assert res["codeTexts"] == []
