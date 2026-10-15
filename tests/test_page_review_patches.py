@@ -25,6 +25,19 @@ def _q(course: str, chapter_part: str, qid: str) -> dict:
     raise AssertionError(f"missing {course} {qid}")
 
 
+def test_os_cpu_x26_stem_table():
+    # 原书 p85 是三列表；OCR 曾把表头粘成「进程名到达时间/h运行时间/h」
+    question = _q("os", "CPU调度", "X26")
+    content = question["content"]
+    assert "| 进程名 | 到达时间/h | 运行时间/h |" in content
+    assert "| P1 | 0.0 | 9 |" in content
+    assert "| P3 | 1.0 | 1 |" in content
+    assert "| P5 | 7 | 2 |" in content
+    assert "进程名到达时间" not in content
+    assert "非抢占式短进程优先" in content
+    assert "抢占式短进程优先" in content
+
+
 def test_coa_trap_has_split_option_d():
     question = _q("coa", "异常和中断机制", "X01")
     assert "D" in question["options"]
