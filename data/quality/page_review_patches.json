@@ -8463,7 +8463,8 @@
       "chapter": "进程与线程 · 同步与互斥 · 解答题",
       "qid": "A20",
       "fields": {
-        "content": "【2014统考真题】系统中有多个生产者进程和多个消费者进程，共享一个能存放1000件产品的环形缓冲区（初始为空）。缓冲区未满时，生产者进程可以放入其生产的一件产品，否则等待；缓冲区未空时，消费者进程可从缓冲区取走一件产品，否则等待。要求一个消费者进程从缓冲区连续取出10件产品后，其他消费者进程才可以取产品。请使用信号量P,V（wait(),signal()）操作实现进程间的互斥与同步，要求写出完整的过程,\n并说明所用信号量的含义和初值。"
+        "content": "【2014统考真题】系统中有多个生产者进程和多个消费者进程，共享一个能存放1000件产品的环形缓冲区（初始为空）。缓冲区未满时，生产者进程可以放入其生产的一件产品，否则等待；缓冲区未空时，消费者进程可从缓冲区取走一件产品，否则等待。要求一个消费者进程从缓冲区连续取出10件产品后，其他消费者进程才可以取产品。请使用信号量P,V（wait(),signal()）操作实现进程间的互斥与同步，要求写出完整的过程,\n并说明所用信号量的含义和初值。",
+        "explanation": "答案图片：answer_crops/os/page_149_A20_ans.jpg\n\n这是典型的生产者和消费者问题，只对典型问题加了一个条件，只需在标准模型上新加一个信号量，即可完成指定要求。设置4个变量mutex1,mutex2,empty和full，mutex1用于控制一个消费者进程在一个周期(10次）内对缓冲区的访问，初值为1；mutex2用于控制进程单次互斥地访问缓冲区，初值为1；empty代表缓冲区的空位数，初值为1000；full代表缓冲区的产品数，初值为0。伪代码如下：semaphore empty=1000; /空缓冲区数semaphore full=0; //非空缓冲区数semaphore mutex1=1; //用于实现生产者之间的互斥semaphore mutex2=1; //用于实现消费者之间的互斥int in=0;int out=0;\n生产者进程while(TRUE) {\nproduce;P(empty);\nP(mutex1);\nput an item into buf[in];in=(in+1) mod n;V(mutex1);\nV(full);\n消费者进程while(TRUE){\nP(mutex2);\nfor(int i=0;i<10;i++){\nP(full);\nget an item from buf[out];out=(out+1) mod n;V(empty);\nV(mutex2);\nConsume;}}}"
       }
     },
     {
@@ -8471,7 +8472,8 @@
       "chapter": "进程与线程 · 同步与互斥 · 解答题",
       "qid": "A21",
       "fields": {
-        "content": "【2015统考真题】有A,B两人通过信箱进行辩论，每个人都从自己的信箱中取得对方的问题。将答案和向对方提出的新问题组成一个邮件放入对方的邮箱中。假设A的信箱最多放M个邮件,B的信箱最多放N个邮件。初始时A的信箱中有x个邮件(0<x<M),B的信箱中有y个邮件（0<y<N)。辩论者每取出一个邮件，邮件数减1。A和B两人的操作过程描述如下：CoBegin\nA{ B{\nwhile(TRUE){ while(TRUE){\n从A的信箱中取出一个邮件；从B的信箱中取出一个邮件；回答问题并提出一个新问题; 回答问题并提出一个新问题；将新邮件放入B的信箱; 将新邮件放入A的信箱;} }\nCoEnd当信箱不为空时，辩论者才能从信箱中取邮件，否则等待。当信箱不满时，辩论者才能将新邮件放入信箱，否则等待。请添加必要的信号量和P,V【或wait(),signal()］操作，\n以实现上述过程的同步。要求写出完整的过程，并说明信号量的含义和初值。"
+        "content": "【2015统考真题】有A,B两人通过信箱进行辩论，每个人都从自己的信箱中取得对方的问题。将答案和向对方提出的新问题组成一个邮件放入对方的邮箱中。假设A的信箱最多放M个邮件,B的信箱最多放N个邮件。初始时A的信箱中有x个邮件(0<x<M),B的信箱中有y个邮件（0<y<N)。辩论者每取出一个邮件，邮件数减1。A和B两人的操作过程描述如下：CoBegin\nA{ B{\nwhile(TRUE){ while(TRUE){\n从A的信箱中取出一个邮件；从B的信箱中取出一个邮件；回答问题并提出一个新问题; 回答问题并提出一个新问题；将新邮件放入B的信箱; 将新邮件放入A的信箱;} }\nCoEnd当信箱不为空时，辩论者才能从信箱中取邮件，否则等待。当信箱不满时，辩论者才能将新邮件放入信箱，否则等待。请添加必要的信号量和P,V【或wait(),signal()］操作，\n以实现上述过程的同步。要求写出完整的过程，并说明信号量的含义和初值。",
+        "explanation": "答案图片：answer_crops/os/page_149_A21_ans.jpg\n答案图片：answer_crops/os/page_150_A21_ans_p2.jpg\n\n本题是一个典型的生产者-消费者问题。A和B既是生产者，又是消费者。首先分析题中的互斥关系，信箱A和信箱B作为生产者-消费者问题中的缓冲区，需要互斥访问，因此设置两个信号量mutex_A和mutex_B。然后分析A和B的同步关系，A有两个动作，分别是从信箱A中取出邮件和将新邮件放入信箱B，因此设置信号量Full_A和Empty_B，用来保证信箱A中有邮件可以取，信箱B中有空间可以放。B的分析同理。因此本题的所有信号量设置如下：semaphore Full_A=x; //Full_A表示A的信箱中的邮件数量semaphore Empty_A=M-x;I/Empty_A表示A的信箱中还可存放的邮件数量semaphore Full_B=y; //Full_B表示B的信箱中的邮件数量semaphore Empty_B=N-y;l/Empty_B表示B的信箱中还可存放的邮件数量semaphore mutex_A=1; /mutex_A用于A的信箱互斥semaphore mutex_B=1; //mutex_B用于B的信箱互斥互斥信号量的PV操作直接放置在对信箱操作的前后。在A取邮件之前需执行P(Full_A)来检查信箱A中是否有邮件可取，取出邮件之后需执行V(Empty_A)，表示新增了一个邮件大小的空间；在A将邮件放入邮箱B之前需执行P(Empty_B)来检车信箱B中是否有空间可以放，放完邮件之后需执行V(Full_B)，表示信箱B增加了一个邮件。B的分析同理。\ncoBegin\nA{\nwhile(TRUE){\nP(Full_A);\nP(mutex_A);\n从A的信箱中取出一个邮件；\nV(mutex_A);\nV(Empty_A);\n回答问题并提出一个新问题；\nP(Empty_B);\nP(mutex_B);\n将新邮件放入B的信箱;\nV(mutex_B);\nV(Full_B);\n}\n}\nB{\nwhile(TRUE){\nP(Full_B);\nP(mutex_B);\n从B的信箱中取出一个邮件；\nV(mutex_B);\nV(Empty_B);\n回答问题并提出一个新问题；\nP(Empty_A);\nP(mutex_A);\n将新邮件放入A的信箱;\nV(mutex_A);\nV(Full_A);\n}\n}\ncoEnd"
       }
     },
     {
@@ -8506,7 +8508,7 @@
       "chapter": "进程与线程 · 同步与互斥 · 解答题",
       "qid": "A25",
       "fields": {
-        "explanation": "答案图片：answer_crops/os/page_152_A25_ans.jpg\n答案图片：answer_crops/os/page_153_A25_ans_p2.jpg\n\n1）信号量S是能被多个进程共享的变量，多个进程都可通过wait()和signal()对S进行读、写操作。所以，wait()和signal()操作中对S的访问必须是互斥的。2）方法1错误。在wait()中，当S<=0时，关中断后，其他进程无法修改S的值，while语句陷入死循环。方法2正确。方法2在循环体中有一个开中断操作，这样就可以使其他进程修改S的值，从而避免while语句陷入死循环。",
+        "explanation": "答案图片：answer_crops/os/page_152_A25_ans.jpg\n答案图片：answer_crops/os/page_153_A25_ans_p2.jpg\n\n1）信号量S是能被多个进程共享的变量，多个进程都可通过wait()和signal()对S进行读、写操作。所以，wait()和signal()操作中对S的访问必须是互斥的。2）方法1错误。在wait()中，当S<=0时，关中断后，其他进程无法修改S的值，while语句陷入死循环。方法2正确。方法2在循环体中有一个开中断操作，这样就可以使其他进程修改S的值，从而避免while语句陷入死循环。3）用户程序不能使用开/关中断指令实现临界区互斥。因为开中断和关中断指令都是特权指令，不能在用户态下执行，只能在内核态下执行。",
         "content": "【2021统考真题】下表给出了整型信号量S的wait()和signal()操作的功能描述，以及采用开/关中断指令实现信号量操作互斥的两种方法。功能描述方法1方法2\nSemaphore S;Semaphore S;Semaphore S;wait(S) { wait(S) { wait(S){\nwhile(S<=0); 关中断; 关中断；S=S-1;while(S<=0); while(S<=0){\nS=S-1; 开中断；开中断; 关中断;S=S-1;\n开中断；signal(S){ signal(S) { signal(S){\nS=S+1; 关中断；关中断;S=S+1;S=S+1;\n开中断; 开中断；请回答下列问题。1）为什么在wait()和signal()操作中对信号量S的访问必须互斥执行?\n2）分别说明方法1和方法2是否正确。若不正确，请说明理由。\n3）用户程序能否使用开/关中断指令实现临界区互斥？为什么？"
       }
     },
@@ -8524,7 +8526,7 @@
       "qid": "A28",
       "fields": {
         "content": "【2024统考真题】计算机系统中的进程之间往往需要相互协作来完成一个任务。在某网络系统中，缓冲区B用于存放一个数据分组，对B的操作有C1、C2和C3。C1将一个数据分组写入B，C2从B中读出一个数据分组，C3对B中的数据分组进行修改。要求B为空时才能执行C1，B非空时才能执行C2和C3。请回答下列问题。1）假设进程P和P2均需要执行C1，实现C的代码是否为临界区？为什么？2）假设B初始为空，进程P执行C1一次，进程P2执行C2一次。请定义尽可能少的信号量，并用wait()、signal()操作描述进程Pu和P2之间的同步或互斥关系，说明所用信号量的作用及其初值。3）设B初始不为空，进程P和P2各执行C3一次。定义尽可能少的信号量，并用wait()、signal()操作描述进程P和P2之间的同步或互斥关系，说明所用信号量的作用及其初值。",
-        "explanation": "答案图片：answer_crops/os/page_153_A28_ans.jpg\n答案图片：answer_crops/os/page_154_A28_ans_p2.jpg\n\n1）代码C，执行对B的写操作，且P1和P2需要互斥执行C，因此C的代码是临界区。2）有一组互斥关系和一组同步关系。互斥关系为：P1和P2需要互斥访问缓冲区B；同步关系为：P执行C后，P2才能执行C2。缓冲区B初始为空，且最大容量为1，因此可不用定义互斥信号量mutex。因为在缓冲区大小为1的条件下，同步信号量S就可同时保证P1和P2互斥访问B，符合题意“尽可能定义少的信号量”的要求。进程P1和P2的同步伪代码如下。"
+        "explanation": "答案图片：answer_crops/os/page_153_A28_ans.jpg\n答案图片：answer_crops/os/page_154_A28_ans_p2.jpg\n\n1）代码C，执行对B的写操作，且P1和P2需要互斥执行C，因此C的代码是临界区。2）有一组互斥关系和一组同步关系。互斥关系为：P1和P2需要互斥访问缓冲区B；同步关系为：P执行C后，P2才能执行C2。缓冲区B初始为空，且最大容量为1，因此可不用定义互斥信号量mutex。因为在缓冲区大小为1的条件下，同步信号量S就可同时保证P1和P2互斥访问B，符合题意“尽可能定义少的信号量”的要求。进程P1和P2的同步伪代码如下。\nSemaphore S=0; //实现进程P1与P2的同步\nP1: P2:\n… …\nC1; wait(S);\nsignal(S); C2;\n… …\n3）缓冲区B初始非空，因此仅需一个互斥信号量mutex来保证P1和P2互斥访问B即可。进程P1和P2的互斥伪代码如下。\nSemaphore mutex=1; //实现P1与P2互斥执行C3\nP1: P2:\n… …\nwait(mutex); wait(mutex);\nC3; C3;\nsignal(mutex); signal(mutex);\n… …"
       }
     },
     {
@@ -12004,7 +12006,8 @@
       "chapter": "进程与线程 · 同步与互斥 · 解答题",
       "qid": "A14",
       "fields": {
-        "content": "一组进程的执行顺序如下图所示，圆圈P1,P2,P3,P4,P5,P6表示进程，弧上的字母a,b,c,d,e,f,g,h表示同步信号量，请用P,V操作实现进程的同步。"
+        "content": "一组进程的执行顺序如下图所示，圆圈P1,P2,P3,P4,P5,P6表示进程，弧上的字母a,b,c,d,e,f,g,h表示同步信号量，请用P,V操作实现进程的同步。",
+        "explanation": "答案图片：answer_crops/os/page_145_A14_ans.jpg\n答案图片：answer_crops/os/page_146_A14_ans_p2.jpg\n\n本题是一个典型的利用信号量实现前驱关系的同步问题。Semaphore a=b=c=d=e=f=g=h=0; //定义进程执行顺序的信号量coBegin\nprocess P1(){\n执行P1的任务;v(a); //实现先P1后P2的同步关系v(b); //实现先P1后P3的同步关系process P2(){\nP(a); //检查P1是否已运行完成执行P2的任务;v(c); //实现先P2后P4的同步关系v(d); //实现先P2后P5的同步关系process P3(){\nP(b); //检查P1是否已运行完成执行P3的任务;v(e); //实现先P3后P4的同步关系v(f); //实现先P3后P5的同步关系process P4(){\nP(c); //检查P2是否已运行完成P(e); //检查P3是否已运行完成执行P4的任务;v(g); //实现先P4后P6的同步关系process P5(){\nP(d); //检查P2是否已运行完成P(f); //检查P3是否已运行完成执行P5的任务;v(h); //实现先P5后P6的同步关系process P6(){\nP(g); //检查P4是否已运行完成\nP(h); //检查P5是否已运行完成\n执行P6的任务;\ncoEnd"
       }
     },
     {
@@ -12020,7 +12023,8 @@
       "chapter": "进程与线程 · 同步与互斥 · 解答题",
       "qid": "A27",
       "fields": {
-        "content": "【2023统考真题】现要求学生使用swap指令和布尔型变量lock实现临界区互斥。lock为线程间共享的变量，当lock的值为TRUE时线程不能进入临界区，为FALSE时线程能够进入临界区。某同学编写的实现临界区互斥的伪代码如下图所示。某同学编写的伪代码newSwap()的代码bool lock=FALSE; //共享变量void newSwap( bool *a, bool *b ); bool key=TRUE; 进入区bool temp= *a;if(key==TRUE) *a=*b;swap key,lock;I/交换key和lock的值 *b=temp;\n临界区；lock=TRUE; 退出区\n(a) (b)\n请回答下列问题。1）图(a)的伪代码中哪些语句存在错误？将其改为正确的语句(不增加语句的条数)。2）图(b)给出了交换两个变量值的函数newSwap()的代码，是否可以用函数调用语句\n“newSwap(&key,&lock)”代替指令“swap key,lock”以实现临界区互斥？为什么？"
+        "content": "【2023统考真题】现要求学生使用swap指令和布尔型变量lock实现临界区互斥。lock为线程间共享的变量，当lock的值为TRUE时线程不能进入临界区，为FALSE时线程能够进入临界区。某同学编写的实现临界区互斥的伪代码如下图所示。某同学编写的伪代码newSwap()的代码bool lock=FALSE; //共享变量void newSwap( bool *a, bool *b ); bool key=TRUE; 进入区bool temp= *a;if(key==TRUE) *a=*b;swap key,lock;I/交换key和lock的值 *b=temp;\n临界区；lock=TRUE; 退出区\n(a) (b)\n请回答下列问题。1）图(a)的伪代码中哪些语句存在错误？将其改为正确的语句(不增加语句的条数)。2）图(b)给出了交换两个变量值的函数newSwap()的代码，是否可以用函数调用语句\n“newSwap(&key,&lock)”代替指令“swap key,lock”以实现临界区互斥？为什么？",
+        "explanation": "答案图片：answer_crops/os/page_153_A27_ans.jpg\n\n1）if语句无法实现对临界区的互斥访问，因为if语句执行后，不论结果如何，线程都能访问临界区。本题使用swap指令和lock变量来实现对临界区的互斥访问，当线程不能进入临界区时，本身并不会主动放弃CPU，因此需要让线程在进入区中循环检查lock值，可以使用while循环，当lock值为TRUE时，线程一直执行while循环的内容，直到lock值被修改为FALSE时，线程才能进入临界区，因此将进入区中的语句“if(key==TRUE)\nswap key,lock”修改为“while(key==TRUE)swap key,lock”。在退出区中，代表该线程对临界资源的访问已经结束，此时需要将lock值置为FALSE，代表其他线程可以访问临界区，因此将退出区中的语句“lock=TRUE”修改为“lock=FALSE”。2）否。因为多个线程可以并发执行newSwap()，newSwap()执行时传递给形参b的是共享变量lock的地址，在newSwap()中对lock既有读操作又有写操作，并发执行时不能保证实现两个变量值的原子交换，从而导致并发执行的线程同时进入临界区。例如，线程A和线程B并发执行，初始时lock值为FALSE，当线程A执行完*a=*b后发生了进程调度，切换到线程B执行，线程B执行完newSwap后发生线程切换，此时线程A和B都能进入临界区，不能实现互斥访问。"
       }
     },
     {
@@ -12053,6 +12057,30 @@
       "qid": "A12",
       "fields": {
         "explanation": "答案图片：answer_crops/os/page_144_A12_ans.jpg\n\n电影院一次只能放映一部影片，希望观看的观众可能有不同的爱好，但每次只能满足部分观众的需求，即希望观看另外两部影片的用户只能等待。分别为三部影片设置三个信号量sO,sl,s2，初值分别为1，1，1。电影院一次只能放一部影片，因此需要互斥使用。观看影片的观众有多个，因此必须分别设置三个计数器（初值都是0)，用来统计观众个数。当然，计数器是个共享变量，需要互斥使用。semaphore s=1,s0=1,s1=1,s2=1;int count0=0,count1=0,count2=0;process videoshow1{ //看第一部影片的观众P(s0);\ncount0=count0+1;if(count0==1)\nP(s);\nV(s0);\n看影片；P(s0);\ncount0=count0-1;if(count0==0) /没人看了，就结束放映v(s);\nv(s0);\nprocess videoshow2{ //看第二部影片的观众P(s1);\ncount1=count1+1;if(count1==1)\nP(s);\nv(s1);\n看影片;P(s1);\ncount1=count1-1;if(countl==0) //没人看了，就结束放映V(s);\nv(sl);\nprocessvideoshow3{ 1/看第三部影片的观众P(s2);\ncount2=count2+1;if(count2==1)\nP(s);\nV(s2);\n看影片；P(s2);\nCount2=count2-1;if(count2==0) I/没人看了，就结束放映v(s);\nV(s2);\n}}"
+      }
+    },
+    {
+      "course": "os",
+      "chapter": "进程与线程 · 同步与互斥 · 选择题",
+      "qid": "X22",
+      "fields": {
+        "explanation": "答案图片：answer_crops/os/page_133_X22_ans.jpg\n答案图片：answer_crops/os/page_134_X22_ans_p2.jpg\n\n若两个线程分别对两个不同的互斥锁先后加锁，但顺序相反，则可能导致死锁，这是典型的循环等待现象。例如，线程1先对互斥锁A加锁，然后尝试对互斥锁B加锁；同时，线程2先对B加锁，然后尝试对A加锁，两个线程都在等待对方释放资源，从而无法继续推进。"
+      }
+    },
+    {
+      "course": "os",
+      "chapter": "进程与线程 · 同步与互斥 · 解答题",
+      "qid": "A11",
+      "fields": {
+        "explanation": "答案图片：answer_crops/os/page_143_A11_ans.jpg\n答案图片：answer_crops/os/page_144_A11_ans_p2.jpg\n\n1）控制变量waiting用来记录等候理发的顾客数，初值为0，进来一名顾客时，waiting加1,\n一名顾客理发时，waiting减1。2）信号量customers用来记录等候理发的顾客数，并用作阻塞理发师进程，初值为0。3）信号量barbers用来记录正在等候顾客的理发师数，并用作阻塞顾客进程，初值为0。4）信号量mutex用于互斥，初值为1。int waiting=0; //等候理发的顾客数int chairs=n; //为顾客准备的椅子数Semaphore customers=0,barbers=0,mutex=1;barber(){ //理发师进程while(1) { /理完一人，还有顾客吗？P(customers); //若无顾客，理发师睡眠P(mutex); //进程互斥waiting=waiting-1; //等候顾客数少一个V(barbers); //理发师去为一名顾客理发V(mutex); //开放临界区Cut_hair (); //正在理发customer() { /顾客进程P(mutex); //进程互斥if(waiting<chairs）{ //若有空的椅子，就找到椅子坐下等待waiting=waiting+1; //等候顾客数加1\nV(customers); /呼唤理发师\nV(mutex); //开放临界区\nP(barbers); //无理发师，顾客坐着\nget_haircut(); //一名顾客坐下等待理发\n}\nelse\nV(mutex); //人满，离开\n}"
+      }
+    },
+    {
+      "course": "os",
+      "chapter": "进程与线程 · 同步与互斥 · 解答题",
+      "qid": "A16",
+      "fields": {
+        "explanation": "答案图片：answer_crops/os/page_146_A16_ans.jpg\n答案图片：answer_crops/os/page_147_A16_ans_p2.jpg\n\n供应者与3个抽烟者分别是同步关系。由于供应者无法同时满足两个或以上的抽烟者，3个抽烟者对抽烟这个动作互斥（或者理解为互斥访问桌子）。显然这里有4个进程。供应者作为生产者向3个抽烟者提供材料。设置信号量offer1,offer2,offer3分别表示烟草和纸组合的资源、烟草和胶水组合的资源、纸和胶水组合的资源，信号量finish用于互斥进行抽烟动作。代码如下：int num=0;I/存储随机数semaphore offer1=0; //定义信号量对应烟草和纸组合的资源semaphore offer2=0; //定义信号量对应烟草和胶水组合的资源semaphore offer3=0; //定义信号量对应纸和胶水组合的资源semaphore finish=0; //定义信号量表示抽烟是否完成process P1(){ //供应者while (1){\nnum++;num=num%3;if(num==0)\nV(offer1); //提供烟草和纸else if(num==1)\nV(offer2); //提供烟草和胶水else\nV(offer3); //提供纸和胶水任意两种材料放在桌子上;P(finish);\nprocess P2(){ //拥有烟草者while(1){\nP(offer3);\n拿纸和胶水，卷成烟，抽掉;V(finish);\n}\n}\nprocess P3(){ //拥有纸者while(1){\nP(offer2);\n拿烟草和胶水，卷成烟，抽掉;V(finish);\n}\n}\nprocess P4(){ //拥有胶水者while(1){\nP(offer1);\n拿烟草和纸，卷成烟，抽掉;V(finish);\n}\n}"
       }
     }
   ]
