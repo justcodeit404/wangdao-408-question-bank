@@ -26,30 +26,31 @@ def _q(course: str, chapter_part: str, qid: str) -> dict:
 
 
 def test_os_sync_choice_code_columns():
-    # 原书同步与互斥选择题：双栏代码被读成一行。表头在左、右栏语句不能串行。
+    # 原书双栏代码走代码围栏，制表符分栏，不画成管道表。
     x46 = _q("os", "同步与互斥", "X46")["content"]
-    assert "| 进程P1 | 进程P2 |" in x46
-    assert "| y:=1; | x:=1 |" in x46
-    assert "| z:=y+1; | P(s1); |" in x46
-    assert "| y:=z+y; | V(s2); |" in x46
+    assert "```" in x46
+    assert "进程P1\t进程P2" in x46
+    assert "y:=1;\tx:=1" in x46
+    assert "z:=y+1;\tP(s1);" in x46
+    assert "y:=z+y;\tV(s2);" in x46
+    assert "| 进程P1 |" not in x46
     assert "x:=x+1;z:=y+1" not in x46
     x33 = _q("os", "同步与互斥", "X33")["content"]
-    assert "| z=x+y; | print c; //B2 |" in x33
-    assert "z=x+y;　　　　print" not in x33
+    assert "z=x+y;\tprint c; //B2" in x33
     x48 = _q("os", "同步与互斥", "X48")["content"]
-    assert "| while(flag[1]&&(turn==1)); | while(flag[0]&&(turn==0)); |" in x48
+    assert "while(flag[1]&&(turn==1));\twhile(flag[0]&&(turn==0));" in x48
     assert "turn=1;flag[1]=true" not in x48
     x50 = _q("os", "同步与互斥", "X50")["content"]
-    assert "| a=1; x+=1; | a=x; x+=3; |" in x50
-    assert "| a=2; x+=2; | b=x; x+=4; |" in x50
+    assert "a=1; x+=1;\ta=x; x+=3;" in x50
+    assert "a=2; x+=2;\tb=x; x+=4;" in x50
     x53 = _q("os", "同步与互斥", "X53")["content"]
-    assert "| thread1 | thread2 |" in x53
-    assert "| mov R1,x //(x)→R1 | mov R2,x //(x)→R2 |" in x53
+    assert "thread1\tthread2" in x53
+    assert "mov R1,x //(x)→R1\tmov R2,x //(x)→R2" in x53
     x45 = _q("os", "同步与互斥", "X45")["content"]
-    assert "吃饭\n    V(chopStick[i]);" in x45
+    assert "吃饭\nV(chopStick[i]);" in x45
     assert "吃饭V" not in x45
     x51 = _q("os", "同步与互斥", "X51")["content"]
-    assert "critical section;\n        lock=FALSE;" in x51
+    assert "critical section;\n    lock=FALSE;" in x51
     assert "section;lock" not in x51
 
 

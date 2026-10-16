@@ -60,6 +60,8 @@ _LABEL_RX = re.compile(
 _SEQ_NL_RX = re.compile(r"\n(?=\d{1,2}[)）])")
 
 IMAGE_REF_RE = re.compile(r"^[ \t]*(题目图片|答案图片)：[^\n]*$", re.M)
+# 代码围栏整段先摘走：里面的换行、缩进和分栏制表符都是排版，不是 OCR 空格。
+FENCE_RE = re.compile(r"```[^\n]*\n[\s\S]*?```")
 
 _PLACEHOLDER = "\ue000REF{}\ue001"
 
@@ -111,7 +113,8 @@ def normalize_text(s: str) -> "tuple[str, Counter]":
         refs.append(m.group(0))
         return _PLACEHOLDER.format(len(refs) - 1)
 
-    text = IMAGE_REF_RE.sub(_stash, s)
+    text = FENCE_RE.sub(_stash, s)
+    text = IMAGE_REF_RE.sub(_stash, text)
     protected = {m.end() - 1 for m in _LABEL_RX.finditer(text)}
     protected.update(m.end() - 1 for m in _SEQ_NL_RX.finditer(text))
     enc = _enclosing_table(text)

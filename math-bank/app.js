@@ -274,6 +274,12 @@ function joinOcrWrappedLines(left, right) {
 
 function reflowOcrSoftWraps(text) {
   const normalized = String(text || '').replace(/\r\n?/g, '\n');
+  // 代码围栏内的换行和分栏制表符是排版，不是 OCR 软换行。
+  if (normalized.includes('```')) {
+    return normalized.split(/(```[^\n]*\n[\s\S]*?```)/).map((part, i) => (
+      i % 2 === 1 ? part : reflowOcrSoftWraps(part)
+    )).join('');
+  }
   if (!normalized.includes('\n')) return normalized;
   const lines = normalized.split('\n');
   const hasTableOrFigure = OCR_TABLE_HINT_RE.test(normalized);
@@ -2812,6 +2818,19 @@ function splitStemCode(src) {
   return parts;
 }
 
+function stemFenceColumns(lines) {
+  if (!lines.some((line) => line.includes('\t'))) return null;
+  const left = [];
+  const right = [];
+  lines.forEach((line) => {
+    const tab = line.indexOf('\t');
+    if (tab < 0) { left.push(line); right.push(''); return; }
+    left.push(line.slice(0, tab));
+    right.push(line.slice(tab + 1));
+  });
+  return { left: left.join('\n'), right: right.join('\n') };
+}
+
 function paintPreparedStem(el, text) {
   const lines = String(text || '').split('\n');
   // 题干可含多个 markdown 管道表；表前/表间/表后文字仍走 .stem-prose 纯文本
@@ -2824,6 +2843,16 @@ function paintPreparedStem(el, text) {
   };
   let i = 0;
   while (i < lines.length) {
+    if (lines[i].trim() === '```') {
+      flushProse();
+      let end = i + 1;
+      while (end < lines.length && lines[end].trim() !== '```') end += 1;
+      const body = lines.slice(i + 1, end);
+      const cols = stemFenceColumns(body);
+      parts.push(cols ? { type: 'cols', ...cols } : { type: 'code', text: body.join('\n') });
+      i = end + 1;
+      continue;
+    }
     if (isPipeRow(lines[i]) && isSepRow(lines[i + 1] || '')) {
       flushProse();
       let end = i;
@@ -2838,7 +2867,11 @@ function paintPreparedStem(el, text) {
   flushProse();
   const flat = [];
   parts.forEach((p) => {
-    if (p.type === 'table') {
+    if (p.type === 'table' || p.type === 'cols') {
+      flat.push(p);
+      return;
+    }
+    if (p.type === 'code') {
       flat.push(p);
       return;
     }
@@ -2846,24 +2879,32 @@ function paintPreparedStem(el, text) {
       flat.push(seg.kind === 'code' ? { type: 'code', text: seg.text } : { type: 'prose', text: seg.text });
     });
   });
-  if (!flat.some((p) => p.type === 'table' || p.type === 'code')) {
+  if (!flat.some((p) => p.type === 'table' || p.type === 'code' || p.type === 'cols')) {
     el.textContent = text;
     return;
   }
   el.innerHTML = flat
     .map((p) => {
       if (p.type === 'table') return stemTableHtml(p.lines);
+      if (p.type === 'cols') return '<div class="stem-code-cols"><pre class="stem-col"></pre><pre class="stem-col"></pre></div>';
       if (p.type === 'code') return '<pre class="stem-code"></pre>';
       return '<div class="stem-prose"></div>';
     })
     .join('');
   const proses = el.querySelectorAll('.stem-prose');
   const codes = el.querySelectorAll('.stem-code');
+  const colBlocks = el.querySelectorAll('.stem-code-cols');
   let pi = 0;
   let ci = 0;
+  let coli = 0;
   flat.forEach((p) => {
     if (p.type === 'prose' && proses[pi]) proses[pi++].textContent = p.text;
     if (p.type === 'code' && codes[ci]) codes[ci++].textContent = p.text;
+    if (p.type === 'cols' && colBlocks[coli]) {
+      const pres = colBlocks[coli++].querySelectorAll('pre');
+      if (pres[0]) pres[0].textContent = p.left;
+      if (pres[1]) pres[1].textContent = p.right;
+    }
   });
 }
 
@@ -5276,7 +5317,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=421').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=422').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {

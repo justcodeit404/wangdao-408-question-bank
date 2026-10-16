@@ -1927,7 +1927,8 @@ body.compact-view .question-row .row-tags .row-tag { display: none; }
   font-weight: 600;
 }
 
-.stem-code {
+.stem-code,
+.stem-col {
   display: block;
   margin: 10px 0;
   padding: 8px 12px;
@@ -1940,6 +1941,18 @@ body.compact-view .question-row .row-tags .row-tag { display: none; }
   line-height: 1.7;
   white-space: pre-wrap;
   overflow-x: auto;
+}
+
+.stem-code-cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 10px 16px;
+  margin: 10px 0;
+}
+
+.stem-code-cols > .stem-col {
+  margin: 0;
+  white-space: pre;
 }
 
 .modal-content .q-options {

@@ -1386,7 +1386,7 @@
       "chapter": "进程与线程 · 同步与互斥 · 选择题",
       "qid": "X49",
       "fields": {
-        "content": "【2011统考真题】有两个并发执行的进程P1和进程P2，共享初值为1的变量x。P1对x加1，P2对x减1。加1和减1操作的指令序列分别如下：\n| //加1操作 | //减1操作 |\n| --- | --- |\n| load R1,x //取x到寄存器R1 | load R2,x //取x到寄存器R2 |\n| inc R1 | dec R2 |\n| store x,R1 //将R1的内容存入x | store x,R2 //将R2的内容存入x |\n两个操作完成后，x的值（）。",
+        "content": "【2011统考真题】有两个并发执行的进程P1和进程P2，共享初值为1的变量x。P1对x加1，P2对x减1。加1和减1操作的指令序列分别如下：\n```\n//加1操作\t//减1操作\nload R1,x //取x到寄存器R1\tload R2,x //取x到寄存器R2\ninc R1\tdec R2\nstore x,R1 //将R1的内容存入x\tstore x,R2 //将R2的内容存入x\n```\n两个操作完成后，x的值（）。",
         "explanation": "答案图片：answer_crops/os/page_136_X49_ans.jpg\n\nx的值最终是多少，取决于最后是哪个进程对x进行了写操作。一个进程一旦拿到了x值，它最后对x写操作的值也就确定了。因此本题只需考虑两个进程拿到x值的所有可能情况。对于进程P1，最初取到的x值可能是1，也可能是进程P2完成后更新得到的x值0，因此对于P1，最终写入x的值可能是2（当它最初取到1时）和1（当它最初取到0时）。同理，对于P2，最初取到的x值可能是1，也可能是P1完成后更新得到的x值2，因此对于P2，最终写入x的值可能是0（当它最初取到1时）和1（当它最初取到2时）。因此，最终的x值可能是0、1或2。"
       }
     },
@@ -1775,7 +1775,7 @@
       "chapter": "进程与线程 · 同步与互斥 · 选择题",
       "qid": "X53",
       "fields": {
-        "content": "【2018统考真题】属于同一进程的两个线程thread1和thread2并发执行，共享初值为0的全局变量x。thread1和thread2实现对全局变量x加1的机器级代码描述如下。\n| thread1 | thread2 |\n| --- | --- |\n| mov R1,x //(x)→R1 | mov R2,x //(x)→R2 |\n| inc R1 //(R1)+1→R1 | inc R2 //(R2)+1→R2 |\n| mov x,R1 //(R1)→x | mov x,R2 //(R2)→x |\n在所有可能的指令执行序列中，使x的值为2的序列个数是（）。"
+        "content": "【2018统考真题】属于同一进程的两个线程thread1和thread2并发执行，共享初值为0的全局变量x。thread1和thread2实现对全局变量x加1的机器级代码描述如下。\n```\nthread1\tthread2\nmov R1,x //(x)→R1\tmov R2,x //(x)→R2\ninc R1 //(R1)+1→R1\tinc R2 //(R2)+1→R2\nmov x,R1 //(R1)→x\tmov x,R2 //(R2)→x\n```\n在所有可能的指令执行序列中，使x的值为2的序列个数是（）。"
       }
     },
     {
@@ -2098,7 +2098,7 @@
       "chapter": "进程与线程 · 同步与互斥 · 选择题",
       "qid": "X50",
       "fields": {
-        "content": "【2016统考真题】进程P1和P2均包含并发执行的线程，部分伪代码描述如下所示。\n| //进程P1 | //进程P2 |\n| --- | --- |\n| int x=0; | int x=0; |\n| Thread1() | Thread3() |\n| { | { |\n| int a; | int a; |\n| a=1; x+=1; | a=x; x+=3; |\n| } | } |\n| Thread2() | Thread4() |\n| { | { |\n| int a; | int b; |\n| a=2; x+=2; | b=x; x+=4; |\n| } | } |\n下列选项中，需要互斥执行的操作是（）。",
+        "content": "【2016统考真题】进程P1和P2均包含并发执行的线程，部分伪代码描述如下所示。\n```\n//进程P1\t//进程P2\nint x=0;\tint x=0;\nThread1()\tThread3()\n{\t{\nint a;\tint a;\na=1; x+=1;\ta=x; x+=3;\n}\t}\nThread2()\tThread4()\n{\t{\nint a;\tint b;\na=2; x+=2;\tb=x; x+=4;\n}\t}\n```\n下列选项中，需要互斥执行的操作是（）。",
         "options": {
           "A": "a=1与a=2"
         }
@@ -2141,7 +2141,7 @@
       "chapter": "进程与线程 · 同步与互斥 · 选择题",
       "qid": "X33",
       "fields": {
-        "content": "有两个并发进程P1和P2，其程序代码如下：\n| P1(){ | P2(){ |\n| --- | --- |\n| x=1; //A1 | x=-3; //B1 |\n| y=2; | c=x*x; |\n| z=x+y; | print c; //B2 |\n| print z; //A2 | } |\n| } | |\n可能打印出的z值有（），可能打印出的c值有（）（其中x为P1,P2的共享变量）。",
+        "content": "有两个并发进程P1和P2，其程序代码如下：\n```\nP1(){\tP2(){\nx=1; //A1\tx=-3; //B1\ny=2;\tc=x*x;\nz=x+y;\tprint c; //B2\nprint z; //A2\t}\n}\t\n```\n可能打印出的z值有（），可能打印出的c值有（）（其中x为P1,P2的共享变量）。",
         "explanation": "本题的关键是，输出语句A2,B2中读取的x的值不同，由于A1,B1执行有先后问题，使得在执行A2,B2前，x的可能取值有两个，即1,-3；这样，输出z的值可能是1+2=3或(-3)+2=-1；输出c的值可能是1×1=1或(-3)(-3)=9。"
       }
     },
@@ -2559,7 +2559,7 @@
       "chapter": "进程与线程 · 同步与互斥 · 选择题",
       "qid": "X46",
       "fields": {
-        "content": "有两个优先级相同的并发程序P1和P2，它们的执行过程如下所示。假设当前信号量s1=0，s2=0。当前的z=2，进程运行结束后，x,y和z的值分别是（）。\n| 进程P1 | 进程P2 |\n| --- | --- |\n| … | … |\n| y:=1; | x:=1 |\n| y:=y+2; | x:=x+1; |\n| z:=y+1; | P(s1); |\n| V(s1); | x:=x+y; |\n| P(s2); | z:=x+z; |\n| y:=z+y; | V(s2); |\n| … | … |",
+        "content": "有两个优先级相同的并发程序P1和P2，它们的执行过程如下所示。假设当前信号量s1=0，s2=0。当前的z=2，进程运行结束后，x,y和z的值分别是（）。\n```\n进程P1\t进程P2\n…\t…\ny:=1;\tx:=1\ny:=y+2;\tx:=x+1;\nz:=y+1;\tP(s1);\nV(s1);\tx:=x+y;\nP(s2);\tz:=x+z;\ny:=z+y;\tV(s2);\n…\t…\n```",
         "explanation": "答案图片：answer_crops/os/page_136_X46_ans.jpg\n\n因为进程并发，所以进程的执行具有不确定性，在P1,P2执行到第一个P,V操作前，应该是相互无关的。现在考虑第一个对s的P,V操作，因为进程P2是P(s1)操作，所以它必须等待P1执行完V(s1)操作后才可继续运行，此时的x,y,z值分别是2,3,4，当进程P1执行完V(s1)后便在P(s2)\n上阻塞，此时P2可以运行直到V(s2)，此时的x,y,z值分别是5,3,9，进程P1继续运行到结束,\n最终的x,y,z值分别为5,12,9。"
       }
     },
@@ -5269,7 +5269,7 @@
       "chapter": "进程与线程 · 同步与互斥 · 选择题",
       "qid": "X51",
       "fields": {
-        "content": "【2016统考真题】使用TSL（Test and Set Lock）指令实现进程互斥的伪代码如下所示。\n    do{\n        while(TSL(&lock));\n        critical section;\n        lock=FALSE;\n    }while(TRUE);\n下列与该实现机制相关的叙述中，正确的是（）。"
+        "content": "【2016统考真题】使用TSL（Test and Set Lock）指令实现进程互斥的伪代码如下所示。\n```\ndo{\n    while(TSL(&lock));\n    critical section;\n    lock=FALSE;\n}while(TRUE);\n```\n下列与该实现机制相关的叙述中，正确的是（）。"
       }
     },
     {
@@ -10881,7 +10881,7 @@
       "chapter": "进程与线程 · 同步与互斥 · 选择题",
       "qid": "X45",
       "fields": {
-        "content": "哲学家就餐问题的解决方案如下：\n    semaphore *chopstick[5];\n    semaphore *seat;\n    哲学家i：\n    …\n    P(seat);\n    P(chopStick[i]);\n    P(chopStick[(i+1)%5]);\n    吃饭\n    V(chopStick[i]);\n    V(chopStick[(i+1)%5]);\n    V(seat)\n其中，信号量seat的初值最大为（）。"
+        "content": "哲学家就餐问题的解决方案如下：\n```\nsemaphore *chopstick[5];\nsemaphore *seat;\n哲学家i：\n…\nP(seat);\nP(chopStick[i]);\nP(chopStick[(i+1)%5]);\n吃饭\nV(chopStick[i]);\nV(chopStick[(i+1)%5]);\nV(seat)\n```\n其中，信号量seat的初值最大为（）。"
       }
     },
     {
@@ -11965,7 +11965,7 @@
       "chapter": "进程与线程 · 同步与互斥 · 选择题",
       "qid": "X36",
       "fields": {
-        "content": "两个进程P0、P1互斥的Peterson算法描述如下：\n| 进程P0 | 进程P1 |\n| --- | --- |\n| flag[0]=1; | flag[1]=1; |\n| (1); | (2); |\n| while(flag[1]&&turn==1); | while(flag[0]&&turn==0); |\n| 临界区; | 临界区; |\n| flag[0]=0; | flag[1]=0; |\n| 其余代码; | 其余代码; |\n其中，(1)和(2)处的代码分别为（）。"
+        "content": "两个进程P0、P1互斥的Peterson算法描述如下：\n```\n进程P0\t进程P1\nflag[0]=1;\tflag[1]=1;\n(1);\t(2);\nwhile(flag[1]&&turn==1);\twhile(flag[0]&&turn==0);\n临界区;\t临界区;\nflag[0]=0;\tflag[1]=0;\n其余代码;\t其余代码;\n```\n其中，(1)和(2)处的代码分别为（）。"
       }
     },
     {
@@ -11973,7 +11973,7 @@
       "chapter": "进程与线程 · 同步与互斥 · 选择题",
       "qid": "X48",
       "fields": {
-        "content": "【2010统考真题】进程P0和进程P1的共享变量定义及其初值为：\n    boolean flag[2];\n    int turn=0;\n    flag[0]=false;flag[1]=false;\n若进程P0和进程P1访问临界资源的类C代码实现如下：\n| void P0() //进程P0 | void P1() //进程P1 |\n| --- | --- |\n| { | { |\n| while(true) | while(true) |\n| { | { |\n| flag[0]=true; turn=1; | flag[1]=true; turn=0; |\n| while(flag[1]&&(turn==1)); | while(flag[0]&&(turn==0)); |\n| 临界区; | 临界区; |\n| flag[0]=false; | flag[1]=false; |\n| } | } |\n| } | } |\n则并发执行进程P0和进程P1时产生的情况是（）。"
+        "content": "【2010统考真题】进程P0和进程P1的共享变量定义及其初值为：\n```\nboolean flag[2];\nint turn=0;\nflag[0]=false;flag[1]=false;\n```\n若进程P0和进程P1访问临界资源的类C代码实现如下：\n```\nvoid P0() //进程P0\tvoid P1() //进程P1\n{\t{\nwhile(true)\twhile(true)\n{\t{\nflag[0]=true; turn=1;\tflag[1]=true; turn=0;\nwhile(flag[1]&&(turn==1));\twhile(flag[0]&&(turn==0));\n临界区;\t临界区;\nflag[0]=false;\tflag[1]=false;\n}\t}\n}\t}\n```\n则并发执行进程P0和进程P1时产生的情况是（）。"
       }
     }
   ]

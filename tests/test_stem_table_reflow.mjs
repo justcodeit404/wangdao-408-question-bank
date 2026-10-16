@@ -32,7 +32,7 @@ function extractConstLine(src, name) {
 const FN = ['looksLikeOcrCodeLine', 'isOcrStructuralBreak', 'joinOcrWrappedLines',
   'reflowOcrSoftWraps', 'splitRomanItems', 'normalizeDisplayText',
   'escapeHtml', 'isPipeRow', 'splitPipeRow', 'isSepRow', 'stemTableHtml'];
-const CONST = ['OCR_CODE_LINE_RE', 'OCR_STRUCTURAL_START_RE', 'OCR_ASSET_CAPTION_RE', 'OCR_TABLE_HINT_RE'];
+const CONST = ['OCR_CODE_LINE_RE', 'ASM_MNEMONIC', 'ASM_INSN_RE', 'ASM_CONT_RE', 'OCR_STRUCTURAL_START_RE', 'OCR_ASSET_CAPTION_RE', 'OCR_TABLE_HINT_RE'];
 const bundle = CONST.map((c) => extractConstLine(appSrc, c)).join('\n') + '\n'
   + FN.map((n) => extractFunction(appSrc, n)).join('\n');
 const { normalizeDisplayText, isPipeRow, splitPipeRow, isSepRow, stemTableHtml } = new Function(
@@ -65,6 +65,9 @@ function checkText(label, text) {
 // ---- 固定事故样例（与 data 解耦，钉住 bug 本身）----
 const X13 = '【2013统考真题】某计算机主存地址空间大小为256MB，按字节编址。虚拟地址空间大小为4GB，采用页式存储管理，页面大小为4KB，TLB（快表）采用全相联映射，有4个页表项，内容如下表所示。\n| 有效位 | 标记 | 页框号 | … |\n| --- | --- | --- | --- |\n| 0 | FF180H | 0002H | … |\n| 1 | 3FFF1H | 0035H | … |\n| 0 | 02FF3H | 0351H | … |\n| 1 | 03FFFH | 0153H | … |\n则对虚拟地址03FFF180H进行虚实地址变换的结果是（）。';
 checkText('fixture X13', X13);
+const fenced = '题干如下：\n```\n进程P1\t进程P2\ny:=1;\tx:=1\n```\n问（）。';
+const fencedOut = normalizeDisplayText(fenced);
+assert(fencedOut.includes('进程P1\t进程P2\ny:=1;\tx:=1'), '代码围栏内的换行和分栏不得被重排吸掉');
 // 渲染侧：整块管道行应渲染出 表头 + 4 数据行
 const block = X13.split('\n').filter(isPipeRow);
 const html = stemTableHtml(block);

@@ -3288,3 +3288,10 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **原书**：page_122 X33/X36，page_123 X45/X46 上半，page_124 X46 下半/X48/X49/X50，page_125 X51/X53。双栏按行对齐，不是把两栏语句接成一句。
 - **修复**：双栏改为 markdown 管道表（壳已能画表）；单栏代码每行缩进，避免 normalize 把「换行+语句」当成单个空格删掉。选项和答案未改。
 - 本机验证：rebuild_bank.ps1 全绿，缓存戳 420→421，tests 125 passed（含 `test_os_sync_choice_code_columns`）。
+
+## 2026-10-16 · 同步与互斥代码题改回代码块，不再用表（主人要求，缓存 v421→v422）
+
+- 上一版把双栏画成管道表，不是代码题的灰底代码块。
+- 题干改为 ` ``` ` 围栏；双栏用制表符分开，壳渲染成并排两个 `.stem-col`（样式同 `.stem-code`）。单栏 X45/X51 是一块代码。
+- `normalize_spaces` 整段摘走围栏，`reflowOcrSoftWraps` 不重排围栏内部，避免分栏和换行再被吸掉。
+- 本机验证：rebuild 125 passed；`test_stem_table_reflow.mjs` 围栏样例通过。
