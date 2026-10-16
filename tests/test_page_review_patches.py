@@ -25,6 +25,15 @@ def _q(course: str, chapter_part: str, qid: str) -> dict:
     raise AssertionError(f"missing {course} {qid}")
 
 
+def test_os_sync_x32_stem_breaks():
+    # 原书 p122：「S：」与 1）2）各占一行。曾被拼成「S:1）…0。2）」，像初值是 1。
+    content = _q("os", "同步与互斥", "X32")["content"]
+    assert "信号量S：\n1）" in content
+    assert "值为0。\n2）" in content
+    assert "S:1" not in content
+    assert "S：1" not in content
+
+
 def test_os_cpu_choice_stem_tables():
     # 原书 p87–p89：X42/X45/X47 表头粘连，X52/X53 半截管道行
     expect = {

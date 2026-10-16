@@ -55,6 +55,9 @@ _LABEL_RX = re.compile(
     r"[ \t\n]+(?=(?:[A-Da-d][\.、．)]|"
     r"(?:X|IX|VIII|VII|VI|IV|V|III|II|I)[\.、．)]|"
     r"[①②③④⑤⑥⑦⑧⑨⑩]|\([0-9]+\)|（[0-9]+）))")
+# n）/n) 只保护换行：空格会误伤「115, 134)」「k==1)」「是5）」。
+# ponytail: 仅 1–2 位、仅换行。升级路径是只在行首匹配序号。
+_SEQ_NL_RX = re.compile(r"\n(?=\d{1,2}[)）])")
 
 IMAGE_REF_RE = re.compile(r"^[ \t]*(题目图片|答案图片)：[^\n]*$", re.M)
 
@@ -110,6 +113,7 @@ def normalize_text(s: str) -> "tuple[str, Counter]":
 
     text = IMAGE_REF_RE.sub(_stash, s)
     protected = {m.end() - 1 for m in _LABEL_RX.finditer(text)}
+    protected.update(m.end() - 1 for m in _SEQ_NL_RX.finditer(text))
     enc = _enclosing_table(text)
 
     # ponytail: markdown 管道表格行内空格全部保留（行首 | 才算），否则 R2 会把
