@@ -41,7 +41,6 @@ class FakeEl {
     this._cells = [];
     this._hasTable = false;
   }
-  get textContent() { return this._text; }
   set innerHTML(v) {
     this._html = String(v);
     this._text = '';
@@ -62,8 +61,18 @@ class FakeEl {
     }
   }
   get innerHTML() { return this._html; }
+  get textContent() {
+    // 真实 DOM 的 textContent 会把双栏代码拼成一段；桩要复现这一点，否则测不到 renderKatex 把栏拆掉。
+    if (this._html.includes('stem-code-cols') && !this._text) return 'P1(){\n}P2(){\nx=-3;';
+    return this._text;
+  }
   querySelector(sel) {
     if (sel === 'table') return this._hasTable ? { tag: 'table' } : null;
+    if (sel === 'table, .stem-code, .stem-code-cols, .stem-col') {
+      if (this._hasTable) return { tag: 'table' };
+      if (/class="stem-code"/.test(this._html) || this._html.includes('stem-code-cols')) return { tag: 'pre' };
+      return null;
+    }
     return null;
   }
   querySelectorAll(sel) {
@@ -332,6 +341,23 @@ def test_asm_without_colon_is_a_code_block():
     assert "阻塞的指令有" not in code
     assert res["proseTexts"][-1] == "若采用转发（旁路）技术处理数据冒险，则阻塞的指令有（）。"
     assert "I1 add" not in res["proseTexts"][0]
+
+
+def test_two_column_fence_survives_katex():
+    # 回归：renderKatex 用 textContent 回写时，会把 P1/P2 两栏按 DOM 顺序叠成一列。
+    src = (
+        "有两个并发进程P1和P2，其程序代码如下：\n"
+        "```\n"
+        "P1(){\tP2(){\n"
+        "x=1; //A1\tx=-3; //B1\n"
+        "y=2;\tc=x*x;\n"
+        "```\n"
+        "可能打印出的z值有（）。"
+    )
+    (res,) = _eval_fill([src])
+    assert "stem-code-cols" in res["rawHtml"]
+    assert "stem-code-cols" in res["finalHtml"]
+    assert "<br>x=-3" not in res["finalHtml"]
 
 
 def test_instruction_mention_without_mnemonic_is_not_code():

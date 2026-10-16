@@ -4385,8 +4385,8 @@ function highlightText(element, term) {
 // ========================
 function renderKatex(element) {
   if (!element || !window.katex) return;
-  if (element.querySelector && (element.querySelector('table') || element.querySelector('.stem-code'))) {
-    // 含表格或代码块时，只对正文/单元格跑 KaTeX，代码块保持原文字
+  // .stem-code 匹配不到 .stem-code-cols / .stem-col。漏掉时 textContent 会把左右栏拼成一列再写回。
+  if (element.querySelector && element.querySelector('table, .stem-code, .stem-code-cols, .stem-col')) {
     element.querySelectorAll('.stem-prose, .stem-table th, .stem-table td').forEach(renderKatex);
     return;
   }
@@ -5317,7 +5317,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=426').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=427').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {
