@@ -54,6 +54,17 @@ def test_os_sync_choice_code_columns():
     assert "section;lock" not in x51
 
 
+def test_os_deadlock_code_columns():
+    # 死锁章双栏代码同样走围栏分栏（主人上报 X23 排版散乱）。
+    x23 = _q("os", "死锁", "X23")["content"]
+    assert "Semaphore x1=x2=y=1;" in x23
+    assert "P1()\tP2()" in x23
+    assert "computer(A);\tcomputer(B);" in x23
+    x24 = _q("os", "死锁", "X24")["content"]
+    assert "P1()\tP2()" in x24
+    assert "if x>=1 then y=y+1;\tif x<=1 then t=t+2;" in x24
+
+
 def test_os_sync_x32_stem_breaks():
     # 原书 p122：「S：」与 1）2）各占一行。曾被拼成「S:1）…0。2）」，像初值是 1。
     content = _q("os", "同步与互斥", "X32")["content"]
