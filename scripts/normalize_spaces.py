@@ -112,6 +112,17 @@ def normalize_text(s: str) -> "tuple[str, Counter]":
     protected = {m.end() - 1 for m in _LABEL_RX.finditer(text)}
     enc = _enclosing_table(text)
 
+    # ponytail: markdown 管道表格行内空格全部保留（行首 | 才算），否则 R2 会把
+    # 表头「到达时刻 t」吸成「到达时刻t」。升级路径：逐 cell 判断而非整行跳过。
+    n0 = len(text)
+    in_table = [False] * n0
+    _pos = 0
+    for _line in text.split("\n"):
+        if _line.lstrip().startswith("|"):
+            for _k in range(_pos, _pos + len(_line)):
+                in_table[_k] = True
+        _pos += len(_line) + 1
+
     out: list[str] = []
     n = len(text)
     i = 0
@@ -156,7 +167,7 @@ def normalize_text(s: str) -> "tuple[str, Counter]":
                         # "O (n" / "f (x" → "O(n" / "f(x"；
                         # "return ((" 后随开括号则保留（R4 守卫）
                         rule = "R4_alnum_open"
-                if rule and i not in protected:
+                if rule and i not in protected and not in_table[i]:
                     counts[rule] += 1
                     i = j
                     continue
