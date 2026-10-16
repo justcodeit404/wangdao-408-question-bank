@@ -25,6 +25,24 @@ def _q(course: str, chapter_part: str, qid: str) -> dict:
     raise AssertionError(f"missing {course} {qid}")
 
 
+def test_os_cpu_choice_stem_tables():
+    # 原书 p87–p89：X42/X45/X47 表头粘连，X52/X53 半截管道行
+    expect = {
+        "X42": ("| 进程名 | 计算时间 | I/O时间 |", "| P1 | 90% | 10% |"),
+        "X45": ("| 作业号 | 到达时刻 t | 运行时间 |", "| J4 | 3 | 1 |"),
+        "X47": ("| 进程名 | 等待时间 | 需要的CPU时间 | 优先权 |", "| P2 | 15μs | 24μs | 30 |"),
+        "X52": ("| P0 | 0ms | 15 | 100ms |", "| P3 | 15ms | 6 | 10ms |"),
+        "X53": ("| P1 | 0ms | 1 | 60ms |", "| P3 | 30ms | 100 | 13ms |"),
+    }
+    for qid, needles in expect.items():
+        content = _q("os", "CPU调度", qid)["content"]
+        assert "| --- |" in content, qid
+        for needle in needles:
+            assert needle in content, (qid, needle)
+        assert "所示。进程名" not in content, qid
+        assert "所示。作业号" not in content, qid
+
+
 def test_os_cpu_x28_stem_table():
     # 原书 p86 是三列表；半截管道行缺分隔行，渲染器不会画表
     question = _q("os", "CPU调度", "X28")
