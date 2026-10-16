@@ -3250,3 +3250,10 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **原书**：`assets/pdf_images/os/page_085.png` 为三列表（进程名 / 到达时间/h / 运行时间/h）：P1 0.0 9、P2 0.4 4、P3 1.0 1、P4 5.5 4、P5 7 2。设问在 p86。
 - **修复**：page_review_patches.json 同题 content 改为 markdown 管道表；壳 `fillStemText` 渲染为 3 列 5 行。缓存戳 413→414。
 - 本机验证：`test_os_cpu_x26_stem_table` + `test_notes_katex` 7 passed；node 抽取渲染得到 `<th>进程名/到达时间/h/运行时间/h</th>` 与 P1=`0.0`/`9`、P3=`1.0`/`1`。
+
+## 2026-10-16 · 操作系统 CPU调度 X28 进程表半截管道行（主人上报，缓存 v414→v415）
+
+- **病征**：os 进程与线程 · CPU调度 · 选择题 X28（原书 p86）题干表被读成「进程名 | 到达时间/h | 运行时间/h」加 `P1 | 0 | 3` 行。行首行尾没有 `|`，也没有分隔行，壳不认作表格，管道符直接露在题干里。
+- **原书**：`assets/pdf_images/os/page_086.png` 三列表：P1 0/3、P2 1/1、P3 2/4、P4 3/5、P5 4/2。
+- **修复**：同题补丁 content 改为完整 markdown 管道表（含 `| --- |` 分隔行）。
+- 本机验证：`test_os_cpu_x28_stem_table`。

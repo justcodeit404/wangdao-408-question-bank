@@ -25,6 +25,18 @@ def _q(course: str, chapter_part: str, qid: str) -> dict:
     raise AssertionError(f"missing {course} {qid}")
 
 
+def test_os_cpu_x28_stem_table():
+    # 原书 p86 是三列表；半截管道行缺分隔行，渲染器不会画表
+    question = _q("os", "CPU调度", "X28")
+    content = question["content"]
+    assert "| 进程名 | 到达时间/h | 运行时间/h |" in content
+    assert "| --- | --- | --- |" in content
+    assert "| P1 | 0 | 3 |" in content
+    assert "| P5 | 4 | 2 |" in content
+    assert "）。进程名" not in content
+    assert "最短剩余时间优先" in content
+
+
 def test_os_cpu_x26_stem_table():
     # 原书 p85 是三列表；OCR 曾把表头粘成「进程名到达时间/h运行时间/h」
     question = _q("os", "CPU调度", "X26")
