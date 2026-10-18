@@ -130,6 +130,20 @@ def test_os_mem_x08_stem_table():
     assert "（段号，段内偏移）" in content
 
 
+def test_os_mem_x16_stem_table():
+    # 原书 p198：页号/页框号。OCR 粘成「0 21 1 / 3 04 5」，壳不画表。
+    question = _q("os", "内存管理概念", "X16")
+    content = question["content"]
+    assert "| 页号 | 页框号 |" in content
+    assert "| --- | --- |" in content
+    assert "| 0 | 2 |" in content
+    assert "| 1 | 1 |" in content
+    assert "| 3 | 0 |" in content
+    assert "| 4 | 5 |" in content
+    assert "页号页框号" not in content
+    assert "4097" in content
+
+
 def test_coa_trap_has_split_option_d():
     question = _q("coa", "异常和中断机制", "X01")
     assert "D" in question["options"]
