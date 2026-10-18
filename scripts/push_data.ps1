@@ -37,7 +37,7 @@ function Invoke-WithRetry([string]$Label, [scriptblock]$Cmd) {
 
 # ---- preflight ----
 if (-not (Test-Path -LiteralPath $Bank -PathType Container)) { Die "math-bank not found: $Bank" }
-& $Ssh -o BatchMode=yes -o ConnectTimeout=10 $Server "test -d $RemoteDir" 2>$null
+try { & $Ssh -o BatchMode=yes -o ConnectTimeout=10 $Server "test -d $RemoteDir" 2>$null | Out-Null } catch {}
 if ($LASTEXITCODE -ne 0) { Die "remote $RemoteDir missing; create shared/banks/bank-408 symlink layout first (docs/server.md)" }
 
 # ---- align cache stamps (idempotent; no-op when hashes unchanged) ----
@@ -93,15 +93,45 @@ foreach ($name in @("index.html", "sw.js", "app.js", "styles.css", "data.js", "c
     if (Test-Path -LiteralPath $p) { $toPush.Add($name) }
 }
 
-if ($toPush.Count -eq 0) { Write-Host "no changes, nothing to push"; exit 0 }
+# ---- figure crops: hash-tracked like data; tar-stream push when any drifted ----
+# 题图/解析图是静态资产。旧通道只推数据+壳，裁图修复到不了云（2026-10-17 X07 题图踩过）；
+# 全部文件做哈希记录，任一漂移则整包 tar 流推送（8.8MB/183 个，单次连接）。
+$cropDir = Join-Path $Bank "crops"
+$cropsDrifted = $false
+if (Test-Path -LiteralPath $cropDir -PathType Container) {
+    Get-ChildItem -LiteralPath $cropDir -Recurse -File | ForEach-Object {
+        $rel = "crops/" + $_.FullName.Substring($cropDir.Length + 1).Replace("\", "/")
+        $h = Sha256 $_.FullName
+        $new[$rel] = $h
+        if ($old[$rel] -ne $h) { $cropsDrifted = $true }
+    }
+}
+
+if ($toPush.Count -eq 0 -and -not $cropsDrifted) { Write-Host "no changes, nothing to push"; exit 0 }
 Write-Host ("pushing {0} file(s) to {1}:{2}" -f $toPush.Count, $Server, $RemoteDir)
 $toPush | ForEach-Object { Write-Host "  $_" }
+if ($cropsDrifted) { Write-Host "  crops/ (drifted, full dir)" }
 
 # ---- transfer: data first, then stamped entries (avoid new data under old shell) ----
 # single scp call = single connection; argument order preserves transfer order
 $ordered = @($toPush | Where-Object { $_ -like "data-*" }) + @($toPush | Where-Object { $_ -notlike "data-*" })
 $src = $ordered | ForEach-Object { Join-Path $Bank $_ }
-Invoke-WithRetry "scp" { & $Scp -C $src "${Server}:${RemoteDir}/" }
+Invoke-WithRetry "scp" { try { & $Scp -C $src "${Server}:${RemoteDir}/" 2>$null } catch {} }
+
+# crops drifted → pack to temp tar, scp, remote extract (PS 5.1 pipe would mangle the binary stream)
+if ($cropsDrifted) {
+    $Tar = Join-Path $env:SystemRoot "System32\tar.exe"
+    if (-not (Test-Path -LiteralPath $Tar)) { Die "tar.exe not found for crops push" }
+    $tmpTar = Join-Path $env:TEMP ("bank408-crops-" + [guid]::NewGuid().ToString("N") + ".tar")
+    try {
+        & $Tar -C $Bank -cf $tmpTar crops
+        if ($LASTEXITCODE -ne 0) { Die "local tar pack failed" }
+        Invoke-WithRetry "scp crops" { try { & $Scp -C $tmpTar "${Server}:${RemoteDir}/.crops-sync.tar" 2>$null } catch {} }
+        Invoke-WithRetry "ssh extract" { try { & $Ssh $Server "tar -C $RemoteDir -xf $RemoteDir/.crops-sync.tar && rm -f $RemoteDir/.crops-sync.tar" 2>$null } catch {} }
+    } finally {
+        if (Test-Path -LiteralPath $tmpTar) { Remove-Item -LiteralPath $tmpTar -Force }
+    }
+}
 
 # ---- remote verify in ONE ssh over HTTP (what users actually get), not the file on disk:
 # a full platform release can re-point /banks/408 at a release-internal dir and silently
@@ -110,7 +140,8 @@ $checkNames = @($ordered | Where-Object { $_ -like "data-*.json" }) -join " "
 $remoteScript = "set -e; curl -sS http://127.0.0.1:8000/banks/408/index.html | grep -o '__BANK_DATA_VER__[^;]*' | head -1 | grep -o '[0-9]\+' | head -1; for f in $checkNames; do printf '%s ' `$f; curl -sS -o /dev/null -w '%{http_code}\n' http://127.0.0.1:8000/banks/408/`$f; done"
 $remoteOut = $null
 for ($i = 1; $i -le 5 -and -not $remoteOut; $i++) {
-    $remoteOut = & $Ssh $Server $remoteScript 2>$null
+    # EAP=Stop 下 ssh 超时的 stderr 会经 NativeCommandError 变终止错误，2>$null 拦不住，须 try/catch
+    $remoteOut = $(try { & $Ssh $Server $remoteScript 2>$null } catch { $null })
     if (-not $remoteOut) { Write-Host "verify ssh failed (attempt $i/5), retrying..."; Start-Sleep -Seconds 15 }
 }
 if (-not $remoteOut) { Die "verify ssh failed after 5 attempts" }
@@ -119,6 +150,20 @@ $remoteVer = ($remoteOut | Select-Object -First 1)
 if ("$remoteVer" -notmatch [regex]::Escape($idxVer)) { Die "remote stamp check failed: remote='$remoteVer' local=$idxVer" }
 foreach ($line in ($remoteOut | Select-Object -Skip 1)) {
     if ($line -notmatch " 200$") { Die "remote data file check failed: '$line'" }
+}
+
+# ---- crops landed? full hash compare (local record vs remote disk), one ssh ----
+if ($cropsDrifted) {
+    $localCropLines = @($new.GetEnumerator() | Where-Object { $_.Key -like "crops/*" } | ForEach-Object { "$($_.Value)  $($_.Key.Substring(6))" })
+    $remoteCropOut = $null
+    for ($i = 1; $i -le 5 -and -not $remoteCropOut; $i++) {
+        $remoteCropOut = $(try { & $Ssh $Server "cd $RemoteDir/crops && find . -type f -exec sha256sum {} + | sed 's|  \./|  |'" 2>$null } catch { $null })
+        if (-not $remoteCropOut) { Write-Host "crops verify ssh failed (attempt $i/5), retrying..."; Start-Sleep -Seconds 15 }
+    }
+    if (-not $remoteCropOut) { Die "crops verify ssh failed after 5 attempts" }
+    $diff = Compare-Object $localCropLines @($remoteCropOut)
+    if ($diff) { Die "crops hash mismatch vs remote: $(($diff | Select-Object -First 5) -join '; ')" }
+    Write-Host "crops: $($localCropLines.Count) file(s) hash-verified on remote"
 }
 
 # ---- record pushed hashes ----
