@@ -157,6 +157,17 @@ def test_os_mem_x65_stem_table():
     assert "段内地址为400" in content
 
 
+def test_os_mem_x66_stem_table():
+    # 原书 p202：两行横表（分区始址 / 分区大小 × 4 列）。OCR 压平成一整段，壳不画表。
+    question = _q("os", "内存管理概念", "X66")
+    content = question["content"]
+    assert "| 分区始址 | 20K | 500K | 1000K | 200K |" in content
+    assert "| --- | --- | --- | --- | --- |" in content
+    assert "| 分区大小 | 40KB | 80KB | 100KB | 200KB |" in content
+    assert "分区始址20K" not in content
+    assert "回收始址为60K" in content
+
+
 def test_coa_trap_has_split_option_d():
     question = _q("coa", "异常和中断机制", "X01")
     assert "D" in question["options"]
