@@ -2066,6 +2066,27 @@ body.compact-view .question-row .row-tags .row-tag { display: none; }
   .stem-code-card .tok-pre { color: #111; }
 }
 
+.q-options-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.q-options-groups .q-options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 0;
+}
+
+.q-options-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  margin-bottom: 6px;
+}
+
 .modal-content .q-options {
   margin-bottom: 20px;
   display: flex;

@@ -20,7 +20,8 @@ from parse_patterns import has_real_image_ref
 sys.stdout.reconfigure(encoding="utf-8")
 
 PAGE_REVIEW_PATCHES_PATH = PROJECT_ROOT / "data" / "quality" / "page_review_patches.json"
-PAGE_REVIEW_PATCH_FIELDS = {"content", "options", "choice", "explanation"}
+PAGE_REVIEW_PATCH_FIELDS = {"content", "options", "choice", "explanation", "option_groups"}
+OPTION_KEYS = {"A", "B", "C", "D", "E"}
 ANSWER_CROP_LINE_RE = re.compile(
     r"^(?:答案图片|解析图片|题图|答图)\s*[：:]\s*answer_crops/[^\n]*", re.MULTILINE
 )
@@ -50,15 +51,36 @@ def load_page_review_patches(path=PAGE_REVIEW_PATCHES_PATH):
         options = fields.get("options")
         if options is not None and (
             not isinstance(options, dict) or not options or any(
-                str(key) not in {"A", "B", "C", "D"} or not isinstance(value, str) or not value.strip()
+                str(key) not in OPTION_KEYS or not isinstance(value, str) or not value.strip()
                 for key, value in options.items()
             )
         ):
             raise ValueError(f"page review patch {course}/{chapter}/{qid} has invalid options")
+        option_groups = fields.get("option_groups")
+        if option_groups is not None:
+            if not isinstance(option_groups, list) or len(option_groups) < 2:
+                raise ValueError(f"page review patch {course}/{chapter}/{qid} has invalid option_groups")
+            for group in option_groups:
+                group_options = group.get("options") if isinstance(group, dict) else None
+                if (
+                    not isinstance(group_options, dict) or not group_options or any(
+                        str(key) not in OPTION_KEYS or not isinstance(value, str) or not value.strip()
+                        for key, value in group_options.items()
+                    )
+                ):
+                    raise ValueError(
+                        f"page review patch {course}/{chapter}/{qid} has invalid option_groups options"
+                    )
+                if group.get("label") is not None and not isinstance(group["label"], str):
+                    raise ValueError(f"page review patch {course}/{chapter}/{qid} has invalid option_groups label")
         if "choice" in fields:
             choice = str(fields["choice"]).strip().upper()
-            if not choice or any(letter not in "ABCD" for letter in choice):
+            if not choice or any(letter not in "ABCDE" for letter in choice):
                 raise ValueError(f"page review patch {course}/{chapter}/{qid} has invalid choice")
+            if option_groups and len(choice) != len(option_groups):
+                raise ValueError(
+                    f"page review patch {course}/{chapter}/{qid} choice length != option_groups length"
+                )
         for key in ("content", "explanation"):
             if key in fields and (not isinstance(fields[key], str) or not fields[key].strip()):
                 raise ValueError(f"page review patch {course}/{chapter}/{qid} has empty {key}")
@@ -1751,9 +1773,19 @@ def fix_file(path, pdf_images_dir=None, course_key=None, apply_page_review_patch
                     current_options = dict(q.get("options") or {})
                     current_options.update(page_patch["options"])
                     if set(page_patch["options"]) >= {"A", "B", "C", "D"}:
-                        q["options"] = {k: page_patch["options"][k] for k in "ABCD"}
+                        q["options"] = dict(sorted(page_patch["options"].items()))
                     else:
                         q["options"] = current_options
+                if "option_groups" in page_patch:
+                    q["option_groups"] = [
+                        {
+                            "label": str(group.get("label") or index + 1),
+                            "options": dict(sorted(group["options"].items())),
+                        }
+                        for index, group in enumerate(page_patch["option_groups"])
+                    ]
+                elif "option_groups" in q:
+                    q.pop("option_groups", None)
                 ans = q.get("answer") or {}
                 if "choice" in page_patch:
                     ans["choice"] = str(page_patch["choice"]).strip().upper()
@@ -1764,8 +1796,10 @@ def fix_file(path, pdf_images_dir=None, course_key=None, apply_page_review_patch
                 expl = (ans.get("explanation") or "").strip()
                 choice = str(ans.get("choice") or "").strip().upper()
                 if choice and q.get("type") == "选择题":
-                    options = q.get("options") or {}
-                    if any(letter not in options for letter in choice):
+                    option_keys = set(q.get("options") or {})
+                    for group in q.get("option_groups") or []:
+                        option_keys |= set(group.get("options") or {})
+                    if any(letter not in option_keys for letter in choice):
                         raise ValueError(
                             f"page review patch {course_key}/{chapter_name}/{q.get('id')} leaves answer choice without option"
                         )

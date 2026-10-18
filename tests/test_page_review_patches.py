@@ -795,7 +795,11 @@ def test_net_tcp_x32_t_not_one():
 
 def test_net_tcp_x18_two_blank_options():
     question = _q("net", "TCP", "X18")
-    assert "C. SYN=1，序号=Y" in question["content"]
+    groups = question["option_groups"]
+    assert len(groups) == 2
+    assert groups[0]["options"]["C"] == "SYN=1，序号=Y"
+    assert groups[1]["options"]["C"] == "SYN=1，序号=Y，ACKx+1=1"
+    assert "C. SYN=1" not in question["content"]
     assert question["answer"]["choice"] == "AC"
 
 
@@ -887,9 +891,11 @@ def test_os_vm_x08_roman_ii_present():
 
 def test_ds_hash_x13_two_blank_options():
     question = _q("ds", "散列（Hash）表", "X13")
-    assert "①" in question["content"]
-    assert "0～16" in question["content"]
-    assert question["options"]["A"] == "17"
+    groups = question["option_groups"]
+    assert len(groups) == 2
+    assert groups[0]["options"]["A"] == "17"
+    assert groups[1]["options"]["C"] == "0~16"
+    assert "0~16" not in question["content"]
     assert "②" not in question["options"]["D"]
     assert question["answer"]["choice"] == "AC"
 

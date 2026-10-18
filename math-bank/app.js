@@ -2274,7 +2274,63 @@ function sortedOptionEntries(options) {
   return Object.entries(options).sort(([a], [b]) => String(a).localeCompare(String(b)));
 }
 
+/** 多空多组选项题（每个空一套 A/B/C/D 选项）；单组题返回 null，走原有渲染。 */
+function optionGroupsOf(q) {
+  const groups = q && Array.isArray(q.option_groups) ? q.option_groups : null;
+  if (!groups || groups.length < 2) return null;
+  const usable = groups.filter(g => g && g.options && Object.keys(g.options).length);
+  return usable.length >= 2 ? usable : null;
+}
+
+/** 分组题的扁平选项序列：DOM 顺序与之一致，用于填充公式。 */
+function flatOptionEntries(q) {
+  const groups = optionGroupsOf(q);
+  if (!groups) return sortedOptionEntries(q && q.options);
+  return groups.flatMap(g => sortedOptionEntries(g.options));
+}
+
+function optionLines(q, format) {
+  const groups = optionGroupsOf(q);
+  if (!groups) {
+    const entries = sortedOptionEntries(q && q.options);
+    return entries.map(([k, v]) => (format === 'md' ? `- **${k}**. ${v}` : `${k}. ${v}`));
+  }
+  const lines = [];
+  groups.forEach((g, i) => {
+    const label = g.label || String(i + 1);
+    lines.push(format === 'md' ? `**${label}**` : `${label}`);
+    sortedOptionEntries(g.options).forEach(([k, v]) => {
+      lines.push(format === 'md' ? `  - **${k}**. ${v}` : `  ${k}. ${v}`);
+    });
+  });
+  return lines;
+}
+
+/** 多空题的答案展示：BC → ①B ②C */
+function answerChoiceText(q) {
+  const choice = (q && q.answer && q.answer.choice) || '';
+  const groups = optionGroupsOf(q);
+  if (!groups) return choice;
+  const letters = orderedCorrect(q);
+  return groups.map((g, i) => `${g.label || i + 1}${letters[i] || '?'}`).join(' ');
+}
+
 function renderOptionsHtml(q) {
+  const groups = optionGroupsOf(q);
+  if (groups) {
+    const html = groups.map((g, gi) => `
+      <div class="q-options-group" data-group="${gi}">
+        <div class="q-options-label">第${escapeHtml(g.label || gi + 1)}空</div>
+        <div class="q-options">${sortedOptionEntries(g.options).map(([k]) => `
+          <div class="option-item" data-key="${k}" data-group="${gi}">
+            <span class="option-key">${k}.</span>
+            <span class="opt-math"></span>
+          </div>
+        `).join('')}</div>
+      </div>
+    `).join('');
+    return `<div class="q-options-groups">${html}</div>`;
+  }
   if (!q.options) return '';
   const opts = sortedOptionEntries(q.options).map(([k, v]) => `
     <div class="option-item" data-key="${k}">
@@ -2306,7 +2362,7 @@ function answerHtml(q) {
       <button type="button" class="reveal-answer-btn" data-role="revealBtn">显示答案</button>
     </div>
     <div class="q-answer" data-role="ans" hidden>
-      ${choice ? `<span class="q-answer-choice">答案：${escapeHtml(choice)}</span>` : ''}
+      ${choice ? `<span class="q-answer-choice">答案：${escapeHtml(answerChoiceText(q))}</span>` : ''}
       ${expl ? `<div class="q-answer-explain" data-role="qans"></div>` : ''}
     </div>
   `;
@@ -2445,6 +2501,39 @@ function bindOrderedChoice(container, q, onJudged) {
   };
 }
 
+/** 多空多组选项：每个空各点一个选项，全部选完即判分 */
+function bindGroupedChoice(container, q, onJudged) {
+  const groups = optionGroupsOf(q);
+  const correct = orderedCorrect(q);
+  const picked = new Array(groups.length).fill(null);
+  container._picked = picked;
+
+  container.querySelectorAll('.option-item').forEach(opt => {
+    opt.addEventListener('click', () => {
+      if (container._submitted) return;
+      const gi = Number(opt.dataset.group || 0);
+      const row = container.querySelectorAll(`.option-item[data-group="${gi}"]`);
+      row.forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+      picked[gi] = opt.dataset.key;
+      if (picked.some(key => key === null)) return;
+
+      container._submitted = true;
+      const seq = picked.join('');
+      const isCorrect = seq === correct;
+      container.querySelectorAll('.option-item').forEach(o => {
+        const g = Number(o.dataset.group || 0);
+        o.classList.add('disabled');
+        o.classList.remove('selected');
+        if (o.dataset.key === correct[g]) o.classList.add('correct');
+        else if (o.dataset.key === picked[g]) o.classList.add('wrong');
+      });
+      recordPracticeResult(q, isCorrect);
+      onJudged(isCorrect, seq);
+    });
+  });
+}
+
 function recordPracticeResult(q, isCorrect) {
   setPracticeResult(q, isCorrect);
   updateReviewSchedule(q, isCorrect);
@@ -2472,6 +2561,10 @@ function revealAnswerBox(container, q) {
 
 function bindPracticeInteractions(container, q) {
   const isChoice = q.type === '选择题';
+  if (isChoice && optionGroupsOf(q)) {
+    bindGroupedChoice(container, q, (ok, seq) => showChoiceFeedback(container, q, ok, seq));
+    return;
+  }
   if (isChoice && isOrderedChoice(q)) {
     bindOrderedChoice(container, q, (ok, seq) => showChoiceFeedback(container, q, ok, seq));
     return;
@@ -2545,11 +2638,16 @@ function restorePracticeState(container, q) {
   if (q.type === '选择题') {
     container._submitted = true;
     const correct = orderedCorrect(q) || (q.answer && q.answer.choice);
+    const groups = optionGroupsOf(q);
     const correctLetters = new Set(String(correct || '').split(''));
     const opts = container.querySelectorAll('.option-item');
     opts.forEach(o => {
       o.classList.add('disabled');
-      if (correctLetters.has(o.dataset.key)) o.classList.add('correct');
+      if (groups) {
+        if (o.dataset.key === correct[Number(o.dataset.group || 0)]) o.classList.add('correct');
+      } else if (correctLetters.has(o.dataset.key)) {
+        o.classList.add('correct');
+      }
     });
     const fb = container.querySelector('[data-role="practiceFeedback"]');
     if (fb) {
@@ -3102,9 +3200,9 @@ function renderQuestionBody(container, q, mode) {
   const qtext = container.querySelector('[data-role="qtext"]');
   if (qtext) { fillStemText(qtext, q.content); renderKatex(qtext); }
 
-  if (q.options) {
+  if (q.options || optionGroupsOf(q)) {
     const optMathEls = container.querySelectorAll('.opt-math');
-    const entries = sortedOptionEntries(q.options);
+    const entries = flatOptionEntries(q);
     optMathEls.forEach((el, i) => {
       if (entries[i]) { el.textContent = prepareMathText(entries[i][1]); renderKatex(el); }
     });
@@ -3125,6 +3223,26 @@ function renderQuestionBody(container, q, mode) {
 function bindDetailInteractions(container, q) {
   // 选择题也要能点「显示答案」；先前只绑了选项点击，按钮是死的
   bindRevealAnswer(container);
+  if (q.type === '选择题' && optionGroupsOf(q)) {
+    bindGroupedChoice(container, q, (isCorrect, seq) => {
+      revealAnswerBox(container, q);
+      const ansBox = container.querySelector('[data-role="ans"]');
+      if (ansBox) {
+        let result = ansBox.querySelector('.detail-feedback-result');
+        if (!result) {
+          result = document.createElement('div');
+          result.className = 'detail-feedback-result';
+          ansBox.insertBefore(result, ansBox.firstChild);
+        }
+        result.classList.remove('correct', 'wrong');
+        result.classList.add(isCorrect ? 'correct' : 'wrong');
+        result.textContent = isCorrect
+          ? '回答正确'
+          : `回答错误（你的答案：${seq}，正确答案：${orderedCorrect(q)}）`;
+      }
+    });
+    return;
+  }
   if (q.type === '选择题' && isOrderedChoice(q)) {
     bindOrderedChoice(container, q, (isCorrect, seq) => {
       revealAnswerBox(container, q);
@@ -3298,15 +3416,15 @@ function copyQuestionToClipboard(q) {
   const lines = [];
   lines.push(`【${q.type}】${displayId(q)} · 第 ${q.page} 页 · ${q.chapter}`);
   if (q.content) lines.push('', q.content);
-  if (q.options) {
+  if (q.options || optionGroupsOf(q)) {
     lines.push('');
-    sortedOptionEntries(q.options).forEach(([k, v]) => lines.push(`${k}. ${v}`));
+    lines.push(...optionLines(q));
   }
   if (q.sub_questions) {
     lines.push('', '子问题：');
     q.sub_questions.forEach((s, i) => lines.push(`(${i + 1}) ${s}`));
   }
-  if (q.answer && q.answer.choice) lines.push('', `答案：${q.answer.choice}`);
+  if (q.answer && q.answer.choice) lines.push('', `答案：${answerChoiceText(q)}`);
   if (q.answer && q.answer.explanation) lines.push(`解析：${q.answer.explanation}`);
   const note = getNote(q);
   if (note) lines.push('', `笔记：${stripNoteImages(note)}`);
@@ -3348,9 +3466,7 @@ function reportQuestionIssue(q) {
 }
 
 function buildQuestionIssuePayload(q, issueType, description, at) {
-  const options = q && q.options && typeof q.options === 'object'
-    ? Object.entries(q.options).map(([k, v]) => `${k}. ${v || ''}`)
-    : [];
+  const options = q ? optionLines(q) : [];
   const answer = q && q.answer && typeof q.answer === 'object' ? q.answer : {};
   return {
     bank: '408',
@@ -3858,7 +3974,7 @@ function generatePaper() {
   }
   prev.innerHTML = `<h3>试卷预览（${currentPaper.length} 道）</h3>` +
     currentPaper.map((q, i) => {
-      const opts = q.options ? sortedOptionEntries(q.options).map(([k, v]) => `<div>${k}. ${escapeHtml(v)}</div>`).join('') : '';
+      const opts = (q.options || optionGroupsOf(q)) ? optionLines(q).map(line => `<div>${escapeHtml(line)}</div>`).join('') : '';
       const subs = q.sub_questions ? q.sub_questions.map((s, j) => `<div>(${j+1}) ${escapeHtml(s)}</div>`).join('') : '';
       return `<div class="paper-q"><strong>${i+1}. (${escapeHtml(displayId(q))} · ${escapeHtml(q.type)} · 第 ${q.page} 页)</strong><div>${escapeHtml(q.content || '')}</div>${opts ? '<div style="margin-top:6px">' + opts + '</div>' : ''}${subs ? '<div style="margin-top:6px">' + subs + '</div>' : ''}<div style="margin-top:8px;height:1.4em"></div></div>`;
     }).join('');
@@ -3871,9 +3987,9 @@ function buildPaperMarkdown(includeAnswer) {
   currentPaper.forEach((q, i) => {
     lines.push(`## ${i+1}. （${displayId(q)} · ${q.type} · 第 ${q.page} 页）`);
     if (q.content) lines.push('', q.content);
-    if (q.options) {
+    if (q.options || optionGroupsOf(q)) {
       lines.push('');
-      for (const [k, v] of sortedOptionEntries(q.options)) lines.push(`- **${k}**. ${v}`);
+      lines.push(...optionLines(q, 'md'));
     }
     if (q.sub_questions) {
       lines.push('', '子问题：');
@@ -3881,7 +3997,7 @@ function buildPaperMarkdown(includeAnswer) {
     }
     if (includeAnswer) {
       lines.push('');
-      if (q.answer && q.answer.choice) lines.push(`> ✅ 答案：${q.answer.choice}`);
+      if (q.answer && q.answer.choice) lines.push(`> ✅ 答案：${answerChoiceText(q)}`);
       if (q.answer && q.answer.explanation) lines.push(`> 解析：${q.answer.explanation}`);
     } else {
       lines.push('', '**作答：** ______________________________________');
@@ -4038,11 +4154,11 @@ function exportWrongBook() {
       const q = allQuestions.find(x => questionKey(x) === it.key);
       lines.push(`### ${it.qid || ''} · 第 ${it.page} 页 · ${it.type || ''}`);
       if (q && q.content) lines.push('', '> ' + q.content.replace(/\n/g, '\n> '));
-      if (q && q.options) {
+      if (q && (q.options || optionGroupsOf(q))) {
         lines.push('');
-        for (const [k, v] of sortedOptionEntries(q.options)) lines.push(`- **${k}**. ${v}`);
+        lines.push(...optionLines(q, 'md'));
       }
-      if (q && q.answer && q.answer.choice) lines.push('', `**答案**：${q.answer.choice}`);
+      if (q && q.answer && q.answer.choice) lines.push('', `**答案**：${answerChoiceText(q)}`);
       if (q && q.answer && q.answer.explanation) lines.push(`**解析**：${q.answer.explanation}`);
       lines.push('', `> ❌ 错题次数：${it.count}　|　上次：${new Date(it.lastAt).toLocaleString()}`);
       const note = notesMap[it.key];
@@ -5504,7 +5620,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=432').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=434').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {

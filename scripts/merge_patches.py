@@ -15,7 +15,7 @@ from pathlib import Path
 
 sys.stdout.reconfigure(encoding="utf-8")
 PATCH_PATH = Path(__file__).resolve().parent.parent / "data" / "quality" / "page_review_patches.json"
-VALID_FIELDS = {"content", "options", "choice", "explanation"}
+VALID_FIELDS = {"content", "options", "choice", "explanation", "option_groups"}
 
 
 def merge_items(items: list) -> tuple[list, int]:

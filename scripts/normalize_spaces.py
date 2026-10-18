@@ -201,6 +201,11 @@ def iter_text_fields(q: dict):
     if isinstance(opts, dict):
         for k in opts:
             yield opts, k
+    for group in q.get("option_groups") or []:
+        group_opts = group.get("options") if isinstance(group, dict) else None
+        if isinstance(group_opts, dict):
+            for k in group_opts:
+                yield group_opts, k
     ans = q.get("answer") or {}
     if isinstance(ans, dict):
         yield ans, "explanation"

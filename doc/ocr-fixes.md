@@ -3332,3 +3332,14 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **原书**：`assets/pdf_images/os/page_198.png` 两列表：0→2、1→1、3→0、4→5（无页号 2）。解析已写明页号 1 对应页框号 1，答案 B 不变。
 - **修复**：同题补丁 content 改为 markdown 管道表。选项未改。
 - 本机验证：rebuild_bank.ps1 全绿，tests 128 passed（含 `test_os_mem_x16_stem_table`）；渲染得到 2 列 4 行。
+
+## 2026-10-19 · 多空多组选项题渲染（主人上报 os X34 截图，缓存 v432→v433）
+
+- **病征**：os 内存管理概念 X34（p199）这类「一题多空、每个空一套 A–D 选项」的题，选项被 OCR 拼进题干，页面只剩第一组选项卡片。题干出现「①A.1 B.0 C.IP D.CS ②A.绝对…」整段文字，第二空无法作答；判分把「BC」当作同一组选项里按顺序点两次，第二空实际点的是 IP。
+- **范围**：全库 9 道（ds 图存储 X06 / 散列 X13、os 内存管理概念 X34、net 概述 X06 / 体系结构 X23、X28 / IPv4 X27 / TCP X18 / 万维网 X04）。
+- **修复**：
+  - 数据结构新增 `option_groups`（每空一组 A–E 选项），`options` 保留第一组兼容旧导出/小程序；9 道题的 content 去掉内嵌选项行，组选项按原书逐题核对（ds X06 对照组① C.6 纠正旧补丁的 C.5）。
+  - 壳 `app.js`：`optionGroupsOf` / `flatOptionEntries` / `optionLines` / `answerChoiceText`；详情与练习都走 `bindGroupedChoice`（每空组内单选，全部选完判分，逐组标对错）；答案显示 `①B ②C`；复制题目、试卷预览/导出、错题导出、报错快照同步分组。
+  - `fix_questions.py` 的 page review patch 允许 `option_groups`（patch 校验：≥2 组、键 A–E、choice 长度与组数一致）。
+  - 回归：`tests/test_option_groups.mjs` + `.py`；`test_page_review_patches.py` 两处旧断言（要求选项文本留在 content）改为断言 `option_groups`。
+- 本机验证：node 抽取渲染单测通过；浏览器打开 os X34，两空分别点 B/C 判「回答正确」，答案「①B ②C」；ds X06 的 LaTeX 矩阵正常渲染。
