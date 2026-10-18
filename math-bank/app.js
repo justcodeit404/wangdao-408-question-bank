@@ -2540,6 +2540,24 @@ function bindGroupedChoice(container, q, onJudged) {
   });
 }
 
+/** 键盘 A–D：分组题填第一个未选空，普通题点对应选项。返回是否命中。 */
+function clickChoiceByKey(container, key) {
+  if (!container || container._submitted) return false;
+  if (optionGroupsOf(container._q)) {
+    const picked = container._picked || [];
+    let groupIndex = picked.indexOf(null);
+    if (groupIndex < 0) groupIndex = 0;
+    const opt = container.querySelector(`.option-item[data-group="${groupIndex}"][data-key="${key}"]`);
+    if (!opt) return false;
+    opt.click();
+    return true;
+  }
+  const opt = container.querySelector(`.option-item[data-key="${key}"]`);
+  if (!opt) return false;
+  opt.click();
+  return true;
+}
+
 function recordPracticeResult(q, isCorrect) {
   setPracticeResult(q, isCorrect);
   updateReviewSchedule(q, isCorrect);
@@ -5063,8 +5081,7 @@ function setupEvents() {
       const optKey = e.key.toUpperCase();
       if (['A', 'B', 'C', 'D'].includes(optKey)) {
         const container = document.getElementById('modalContent');
-        const opt = container && container.querySelector(`.option-item[data-key="${optKey}"]`);
-        if (opt && !container._submitted) { e.preventDefault(); opt.click(); }
+        if (clickChoiceByKey(container, optKey)) e.preventDefault();
       }
     }
     const practiceActive = document.getElementById('practiceModal').classList.contains('active');
@@ -5074,8 +5091,7 @@ function setupEvents() {
       const container = document.getElementById('practiceContent');
       const optKey = e.key.toUpperCase();
       if (['A', 'B', 'C', 'D'].includes(optKey)) {
-        const opt = container && container.querySelector(`.option-item[data-key="${optKey}"]`);
-        if (opt && !container._submitted) { e.preventDefault(); opt.click(); }
+        if (clickChoiceByKey(container, optKey)) e.preventDefault();
       }
       if (e.key === ' ' || e.key === 'Enter') {
         const reveal = container && container.querySelector('[data-role="revealBtn"]');
@@ -5627,7 +5643,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=435').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=436').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {
