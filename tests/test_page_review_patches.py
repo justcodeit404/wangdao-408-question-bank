@@ -168,6 +168,16 @@ def test_os_mem_x66_stem_table():
     assert "回收始址为60K" in content
 
 
+def test_os_mem_x68_stem_table():
+    # 原书 p202：地址结构为三列横表（页目录号 / 页号 / 页内偏移）。OCR 压平成一行，壳不画表。
+    question = _q("os", "内存管理概念", "X68")
+    content = question["content"]
+    assert "| 页目录号（10位） | 页号（10位） | 页内偏移（12位） |" in content
+    assert "| --- | --- | --- |" in content
+    assert "地址结构如下：页目录号" not in content
+    assert "2050 1225H" in content
+
+
 def test_coa_trap_has_split_option_d():
     question = _q("coa", "异常和中断机制", "X01")
     assert "D" in question["options"]
