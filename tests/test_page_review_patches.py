@@ -117,6 +117,19 @@ def test_os_cpu_x26_stem_table():
     assert "抢占式短进程优先" in content
 
 
+def test_os_mem_x08_stem_table():
+    # 原书 p197：段表三列。空格分隔会被 normalize_spaces 吸成「段号段首址段长0」，壳不画表。
+    question = _q("os", "内存管理概念", "X08")
+    content = question["content"]
+    assert "| 段号 | 段首址 | 段长 |" in content
+    assert "| --- | --- | --- |" in content
+    assert "| 0 | 120K | 40K |" in content
+    assert "| 2 | 480K | 20K |" in content
+    assert "| 3 | 370K | 20K |" in content
+    assert "段号段首址" not in content
+    assert "（段号，段内偏移）" in content
+
+
 def test_coa_trap_has_split_option_d():
     question = _q("coa", "异常和中断机制", "X01")
     assert "D" in question["options"]
