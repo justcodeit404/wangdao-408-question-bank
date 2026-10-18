@@ -1547,6 +1547,9 @@ function buildAllQuestions() {
       addTokens(q.id);
       if (q.sub_questions) q.sub_questions.forEach(addTokens);
       if (q.options) Object.values(q.options).forEach(addTokens);
+      for (const group of q.option_groups || []) {
+        Object.values(group.options || {}).forEach(addTokens);
+      }
       if (q.answer) {
         if (q.answer.choice) addTokens(q.answer.choice);
         if (q.answer.explanation) addTokens(q.answer.explanation);
@@ -1557,6 +1560,9 @@ function buildAllQuestions() {
       const parts = [q.content, ch.name, q.id];
       if (q.sub_questions) parts.push(...q.sub_questions);
       if (q.options) parts.push(...Object.values(q.options));
+      for (const group of q.option_groups || []) {
+        parts.push(...Object.values(group.options || {}));
+      }
       if (q.answer) {
         if (q.answer.choice) parts.push(q.answer.choice);
         if (q.answer.explanation) parts.push(q.answer.explanation);
@@ -4115,6 +4121,7 @@ function renderWrongBook() {
 function wrongBookItemHtml(it) {
   const q = allQuestions.find(x => questionKey(x) === it.key);
   const preview = q ? (q.content ? q.content.slice(0, 60) : (q.sub_questions && q.sub_questions[0] || '（无题干）')) : '（题目已不在当前课程）';
+  const answerText = q && q.answer && q.answer.choice ? answerChoiceText(q) : (it.correctAnswer || '');
   const last = new Date(it.lastAt);
   const dateStr = `${last.getMonth()+1}/${last.getDate()}`;
   return `
@@ -4122,7 +4129,7 @@ function wrongBookItemHtml(it) {
       <div class="wb-main">
         <div class="wb-id">${escapeHtml(it.qid || '')} · ${escapeHtml(it.type || '')} · 第 ${it.page} 页</div>
         <div class="wb-text">${escapeHtml(preview).replace(/\$([^$]+)\$/g, '$1')}</div>
-        <div class="wb-meta">${escapeHtml(it.chapter || '')}${it.correctAnswer ? ' · 答案：<span style="color:var(--accent)">' + escapeHtml(it.correctAnswer) + '</span>' : ''}</div>
+        <div class="wb-meta">${escapeHtml(it.chapter || '')}${answerText ? ' · 答案：<span style="color:var(--accent)">' + escapeHtml(answerText) + '</span>' : ''}</div>
       </div>
       <div class="wb-stats">
         <div class="wb-count" title="错题次数">${it.count}×</div>
@@ -5620,7 +5627,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=434').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=435').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {
