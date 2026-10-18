@@ -144,6 +144,19 @@ def test_os_mem_x16_stem_table():
     assert "4097" in content
 
 
+def test_os_mem_x65_stem_table():
+    # 原书 p202：段表五列。旧补丁写成空格分列，会被 normalize_spaces 吸成一整段，壳不画表。
+    question = _q("os", "内存管理概念", "X65")
+    content = question["content"]
+    assert "| 段号 | 段长 | 内存起始地址 | 权限 | 状态 |" in content
+    assert "| --- | --- | --- | --- | --- |" in content
+    assert "| 0 | 100 | 6000 | 只读 | 在内存 |" in content
+    assert "| 1 | 200 | — | 读写 | 不在内存 |" in content
+    assert "| 2 | 300 | 4000 | 读写 | 在内存 |" in content
+    assert "段号段长内存起始地址" not in content
+    assert "段内地址为400" in content
+
+
 def test_coa_trap_has_split_option_d():
     question = _q("coa", "异常和中断机制", "X01")
     assert "D" in question["options"]

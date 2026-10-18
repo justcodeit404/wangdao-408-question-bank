@@ -3343,3 +3343,12 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
   - `fix_questions.py` 的 page review patch 允许 `option_groups`（patch 校验：≥2 组、键 A–E、choice 长度与组数一致）。
   - 回归：`tests/test_option_groups.mjs` + `.py`；`test_page_review_patches.py` 两处旧断言（要求选项文本留在 content）改为断言 `option_groups`。
 - 本机验证：node 抽取渲染单测通过；浏览器打开 os X34，两空分别点 B/C 判「回答正确」，答案「①B ②C」；ds X06 的 LaTeX 矩阵正常渲染。
+
+## 2026-10-19 · 操作系统 内存管理概念 X65 段表压平 + 表头配色（主人上报，缓存 v433→v441）
+
+- **病征**：os 内存管理 · 内存管理概念 · 选择题 X65（原书 p202，2016 统考）段表被压成一整段「段号段长内存起始地址权限状态0 100 6000只读在内存1 200 — 读写不在内存2 300 4000读写在内存」。
+- **根因**：同题补丁 content 早先把表写成「空格分列 + 换行」，`normalize_spaces` 的 R1/R2 把行首词与下一行数字吸成一句，壳拿不到管道表行，退化成纯文本。与 X08（p197）/X16（p198）同一个病。
+- **修复 1（数据）**：同题补丁 content 改为标准 markdown 管道表（表头 段号/段长/内存起始地址/权限/状态 + `| --- |` 分隔行），与原书三行一致（0 100 6000 只读 在内存；1 200 — 读写 不在内存；2 300 4000 读写 在内存）。选项与答案 D 未改。
+- **修复 2（壳样式，全库共病）**：`.q-text .stem-table th` 背景写成 `var(--bg-muted, var(--surface-2, #f4f4f5))`，前两个变量在主题里都不存在，恒落到浅色 `#f4f4f5`，暗色主题下白底浅灰字几乎看不见。改走既有 token `var(--surface-secondary)`，深浅两主题都正常。所有管道表题（X08/X16/coa X09/X10 等）一并受益。
+- 回归：`tests/test_page_review_patches.py::test_os_mem_x65_stem_table`；`rebuild_bank.ps1` 全绿（131 passed），缓存戳 439→441。
+- 本机浏览器实测（127.0.0.1:8080 搜「某进程的段表内容如下所示」）：题干渲染为 5 列 3 行真表格，表头可读，选项 A–D 正常。
