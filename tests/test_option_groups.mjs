@@ -24,7 +24,7 @@ function extractFunction(src, name) {
 }
 
 const FN = ['sortedOptionEntries', 'optionGroupsOf', 'flatOptionEntries', 'optionLines',
-  'answerChoiceText', 'orderedCorrect', 'renderOptionsHtml', 'escapeHtml'];
+  'formatChoiceSeq', 'answerChoiceText', 'orderedCorrect', 'renderOptionsHtml', 'escapeHtml'];
 const bundle = FN.map((n) => extractFunction(appSrc, n)).join('\n');
 const api = new Function(bundle + '\nreturn {' + FN.join(',') + '};')();
 
@@ -49,6 +49,9 @@ assert(api.flatOptionEntries(grouped).length === 8, '扁平选项应是两组之
 assert(api.flatOptionEntries(grouped)[5][0] === 'B', '第二组应从 B 继续（DOM 顺序）');
 assert(api.answerChoiceText(grouped) === '①B ②C', '答案应按空标注: ' + api.answerChoiceText(grouped));
 assert(api.answerChoiceText(plain) === 'A', '单组答案保持原样');
+assert(api.formatChoiceSeq(grouped, 'BC') === '①B ②C', '用户答案也按空标注');
+assert(api.formatChoiceSeq(grouped, 'B') === '①B ②?', '未答空用 ? 占位');
+assert(api.formatChoiceSeq(plain, 'A') === 'A', '单组用户答案原样');
 
 const html = api.renderOptionsHtml(grouped);
 assert(html.includes('q-options-groups'), '应渲染分组容器');

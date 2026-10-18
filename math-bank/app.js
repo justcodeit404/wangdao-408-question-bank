@@ -2215,7 +2215,7 @@ function renderGrid(search) {
     const tags = [];
     if (q.sub_questions) tags.push(`${q.sub_questions.length} 个子问`);
     if (q.has_image) tags.push('含图片');
-    if (q.options) tags.push('有选项');
+    if (q.options || optionGroupsOf(q)) tags.push('有选项');
     const chShort = (q.chapter || '').split('·')[0].trim() || q.chapter || '';
     return `
       <div class="question-card" tabindex="0" role="button" aria-label="${displayId(q)} ${q.type}" data-index="${start + i}">
@@ -2312,13 +2312,20 @@ function optionLines(q, format) {
   return lines;
 }
 
+/** 多空题：把字母序列映射成 ①B ②C（单组题原样返回） */
+function formatChoiceSeq(q, letters) {
+  const seq = String(letters || '');
+  const groups = optionGroupsOf(q);
+  if (!groups) return seq;
+  return groups.map((g, i) => `${g.label || i + 1}${seq[i] || '?'}`).join(' ');
+}
+
 /** 多空题的答案展示：BC → ①B ②C */
 function answerChoiceText(q) {
   const choice = (q && q.answer && q.answer.choice) || '';
   const groups = optionGroupsOf(q);
   if (!groups) return choice;
-  const letters = orderedCorrect(q);
-  return groups.map((g, i) => `${g.label || i + 1}${letters[i] || '?'}`).join(' ');
+  return formatChoiceSeq(q, orderedCorrect(q));
 }
 
 function renderOptionsHtml(q) {
@@ -2449,7 +2456,7 @@ function showChoiceFeedback(container, q, isCorrect, seq) {
     const res = fb.querySelector('[data-role="feedbackResult"]');
     if (res) {
       let text = isCorrect ? '回答正确' : '回答错误';
-      if (!isCorrect && seq) text += `（你的答案：${seq}，正确答案：${orderedCorrect(q)}）`;
+      if (!isCorrect && seq) text += `（你的答案：${formatChoiceSeq(q, seq)}，正确答案：${answerChoiceText(q)}）`;
       res.textContent = text;
       res.className = 'feedback-result ' + (isCorrect ? 'correct' : 'wrong');
     }
@@ -3262,7 +3269,7 @@ function bindDetailInteractions(container, q) {
         result.classList.add(isCorrect ? 'correct' : 'wrong');
         result.textContent = isCorrect
           ? '回答正确'
-          : `回答错误（你的答案：${seq}，正确答案：${orderedCorrect(q)}）`;
+          : `回答错误（你的答案：${formatChoiceSeq(q, seq)}，正确答案：${answerChoiceText(q)}）`;
       }
     });
     return;
@@ -3282,7 +3289,7 @@ function bindDetailInteractions(container, q) {
         result.classList.add(isCorrect ? 'correct' : 'wrong');
         result.textContent = isCorrect
           ? '回答正确'
-          : `回答错误（你的答案：${seq}，正确答案：${orderedCorrect(q)}）`;
+          : `回答错误（你的答案：${formatChoiceSeq(q, seq)}，正确答案：${answerChoiceText(q)}）`;
       }
     });
     return;
@@ -4325,6 +4332,9 @@ function flattenCourseQuestions(courseData, courseName) {
       const entry = { ...q, chapter: ch.name, chapterKey, course: ch.course || courseName || '' };
       const parts = [entry.content || '', entry.chapter || '', entry.id || ''];
       if (entry.options) Object.values(entry.options).forEach(v => parts.push(v));
+      for (const group of entry.option_groups || []) {
+        Object.values(group.options || {}).forEach(v => parts.push(v));
+      }
       if (entry.sub_questions) entry.sub_questions.forEach(s => parts.push(s));
       if (entry.answer) {
         if (entry.answer.choice) parts.push(entry.answer.choice);
@@ -5643,7 +5653,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=436').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=437').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {
