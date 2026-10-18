@@ -169,3 +169,15 @@ if ($cropsDrifted) {
 # ---- record pushed hashes ----
 ($new.GetEnumerator() | ForEach-Object { "$($_.Key)=$($_.Value)" }) | Set-Content -LiteralPath $StateFile -Encoding UTF8
 Write-Host "OK: remote __BANK_DATA_VER__=$idxVer, $($toPush.Count) file(s) hot-updated (no service restart)"
+
+# ---- sync platform question pool: 408 hot-update only touches the static bank ----
+# 云端 questions 表不会自己更新；重导让 /practice、错题本、题目详情与静态库一致。
+# 旧 release 缺该脚本时只告警，不阻断热更。
+Write-Host "syncing platform 408 question pool..."
+$syncCmd = "cd /home/ubuntu/kaoyan/apps/platform-v2/backend && .venv/bin/python scripts/import_408_banks.py"
+$syncOut = $null
+for ($i = 1; $i -le 3 -and -not $syncOut; $i++) {
+    $syncOut = $(try { & $Ssh -o BatchMode=yes -o ConnectTimeout=15 $Server $syncCmd 2>&1 } catch { $null })
+    if (-not $syncOut) { Write-Host "platform sync ssh failed (attempt $i/3), retrying..."; Start-Sleep -Seconds 10 }
+}
+if ($syncOut) { $syncOut | ForEach-Object { Write-Host "  $_" } } else { Write-Host "WARN: platform 408 sync skipped (release may predate scripts/import_408_banks.py)" }

@@ -918,8 +918,8 @@ def test_coa_num_x34_superscripts():
     assert "232" not in options["D"]
 
 
-def test_net_ipv4_x35_2_full_stem():
-    question = _q("net", "IPv4", "X35_2")
+def test_net_ipv4_x62_full_stem():
+    question = _q("net", "IPv4", "X62")
     assert "某路由表中有转发接口相同的4条路由表项" in question["content"]
     assert "35.230.32.0/21" in question["content"]
     assert not question["content"].startswith("230.32")
@@ -1095,3 +1095,15 @@ def test_page_review_manifest_rejects_duplicate_target(tmp_path):
     path.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
     with pytest.raises(ValueError, match="duplicate page review patch target"):
         load_page_review_patches(path)
+
+
+def test_curated_inserts_restore_missing_questions():
+    assert _q("ds", "栈和队列的应用", "X13")["answer"]["choice"] == "A"
+    assert _q("coa", "I/O接口", "X14")["answer"]["choice"] == "D"
+    assert _q("net", "局域网", "X23")["answer"]["choice"] == "B"
+    assert _q("net", "TCP", "X48")["answer"]["choice"] == "A"
+    assert _q("net", "IPv6", "X03")["answer"]["choice"] == "C"
+
+
+def test_net_ipv4_x62_renamed_from_fallback_id():
+    assert _q("net", "IPv4", "X62")["page"] == 162

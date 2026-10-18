@@ -646,6 +646,15 @@ CURATED_APPLICATION_PATCHES = {
 # key: (course_key, 章节名, qid)；fix_file 在对应章节内按题号顺序插入（幂等）。
 # 首个案例：coa 性能指标 X18 题号块 OCR 为空（【】）被丢弃，平台侧已按坏数据导入
 # （题干缺主语、年份误作 2018），此处按原书补回。
+# 解析兜底编号（上一题号_2）纠正为原书题号；仅处理目标号未被占用的题。
+# X35_2 → X62（net IPv4 第 62 题）；A01_2 → A03（ds 算法评价第 3 题）。
+# A11_2（net IPv4 解答题）目标号 A12 已被占用，暂保留。
+CURATED_ID_RENAMES = {
+    ("net", "网络层 · IPv4 · 选择题", "X35_2"): "X62",
+    ("ds", "绪论 · 算法和算法评价 · 解答题", "A01_2"): "A03",
+}
+
+
 CURATED_INSERTS = {
     ("coa", "计算机系统概述 · 计算机的性能指标 · 选择题", "X18"): {
         "id": "X18",
@@ -669,6 +678,107 @@ CURATED_INSERTS = {
         },
         "q_pages": [20],
         "a_pages": [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+    },
+
+
+    ("ds", "栈、队列和数组 · 栈和队列的应用 · 选择题", "X13"): {
+        "id": "X13",
+        "type": "选择题",
+        "content": "【2012统考真题】已知操作符包括“+”“-”“*”“/”“（”和“）”。将中缀表达式 a+b-a*((c+d)/e-f)+g 转换为等价的后缀表达式 ab+acd+e/f-*-g+ 时，用栈来存放暂时还不能确定运算次序的操作符。栈初始时为空，转换过程中同时保存在栈中的操作符的最大个数是（）。",
+        "options": {"A": "5", "B": "7", "C": "8", "D": "11"},
+        "sub_questions": None,
+        "page": 100,
+        "bbox": [150.0, 1000.0, 980.0, 1120.0],
+        "has_image": False,
+        "image_ref": None,
+        "topic_title": "3.3.3 本节习题精选",
+        "answer": {
+            "choice": "A",
+            "explanation": "中缀转后缀时，扫描到操作数直接输出，操作符按优先级入栈/出栈；本题转换过程中栈内操作符最多同时保存 5 个，故选 A。",
+        },
+        "q_pages": [100],
+        "a_pages": [101, 102, 103, 104, 105],
+    },
+
+    ("coa", "输入/输出系统 · I/O接口 · 选择题", "X14"): {
+        "id": "X14",
+        "type": "选择题",
+        "content": "【2012统考真题】下列选项中，在I/O总线的数据线上传输的信息包括（）。\nI. I/O接口中的命令字\nII. I/O接口中的状态字\nIII. 中断类型号",
+        "options": {"A": "仅I、II", "B": "仅I、III", "C": "仅II、III", "D": "I、II、III"},
+        "sub_questions": None,
+        "page": 302,
+        "bbox": [155.0, 350.0, 980.0, 420.0],
+        "has_image": False,
+        "image_ref": None,
+        "topic_title": "7.2.5 本节习题精选",
+        "answer": {
+            "choice": "D",
+            "explanation": "数据缓冲寄存器和命令/状态寄存器的内容都通过数据线传送；中断类型号也由数据线送 CPU，故 I、II、III 均包括。",
+        },
+        "q_pages": [302],
+        "a_pages": [303, 304, 305, 306],
+    },
+
+    ("net", "数据链路层 · 局域网 · 选择题", "X23"): {
+        "id": "X23",
+        "type": "选择题",
+        "content": "IEEE 802局域网标准对应OSI参考模型的（）。",
+        "options": {"A": "数据链路层和网络层", "B": "物理层和数据链路层", "C": "物理层", "D": "数据链路层"},
+        "sub_questions": None,
+        "page": 107,
+        "bbox": [150.0, 510.0, 980.0, 590.0],
+        "has_image": False,
+        "image_ref": None,
+        "topic_title": "3.5.4 本节习题精选",
+        "answer": {
+            "choice": "B",
+            "explanation": "IEEE 802 为局域网制定的标准相当于 OSI 参考模型的数据链路层和物理层；数据链路层又分为 LLC 和 MAC 两个子层。",
+        },
+        "q_pages": [107],
+        "a_pages": [108, 109, 110, 111, 112, 113],
+    },
+
+    ("net", "传输层 · TCP · 选择题", "X48"): {
+        "id": "X48",
+        "type": "选择题",
+        "content": "甲始终向乙以MSS=1KB大小的段发送数据，并一直有数据发送；乙为该连接分配16KB接收缓存，并对每个数据段进行确认，忽略段传输延迟。若乙收到的数据全部存入缓存，不被取走，则甲从连接建立成功时刻起，未出现发送超时的情况下，经过4RTT后，甲的发送窗口是（）。",
+        "options": {"A": "1KB", "B": "8KB", "C": "16KB", "D": "32KB"},
+        "sub_questions": None,
+        "page": 256,
+        "bbox": [155.0, 300.0, 980.0, 440.0],
+        "has_image": False,
+        "image_ref": None,
+        "topic_title": "5.3.4 本节习题精选",
+        "answer": {
+            "choice": "A",
+            "explanation": "发送窗口=min{接收窗口，拥塞窗口}。慢开始前 4 个 RTT 分别发送 1/2/4/8KB，累计 15KB；接收缓存仅剩 1KB，故发送窗口为 1KB。",
+        },
+        "q_pages": [256],
+        "a_pages": [257, 258, 259, 260, 261, 262, 263, 264, 265],
+    },
+
+    ("net", "网络层 · IPv6 · 选择题", "X03"): {
+        "id": "X03",
+        "type": "选择题",
+        "content": "下列关于IPv6地址1A22:120D:0000:0000:72A2:0000:0000:00C0的表示中，错误的是（）。",
+        "options": {
+            "A": "1A22:120D::72A2:0000:0000:00C0",
+            "B": "1A22:120D::72A2:0:0:C0",
+            "C": "1A22::120D::72A2::00C0",
+            "D": "1A22:120D:0:0:72A2::C0",
+        },
+        "sub_questions": None,
+        "page": 189,
+        "bbox": [150.0, 1150.0, 980.0, 1230.0],
+        "has_image": False,
+        "image_ref": None,
+        "topic_title": "4.4.4 本节习题精选",
+        "answer": {
+            "choice": "C",
+            "explanation": "一个IPv6地址中双冒号“::”只能出现一次；选项 C 出现多个“::”，表示错误。",
+        },
+        "q_pages": [189],
+        "a_pages": [190, 191, 192, 193, 194],
     },
 }
 
@@ -1648,7 +1758,16 @@ def fix_file(path, pdf_images_dir=None, course_key=None, apply_page_review_patch
 
     for ch in data.get("chapters", []):
         chapter_name = str(ch.get("name") or ch.get("topic_title") or "").strip()
+        existing_ids = {str(item.get("id") or "") for item in ch.get("questions", [])}
         for q in ch.get("questions", []):
+            renamed = CURATED_ID_RENAMES.get(
+                (course_key, chapter_name, str(q.get("id") or ""))
+            )
+            if renamed and renamed not in existing_ids:
+                existing_ids.discard(str(q.get("id") or ""))
+                q["id"] = renamed
+                existing_ids.add(renamed)
+                fixes["curated_id_renamed"] = fixes.get("curated_id_renamed", 0) + 1
             # 清理历史误拆：选择题不应有 sub_questions
             if q.get("type") == "选择题" and q.get("sub_questions"):
                 q["content"] = (
