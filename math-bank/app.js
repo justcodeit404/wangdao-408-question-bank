@@ -2831,7 +2831,185 @@ function stemFenceColumns(lines) {
   return { left: left.join('\n'), right: right.join('\n') };
 }
 
+// ponytail: comments/strings/keywords/numbers/calls only. Not a C parser;
+// upgrade path is a real highlighter if pseudocode stops reading cleanly.
+const STEM_CODE_KW_RE = /^(?:unsigned|signed|short|int|char|float|double|void|struct|typedef|sizeof|switch|return|printf|scanf|while|else|for|if|do|break|continue|const|static|long|goto|case|default)\b/;
+const STEM_CODE_COPY_ICON = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+const STEM_CODE_DL_ICON = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
+
+function stemCodeLang(text) {
+  const s = String(text || '');
+  if (/^I\d+\b/m.test(s)) return 'asm';
+  if (/(^|[\n\s])(?:#include|#define|unsigned|signed|short|int|char|float|double|void|struct|typedef|sizeof|switch|return|printf|scanf|while|else|for|if)\b/.test(s)) return 'c';
+  return 'code';
+}
+
+function stemCodeTokAt(s, i) {
+  const c = s[i];
+  if (c === '/' || c === '"' || c === "'" || c === '#') return true;
+  if (/[A-Za-z0-9_]/.test(s[i - 1] || '')) return false;
+  return /[A-Za-z0-9_]/.test(c);
+}
+
+function highlightCode(src) {
+  const s = String(src || '');
+  let out = '';
+  let i = 0;
+  while (i < s.length) {
+    const c = s[i];
+    if (c === '/' && s[i + 1] === '/') {
+      const nl = s.indexOf('\n', i);
+      const end = nl === -1 ? s.length : nl;
+      out += '<span class="tok-cmt">' + escapeHtml(s.slice(i, end)) + '</span>';
+      i = end;
+      continue;
+    }
+    if (c === '/' && s[i + 1] === '*') {
+      const close = s.indexOf('*/', i + 2);
+      const end = close === -1 ? s.length : close + 2;
+      out += '<span class="tok-cmt">' + escapeHtml(s.slice(i, end)) + '</span>';
+      i = end;
+      continue;
+    }
+    if (c === '"' || c === "'") {
+      let j = i + 1;
+      while (j < s.length && s[j] !== c && s[j] !== '\n') {
+        j += s[j] === '\\' && j + 1 < s.length ? 2 : 1;
+      }
+      if (j < s.length && s[j] === c) j += 1;
+      out += '<span class="tok-str">' + escapeHtml(s.slice(i, j)) + '</span>';
+      i = j;
+      continue;
+    }
+    if (c === '#' && (s.startsWith('#include', i) || s.startsWith('#define', i))) {
+      const nl = s.indexOf('\n', i);
+      const end = nl === -1 ? s.length : nl;
+      out += '<span class="tok-pre">' + escapeHtml(s.slice(i, end)) + '</span>';
+      i = end;
+      continue;
+    }
+    if (c === '#' && (i === 0 || /\s/.test(s[i - 1]))) {
+      const nl = s.indexOf('\n', i);
+      const end = nl === -1 ? s.length : nl;
+      out += '<span class="tok-cmt">' + escapeHtml(s.slice(i, end)) + '</span>';
+      i = end;
+      continue;
+    }
+    if (!/[A-Za-z0-9_]/.test(s[i - 1] || '')) {
+      const kw = STEM_CODE_KW_RE.exec(s.slice(i));
+      if (kw) {
+        out += '<span class="tok-kw">' + kw[0] + '</span>';
+        i += kw[0].length;
+        continue;
+      }
+      const num = /^(?:0x[0-9a-fA-F]+|\d+)\b/.exec(s.slice(i));
+      if (num) {
+        out += '<span class="tok-num">' + num[0] + '</span>';
+        i += num[0].length;
+        continue;
+      }
+      const id = /^[A-Za-z_]\w*/.exec(s.slice(i));
+      if (id && s[i + id[0].length] === '(') {
+        out += '<span class="tok-fn">' + id[0] + '</span>';
+        i += id[0].length;
+        continue;
+      }
+    }
+    let j = i + 1;
+    while (j < s.length && !stemCodeTokAt(s, j)) j += 1;
+    out += escapeHtml(s.slice(i, j));
+    i = j;
+  }
+  return out;
+}
+
+function stemCodeCardOpen(lang) {
+  return '<div class="stem-code-card" data-lang="' + lang + '">'
+    + '<div class="stem-code-bar"><span class="stem-code-lang">' + lang + '</span>'
+    + '<span class="stem-code-actions">'
+    + '<button type="button" class="stem-code-btn" data-act="copy" aria-label="复制">' + STEM_CODE_COPY_ICON + '<span>复制</span></button>'
+    + '<button type="button" class="stem-code-btn" data-act="download" aria-label="下载">' + STEM_CODE_DL_ICON + '<span>下载</span></button>'
+    + '</span></div>';
+}
+
+function highlightStemPre(pre) {
+  if (!pre || typeof pre.appendChild !== 'function') return;
+  const text = pre.textContent;
+  if (!text) return;
+  pre.innerHTML = highlightCode(text);
+}
+
+function stemCodePlain(card) {
+  const cols = card.querySelectorAll('.stem-col');
+  if (cols.length) {
+    return Array.from(cols).map((col) => col.textContent.replace(/[ \t]+$/gm, '').trim()).filter(Boolean).join('\n\n');
+  }
+  const pre = card.querySelector('.stem-code');
+  return pre ? pre.textContent : '';
+}
+
+function copyStemCode(text) {
+  if (navigator.clipboard && window.isSecureContext) {
+    return navigator.clipboard.writeText(text).then(() => true, () => copyStemCodeFallback(text));
+  }
+  return Promise.resolve(copyStemCodeFallback(text));
+}
+
+function copyStemCodeFallback(text) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.setAttribute('readonly', '');
+  ta.style.position = 'fixed';
+  ta.style.left = '-9999px';
+  document.body.appendChild(ta);
+  ta.select();
+  let ok = false;
+  try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+  ta.remove();
+  return ok;
+}
+
+function flashStemCodeBtn(btn, label) {
+  const span = btn.querySelector('span');
+  if (!span) return;
+  if (!btn.dataset.label) btn.dataset.label = span.textContent;
+  const token = String(Date.now());
+  btn.dataset.flash = token;
+  span.textContent = label;
+  btn.classList.add('is-done');
+  window.setTimeout(() => {
+    if (btn.dataset.flash !== token) return;
+    span.textContent = btn.dataset.label;
+    btn.classList.remove('is-done');
+  }, 1200);
+}
+
+function onStemCodeAction(e) {
+  const btn = e.target.closest && e.target.closest('.stem-code-btn');
+  if (!btn) return;
+  e.preventDefault();
+  e.stopPropagation();
+  const card = btn.closest('.stem-code-card');
+  if (!card) return;
+  const text = stemCodePlain(card);
+  if (btn.dataset.act === 'download') {
+    const lang = card.dataset.lang || 'code';
+    const ext = lang === 'c' ? 'c' : lang === 'asm' ? 'asm' : 'txt';
+    downloadText(text, 'snippet.' + ext);
+    flashStemCodeBtn(btn, '已下载');
+    return;
+  }
+  copyStemCode(text).then((ok) => flashStemCodeBtn(btn, ok ? '已复制' : '复制失败'));
+}
+
+function ensureStemCodeActions() {
+  if (ensureStemCodeActions.bound || typeof document === 'undefined') return;
+  ensureStemCodeActions.bound = true;
+  document.addEventListener('click', onStemCodeAction, true);
+}
+
 function paintPreparedStem(el, text) {
+  ensureStemCodeActions();
   const lines = String(text || '').split('\n');
   // 题干可含多个 markdown 管道表；表前/表间/表后文字仍走 .stem-prose 纯文本
   const parts = [];
@@ -2886,8 +3064,11 @@ function paintPreparedStem(el, text) {
   el.innerHTML = flat
     .map((p) => {
       if (p.type === 'table') return stemTableHtml(p.lines);
-      if (p.type === 'cols') return '<div class="stem-code-cols"><pre class="stem-col"></pre><pre class="stem-col"></pre></div>';
-      if (p.type === 'code') return '<pre class="stem-code"></pre>';
+      if (p.type === 'cols') {
+        return stemCodeCardOpen(stemCodeLang(p.left + '\n' + p.right))
+          + '<div class="stem-code-cols"><pre class="stem-col"></pre><pre class="stem-col"></pre></div></div>';
+      }
+      if (p.type === 'code') return stemCodeCardOpen(stemCodeLang(p.text)) + '<pre class="stem-code"></pre></div>';
       return '<div class="stem-prose"></div>';
     })
     .join('');
@@ -2899,11 +3080,15 @@ function paintPreparedStem(el, text) {
   let coli = 0;
   flat.forEach((p) => {
     if (p.type === 'prose' && proses[pi]) proses[pi++].textContent = p.text;
-    if (p.type === 'code' && codes[ci]) codes[ci++].textContent = p.text;
+    if (p.type === 'code' && codes[ci]) {
+      codes[ci].textContent = p.text;
+      highlightStemPre(codes[ci]);
+      ci += 1;
+    }
     if (p.type === 'cols' && colBlocks[coli]) {
       const pres = colBlocks[coli++].querySelectorAll('pre');
-      if (pres[0]) pres[0].textContent = p.left;
-      if (pres[1]) pres[1].textContent = p.right;
+      if (pres[0]) { pres[0].textContent = p.left; highlightStemPre(pres[0]); }
+      if (pres[1]) { pres[1].textContent = p.right; highlightStemPre(pres[1]); }
     }
   });
 }
@@ -4727,6 +4912,8 @@ function setupEvents() {
       if (dd) dd.hidden = true;
     }
     if (inEditable) return;
+    // 裸键快捷键：Ctrl/Cmd/Alt 组合（如 Ctrl+C 复制选区、Ctrl+A 全选）交还浏览器
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
     if (e.key === '?' && !document.querySelector('.modal-overlay.active')) {
       e.preventDefault();
       openHelp();
@@ -5317,7 +5504,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=427').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=429').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {

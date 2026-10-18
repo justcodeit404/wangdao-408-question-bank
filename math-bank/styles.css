@@ -1955,6 +1955,117 @@ body.compact-view .question-row .row-tags .row-tag { display: none; }
   white-space: pre;
 }
 
+.stem-code-card {
+  display: block;
+  max-width: 100%;
+  margin: 12px 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  background: #16181c;
+  color: #e6e6e6;
+  overflow: hidden;
+  white-space: normal;
+  color-scheme: dark;
+}
+
+.stem-code-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 36px;
+  padding: 4px 6px 4px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.03);
+  font-family: var(--font-sans);
+}
+
+.stem-code-lang {
+  font-size: 12px;
+  line-height: 1;
+  color: #8b909a;
+  letter-spacing: 0.01em;
+}
+
+.stem-code-actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.stem-code-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 28px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: #8b909a;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1;
+}
+
+.stem-code-btn svg { display: block; flex-shrink: 0; }
+
+.stem-code-btn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #e8e8e8;
+}
+
+.stem-code-btn.is-done { color: #8fd6b0; }
+
+.stem-code-card .stem-code,
+.stem-code-card .stem-col {
+  margin: 0;
+  padding: 12px 14px 14px;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font-family: var(--font-mono), var(--font-sans);
+  font-size: 0.92em;
+  line-height: 1.65;
+  white-space: pre;
+  tab-size: 4;
+}
+
+.stem-code-card .stem-code-cols {
+  margin: 0;
+  padding: 12px 14px 14px;
+  gap: 0 16px;
+}
+
+.stem-code-card .stem-code-cols > .stem-col { padding: 0; }
+
+.stem-code-card .stem-code-cols > .stem-col + .stem-col {
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  padding-left: 16px;
+}
+
+.stem-code-card .tok-cmt { color: #8b919a; }
+.stem-code-card .tok-kw { color: #b7c0f5; }
+.stem-code-card .tok-fn { color: #d6dbe6; }
+.stem-code-card .tok-str { color: #b7d7c4; }
+.stem-code-card .tok-num,
+.stem-code-card .tok-pre { color: #e0b080; }
+
+@media print {
+  .stem-code-actions { display: none; }
+  .stem-code-card {
+    background: #fff;
+    color: #111;
+    border: 1px solid #ccc;
+  }
+  .stem-code-lang,
+  .stem-code-card .tok-cmt { color: #555; }
+  .stem-code-card .tok-kw,
+  .stem-code-card .tok-fn,
+  .stem-code-card .tok-str,
+  .stem-code-card .tok-num,
+  .stem-code-card .tok-pre { color: #111; }
+}
+
 .modal-content .q-options {
   margin-bottom: 20px;
   display: flex;

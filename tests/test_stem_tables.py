@@ -260,6 +260,10 @@ def test_collapsed_c_snippet_is_a_code_block():
     )
     assert not res["usedTextPath"]
     assert '<pre class="stem-code">' in res["rawHtml"]
+    assert 'class="stem-code-card"' in res["rawHtml"]
+    assert 'data-lang="c"' in res["rawHtml"]
+    assert 'data-act="copy"' in res["rawHtml"]
+    assert 'data-act="download"' in res["rawHtml"]
     assert res["codeTexts"] == ["short si = -32767;\nunsigned int ui = si;"]
     assert res["proseTexts"] == ["【2025统考真题】在32位计算机上执行下列C语言代码段后，ui的值是（）。"]
     assert "<script>" not in res["rawHtml"]
@@ -299,6 +303,7 @@ def test_asm_sequence_is_a_code_block():
     )
     (res,) = _eval_fill([src])
     assert '<pre class="stem-code">' in res["rawHtml"]
+    assert 'data-lang="asm"' in res["rawHtml"]
     assert res["codeTexts"] == [
         "I1: add r1,r0,1 #(r1)←(r0)+1\n"
         "I2: load r3,12(r2) #(r3)←M[(r2)+12]\n"
@@ -364,3 +369,44 @@ def test_instruction_mention_without_mnemonic_is_not_code():
     (res,) = _eval_fill(["指令I1和I3、I2和I3之间发生数据相关。"])
     assert res["usedTextPath"]
     assert res["codeTexts"] == []
+
+
+def test_highlight_code_roundtrips_and_escapes():
+    src = APP_JS.read_text(encoding="utf-8")
+    slice_b = src[src.index("const STEM_CODE_KW_RE") : src.index("function paintPreparedStem")]
+    slice_d = src[src.index("function escapeHtml") : src.index("// ========================\n// Events")]
+    script = slice_b + "\n" + slice_d + "\n" + r"""
+function visible(html) {
+  return html.replace(/<[^>]+>/g, '')
+    .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'").replace(/&amp;/g, '&');
+}
+const sample = 'while(1) {\n  if (a<b) P(y); // <b>\n}';
+const html = highlightCode(sample);
+if (visible(html) !== sample) throw new Error('roundtrip ' + JSON.stringify(visible(html)));
+if (html.includes('<b>') || !html.includes('&lt;b&gt;')) throw new Error('unescaped');
+if (!html.includes('tok-kw') || !html.includes('tok-cmt') || !html.includes('tok-fn') || !html.includes('tok-num')) {
+  throw new Error(html);
+}
+if (stemCodeLang(sample) !== 'c') throw new Error('lang');
+if (stemCodeLang('I1: add r1,r0,1') !== 'asm') throw new Error('asm');
+process.stdout.write('ok');
+"""
+    tmp = Path(__import__("tempfile").gettempdir()) / "bank408-highlight-runner.js"
+    tmp.write_text(script, encoding="utf-8")
+    try:
+        proc = subprocess.run(
+            ["node", str(tmp)],
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            cwd=str(ROOT),
+            check=False,
+        )
+    finally:
+        try:
+            tmp.unlink()
+        except OSError:
+            pass
+    assert proc.returncode == 0, f"{proc.stdout}\n{proc.stderr}"
+    assert proc.stdout == "ok"
