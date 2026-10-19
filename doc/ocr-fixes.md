@@ -3427,5 +3427,5 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **原书**：`I. 增大快表（TLB）容量`、`II. 让页表常驻内存` 为同栏双列，`III. 增大交换区（swap）` 另起一行；OCR 把三行按阅读顺序串成一行半。
 - **修复**：补丁 content 改为 `……是（）。\nI.增大快表（TLB）容量\nII.让页表常驻内存\nIII.增大交换区（swap）`，与库内同类 82 题的小项写法一致（`I.` 后不带空格，63 题如此）。选项与答案 C 未改。
 - **回归**：`tests/test_page_review_patches.py::test_os_vm_x47_roman_items_on_own_lines`；`tests/test_page_review_patches.py` 131 passed；缓存戳 451→452。
-- **云端已部署**：见下条推送复核。
+- **云端已部署**：`push_data.ps1` 热更（缓存 v451→v452，10 文件），远端 `__BANK_DATA_VER__=452`；HTTPS 拉 `data-os.json` 复核题干已是三行小项，浏览器实测云端 `/banks/408` 题目详情三条小项各占一行；本机与云端平台 408 题池各重导 os updated 1 / 0 failed，`q_lookup --check` 平台池 id=20770 ✅ 与题库一致。
 
