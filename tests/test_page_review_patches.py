@@ -1154,3 +1154,10 @@ def test_os_vm_x55_stem_table():
     assert "| 4 | 80H | 1 | 1 | 1 |" in content
     assert "页号页框号存在位" not in content
     assert "02A01H" in content
+
+
+def test_net_phy_x23_no_fig_label_tail():
+    # 2016统考 p42：图内标签 R2/R3 曾被 OCR 拼进题干尾部「（)。R2 R3」，半角括号一并修全角。
+    content = _q("net", "通信基础", "X23")["content"]
+    assert "R2 R3" not in content
+    assert content.endswith("（）。")

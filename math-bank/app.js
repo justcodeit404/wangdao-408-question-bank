@@ -2737,17 +2737,26 @@ function resolveQuestionImageRef(q) {
   return null;
 }
 
-function questionBodyHtml(q, mode) {
-  const isPractice = mode === 'practice';
+function questionStemHtml(q) {
   const imgRef = resolveQuestionImageRef(q);
   // 配图放在题干下方：题干写「如下图」时直接看到图，无需再点「查看原图」
   return `
     <div class="q-text" data-role="qtext"></div>
     ${imgRef ? imageHtml(imgRef) : ''}
+  `;
+}
+
+function questionBelowHtml(q, mode) {
+  const isPractice = mode === 'practice';
+  return `
     ${renderOptionsHtml(q)}
     ${renderSubHtml(q)}
     ${isPractice ? practiceAnswerHtml(q) : answerHtml(q)}
   `;
+}
+
+function questionBodyHtml(q, mode) {
+  return questionStemHtml(q) + questionBelowHtml(q, mode);
 }
 
 function isPipeRow(line) {
@@ -3324,9 +3333,15 @@ function renderModalContent(q) {
   const container = document.getElementById('modalContent');
   // 刷题时不展示「相似题」，减少干扰（findSimilarQuestions 仍保留供以后开关）
   container.innerHTML = `
-    <div class="q-chapter">${escapeHtml(q.chapter)} · 第 ${q.page} 页</div>
-    <div class="q-id">${escapeHtml(displayId(q))} <span class="row-type ${q.type === '选择题' ? 'choice' : 'nonchoice'}">${q.type}</span> ${qualityBadgeHtml(q)}</div>
-    ${questionBodyHtml(q)}
+    <div class="q-pin-wrap">
+      <div class="q-pin">
+        <div class="q-chapter">${escapeHtml(q.chapter)} · 第 ${q.page} 页</div>
+        <div class="q-id">${escapeHtml(displayId(q))} <span class="row-type ${q.type === '选择题' ? 'choice' : 'nonchoice'}">${q.type}</span> ${qualityBadgeHtml(q)}</div>
+        ${questionStemHtml(q)}
+      </div>
+    </div>
+    <div class="q-rest">
+    ${questionBelowHtml(q)}
     <details class="q-notes" id="detailNotes">
       <summary>📝 我的笔记 <span class="notes-status" id="notesStatus"></span></summary>
       <textarea id="notesTextarea" placeholder="记录思路、口诀、易错点。公式：$h=\\log_2 n$；可直接粘贴图片" rows="6"></textarea>
@@ -3340,7 +3355,10 @@ function renderModalContent(q) {
         <button type="button" class="btn btn-secondary btn-sm" id="btnReportIssue">⚠ 报告错误</button>
       </div>
     </details>
+    </div>
   `;
+  const detailBody = document.querySelector('#detailModal .modal-body');
+  if (detailBody) detailBody.scrollTop = 0;
   renderQuestionBody(container, q);
   updateDetailStatusButtons(q);
   bindNotesUI(q);
@@ -5653,7 +5671,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=445').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=450').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {
