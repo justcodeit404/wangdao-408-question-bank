@@ -3420,3 +3420,12 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **回归**：`tests/test_page_review_patches.py::test_net_phy_x23_no_fig_label_tail`；`rebuild_bank.ps1` 全绿（135 passed）。本机浏览器实测（127.0.0.1:8080 直达 X23）：题干尾部干净、题图只剩 R2—R3、选项 A–D 正常。
 - **云端已部署**：bank 改动随并行批量修复窗口 push_data 热更上云（缓存 v450）；HTTPS 复核 data-net.json 题干以「约为（）。」结尾、crops/net/page_042_X23.png 9122B 与本机一致；平台池本机+云端已重导（云端 id=21068 题干已去碎片）。
 - **图片缓存常量**：BANK_IMAGE_VERSION 20260912→20261019（web `helpers.ts` + `bank-asset.test.ts` + miniapp `assets.ts`），防 PWA SW cache-first 永久命中旧裁图；web 端已随 platform pack（release 20261019T100141Z-6f5b0f9416f2）上云复核 dist 命中，**小程序需主人手动发版**。
+
+## 2026-10-19 · 操作系统 虚拟内存管理 X47 题干 I/II/III 未分行（主人上报）
+
+- **病征**：os 内存管理 · 虚拟内存管理 · 选择题 X47（原书 p235，2014 统考）题干渲染成「……是（）。I增大快表（TLB）容量 II.让页表常驻内存」挤在一行，只有 III 前有换行；第一项还漏了「I.」的点。
+- **原书**：`I. 增大快表（TLB）容量`、`II. 让页表常驻内存` 为同栏双列，`III. 增大交换区（swap）` 另起一行；OCR 把三行按阅读顺序串成一行半。
+- **修复**：补丁 content 改为 `……是（）。\nI.增大快表（TLB）容量\nII.让页表常驻内存\nIII.增大交换区（swap）`，与库内同类 82 题的小项写法一致（`I.` 后不带空格，63 题如此）。选项与答案 C 未改。
+- **回归**：`tests/test_page_review_patches.py::test_os_vm_x47_roman_items_on_own_lines`；`tests/test_page_review_patches.py` 131 passed；缓存戳 451→452。
+- **云端已部署**：见下条推送复核。
+

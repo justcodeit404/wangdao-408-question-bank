@@ -1169,3 +1169,10 @@ def test_os_vm_x20_halfwidth_comma():
     assert "第0,1,2,3号页" in content
     assert "第0，" not in content
     assert "3,7,11,10号页框" in content
+
+
+def test_os_vm_x47_roman_items_on_own_lines():
+    # 2014统考 p235：I/II/III 三个小项原书各占一行，OCR 曾把前两项挤在题干同一行且漏掉「I.」的点。
+    content = _q("os", "虚拟内存管理", "X47")["content"]
+    assert content.endswith("是（）。\nI.增大快表（TLB）容量\nII.让页表常驻内存\nIII.增大交换区（swap）")
+    assert "）。I增大" not in content
