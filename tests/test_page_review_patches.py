@@ -1161,3 +1161,11 @@ def test_net_phy_x23_no_fig_label_tail():
     content = _q("net", "通信基础", "X23")["content"]
     assert "R2 R3" not in content
     assert content.endswith("（）。")
+
+
+def test_os_vm_x20_halfwidth_comma():
+    # 原书 p227：第0, 1, 2, 3。OCR 把第一个逗号录成全角「，」，比后面的半角逗号宽一倍，看起来像多一格。
+    content = _q("os", "虚拟内存管理", "X20")["content"]
+    assert "第0,1,2,3号页" in content
+    assert "第0，" not in content
+    assert "3,7,11,10号页框" in content
