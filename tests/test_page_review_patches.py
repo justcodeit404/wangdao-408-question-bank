@@ -1141,3 +1141,16 @@ def test_curated_inserts_restore_missing_questions():
 
 def test_net_ipv4_x62_renamed_from_fallback_id():
     assert _q("net", "IPv4", "X62")["page"] == 162
+
+
+def test_os_vm_x55_stem_table():
+    # 原书 p236：改进型 CLOCK 页表（页号/页框号/存在位/访问位/修改位）。补丁曾写成分列空格，
+    # normalize_spaces 把行首词与下一行吸成一句，壳拿不到管道表行，退化成纯文本。
+    content = _q("os", "虚拟内存管理", "X55")["content"]
+    assert "| 页号 | 页框号 | 存在位 | 访问位 | 修改位 |" in content
+    assert "| --- | --- | --- | --- | --- |" in content
+    assert "| 2 | 20H | 0 | 0 | 0 |" in content
+    assert "| 3 | 60H | 1 | 1 | 0 |" in content
+    assert "| 4 | 80H | 1 | 1 | 1 |" in content
+    assert "页号页框号存在位" not in content
+    assert "02A01H" in content
