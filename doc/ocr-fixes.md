@@ -3371,3 +3371,12 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - 回归：`tests/test_page_review_patches.py::test_os_mem_x68_stem_table`；`rebuild_bank.ps1` 全绿（133 passed），缓存戳 442→443。
 - 本机浏览器实测（127.0.0.1:8080 直达 `?course=操作系统&chapter=内存管理 · 内存管理概念 · 选择题&q=X68`）：题干渲染为三列真表格，表头有底色、单元格有边框，设问句独立成段，选项 A–D 正常。
 - 平台 408 题池本机已重导（os updated 1）。
+
+## 2026-10-19 · 答案图不在热更通道（主人上报 I/O接口 X14 答案区空白）
+
+- **病征**：408 题库 I/O接口 X14（p302，2012 统考）答案区只剩「答案：D」，下面整块空白；平台题池同题的 explanation 里「答案图片 + 解析文字」都在。
+- **根因两层**：
+  1. `scripts/push_data.ps1` 的热更只跟踪 `crops/`（题图），`answer_crops/`（答案图）从来不在推送集合里。本机新生成/重裁的答案图到不了云：`/banks/408/answer_crops/coa/page_303_X14_ans.jpg` 返回 404（同批 X13 因旧图早就在云上所以 200）。
+  2. 壳 `fillExplanation` 的 `shouldHideExplanationProse` 规定「有答案图片行就不再渲文字解析」，图挂掉后文字也一起没了，于是整块空白。
+- **修复**：`push_data.ps1` 把静态图资产统一成 `$assetDirs = @("crops", "answer_crops")`——各自哈希跟踪，任一目录漂移则整目录 tar 推送，落地后逐目录全量 sha256 与远端比对。
+- **验证**：推送后 answer_crops 3249 个文件哈希与云端全等；HTTPS `answer_crops/coa/page_303_X14_ans.jpg` 200（41793B，与本机一致）；X13/X65/X66/X68 答案图均 200。
