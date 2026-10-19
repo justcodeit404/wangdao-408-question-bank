@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""根据 math-bank/data-*.json 内容 hash 自动 bump 缓存版本戳。
+"""根据 math-bank/data-*.json 与壳文件内容 hash 自动 bump 缓存版本戳。
 
-data.js 只是加载器，真正变化的是 data-{ds,coa,net,os}.json。
-若任一课程数据 SHA256 相对上次记录有变化，则 bump：
+data.js 只是加载器，真正变化的是 data-{ds,coa,net,os}.json；
+壳文件（styles.css / app.js / choice-only.js）也带 ?v= 戳，只改样式不改数据时同样要 bump，
+否则 sw.js 的 CACHE_NAME 不变，用户的 Service Worker 会一直命中旧壳。
+若任一内容相对上次记录有变化，则 bump：
   - index.html: __BANK_DATA_VER__ 与所有 ?v=N
   - sw.js: CACHE_NAME 与 ?v=N
   - app.js: sw.js?v=N
@@ -26,11 +28,29 @@ ROOT = Path(__file__).resolve().parent.parent
 BANK = ROOT / "math-bank"
 HASH_FILE = ROOT / "data" / "quality" / "data_js_hash.txt"
 COURSE_KEYS = ("ds", "coa", "net", "os")
+SHELL_FILES = ("styles.css", "app.js", "choice-only.js")
 
 
 def sha256(path: Path) -> str:
     h = hashlib.sha256()
     h.update(path.read_bytes())
+    return h.hexdigest()
+
+
+def shell_digest() -> str:
+    """壳文件合成一个 hash。
+
+    app.js 里带 `sw.js?v=N`，本脚本 bump 时会改写它；先归一化版本号再哈希，
+    否则每次 bump 都会改到 app.js，下次又判定"壳变了"，版本号自激递增。
+    """
+    h = hashlib.sha256()
+    for name in SHELL_FILES:
+        p = BANK / name
+        if not p.exists():
+            continue
+        text = re.sub(r"(sw\.js\?v=|wd408-ui-v)\d+", r"\1N", p.read_text(encoding="utf-8"))
+        h.update(name.encode())
+        h.update(text.encode())
     return h.hexdigest()
 
 
@@ -40,6 +60,7 @@ def content_hashes() -> dict[str, str]:
         p = BANK / f"data-{key}.json"
         if p.exists():
             out[key] = sha256(p)
+    out["shell"] = shell_digest()
     return out
 
 
@@ -72,7 +93,7 @@ def main() -> None:
     changed = force or any(old_hashes.get(k) != v for k, v in new_hashes.items())
 
     if not changed:
-        print("data-*.json 未变化，跳过 bump")
+        print("数据与壳文件均未变化，跳过 bump")
         return
 
     html = (BANK / "index.html").read_text(encoding="utf-8")

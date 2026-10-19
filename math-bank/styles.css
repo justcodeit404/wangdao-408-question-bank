@@ -1900,11 +1900,10 @@ body.compact-view .question-row .row-tags .row-tag { display: none; }
   letter-spacing: -0.01em;
 }
 
-/* 详情里题干钉住：整页仍是一条滚动，选项/解析从题干下面穿过。
-   超长题干限高后在这块内部滚，避免把选项完全挡住。 */
+/* 详情里题干不再钉住：题干再长也只跟着整页滚。
+   钉住 + 限高会让题干自己滚一条、选项/答案再滚一条，表格还会被切成半行。 */
 #detailModal .modal-body {
   padding: 0;
-  /* 换题后内容变高时，浏览器会把滚动位置锚回去，题干钉住后会停在半道 */
   overflow-anchor: none;
 }
 #detailModal .modal-content {
@@ -1912,13 +1911,8 @@ body.compact-view .question-row .row-tags .row-tag { display: none; }
   margin: 0;
 }
 #detailModal .q-pin-wrap {
-  position: sticky;
-  top: 0;
-  z-index: 2;
   background: var(--surface);
   border-bottom: 1px solid var(--border);
-  max-height: min(42vh, 380px);
-  overflow-y: auto;
   overflow-anchor: none;
 }
 #detailModal .q-pin {
@@ -2912,7 +2906,6 @@ select:focus-visible {
   .modal-body { padding: 14px 16px; }
   #detailModal .q-pin { padding: 14px 16px 12px; }
   #detailModal .q-rest { padding: 12px 16px 20px; }
-  #detailModal .q-pin-wrap { max-height: 38vh; }
 
   .pagination { flex-wrap: wrap; gap: 6px; }
 
