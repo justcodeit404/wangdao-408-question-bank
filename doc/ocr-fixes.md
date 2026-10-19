@@ -3410,3 +3410,13 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **修复**：补丁 content 把「第0，」改为「第0,」；选项与答案未改。
 - **回归**：`tests/test_page_review_patches.py::test_os_vm_x20_halfwidth_comma`；`rebuild_bank.ps1` 136 passed，缓存戳 450→451。对照云端旧 `data-os.json`，四科发布文本只有这一处差异。
 - **云端已部署**：push_data.ps1 热更（v450→v451，10 文件），远端 `__BANK_DATA_VER__=451`、`data-os.json` 200，云端题干已是「第0,1,2,3」；本机与云端平台 408 题池各重导 os updated 1、0 failed。
+
+## 2026-10-19 · 计算机网络 通信基础 X23 题干图标签碎片 + 题图裁入选项残条（主人上报）
+
+- **病征**：net 物理层 · 通信基础 · 选择题 X23（原书 p42，2016 统考）题干尾部挂着图内标签「R2 R3」，且括号是半角「（)」；题图 page_042_X23.png 底部裁入选项行，露出「20k / 40k」半截残条。
+- **根因**：① content 补丁整段重写题干时把 OCR 串入的图内 R2/R3 标签抄进正文；② fig_manual_boxes 人工框底边 1285 正压在选项文字上（行投影：图墨迹 1212–1263、空隙 1264–1278、选项 1279 起），裁图带上选项顶半行。
+- **修复**：补丁 content 尾部改为「约为（）。」（删「R2 R3」残字、半角括号改全角）；fig_manual_boxes.json 框底 1285→1278，auto_recrop 重裁 crops/net/page_042_X23.png → 253×84（只含 R2—R3）。选项与答案 C 未改。
+- **答案复核（C 成立）**：30dB → S/N=1000，香农 8k×log₂(1001)≈80kb/s，实际 50% → 40kb/s。
+- **回归**：`tests/test_page_review_patches.py::test_net_phy_x23_no_fig_label_tail`；`rebuild_bank.ps1` 全绿（135 passed）。本机浏览器实测（127.0.0.1:8080 直达 X23）：题干尾部干净、题图只剩 R2—R3、选项 A–D 正常。
+- **云端已部署**：bank 改动随并行批量修复窗口 push_data 热更上云（缓存 v450）；HTTPS 复核 data-net.json 题干以「约为（）。」结尾、crops/net/page_042_X23.png 9122B 与本机一致；平台池本机+云端已重导（云端 id=21068 题干已去碎片）。
+- **图片缓存常量**：BANK_IMAGE_VERSION 20260912→20261019（web `helpers.ts` + `bank-asset.test.ts` + miniapp `assets.ts`），防 PWA SW cache-first 永久命中旧裁图；web 端已随 platform pack（release 20261019T100141Z-6f5b0f9416f2）上云复核 dist 命中，**小程序需主人手动发版**。
