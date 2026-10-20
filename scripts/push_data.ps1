@@ -144,8 +144,10 @@ foreach ($d in $assetDirs) {
     Set-Content -LiteralPath $CacheFile -Encoding UTF8
 
 if ($toPush.Count -eq 0 -and $assetChanged.Count -eq 0 -and $assetRemoved.Count -eq 0) { Write-Host "no changes, nothing to push"; exit 0 }
-Write-Host ("pushing {0} file(s) to {1}:{2}" -f $toPush.Count, $Server, $RemoteDir)
-$toPush | ForEach-Object { Write-Host "  $_" }
+if ($toPush.Count -gt 0) {
+    Write-Host ("pushing {0} file(s) to {1}:{2}" -f $toPush.Count, $Server, $RemoteDir)
+    $toPush | ForEach-Object { Write-Host "  $_" }
+}
 if ($assetChanged.Count -gt 0) {
     $byDir = ($assetChanged | Group-Object { ($_ -split '/')[0] } | ForEach-Object { "$($_.Name)=$($_.Count)" }) -join ", "
     Write-Host ("  asset changed: {0} ({1})" -f $assetChanged.Count, $byDir)
@@ -154,9 +156,12 @@ if ($assetRemoved.Count -gt 0) { Write-Host ("  asset removed: {0}" -f $assetRem
 
 # ---- transfer: data first, then stamped entries (avoid new data under old shell) ----
 # single scp call = single connection; argument order preserves transfer order
+# 空的 scp 会报错并触发 5×15s 重试（2026-10-20 裁图-only 推送卡了 78 秒才被发现），必须先判空
 $ordered = @($toPush | Where-Object { $_ -like "data-*" }) + @($toPush | Where-Object { $_ -notlike "data-*" })
-$src = $ordered | ForEach-Object { Join-Path $Bank $_ }
-Invoke-WithRetry "scp" { try { & $Scp -C $src "${Server}:${RemoteDir}/" 2>$null } catch {} }
+if ($ordered.Count -gt 0) {
+    $src = $ordered | ForEach-Object { Join-Path $Bank $_ }
+    Invoke-WithRetry "scp" { try { & $Scp -C $src "${Server}:${RemoteDir}/" 2>$null } catch {} }
+}
 
 # changed assets → pack to temp tar + scp only; extraction happens in the verify ssh below
 # (PS 5.1 pipe would mangle the binary stream, hence a file transfer)
