@@ -3429,3 +3429,12 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **回归**：`tests/test_page_review_patches.py::test_os_vm_x47_roman_items_on_own_lines`；`tests/test_page_review_patches.py` 131 passed；缓存戳 451→452。
 - **云端已部署**：`push_data.ps1` 热更（缓存 v451→v452，10 文件），远端 `__BANK_DATA_VER__=452`；HTTPS 拉 `data-os.json` 复核题干已是三行小项，浏览器实测云端 `/banks/408` 题目详情三条小项各占一行；本机与云端平台 408 题池各重导 os updated 1 / 0 failed，`q_lookup --check` 平台池 id=20770 ✅ 与题库一致。
 
+
+## 2026-10-20 · 操作系统 文件系统 X13 整题缺失（主人上报：17 道题却标到 18）
+
+- **病征**：os 文件管理 · 文件系统 · 选择题 题号一路标到 18，实际只有 17 道。
+- **根因**：`data/ocr/os/page_306.json` 第 13 题行首的「13．」被 OCR 吞掉，该块文本直接从「【2014统考真题】现有一个容量为10GB…」开始；`parse_questions.py` 靠行首题号切题，匹配不上就当作上一题续文，整题被丢弃。其余题号仍按书上编号命名，故缺 X13 而编号止于 18。
+- **修复**：`fix_questions.py` 的 `CURATED_INSERTS` 新增 `("os", "文件管理 · 文件系统 · 选择题", "X13")`（按题号幂等插入，与 coa 2021 神威真题同机制，重跑解析也不会重复）。题干、选项 A 80 / B 320 / C 80K / D 320K、答案 A、解析「2.5M bit→320KB→80 簇」按原书 p301（题）与 p303（答案）逐字录入，答案裁图 `answer_crops/os/page_308_X13_ans.jpg` 由 `gen_answer_crops --write-expl` 生成。
+- **回归**：`rebuild_bank.ps1 -Course os -Qids X13` 全绿（137 passed）；`pytest tests` 全量 354 passed；缓存戳 453→455。与构建前快照逐题比对，四科发布文本只多 X13，其余 0 处变动。本机浏览器实测（127.0.0.1:8080 直达 X13）：第 13 题题干/选项/答案 A/答案图正常，章节计数 17→18。
+- **踩坑记录**：`quality_hold.py` 不能单独跑——它只按结构规则重算，会把隔离名单从 421 题写成 0（等于放行全部已隔离题）；隔离名单只能由 `quality_ledger.py [--refresh-hashes]` 从 ledger 派生。本次已用 git 快照还原。
+- **遗留**：全库同类「号段内缺号」还有 4 处未补——ds 归并排序基数排序 X09、ds 各种内部排序算法比较 X04、net 计算机网络概述 X16、net 体系结构与参考模型 X30。
