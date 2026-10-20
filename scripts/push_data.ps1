@@ -39,8 +39,16 @@ function Invoke-WithRetry([string]$Label, [scriptblock]$Cmd) {
 
 # ---- preflight ----
 if (-not (Test-Path -LiteralPath $Bank -PathType Container)) { Die "math-bank not found: $Bank" }
-try { & $Ssh -o BatchMode=yes -o ConnectTimeout=10 $Server "test -d $RemoteDir" 2>$null | Out-Null } catch {}
-if ($LASTEXITCODE -ne 0) { Die "remote $RemoteDir missing; create shared/banks/bank-408 symlink layout first (docs/server.md)" }
+# 建连失败（限流/超时）与「目录真的没了」分开报，否则限流会被误报成布局损坏
+$pre = $null
+for ($i = 1; $i -le 3 -and -not $pre; $i++) {
+    $pre = $(try { & $Ssh -o BatchMode=yes -o ConnectTimeout=10 $Server "test -d $RemoteDir && echo ok" 2>&1 } catch { $null })
+    if (-not $pre) { Write-Host "preflight ssh failed (attempt $i/3), retrying..."; Start-Sleep -Seconds 15 }
+}
+if (-not $pre) { Die "preflight ssh failed 3x: cloud ssh unreachable (likely connection rate limit); wait a minute and retry. NOT a missing directory." }
+if ("$pre" -notmatch "ok") {
+    Die "remote $RemoteDir missing; create shared/banks/bank-408 symlink layout first (docs/server.md); ssh said: $($pre -join ' / ')"
+}
 
 # ---- align cache stamps (idempotent; no-op when hashes unchanged) ----
 Push-Location $Root
