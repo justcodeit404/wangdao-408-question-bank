@@ -349,6 +349,15 @@ def wire_explanation(exp: str, rels: list[str]) -> str:
     return head + ("\n\n" + body if body else "")
 
 
+def strip_answer_crop_lines(exp: str) -> str:
+    """去掉 explanation 里的答案图片行（用于库号映射到「无答案段」的题）。"""
+    kept = [
+        ln for ln in str(exp or "").splitlines()
+        if not ANSWER_CROP_LINE_RE.match(ln.strip())
+    ]
+    return "\n".join(kept).strip()
+
+
 def iter_questions(data: dict):
     for ch in data.get("chapters", []):
         for q in ch.get("questions", []):
@@ -560,8 +569,28 @@ def main() -> None:
             # 同节 A04–A06 若抽到再同样改。
             if topic == "2.2.5 本节习题精选" and qid == "A03":
                 seg_qid = "01"
+            # ponytail: 8.6.3 的选择题 #04 是多空题（无 A–D），解析器按「无选项=综合应用题」
+            # 把它排在解答题段首，库号顺延一位后与原书综合应用题 01–03 错开一格。
+            # 库号是进度 key 不能改，这里把号段映射回原书；多空题本身没有综合应用题答案段。
+            # Ceiling: 只覆盖这一节；同类误分类再出现要另加条目。
+            if sec == "app" and topic == "8.6.3 本节试题精选":
+                seg_qid = {"A01": "", "A02": "01", "A03": "02", "A04": "03"}.get(qid, seg_qid)
             span = spans.get((sec, seg_qid))
             if not span:
+                # 显式映射到「无答案段」的题（8.6.3 多空题）：清掉历史挂错的答案图行，
+                # 否则 fix_questions 每次构建都会把旧行补回 explanation 开头。
+                if seg_qid == "" and args.write_expl and not args.dry_run:
+                    cleaned = strip_answer_crop_lines(
+                        (q.get("answer") or {}).get("explanation") or ""
+                    )
+                    ans = q.get("answer") or {}
+                    ans["explanation"] = cleaned
+                    q["answer"] = ans
+                    dq = bank_index.get((topic, qid))
+                    if dq is not None:
+                        dans = dq.get("answer") or {}
+                        dans["explanation"] = cleaned
+                        dq["answer"] = dans
                 stats["skipped"] += 1
                 skips.append(f"{topic} {qid}: 无答案段")
                 continue
