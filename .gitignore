@@ -27,6 +27,8 @@ __pycache__/
 .pytest_cache/
 tests/__pycache__/
 .playwright-mcp/
+# push_data 的 (mtime|size) 哈希缓存：纯本机加速用，每次推送都会重写
+data/quality/local_hash_cache.txt
 
 # Backup / temp files
 *.backup

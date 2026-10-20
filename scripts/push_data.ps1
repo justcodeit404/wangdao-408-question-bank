@@ -8,7 +8,9 @@
 [CmdletBinding()]
 param(
     [string]$Server = "ubuntu@122.51.26.195",
-    [string]$RemoteDir = "/home/ubuntu/kaoyan/shared/banks/bank-408"
+    [string]$RemoteDir = "/home/ubuntu/kaoyan/shared/banks/bank-408",
+    # 平时壳文件按哈希增量推；只有怀疑云端被手工改动/需要整份重刷时才加这个开关
+    [switch]$ForceShell
 )
 $ErrorActionPreference = "Stop"
 $Root = Split-Path $PSScriptRoot -Parent
@@ -84,13 +86,18 @@ foreach ($key in $Courses) {
         if ($old[$name] -ne $h) { $toPush.Add($name) }
     }
 }
-# small entry/manifest files: push every time so stamps and data always land together
+# 壳文件同样按哈希增量推：quality-ledger.json 有 12MB，每次无条件重推并重写云端
+# 就为了「戳一定落地」并不划算——戳本身是 index.html/sw.js/app.js 的内容，改了哈希就变，
+# 一样会推。要强制整份重刷用 -ForceShell。
 # styles.css 一并热更：云端 408 = shared/banks/bank-408（release 是指向它的符号链接），
 # 壳样式改动也走这条通道，否则 design 变更到不了云。
 foreach ($name in @("index.html", "sw.js", "app.js", "styles.css", "data.js", "choice-only.js",
                     "quality-ledger.json", "quality-hold.json", "manifest.json")) {
     $p = Join-Path $Bank $name
-    if (Test-Path -LiteralPath $p) { $toPush.Add($name) }
+    if (-not (Test-Path -LiteralPath $p)) { continue }
+    $h = Sha256 $p
+    $new[$name] = $h
+    if ($ForceShell -or $old[$name] -ne $h) { $toPush.Add($name) }
 }
 
 # ---- static figure assets: 题图 crops/ + 答案图 answer_crops/ 都按哈希记录 ----
@@ -98,6 +105,18 @@ foreach ($name in @("index.html", "sw.js", "app.js", "styles.css", "data.js", "c
 # answer_crops 同样漏在通道外（2026-10-19 I/O接口 X14 答案图 404）。
 # 按文件增量推（2026-10-20 起）：裁图目录一多一张图就整目录 tar + 189 张全量复核，
 # 一次单题文字修复也被拖成分钟级；现在只打变了的文件、只核这些、删掉本地已删除的。
+# 3447 张、118MB，每次全量算 SHA256 要 5 秒，所以用 (mtime|size) 缓存跳过没动过的文件。
+# ponytail: 只认 mtime+size；若有人保留旧时间戳覆盖同名裁图，会漏判——重裁走 gen_answer_crops 的写入时间，正常不会。
+$CacheFile = Join-Path $Root "data\quality\local_hash_cache.txt"
+$cache = @{}
+if (Test-Path -LiteralPath $CacheFile) {
+    foreach ($line in (Get-Content -LiteralPath $CacheFile -Encoding UTF8)) {
+        if ($line -match '^([^|]+)\|([^|]+)\|([^|]+)\|(.+)$') {
+            $cache[$matches[1]] = "$($matches[2])|$($matches[3])|$($matches[4])"
+        }
+    }
+}
+$newCache = @{}
 $assetDirs = @("crops", "answer_crops")
 $assetChanged = New-Object System.Collections.Generic.List[string]
 $assetRemoved = New-Object System.Collections.Generic.List[string]
@@ -106,7 +125,14 @@ foreach ($d in $assetDirs) {
     if (-not (Test-Path -LiteralPath $dir -PathType Container)) { continue }
     Get-ChildItem -LiteralPath $dir -Recurse -File | ForEach-Object {
         $rel = "$d/" + $_.FullName.Substring($dir.Length + 1).Replace("\", "/")
-        $h = Sha256 $_.FullName
+        $stamp = "$($_.LastWriteTimeUtc.Ticks)|$($_.Length)"
+        $entry = $cache[$rel]
+        if ($entry -and $entry.StartsWith("$stamp|")) {
+            $h = $entry.Substring($stamp.Length + 1)
+        } else {
+            $h = Sha256 $_.FullName
+        }
+        $newCache[$rel] = "$stamp|$h"
         $new[$rel] = $h
         if ($old[$rel] -ne $h) { $assetChanged.Add($rel) }
     }
@@ -114,6 +140,8 @@ foreach ($d in $assetDirs) {
         if ($k -like "$d/*" -and -not $new.ContainsKey($k)) { $assetRemoved.Add($k) }
     }
 }
+($newCache.GetEnumerator() | ForEach-Object { "$($_.Key)|$($_.Value)" } | Sort-Object) |
+    Set-Content -LiteralPath $CacheFile -Encoding UTF8
 
 if ($toPush.Count -eq 0 -and $assetChanged.Count -eq 0 -and $assetRemoved.Count -eq 0) { Write-Host "no changes, nothing to push"; exit 0 }
 Write-Host ("pushing {0} file(s) to {1}:{2}" -f $toPush.Count, $Server, $RemoteDir)
@@ -158,7 +186,10 @@ if ($assetRemoved.Count -gt 0) {
     $extract += "cd $RemoteDir && rm -f " + (($assetRemoved | ForEach-Object { "'$_'" }) -join " ") + "; cd - > /dev/null; "
 }
 $importCmd = "cd /home/ubuntu/kaoyan/apps/platform-v2/backend && .venv/bin/python scripts/import_408_banks.py"
-$remoteScript = "set -e; ${extract}curl -sS http://127.0.0.1:8000/banks/408/index.html | grep -o '__BANK_DATA_VER__[^;]*' | head -1 | grep -o '[0-9]\+' | head -1; for f in $checkNames; do printf '%s ' `$f; curl -sS -o /dev/null -w '%{http_code}\n' http://127.0.0.1:8000/banks/408/`$f; done; echo '@@PLATFORM_SYNC'; { $importCmd 2>&1 || true; }; echo '@@PLATFORM_SYNC_END'"
+# 只有 data-*.json 变了平台题池才会不同步；裁图/壳文件热更跑一次全量导入纯属浪费 3–6 秒
+$syncStep = if ($checkNames) { "echo '@@PLATFORM_SYNC'; { $importCmd 2>&1 || true; }; echo '@@PLATFORM_SYNC_END'" }
+            else { "echo '@@PLATFORM_SYNC'; echo 'platform 408 sync skipped (data-*.json unchanged)'; echo '@@PLATFORM_SYNC_END'" }
+$remoteScript = "set -e; ${extract}curl -sS http://127.0.0.1:8000/banks/408/index.html | grep -o '__BANK_DATA_VER__[^;]*' | head -1 | grep -o '[0-9]\+' | head -1; for f in $checkNames; do printf '%s ' `$f; curl -sS -o /dev/null -w '%{http_code}\n' http://127.0.0.1:8000/banks/408/`$f; done; $syncStep"
 $remoteOut = $null
 for ($i = 1; $i -le 5 -and -not $remoteOut; $i++) {
     # EAP=Stop 下 ssh 超时的 stderr 会经 NativeCommandError 变终止错误，2>$null 拦不住，须 try/catch
@@ -203,7 +234,7 @@ if ($assetChanged.Count -gt 0) {
 # ---- platform pool result (already imported in the verify ssh above) ----
 # 云端 questions 表不会自己更新；重导让 /practice、错题本、题目详情与静态库一致。
 # 旧 release 缺该脚本、或云端报错时只告警，不阻断已生效的热更。
-if (($syncLines -join "`n") -match "platform 408 sync done") {
+if (($syncLines -join "`n") -match "platform 408 sync (done|skipped)") {
     $syncLines | ForEach-Object { Write-Host "  $_" }
 } else {
     if ($syncLines) { $syncLines | ForEach-Object { Write-Host "  $_" } }
