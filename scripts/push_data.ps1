@@ -96,26 +96,33 @@ foreach ($name in @("index.html", "sw.js", "app.js", "styles.css", "data.js", "c
 # ---- static figure assets: 题图 crops/ + 答案图 answer_crops/ 都按哈希记录 ----
 # 旧通道只推数据+壳，裁图修复到不了云（2026-10-17 X07 题图踩过）；
 # answer_crops 同样漏在通道外（2026-10-19 I/O接口 X14 答案图 404）。
-# 任一目录漂移则整目录 tar 流推送（单次连接）。
+# 按文件增量推（2026-10-20 起）：裁图目录一多一张图就整目录 tar + 189 张全量复核，
+# 一次单题文字修复也被拖成分钟级；现在只打变了的文件、只核这些、删掉本地已删除的。
 $assetDirs = @("crops", "answer_crops")
-$assetDrift = @()
+$assetChanged = New-Object System.Collections.Generic.List[string]
+$assetRemoved = New-Object System.Collections.Generic.List[string]
 foreach ($d in $assetDirs) {
     $dir = Join-Path $Bank $d
     if (-not (Test-Path -LiteralPath $dir -PathType Container)) { continue }
-    $drift = $false
     Get-ChildItem -LiteralPath $dir -Recurse -File | ForEach-Object {
         $rel = "$d/" + $_.FullName.Substring($dir.Length + 1).Replace("\", "/")
         $h = Sha256 $_.FullName
         $new[$rel] = $h
-        if ($old[$rel] -ne $h) { $drift = $true }
+        if ($old[$rel] -ne $h) { $assetChanged.Add($rel) }
     }
-    if ($drift) { $assetDrift += $d }
+    foreach ($k in @($old.Keys)) {
+        if ($k -like "$d/*" -and -not $new.ContainsKey($k)) { $assetRemoved.Add($k) }
+    }
 }
 
-if ($toPush.Count -eq 0 -and $assetDrift.Count -eq 0) { Write-Host "no changes, nothing to push"; exit 0 }
+if ($toPush.Count -eq 0 -and $assetChanged.Count -eq 0 -and $assetRemoved.Count -eq 0) { Write-Host "no changes, nothing to push"; exit 0 }
 Write-Host ("pushing {0} file(s) to {1}:{2}" -f $toPush.Count, $Server, $RemoteDir)
 $toPush | ForEach-Object { Write-Host "  $_" }
-if ($assetDrift.Count -gt 0) { Write-Host ("  {0} (drifted, full dir)" -f ($assetDrift -join ", ")) }
+if ($assetChanged.Count -gt 0) {
+    $byDir = ($assetChanged | Group-Object { ($_ -split '/')[0] } | ForEach-Object { "$($_.Name)=$($_.Count)" }) -join ", "
+    Write-Host ("  asset changed: {0} ({1})" -f $assetChanged.Count, $byDir)
+}
+if ($assetRemoved.Count -gt 0) { Write-Host ("  asset removed: {0}" -f $assetRemoved.Count) }
 
 # ---- transfer: data first, then stamped entries (avoid new data under old shell) ----
 # single scp call = single connection; argument order preserves transfer order
@@ -123,14 +130,14 @@ $ordered = @($toPush | Where-Object { $_ -like "data-*" }) + @($toPush | Where-O
 $src = $ordered | ForEach-Object { Join-Path $Bank $_ }
 Invoke-WithRetry "scp" { try { & $Scp -C $src "${Server}:${RemoteDir}/" 2>$null } catch {} }
 
-# drifted assets → pack to temp tar + scp only; extraction happens in the verify ssh below
+# changed assets → pack to temp tar + scp only; extraction happens in the verify ssh below
 # (PS 5.1 pipe would mangle the binary stream, hence a file transfer)
-if ($assetDrift.Count -gt 0) {
+if ($assetChanged.Count -gt 0) {
     $Tar = Join-Path $env:SystemRoot "System32\tar.exe"
     if (-not (Test-Path -LiteralPath $Tar)) { Die "tar.exe not found for asset push" }
     $tmpTar = Join-Path $env:TEMP ("bank408-assets-" + [guid]::NewGuid().ToString("N") + ".tar")
     try {
-        & $Tar -C $Bank -cf $tmpTar @assetDrift
+        & $Tar -C $Bank -cf $tmpTar @assetChanged
         if ($LASTEXITCODE -ne 0) { Die "local tar pack failed" }
         Invoke-WithRetry "scp assets" { try { & $Scp -C $tmpTar "${Server}:${RemoteDir}/.assets-sync.tar" 2>$null } catch {} }
     } finally {
@@ -138,14 +145,18 @@ if ($assetDrift.Count -gt 0) {
     }
 }
 
-# ---- ONE ssh does: extract drifted assets → HTTP verify → re-import platform 408 pool ----
+# ---- ONE ssh does: extract changed assets → HTTP verify → re-import platform 408 pool ----
 # 云端 SSH 建连有限流（约 4–5 次/分钟），每多一次建连就多一次被拒的机会：早先
 # extract / verify / platform-sync 各占一次，第 6 次必被拒，于是平台池静默跳过、
-# 还得人工补跑（2026-10-20 ds X09 踩过）。合成一次连接后最多 4 次（preflight/scp/verify/crops 哈希）。
+# 还得人工补跑（2026-10-20 ds X09 踩过）。合成一次连接后最多 4 次（preflight/scp/verify/资产哈希）。
 # 平台池结果用标记行切出来，失败只告警并给出可直接粘贴的命令，不再空转 3×10s 重试。
 # HTTP 视图（不是磁盘文件）才能抓到 release 遮蔽 shared 目录的情况。
 $checkNames = @($ordered | Where-Object { $_ -like "data-*.json" }) -join " "
-$extract = if ($assetDrift.Count -gt 0) { "tar -C $RemoteDir -xf $RemoteDir/.assets-sync.tar && rm -f $RemoteDir/.assets-sync.tar; " } else { "" }
+$extract = if ($assetChanged.Count -gt 0) { "tar -C $RemoteDir -xf $RemoteDir/.assets-sync.tar && rm -f $RemoteDir/.assets-sync.tar; " } else { "" }
+if ($assetRemoved.Count -gt 0) {
+    # 本地删掉的裁图云端也要删，否则已经作废的题图还能被直接 URL 命中
+    $extract += "cd $RemoteDir && rm -f " + (($assetRemoved | ForEach-Object { "'$_'" }) -join " ") + "; cd - > /dev/null; "
+}
 $importCmd = "cd /home/ubuntu/kaoyan/apps/platform-v2/backend && .venv/bin/python scripts/import_408_banks.py"
 $remoteScript = "set -e; ${extract}curl -sS http://127.0.0.1:8000/banks/408/index.html | grep -o '__BANK_DATA_VER__[^;]*' | head -1 | grep -o '[0-9]\+' | head -1; for f in $checkNames; do printf '%s ' `$f; curl -sS -o /dev/null -w '%{http_code}\n' http://127.0.0.1:8000/banks/408/`$f; done; echo '@@PLATFORM_SYNC'; { $importCmd 2>&1 || true; }; echo '@@PLATFORM_SYNC_END'"
 $remoteOut = $null
@@ -161,7 +172,7 @@ $inSync = $false
 foreach ($line in $remoteOut) {
     if ("$line" -eq "@@PLATFORM_SYNC") { $inSync = $true; continue }
     if ("$line" -eq "@@PLATFORM_SYNC_END") { $inSync = $false; continue }
-    if ($inSync) { $syncLines.Add("$line") } else { $verLines.Add("$line") }
+    if ($inSync) { $syncLines.Add("$line") } else { $verLines.Add($line) }
 }
 Write-Host "remote: $($verLines -join '; ')"
 $remoteVer = $verLines[0]
@@ -170,19 +181,20 @@ foreach ($line in ($verLines | Select-Object -Skip 1)) {
     if ($line -notmatch " 200$") { Die "remote data file check failed: '$line'" }
 }
 
-# ---- assets landed? full hash compare (local record vs remote disk), one ssh per dir ----
-foreach ($d in $assetDrift) {
-    $prefix = "$d/"
-    $localLines = @($new.GetEnumerator() | Where-Object { $_.Key -like "$prefix*" } | ForEach-Object { "$($_.Value)  $($_.Key.Substring($prefix.Length))" })
+# ---- assets landed? hash-compare just the files that changed (one ssh) ----
+if ($assetChanged.Count -gt 0) {
+    # ponytail: 待核清单按一条 ssh 命令传过去；几千张以上才会撞命令行长度上限，那时再退回整目录 find
+    $assetList = ($assetChanged | ForEach-Object { "'$_'" }) -join " "
+    $localLines = @($assetChanged | ForEach-Object { "$($new[$_])  $_" })
     $remoteLines = $null
     for ($i = 1; $i -le 5 -and -not $remoteLines; $i++) {
-        $remoteLines = $(try { & $Ssh $Server "cd $RemoteDir/$d && find . -type f -exec sha256sum {} + | sed 's|  \./|  |'" 2>$null } catch { $null })
-        if (-not $remoteLines) { Write-Host "$d verify ssh failed (attempt $i/5), retrying..."; Start-Sleep -Seconds 15 }
+        $remoteLines = $(try { & $Ssh $Server "cd $RemoteDir && sha256sum -- $assetList" 2>$null } catch { $null })
+        if (-not $remoteLines) { Write-Host "asset verify ssh failed (attempt $i/5), retrying..."; Start-Sleep -Seconds 15 }
     }
-    if (-not $remoteLines) { Die "$d verify ssh failed after 5 attempts" }
+    if (-not $remoteLines) { Die "asset verify ssh failed after 5 attempts" }
     $diff = Compare-Object $localLines @($remoteLines)
-    if ($diff) { Die "$d hash mismatch vs remote: $(($diff | Select-Object -First 5) -join '; ')" }
-    Write-Host "${d}: $($localLines.Count) file(s) hash-verified on remote"
+    if ($diff) { Die "asset hash mismatch vs remote: $(($diff | Select-Object -First 5) -join '; ')" }
+    Write-Host "$($assetChanged.Count) asset file(s) hash-verified on remote"
 }
 
 # ---- record pushed hashes ----
