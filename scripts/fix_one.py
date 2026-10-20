@@ -253,6 +253,27 @@ def _load_entry(entry: dict) -> tuple:
     return course, chapter, qid, fields, old_q
 
 
+def sync_local_platform_pool() -> None:
+    """题目改了就重导本机平台 408 题池，否则本机 /practice 与 q_lookup 还看到旧文本。"""
+    script = PROJECT_ROOT.parent / "platform-v2" / "backend" / "scripts" / "import_408_banks.py"
+    venv_py = PROJECT_ROOT.parents[1] / ".venv" / "Scripts" / "python.exe"
+    if not (script.exists() and venv_py.exists()):
+        return
+    try:
+        out = subprocess.run(
+            [str(venv_py), str(script)], cwd=str(script.parent.parent),
+            capture_output=True, text=True, encoding="utf-8", errors="replace",
+        )
+    except OSError as exc:
+        print(f"[fix_one] 提示：本机平台题池未重导（{exc}）；手动跑 {venv_py} {script}")
+        return
+    lines = [ln for ln in (out.stdout or "").splitlines() if ln.strip()]
+    if out.returncode == 0 and lines:
+        print(f"[fix_one] 本机平台题池已重导：{lines[-1]}")
+    else:
+        print(f"[fix_one] 提示：本机平台题池重导失败；手动跑 {venv_py} {script}")
+
+
 def apply_and_build(entries: list, *, recrop: bool = False, dry_run: bool = False,
                     scan: bool = False, push: bool = False) -> int:
     resolved = [_load_entry(entry) for entry in entries]
@@ -285,6 +306,7 @@ def apply_and_build(entries: list, *, recrop: bool = False, dry_run: bool = Fals
         assert_published(course.key, chapter, qid, fields)
     after = read_version()
     print(f"[fix_one] 发布态断言通过（{len(resolved)} 题）；缓存戳 {before} -> {after}")
+    sync_local_platform_pool()
     for course, chapter, qid, _, _ in resolved:
         print(
             "[fix_one] 本机核对："

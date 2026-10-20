@@ -123,7 +123,8 @@ $ordered = @($toPush | Where-Object { $_ -like "data-*" }) + @($toPush | Where-O
 $src = $ordered | ForEach-Object { Join-Path $Bank $_ }
 Invoke-WithRetry "scp" { try { & $Scp -C $src "${Server}:${RemoteDir}/" 2>$null } catch {} }
 
-# drifted assets → pack to temp tar, scp, remote extract (PS 5.1 pipe would mangle the binary stream)
+# drifted assets → pack to temp tar + scp only; extraction happens in the verify ssh below
+# (PS 5.1 pipe would mangle the binary stream, hence a file transfer)
 if ($assetDrift.Count -gt 0) {
     $Tar = Join-Path $env:SystemRoot "System32\tar.exe"
     if (-not (Test-Path -LiteralPath $Tar)) { Die "tar.exe not found for asset push" }
@@ -132,17 +133,21 @@ if ($assetDrift.Count -gt 0) {
         & $Tar -C $Bank -cf $tmpTar @assetDrift
         if ($LASTEXITCODE -ne 0) { Die "local tar pack failed" }
         Invoke-WithRetry "scp assets" { try { & $Scp -C $tmpTar "${Server}:${RemoteDir}/.assets-sync.tar" 2>$null } catch {} }
-        Invoke-WithRetry "ssh extract" { try { & $Ssh $Server "tar -C $RemoteDir -xf $RemoteDir/.assets-sync.tar && rm -f $RemoteDir/.assets-sync.tar" 2>$null } catch {} }
     } finally {
         if (Test-Path -LiteralPath $tmpTar) { Remove-Item -LiteralPath $tmpTar -Force }
     }
 }
 
-# ---- remote verify in ONE ssh over HTTP (what users actually get), not the file on disk:
-# a full platform release can re-point /banks/408 at a release-internal dir and silently
-# shadow the shared folder; only the HTTP view catches that ----
+# ---- ONE ssh does: extract drifted assets → HTTP verify → re-import platform 408 pool ----
+# 云端 SSH 建连有限流（约 4–5 次/分钟），每多一次建连就多一次被拒的机会：早先
+# extract / verify / platform-sync 各占一次，第 6 次必被拒，于是平台池静默跳过、
+# 还得人工补跑（2026-10-20 ds X09 踩过）。合成一次连接后最多 4 次（preflight/scp/verify/crops 哈希）。
+# 平台池结果用标记行切出来，失败只告警并给出可直接粘贴的命令，不再空转 3×10s 重试。
+# HTTP 视图（不是磁盘文件）才能抓到 release 遮蔽 shared 目录的情况。
 $checkNames = @($ordered | Where-Object { $_ -like "data-*.json" }) -join " "
-$remoteScript = "set -e; curl -sS http://127.0.0.1:8000/banks/408/index.html | grep -o '__BANK_DATA_VER__[^;]*' | head -1 | grep -o '[0-9]\+' | head -1; for f in $checkNames; do printf '%s ' `$f; curl -sS -o /dev/null -w '%{http_code}\n' http://127.0.0.1:8000/banks/408/`$f; done"
+$extract = if ($assetDrift.Count -gt 0) { "tar -C $RemoteDir -xf $RemoteDir/.assets-sync.tar && rm -f $RemoteDir/.assets-sync.tar; " } else { "" }
+$importCmd = "cd /home/ubuntu/kaoyan/apps/platform-v2/backend && .venv/bin/python scripts/import_408_banks.py"
+$remoteScript = "set -e; ${extract}curl -sS http://127.0.0.1:8000/banks/408/index.html | grep -o '__BANK_DATA_VER__[^;]*' | head -1 | grep -o '[0-9]\+' | head -1; for f in $checkNames; do printf '%s ' `$f; curl -sS -o /dev/null -w '%{http_code}\n' http://127.0.0.1:8000/banks/408/`$f; done; echo '@@PLATFORM_SYNC'; { $importCmd 2>&1 || true; }; echo '@@PLATFORM_SYNC_END'"
 $remoteOut = $null
 for ($i = 1; $i -le 5 -and -not $remoteOut; $i++) {
     # EAP=Stop 下 ssh 超时的 stderr 会经 NativeCommandError 变终止错误，2>$null 拦不住，须 try/catch
@@ -150,10 +155,18 @@ for ($i = 1; $i -le 5 -and -not $remoteOut; $i++) {
     if (-not $remoteOut) { Write-Host "verify ssh failed (attempt $i/5), retrying..."; Start-Sleep -Seconds 15 }
 }
 if (-not $remoteOut) { Die "verify ssh failed after 5 attempts" }
-Write-Host "remote: $($remoteOut -join '; ')"
-$remoteVer = ($remoteOut | Select-Object -First 1)
+$verLines = New-Object System.Collections.Generic.List[string]
+$syncLines = New-Object System.Collections.Generic.List[string]
+$inSync = $false
+foreach ($line in $remoteOut) {
+    if ("$line" -eq "@@PLATFORM_SYNC") { $inSync = $true; continue }
+    if ("$line" -eq "@@PLATFORM_SYNC_END") { $inSync = $false; continue }
+    if ($inSync) { $syncLines.Add("$line") } else { $verLines.Add("$line") }
+}
+Write-Host "remote: $($verLines -join '; ')"
+$remoteVer = $verLines[0]
 if ("$remoteVer" -notmatch [regex]::Escape($idxVer)) { Die "remote stamp check failed: remote='$remoteVer' local=$idxVer" }
-foreach ($line in ($remoteOut | Select-Object -Skip 1)) {
+foreach ($line in ($verLines | Select-Object -Skip 1)) {
     if ($line -notmatch " 200$") { Die "remote data file check failed: '$line'" }
 }
 
@@ -174,16 +187,16 @@ foreach ($d in $assetDrift) {
 
 # ---- record pushed hashes ----
 ($new.GetEnumerator() | ForEach-Object { "$($_.Key)=$($_.Value)" }) | Set-Content -LiteralPath $StateFile -Encoding UTF8
-Write-Host "OK: remote __BANK_DATA_VER__=$idxVer, $($toPush.Count) file(s) hot-updated (no service restart)"
 
-# ---- sync platform question pool: 408 hot-update only touches the static bank ----
+# ---- platform pool result (already imported in the verify ssh above) ----
 # 云端 questions 表不会自己更新；重导让 /practice、错题本、题目详情与静态库一致。
-# 旧 release 缺该脚本时只告警，不阻断热更。
-Write-Host "syncing platform 408 question pool..."
-$syncCmd = "cd /home/ubuntu/kaoyan/apps/platform-v2/backend && .venv/bin/python scripts/import_408_banks.py"
-$syncOut = $null
-for ($i = 1; $i -le 3 -and -not $syncOut; $i++) {
-    $syncOut = $(try { & $Ssh -o BatchMode=yes -o ConnectTimeout=15 $Server $syncCmd 2>&1 } catch { $null })
-    if (-not $syncOut) { Write-Host "platform sync ssh failed (attempt $i/3), retrying..."; Start-Sleep -Seconds 10 }
+# 旧 release 缺该脚本、或云端报错时只告警，不阻断已生效的热更。
+if (($syncLines -join "`n") -match "platform 408 sync done") {
+    $syncLines | ForEach-Object { Write-Host "  $_" }
+} else {
+    if ($syncLines) { $syncLines | ForEach-Object { Write-Host "  $_" } }
+    Write-Host "WARN: platform 408 question pool NOT synced; re-run when ssh settles:"
+    Write-Host "  ssh $Server `"$importCmd`""
 }
-if ($syncOut) { $syncOut | ForEach-Object { Write-Host "  $_" } } else { Write-Host "WARN: platform 408 sync skipped (release may predate scripts/import_408_banks.py)" }
+
+Write-Host "OK: remote __BANK_DATA_VER__=$idxVer, $($toPush.Count) file(s) hot-updated (no service restart)"
