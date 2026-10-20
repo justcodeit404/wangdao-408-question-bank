@@ -19,6 +19,71 @@ from utils import write_json_with_gz_atomic, write_text_atomic
 
 sys.stdout.reconfigure(encoding='utf-8')
 
+# 真题增补：2026 统考真题（官方原卷 + 官方答案），按章节追加进对应课程。
+# 源文件在 data/zhenti/<年份>.json；merge_courses 每次重建都会重新追加，
+# 因此不受 output/questions_*.json 重抽影响，也不改动原书题目。
+ZHENTI_DIR = Path(__file__).resolve().parent.parent / 'data' / 'zhenti'
+
+
+def load_curated() -> list[tuple[str, dict, dict]]:
+    rows: list[tuple[str, dict, dict]] = []
+    if not ZHENTI_DIR.is_dir():
+        return rows
+    for path in sorted(ZHENTI_DIR.glob('*.json')):
+        payload = json.loads(path.read_text(encoding='utf-8'))
+        meta = payload.get('meta') or {}
+        for item in payload.get('items') or []:
+            rows.append((path.stem, meta, item))
+    return rows
+
+
+def append_curated(course_key: str, chapters: list[dict], curated: list[tuple[str, dict, dict]]) -> int:
+    by_name = {ch['name']: ch for ch in chapters}
+    added = 0
+    for stem, meta, item in curated:
+        if item.get('course') != course_key:
+            continue
+        chapter = by_name.get(item.get('chapter'))
+        if chapter is None:
+            raise SystemExit(f'[curated] {stem}: chapter not found: {item.get("chapter")}')
+        qid = str(item.get('id') or '').strip()
+        if not qid:
+            raise SystemExit(f'[curated] {stem}: missing id for {item.get("chapter")}')
+        if any(str(q.get('id')) == qid for q in chapter.get('questions') or []):
+            raise SystemExit(f'[curated] {stem}: duplicate id {qid} in {item.get("chapter")}')
+        year = meta.get('year')
+        image = item.get('image')
+        source_label = meta.get('source_label') or f'{year} 统考真题'
+        source_kind = meta.get('source_kind') or 'official'
+        chapter.setdefault('questions', []).append({
+            'id': qid,
+            'type': item.get('type') or '选择题',
+            'content': item.get('content') or '',
+            'options': item.get('options') or None,
+            'sub_questions': None,
+            'page': None,
+            'bbox': None,
+            'has_image': bool(image),
+            'image_ref': {'cropped': image, 'note': f'{year} 统考真题题图'} if image else None,
+            'topic_title': f'{year} 统考真题',
+            'answer': {
+                'choice': item.get('choice') or '',
+                'explanation': item.get('explanation') or '',
+            },
+            'q_pages': [],
+            'a_pages': [],
+            'source_label': source_label,
+            'curated': {
+                'year': year,
+                'source': source_kind,
+                'sources': [s.get('url') for s in (meta.get('sources') or [])],
+            },
+        })
+        chapter['question_count'] = len(chapter['questions'])
+        added += 1
+    return added
+
+
 
 def write_json(dst, data):
     """把 Python 字典原子写入紧凑 JSON 文件，并打印大小。
@@ -74,6 +139,7 @@ def main():
 
     course_data = []
     summary = []
+    curated = load_curated()
     for c in COURSES:
         path = Path(c.out_json)
         if not path.exists():
@@ -83,15 +149,19 @@ def main():
         chapters = data.get('chapters', [])
         for ch in chapters:
             ch['course'] = c.name  # 给每个 chapter 注入课程名
+        added = append_curated(c.key, chapters, curated)
+        if added:
+            print(f'  [curated] {c.key}: 追加统考真题 {added} 题')
+        total = data.get('total_questions', 0) + added
         course_data.append({
             'course': c.name,
             'short': c.short,
             'key': c.key,
-            'total_questions': data.get('total_questions', 0),
+            'total_questions': total,
             'chapters': chapters,
         })
-        summary.append((c.name, len(chapters), data.get('total_questions', 0)))
-        print(f'  [load] {c.out_json}: {len(chapters)} chapters, {data.get("total_questions", 0)} 题')
+        summary.append((c.name, len(chapters), total))
+        print(f'  [load] {c.out_json}: {len(chapters)} chapters, {total} 题')
 
     # 合并到单个 data 字典
     all_chapters = [ch for cd in course_data for ch in cd['chapters']]

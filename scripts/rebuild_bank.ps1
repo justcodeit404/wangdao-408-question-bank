@@ -9,7 +9,9 @@
 param(
     [switch]$SkipTests,
     [switch]$SkipScan,
-    [int]$SampleSeed = 0
+    [int]$SampleSeed = 0,
+    [string]$Course = "",
+    [string]$Qids = ""
 )
 
 $ErrorActionPreference = "Stop"
@@ -31,16 +33,36 @@ if (-not (Test-Path -LiteralPath $testPy)) {
     $testPy = $buildPy
 }
 
+# -Course/-Qids only narrow the rebuild scope; output stays identical.
+# Keep this file ASCII: Windows PowerShell 5 reads scripts as the system code page
+# unless they carry a UTF-8 BOM (Chinese in comments breaks parsing).
+$courseOut = @{
+    ds  = "output/questions.json"
+    coa = "output/questions_coa.json"
+    os  = "output/questions_os.json"
+    net = "output/questions_net.json"
+}
+if ($Course -and -not $courseOut.ContainsKey($Course)) {
+    Write-Error "unknown -Course '$Course' (ds / coa / os / net)"
+    exit 1
+}
+
 Write-Host "==> merge duplicate patches" -ForegroundColor Cyan
 & $buildPy scripts/merge_patches.py
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 Write-Host "==> apply patches (fix_questions.py)" -ForegroundColor Cyan
-& $buildPy scripts/fix_questions.py
+if ($Course) {
+    & $buildPy scripts/fix_questions.py $courseOut[$Course]
+} else {
+    & $buildPy scripts/fix_questions.py
+}
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 Write-Host "==> normalize OCR spaces (normalize_spaces.py --apply)" -ForegroundColor Cyan
-& $buildPy scripts/normalize_spaces.py --apply
+$normArgs = @("scripts/normalize_spaces.py", "--apply")
+if ($Course) { $normArgs += @("--course", $Course) }
+& $buildPy @normArgs
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 Write-Host "==> merge_courses.py" -ForegroundColor Cyan
@@ -49,9 +71,14 @@ if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 # wire_explanation rebuilds 答案图片 lines from real crops; without this step,
 # curated patches that replace answer wholesale silently drop the lines (2026-09-29 incident)
-Write-Host "==> wire answer crops + explanations (gen_answer_crops.py --write-expl x4)" -ForegroundColor Cyan
+# Must run for ALL courses even when scoped: this step also rewrites data-<k>.json in the
+# published format, and merge_courses above emits a different (semantically equal) layout.
+# Crops are state-cached, so the extra three passes cost well under a second.
+Write-Host "==> wire answer crops + explanations (gen_answer_crops.py --write-expl)" -ForegroundColor Cyan
 foreach ($k in @("ds", "coa", "net", "os")) {
-    & $buildPy scripts/gen_answer_crops.py --course $k --write-expl
+    $cropArgs = @("scripts/gen_answer_crops.py", "--course", $k, "--write-expl")
+    if ($Qids -and $k -eq $Course) { $cropArgs += @("--qids", $Qids) }
+    & $buildPy @cropArgs
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 }
 

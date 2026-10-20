@@ -181,7 +181,8 @@ function qualityBadgeHtml(q) {
   const item = qualityForQuestion(q);
   if (!item) return '';
   const badges = [];
-  if (item.source_fidelity === 'verified') badges.push('<span class="quality-badge quality-source">原书已核对</span>');
+  if (item.provenance === 'curated-zhenti') badges.push('<span class="quality-badge quality-source">真题·官方原卷</span>');
+  else if (item.source_fidelity === 'verified') badges.push('<span class="quality-badge quality-source">原书已核对</span>');
   if (item.answer_validation === 'verified') badges.push('<span class="quality-badge quality-answer">答案已验算</span>');
   if (item.overall === 'pending') badges.push('<span class="quality-badge quality-pending">待核验</span>');
   if (item.overall === 'hold') badges.push('<span class="quality-badge quality-hold">质量隔离</span>');
@@ -230,6 +231,14 @@ let currentModalQuestion = null;
 
 function questionKey(q) { return q.chapter + '::' + q.id; }
 function displayId(q) { return (q.id || '').replace(/^[XA]/, ''); }
+
+// 真题增补题没有原书页码，用来源标签代替「第 N 页」。
+function pageLabel(q, fallback) {
+  const src = q && (q.source_label || (q.curated && q.curated.year ? `${q.curated.year} 统考真题` : ''));
+  if (src) return src;
+  if (q && q.page != null && q.page !== '') return `第 ${q.page} 页`;
+  return fallback || '';
+}
 
 const OCR_CODE_LINE_RE = /\b(?:void|int|char|float|double|for|while|if|else|return|printf|scanf|typedef|struct)\b|[{};]|\+\+|--/;
 // 王道流水线题：I1: add 或 I1 add。不认的话 reflow 会把指令行拼进题干，代码块也切不出来。
@@ -2226,7 +2235,7 @@ function renderGrid(search) {
             <span class="card-type ${typeClass}">${escapeHtml(q.type || '')}</span>
           </div>
         </div>
-        <div class="card-chapter">第 ${q.page || '—'} 页</div>
+        <div class="card-chapter">${pageLabel(q, '—')}</div>
         <div class="card-content" id="card-text-${start + i}"></div>
         <div class="card-tags">${tags.map(t => `<span class="card-tag">${escapeHtml(t)}</span>`).join('')}</div>
       </div>
@@ -3335,7 +3344,7 @@ function renderModalContent(q) {
   container.innerHTML = `
     <div class="q-pin-wrap">
       <div class="q-pin">
-        <div class="q-chapter">${escapeHtml(q.chapter)} · 第 ${q.page} 页</div>
+        <div class="q-chapter">${escapeHtml(q.chapter)} · ${pageLabel(q, '—')}</div>
         <div class="q-id">${escapeHtml(displayId(q))} <span class="row-type ${q.type === '选择题' ? 'choice' : 'nonchoice'}">${q.type}</span> ${qualityBadgeHtml(q)}</div>
         ${questionStemHtml(q)}
       </div>
@@ -3463,7 +3472,7 @@ function bindNotesUI(q) {
 
 function copyQuestionToClipboard(q) {
   const lines = [];
-  lines.push(`【${q.type}】${displayId(q)} · 第 ${q.page} 页 · ${q.chapter}`);
+  lines.push(`【${q.type}】${displayId(q)} · ${pageLabel(q, '—')} · ${q.chapter}`);
   if (q.content) lines.push('', q.content);
   if (q.options || optionGroupsOf(q)) {
     lines.push('');
@@ -3606,7 +3615,7 @@ function exportNotesAsMarkdown() {
     lines.push(`## ${ch}`);
     qs.sort((a, b) => (a.page || 0) - (b.page || 0));
     qs.forEach(q => {
-      lines.push(`### ${displayId(q)} · 第 ${q.page} 页`);
+      lines.push(`### ${displayId(q)} · ${pageLabel(q, '—')}`);
       if (q.content) lines.push('', '> ' + q.content.replace(/\n/g, '\n> '));
       lines.push('', '**笔记：**', '');
       lines.push(stripNoteImages(notesMap[questionKey(q)]));
@@ -4025,7 +4034,7 @@ function generatePaper() {
     currentPaper.map((q, i) => {
       const opts = (q.options || optionGroupsOf(q)) ? optionLines(q).map(line => `<div>${escapeHtml(line)}</div>`).join('') : '';
       const subs = q.sub_questions ? q.sub_questions.map((s, j) => `<div>(${j+1}) ${escapeHtml(s)}</div>`).join('') : '';
-      return `<div class="paper-q"><strong>${i+1}. (${escapeHtml(displayId(q))} · ${escapeHtml(q.type)} · 第 ${q.page} 页)</strong><div>${escapeHtml(q.content || '')}</div>${opts ? '<div style="margin-top:6px">' + opts + '</div>' : ''}${subs ? '<div style="margin-top:6px">' + subs + '</div>' : ''}<div style="margin-top:8px;height:1.4em"></div></div>`;
+      return `<div class="paper-q"><strong>${i+1}. (${escapeHtml(displayId(q))} · ${escapeHtml(q.type)} · ${pageLabel(q, '—')})</strong><div>${escapeHtml(q.content || '')}</div>${opts ? '<div style="margin-top:6px">' + opts + '</div>' : ''}${subs ? '<div style="margin-top:6px">' + subs + '</div>' : ''}<div style="margin-top:8px;height:1.4em"></div></div>`;
     }).join('');
 }
 function buildPaperMarkdown(includeAnswer) {
@@ -4034,7 +4043,7 @@ function buildPaperMarkdown(includeAnswer) {
   const date = new Date().toLocaleDateString();
   const lines = [`# ${title}`, '', `日期：${date}　|　题量：${currentPaper.length}　|　科目：${document.getElementById('paperCourse').value}`, '', '---', '', '姓名：_____________　　学号：_____________　　得分：_____________', ''];
   currentPaper.forEach((q, i) => {
-    lines.push(`## ${i+1}. （${displayId(q)} · ${q.type} · 第 ${q.page} 页）`);
+    lines.push(`## ${i+1}. （${displayId(q)} · ${q.type} · ${pageLabel(q, '—')}）`);
     if (q.content) lines.push('', q.content);
     if (q.options || optionGroupsOf(q)) {
       lines.push('');
@@ -4170,7 +4179,7 @@ function wrongBookItemHtml(it) {
   return `
     <div class="wrongbook-item" data-key="${escapeHtml(it.key)}" data-index="${allQuestions.indexOf(q)}">
       <div class="wb-main">
-        <div class="wb-id">${escapeHtml(it.qid || '')} · ${escapeHtml(it.type || '')} · 第 ${it.page} 页</div>
+        <div class="wb-id">${escapeHtml(it.qid || '')} · ${escapeHtml(it.type || '')} · ${pageLabel(it, '—')}</div>
         <div class="wb-text">${escapeHtml(preview).replace(/\$([^$]+)\$/g, '$1')}</div>
         <div class="wb-meta">${escapeHtml(it.chapter || '')}${answerText ? ' · 答案：<span style="color:var(--accent)">' + escapeHtml(answerText) + '</span>' : ''}</div>
       </div>
@@ -4202,7 +4211,7 @@ function exportWrongBook() {
     items.sort((a, b) => b.count - a.count);
     for (const it of items) {
       const q = allQuestions.find(x => questionKey(x) === it.key);
-      lines.push(`### ${it.qid || ''} · 第 ${it.page} 页 · ${it.type || ''}`);
+      lines.push(`### ${it.qid || ''} · ${pageLabel(q || it, '—')} · ${it.type || ''}`);
       if (q && q.content) lines.push('', '> ' + q.content.replace(/\n/g, '\n> '));
       if (q && (q.options || optionGroupsOf(q))) {
         lines.push('');
@@ -4489,7 +4498,7 @@ function renderPractice() {
     ${timerHtml}
     <div class="practice-progress">${escapeHtml(q.chapter)} · ${escapeHtml(displayId(q))} · ${progress}</div>
     <div class="practice-question">
-      <div class="q-id" style="margin-bottom:14px;font-size:0.95rem;color:var(--text-tertiary);font-weight:600;">${q.type} · 第 ${q.page} 页</div>
+      <div class="q-id" style="margin-bottom:14px;font-size:0.95rem;color:var(--text-tertiary);font-weight:600;">${q.type} · ${pageLabel(q, '—')}</div>
       ${questionBodyHtml(q, 'practice')}
     </div>
   `;
@@ -5671,7 +5680,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=462').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=467').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {

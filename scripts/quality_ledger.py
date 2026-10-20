@@ -24,6 +24,7 @@ from quality_hold import _choice_should_hold, source_uid
 from utils import write_json_atomic, write_text_atomic
 
 DATA_QUALITY_DIR = Path(__file__).resolve().parents[1] / "data" / "quality"
+CURATED_DIR = Path(__file__).resolve().parents[1] / "data" / "zhenti"
 # 全量 ledger（含本机证据路径）只落本地 data/quality，不进发布目录。
 LEDGER_PATH = DATA_QUALITY_DIR / "quality-ledger.json"
 # quality-verification 只是给旧构建/追溯用的派生清单，同样不发布。
@@ -249,6 +250,51 @@ def _old_hold_uids() -> set[str]:
     return {str(uid) for uid in (old.get("source_uids") or []) if str(uid).strip()}
 
 
+def _curated_records() -> dict[str, dict[str, Any]]:
+    """真题增补的核验登记：data/zhenti/*.json → {uid: {hash, year}}。
+
+    这些题不是原书 OCR，不能套用逐页复核。只有「题干 + 选项 + 答案」哈希与登记
+    一致时才认证；题面或答案被改动后自动回到 pending，必须重新核对再登记。
+    """
+    records: dict[str, dict[str, Any]] = {}
+    if not CURATED_DIR.is_dir():
+        return records
+    for path in sorted(CURATED_DIR.glob("*.json")):
+        payload = _load_json(path, {})
+        if not isinstance(payload, Mapping):
+            continue
+        meta = payload.get("meta") or {}
+        year = meta.get("year")
+        for item in payload.get("items") or []:
+            course_key = str(item.get("course") or "").strip()
+            chapter = str(item.get("chapter") or "").strip()
+            qid = str(item.get("id") or "").strip()
+            if not (course_key and chapter and qid):
+                continue
+            image = item.get("image")
+            question = {
+                "id": qid,
+                "type": item.get("type") or "选择题",
+                "content": item.get("content") or "",
+                "options": item.get("options") or None,
+                "answer": {
+                    "choice": item.get("choice") or "",
+                    "explanation": item.get("explanation") or "",
+                },
+                "has_image": bool(image),
+                "image_ref": {"cropped": image, "note": f"{year} 统考真题题图"}
+                if image
+                else None,
+                "q_pages": [],
+                "a_pages": [],
+            }
+            records[source_uid(course_key, chapter, qid)] = {
+                "hash": question_hash(question),
+                "year": year,
+            }
+    return records
+
+
 def _new_item(
     *,
     uid: str,
@@ -258,10 +304,13 @@ def _new_item(
     old: Mapping[str, Any] | None,
     old_verified: Mapping[str, Any] | None,
     old_holds: set[str],
+    curated: Mapping[str, Mapping[str, Any]] | None = None,
 ) -> dict[str, Any]:
     current_hash = question_hash(question)
     structural = bool(_choice_should_hold(question))
     same_hash = bool(old and old.get("source_hash") == current_hash)
+    curated_row = curated.get(uid) if curated else None
+    curated_ok = bool(curated_row and curated_row.get("hash") == current_hash and not structural)
     old_row = old_verified.get(uid) if old_verified else None
     vision_verified = bool(
         old_row
@@ -288,6 +337,13 @@ def _new_item(
         source_status = "conflict"
         answer_status = "conflict"
         overall = "hold"
+    elif curated_ok:
+        # 真题增补：内容来自官方原卷与官方答案扫描件，不套用原书逐页复核；
+        # 只认登记文件里的题干+答案哈希，改题后自动回到 pending。
+        source_status = "verified"
+        answer_status = "verified"
+        overall = "certified"
+        reasons = [f"curated_zhenti_{curated_row.get('year')}"]
     elif vision_verified:
         source_status = "verified"
         if page_review_verified:
@@ -338,6 +394,8 @@ def _new_item(
         "evidence": dict(old.get("evidence") or {}) if same_hash and old else {},
     }
     apply_v2_fields(row, question)
+    if curated_ok:
+        row["provenance"] = "curated-zhenti"
     return row
 
 
@@ -376,6 +434,7 @@ def build_ledger(*, strict_courses: set[str] | None = None) -> dict[str, Any]:
     items: dict[str, dict[str, Any]] = {}
     courses: dict[str, dict[str, Any]] = {}
     published_hashes: dict[str, str] = {}
+    curated = _curated_records()
     for course in COURSES:
         path = _published_path(course.key)
         if not path.is_file():
@@ -401,6 +460,7 @@ def build_ledger(*, strict_courses: set[str] | None = None) -> dict[str, Any]:
                 old=old_items.get(uid) if isinstance(old_items, Mapping) else None,
                 old_verified=old_verified,
                 old_holds=old_holds,
+                curated=curated,
             )
             _recompute_overall(item, course.key in strict_courses)
             items[uid] = item
