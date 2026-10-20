@@ -3467,3 +3467,14 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **回归**：`fix_one.py` 发布态断言通过（1 题）+ `rebuild_bank.ps1` 的 137 passed；缓存戳 462→463；`q_lookup --check` 题干正确、平台池 id=25715 ✅ 与题库一致。
 - **云端已部署**：`push_data.ps1` 热更（`__BANK_DATA_VER__=463`，13 文件，crops 189 张哈希复核）；首次平台池重导被 SSH 限流跳过，已手动补跑云端 `import_408_banks.py`（ds updated 1，failed 0），本机同脚本重导一次；HTTPS 拉 `data-ds.json` 复核题干已是 `{25,50,15,35,...}`。
 - **同类风险**：其余由 OCR 直录的补录题（net X16/X30、UDP X16 等）只核过文字缺漏，未逐题比对数字次序；如需，可对 `CURATED_INSERTS` 全部条目做一次「回源页图数字序列比对」巡检。
+
+## 2026-10-20 · 2026 统考真题 47 题入库（官方原卷 + 官方答案）
+
+- **来源**：主人提供的《【分享】2026年408真题和官方答案》(https://zhuanlan.zhihu.com/p/2089916683507052963) 即 2027 年大纲附录扫描件（24 页），已 OCR 取全第 1–47 题与官方答案页。
+- **做法**：新增 `data/zhenti/2026.json` 按官方原卷重写 47 题（选择 40 + 综合 7），`merge_courses.py` 按章节追加，`gen_answer_crops.py` 之后仍保留；来源标签 `2026 统考真题`，`pageLabel()` 取代原书页码（这些题 `page=None`，原写法会显示「第 null 页」）。
+- **答案**：40 道选择题与官方答案键逐题比对一致（1A 2D 3C … 40D）；综合题按官方答案要点写——41 沿 BST 路径查找（结果最多两个结点）、42 非法判据 `Pj<Pk<Pi`、43 R2=9BCEH/R9=F001H 且 ② 占 rt+num 两字段、44 ExtOp 至少 2 位（三种扩展）、45 首次执行 90/140/20ms、46 131 号盘块、47 3MSS=1500B / 2MSS=1000B / 20ms。
+- **缺页**：官方扫描缺第 83 页（46 题图所在页），46 题题面与图按公开版整理、答案仍用官方要点，解析里已注明。
+- **账本**：全量 `quality_ledger.py` 会把人工核验状态整体打回 hold（脚本注释明确禁止发布流程外全量重建），改用新增 `scripts/register_curated_zhenti.py` 按哈希逐条登记 → certified 2448→2495，隔离清单 421 未变，47 题全部 certified 且不入 hold。
+- **回归**：`rebuild_bank.ps1` 137 passed；新增 `tests/test_zhenti_curated.py` 7 passed（答案键/题号/章节/题图）；缓存戳 465→467。
+- **云端已部署**：`push_data.ps1` 已推 shared/banks/bank-408（`__BANK_DATA_VER__=467`），6 张官方题图 HTTP 200 且哈希与本地一致；平台 408 池 `import_408_banks.py` 重导后按 source_uid 命中 47/47（ds 601 / os 598 / coa 536 / net 503 updated，failed 0）。
+- **视图说明**：网页题库是 choice-only 视图，只展示选择题；7 道综合题随 `data-*.json` 进入平台刷题池（解答题自评流程），与往年真题一致。
