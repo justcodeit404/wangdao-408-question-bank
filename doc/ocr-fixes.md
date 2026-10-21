@@ -3486,3 +3486,11 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **账本**：`register_curated_zhenti.py` 按新哈希重登记 47 题 → 仍全部 certified；`quality_ledger.py --refresh-hashes` 已刷新；pending 0 / held 421 未变。
 - **回归**：`test_zhenti_curated.py` + `test_choice_only_viewer.py` + `test_notes_katex.py` 34 passed；缓存戳 467→468。
 - **云端已部署**：`push_data.ps1` 热更 9 文件（`__BANK_DATA_VER__=468`，四科 data HTTP 200），平台 408 池重导按 source_uid 命中 47/47（ds 13 / coa 13 / os 12 / net 9 updated，failed 0）。
+
+## 2026-10-21 · os X34 选项圈号 ⑤ 被 OCR 认成半角 5（主人上报「这题的5为什么没有圈」）
+
+- **现象**：输入/输出管理 · 设备独立性软件 · 选择题 X34（p337）题干是 ①~⑤，四个选项却显示 `①④5②③` / `④①5②③` / `①④②5③` / `④①②5③`，只有第 5 项没有圈。
+- **根因**：`data/ocr/os/page_337.json` 把选项里的 ⑤ 识别成 `5`（题干第 ⑤ 项更被识别成「③检查设备的状态」）。补丁把题干改正成 ⑤，但四个选项照抄 OCR 串，`5` 全部漏改。
+- **修复**：`fix_one.py --course os --chapter 设备独立性软件 --qid X34 --file … --push`，A–D 统一改回 ⑤；答案 B（④①⑤②③）未变，答案图 p342 已核。
+- **回归**：发布态断言 1 题通过，`rebuild_bank.ps1` 138 passed，缓存戳 472→473；HTTPS 拉 `data-os.json` 与线上题库页 DOM 均为 `①④⑤②③`；平台 408 池 os updated 1（本机 + 云端）。
+- **巡检**：四科 `math-bank/data-*.json` 的 options 扫「圈号紧邻半角数字」，修复后 0 命中，无同类漏圈。
