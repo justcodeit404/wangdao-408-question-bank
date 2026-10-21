@@ -2249,7 +2249,8 @@ function renderGrid(search) {
         && q.sub_questions && q.sub_questions.length > 0
           ? q.sub_questions[0]
           : q.content;
-      el.textContent = normalizeDisplayText(preview);
+      // 列表预览是纯文本，代码围栏会原样露出反引号；细节弹窗才走代码卡片
+      el.textContent = normalizeDisplayText(preview.replace(/^[ \t]*```[^\n]*$/gm, '').trim());
       renderKatex(el);
       if (search) highlightText(el, search);
     }
