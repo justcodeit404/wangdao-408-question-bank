@@ -3478,3 +3478,11 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **回归**：`rebuild_bank.ps1` 137 passed；新增 `tests/test_zhenti_curated.py` 7 passed（答案键/题号/章节/题图）；缓存戳 465→467。
 - **云端已部署**：`push_data.ps1` 已推 shared/banks/bank-408（`__BANK_DATA_VER__=467`），6 张官方题图 HTTP 200 且哈希与本地一致；平台 408 池 `import_408_banks.py` 重导后按 source_uid 命中 47/47（ds 601 / os 598 / coa 536 / net 503 updated，failed 0）。
 - **视图说明**：网页题库是 choice-only 视图，只展示选择题；7 道综合题随 `data-*.json` 进入平台刷题池（解答题自评流程），与往年真题一致。
+
+## 2026-10-21 · 2026 统考真题题干补【2026统考真题】前缀（主人上报不标注）
+
+- **现象**：主人问「昨天导入的 26 年真题为什么不标注【2026统考真题】」。增补题只写了 `source_label`/`topic_title` 字段，题干是官方原卷原文；王道原书真题的【20XX统考真题】是 OCR 文本自带，所以列表里老真题一眼能认出、这批认不出。
+- **改法**：`data/zhenti/2026.json` 47 题 `content` 统一加 `【2026统考真题】` 前缀（与书内真题同格式），`merge_courses.py` 无需改动；顺带让题库搜索「2026」「统考真题」能命中（搜索索引只扫题干/章节/选项/解析）。
+- **账本**：`register_curated_zhenti.py` 按新哈希重登记 47 题 → 仍全部 certified；`quality_ledger.py --refresh-hashes` 已刷新；pending 0 / held 421 未变。
+- **回归**：`test_zhenti_curated.py` + `test_choice_only_viewer.py` + `test_notes_katex.py` 34 passed；缓存戳 467→468。
+- **云端已部署**：`push_data.ps1` 热更 9 文件（`__BANK_DATA_VER__=468`，四科 data HTTP 200），平台 408 池重导按 source_uid 命中 47/47（ds 13 / coa 13 / os 12 / net 9 updated，failed 0）。
