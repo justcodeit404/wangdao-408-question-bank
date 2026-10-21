@@ -51,6 +51,59 @@ def _eval_prepare(cases: list[str]) -> list[str]:
     return json.loads(proc.stdout)
 
 
+def _run_notes_slice(extra_js: str) -> str:
+    src = APP_JS.read_text(encoding="utf-8")
+    start = src.index("const OCR_CODE_LINE_RE")
+    end = src.index("function getTotalPages")
+    script = src[start:end] + "\n" + textwrap.dedent(extra_js)
+    tmp = Path(__import__("tempfile").gettempdir()) / "bank408-notes-insert-runner.js"
+    tmp.write_text(script, encoding="utf-8")
+    try:
+        proc = subprocess.run(
+            ["node", str(tmp)],
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            cwd=str(ROOT),
+            check=False,
+        )
+    finally:
+        try:
+            tmp.unlink()
+        except OSError:
+            pass
+    if proc.returncode != 0:
+        raise AssertionError(
+            f"node failed ({proc.returncode}):\nSTDOUT: {proc.stdout}\nSTDERR: {proc.stderr}"
+        )
+    return proc.stdout
+
+
+def test_conversion_inserts_after_its_own_image_and_marks_it():
+    """识别结果锚定在图片后面（光标挪走也不插错位置），并把图片标成「已转」避免重复转换。"""
+    raw = _run_notes_slice(
+        """
+        const ta = {
+          value: '![图片](noteimg:a)\\n用户后写的一行',
+          selectionStart: 0,
+          selectionEnd: 0,
+          focus() {},
+          setSelectionRange(s, e) { this.selectionStart = s; this.selectionEnd = e; },
+          setRangeText(text, s, e) {
+            this.value = this.value.slice(0, s) + text + this.value.slice(e);
+            this.selectionStart = this.selectionEnd = s + text.length;
+          },
+          dispatchEvent() { return true; },
+        };
+        const anchor = '![图片](noteimg:a)';
+        insertAfterAnchor(ta, anchor, '$$x^2$$');
+        markNoteImageConverted(ta, anchor);
+        process.stdout.write(JSON.stringify(ta.value));
+        """
+    )
+    assert json.loads(raw) == "![已转](noteimg:a)\n\n$$x^2$$\n用户后写的一行"
+
+
 def test_notes_preview_wired_in_viewer():
     js = APP_JS.read_text(encoding="utf-8")
     css = STYLES.read_text(encoding="utf-8")
