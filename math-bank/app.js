@@ -398,8 +398,9 @@ function prepareNoteMath(text) {
 // 笔记图片：粘贴/插入 → 压缩为 dataURL 内联 ![](...)，仅本浏览器保存
 // ========================
 
-/** 图片等比压缩到最长边 1200px、JPEG q0.8（canvas 输出 dataURL 不含 ) 与空白，可安全内联 markdown）。 */
-function processNoteImage(file) {
+/** 图片等比压缩到最长边 maxSide（默认 1200，本地存储用；识别副本传 2000），JPEG q0.8
+ *  （canvas 输出 dataURL 不含 ) 与空白，可安全内联 markdown）。 */
+function processNoteImage(file, maxSide) {
   return new Promise((resolve, reject) => {
     if (!file || !file.type || !file.type.startsWith('image/')) {
       reject(new Error('不是图片文件'));
@@ -409,7 +410,7 @@ function processNoteImage(file) {
     reader.onload = () => {
       const img = new Image();
       img.onload = () => {
-        const MAX = 1200;
+        const MAX = maxSide || 1200;
         let w = img.width, h = img.height;
         if (!w || !h) { reject(new Error('图片解码失败')); return; }
         if (Math.max(w, h) > MAX) {
@@ -673,7 +674,11 @@ function maybeConvertNoteImage(ta, src, anchor) {
   if (window.ViewerPlatformSync && ViewerPlatformSync.onPlatformHost && ViewerPlatformSync.onPlatformHost()) {
     flashToast('图片已插入，正在转文字…');
   }
-  convertNoteImageSource(src).then(function (r) {
+  // 识别副本压到 2000px：手机原图 3–5MB，上传和模型处理都慢；服务端上限也是 2000
+  var srcP = (src && src.type && src.type.indexOf('image/') === 0)
+    ? processNoteImage(src, 2000)
+    : Promise.resolve(src);
+  srcP.then(convertNoteImageSource).then(function (r) {
     if (r.ok) {
       insertAfterAnchor(ta, anchor, r.markdown);
       markNoteImageConverted(ta, anchor);
@@ -681,7 +686,7 @@ function maybeConvertNoteImage(ta, src, anchor) {
     } else {
       noteImageConvertFailToast(r.status);
     }
-  });
+  }).catch(function () { noteImageConvertFailToast('error'); });
 }
 
 /** 「📝 图中文字」按钮：转换笔记里第一张还没转过的图片，成功后追加到该图后面，图片占位符保留。 */
@@ -5724,7 +5729,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=471').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=472').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {
