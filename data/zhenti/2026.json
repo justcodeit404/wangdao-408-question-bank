@@ -194,7 +194,7 @@
    "chapter": "查找 · 树形查找 · 解答题",
    "id": "A11",
    "type": "解答题",
-   "content": "【2026统考真题】已知二叉搜索树采用二叉链表存储，类型定义如下：\ntypedef struct BSTNode {              // 二叉搜索树结点\n    int data;                         // 保存结点的关键字值\n    struct BSTNode *left, *right;     // 指向左孩子、右孩子的指针\n} BinTNode;\ntypedef BinTNode *BTree;              // 二叉搜索树\n对于给定的非空二叉搜索树 T（root 为指向 T 的根结点的指针）和整数 k，请设计尽可能高效的查找算法：void searchX(BTree root, int k)，查找 T 中其关键字值与 k 之差的绝对值最小的所有结点，输出差值的绝对值和结点中的关键字值。要求：\n（1）给出算法的基本设计思想。（4 分）\n（2）根据设计思想，采用 C 或 C++ 语言描述算法，关键之处给出注释。（9 分）",
+   "content": "【2026统考真题】已知二叉搜索树采用二叉链表存储，类型定义如下：\n```\ntypedef struct BSTNode {              // 二叉搜索树结点\n    int data;                         // 保存结点的关键字值\n    struct BSTNode *left, *right;     // 指向左孩子、右孩子的指针\n} BinTNode;\ntypedef BinTNode *BTree;              // 二叉搜索树\n```\n对于给定的非空二叉搜索树 T（root 为指向 T 的根结点的指针）和整数 k，请设计尽可能高效的查找算法：void searchX(BTree root, int k)，查找 T 中其关键字值与 k 之差的绝对值最小的所有结点，输出差值的绝对值和结点中的关键字值。要求：\n（1）给出算法的基本设计思想。（4 分）\n（2）根据设计思想，采用 C 或 C++ 语言描述算法，关键之处给出注释。（9 分）",
    "options": null,
    "choice": "",
    "explanation": "【参考答案】\n（1）算法的基本设计思想\n按照二叉搜索树中查找 k 的方法，从根开始沿一条向下的路径查找。若当前结点的关键字值与 k 相等，则结果只包含一个结点，差值的绝对值为 0；不相等时，结果最多包含两个结点，差值的绝对值大于 0。\n不相等时：若当前结点的关键字值大于 k，则结果只可能是当前结点或/及左子树中的结点，沿 left 指针继续查找；若当前结点的关键字值小于 k，则结果只可能是当前结点或/及右子树中的结点，沿 right 指针继续查找。直到遇到空指针为止。\n（2）算法实现（C）\nvoid searchX(BTree root, int k) {\n    BTree p = root, pmin1, pmin2;\n    int min = MAX;                        // MAX 为能表示的整型最大值\n    if (p == NULL) return;                // 空树直接返回\n    while (p != NULL) {\n        if (p->data == k) {               // 只可能有一个结点，差值为 0\n            min = 0;\n            printf(\"差值绝对值=%d 结点=%d\\n\", min, p->data);\n            return;\n        } else if (abs(p->data - k) < min) {    // 出现差值绝对值更小的结点\n            min = abs(p->data - k);\n            pmin1 = pmin2 = p;\n        } else if (abs(p->data - k) == min) {   // 又出现一个差值绝对值为 min 的结点\n            pmin2 = p;\n        }\n        if (p->data > k) p = p->left;     // 当前结点大于 k，结果还可能在左子树\n        else p = p->right;                // 当前结点小于 k，结果还可能在右子树\n    }\n    if (pmin1 != pmin2)                   // 结果有两个结点\n        printf(\"差值绝对值=%d 结点1=%d 结点2=%d\\n\", min, pmin1->data, pmin2->data);\n    else                                  // 结果只有一个结点\n        printf(\"差值绝对值=%d 结点=%d\\n\", min, pmin1->data);\n}\n说明：算法只沿一条根到叶的路径走，时间 O(h)（h 为树高），辅助空间 O(1)，优于中序遍历整棵树 O(n)。",
@@ -464,7 +464,7 @@
    "chapter": "进程与线程 · 同步与互斥 · 选择题",
    "id": "X57",
    "type": "选择题",
-   "content": "【2026统考真题】某系统中有 8 个进程均会执行如下所示的代码片段，其中信号量 S 的初值为 5。若某时刻 S 的值为 −2，已执行到代码 Q 中的进程有 m 个，因执行 wait(S) 而被阻塞的进程有 n 个，则 m 和 n 的值分别是（　）。\nwait(S);\n代码 Q;\nsignal(S);",
+   "content": "【2026统考真题】某系统中有 8 个进程均会执行如下所示的代码片段，其中信号量 S 的初值为 5。若某时刻 S 的值为 −2，已执行到代码 Q 中的进程有 m 个，因执行 wait(S) 而被阻塞的进程有 n 个，则 m 和 n 的值分别是（　）。\n```\nwait(S);\n代码 Q;\nsignal(S);\n```",
    "options": {
     "A": "5、2",
     "B": "5、3",
