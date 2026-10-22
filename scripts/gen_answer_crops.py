@@ -105,6 +105,118 @@ _PAGE_NUM_RE = re.compile(r"^\s*\d{1,3}\s*$")
 ANSWER_CROP_LINE_RE = re.compile(
     r"^(?:答案图片|解析图片|题图|答图)\s*[：:]\s*answer_crops/", re.IGNORECASE
 )
+ANSWER_CROP_PATH_RE = re.compile(
+    r"^(?:答案图片|解析图片|题图|答图)\s*[：:]\s*(answer_crops/\S+)\s*$", re.IGNORECASE | re.MULTILINE
+)
+
+# ---------------------------------------------------------------------------
+# net 本节显式号段映射（ponytail）
+#
+# 为什么需要：答案页上印的序号（如「06.【解答】」）是**原书综合题号**，与库内 qid
+# 不总是同号——qid 是进度 key，历史上删过/插过题。按「印刷号 == qid」配对时，本节
+# 答案会整体挂到邻题（实测：流量控制 A07 拿到「07.」块=2017 真题、IPv4 A11 拿到
+# 「11.」块=A11_2 的帧解析）。这里改为按「小节内答案块的阅读顺序」显式指派。
+#
+# 取值：块的首行印刷号（两位，如 "06"）；None = 本节没有该题的独立答案块
+# （题干解析残缺、或与同节另一题同源重复），此时不造图、保留原文件。
+# 未列出的小节保持原行为（印刷号 == qid），已逐节核对：1.1.7 / 2.1.4 / 3.2.5 /
+# 3.3.3 / 3.6.5 / 4.5.5 / 4.7.4 / 5.2.3 / 5.3.7 / 6.2.4 / 6.3.3 / 6.4.4 均无偏移。
+# 按 course key 收口，避免与 ds/coa/os 同名小节串味。
+NET_SEG_QID_MAP: dict[str, dict[str, str | None]] = {
+    # 3.4 流量控制与可靠传输机制：7 题对 7 块，块印 01–07 而 qid 是 A02–A08，整节平移 1。
+    # 证据：01 块讲 WR+Wt=9≥2³（A02 选择重传）、06 块讲 512B/64kb/s/窗口 1、7（A07 卫星
+    # 信道）、07 块是 2017 统考 GBN 捎带确认（A08）。
+    "3.4.3 本节习题精选": {
+        "A02": "01", "A03": "02", "A04": "03", "A05": "04",
+        "A06": "05", "A07": "06", "A08": "07",
+    },
+    # 4.2 IPv4：19 题对 18 块，块印 01–18 而 qid 是 A01–A18（多出插题 A11_2）。
+    # 证据：01 块 4000B/1500B 分片=A02、08 块 30.138.118/23=A09、10 块 IPv4 首部=A11、
+    # 11 块 帧/218.199=A11_2、12 块 网络前缀/30=A12。
+    # A01 记 None：题干被截断在「其目的网络地址分别为」（地址丢失），内容与 A05 的
+    # 212.56.132–135.0/24 聚合同源，本节只有 04 一块聚合答案，归 A05。
+    "4.2.8 本节习题精选": {
+        "A01": None, "A02": "01", "A03": "02", "A04": "03", "A05": "04",
+        "A06": "05", "A07": "06", "A08": "07", "A09": "08", "A10": "09",
+        "A11": "10", "A11_2": "11",
+    },
+    # 4.4 路由算法与路由协议：7 题对 6 块。05 块（192.1.6.0/23 聚合、TTL=61、默认路由
+    # Metric 10）答的是 A06 的 1)2)3) 小问；06 块（RIP 跳数 15→AS4 选 OSPF、TTL≥16、
+    # 210.2.4.0/24 收敛）答的是 A07 的 2024 统考 4 个 AS。
+    # A05 记 None：题干只剩 2014 真题的 LSI 表格（无小问），与 A06 同源重复，块归 A06。
+    "4.4.6 本节习题精选": {"A05": None, "A06": "05", "A07": "06"},
+    # 6.5 万维网：5 题对 4 块。01/02/03 分别对应 A01/A02/A03；04 块（H1 在 t→t 期间除
+    # HTTP 还跑 DNS、ARP/交换表过程）答的是 A05 的 2021 统考真题。
+    # A04 记 None：题干是 A03 图 1/图 2 十六进制与拓扑的 OCR 残留（「2.128.100…0000
+    # 0021272151 ee 0015 c5 cl5e 28 08 0045」），不是一道题，原书无独立答案块。
+    "6.5.3 本节习题精选": {"A04": None, "A05": "04"},
+}
+
+
+def existing_answer_rels(q: dict) -> list[str]:
+    """data-<key>.json 里该题当前引用的答案图（用于把重裁结果写回既有文件名）。"""
+    exp = ((q.get("answer") or {}).get("explanation")) or ""
+    return ANSWER_CROP_PATH_RE.findall(exp)
+
+
+def sync_rels_to_refs(rels: list[str], refs: list[str], warns: list[str]) -> list[str]:
+    """把本次重裁的段落到库内已引用的文件名上（--refs-from-bank，不改 JSON）。
+
+    分段数会随映射变化：段数相同直接换名；段变多则纵向拼成一张写首个引用名；
+    段变少则按序写前 N 个，多余引用保持原样并告警（清掉它必须改 data-<key>.json）。
+    """
+    if not refs or not rels:
+        return rels
+    paths = [BANK_DIR / r for r in rels]
+    missing = [p for p in paths if not p.exists()]
+    if missing:
+        warns.append(f"重裁缺文件 {[p.name for p in missing]}")
+        return rels
+
+    if len(rels) == len(refs):
+        for src, dst_rel in zip(paths, refs):
+            dst = BANK_DIR / dst_rel
+            if src.resolve() == dst.resolve():
+                continue
+            dst.parent.mkdir(parents=True, exist_ok=True)
+            if dst.exists():
+                dst.unlink()
+            src.replace(dst)
+        return list(refs)
+
+    if len(rels) > len(refs):
+        dst = BANK_DIR / refs[0]
+        imgs = [Image.open(p) for p in paths]
+        try:
+            wid = max(i.width for i in imgs)
+            crop = Image.new("RGB", (wid, sum(i.height for i in imgs) + 6 * (len(imgs) - 1)), "white")
+            y = 0
+            for im in imgs:
+                crop.paste(im.convert("RGB"), (0, y))
+                y += im.height + 6
+            dst.parent.mkdir(parents=True, exist_ok=True)
+            crop.save(dst, "JPEG", quality=JPEG_QUALITY, optimize=True)
+        finally:
+            for im in imgs:
+                im.close()
+        for src in paths:
+            if src.resolve() != dst.resolve() and src.exists():
+                src.unlink()
+        warns.append(f"多段({len(rels)})拼成一张写入 {refs[0]}")
+        return [refs[0]]
+
+    for src, dst_rel in zip(paths, refs):
+        dst = BANK_DIR / dst_rel
+        if src.resolve() == dst.resolve():
+            continue
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        if dst.exists():
+            dst.unlink()
+        src.replace(dst)
+    warns.append(
+        f"库内多余引用未清（分段 {len(rels)} < 引用 {len(refs)}）：{', '.join(Path(r).name for r in refs[len(rels):])}"
+    )
+    return list(refs[: len(rels)])
 
 
 def load_ocr_pages(ocr_dir: Path, pages: list[int]) -> dict[int, list[dict]]:
@@ -440,13 +552,20 @@ def main() -> None:
     ap.add_argument("--course", default="ds", choices=sorted(COURSE_BY_KEY))
     ap.add_argument("--write-expl", action="store_true", help="回写 explanation（output + math-bank data）")
     ap.add_argument("--qids", default="", help="仅处理指定题号（逗号分隔，如 X01,A03）")
+    ap.add_argument("--topics", default="", help="仅处理指定小节（topic_title 前缀逗号分隔，如 3.4.3,4.2.8）")
     ap.add_argument("--limit", type=int, default=0, help="仅处理前 N 题（调试）")
     ap.add_argument("--dry-run", action="store_true", help="不写图不回写，只出统计")
+    ap.add_argument(
+        "--refs-from-bank",
+        action="store_true",
+        help="重裁结果按 data-<key>.json 已引用的文件名落盘（段数不等时多段拼一张），不改 JSON",
+    )
     args = ap.parse_args()
 
     course = COURSE_BY_KEY[args.course]
     key = course.key
     only = {q.strip().upper() for q in args.qids.split(",") if q.strip()}
+    topic_filters = [t.strip() for t in args.topics.split(",") if t.strip()]
 
     src = json.loads(course.out_json.read_text(encoding="utf-8"))
     bank_path = BANK_DIR / f"data-{key}.json"
@@ -516,6 +635,8 @@ def main() -> None:
     done = 0
 
     for topic, grp in topics.items():
+        if topic_filters and not any(topic.startswith(t) for t in topic_filters):
+            continue
         a_pages: list[int] = grp["a_pages"] or []
         if not a_pages:
             continue
@@ -575,6 +696,16 @@ def main() -> None:
             # Ceiling: 只覆盖这一节；同类误分类再出现要另加条目。
             if sec == "app" and topic == "8.6.3 本节试题精选":
                 seg_qid = {"A01": "", "A02": "01", "A03": "02", "A04": "03"}.get(qid, seg_qid)
+            # ponytail: net 的答案块印刷号与 qid 整节错位，按 NET_SEG_QID_MAP 显式指派；
+            # None = 本节无该题独立答案块（不造图、保留原文件）。Ceiling: 只覆盖表里那几节，
+            # 新发现的偏移要往表里加条目（别在循环里再写 if）。
+            if sec == "app" and key == "net" and qid in NET_SEG_QID_MAP.get(topic, {}):
+                target = NET_SEG_QID_MAP[topic][qid]
+                if target is None:
+                    stats["skipped"] += 1
+                    skips.append(f"{topic} {qid}: 原书无独立答案块（NET_SEG_QID_MAP=None），保持原文件")
+                    continue
+                seg_qid = target
             span = spans.get((sec, seg_qid))
             if not span:
                 # 显式映射到「无答案段」的题（8.6.3 多空题）：清掉历史挂错的答案图行，
@@ -597,6 +728,12 @@ def main() -> None:
             rels, warns = crop_parts(
                 span, layout, lines_by_page, course.pdf_images_dir, key, qid, args.dry_run
             )
+            # --refs-from-bank：分段数随映射变化，但库内引用文件名写死在 data-<key>.json
+            # （本次不允许改），把重裁结果落到既有文件名上，避免产出「没人引用」的图。
+            if args.refs_from_bank and not args.dry_run and rels:
+                dq = bank_index.get((topic, qid))
+                refs = existing_answer_rels(dq) if dq is not None else []
+                rels = sync_rels_to_refs(rels, refs, warns)
             for w in warns:
                 skips.append(f"{topic} {qid}: {w}")
             if not rels:

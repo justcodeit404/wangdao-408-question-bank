@@ -3531,3 +3531,17 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **答案层核验**：四科可见题的「答案字母 vs 解析自述答案」**0 冲突**；`scan_patterns` 命中 29→24（剩余多为合法的 `×` 乘法与 CRC 余数行）。
 - **事故与回滚**：运行 `scripts/cross_validate_answers.py --course net`（未带 `--fresh-ocr`）会因「无 fresh OCR 证据」把 **2452 道选择题全部写进 `quality-hold.json`**（421→2873）。已 `git checkout -- math-bank/quality-hold.json` 回滚，held 恢复 421。该脚本必须在有 fresh OCR 证据时使用，勿裸跑。
 - **回归**：138 passed（单科）/367 passed（全库），缓存戳 476→477→478；云端 `__BANK_DATA_VER__=478`，平台 408 池 net updated 10（本机 + 云端）。
+
+## 2026-10-22 · net 第三轮：答案裁图配对根治（主人「答案不都是图片吗，只要不截错」）
+
+- **审计（子代理全量）**：net 654 题、725 张答案图引用、目录 727 个文件，**100% 覆盖**逐张 OCR（GPU `create_rapid_ocr`，平均 312ms/张）。判定方式：裁图 OCR 文本的 24 字窗是否命中声明页整页 OCR。
+- **首轮结论**：725 张全部来自声明的答案页，但 **5 张（4 题）页内切到了上一题的答案块**：`page_082_A07`、`page_182_A11`、`page_212_A07`+`page_213_A07_ans_p2`、`page_307_A04`。判据是裁图首行印刷题号与 qid 不符 + 与相邻题裁图文本相似度 ≥0.85（A11/A11_2 甚至 md5 相同）。
+- **根因**：`gen_answer_crops.py` 按「答案块印刷号 == qid 数字」配对，而 net 有 4 个小节的书内印刷号整体比 qid 小 1，整节错位一格，于是每题挂的都是邻题答案。
+- **根治**：`gen_answer_crops.py` 新增 `NET_SEG_QID_MAP`（按 topic_title 的显式映射，格式对齐已有的 `8.6.3 本节试题精选` 先例），并新增 `existing_answer_rels()` / `sync_rels_to_refs()`：`data-net.json` 冻结时把新裁图落到库内既有文件名上（分段变多则纵向拼一张，变少则写前 N 个并告警）。
+- **映射覆盖 4 节**：3.4.3（7/7，整节 −1）、4.2.8（19/18，`A01:None`、A02→01…A11→10、`A11_2:11`）、4.4.6（7/6，`A05:None`、A06→05、A07→06）、6.5.3（5/4，`A04:None`、A05→04）。其余 12 个解答题小节无偏移。`None` = 原书无独立答案块，跳过、不造图。
+- **重裁结果**：`--topics 3.4.3,4.2.8,4.4.6,6.5.3 --refs-from-bank`，28 题 / 31 张，**21 张内容改变，0 新增 0 删除**。改前备份在 `temp/answer-crop-backup/net-before/`。
+- **复验**：改前 641 pass / 84 fail → 改后 **656 pass / 69 fail**；**block 归属错误 24→9**；**改前 fail→改后 pass 15 张，改前 pass→改后 fail 0 张**。剩余 9 条 block 不匹配全部落在隔离区（3 题原书无独立答案块 + 5 条分段变短后 data 多引用的 `_p2`），要清需改 `data-net.json`，本轮未动；另有 1 条是假失败（`page_286.json` 整页 OCR 缓存缺行，重渲染该页后原句确实存在）。
+- **缓存戳**：题库 `bump_bank_version.py --force` → **478→479**（裁图 URL 带 `?v=<BANK_DATA_VER>`，不 bump 会命中旧图缓存）；平台 `frontend/src/lib/helpers.ts` 与小程序 `lib/assets.ts` 的 `BANK_IMAGE_VERSION` **20261019→20261022**，`bank-asset.test.ts` 期望值同步更新。
+- **回归**：`pytest apps/bank-408/tests` **367 passed**；`vitest run src/lib/bank-asset.test.ts` 4 passed（需 Node 24，系统 Node 26 会因 jsdom localStorage 全红）。
+- **云端**：`push_data.ps1` 输出 `remote __BANK_DATA_VER__=479`、**21 张裁图哈希在远端校验通过**。
+- **已知遗留（均不可见）**：全库仍引用旧图的 3 道无答案块题（4.2.8 A01、4.4.6 A05、6.5.3 A04）与 5 条失效 `_p2` 引用，全部在 `quality-hold`；`6.5.3 A04` 的题干本身是 A03 图注残留（伪题），要彻底清理需数据侧决策。
