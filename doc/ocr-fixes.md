@@ -3521,3 +3521,13 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **未动（确认是正文数据，不是碎片）**：p157 X12 的路由表行、p205 X27 的距离向量表行、p166 A11_2 的三个小问、p222 X19 行内「I中继器II集线器III网桥IV路由器」、`Intermet` 与 `ftp:/` 等（均在隔离区）。
 - **根因（未改，留待决定）**：`scripts/parse_questions.py` 把题号之后所有非选项行都并入 `content`；`scripts/fix_questions.py` 的尾块清理函数（`_is_fig_label_line`）只认「长度≤4 的纯字母数字标签」，中文标签（路由器/发送方）与带单位的行（10Mb/s）都漏掉。要根治需放宽该判定，但会改动全库大量题目、打乱 `quality-ledger.json` 的哈希与 certified 状态，故本轮仍走单题补丁。
 - **回归**：发布态断言 20 题通过，`rebuild_bank.ps1` 138 passed，缓存戳 475→476；云端 `__BANK_DATA_VER__=476`，线上 `data-net.json` 复核 6 题尾部干净；平台 408 池 net updated 20（本机 + 云端）。
+
+## 2026-10-22 · net 第二轮：构建层清理逻辑 + 解析层碎片与符号修复（主人「还不够」）
+
+- **构建层**：`scripts/fix_questions.py` 新增 `strip_trailing_after_last_blank()` 与 `_looks_like_fig_junk()`，在 `clean_diagram_artifacts()` 里对选择题生效——**最后一个（　）之后只允许陈述行**（`I./II./①/A.`），其余按图注碎片清掉。豁免：表格（`|`/代码块/箭头）、IP-CIDR/MAC/十六进制数据行、代码符号行、以问号结尾的行。原始 `_strip_trailing_label_block()` 只认「≤4 字符的纯 ASCII 标签」，中文标签（路由器/发送方）与单位串（10Mb/s）全部漏网，这是两次上报的根因。
+- **踩坑记录**：第一版用「行内 token 数 ≥2 即碎片」，把 p157 X12 的路由表和 p164 X71 的转发表整片删掉；已收紧为「必须含中文图注词且无中文句读」，并用 `_TABLE_DATA_RE` 保护 IP/MAC/十六进制。当前实跑对四科数据 **0 变更**，纯防复发。
+- **回归测试**：新增 `tests/test_stem_label_noise.py` 5 项（中文标签尾要删、行内标签要删、路由表/MAC 表/代码/无空格符内容要留），`pytest tests` 367 passed。
+- **解析层修复（10 题可见）**：`fix_one.py --batch --push` 修 explanation——p16 X17 去掉尾部 `Tcso` 笔误并把 `uS`/`x` 统一为 `μs`/`×`；p107 X26 去掉尾部「B站的作用范围C站的作用范围A站B站C站D站」；p223 X21 去掉「---广播域冲突域」；p257 X57 把压平的拥塞窗口表还原为「时刻：…；拥塞窗口（KB）：…」；p257 X59、p301 X14 去掉时序图标签串；p41 X11 / p72 X05 / p256 X49 / p74 X24 乘号 `x`→`×`。
+- **答案层核验**：四科可见题的「答案字母 vs 解析自述答案」**0 冲突**；`scan_patterns` 命中 29→24（剩余多为合法的 `×` 乘法与 CRC 余数行）。
+- **事故与回滚**：运行 `scripts/cross_validate_answers.py --course net`（未带 `--fresh-ocr`）会因「无 fresh OCR 证据」把 **2452 道选择题全部写进 `quality-hold.json`**（421→2873）。已 `git checkout -- math-bank/quality-hold.json` 回滚，held 恢复 421。该脚本必须在有 fresh OCR 证据时使用，勿裸跑。
+- **回归**：138 passed（单科）/367 passed（全库），缓存戳 476→477→478；云端 `__BANK_DATA_VER__=478`，平台 408 池 net updated 10（本机 + 云端）。

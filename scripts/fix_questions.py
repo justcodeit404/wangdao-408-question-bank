@@ -1274,6 +1274,71 @@ def _strip_trailing_label_block(lines):
     return lines[:end], len(label_block)
 
 
+_BLANK_MARK_RE = re.compile(r"（\s*）|\(\s*\)|（\s*[）)]")
+_STMT_PREFIX_RE = re.compile(r"^\s*(?:[IVXⅠⅡⅢⅣⅤⅥⅦ]+[.．、]|[①-⑩]|[A-Da-d][.．、])")
+_INLINE_STMT_RE = re.compile(r"^\s*(?:I{1,3}|IV|V|VI{0,3}|Ⅰ|Ⅱ|Ⅲ|Ⅳ)[^\s.．、]")
+_CJK_RE = re.compile(r"[\u4e00-\u9fff]")
+_CJK_PUNCT_RE = re.compile(r"[。，、；：（）()！]")
+_CODE_SYMBOL_RE = re.compile(r"[=;{}\[\]<>]")
+_TABLE_DATA_RE = re.compile(
+    r"\d+\.\d+\.\d+\.\d+|(?i:\b(?:[0-9a-f]{2}-){5}[0-9a-f]{2}\b)|\b0x[0-9a-fA-F]+\b"
+)
+_TOKEN_RE = re.compile(r"[A-Za-z]{1,6}|\d+(?:\.\d+)?(?:[A-Za-z/]+)?")
+# 题图里常见的标签词（中文标注）——出现在题干尾部且无句读时按图注碎片处理
+_FIG_LABEL_WORDS = (
+    "路由器", "交换机", "集线器", "网桥", "服务器", "主机", "发送方", "接收方",
+    "电路交换", "报文交换", "分组交换", "链路", "时延", "传播", "帧", "端口",
+    "地址", "时间", "丢失", "互联网", "局域网", "以太网", "接入点", "带宽",
+)
+
+
+def _looks_like_fig_junk(text):
+    """判断一段文字是否像图内标签被 OCR 拼成的碎片。
+
+    排除：陈述行（I./II./①/A.）、表格、代码块、箭头、带中文句读的正文。
+    """
+    s = text.strip()
+    if not s or len(s) > 80:
+        return False
+    if _STMT_PREFIX_RE.match(s) or _INLINE_STMT_RE.match(s):
+        return False
+    if s.rstrip().endswith(("？", "?")):
+        return False
+    if "|" in s or "```" in s or "→" in s:
+        return False
+    # 表格数据：IP/CIDR、MAC、十六进制串一律不动（可能是题干里的路由表/转发表）
+    if _TABLE_DATA_RE.search(s):
+        return False
+    has_cjk = bool(_CJK_RE.search(s))
+    if has_cjk and _CJK_PUNCT_RE.search(s):
+        return False
+    if not has_cjk:
+        return False
+    return any(w in s for w in _FIG_LABEL_WORDS)
+
+
+def strip_trailing_after_last_blank(content):
+    """选择题：最后一个（　）之后只允许陈述行，其余按图注碎片清掉。
+
+    只作用于空格符所在行及其后的行；正文句读齐全时一律不动。
+    """
+    if not content or not _BLANK_MARK_RE.search(content):
+        return content
+    lines = content.split("\n")
+    idx = max(i for i, line in enumerate(lines) if _BLANK_MARK_RE.search(line))
+    marks = list(_BLANK_MARK_RE.finditer(lines[idx]))
+    head = lines[idx][: marks[-1].end()]
+    tail = lines[idx][marks[-1].end():]
+    if tail:
+        bare = tail.lstrip("。，、；：.")
+        if bare and _looks_like_fig_junk(bare):
+            lines[idx] = head + ("。" if tail.startswith("。") else "")
+    kept = lines[:idx]
+    kept.append(lines[idx])
+    kept.extend(ln for ln in lines[idx + 1:] if not _looks_like_fig_junk(ln))
+    return "\n".join(kept).strip()
+
+
 def fix_ocr_zero_letter_o(text: str) -> str:
     """数字语境中把 OCR 把 0 误识成 O/o/Ｏ 的情况改回 0。
 
@@ -1589,6 +1654,10 @@ def clean_diagram_artifacts(content, options=None):
 
     # 1. 清理题干末尾的图注标签块
     lines, _ = _strip_trailing_label_block(lines)
+    # 1.5 选择题：最后一个（　）之后的图注碎片（中文标签、单位串、时序标注）
+    if options:
+        stripped = strip_trailing_after_last_blank("\n".join(lines))
+        lines = stripped.split("\n")
 
     # 2. 清理行内/行间 OCR 箭头碎片
     cleaned_lines = []
