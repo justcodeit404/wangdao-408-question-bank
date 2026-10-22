@@ -3588,3 +3588,13 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **影响**：net 654→655 题；4.6 节 X01/X02→X01/X02/X03；`total_questions=655`。无测试断言总题数，`rebuild_bank.ps1 -Course net -SkipScan` **138 passed**。
 - **云端**：`push_data.ps1` → `remote __BANK_DATA_VER__=483`；平台 408 池 `net created 1 updated 5`；公网 `data-net.json?v=483` 复核 = 655 题、4.6 节 3 题、X03 答案 D。
 - **一并收尾**：`scripts/gen_answer_crops.py` 的第三轮遗留未提交改动（`ALGO_TAG` v1→v2、章末「本章小结」停止条件）随本次提交落地——该改动已在本次重建中生效并上云，不提交会造成代码与产物不一致。
+
+## 2026-10-22 · 答案裁图吞入「本章小结」（主人截图反馈 net 1.2.4 X38）
+
+- **病征**：net 1.2.4 X38（p30，2022 统考）解析图从「38. B」一路切到「1.3 本章小结及疑难点」正文，还多挂 p34/p35 两张整页小结图，主人截图问「答案怎么这么多」。
+- **根因**：`gen_answer_crops.py` 的答案分段靠「下一节标题」停，而 `toc_net.json` 里没有「本章小结」这一节（1.2.5 之后直接是 2.1），于是**每章最后一题的答案流会吞进小结正文乃至下一章开篇**。同根因在 coa 也命中（p23/80/151/198/277/295/331 附近），不止这一题。
+- **修复**：`segment_answers` 新增 `_CHAPTER_SUMMARY_RE`（`^(?:\d+\.\d+)?\s*本章小结`，节号可有可无、OCR 常不给空格）作为停止条件；`ALGO_TAG` v1→v2 强制四科全量重裁。
+- **产物**：重裁后 33 张「跨章续页」不再被任何题引用，已本地删除并由 `push_data` 在云端 `rm`；X38 裁图 281px→131px（38630→24595 B），只留答案段。
+- **回归**：`rebuild_bank.ps1 -Course net` **138 passed**；`test_page_review_patches.py + test_choice_only_viewer.py` **152 passed**；抽查 net p33 X38 / p53 X09、coa p23 A02 / p198 X06 均止于答案末行。
+- **云端**：`push_data.ps1` → `remote __BANK_DATA_VER__=483`、`asset removed: 33`（p34/p35 那两张已 404）；平台池 id=21045 解析已只剩 `page_033_X38_ans.jpg`。
+- **缓存戳**：图片字节变了但 URL 不变，`BANK_IMAGE_VERSION` 20261019→20261022（frontend helpers.ts / miniapp assets.ts / bank-asset.test.ts）并 pack+apply，release `20261022T130204Z-5ab08122e4dd`；云端 `assets/helpers-CLAYNLqq.js` 已含 `20261022`，小程序需主人自行发版。
