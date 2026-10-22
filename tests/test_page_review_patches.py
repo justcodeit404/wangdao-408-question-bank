@@ -537,10 +537,12 @@ def test_ds_graph_x09_five_vertices():
     assert question["answer"]["choice"] == "B"
 
 
-def test_net_routing_x04_next_hop_network_ip():
+def test_net_routing_x04_next_hop_mac_distractor():
+    # 原书 p138 印刷为「…下一个路由器的 MAC 地址」，D 是干扰项，答案 C（下一跳 IP）。
+    # 2026-10 整页核对放大原图复核：此前按「所在网络的IP地址」判错的方向是反的。
     options = _q("net", "网络层的功能", "X04")["options"]
-    assert "MAC" not in options["D"]
-    assert "所在网络的IP地址" in options["D"]
+    assert options["D"] == "目的网络和到达该目的网络路径上的下一个路由器的MAC地址"
+    assert options["C"] == "目的网络和到达该目的网络路径上的下一个路由器的IP地址"
 
 
 def test_net_stopwait_x01_option_d_has_packet():
