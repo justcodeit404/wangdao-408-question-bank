@@ -67,7 +67,7 @@ MIN_PART_H = 12           # 段最小高度，低于此视为空段跳过
 # 增量门：答案侧（a_pages/answer）未变时跳过全部重裁（全量重裁 4 课约 28s，占重建一半以上）。
 # 裁剪参数/算法变更时递增 ALGO_TAG 强制全量。
 STATE_PATH = PROJECT_ROOT / "data" / "quality" / "answer_crop_state.json"
-ALGO_TAG = "anscrop-v1"
+ALGO_TAG = "anscrop-v2"
 
 
 def answers_fingerprint(src: dict) -> str:
@@ -98,6 +98,10 @@ def answers_fingerprint(src: dict) -> str:
 # 注意不要加「小节号行」这类宽泛停止条件：解析正文里的 IP/版本号会被误截停
 # （实测 6.4.6 的「10.1.1.2 10.1.1.5 192.1.1.0」吃掉了后 3 题答案）
 _answer_header_re = re.compile(r"^\s*\d+\.\d+(?:\.\d+)?[\s～~\-—・·]*答案与解析\s*$")
+# 章末「1.3 本章小结及疑难点」标题：目录（toc_*.json）里没有这一节，靠 stop_heading_re
+# 停不住，于是每章最后一题的答案会一路吞进小结正文乃至下一章开篇（实测 net 1.2.4 X38
+# 挂了第 33–35 页三张图）。这里单独按标题停：节号可有可无，OCR 常不给空格。
+_CHAPTER_SUMMARY_RE = re.compile(r"^\s*(?:\d+\.\d+)?\s*本章小结")
 # 页眉「第N章XXX」/「第N章XXX 页码」与纯页码行（跨页答案会把下一页页眉并进裁剪框，提前滤掉）
 _CHAPTER_PAGE_HEADER_RE = re.compile(r"^\s*第\s*\d+\s*章")
 _PAGE_NUM_RE = re.compile(r"^\s*\d{1,3}\s*$")
@@ -316,7 +320,11 @@ def segment_answers(
             # 本小节答案头之前的行：上一小节的答案尾巴/题目尾巴，丢弃
             continue
 
-        if section_start.match(text) or (stop_heading_re and stop_heading_re.match(text)):
+        if (
+            section_start.match(text)
+            or _CHAPTER_SUMMARY_RE.match(text)
+            or (stop_heading_re and stop_heading_re.match(text))
+        ):
             if trace is not None:
                 trace.append(f"STOP p{ln['page']} heading: {text[:50]}")
             save_cur()
