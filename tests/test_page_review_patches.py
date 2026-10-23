@@ -1178,3 +1178,26 @@ def test_os_vm_x47_roman_items_on_own_lines():
     content = _q("os", "虚拟内存管理", "X47")["content"]
     assert content.endswith("是（）。\nI.增大快表（TLB）容量\nII.让页表常驻内存\nIII.增大交换区（swap）")
     assert "）。I增大" not in content
+
+
+@pytest.mark.parametrize(
+    ("course", "chapter", "qid", "year"),
+    [
+        # 原书真题行首带【20XX统考真题】；视觉补丁重写 content 时整段覆盖，
+        # 曾把前缀洗掉，导致列表认不出真题、平台真题池也漏收。
+        ("ds", "算法和算法评价", "X12", "2011"),
+        ("ds", "树形查找", "X33", "2021"),
+        ("coa", "运算方法和运算电路", "X25", "2009"),
+        ("coa", "浮点数的表示与运算", "X38", "2020"),
+        ("coa", "CISC和RISC", "X06", "2025"),
+        ("coa", "数据通路的功能和基本结构", "X17", "2021"),
+        ("coa", "I/O方式", "X48", "2021"),
+        ("os", "操作系统的运行环境", "X21", "2015"),
+        ("os", "进程与线程简介", "X62", "2014"),
+        ("net", "通信基础", "X21", "2014"),
+        ("net", "IPv4", "X53", "2011"),
+        ("net", "IPv4", "X61", "2017"),
+    ],
+)
+def test_zhenti_stem_keeps_year_prefix(course, chapter, qid, year):
+    assert _q(course, chapter, qid)["content"].startswith(f"【{year}统考真题】")

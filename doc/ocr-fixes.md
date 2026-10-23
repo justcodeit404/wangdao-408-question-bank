@@ -3598,3 +3598,12 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **回归**：`rebuild_bank.ps1 -Course net` **138 passed**；`test_page_review_patches.py + test_choice_only_viewer.py` **152 passed**；抽查 net p33 X38 / p53 X09、coa p23 A02 / p198 X06 均止于答案末行。
 - **云端**：`push_data.ps1` → `remote __BANK_DATA_VER__=483`、`asset removed: 33`（p34/p35 那两张已 404）；平台池 id=21045 解析已只剩 `page_033_X38_ans.jpg`。
 - **缓存戳**：图片字节变了但 URL 不变，`BANK_IMAGE_VERSION` 20261019→20261022（frontend helpers.ts / miniapp assets.ts / bank-asset.test.ts）并 pack+apply，release `20261022T130204Z-5ab08122e4dd`；云端 `assets/helpers-CLAYNLqq.js` 已含 `20261022`，小程序需主人自行发版。
+
+## 2026-10-23 · 12 道真题题干丢失【20XX统考真题】前缀（主人截图反馈 net 2.1.4 X21）
+
+- **病征**：主人截图问「这一题怎么没标是哪一年真题」——net 物理层·通信基础 X21（p42）题干只剩「在下列因素中，不影响信道数据传输速率的是（）。」，而原书印的是「21.【2014统考真题】在下列因素中…」。
+- **根因**：`data/quality/vision_patches.json` 的视觉补丁按整段重写 `content`，把原书行首的年份标记一起洗掉；`page_review_patches.json` 再叠一层。全库 2930 题里 832 题仍带标记，说明「真题行首带年份」是既有约定，不是设计上不标。影响不止显示：平台按「统考真题」标签识别真题池，缺前缀的题会混进本章分母、也可能漏进真题池。
+- **找出全部受影响题**：源页 OCR 里找 `【YYYY统考真题】`，要求同时满足「标记与本题干 bbox 纵向重叠」+「去掉标记后该块仍包含本题 content 前 14 个有效字符」——只按坐标命中的 146 道会把邻题年份错挂上来，加上文本比对后收敛到 12 道，其余 7 个坐标命中经逐条对照上下文 OCR 确认为邻题标记，已排除。
+- **修复**：`scripts/fix_one.py --batch` 一次提交 12 题（ds X12/X33、coa X25/X38/X06/X17/X48、os X21/X62、net X21/X53/X61），只加前缀不改题干正文；四科全量重建，发布态断言 12 题通过。
+- **回归**：`tests/test_page_review_patches.py` 新增 `test_zhenti_stem_keeps_year_prefix`（12 条参数化断言，钉死这 12 题必须带前缀，防视觉补丁再次整段覆盖洗掉）。
+- **云端**：`push_data.ps1` → `remote __BANK_DATA_VER__=484`、4 个 data-*.json HTTP 200；平台 408 池 `ds 2 / os 2 / coa 5 / net 3`（changed 12 failed 0）；公网 `data-net.json?v=484` 复核 X21 题干 =「【2014统考真题】在下列因素中，不影响信道数据传输速率的是（）。」。图片未变，`BANK_IMAGE_VERSION` 不动。
