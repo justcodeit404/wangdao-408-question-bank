@@ -1,51 +1,51 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-21T05:15:35+00:00",
+  "generated_at": "2026-10-24T10:15:36+00:00",
   "published_hashes": {
     "ds": "38ef4290c9dea46747b3bdfda637550e7602c72614341574d88ecac6662491c1",
     "coa": "f78343ec7e2b9c919a2cfa4b90ce0b83ae8c5642d32f8efaa7861d3c1778128c",
-    "net": "7b977c5d70c1d11316106ccba1d156e0581e65c6eaac669598f5592cee0fdfbb",
-    "os": "c848678c83e4a50018cbd051fe9c4a781a51d798a54894666f0a94f4d53a7d7c"
+    "os": "c848678c83e4a50018cbd051fe9c4a781a51d798a54894666f0a94f4d53a7d7c",
+    "net": "7b977c5d70c1d11316106ccba1d156e0581e65c6eaac669598f5592cee0fdfbb"
   },
   "courses": {
     "ds": {
       "name": "数据结构",
       "mode": "strict",
-      "total": 810,
+      "total": 812,
       "certified": 652,
       "pending": 0,
-      "held": 158
+      "held": 160
     },
     "coa": {
       "name": "计算机组成原理",
       "mode": "strict",
-      "total": 687,
+      "total": 691,
       "certified": 610,
-      "pending": 0,
-      "held": 77
-    },
-    "net": {
-      "name": "计算机网络",
-      "mode": "strict",
-      "total": 648,
-      "certified": 567,
       "pending": 0,
       "held": 81
     },
     "os": {
       "name": "操作系统",
       "mode": "strict",
-      "total": 771,
+      "total": 772,
       "certified": 666,
       "pending": 0,
-      "held": 105
+      "held": 106
+    },
+    "net": {
+      "name": "计算机网络",
+      "mode": "strict",
+      "total": 655,
+      "certified": 566,
+      "pending": 0,
+      "held": 89
     }
   },
   "summary": {
-    "total": 2916,
-    "certified": 2495,
+    "total": 2930,
+    "certified": 2494,
     "pending": 0,
-    "held": 421
+    "held": 436
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -13564,6 +13564,35 @@
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
     },
+    "408:cs408-coa::中央处理器 · 数据通路的功能和基本结构 · 解答题::A11": {
+      "source_uid": "408:cs408-coa::中央处理器 · 数据通路的功能和基本结构 · 解答题::A11",
+      "course_key": "coa",
+      "chapter": "中央处理器 · 数据通路的功能和基本结构 · 解答题",
+      "question_id": "A11",
+      "source_hash": "d04d6450fd2df243bd506a366c46db29b63a1bba6f271e746725c22188d9c8a0",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": true,
+      "answer_choice": "",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
+      "certification_profile": "non_choice_source_answer"
+    },
     "408:cs408-coa::中央处理器 · 数据通路的功能和基本结构 · 选择题::X01": {
       "source_uid": "408:cs408-coa::中央处理器 · 数据通路的功能和基本结构 · 选择题::X01",
       "course_key": "coa",
@@ -14948,6 +14977,35 @@
         "human_action": "certify",
         "human_evidence": "official_book_answer_override; doubao-work stem already patched or matched book; drill-release"
       },
+      "certification_profile": "objective_full"
+    },
+    "408:cs408-coa::中央处理器 · 数据通路的功能和基本结构 · 选择题::X19": {
+      "source_uid": "408:cs408-coa::中央处理器 · 数据通路的功能和基本结构 · 选择题::X19",
+      "course_key": "coa",
+      "chapter": "中央处理器 · 数据通路的功能和基本结构 · 选择题",
+      "question_id": "X19",
+      "source_hash": "ddab1e586c93fc58bc16037a7df2ae7a7ab6b1ea3f9eac8683fba13fe0b8276f",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "A",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
       "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 主存储器 · 解答题::A01": {
@@ -19075,6 +19133,35 @@
           "source_hash": "fecaa9a6c1de3cd41a5deb26834aa88ef4a0e53eff81119ab2779bd33855be97"
         }
       },
+      "certification_profile": "objective_full"
+    },
+    "408:cs408-coa::存储系统 · 主存储器 · 选择题::X38": {
+      "source_uid": "408:cs408-coa::存储系统 · 主存储器 · 选择题::X38",
+      "course_key": "coa",
+      "chapter": "存储系统 · 主存储器 · 选择题",
+      "question_id": "X38",
+      "source_hash": "9a9b9c498e905c577ccc691b2c648430b73ed57c698b5a241ff8db502a215da0",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "A",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
       "certification_profile": "objective_full"
     },
     "408:cs408-coa::存储系统 · 主存储器与CPU的连接 · 解答题::A01": {
@@ -26405,6 +26492,35 @@
       },
       "certification_profile": "objective_full"
     },
+    "408:cs408-coa::存储系统 · 虚拟存储器 · 选择题::X21": {
+      "source_uid": "408:cs408-coa::存储系统 · 虚拟存储器 · 选择题::X21",
+      "course_key": "coa",
+      "chapter": "存储系统 · 虚拟存储器 · 选择题",
+      "question_id": "X21",
+      "source_hash": "d880b21c5a1f32ce2db3a05182a683a184862ee9b8cbc0b272c0680811c6eacf",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "A",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
+      "certification_profile": "objective_full"
+    },
     "408:cs408-coa::存储系统 · 高速缓冲存储器 · 解答题::A01": {
       "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 解答题::A01",
       "course_key": "coa",
@@ -30480,6 +30596,35 @@
           "source_hash": "d75e583bd9d9eb1ceaef4b85b54b3ae8a9102a4d68ad6203ce492b43c11c58b6"
         }
       },
+      "certification_profile": "objective_full"
+    },
+    "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X36": {
+      "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X36",
+      "course_key": "coa",
+      "chapter": "存储系统 · 高速缓冲存储器 · 选择题",
+      "question_id": "X36",
+      "source_hash": "8a421e92cdb77be5b5b3501d16e27a886a52a810e40c8cd1bf30a52d3e200861",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "C",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
       "certification_profile": "objective_full"
     },
     "408:cs408-coa::总线 · 总线事务和定时 · 选择题::X01": {
@@ -40701,6 +40846,35 @@
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
     },
+    "408:cs408-coa::指令系统 · 指令系统 · 解答题::A04": {
+      "source_uid": "408:cs408-coa::指令系统 · 指令系统 · 解答题::A04",
+      "course_key": "coa",
+      "chapter": "指令系统 · 指令系统 · 解答题",
+      "question_id": "A04",
+      "source_hash": "a70a8cf90bae0f7680a4b4cc47e898a4cf7ace53a6bf8ff2cb57b7e0455d0807",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": true,
+      "answer_choice": "",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
+      "certification_profile": "non_choice_source_answer"
+    },
     "408:cs408-coa::指令系统 · 指令系统 · 选择题::X01": {
       "source_uid": "408:cs408-coa::指令系统 · 指令系统 · 选择题::X01",
       "course_key": "coa",
@@ -42333,6 +42507,93 @@
           "source_hash": "ecb77d93b8457a305ebece1d2396d00c53f57e3db062b05dda294e0c3ea2ec66"
         }
       },
+      "certification_profile": "objective_full"
+    },
+    "408:cs408-coa::指令系统 · 指令系统 · 选择题::X17": {
+      "source_uid": "408:cs408-coa::指令系统 · 指令系统 · 选择题::X17",
+      "course_key": "coa",
+      "chapter": "指令系统 · 指令系统 · 选择题",
+      "question_id": "X17",
+      "source_hash": "1e2a36f8790939149b7e4839fb9ee9e061f512e42e693b64137c771179569850",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "D",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
+      "certification_profile": "objective_full"
+    },
+    "408:cs408-coa::指令系统 · 指令系统 · 选择题::X18": {
+      "source_uid": "408:cs408-coa::指令系统 · 指令系统 · 选择题::X18",
+      "course_key": "coa",
+      "chapter": "指令系统 · 指令系统 · 选择题",
+      "question_id": "X18",
+      "source_hash": "bb724ec3cd1d00156026981e5e2ec60648954db22f66a4e95ab0241346218b1c",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "A",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
+      "certification_profile": "objective_full"
+    },
+    "408:cs408-coa::指令系统 · 指令系统 · 选择题::X19": {
+      "source_uid": "408:cs408-coa::指令系统 · 指令系统 · 选择题::X19",
+      "course_key": "coa",
+      "chapter": "指令系统 · 指令系统 · 选择题",
+      "question_id": "X19",
+      "source_hash": "d37ade9a86c30e6c56ab5e55cccf89653aae9a8486f3095f0f1c3315fbaa89c6",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "D",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
       "certification_profile": "objective_full"
     },
     "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 解答题::A02": {
@@ -47751,6 +48012,35 @@
       },
       "certification_profile": "objective_full"
     },
+    "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X35": {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X35",
+      "course_key": "coa",
+      "chapter": "数据的表示和运算 · 数制与编码 · 选择题",
+      "question_id": "X35",
+      "source_hash": "c9fe37579de8622d12972b39a8b86e45e337b96778d5dc1f498f2b02467a5aed",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "A",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
+      "certification_profile": "objective_full"
+    },
     "408:cs408-coa::数据的表示和运算 · 浮点数的表示与运算 · 解答题::A01": {
       "source_uid": "408:cs408-coa::数据的表示和运算 · 浮点数的表示与运算 · 解答题::A01",
       "course_key": "coa",
@@ -52291,6 +52581,48 @@
       },
       "certification_profile": "objective_full"
     },
+    "408:cs408-coa::数据的表示和运算 · 浮点数的表示与运算 · 选择题::X40": {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 浮点数的表示与运算 · 选择题::X40",
+      "course_key": "coa",
+      "chapter": "数据的表示和运算 · 浮点数的表示与运算 · 选择题",
+      "question_id": "X40",
+      "source_hash": "4d879fdc6617854f572f84a4b9632c9becc854a50b1e2bf29036bd367cebc79c",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
+      "overall": "hold",
+      "reason_codes": [
+        "unregistered_publication"
+      ],
+      "q_pages": [
+        66,
+        67,
+        68,
+        69,
+        70,
+        71
+      ],
+      "a_pages": [
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ],
+      "has_image": false,
+      "answer_choice": "A",
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
+    },
     "408:cs408-coa::数据的表示和运算 · 浮点数的表示与运算 · 选择题::X41": {
       "source_uid": "408:cs408-coa::数据的表示和运算 · 浮点数的表示与运算 · 选择题::X41",
       "course_key": "coa",
@@ -52943,6 +53275,35 @@
           "source_hash": "b743588a8666993c466867fa852ffb120cf42c514c65f496d545948fcfb9dac7"
         }
       },
+      "certification_profile": "objective_full"
+    },
+    "408:cs408-coa::数据的表示和运算 · 浮点数的表示与运算 · 选择题::X46": {
+      "source_uid": "408:cs408-coa::数据的表示和运算 · 浮点数的表示与运算 · 选择题::X46",
+      "course_key": "coa",
+      "chapter": "数据的表示和运算 · 浮点数的表示与运算 · 选择题",
+      "question_id": "X46",
+      "source_hash": "5ad62a62b5dd19b99901bb644ddc916fe76e6cf1f6dcab081ba40e1689ddef8c",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "B",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
       "certification_profile": "objective_full"
     },
     "408:cs408-coa::数据的表示和运算 · 运算方法和运算电路 · 解答题::A03": {
@@ -59033,6 +59394,41 @@
       },
       "certification_profile": "objective_full"
     },
+    "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X18": {
+      "source_uid": "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X18",
+      "course_key": "coa",
+      "chapter": "计算机系统概述 · 计算机的性能指标 · 选择题",
+      "question_id": "X18",
+      "source_hash": "be401f3081b21b244841c0b0103105aee6cf739d56a45a76acc842b3be39b25d",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
+      "overall": "hold",
+      "reason_codes": [
+        "unregistered_publication"
+      ],
+      "q_pages": [
+        20
+      ],
+      "a_pages": [
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "has_image": false,
+      "answer_choice": "D",
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
+    },
     "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X19": {
       "source_uid": "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X19",
       "course_key": "coa",
@@ -60535,6 +60931,35 @@
       },
       "certification_profile": "objective_full"
     },
+    "408:cs408-coa::计算机系统概述 · 计算机系统层次结构 · 选择题::X15": {
+      "source_uid": "408:cs408-coa::计算机系统概述 · 计算机系统层次结构 · 选择题::X15",
+      "course_key": "coa",
+      "chapter": "计算机系统概述 · 计算机系统层次结构 · 选择题",
+      "question_id": "X15",
+      "source_hash": "9895f58434f09ead20e7a1a0a8201546d69ad8dcf8fd267c946656c0bbedb875",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "C",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
+      "certification_profile": "objective_full"
+    },
     "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X01": {
       "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X01",
       "course_key": "coa",
@@ -61983,6 +62408,33 @@
       },
       "certification_profile": "objective_full"
     },
+    "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X14": {
+      "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X14",
+      "course_key": "coa",
+      "chapter": "输入/输出系统 · I/O接口 · 选择题",
+      "question_id": "X14",
+      "source_hash": "b4ae6633ba6d8d436a37c3f7da83f9120d15e30795e5165b5aae50407a755d13",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
+      "overall": "hold",
+      "reason_codes": [
+        "unregistered_publication"
+      ],
+      "q_pages": [
+        302
+      ],
+      "a_pages": [
+        303,
+        304,
+        305,
+        306
+      ],
+      "has_image": false,
+      "answer_choice": "D",
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
+    },
     "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X15": {
       "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X15",
       "course_key": "coa",
@@ -62800,6 +63252,31 @@
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
+    },
+    "408:cs408-coa::输入/输出系统 · I/O方式 · 解答题::A11": {
+      "source_uid": "408:cs408-coa::输入/输出系统 · I/O方式 · 解答题::A11",
+      "course_key": "coa",
+      "chapter": "输入/输出系统 · I/O方式 · 解答题",
+      "question_id": "A11",
+      "source_hash": "fc914402b4378bc736b102f06123568f7c3379874a6335fc64335be1f3d78dc5",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
+      "overall": "hold",
+      "reason_codes": [
+        "unregistered_publication"
+      ],
+      "q_pages": [
+        322
+      ],
+      "a_pages": [
+        330,
+        331
+      ],
+      "has_image": false,
+      "answer_choice": "",
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "non_choice_source_answer"
     },
     "408:cs408-coa::输入/输出系统 · I/O方式 · 选择题::X01": {
       "source_uid": "408:cs408-coa::输入/输出系统 · I/O方式 · 选择题::X01",
@@ -71749,6 +72226,35 @@
       },
       "certification_profile": "objective_full"
     },
+    "408:cs408-coa::输入/输出系统 · I/O方式 · 选择题::X56": {
+      "source_uid": "408:cs408-coa::输入/输出系统 · I/O方式 · 选择题::X56",
+      "course_key": "coa",
+      "chapter": "输入/输出系统 · I/O方式 · 选择题",
+      "question_id": "X56",
+      "source_hash": "f17b04bdccd461e1aaaaa0f51d06c8597198fe2b3902bff6f39848f7f241d94e",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "C",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
+      "certification_profile": "objective_full"
+    },
     "408:cs408-ds::串 · 串的模式匹配 · 解答题::A01": {
       "source_uid": "408:cs408-ds::串 · 串的模式匹配 · 解答题::A01",
       "course_key": "ds",
@@ -74611,6 +75117,35 @@
       },
       "certification_profile": "objective_full"
     },
+    "408:cs408-ds::图 · 图的基本概念 · 选择题::X19": {
+      "source_uid": "408:cs408-ds::图 · 图的基本概念 · 选择题::X19",
+      "course_key": "ds",
+      "chapter": "图 · 图的基本概念 · 选择题",
+      "question_id": "X19",
+      "source_hash": "ccbf36877a6b386121d50466cf9a1a3d2516908a76b15c7aa3535cae1e32e296",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "B",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
+      "certification_profile": "objective_full"
+    },
     "408:cs408-ds::图 · 图的存储及基本操作 · 解答题::A02": {
       "source_uid": "408:cs408-ds::图 · 图的存储及基本操作 · 解答题::A02",
       "course_key": "ds",
@@ -77365,6 +77900,35 @@
         "human_action": "certify",
         "human_evidence": "official_book_answer_override; doubao-work stem already patched or matched book; drill-release"
       },
+      "certification_profile": "objective_full"
+    },
+    "408:cs408-ds::图 · 图的存储及基本操作 · 选择题::X21": {
+      "source_uid": "408:cs408-ds::图 · 图的存储及基本操作 · 选择题::X21",
+      "course_key": "ds",
+      "chapter": "图 · 图的存储及基本操作 · 选择题",
+      "question_id": "X21",
+      "source_hash": "42ec6bc1307296d1bc1650bd5c4562b106ac06906119cb972f1f6ea42c784917",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "D",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
       "certification_profile": "objective_full"
     },
     "408:cs408-ds::图 · 图的应用 · 解答题::A01": {
@@ -96502,6 +97066,35 @@
       },
       "certification_profile": "objective_full"
     },
+    "408:cs408-ds::排序 · 外部排序 · 选择题::X17": {
+      "source_uid": "408:cs408-ds::排序 · 外部排序 · 选择题::X17",
+      "course_key": "ds",
+      "chapter": "排序 · 外部排序 · 选择题",
+      "question_id": "X17",
+      "source_hash": "2464ab90233bba0fc0417727bcdc630c44e22940aee0c65b7dd2a3e1f0c1560a",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "A",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
+      "certification_profile": "objective_full"
+    },
     "408:cs408-ds::排序 · 归并排序、基数排序和计数排序 · 解答题::A01": {
       "source_uid": "408:cs408-ds::排序 · 归并排序、基数排序和计数排序 · 解答题::A01",
       "course_key": "ds",
@@ -97523,6 +98116,36 @@
           "source_hash": "3b18dd678c044734bf55008b9f87fdea634d1fd0b2f530aedacc88dabd0dfbed"
         }
       },
+      "certification_profile": "objective_full"
+    },
+    "408:cs408-ds::排序 · 归并排序、基数排序和计数排序 · 选择题::X09": {
+      "source_uid": "408:cs408-ds::排序 · 归并排序、基数排序和计数排序 · 选择题::X09",
+      "course_key": "ds",
+      "chapter": "排序 · 归并排序、基数排序和计数排序 · 选择题",
+      "question_id": "X09",
+      "source_hash": "c2460c076980de387d52128b6c27a3b3d51abaf88dd8095998f7eac26d0479ba",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
+      "overall": "hold",
+      "reason_codes": [
+        "unregistered_publication"
+      ],
+      "q_pages": [
+        372,
+        373,
+        374,
+        375
+      ],
+      "a_pages": [
+        375,
+        376,
+        377,
+        378
+      ],
+      "has_image": false,
+      "answer_choice": "B",
+      "verified_at": null,
+      "evidence": {},
       "certification_profile": "objective_full"
     },
     "408:cs408-ds::排序 · 归并排序、基数排序和计数排序 · 选择题::X10": {
@@ -98774,6 +99397,35 @@
           "source_hash": "8217e9d3d883f0e690a74313373e8cd3e363553a9f8988682752cceadcdcdc5d"
         }
       },
+      "certification_profile": "objective_full"
+    },
+    "408:cs408-ds::排序 · 归并排序、基数排序和计数排序 · 选择题::X21": {
+      "source_uid": "408:cs408-ds::排序 · 归并排序、基数排序和计数排序 · 选择题::X21",
+      "course_key": "ds",
+      "chapter": "排序 · 归并排序、基数排序和计数排序 · 选择题",
+      "question_id": "X21",
+      "source_hash": "07232c268c481921799d9bffb44dbdef5ae8d483181a1e2021626e536aac7afe",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "A",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
       "certification_profile": "objective_full"
     },
     "408:cs408-ds::排序 · 排序的基本概念 · 选择题::X01": {
@@ -101044,6 +101696,35 @@
           "source_hash": "c900df28ed724eb3587bc97315d27e2659e7005a19ee25b453bdb100bb27748b"
         }
       },
+      "certification_profile": "objective_full"
+    },
+    "408:cs408-ds::排序 · 插入排序 · 选择题::X21": {
+      "source_uid": "408:cs408-ds::排序 · 插入排序 · 选择题::X21",
+      "course_key": "ds",
+      "chapter": "排序 · 插入排序 · 选择题",
+      "question_id": "X21",
+      "source_hash": "9f7bd8d267e14528d9fcb83054a792bef3e8e0f2d9d53e188ab80034a0b91fc1",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "B",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
       "certification_profile": "objective_full"
     },
     "408:cs408-ds::排序 · 选择排序 · 解答题::A01": {
@@ -108259,6 +108940,35 @@
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
+    },
+    "408:cs408-ds::查找 · 树形查找 · 解答题::A11": {
+      "source_uid": "408:cs408-ds::查找 · 树形查找 · 解答题::A11",
+      "course_key": "ds",
+      "chapter": "查找 · 树形查找 · 解答题",
+      "question_id": "A11",
+      "source_hash": "d39042f21c167113ee2ffc9c89bce87d4291412c18dcacb276029e5079cc6e15",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
+      "certification_profile": "non_choice_source_answer"
     },
     "408:cs408-ds::查找 · 树形查找 · 选择题::X01": {
       "source_uid": "408:cs408-ds::查找 · 树形查找 · 选择题::X01",
@@ -116832,6 +117542,35 @@
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
     },
+    "408:cs408-ds::栈、队列和数组 · 栈 · 解答题::A05": {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 解答题::A05",
+      "course_key": "ds",
+      "chapter": "栈、队列和数组 · 栈 · 解答题",
+      "question_id": "A05",
+      "source_hash": "7f4bcacee5f6958297e64fc05cb81e03471ccee939d2f11e10cb171f71dee61b",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
+      "certification_profile": "non_choice_source_answer"
+    },
     "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X01": {
       "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 选择题::X01",
       "course_key": "ds",
@@ -122320,6 +123059,34 @@
           "source_hash": "726630931ba1472d123a0f936a1aab817c0066b394190afbfd0f5f0023a8760f"
         }
       },
+      "certification_profile": "objective_full"
+    },
+    "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X13": {
+      "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X13",
+      "course_key": "ds",
+      "chapter": "栈、队列和数组 · 栈和队列的应用 · 选择题",
+      "question_id": "X13",
+      "source_hash": "a892ff8e3303fe4baab107af973f9d5eb31406a9825f9b00b93e7812d6b02e65",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
+      "overall": "hold",
+      "reason_codes": [
+        "unregistered_publication"
+      ],
+      "q_pages": [
+        100
+      ],
+      "a_pages": [
+        101,
+        102,
+        103,
+        104,
+        105
+      ],
+      "has_image": false,
+      "answer_choice": "A",
+      "verified_at": null,
+      "evidence": {},
       "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X14": {
@@ -136866,6 +137633,35 @@
       },
       "certification_profile": "objective_full"
     },
+    "408:cs408-ds::树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题::X44": {
+      "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题::X44",
+      "course_key": "ds",
+      "chapter": "树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题",
+      "question_id": "X44",
+      "source_hash": "15c30a9c25886dccd3a93e4852a720721a66ddd7f20c713cae8f9ab5a399dbb1",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "C",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
+      "certification_profile": "objective_full"
+    },
     "408:cs408-ds::树与二叉树 · 树、森林 · 解答题::A01": {
       "source_uid": "408:cs408-ds::树与二叉树 · 树、森林 · 解答题::A01",
       "course_key": "ds",
@@ -139125,6 +139921,35 @@
       },
       "certification_profile": "objective_full"
     },
+    "408:cs408-ds::树与二叉树 · 树、森林 · 选择题::X22": {
+      "source_uid": "408:cs408-ds::树与二叉树 · 树、森林 · 选择题::X22",
+      "course_key": "ds",
+      "chapter": "树与二叉树 · 树、森林 · 选择题",
+      "question_id": "X22",
+      "source_hash": "aeb6ddc4d5f6fb0e2bd21deb336cb7fa2a14fc1cfdf34ca67a2bcc8d0d8be075",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "B",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
+      "certification_profile": "objective_full"
+    },
     "408:cs408-ds::树与二叉树 · 树与二叉树的应用 · 解答题::A01": {
       "source_uid": "408:cs408-ds::树与二叉树 · 树与二叉树的应用 · 解答题::A01",
       "course_key": "ds",
@@ -141370,6 +142195,64 @@
         "human_action": "certify",
         "human_evidence": "official_book_answer_override; doubao-work stem already patched or matched book; drill-release"
       },
+      "certification_profile": "objective_full"
+    },
+    "408:cs408-ds::树与二叉树 · 树与二叉树的应用 · 选择题::X24": {
+      "source_uid": "408:cs408-ds::树与二叉树 · 树与二叉树的应用 · 选择题::X24",
+      "course_key": "ds",
+      "chapter": "树与二叉树 · 树与二叉树的应用 · 选择题",
+      "question_id": "X24",
+      "source_hash": "8cdb59b4ef51af93e63d19b61ff7e0741f7b48b98201ca6153877465e9498d0d",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "D",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
+      "certification_profile": "objective_full"
+    },
+    "408:cs408-ds::树与二叉树 · 树与二叉树的应用 · 选择题::X25": {
+      "source_uid": "408:cs408-ds::树与二叉树 · 树与二叉树的应用 · 选择题::X25",
+      "course_key": "ds",
+      "chapter": "树与二叉树 · 树与二叉树的应用 · 选择题",
+      "question_id": "X25",
+      "source_hash": "2d180428de76cfe7d835f9b02cc67b76efcc366614868f79f650687e9e8597bb",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "D",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
       "certification_profile": "objective_full"
     },
     "408:cs408-ds::树与二叉树 · 树的基本概念 · 解答题::A02": {
@@ -148970,6 +149853,35 @@
       },
       "certification_profile": "objective_full"
     },
+    "408:cs408-ds::线性表 · 线性表的链式表示 · 选择题::X37": {
+      "source_uid": "408:cs408-ds::线性表 · 线性表的链式表示 · 选择题::X37",
+      "course_key": "ds",
+      "chapter": "线性表 · 线性表的链式表示 · 选择题",
+      "question_id": "X37",
+      "source_hash": "239584f37e186fa8136ca0379760e2b60426f375549eae1ee00ce94429b25055",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "D",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
+      "certification_profile": "objective_full"
+    },
     "408:cs408-ds::线性表 · 线性表的顺序表示 · 解答题::A01": {
       "source_uid": "408:cs408-ds::线性表 · 线性表的顺序表示 · 解答题::A01",
       "course_key": "ds",
@@ -151126,6 +152038,35 @@
       },
       "certification_profile": "objective_full"
     },
+    "408:cs408-ds::线性表 · 线性表的顺序表示 · 选择题::X14": {
+      "source_uid": "408:cs408-ds::线性表 · 线性表的顺序表示 · 选择题::X14",
+      "course_key": "ds",
+      "chapter": "线性表 · 线性表的顺序表示 · 选择题",
+      "question_id": "X14",
+      "source_hash": "8558692c0b920598ad05af7f89ae20439b45d0bfe4fdcdd3cad108f238d1552d",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "A",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
+      "certification_profile": "objective_full"
+    },
     "408:cs408-ds::绪论 · 数据结构的基本概念 · 选择题::X01": {
       "source_uid": "408:cs408-ds::绪论 · 数据结构的基本概念 · 选择题::X01",
       "course_key": "ds",
@@ -151566,41 +152507,6 @@
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
     },
-    "408:cs408-ds::绪论 · 算法和算法评价 · 解答题::A01_2": {
-      "source_uid": "408:cs408-ds::绪论 · 算法和算法评价 · 解答题::A01_2",
-      "course_key": "ds",
-      "chapter": "绪论 · 算法和算法评价 · 解答题",
-      "question_id": "A01_2",
-      "source_hash": "d53ad68ff2c66c847150ec99179d9f0a501ac75c311282a1e8e6a45e45947232",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
-      "q_pages": [
-        11,
-        12,
-        13
-      ],
-      "a_pages": [
-        13,
-        14,
-        15,
-        16,
-        17,
-        18
-      ],
-      "has_image": false,
-      "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
-      },
-      "certification_profile": "non_choice_source_answer",
-      "primary_hold_reason": "strict_hold"
-    },
     "408:cs408-ds::绪论 · 算法和算法评价 · 解答题::A02": {
       "source_uid": "408:cs408-ds::绪论 · 算法和算法评价 · 解答题::A02",
       "course_key": "ds",
@@ -151620,6 +152526,42 @@
       "a_pages": [
         9,
         10
+      ],
+      "has_image": false,
+      "answer_choice": "",
+      "verified_at": "2026-08-26T11:53:58+00:00",
+      "evidence": {
+        "human_action": "hold",
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+      },
+      "certification_profile": "non_choice_source_answer",
+      "primary_hold_reason": "strict_hold"
+    },
+    "408:cs408-ds::绪论 · 算法和算法评价 · 解答题::A03": {
+      "source_uid": "408:cs408-ds::绪论 · 算法和算法评价 · 解答题::A03",
+      "course_key": "ds",
+      "chapter": "绪论 · 算法和算法评价 · 解答题",
+      "question_id": "A03",
+      "source_hash": "f8d4bed3883d761729fe0c0eb0d9b21d47000d884c1cee25201f847b78c2dde4",
+      "source_fidelity": "conflict",
+      "answer_validation": "conflict",
+      "overall": "hold",
+      "reason_codes": [
+        "renamed_from:A01_2",
+        "strict_hold"
+      ],
+      "q_pages": [
+        11,
+        12,
+        13
+      ],
+      "a_pages": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
       ],
       "has_image": false,
       "answer_choice": "",
@@ -153871,6 +154813,35 @@
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
+    },
+    "408:cs408-net::传输层 · TCP · 解答题::A15": {
+      "source_uid": "408:cs408-net::传输层 · TCP · 解答题::A15",
+      "course_key": "net",
+      "chapter": "传输层 · TCP · 解答题",
+      "question_id": "A15",
+      "source_hash": "379946ce7121c329fe173d229d75e557ababdd62e8e6157812e23bed7ad245d1",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": true,
+      "answer_choice": "",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
+      "certification_profile": "non_choice_source_answer"
     },
     "408:cs408-net::传输层 · TCP · 选择题::X01": {
       "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X01",
@@ -159183,6 +160154,38 @@
       },
       "certification_profile": "objective_full"
     },
+    "408:cs408-net::传输层 · TCP · 选择题::X48": {
+      "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X48",
+      "course_key": "net",
+      "chapter": "传输层 · TCP · 选择题",
+      "question_id": "X48",
+      "source_hash": "886a0078931c775195d7591f155db6bd6876567957217961c7e60b60e439ec55",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
+      "overall": "hold",
+      "reason_codes": [
+        "unregistered_publication"
+      ],
+      "q_pages": [
+        256
+      ],
+      "a_pages": [
+        257,
+        258,
+        259,
+        260,
+        261,
+        262,
+        263,
+        264,
+        265
+      ],
+      "has_image": false,
+      "answer_choice": "A",
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
+    },
     "408:cs408-net::传输层 · TCP · 选择题::X49": {
       "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X49",
       "course_key": "net",
@@ -162530,6 +163533,44 @@
         "human_action": "certify",
         "human_evidence": "official_book_answer_override; doubao-work stem already patched or matched book; drill-release"
       },
+      "certification_profile": "objective_full"
+    },
+    "408:cs408-net::传输层 · UDP · 选择题::X16": {
+      "source_uid": "408:cs408-net::传输层 · UDP · 选择题::X16",
+      "course_key": "net",
+      "chapter": "传输层 · UDP · 选择题",
+      "question_id": "X16",
+      "source_hash": "20a74df61047b6ab50d9e7014dde5e9f37294a01f1fa4eb151dfede76a2a7039",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
+      "overall": "hold",
+      "reason_codes": [
+        "unregistered_publication"
+      ],
+      "q_pages": [
+        236,
+        237,
+        238
+      ],
+      "a_pages": [
+        238,
+        239,
+        240,
+        241,
+        242,
+        243,
+        244,
+        245,
+        246,
+        247,
+        248,
+        249,
+        250
+      ],
+      "has_image": false,
+      "answer_choice": "C",
+      "verified_at": null,
+      "evidence": {},
       "certification_profile": "objective_full"
     },
     "408:cs408-net::传输层 · UDP · 选择题::X17": {
@@ -165888,6 +166929,35 @@
         "human_action": "certify",
         "human_evidence": "official_book_answer_override; doubao-work stem already patched or matched book; drill-release"
       },
+      "certification_profile": "objective_full"
+    },
+    "408:cs408-net::应用层 · 万维网 · 选择题::X20": {
+      "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X20",
+      "course_key": "net",
+      "chapter": "应用层 · 万维网 · 选择题",
+      "question_id": "X20",
+      "source_hash": "0ea90fb100cee09b90f2e183459eb10a98184f075825522faec1afec8dfff51c",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "D",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
       "certification_profile": "objective_full"
     },
     "408:cs408-net::应用层 · 域名系统 · 解答题::A01": {
@@ -174234,6 +175304,35 @@
       },
       "certification_profile": "objective_full"
     },
+    "408:cs408-net::数据链路层 · 介质访问控制 · 选择题::X22": {
+      "source_uid": "408:cs408-net::数据链路层 · 介质访问控制 · 选择题::X22",
+      "course_key": "net",
+      "chapter": "数据链路层 · 介质访问控制 · 选择题",
+      "question_id": "X22",
+      "source_hash": "f86c4b43a7854ef75ce1c10bcea9a12be31f70fa70a78b383a67ea1e9378e529",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "B",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
+      "certification_profile": "objective_full"
+    },
     "408:cs408-net::数据链路层 · 局域网 · 解答题::A01": {
       "source_uid": "408:cs408-net::数据链路层 · 局域网 · 解答题::A01",
       "course_key": "net",
@@ -176844,6 +177943,35 @@
           "source_hash": "936411b0b5b4be463384aa28fd41e003393e56869ca8bf3d02ae204bb3e15f3e"
         }
       },
+      "certification_profile": "objective_full"
+    },
+    "408:cs408-net::数据链路层 · 局域网 · 选择题::X23": {
+      "source_uid": "408:cs408-net::数据链路层 · 局域网 · 选择题::X23",
+      "course_key": "net",
+      "chapter": "数据链路层 · 局域网 · 选择题",
+      "question_id": "X23",
+      "source_hash": "ee2d59d7ea96030bbecdfc469a4023c746d26739662891a65f7d45d1e07b2c33",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
+      "overall": "hold",
+      "reason_codes": [
+        "unregistered_publication"
+      ],
+      "q_pages": [
+        107
+      ],
+      "a_pages": [
+        108,
+        109,
+        110,
+        111,
+        112,
+        113
+      ],
+      "has_image": false,
+      "answer_choice": "B",
+      "verified_at": null,
+      "evidence": {},
       "certification_profile": "objective_full"
     },
     "408:cs408-net::数据链路层 · 局域网 · 选择题::X24": {
@@ -179575,6 +180703,35 @@
         "human_action": "certify",
         "human_evidence": "official_book_answer_override; doubao-work stem already patched or matched book; drill-release"
       },
+      "certification_profile": "objective_full"
+    },
+    "408:cs408-net::数据链路层 · 局域网 · 选择题::X50": {
+      "source_uid": "408:cs408-net::数据链路层 · 局域网 · 选择题::X50",
+      "course_key": "net",
+      "chapter": "数据链路层 · 局域网 · 选择题",
+      "question_id": "X50",
+      "source_hash": "c96999451869131e0df177478ff151444d341c5d4d6701e121ee3dce12141870",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": true,
+      "answer_choice": "B",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
       "certification_profile": "objective_full"
     },
     "408:cs408-net::数据链路层 · 差错控制 · 解答题::A01": {
@@ -192697,6 +193854,35 @@
       },
       "certification_profile": "objective_full"
     },
+    "408:cs408-net::物理层 · 通信基础 · 选择题::X29": {
+      "source_uid": "408:cs408-net::物理层 · 通信基础 · 选择题::X29",
+      "course_key": "net",
+      "chapter": "物理层 · 通信基础 · 选择题",
+      "question_id": "X29",
+      "source_hash": "95c5fa23a873622e94cf17bafa295be246bc0700bdd53c8804e888410bee4dfc",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "D",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
+      "certification_profile": "objective_full"
+    },
     "408:cs408-net::网络层 · IPv4 · 解答题::A01": {
       "source_uid": "408:cs408-net::网络层 · IPv4 · 解答题::A01",
       "course_key": "net",
@@ -193356,6 +194542,63 @@
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
+    },
+    "408:cs408-net::网络层 · IPv4 · 解答题::A11_2": {
+      "source_uid": "408:cs408-net::网络层 · IPv4 · 解答题::A11_2",
+      "course_key": "net",
+      "chapter": "网络层 · IPv4 · 解答题",
+      "question_id": "A11_2",
+      "source_hash": "88638e423f7e42196c02462a4230fadab7713cba2c77e160ce0e3a26b9954ae0",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
+      "overall": "hold",
+      "reason_codes": [
+        "legacy_hold_recheck",
+        "renamed_from:X11_2"
+      ],
+      "q_pages": [
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170
+      ],
+      "a_pages": [
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188
+      ],
+      "has_image": true,
+      "answer_choice": "C",
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "non_choice_source_answer"
     },
     "408:cs408-net::网络层 · IPv4 · 解答题::A12": {
       "source_uid": "408:cs408-net::网络层 · IPv4 · 解答题::A12",
@@ -195031,62 +196274,6 @@
         }
       },
       "certification_profile": "objective_full"
-    },
-    "408:cs408-net::网络层 · IPv4 · 选择题::X11_2": {
-      "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X11_2",
-      "course_key": "net",
-      "chapter": "网络层 · IPv4 · 选择题",
-      "question_id": "X11_2",
-      "source_hash": "fb90f18cd6effce086bbed2cdc3b3e8cf2194d8dcbbabd274dfb9307c215be48",
-      "source_fidelity": "pending",
-      "answer_validation": "pending",
-      "overall": "hold",
-      "reason_codes": [
-        "legacy_hold_recheck"
-      ],
-      "q_pages": [
-        156,
-        157,
-        158,
-        159,
-        160,
-        161,
-        162,
-        163,
-        164,
-        165,
-        166,
-        167,
-        168,
-        169,
-        170
-      ],
-      "a_pages": [
-        170,
-        171,
-        172,
-        173,
-        174,
-        175,
-        176,
-        177,
-        178,
-        179,
-        180,
-        181,
-        182,
-        183,
-        184,
-        185,
-        186,
-        187,
-        188
-      ],
-      "has_image": true,
-      "answer_choice": "C",
-      "verified_at": null,
-      "evidence": {},
-      "certification_profile": "non_choice_source_answer"
     },
     "408:cs408-net::网络层 · IPv4 · 选择题::X12": {
       "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X12",
@@ -197770,103 +198957,6 @@
           "updated_at": "2026-08-26T10:15:24+00:00",
           "status": "hold",
           "reason": "stale_source_hash"
-        },
-        "human_action": "certify",
-        "human_evidence": "official_book_answer_override; doubao-work stem already patched or matched book; drill-release"
-      },
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-net::网络层 · IPv4 · 选择题::X35_2": {
-      "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X35_2",
-      "course_key": "net",
-      "chapter": "网络层 · IPv4 · 选择题",
-      "question_id": "X35_2",
-      "source_hash": "9a94baf7a87494f7b7e4fce9b1c3bbcb6a3037e8523d0a2533c142c8f2ac316c",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "legacy_hold_recheck",
-        "luna_answer_conflict",
-        "luna_source_conflict",
-        "source_conflict"
-      ],
-      "q_pages": [
-        156,
-        157,
-        158,
-        159,
-        160,
-        161,
-        162,
-        163,
-        164,
-        165,
-        166,
-        167,
-        168,
-        169,
-        170
-      ],
-      "a_pages": [
-        170,
-        171,
-        172,
-        173,
-        174,
-        175,
-        176,
-        177,
-        178,
-        179,
-        180,
-        181,
-        182,
-        183,
-        184,
-        185,
-        186,
-        187,
-        188
-      ],
-      "has_image": false,
-      "answer_choice": "A",
-      "verified_at": "2026-09-08T08:16:45+00:00",
-      "evidence": {
-        "luna_reviews": {
-          "protocol": "luna-review-v1",
-          "model": "gpt-5.6-luna",
-          "pass_ids": [
-            "blind-a-full-v2",
-            "blind-b-full-v2",
-            "source-full-v2-all"
-          ],
-          "packet_hashes": [
-            "7ef25525e34750ddc986aeb73227dad60f4e3d9ad15385fd311840c1eed2e19a",
-            "d134532623f1386c2f8cdeaf49fcd8951373fe78155b991b27006077c0cf56aa",
-            "26f22b2858030d27b20610678c3f385329dc9028ec8dd26f0d6b115ee84d090b"
-          ],
-          "source_hash": "9a94baf7a87494f7b7e4fce9b1c3bbcb6a3037e8523d0a2533c142c8f2ac316c",
-          "choices": [
-            "C",
-            "C"
-          ],
-          "confidence": [
-            0.96,
-            0.98
-          ],
-          "updated_at": "2026-08-26T10:15:24+00:00",
-          "blind_choices": [
-            "C",
-            "C"
-          ],
-          "blind_confidence": [
-            0.96,
-            0.98
-          ],
-          "source_method": "",
-          "status": "hold",
-          "reason": "existing_hold"
         },
         "human_action": "certify",
         "human_evidence": "official_book_answer_override; doubao-work stem already patched or matched book; drill-release"
@@ -200663,6 +201753,62 @@
       },
       "certification_profile": "objective_full"
     },
+    "408:cs408-net::网络层 · IPv4 · 选择题::X62": {
+      "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X62",
+      "course_key": "net",
+      "chapter": "网络层 · IPv4 · 选择题",
+      "question_id": "X62",
+      "source_hash": "4a1796807a0f387de43b1bdec3443797536a2344dba46160e4982b307f9c5e75",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
+      "overall": "hold",
+      "reason_codes": [
+        "unregistered_publication"
+      ],
+      "q_pages": [
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170
+      ],
+      "a_pages": [
+        170,
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188
+      ],
+      "has_image": false,
+      "answer_choice": "C",
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
+    },
     "408:cs408-net::网络层 · IPv4 · 选择题::X63": {
       "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X63",
       "course_key": "net",
@@ -201571,6 +202717,35 @@
       },
       "certification_profile": "objective_full"
     },
+    "408:cs408-net::网络层 · IPv4 · 选择题::X73": {
+      "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X73",
+      "course_key": "net",
+      "chapter": "网络层 · IPv4 · 选择题",
+      "question_id": "X73",
+      "source_hash": "7f6b5b98f2dc35c2ef2c7d3c3bb7e3bd99b8201c35bcd4ba984b2cdef6e4d69e",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "C",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
+      "certification_profile": "objective_full"
+    },
     "408:cs408-net::网络层 · IPv6 · 选择题::X01": {
       "source_uid": "408:cs408-net::网络层 · IPv6 · 选择题::X01",
       "course_key": "net",
@@ -201781,6 +202956,34 @@
           "source_hash": "9dde1fe4724233c8f68b0f7c6518c1918efc2face961fc9fda0b1e5e7ce31862"
         }
       },
+      "certification_profile": "objective_full"
+    },
+    "408:cs408-net::网络层 · IPv6 · 选择题::X03": {
+      "source_uid": "408:cs408-net::网络层 · IPv6 · 选择题::X03",
+      "course_key": "net",
+      "chapter": "网络层 · IPv6 · 选择题",
+      "question_id": "X03",
+      "source_hash": "ed3cbfb0a0f9f1746cec97a5d06a843acc37c527381d57b19dd01874ff893d7c",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
+      "overall": "hold",
+      "reason_codes": [
+        "unregistered_publication"
+      ],
+      "q_pages": [
+        189
+      ],
+      "a_pages": [
+        190,
+        191,
+        192,
+        193,
+        194
+      ],
+      "has_image": false,
+      "answer_choice": "C",
+      "verified_at": null,
+      "evidence": {},
       "certification_profile": "objective_full"
     },
     "408:cs408-net::网络层 · IPv6 · 选择题::X04": {
@@ -202834,6 +204037,32 @@
           "source_hash": "e142523a40a94b99b38448323c015c9600ec9c2d6e326d5a2ed0579dc3fdda5d"
         }
       },
+      "certification_profile": "objective_full"
+    },
+    "408:cs408-net::网络层 · 移动IP · 选择题::X03": {
+      "source_uid": "408:cs408-net::网络层 · 移动IP · 选择题::X03",
+      "course_key": "net",
+      "chapter": "网络层 · 移动IP · 选择题",
+      "question_id": "X03",
+      "source_hash": "b77aa00971ea464bc3137a0f67a624481829800876869060cd9d4f86d8512d8a",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
+      "overall": "hold",
+      "reason_codes": [
+        "unregistered_publication"
+      ],
+      "q_pages": [
+        218,
+        219
+      ],
+      "a_pages": [
+        219,
+        220
+      ],
+      "has_image": false,
+      "answer_choice": "D",
+      "verified_at": null,
+      "evidence": {},
       "certification_profile": "objective_full"
     },
     "408:cs408-net::网络层 · 网络层的功能 · 选择题::X01": {
@@ -210068,6 +211297,64 @@
       },
       "certification_profile": "objective_full"
     },
+    "408:cs408-net::网络层 · 路由算法与路由协议 · 选择题::X28": {
+      "source_uid": "408:cs408-net::网络层 · 路由算法与路由协议 · 选择题::X28",
+      "course_key": "net",
+      "chapter": "网络层 · 路由算法与路由协议 · 选择题",
+      "question_id": "X28",
+      "source_hash": "90ef569dd4758136a40f74b852feaab41f11ca60a00384ce0fe50daa6b6a6133",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": true,
+      "answer_choice": "B",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
+      "certification_profile": "objective_full"
+    },
+    "408:cs408-net::网络层 · 路由算法与路由协议 · 选择题::X29": {
+      "source_uid": "408:cs408-net::网络层 · 路由算法与路由协议 · 选择题::X29",
+      "course_key": "net",
+      "chapter": "网络层 · 路由算法与路由协议 · 选择题",
+      "question_id": "X29",
+      "source_hash": "a036ce9666f4c056b2e5e7be96f2c04784930936bc5e900199959ee20f86ba84",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "A",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
+      "certification_profile": "objective_full"
+    },
     "408:cs408-net::计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题::X01": {
       "source_uid": "408:cs408-net::计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题::X01",
       "course_key": "net",
@@ -213360,6 +214647,42 @@
       },
       "certification_profile": "objective_full"
     },
+    "408:cs408-net::计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题::X30": {
+      "source_uid": "408:cs408-net::计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题::X30",
+      "course_key": "net",
+      "chapter": "计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题",
+      "question_id": "X30",
+      "source_hash": "9b3874ee811f06fe881689b8e82cb0070de4e844d17ae243039673d40170d7d9",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
+      "overall": "hold",
+      "reason_codes": [
+        "unregistered_publication"
+      ],
+      "q_pages": [
+        27,
+        28,
+        29,
+        30
+      ],
+      "a_pages": [
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39
+      ],
+      "has_image": false,
+      "answer_choice": "C",
+      "verified_at": null,
+      "evidence": {},
+      "certification_profile": "objective_full"
+    },
     "408:cs408-net::计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题::X31": {
       "source_uid": "408:cs408-net::计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题::X31",
       "course_key": "net",
@@ -214263,6 +215586,35 @@
           "source_hash": "7d6533c6a622ff9cb46993f69cf29da27939a19d205cd6a07c0e89e7adb5d785"
         }
       },
+      "certification_profile": "objective_full"
+    },
+    "408:cs408-net::计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题::X39": {
+      "source_uid": "408:cs408-net::计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题::X39",
+      "course_key": "net",
+      "chapter": "计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题",
+      "question_id": "X39",
+      "source_hash": "b676b007edbe0af2bc548a56afd07e580807154160b6857172abc8053468bf92",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "B",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
       "certification_profile": "objective_full"
     },
     "408:cs408-net::计算机网络体系结构 · 计算机网络概述 · 解答题::A01": {
@@ -216056,6 +217408,42 @@
         "human_action": "certify",
         "human_evidence": "official_book_answer_override; doubao-work stem already patched or matched book; drill-release"
       },
+      "certification_profile": "objective_full"
+    },
+    "408:cs408-net::计算机网络体系结构 · 计算机网络概述 · 选择题::X16": {
+      "source_uid": "408:cs408-net::计算机网络体系结构 · 计算机网络概述 · 选择题::X16",
+      "course_key": "net",
+      "chapter": "计算机网络体系结构 · 计算机网络概述 · 选择题",
+      "question_id": "X16",
+      "source_hash": "7f7a2e1e6cd480932b592a300323d27c32c4611742e285947f18ab984386235e",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
+      "overall": "hold",
+      "reason_codes": [
+        "unregistered_publication"
+      ],
+      "q_pages": [
+        14,
+        15,
+        16,
+        17
+      ],
+      "a_pages": [
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "has_image": true,
+      "answer_choice": "B",
+      "verified_at": null,
+      "evidence": {},
       "certification_profile": "objective_full"
     },
     "408:cs408-net::计算机网络体系结构 · 计算机网络概述 · 选择题::X17": {
@@ -241372,6 +242760,122 @@
       },
       "certification_profile": "objective_full"
     },
+    "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X62": {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X62",
+      "course_key": "os",
+      "chapter": "内存管理 · 虚拟内存管理 · 选择题",
+      "question_id": "X62",
+      "source_hash": "57d25eccff3b3e8e4a4eb4e196cd01ac300e081a0618ae778b4e892ea1150d4e",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "D",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
+      "certification_profile": "objective_full"
+    },
+    "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X63": {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X63",
+      "course_key": "os",
+      "chapter": "内存管理 · 虚拟内存管理 · 选择题",
+      "question_id": "X63",
+      "source_hash": "2b2cd20318241ceeea2c8a51ba747debed6c8f69cca5ba51464635c501196117",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "C",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
+      "certification_profile": "objective_full"
+    },
+    "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X64": {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X64",
+      "course_key": "os",
+      "chapter": "内存管理 · 虚拟内存管理 · 选择题",
+      "question_id": "X64",
+      "source_hash": "1c84cf873b1badd7c13c3f6cc729f8a97f52542ee7fc123865df2b2995c32aa0",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "D",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
+      "certification_profile": "objective_full"
+    },
+    "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X65": {
+      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X65",
+      "course_key": "os",
+      "chapter": "内存管理 · 虚拟内存管理 · 选择题",
+      "question_id": "X65",
+      "source_hash": "40f2e0081fcec6afd963a1f2fb5ac9363b128a8ea43d1ac7da47996ba06effa0",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "B",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
+      "certification_profile": "objective_full"
+    },
     "408:cs408-os::文件管理 · 文件系统 · 解答题::A01": {
       "source_uid": "408:cs408-os::文件管理 · 文件系统 · 解答题::A01",
       "course_key": "os",
@@ -241453,6 +242957,35 @@
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
+    },
+    "408:cs408-os::文件管理 · 文件系统 · 解答题::A03": {
+      "source_uid": "408:cs408-os::文件管理 · 文件系统 · 解答题::A03",
+      "course_key": "os",
+      "chapter": "文件管理 · 文件系统 · 解答题",
+      "question_id": "A03",
+      "source_hash": "76d0c79a95d3126c68394b9abf09aecd604b4edabf549fb30fcd1660144b9ce4",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": true,
+      "answer_choice": "",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
+      "certification_profile": "non_choice_source_answer"
     },
     "408:cs408-os::文件管理 · 文件系统 · 选择题::X01": {
       "source_uid": "408:cs408-os::文件管理 · 文件系统 · 选择题::X01",
@@ -242861,6 +244394,43 @@
           "source_hash": "a632ee4cfd8b4ccd84feb5187ee73c7b07328824dd2fdad0eb22e3c52eeb15b2"
         }
       },
+      "certification_profile": "objective_full"
+    },
+    "408:cs408-os::文件管理 · 文件系统 · 选择题::X13": {
+      "source_uid": "408:cs408-os::文件管理 · 文件系统 · 选择题::X13",
+      "course_key": "os",
+      "chapter": "文件管理 · 文件系统 · 选择题",
+      "question_id": "X13",
+      "source_hash": "fd7dd62fd40abf5d485ef498139ec6e8dac68c955313c22b06033a9ec20dd84f",
+      "source_fidelity": "pending",
+      "answer_validation": "pending",
+      "overall": "hold",
+      "reason_codes": [
+        "unregistered_publication"
+      ],
+      "q_pages": [
+        305,
+        306,
+        307
+      ],
+      "a_pages": [
+        307,
+        308,
+        309,
+        310,
+        311,
+        312,
+        313,
+        314,
+        315,
+        316,
+        317,
+        318
+      ],
+      "has_image": false,
+      "answer_choice": "A",
+      "verified_at": null,
+      "evidence": {},
       "certification_profile": "objective_full"
     },
     "408:cs408-os::文件管理 · 文件系统 · 选择题::X14": {
@@ -262081,6 +263651,35 @@
       },
       "certification_profile": "objective_full"
     },
+    "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X34": {
+      "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X34",
+      "course_key": "os",
+      "chapter": "计算机系统概述 · 操作系统的运行环境 · 选择题",
+      "question_id": "X34",
+      "source_hash": "bbedbffe78b296f2bd84f5b13508111969670eb36d57ec9fc4026cdab19ed26c",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "C",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
+      "certification_profile": "objective_full"
+    },
     "408:cs408-os::计算机系统概述 · 虚拟机 · 选择题::X01": {
       "source_uid": "408:cs408-os::计算机系统概述 · 虚拟机 · 选择题::X01",
       "course_key": "os",
@@ -267804,6 +269403,35 @@
           "source_hash": "fff254c13ca5bb7b4c3575f2c0c593e8cbafe14e9cb025e0233790f9a1db9886"
         }
       },
+      "certification_profile": "objective_full"
+    },
+    "408:cs408-os::输入/输出管理 · I/O管理概述 · 选择题::X27": {
+      "source_uid": "408:cs408-os::输入/输出管理 · I/O管理概述 · 选择题::X27",
+      "course_key": "os",
+      "chapter": "输入/输出管理 · I/O管理概述 · 选择题",
+      "question_id": "X27",
+      "source_hash": "3f9c38c08d563caf93b28b7f8a79f431f587926d5d87942de6f87b71f221deb0",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "D",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
       "certification_profile": "objective_full"
     },
     "408:cs408-os::输入/输出管理 · 磁盘和固态硬盘 · 解答题::A01": {
@@ -279716,6 +281344,35 @@
       },
       "certification_profile": "objective_full"
     },
+    "408:cs408-os::输入/输出管理 · 设备独立性软件 · 选择题::X47": {
+      "source_uid": "408:cs408-os::输入/输出管理 · 设备独立性软件 · 选择题::X47",
+      "course_key": "os",
+      "chapter": "输入/输出管理 · 设备独立性软件 · 选择题",
+      "question_id": "X47",
+      "source_hash": "0d217362eb26001c70a9878d4fd3b10548ad3efe57f3151bd065895754b8e41a",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "D",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
+      "certification_profile": "objective_full"
+    },
     "408:cs408-os::进程与线程 · CPU调度 · 解答题::A01": {
       "source_uid": "408:cs408-os::进程与线程 · CPU调度 · 解答题::A01",
       "course_key": "os",
@@ -280345,6 +282002,35 @@
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
+    },
+    "408:cs408-os::进程与线程 · CPU调度 · 解答题::A11": {
+      "source_uid": "408:cs408-os::进程与线程 · CPU调度 · 解答题::A11",
+      "course_key": "os",
+      "chapter": "进程与线程 · CPU调度 · 解答题",
+      "question_id": "A11",
+      "source_hash": "db922a0dc21d252bdc852a3d1cf7905f9f168165bc3625381f5dff687e3e662c",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
+      "certification_profile": "non_choice_source_answer"
     },
     "408:cs408-os::进程与线程 · CPU调度 · 选择题::X01": {
       "source_uid": "408:cs408-os::进程与线程 · CPU调度 · 选择题::X01",
@@ -305328,6 +307014,64 @@
       },
       "certification_profile": "objective_full"
     },
+    "408:cs408-os::进程与线程 · 同步与互斥 · 选择题::X57": {
+      "source_uid": "408:cs408-os::进程与线程 · 同步与互斥 · 选择题::X57",
+      "course_key": "os",
+      "chapter": "进程与线程 · 同步与互斥 · 选择题",
+      "question_id": "X57",
+      "source_hash": "319e97d24b64f5cc75ebb7563aab5f7f6c26074747418ea890c8353b89285fb7",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "A",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
+      "certification_profile": "objective_full"
+    },
+    "408:cs408-os::进程与线程 · 同步与互斥 · 选择题::X58": {
+      "source_uid": "408:cs408-os::进程与线程 · 同步与互斥 · 选择题::X58",
+      "course_key": "os",
+      "chapter": "进程与线程 · 同步与互斥 · 选择题",
+      "question_id": "X58",
+      "source_hash": "2940f869e30bd6b5a094d46e2e5b29c425f154dddad2c1dc4b15a7dd385ab25f",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [
+        "curated_zhenti_2026"
+      ],
+      "q_pages": [],
+      "a_pages": [],
+      "has_image": false,
+      "answer_choice": "C",
+      "verified_at": "2026-10-21T05:15:35+00:00",
+      "evidence": {
+        "curated_zhenti": {
+          "year": 2026,
+          "source": "official",
+          "sources": [
+            "https://zhuanlan.zhihu.com/p/2089916683507052963"
+          ]
+        }
+      },
+      "provenance": "curated-zhenti",
+      "certification_profile": "objective_full"
+    },
     "408:cs408-os::进程与线程 · 死锁 · 解答题::A01": {
       "source_uid": "408:cs408-os::进程与线程 · 死锁 · 解答题::A01",
       "course_key": "os",
@@ -326096,818 +327840,6 @@
       },
       "certification_profile": "objective_full"
     },
-    "408:cs408-ds::线性表 · 线性表的顺序表示 · 选择题::X14": {
-      "source_uid": "408:cs408-ds::线性表 · 线性表的顺序表示 · 选择题::X14",
-      "course_key": "ds",
-      "chapter": "线性表 · 线性表的顺序表示 · 选择题",
-      "question_id": "X14",
-      "source_hash": "8558692c0b920598ad05af7f89ae20439b45d0bfe4fdcdd3cad108f238d1552d",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "A",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-ds::线性表 · 线性表的链式表示 · 选择题::X37": {
-      "source_uid": "408:cs408-ds::线性表 · 线性表的链式表示 · 选择题::X37",
-      "course_key": "ds",
-      "chapter": "线性表 · 线性表的链式表示 · 选择题",
-      "question_id": "X37",
-      "source_hash": "239584f37e186fa8136ca0379760e2b60426f375549eae1ee00ce94429b25055",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "D",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-ds::树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题::X44": {
-      "source_uid": "408:cs408-ds::树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题::X44",
-      "course_key": "ds",
-      "chapter": "树与二叉树 · 二叉树的遍历和线索二叉树 · 选择题",
-      "question_id": "X44",
-      "source_hash": "15c30a9c25886dccd3a93e4852a720721a66ddd7f20c713cae8f9ab5a399dbb1",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "C",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-ds::树与二叉树 · 树、森林 · 选择题::X22": {
-      "source_uid": "408:cs408-ds::树与二叉树 · 树、森林 · 选择题::X22",
-      "course_key": "ds",
-      "chapter": "树与二叉树 · 树、森林 · 选择题",
-      "question_id": "X22",
-      "source_hash": "aeb6ddc4d5f6fb0e2bd21deb336cb7fa2a14fc1cfdf34ca67a2bcc8d0d8be075",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "B",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-ds::树与二叉树 · 树与二叉树的应用 · 选择题::X24": {
-      "source_uid": "408:cs408-ds::树与二叉树 · 树与二叉树的应用 · 选择题::X24",
-      "course_key": "ds",
-      "chapter": "树与二叉树 · 树与二叉树的应用 · 选择题",
-      "question_id": "X24",
-      "source_hash": "8cdb59b4ef51af93e63d19b61ff7e0741f7b48b98201ca6153877465e9498d0d",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "D",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-ds::图 · 图的存储及基本操作 · 选择题::X21": {
-      "source_uid": "408:cs408-ds::图 · 图的存储及基本操作 · 选择题::X21",
-      "course_key": "ds",
-      "chapter": "图 · 图的存储及基本操作 · 选择题",
-      "question_id": "X21",
-      "source_hash": "42ec6bc1307296d1bc1650bd5c4562b106ac06906119cb972f1f6ea42c784917",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "D",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-ds::图 · 图的基本概念 · 选择题::X19": {
-      "source_uid": "408:cs408-ds::图 · 图的基本概念 · 选择题::X19",
-      "course_key": "ds",
-      "chapter": "图 · 图的基本概念 · 选择题",
-      "question_id": "X19",
-      "source_hash": "ccbf36877a6b386121d50466cf9a1a3d2516908a76b15c7aa3535cae1e32e296",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "B",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-ds::树与二叉树 · 树与二叉树的应用 · 选择题::X25": {
-      "source_uid": "408:cs408-ds::树与二叉树 · 树与二叉树的应用 · 选择题::X25",
-      "course_key": "ds",
-      "chapter": "树与二叉树 · 树与二叉树的应用 · 选择题",
-      "question_id": "X25",
-      "source_hash": "2d180428de76cfe7d835f9b02cc67b76efcc366614868f79f650687e9e8597bb",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "D",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-ds::排序 · 插入排序 · 选择题::X21": {
-      "source_uid": "408:cs408-ds::排序 · 插入排序 · 选择题::X21",
-      "course_key": "ds",
-      "chapter": "排序 · 插入排序 · 选择题",
-      "question_id": "X21",
-      "source_hash": "9f7bd8d267e14528d9fcb83054a792bef3e8e0f2d9d53e188ab80034a0b91fc1",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "B",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-ds::排序 · 归并排序、基数排序和计数排序 · 选择题::X21": {
-      "source_uid": "408:cs408-ds::排序 · 归并排序、基数排序和计数排序 · 选择题::X21",
-      "course_key": "ds",
-      "chapter": "排序 · 归并排序、基数排序和计数排序 · 选择题",
-      "question_id": "X21",
-      "source_hash": "07232c268c481921799d9bffb44dbdef5ae8d483181a1e2021626e536aac7afe",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "A",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-ds::排序 · 外部排序 · 选择题::X17": {
-      "source_uid": "408:cs408-ds::排序 · 外部排序 · 选择题::X17",
-      "course_key": "ds",
-      "chapter": "排序 · 外部排序 · 选择题",
-      "question_id": "X17",
-      "source_hash": "2464ab90233bba0fc0417727bcdc630c44e22940aee0c65b7dd2a3e1f0c1560a",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "A",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-ds::查找 · 树形查找 · 解答题::A11": {
-      "source_uid": "408:cs408-ds::查找 · 树形查找 · 解答题::A11",
-      "course_key": "ds",
-      "chapter": "查找 · 树形查找 · 解答题",
-      "question_id": "A11",
-      "source_hash": "d39042f21c167113ee2ffc9c89bce87d4291412c18dcacb276029e5079cc6e15",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "non_choice_source_answer"
-    },
-    "408:cs408-ds::栈、队列和数组 · 栈 · 解答题::A05": {
-      "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 解答题::A05",
-      "course_key": "ds",
-      "chapter": "栈、队列和数组 · 栈 · 解答题",
-      "question_id": "A05",
-      "source_hash": "7f4bcacee5f6958297e64fc05cb81e03471ccee939d2f11e10cb171f71dee61b",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "non_choice_source_answer"
-    },
-    "408:cs408-coa::计算机系统概述 · 计算机系统层次结构 · 选择题::X15": {
-      "source_uid": "408:cs408-coa::计算机系统概述 · 计算机系统层次结构 · 选择题::X15",
-      "course_key": "coa",
-      "chapter": "计算机系统概述 · 计算机系统层次结构 · 选择题",
-      "question_id": "X15",
-      "source_hash": "9895f58434f09ead20e7a1a0a8201546d69ad8dcf8fd267c946656c0bbedb875",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "C",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X35": {
-      "source_uid": "408:cs408-coa::数据的表示和运算 · 数制与编码 · 选择题::X35",
-      "course_key": "coa",
-      "chapter": "数据的表示和运算 · 数制与编码 · 选择题",
-      "question_id": "X35",
-      "source_hash": "c9fe37579de8622d12972b39a8b86e45e337b96778d5dc1f498f2b02467a5aed",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "A",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-coa::数据的表示和运算 · 浮点数的表示与运算 · 选择题::X46": {
-      "source_uid": "408:cs408-coa::数据的表示和运算 · 浮点数的表示与运算 · 选择题::X46",
-      "course_key": "coa",
-      "chapter": "数据的表示和运算 · 浮点数的表示与运算 · 选择题",
-      "question_id": "X46",
-      "source_hash": "5ad62a62b5dd19b99901bb644ddc916fe76e6cf1f6dcab081ba40e1689ddef8c",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "B",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-coa::存储系统 · 主存储器 · 选择题::X38": {
-      "source_uid": "408:cs408-coa::存储系统 · 主存储器 · 选择题::X38",
-      "course_key": "coa",
-      "chapter": "存储系统 · 主存储器 · 选择题",
-      "question_id": "X38",
-      "source_hash": "9a9b9c498e905c577ccc691b2c648430b73ed57c698b5a241ff8db502a215da0",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "A",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-coa::指令系统 · 指令系统 · 选择题::X17": {
-      "source_uid": "408:cs408-coa::指令系统 · 指令系统 · 选择题::X17",
-      "course_key": "coa",
-      "chapter": "指令系统 · 指令系统 · 选择题",
-      "question_id": "X17",
-      "source_hash": "1e2a36f8790939149b7e4839fb9ee9e061f512e42e693b64137c771179569850",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "D",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-coa::指令系统 · 指令系统 · 选择题::X18": {
-      "source_uid": "408:cs408-coa::指令系统 · 指令系统 · 选择题::X18",
-      "course_key": "coa",
-      "chapter": "指令系统 · 指令系统 · 选择题",
-      "question_id": "X18",
-      "source_hash": "bb724ec3cd1d00156026981e5e2ec60648954db22f66a4e95ab0241346218b1c",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "A",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X36": {
-      "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 选择题::X36",
-      "course_key": "coa",
-      "chapter": "存储系统 · 高速缓冲存储器 · 选择题",
-      "question_id": "X36",
-      "source_hash": "8a421e92cdb77be5b5b3501d16e27a886a52a810e40c8cd1bf30a52d3e200861",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "C",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-coa::存储系统 · 虚拟存储器 · 选择题::X21": {
-      "source_uid": "408:cs408-coa::存储系统 · 虚拟存储器 · 选择题::X21",
-      "course_key": "coa",
-      "chapter": "存储系统 · 虚拟存储器 · 选择题",
-      "question_id": "X21",
-      "source_hash": "d880b21c5a1f32ce2db3a05182a683a184862ee9b8cbc0b272c0680811c6eacf",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "A",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-coa::中央处理器 · 数据通路的功能和基本结构 · 选择题::X19": {
-      "source_uid": "408:cs408-coa::中央处理器 · 数据通路的功能和基本结构 · 选择题::X19",
-      "course_key": "coa",
-      "chapter": "中央处理器 · 数据通路的功能和基本结构 · 选择题",
-      "question_id": "X19",
-      "source_hash": "ddab1e586c93fc58bc16037a7df2ae7a7ab6b1ea3f9eac8683fba13fe0b8276f",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "A",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-coa::指令系统 · 指令系统 · 选择题::X19": {
-      "source_uid": "408:cs408-coa::指令系统 · 指令系统 · 选择题::X19",
-      "course_key": "coa",
-      "chapter": "指令系统 · 指令系统 · 选择题",
-      "question_id": "X19",
-      "source_hash": "d37ade9a86c30e6c56ab5e55cccf89653aae9a8486f3095f0f1c3315fbaa89c6",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "D",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-coa::输入/输出系统 · I/O方式 · 选择题::X56": {
-      "source_uid": "408:cs408-coa::输入/输出系统 · I/O方式 · 选择题::X56",
-      "course_key": "coa",
-      "chapter": "输入/输出系统 · I/O方式 · 选择题",
-      "question_id": "X56",
-      "source_hash": "f17b04bdccd461e1aaaaa0f51d06c8597198fe2b3902bff6f39848f7f241d94e",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "C",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-coa::指令系统 · 指令系统 · 解答题::A04": {
-      "source_uid": "408:cs408-coa::指令系统 · 指令系统 · 解答题::A04",
-      "course_key": "coa",
-      "chapter": "指令系统 · 指令系统 · 解答题",
-      "question_id": "A04",
-      "source_hash": "a70a8cf90bae0f7680a4b4cc47e898a4cf7ace53a6bf8ff2cb57b7e0455d0807",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": true,
-      "answer_choice": "",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "non_choice_source_answer"
-    },
-    "408:cs408-coa::中央处理器 · 数据通路的功能和基本结构 · 解答题::A11": {
-      "source_uid": "408:cs408-coa::中央处理器 · 数据通路的功能和基本结构 · 解答题::A11",
-      "course_key": "coa",
-      "chapter": "中央处理器 · 数据通路的功能和基本结构 · 解答题",
-      "question_id": "A11",
-      "source_hash": "d04d6450fd2df243bd506a366c46db29b63a1bba6f271e746725c22188d9c8a0",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": true,
-      "answer_choice": "",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "non_choice_source_answer"
-    },
-    "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X34": {
-      "source_uid": "408:cs408-os::计算机系统概述 · 操作系统的运行环境 · 选择题::X34",
-      "course_key": "os",
-      "chapter": "计算机系统概述 · 操作系统的运行环境 · 选择题",
-      "question_id": "X34",
-      "source_hash": "bbedbffe78b296f2bd84f5b13508111969670eb36d57ec9fc4026cdab19ed26c",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "C",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X62": {
-      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X62",
-      "course_key": "os",
-      "chapter": "内存管理 · 虚拟内存管理 · 选择题",
-      "question_id": "X62",
-      "source_hash": "57d25eccff3b3e8e4a4eb4e196cd01ac300e081a0618ae778b4e892ea1150d4e",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "D",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
     "408:cs408-os::进程与线程 · 进程与线程简介 · 选择题::X74": {
       "source_uid": "408:cs408-os::进程与线程 · 进程与线程简介 · 选择题::X74",
       "course_key": "os",
@@ -326936,528 +327868,6 @@
       },
       "provenance": "curated-zhenti",
       "certification_profile": "objective_full"
-    },
-    "408:cs408-os::进程与线程 · 同步与互斥 · 选择题::X57": {
-      "source_uid": "408:cs408-os::进程与线程 · 同步与互斥 · 选择题::X57",
-      "course_key": "os",
-      "chapter": "进程与线程 · 同步与互斥 · 选择题",
-      "question_id": "X57",
-      "source_hash": "319e97d24b64f5cc75ebb7563aab5f7f6c26074747418ea890c8353b89285fb7",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "A",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-os::进程与线程 · 同步与互斥 · 选择题::X58": {
-      "source_uid": "408:cs408-os::进程与线程 · 同步与互斥 · 选择题::X58",
-      "course_key": "os",
-      "chapter": "进程与线程 · 同步与互斥 · 选择题",
-      "question_id": "X58",
-      "source_hash": "2940f869e30bd6b5a094d46e2e5b29c425f154dddad2c1dc4b15a7dd385ab25f",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "C",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X63": {
-      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X63",
-      "course_key": "os",
-      "chapter": "内存管理 · 虚拟内存管理 · 选择题",
-      "question_id": "X63",
-      "source_hash": "2b2cd20318241ceeea2c8a51ba747debed6c8f69cca5ba51464635c501196117",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "C",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X64": {
-      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X64",
-      "course_key": "os",
-      "chapter": "内存管理 · 虚拟内存管理 · 选择题",
-      "question_id": "X64",
-      "source_hash": "1c84cf873b1badd7c13c3f6cc729f8a97f52542ee7fc123865df2b2995c32aa0",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "D",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X65": {
-      "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 选择题::X65",
-      "course_key": "os",
-      "chapter": "内存管理 · 虚拟内存管理 · 选择题",
-      "question_id": "X65",
-      "source_hash": "40f2e0081fcec6afd963a1f2fb5ac9363b128a8ea43d1ac7da47996ba06effa0",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "B",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-os::输入/输出管理 · 设备独立性软件 · 选择题::X47": {
-      "source_uid": "408:cs408-os::输入/输出管理 · 设备独立性软件 · 选择题::X47",
-      "course_key": "os",
-      "chapter": "输入/输出管理 · 设备独立性软件 · 选择题",
-      "question_id": "X47",
-      "source_hash": "0d217362eb26001c70a9878d4fd3b10548ad3efe57f3151bd065895754b8e41a",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "D",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-os::输入/输出管理 · I/O管理概述 · 选择题::X27": {
-      "source_uid": "408:cs408-os::输入/输出管理 · I/O管理概述 · 选择题::X27",
-      "course_key": "os",
-      "chapter": "输入/输出管理 · I/O管理概述 · 选择题",
-      "question_id": "X27",
-      "source_hash": "3f9c38c08d563caf93b28b7f8a79f431f587926d5d87942de6f87b71f221deb0",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "D",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-os::进程与线程 · CPU调度 · 解答题::A11": {
-      "source_uid": "408:cs408-os::进程与线程 · CPU调度 · 解答题::A11",
-      "course_key": "os",
-      "chapter": "进程与线程 · CPU调度 · 解答题",
-      "question_id": "A11",
-      "source_hash": "db922a0dc21d252bdc852a3d1cf7905f9f168165bc3625381f5dff687e3e662c",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "non_choice_source_answer"
-    },
-    "408:cs408-os::文件管理 · 文件系统 · 解答题::A03": {
-      "source_uid": "408:cs408-os::文件管理 · 文件系统 · 解答题::A03",
-      "course_key": "os",
-      "chapter": "文件管理 · 文件系统 · 解答题",
-      "question_id": "A03",
-      "source_hash": "76d0c79a95d3126c68394b9abf09aecd604b4edabf549fb30fcd1660144b9ce4",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": true,
-      "answer_choice": "",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "non_choice_source_answer"
-    },
-    "408:cs408-net::计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题::X39": {
-      "source_uid": "408:cs408-net::计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题::X39",
-      "course_key": "net",
-      "chapter": "计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题",
-      "question_id": "X39",
-      "source_hash": "b676b007edbe0af2bc548a56afd07e580807154160b6857172abc8053468bf92",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "B",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-net::物理层 · 通信基础 · 选择题::X29": {
-      "source_uid": "408:cs408-net::物理层 · 通信基础 · 选择题::X29",
-      "course_key": "net",
-      "chapter": "物理层 · 通信基础 · 选择题",
-      "question_id": "X29",
-      "source_hash": "95c5fa23a873622e94cf17bafa295be246bc0700bdd53c8804e888410bee4dfc",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "D",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-net::数据链路层 · 介质访问控制 · 选择题::X22": {
-      "source_uid": "408:cs408-net::数据链路层 · 介质访问控制 · 选择题::X22",
-      "course_key": "net",
-      "chapter": "数据链路层 · 介质访问控制 · 选择题",
-      "question_id": "X22",
-      "source_hash": "f86c4b43a7854ef75ce1c10bcea9a12be31f70fa70a78b383a67ea1e9378e529",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "B",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-net::数据链路层 · 局域网 · 选择题::X50": {
-      "source_uid": "408:cs408-net::数据链路层 · 局域网 · 选择题::X50",
-      "course_key": "net",
-      "chapter": "数据链路层 · 局域网 · 选择题",
-      "question_id": "X50",
-      "source_hash": "c96999451869131e0df177478ff151444d341c5d4d6701e121ee3dce12141870",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": true,
-      "answer_choice": "B",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-net::网络层 · 路由算法与路由协议 · 选择题::X28": {
-      "source_uid": "408:cs408-net::网络层 · 路由算法与路由协议 · 选择题::X28",
-      "course_key": "net",
-      "chapter": "网络层 · 路由算法与路由协议 · 选择题",
-      "question_id": "X28",
-      "source_hash": "90ef569dd4758136a40f74b852feaab41f11ca60a00384ce0fe50daa6b6a6133",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": true,
-      "answer_choice": "B",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-net::网络层 · 路由算法与路由协议 · 选择题::X29": {
-      "source_uid": "408:cs408-net::网络层 · 路由算法与路由协议 · 选择题::X29",
-      "course_key": "net",
-      "chapter": "网络层 · 路由算法与路由协议 · 选择题",
-      "question_id": "X29",
-      "source_hash": "a036ce9666f4c056b2e5e7be96f2c04784930936bc5e900199959ee20f86ba84",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "A",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-net::网络层 · IPv4 · 选择题::X73": {
-      "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X73",
-      "course_key": "net",
-      "chapter": "网络层 · IPv4 · 选择题",
-      "question_id": "X73",
-      "source_hash": "7f6b5b98f2dc35c2ef2c7d3c3bb7e3bd99b8201c35bcd4ba984b2cdef6e4d69e",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "C",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-net::应用层 · 万维网 · 选择题::X20": {
-      "source_uid": "408:cs408-net::应用层 · 万维网 · 选择题::X20",
-      "course_key": "net",
-      "chapter": "应用层 · 万维网 · 选择题",
-      "question_id": "X20",
-      "source_hash": "0ea90fb100cee09b90f2e183459eb10a98184f075825522faec1afec8dfff51c",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": false,
-      "answer_choice": "D",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "objective_full"
-    },
-    "408:cs408-net::传输层 · TCP · 解答题::A15": {
-      "source_uid": "408:cs408-net::传输层 · TCP · 解答题::A15",
-      "course_key": "net",
-      "chapter": "传输层 · TCP · 解答题",
-      "question_id": "A15",
-      "source_hash": "379946ce7121c329fe173d229d75e557ababdd62e8e6157812e23bed7ad245d1",
-      "source_fidelity": "verified",
-      "answer_validation": "verified",
-      "overall": "certified",
-      "reason_codes": [
-        "curated_zhenti_2026"
-      ],
-      "q_pages": [],
-      "a_pages": [],
-      "has_image": true,
-      "answer_choice": "",
-      "verified_at": "2026-10-21T05:15:35+00:00",
-      "evidence": {
-        "curated_zhenti": {
-          "year": 2026,
-          "source": "official",
-          "sources": [
-            "https://zhuanlan.zhihu.com/p/2089916683507052963"
-          ]
-        }
-      },
-      "provenance": "curated-zhenti",
-      "certification_profile": "non_choice_source_answer"
     }
   }
 }

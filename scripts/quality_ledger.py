@@ -39,6 +39,18 @@ PAGE_REVIEW_EVIDENCE_PATH = Path(__file__).resolve().parents[1] / "data" / "qual
 TERMINAL_SOURCE = {"verified", "conflict"}
 TERMINAL_ANSWER = {"verified", "conflict"}
 
+# 改号 / 题型迁移登记：旧 UID → 现行 UID。
+# 只登记「同一道题换了号」的已确认迁移，用来把 hold/certified、证据与逐页复核
+# 记录搬到新 UID；删除或内容重写不要登记在这里。
+RENAMED_UIDS: dict[str, str] = {
+    "408:cs408-ds::绪论 · 算法和算法评价 · 解答题::A01_2": (
+        "408:cs408-ds::绪论 · 算法和算法评价 · 解答题::A03"
+    ),
+    "408:cs408-net::网络层 · IPv4 · 选择题::X11_2": (
+        "408:cs408-net::网络层 · IPv4 · 解答题::A11_2"
+    ),
+}
+
 
 _LOCAL_ABS_PATH_RE = re.compile(r"^[A-Za-z]:[\\/]")
 
@@ -416,8 +428,15 @@ def build_ledger(*, strict_courses: set[str] | None = None) -> dict[str, Any]:
     old_ledger = _load_json(LEDGER_PATH, {})
     old_items = old_ledger.get("items") if isinstance(old_ledger, Mapping) else {}
     old_items = old_items if isinstance(old_items, Mapping) else {}
-    old_verified = _old_verified_records()
+    old_verified = dict(_old_verified_records())
     old_holds = _old_hold_uids()
+    # 改号迁移：新旧 UID 共享同一份旧状态，避免换号后 hold/证据整条丢失
+    for old_uid, new_uid in RENAMED_UIDS.items():
+        if old_uid in old_verified and new_uid not in old_verified:
+            old_verified[new_uid] = old_verified[old_uid]
+        if old_uid in old_holds:
+            old_holds.add(new_uid)
+    previous_uid_by_uid = {new: old for old, new in RENAMED_UIDS.items()}
     previous_courses = (
         old_ledger.get("courses") if isinstance(old_ledger, Mapping) else {}
     )
@@ -452,16 +471,35 @@ def build_ledger(*, strict_courses: set[str] | None = None) -> dict[str, Any]:
                 )
                 _recompute_overall(item, course.key in strict_courses)
                 continue
+            previous_uid = previous_uid_by_uid.get(uid)
+            old_item = old_items.get(uid) if isinstance(old_items, Mapping) else None
+            if old_item is None and previous_uid and isinstance(old_items, Mapping):
+                old_item = old_items.get(previous_uid)
             item = _new_item(
                 uid=uid,
                 course_key=course.key,
                 chapter=chapter,
                 question=question,
-                old=old_items.get(uid) if isinstance(old_items, Mapping) else None,
+                old=old_item,
                 old_verified=old_verified,
                 old_holds=old_holds,
                 curated=curated,
             )
+            if old_item is not None and old_item.get("source_uid") == previous_uid:
+                # 改号只换身份，不重新判可信度：沿用旧状态后按现行内容重算
+                item["source_fidelity"] = str(
+                    old_item.get("source_fidelity") or item["source_fidelity"]
+                )
+                item["answer_validation"] = str(
+                    old_item.get("answer_validation") or item["answer_validation"]
+                )
+                if old_item.get("evidence"):
+                    item["evidence"] = dict(old_item["evidence"])
+                if old_item.get("verified_at"):
+                    item["verified_at"] = old_item["verified_at"]
+                item["reason_codes"] = sorted(
+                    set(item["reason_codes"]) | {f"renamed_from:{previous_uid.split('::')[-1]}"}
+                )
             _recompute_overall(item, course.key in strict_courses)
             items[uid] = item
         counts = Counter(
@@ -583,6 +621,203 @@ def write_outputs(ledger: Mapping[str, Any]) -> None:
     write_text_atomic(LEDGER_JS_PATH, wrapper, encoding="utf-8")
 
 
+def _published_index(course_key: str) -> dict[str, Mapping[str, Any]]:
+    """发布数据里的 {uid: question}，重复 UID 会被 check_published 单独报出来。"""
+    data = _load_json(_published_path(course_key), {})
+    index: dict[str, Mapping[str, Any]] = {}
+    for uid, _chapter, question in iter_published_rows(course_key, data):
+        index.setdefault(uid, question)
+    return index
+
+
+def check_published(
+    ledger: Mapping[str, Any] | None = None, *, strict_item_hashes: bool = False
+) -> list[str]:
+    """发布态自检：课程哈希、UID 集合、逐题哈希。
+
+    热更前跑一次；返回问题清单（空 = 通过）。缺记录不能默认放行——那样会把
+    未经质量登记的题直接推给刷题池。
+
+    逐题哈希默认只报告不拦截：发布数据被重排/规范化后（normalize_spaces 之类）
+    几乎所有题的内容哈希都会变，但题面和答案没有语义变化；这种漂移需要重建
+    ledger 才能消掉，不能当作「题目有问题」阻断热更。需要严格模式时传
+    ``strict_item_hashes=True``。
+    """
+    ledger = ledger if ledger is not None else _load_json(LEDGER_PATH, {})
+    problems: list[str] = []
+    items = ledger.get("items") if isinstance(ledger, Mapping) else None
+    items = items if isinstance(items, Mapping) else {}
+    hashes = ledger.get("published_hashes") if isinstance(ledger, Mapping) else None
+    hashes = hashes if isinstance(hashes, Mapping) else {}
+    drift: list[str] = []
+
+    for course in COURSES:
+        path = _published_path(course.key)
+        if not path.is_file():
+            problems.append(f"{course.key}: 发布文件缺失 {path.name}")
+            continue
+        actual = sha256_file(path)
+        if hashes.get(course.key) != actual:
+            problems.append(
+                f"{course.key}: published_hashes 过期"
+                f"（ledger={str(hashes.get(course.key))[:12]} 实际={actual[:12]}）"
+            )
+        data = _load_json(path, {})
+        counts = published_uid_counts(course.key, data)
+        for uid, count in sorted(counts.items()):
+            if count > 1:
+                problems.append(f"{course.key}: 发布数据重复 UID ×{count} {uid}")
+        published = _published_index(course.key)
+        ledger_uids = {
+            uid
+            for uid, item in items.items()
+            if isinstance(item, Mapping) and item.get("course_key") == course.key
+        }
+        for uid in sorted(set(published) - ledger_uids):
+            problems.append(f"{course.key}: 发布有此题但 ledger 无记录 {uid}")
+        for uid in sorted(ledger_uids - set(published)):
+            problems.append(f"{course.key}: ledger 有记录但已不在发布数据 {uid}")
+        for uid, question in published.items():
+            item = items.get(uid)
+            if not isinstance(item, Mapping):
+                continue
+            if item.get("source_hash") != question_hash(question):
+                drift.append(f"{course.key}: 逐题哈希过期 {uid}")
+    if strict_item_hashes:
+        problems.extend(drift)
+    return problems
+
+
+def item_hash_drift(ledger: Mapping[str, Any] | None = None) -> list[str]:
+    """发布数据与 ledger 逐题哈希不一致的条目（重排/规范化后常见，需要重建才消）。"""
+    ledger = ledger if ledger is not None else _load_json(LEDGER_PATH, {})
+    items = ledger.get("items") if isinstance(ledger, Mapping) else {}
+    items = items if isinstance(items, Mapping) else {}
+    drift: list[str] = []
+    for course in COURSES:
+        path = _published_path(course.key)
+        if not path.is_file():
+            continue
+        for uid, _chapter, question in iter_published_rows(course.key, _load_json(path, {})):
+            item = items.get(uid)
+            if isinstance(item, Mapping) and item.get("source_hash") != question_hash(question):
+                drift.append(f"{course.key}: {uid}")
+    return drift
+
+
+def migrate_drift(ledger: Mapping[str, Any] | None = None) -> tuple[dict[str, Any], list[str]]:
+    """最小迁移：改号记录搬家、新发布题登记、删除题出账。
+
+    只动有漂移的条目，不重算其它题的逐页/视觉证据（全量重建会把这些增量状态
+    抹掉）。返回 (新 ledger, 变更说明)。
+    """
+    ledger = dict(ledger if ledger is not None else _load_json(LEDGER_PATH, {}))
+    items: dict[str, Any] = dict(ledger.get("items") or {})
+    changes: list[str] = []
+    old_verified = dict(_old_verified_records())
+    old_holds = _old_hold_uids()
+    curated = _curated_records()
+    previous_courses = ledger.get("courses") or {}
+    strict_courses = {
+        key
+        for key, value in previous_courses.items()
+        if isinstance(value, Mapping) and value.get("mode") == "strict"
+    }
+
+    published_hashes: dict[str, str] = {}
+    for course in COURSES:
+        path = _published_path(course.key)
+        if not path.is_file():
+            continue
+        published_hashes[course.key] = sha256_file(path)
+        published = {}
+        chapter_of: dict[str, str] = {}
+        for uid, chapter, question in iter_published_rows(course.key, _load_json(path, {})):
+            if uid in published:
+                continue
+            published[uid] = question
+            chapter_of[uid] = chapter
+
+        # 1) 改号：旧记录搬成新 UID
+        for old_uid, new_uid in RENAMED_UIDS.items():
+            if old_uid not in items or new_uid not in published:
+                continue
+            if new_uid in items:
+                items.pop(old_uid, None)
+                changes.append(f"{course.key}: 删除旧号重复记录 {old_uid}")
+                continue
+            row = dict(items.pop(old_uid))
+            row["source_uid"] = new_uid
+            row["course_key"] = course.key
+            row["chapter"] = chapter_of.get(new_uid, row.get("chapter") or "")
+            row["question_id"] = str(published[new_uid].get("id") or "")
+            row["source_hash"] = question_hash(published[new_uid])
+            row["reason_codes"] = sorted(
+                set(row.get("reason_codes") or [])
+                | {f"renamed_from:{old_uid.split('::')[-1]}"}
+            )
+            _recompute_overall(row, course.key in strict_courses)
+            items[new_uid] = row
+            changes.append(f"{course.key}: 改号迁移 {old_uid.split('::')[-1]} → {new_uid.split('::')[-1]}")
+
+        # 2) 新发布题：登记为 pending，等证据；不能悄悄发布无记录题
+        for uid, question in published.items():
+            if uid in items:
+                continue
+            row = _new_item(
+                uid=uid,
+                course_key=course.key,
+                chapter=chapter_of.get(uid, ""),
+                question=question,
+                old=None,
+                old_verified=old_verified,
+                old_holds=old_holds,
+                curated=curated,
+            )
+            row["reason_codes"] = sorted(
+                set(row.get("reason_codes") or []) | {"unregistered_publication"}
+            )
+            _recompute_overall(row, course.key in strict_courses)
+            items[uid] = row
+            changes.append(f"{course.key}: 补登记发布题 {uid} → {row['overall']}")
+
+        # 3) 已删除的题：出账，避免 hold 清单指向不存在的题
+        for uid in sorted(k for k, v in items.items() if v.get("course_key") == course.key):
+            if uid not in published:
+                items.pop(uid, None)
+                changes.append(f"{course.key}: 移出已删除题 {uid}")
+
+    courses: dict[str, Any] = {}
+    for course in COURSES:
+        if course.key not in published_hashes:
+            continue
+        counts = Counter(
+            item.get("overall") for item in items.values() if item.get("course_key") == course.key
+        )
+        courses[course.key] = {
+            "name": course.name,
+            "mode": "strict" if course.key in strict_courses else "progressive",
+            "total": sum(counts.values()),
+            "certified": counts.get("certified", 0),
+            "pending": counts.get("pending", 0),
+            "held": counts.get("hold", 0),
+        }
+    summary = Counter(item.get("overall") for item in items.values())
+    ledger["schema_version"] = 1
+    ledger["generated_at"] = _utc_now()
+    ledger["published_hashes"] = published_hashes
+    ledger["courses"] = courses
+    ledger["summary"] = {
+        "total": len(items),
+        "certified": summary.get("certified", 0),
+        "pending": summary.get("pending", 0),
+        "held": summary.get("hold", 0),
+    }
+    ledger["items"] = dict(sorted(items.items()))
+    assert_consistent(ledger)
+    return ledger, changes
+
+
 def refresh_published_hashes() -> int:
     """只更新 published_hashes 并重派生兼容清单，不迁移逐题状态。
 
@@ -611,7 +846,41 @@ def main() -> int:
         action="store_true",
         help="仅按当前 data-*.json 刷新 published_hashes 并重派生 hold/verification",
     )
+    parser.add_argument(
+        "--check-published",
+        action="store_true",
+        help="只校验发布态（课程哈希、UID 集合、逐题哈希）；有问题返回 1",
+    )
+    parser.add_argument(
+        "--strict-item-hashes",
+        action="store_true",
+        help="与 --check-published 同用：把逐题哈希漂移也算作失败",
+    )
+    parser.add_argument(
+        "--fix-drift",
+        action="store_true",
+        help="最小迁移：改号记录搬家、新发布题登记、删除题出账（不动其它题的证据）",
+    )
     args = parser.parse_args()
+    if args.check_published:
+        problems = check_published(strict_item_hashes=args.strict_item_hashes)
+        for problem in problems:
+            print(f"  ! {problem}")
+        drift = item_hash_drift()
+        if drift:
+            print(f"  · 逐题哈希漂移 {len(drift)} 条（不拦截；首条 {drift[0]}）")
+        print(f"check-published: {len(problems)} 个问题")
+        return 1 if problems else 0
+    if args.fix_drift:
+        ledger, changes = migrate_drift()
+        for change in changes:
+            print(f"  - {change}")
+        if not changes:
+            print("ledger 无漂移")
+            return 0
+        write_outputs(ledger)
+        print(json.dumps(ledger["summary"], ensure_ascii=False))
+        return 0
     if args.refresh_hashes:
         return refresh_published_hashes()
     ledger = build_ledger(strict_courses=set(args.strict_course) or None)
