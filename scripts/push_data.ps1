@@ -16,6 +16,11 @@ $ErrorActionPreference = "Stop"
 $Root = Split-Path $PSScriptRoot -Parent
 $Bank = Join-Path $Root "math-bank"
 $StateFile = Join-Path $Root "data\quality\cloud_push_hash.txt"
+# 平台题池导入失败时留痕：云端 SSH 限流/服务抖动都可能让那次导入没跑成。
+# 只看 data-*.json 有没有变是不够的（变了但导入失败 → 下次「无变化」就永远不补），
+# 所以单独记一个待补标记，下次运行无条件优先补导入。
+$PendingFile = Join-Path $Root "data\quality\platform_sync_pending.txt"
+$forceImport = Test-Path -LiteralPath $PendingFile
 $Python = "python"
 $Courses = @("ds", "coa", "os", "net")
 # Git's ssh.exe times out under Win32 (System32 OpenSSH works); pin explicit paths.
@@ -63,6 +68,13 @@ Push-Location $Root
 try {
     & $Python scripts/quality_ledger.py --refresh-hashes | Write-Host
     if ($LASTEXITCODE -ne 0) { Die "quality_ledger.py --refresh-hashes failed" }
+} finally { Pop-Location }
+
+# ---- 发布态门禁：题号/UID/课程哈希对不上就不推（热更绕过了 pack 的测试门，这里补一道）----
+Push-Location $Root
+try {
+    & $Python scripts/quality_ledger.py --check-published | Write-Host
+    if ($LASTEXITCODE -ne 0) { Die "quality_ledger.py --check-published failed; not pushing" }
 } finally { Pop-Location }
 
 # ---- stamp consistency: index.html __BANK_DATA_VER__ == sw.js cache name ----
@@ -151,7 +163,10 @@ foreach ($d in $assetDirs) {
 ($newCache.GetEnumerator() | ForEach-Object { "$($_.Key)|$($_.Value)" } | Sort-Object) |
     Set-Content -LiteralPath $CacheFile -Encoding UTF8
 
-if ($toPush.Count -eq 0 -and $assetChanged.Count -eq 0 -and $assetRemoved.Count -eq 0) { Write-Host "no changes, nothing to push"; exit 0 }
+if ($toPush.Count -eq 0 -and $assetChanged.Count -eq 0 -and $assetRemoved.Count -eq 0) {
+    if (-not $forceImport) { Write-Host "no changes, nothing to push"; exit 0 }
+    Write-Host "no file changes, but the platform pool import is still pending; re-importing"
+}
 if ($toPush.Count -gt 0) {
     Write-Host ("pushing {0} file(s) to {1}:{2}" -f $toPush.Count, $Server, $RemoteDir)
     $toPush | ForEach-Object { Write-Host "  $_" }
@@ -200,7 +215,7 @@ if ($assetRemoved.Count -gt 0) {
 }
 $importCmd = "cd /home/ubuntu/kaoyan/apps/platform-v2/backend && .venv/bin/python scripts/import_408_banks.py"
 # 只有 data-*.json 变了平台题池才会不同步；裁图/壳文件热更跑一次全量导入纯属浪费 3–6 秒
-$syncStep = if ($checkNames) { "echo '@@PLATFORM_SYNC'; { $importCmd 2>&1 || true; }; echo '@@PLATFORM_SYNC_END'" }
+$syncStep = if ($checkNames -or $forceImport) { "echo '@@PLATFORM_SYNC'; { $importCmd 2>&1 || echo '@@PLATFORM_SYNC_FAILED'; }; echo '@@PLATFORM_SYNC_END'" }
             else { "echo '@@PLATFORM_SYNC'; echo 'platform 408 sync skipped (data-*.json unchanged)'; echo '@@PLATFORM_SYNC_END'" }
 $remoteScript = "set -e; ${extract}curl -sS http://127.0.0.1:8000/banks/408/index.html | grep -o '__BANK_DATA_VER__[^;]*' | head -1 | grep -o '[0-9]\+' | head -1; for f in $checkNames; do printf '%s ' `$f; curl -sS -o /dev/null -w '%{http_code}\n' http://127.0.0.1:8000/banks/408/`$f; done; $syncStep"
 $remoteOut = $null
@@ -247,12 +262,17 @@ if ($assetChanged.Count -gt 0) {
 # ---- platform pool result (already imported in the verify ssh above) ----
 # 云端 questions 表不会自己更新；重导让 /practice、错题本、题目详情与静态库一致。
 # 旧 release 缺该脚本、或云端报错时只告警，不阻断已生效的热更。
-if (($syncLines -join "`n") -match "platform 408 sync (done|skipped)") {
-    $syncLines | ForEach-Object { Write-Host "  $_" }
+$syncText = $syncLines -join "`n"
+$syncOk = ($syncText -match "platform 408 sync (done|skipped)") -and
+          ($syncText -notmatch "@@PLATFORM_SYNC_FAILED") -and
+          ($syncText -notmatch "failed\s+[1-9]")
+$syncLines | ForEach-Object { Write-Host "  $_" }
+if ($syncOk) {
+    if (Test-Path -LiteralPath $PendingFile) { Remove-Item -LiteralPath $PendingFile -Force }
 } else {
-    if ($syncLines) { $syncLines | ForEach-Object { Write-Host "  $_" } }
-    Write-Host "WARN: platform 408 question pool NOT synced; re-run when ssh settles:"
-    Write-Host "  ssh $Server `"$importCmd`""
+    Set-Content -LiteralPath $PendingFile -Encoding UTF8 -Value ("pending since {0}; next run re-imports before anything else" -f $idxVer)
+    Write-Host "WARN: platform 408 question pool NOT synced; marked $PendingFile, "
+    Write-Host "      next push_data.ps1 run imports it first (or run now: ssh $Server `"$importCmd`")"
 }
 
 Write-Host "OK: remote __BANK_DATA_VER__=$idxVer, $($toPush.Count) file(s) hot-updated (no service restart)"

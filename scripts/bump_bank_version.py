@@ -51,6 +51,15 @@ def shell_digest() -> str:
         text = re.sub(r"(sw\.js\?v=|wd408-ui-v)\d+", r"\1N", p.read_text(encoding="utf-8"))
         h.update(name.encode())
         h.update(text.encode())
+    # index.html 给 /banks/common/*（= viewer-common）打的是同一个 ?v= 戳：
+    # 共享脚本变了但 data-*.json 没变时旧逻辑不 bump，用户缓存里会一直是旧版
+    # question-notes.js / scratch-pad.js（阶段1 改笔记队列后踩过）。
+    vendor = BANK / "vendor" / "viewer-common"
+    if vendor.is_dir():
+        for p in sorted(vendor.iterdir()):
+            if p.is_file():
+                h.update(p.name.encode())
+                h.update(p.read_bytes())
     return h.hexdigest()
 
 

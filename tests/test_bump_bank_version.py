@@ -22,3 +22,16 @@ def test_shell_digest_ignores_version_stamp(tmp_path, monkeypatch):
 
     (tmp_path / "app.js").write_text("sw.js?v=2", encoding="utf-8")
     assert b.shell_digest() == first
+
+
+def test_viewer_common_change_alone_changes_hash(tmp_path, monkeypatch):
+    """index.html 给 /banks/common/* 打的同一个 ?v= 戳也要跟着共享脚本走。"""
+    monkeypatch.setattr(b, "BANK", tmp_path)
+    (tmp_path / "app.js").write_text("x", encoding="utf-8")
+    vendor = tmp_path / "vendor" / "viewer-common"
+    vendor.mkdir(parents=True)
+    (vendor / "question-notes.js").write_text("v1", encoding="utf-8")
+    before = b.content_hashes()["shell"]
+
+    (vendor / "question-notes.js").write_text("v2", encoding="utf-8")
+    assert b.content_hashes()["shell"] != before
