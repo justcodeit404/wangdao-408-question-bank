@@ -204,21 +204,31 @@
 
   function questionMeta(controller) {
     var question = hostQuestion(controller);
-    var uid = ink.resolveQuestionUid({
+    // 平台挂载时以宿主契约为准：408 的本地 uid 是 X01，平台 source_uid 是
+    // 408:cs408-ds::章节::X01，两者不能混用，否则 /resolve-question 只能靠标题兜底。
+    var hostUid = '';
+    if (question && typeof global.platformSourceUid === 'function') {
+      try { hostUid = String(global.platformSourceUid(question) || ''); } catch (error) { /* 宿主可选 */ }
+    }
+    var uid = hostUid || ink.resolveQuestionUid({
       question: question,
       questionKey: global.questionKey,
       contentUid: contentUid(controller),
     });
-    var chapter = '', title = '';
+    var chapter = '', title = '', bank = '';
     if (question) {
       if (question.chapter) chapter = String(question.chapter);
       if (question.title) title = String(question.title);
     }
-    if (!title) {
-      var text = String(controller.content.textContent || '').replace(/\s+/g, ' ').trim();
-      if (text) title = text.slice(0, 160);
+    if (typeof global.platformBankCode === 'function') {
+      try { bank = String(global.platformBankCode(question) || ''); } catch (error) { /* 宿主可选 */ }
     }
-    return { uid: uid, chapter: chapter, title: title };
+    if (!title) {
+      // 不做截断：平台按完整标题做等值匹配，截断过长题等于必然匹配失败
+      var text = String(controller.content.textContent || '').replace(/\s+/g, ' ').trim();
+      if (text) title = text;
+    }
+    return { uid: uid, chapter: chapter, title: title, bank: bank };
   }
 
   function questionId(controller) {

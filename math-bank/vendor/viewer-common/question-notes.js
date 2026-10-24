@@ -29,7 +29,7 @@
 
   // ---- 队列（本地持久化；平台挂载 + 登录后自动补传，幂等不重复建笔记）----
 
-  function readQueue() {
+  function rawQueue() {
     try {
       var raw = global.localStorage.getItem(QUEUE_KEY);
       if (!raw) return [];
@@ -38,6 +38,52 @@
     } catch (e) {
       return [];
     }
+  }
+
+  // 旧队列条目的 bank 可能为空（早期宿主没暴露 bank）。uid 前缀能确定归属，
+  // 就地补上并重算 key，避免补传时只能靠标题兜底。
+  var UID_BANK_PREFIX = [
+    ['408:', '408'],
+    ['politics:', 'politics'],
+    ['1000-', '1000'],
+    ['880-', '880'],
+    ['660-', '660'],
+    ['大学深埋', '大学深埋'],
+  ];
+
+  function inferBankFromUid(uid) {
+    var value = String(uid || '');
+    for (var i = 0; i < UID_BANK_PREFIX.length; i++) {
+      if (value.indexOf(UID_BANK_PREFIX[i][0]) === 0) return UID_BANK_PREFIX[i][1];
+    }
+    return '';
+  }
+
+  function migrateQueue(entries) {
+    var changed = false;
+    var out = [];
+    for (var i = 0; i < entries.length; i++) {
+      var entry = entries[i];
+      if (entry && !entry.bank) {
+        var bank = inferBankFromUid(entry.source_uid);
+        if (bank) {
+          entry = Object.assign({}, entry, {
+            bank: bank,
+            key: NOTE_PREFIX + bank + ':' + String(entry.source_uid || ''),
+          });
+          changed = true;
+        }
+      }
+      out.push(entry);
+    }
+    if (changed) {
+      try { global.localStorage.setItem(QUEUE_KEY, JSON.stringify(out)); } catch (e) { /* 迁移失败不阻塞读取 */ }
+    }
+    return out;
+  }
+
+  function readQueue() {
+    return migrateQueue(rawQueue());
   }
 
   // ponytail: 队列超限不再截断——截断即静默丢未同步原稿。localStorage 全库上限约 5-10MB，
