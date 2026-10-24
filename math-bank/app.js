@@ -189,8 +189,14 @@ function qualityBadgeHtml(q) {
   return badges.join(' ');
 }
 
+// 上一趟还在加载时又点了别的科目：记下最后一次请求，等它落地后补载
+let pendingCourseLoad = null;
+
 async function loadBankData(courseName) {
-  if (isLoadingCourse) return;
+  if (isLoadingCourse) {
+    pendingCourseLoad = courseName;
+    return;
+  }
   isLoadingCourse = true;
   const resultText = document.getElementById('resultText');
   try {
@@ -206,6 +212,13 @@ async function loadBankData(courseName) {
     bank = null;
   } finally {
     isLoadingCourse = false;
+    const next = pendingCourseLoad;
+    pendingCourseLoad = null;
+    if (next && next !== courseName) {
+      // 快速连点 A→B→C：丢掉 B，按最终选中的科目重载并重绘
+      await loadBankData(next);
+      applyLoadedCourse();
+    }
   }
 }
 
@@ -1769,6 +1782,11 @@ async function switchCourse(course) {
   document.getElementById('resultText').textContent = '正在切换课程…';
   await loadBankData(course);
 
+  applyLoadedCourse();
+}
+
+// 用当前 bank 重画整页（切换科目后、以及被合并的快速连点落地后都走这里）
+function applyLoadedCourse() {
   currentChapters = getCurrentChapters();
   buildAllQuestions();
   sanitizeChoiceOnlySelection();
