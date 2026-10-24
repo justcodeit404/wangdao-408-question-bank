@@ -215,7 +215,10 @@ if ($assetRemoved.Count -gt 0) {
 }
 $importCmd = "cd /home/ubuntu/kaoyan/apps/platform-v2/backend && .venv/bin/python scripts/import_408_banks.py"
 # 只有 data-*.json 变了平台题池才会不同步；裁图/壳文件热更跑一次全量导入纯属浪费 3–6 秒
-$syncStep = if ($checkNames -or $forceImport) { "echo '@@PLATFORM_SYNC'; { $importCmd 2>&1 || echo '@@PLATFORM_SYNC_FAILED'; }; echo '@@PLATFORM_SYNC_END'" }
+# 质量清单（hold/certified）变了，平台池的可刷标记也跟着变：同样要重导，
+# 否则刚隔离的题在平台上仍能被抽到。
+$manifestChanged = ($toPush -contains "quality-ledger.json") -or ($toPush -contains "quality-hold.json")
+$syncStep = if ($checkNames -or $forceImport -or $manifestChanged) { "echo '@@PLATFORM_SYNC'; { $importCmd 2>&1 || echo '@@PLATFORM_SYNC_FAILED'; }; echo '@@PLATFORM_SYNC_END'" }
             else { "echo '@@PLATFORM_SYNC'; echo 'platform 408 sync skipped (data-*.json unchanged)'; echo '@@PLATFORM_SYNC_END'" }
 $remoteScript = "set -e; ${extract}curl -sS http://127.0.0.1:8000/banks/408/index.html | grep -o '__BANK_DATA_VER__[^;]*' | head -1 | grep -o '[0-9]\+' | head -1; for f in $checkNames; do printf '%s ' `$f; curl -sS -o /dev/null -w '%{http_code}\n' http://127.0.0.1:8000/banks/408/`$f; done; $syncStep"
 $remoteOut = $null
