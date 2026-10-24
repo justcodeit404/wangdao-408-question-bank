@@ -218,6 +218,23 @@ function retryLoadCourse() {
 // 旧格式字符串 'favorite'|'mastered'|... 在 loadStatus 时迁移
 const STATUS_KEY = 'mathbank_status_v1';
 let statusMap = {};
+// 用户手动清掉掌握度后记下的「已删除旧值」：平台回填遇到同一个值就跳过，
+// 否则打开题库自动 pull（prefer_weaker/fill）会把刚清的标记又填回来。
+const MASTERY_CLEARED_KEY = 'wd408_mastery_cleared';
+let masteryClearedMap = {};
+
+function loadMasteryCleared() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(MASTERY_CLEARED_KEY) || '{}');
+    masteryClearedMap = raw && typeof raw === 'object' ? raw : {};
+  } catch (e) {
+    masteryClearedMap = {};
+  }
+}
+
+function saveMasteryCleared() {
+  safeSetItem(MASTERY_CLEARED_KEY, JSON.stringify(masteryClearedMap));
+}
 
 const MASTERY_STATUSES = [
   { key: 'mastered', label: '已掌握', cls: 'mastered' },
@@ -900,6 +917,7 @@ function writeStatusEntry(key, entry) {
 function loadStatus() {
   try {
     statusMap = loadSharded(STATUS_KEY);
+    loadMasteryCleared();
     const praw = localStorage.getItem(PRACTICE_KEY);
     practiceMap = praw ? JSON.parse(praw) : {};
     const rraw = localStorage.getItem(REVIEW_KEY);
@@ -1261,9 +1279,18 @@ function getPracticeResult(q) {
 function setMastery(q, status) {
   const key = questionKey(q);
   const entry = getStatusEntry(key);
+  const prev = entry.mastery || '';
   // 再次点击同一掌握度 → 清除掌握度（保留收藏）
-  if (!status || entry.mastery === status) entry.mastery = '';
-  else entry.mastery = status;
+  const clearing = !status || prev === status;
+  if (clearing && prev) {
+    // 平台侧还留着这个值：记下来，回填时跳过，别把用户刚清掉的标记填回去
+    masteryClearedMap[key] = prev;
+    saveMasteryCleared();
+  } else if (!clearing && masteryClearedMap[key]) {
+    delete masteryClearedMap[key];
+    saveMasteryCleared();
+  }
+  entry.mastery = clearing ? '' : status;
   writeStatusEntry(key, entry);
   saveStatus();
   // 手动调整掌握度时同步刷新复习计划
@@ -5297,6 +5324,7 @@ async function pullMasteryFromPlatform(opts) {
   const mode = opts.mode || 'prefer_weaker';
   let applied = 0;
   let skipped = 0;
+  let clearedDirty = false;
   items.forEach(it => {
     const q = byUid.get(it.uid);
     if (!q) {
@@ -5307,6 +5335,18 @@ async function pullMasteryFromPlatform(opts) {
     if (!remote) {
       skipped++;
       return;
+    }
+    const itemKey = questionKey(q);
+    const cleared = masteryClearedMap[itemKey];
+    if (cleared) {
+      // 用户在本机手动清掉过这个值，平台没变 → 不回填
+      if (cleared === remote) {
+        skipped++;
+        return;
+      }
+      // 平台侧已换成别的值（或在另一台设备重标），撤掉墓碑、尊重平台
+      delete masteryClearedMap[itemKey];
+      clearedDirty = true;
     }
     const local = getMastery(q) || '';
     const localEmpty = !local;
@@ -5323,12 +5363,12 @@ async function pullMasteryFromPlatform(opts) {
       return;
     }
     // 直接写 statusMap，避免 setMastery 触发回推形成循环
-    const key = questionKey(q);
-    const entry = getStatusEntry(key);
+    const entry = getStatusEntry(itemKey);
     entry.mastery = remote;
-    writeStatusEntry(key, entry);
+    writeStatusEntry(itemKey, entry);
     applied++;
   });
+  if (clearedDirty) saveMasteryCleared();
   if (applied > 0) {
     saveStatus();
     try {
