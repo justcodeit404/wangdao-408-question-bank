@@ -67,20 +67,41 @@
     return NOTE_PREFIX + String(meta.bank || '') + ':' + String(meta.uid || '');
   }
 
+  var revisionPrefix = Date.now().toString(36) + '-' + Math.random().toString(36).slice(2);
+  var revisionSeq = 0;
+
   function enqueue(meta, doc) {
     var entries = readQueue();
     var key = queueKey(meta);
     var existing = entries.find(function (it) { return it.key === key; });
-    var entry = { key: key, version: QUEUE_VERSION, bank: meta.bank, source_uid: meta.uid, chapter: meta.chapter, title: meta.title, ink_document: doc, created_at: Date.now() };
+    var entry = { key: key, version: QUEUE_VERSION, bank: meta.bank, source_uid: meta.uid, chapter: meta.chapter, title: meta.title, ink_document: doc, created_at: Date.now(), revision: revisionPrefix + '-' + (++revisionSeq) };
     if (existing) entries.splice(entries.indexOf(existing), 1, entry);
     else entries.push(entry);
     writeQueue(entries);
     return entry;
   }
 
-  function dropQueue(meta) {
-    var key = queueKey(meta);
-    writeQueue(readQueue().filter(function (it) { return it.key !== key; }));
+  function sameRevision(a, b) {
+    if (!a || !b || a.key !== b.key) return false;
+    if (a.revision != null || b.revision != null) return a.revision === b.revision;
+    return a.created_at === b.created_at;
+  }
+
+  function dropQueue(entry) {
+    writeQueue(readQueue().filter(function (it) { return !sameRevision(it, entry); }));
+  }
+
+  var entryLocks = Object.create(null);
+
+  function withEntryLock(entry, task) {
+    var previous = entryLocks[entry.key] || Promise.resolve();
+    var result = previous.then(task);
+    var tail = result.then(function () {}, function () {});
+    entryLocks[entry.key] = tail;
+    tail.then(function () {
+      if (entryLocks[entry.key] === tail) delete entryLocks[entry.key];
+    });
+    return result;
   }
 
   // ---- 远程调用 ----
@@ -163,51 +184,50 @@
     var doc = currentDoc(controller);
     // 记录已持久化笔迹签名，切题/关闭时据此脏检查，避免重复入队已同步内容
     controller.lastNoteStrokesSig = JSON.stringify(doc.strokes);
+    var entry = enqueue(meta, doc);
 
     if (!onPlatformHost()) {
-      enqueue(meta, doc);
       return { ok: true, queued: true, message: '独立题库：已暂存本地，从平台 /banks/ 打开后自动补存' };
     }
-    var auth = await ensureAuthed();
-    if (!auth.ok) {
-      enqueue(meta, doc);
-      return { ok: true, queued: true, message: '未登录：已暂存本地，登录平台后自动补存' };
-    }
+    return withEntryLock(entry, async function () {
+      var auth = await ensureAuthed();
+      if (!auth.ok) {
+        return { ok: true, queued: true, message: '未登录：已暂存本地，登录平台后自动补存' };
+      }
 
-    var resolved = await resolveRemote(meta, auth);
-    if (!resolved.ok) {
-      // 未解析到平台题目：仍保留原稿到本地队列，避免数据未导入时丢失
-      enqueue(meta, doc);
-      return { ok: true, queued: true, message: '暂未在平台解析到该题，已暂存本地' };
-    }
-    meta.questionId = resolved.data.question_id;
-    var image = await ink.documentToPng(doc, 1400, 'image/jpeg', 0.85);
-    var saved = await saveRemote(meta, doc, image, auth);
-    if (!saved.ok) {
-      if (recognize && saved.status === 403) {
-        return { ok: false, status: 403, error: '无权限保存笔记' };
+      var resolved = await resolveRemote(meta, auth);
+      if (!resolved.ok) {
+        // 未解析到平台题目：仍保留原稿到本地队列，避免数据未导入时丢失
+        return { ok: true, queued: true, message: '暂未在平台解析到该题，已暂存本地' };
       }
-      enqueue(meta, doc);
-      return { ok: true, queued: true, message: '网络异常：已暂存本地，联网后自动补存' };
-    }
-    dropQueue(meta);
-    var note = saved.data;
+      meta.questionId = resolved.data.question_id;
+      var image = await ink.documentToPng(doc, 1400, 'image/jpeg', 0.85);
+      var saved = await saveRemote(meta, doc, image, auth);
+      if (!saved.ok) {
+        if (recognize && saved.status === 403) {
+          return { ok: false, status: 403, error: '无权限保存笔记' };
+        }
+        return { ok: true, queued: true, message: '网络异常：已暂存本地，联网后自动补存' };
+      }
+      dropQueue(entry);
+      var note = saved.data;
 
-    if (recognize) {
-      var rec = await recognizeRemote(note.question_id, false, auth);
-      if (rec.status === 403 || rec.status === 401) {
-        return { ok: true, saved: true, note: note, adminOnly: true, error: '已保存原稿，自动识别仅管理员可用' };
+      if (recognize) {
+        var rec = await recognizeRemote(note.question_id, false, auth);
+        if (rec.status === 403 || rec.status === 401) {
+          return { ok: true, saved: true, note: note, adminOnly: true, error: '已保存原稿，自动识别仅管理员可用' };
+        }
+        if (!rec.ok) {
+          return { ok: true, saved: true, note: note, status: rec.status, error: (rec.data && rec.data.detail) || ('识别失败：HTTP ' + rec.status) };
+        }
+        note = rec.data;
       }
-      if (!rec.ok) {
-        return { ok: true, saved: true, note: note, status: rec.status, error: (rec.data && rec.data.detail) || ('识别失败：HTTP ' + rec.status) };
-      }
-      note = rec.data;
-    }
-    return { ok: true, saved: true, note: note };
+      return { ok: true, saved: true, note: note };
+    });
   }
 
   // 补传队列：只保存原稿（识别由用户后续显式触发，避免覆盖人工内容）。
-  // ponytail: 3 并发 worker——条目间无依赖，串行在队列几十条时明显拖慢首屏；失败条目保留重试。
+  // ponytail: 3 并发 worker；同题按序保存避免反序覆盖，不同题仍并发；失败条目保留重试。
   async function flushQueue() {
     if (!onPlatformHost()) return { ok: false, sent: 0 };
     var auth = await ensureAuthed();
@@ -215,6 +235,7 @@
     var entries = readQueue();
     if (!entries.length) return { ok: true, sent: 0 };
     var remain = [];
+    var succeeded = [];
     var sent = 0;
     var next = 0;
     async function worker() {
@@ -222,22 +243,30 @@
         var entry = entries[next++];
         var meta = { bank: entry.bank || '', uid: entry.source_uid, chapter: entry.chapter, title: entry.title };
         try {
-          var resolved = await resolveRemote(meta, auth);
-          if (!resolved.ok) throw new Error('resolve 404');
-          meta.questionId = resolved.data.question_id;
-          var doc = ink.parseDocument(entry.ink_document) || entry.ink_document;
-          var image = await ink.documentToPng(doc, 1400, 'image/jpeg', 0.85);
-          var saved = await saveRemote(meta, doc, image, auth);
-          if (!saved.ok) throw new Error('save HTTP ' + saved.status);
-          sent++;
+          await withEntryLock(entry, async function () {
+            var current = readQueue().some(function (it) { return sameRevision(it, entry); });
+            if (!current) return;
+            var resolved = await resolveRemote(meta, auth);
+            if (!resolved.ok) throw new Error('resolve 404');
+            meta.questionId = resolved.data.question_id;
+            var doc = ink.parseDocument(entry.ink_document) || entry.ink_document;
+            var image = await ink.documentToPng(doc, 1400, 'image/jpeg', 0.85);
+            var saved = await saveRemote(meta, doc, image, auth);
+            if (!saved.ok) throw new Error('save HTTP ' + saved.status);
+            succeeded.push(entry);
+            sent++;
+          });
         } catch (e) {
           remain.push(entry);
         }
       }
     }
     await Promise.all([worker(), worker(), worker()]);
-    writeQueue(remain);
-    return { ok: remain.length === 0, sent: sent, pending: remain.length };
+    var pending = readQueue().filter(function (it) {
+      return !succeeded.some(function (entry) { return sameRevision(it, entry); });
+    });
+    writeQueue(pending);
+    return { ok: remain.length === 0, sent: sent, pending: pending.length };
   }
 
   // ---- UI：保存按钮 + 状态 + 结果面板 ----
