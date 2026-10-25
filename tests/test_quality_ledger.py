@@ -87,13 +87,9 @@ def _configure_published_bank(monkeypatch, tmp_path, data):
     )
     monkeypatch.setattr(quality_ledger, "LEDGER_JS_PATH", bank_dir / "quality-ledger.js")
     monkeypatch.setattr(quality_ledger, "HOLD_PATH", bank_dir / "quality-hold.json")
-    monkeypatch.setattr(
-        quality_ledger, "VERIFICATION_PATH", bank_dir / "quality-verification.json"
-    )
+    monkeypatch.setattr(quality_ledger, "VERIFICATION_PATH", bank_dir / "quality-verification.json")
     monkeypatch.setattr(quality_ledger, "REPORTS_DIR", tmp_path / "reports")
-    monkeypatch.setattr(
-        quality_ledger, "COURSES", [SimpleNamespace(key="ds", name="数据结构")]
-    )
+    monkeypatch.setattr(quality_ledger, "COURSES", [SimpleNamespace(key="ds", name="数据结构")])
 
 
 def test_build_ledger_includes_answer_questions_as_pending(monkeypatch, tmp_path):
@@ -141,9 +137,7 @@ def test_build_ledger_includes_answer_questions_as_pending(monkeypatch, tmp_path
     ]
 
 
-def test_build_ledger_holds_duplicate_uid_and_keeps_first_question(
-    monkeypatch, tmp_path
-):
+def test_build_ledger_holds_duplicate_uid_and_keeps_first_question(monkeypatch, tmp_path):
     first = {
         "id": "X01",
         "type": "选择题",
@@ -167,9 +161,7 @@ def test_build_ledger_holds_duplicate_uid_and_keeps_first_question(
     assert list(ledger["items"]) == [uid]
     assert ledger["items"][uid]["source_hash"] == question_hash(first)
     assert ledger["items"][uid]["overall"] == "hold"
-    assert {"structural_error", "duplicate_uid"} <= set(
-        ledger["items"][uid]["reason_codes"]
-    )
+    assert {"structural_error", "duplicate_uid"} <= set(ledger["items"][uid]["reason_codes"])
     assert quality_ledger.published_uid_counts("ds", data)[uid] == 2
 
 
@@ -208,7 +200,11 @@ def test_rename_migration_moves_hold_and_evidence(monkeypatch, tmp_path):
     new_uid = "408:cs408-ds::第一章 · 解答题::A03"
     monkeypatch.setattr(quality_ledger, "RENAMED_UIDS", {old_uid: new_uid})
     _stub_legacy_sources(monkeypatch)
-    data = {"chapters": [{"name": "第一章 · 解答题", "questions": [_answer_question("A03", "改号后的题")]}]}
+    data = {
+        "chapters": [
+            {"name": "第一章 · 解答题", "questions": [_answer_question("A03", "改号后的题")]}
+        ]
+    }
     _configure_published_bank(monkeypatch, tmp_path, data)
     before = {
         "items": {old_uid: _mini_item(old_uid)},
@@ -231,7 +227,11 @@ def test_rename_migration_moves_hold_and_evidence(monkeypatch, tmp_path):
 
 def test_unregistered_publication_is_registered_and_gated(monkeypatch, tmp_path):
     _stub_legacy_sources(monkeypatch)
-    data = {"chapters": [{"name": "第一章 · 解答题", "questions": [_answer_question("A09", "新补录的题")]}]}
+    data = {
+        "chapters": [
+            {"name": "第一章 · 解答题", "questions": [_answer_question("A09", "新补录的题")]}
+        ]
+    }
     _configure_published_bank(monkeypatch, tmp_path, data)
     uid = "408:cs408-ds::第一章 · 解答题::A09"
     before = {"items": {}, "courses": {"ds": {"mode": "strict"}}, "published_hashes": {}}
@@ -249,7 +249,11 @@ def test_unregistered_publication_is_registered_and_gated(monkeypatch, tmp_path)
 
 def test_deleted_question_leaves_the_ledger(monkeypatch, tmp_path):
     _stub_legacy_sources(monkeypatch)
-    data = {"chapters": [{"name": "第一章 · 解答题", "questions": [_answer_question("A03", "留下的题")]}]}
+    data = {
+        "chapters": [
+            {"name": "第一章 · 解答题", "questions": [_answer_question("A03", "留下的题")]}
+        ]
+    }
     _configure_published_bank(monkeypatch, tmp_path, data)
     gone_uid = "408:cs408-ds::第一章 · 解答题::X35_2"
     keep_uid = "408:cs408-ds::第一章 · 解答题::A03"
@@ -290,10 +294,25 @@ def test_item_hash_drift_is_reported_but_only_blocks_in_strict_mode(monkeypatch,
     ledger = {
         "items": {uid: _mini_item(uid)},
         "courses": {"ds": {"mode": "strict"}},
-        "published_hashes": {"ds": quality_ledger.sha256_file(tmp_path / "math-bank" / "data-ds.json")},
+        "published_hashes": {
+            "ds": quality_ledger.sha256_file(tmp_path / "math-bank" / "data-ds.json")
+        },
     }
 
-    assert quality_ledger.check_published(ledger) == [], "重排导致的哈希漂移不阻断热更"
+    loads = 0
+    real_load_json = quality_ledger._load_json
+
+    def counted_load(path, default):
+        nonlocal loads
+        if str(path).endswith("data-ds.json"):
+            loads += 1
+        return real_load_json(path, default)
+
+    monkeypatch.setattr(quality_ledger, "_load_json", counted_load)
+    reported = []
+    assert quality_ledger.check_published(ledger, drift_out=reported) == [], "重排不阻断热更"
+    assert loads == 1, "UID 与逐题哈希检查应复用同一次发布数据加载"
+    assert reported == [f"ds: {uid}"]
     assert quality_ledger.item_hash_drift(ledger) == [f"ds: {uid}"]
     strict = quality_ledger.check_published(ledger, strict_item_hashes=True)
     assert any("逐题哈希过期" in problem for problem in strict)
@@ -303,6 +322,6 @@ def test_real_rename_registry_contains_the_migrated_uids():
     assert quality_ledger.RENAMED_UIDS[
         "408:cs408-ds::绪论 · 算法和算法评价 · 解答题::A01_2"
     ].endswith("::A03")
-    assert quality_ledger.RENAMED_UIDS[
-        "408:cs408-net::网络层 · IPv4 · 选择题::X11_2"
-    ].endswith("::A11_2")
+    assert quality_ledger.RENAMED_UIDS["408:cs408-net::网络层 · IPv4 · 选择题::X11_2"].endswith(
+        "::A11_2"
+    )

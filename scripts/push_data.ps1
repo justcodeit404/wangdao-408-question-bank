@@ -62,19 +62,12 @@ try {
     if ($LASTEXITCODE -ne 0) { Die "bump_bank_version.py failed" }
 } finally { Pop-Location }
 
-# ---- refresh quality manifests so their hashes match the data being pushed ----
+# ---- 一次进程刷新清单并做发布态门禁；UID/课程哈希对不上就不推 ----
 # 热更只改 data-*.json 时若不刷新清单，平台 408 导入 API 会因哈希过期直接 400。
 Push-Location $Root
 try {
-    & $Python scripts/quality_ledger.py --refresh-hashes | Write-Host
-    if ($LASTEXITCODE -ne 0) { Die "quality_ledger.py --refresh-hashes failed" }
-} finally { Pop-Location }
-
-# ---- 发布态门禁：题号/UID/课程哈希对不上就不推（热更绕过了 pack 的测试门，这里补一道）----
-Push-Location $Root
-try {
-    & $Python scripts/quality_ledger.py --check-published | Write-Host
-    if ($LASTEXITCODE -ne 0) { Die "quality_ledger.py --check-published failed; not pushing" }
+    & $Python scripts/quality_ledger.py --refresh-hashes --check-published | Write-Host
+    if ($LASTEXITCODE -ne 0) { Die "quality_ledger publish gate failed; not pushing" }
 } finally { Pop-Location }
 
 # ---- stamp consistency: index.html __BANK_DATA_VER__ == sw.js cache name ----

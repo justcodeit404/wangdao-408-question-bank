@@ -34,7 +34,9 @@ LEDGER_JS_PATH = DATA_QUALITY_DIR / "quality-ledger.js"
 # 发布副本：平台后端按 bank 路径读它，必须剥掉本机绝对路径。
 PUBLISHED_LEDGER_PATH = MATH_BANK_DIR / "quality-ledger.json"
 HOLD_PATH = MATH_BANK_DIR / "quality-hold.json"
-PAGE_REVIEW_EVIDENCE_PATH = Path(__file__).resolve().parents[1] / "data" / "quality" / "page_review_evidence.json"
+PAGE_REVIEW_EVIDENCE_PATH = (
+    Path(__file__).resolve().parents[1] / "data" / "quality" / "page_review_evidence.json"
+)
 
 TERMINAL_SOURCE = {"verified", "conflict"}
 TERMINAL_ANSWER = {"verified", "conflict"}
@@ -61,11 +63,7 @@ def strip_local_paths(obj: Any) -> Any:
         return {
             key: strip_local_paths(value)
             for key, value in obj.items()
-            if not (
-                key == "path"
-                and isinstance(value, str)
-                and _LOCAL_ABS_PATH_RE.match(value)
-            )
+            if not (key == "path" and isinstance(value, str) and _LOCAL_ABS_PATH_RE.match(value))
         }
     if isinstance(obj, list):
         return [strip_local_paths(value) for value in obj]
@@ -103,9 +101,7 @@ def stable_explanation(value: Any) -> str:
 
 def question_hash(question: Mapping[str, Any]) -> str:
     """只对会影响题目/答案可信度的内容做哈希。"""
-    answer = (
-        question.get("answer") if isinstance(question.get("answer"), Mapping) else {}
-    )
+    answer = question.get("answer") if isinstance(question.get("answer"), Mapping) else {}
     payload = {
         "id": question.get("id"),
         "type": question.get("type"),
@@ -125,9 +121,7 @@ def question_hash(question: Mapping[str, Any]) -> str:
 
 def _load_json(path: Path, default: Any) -> Any:
     try:
-        return (
-            json.loads(path.read_text(encoding="utf-8")) if path.is_file() else default
-        )
+        return json.loads(path.read_text(encoding="utf-8")) if path.is_file() else default
     except (OSError, json.JSONDecodeError):
         return default
 
@@ -195,6 +189,7 @@ def _old_verified_records() -> dict[str, Mapping[str, Any]]:
     # 记录纳入迁移索引，重建 ledger 时仍按题目 source_hash 严格匹配；
     # 这样重新运行 quality_ledger 不会把人工认证回退成历史 OCR 冲突。
     page_review = _load_json(PAGE_REVIEW_EVIDENCE_PATH, {})
+
     # 证据文件允许断点续跑产生同一 UID 的多条记录；必须按审核时间选最新
     # 记录，不能因迁移占位行排在末尾而覆盖当前哈希。migrated 行永远最低。
     def _review_rank(row: Mapping[str, Any]) -> str:
@@ -216,7 +211,11 @@ def _old_verified_records() -> dict[str, Mapping[str, Any]]:
             continue
         if action == "patch" and row.get("post_patch_verified") is not True:
             continue
-        if not row.get("source_hash") or not row.get("q_pages_viewed") or not row.get("a_pages_viewed"):
+        if (
+            not row.get("source_hash")
+            or not row.get("q_pages_viewed")
+            or not row.get("a_pages_viewed")
+        ):
             continue
         records[str(row["source_uid"])] = {
             "source_uid": str(row["source_uid"]),
@@ -228,31 +227,23 @@ def _old_verified_records() -> dict[str, Mapping[str, Any]]:
     return records
 
 
-def _record_matches_current(
-    question: Mapping[str, Any], record: Mapping[str, Any]
-) -> bool:
+def _record_matches_current(question: Mapping[str, Any], record: Mapping[str, Any]) -> bool:
     """旧版本记录没有 verified_hash 时，用双读图字段确认补丁仍在当前题上。"""
     fields = record.get("fields") if isinstance(record.get("fields"), Mapping) else {}
     if not fields:
         return False
-    if "content" in fields and str(fields.get("content")) != str(
-        question.get("content")
-    ):
+    if "content" in fields and str(fields.get("content")) != str(question.get("content")):
         return False
     if "options" in fields and _canonical(fields.get("options")) != _canonical(
         question.get("options")
     ):
         return False
-    answer = (
-        question.get("answer") if isinstance(question.get("answer"), Mapping) else {}
-    )
-    if "answer.choice" in fields and str(fields.get("answer.choice")) != str(
-        answer.get("choice")
-    ):
+    answer = question.get("answer") if isinstance(question.get("answer"), Mapping) else {}
+    if "answer.choice" in fields and str(fields.get("answer.choice")) != str(answer.get("choice")):
         return False
-    if "explanation" in fields and stable_explanation(fields.get("explanation")) != stable_explanation(
-        answer.get("explanation")
-    ):
+    if "explanation" in fields and stable_explanation(
+        fields.get("explanation")
+    ) != stable_explanation(answer.get("explanation")):
         return False
     return True
 
@@ -294,9 +285,7 @@ def _curated_records() -> dict[str, dict[str, Any]]:
                     "explanation": item.get("explanation") or "",
                 },
                 "has_image": bool(image),
-                "image_ref": {"cropped": image, "note": f"{year} 统考真题题图"}
-                if image
-                else None,
+                "image_ref": {"cropped": image, "note": f"{year} 统考真题题图"} if image else None,
                 "q_pages": [],
                 "a_pages": [],
             }
@@ -337,9 +326,7 @@ def _new_item(
     # 当前证据。不能只把 source_fidelity 改成 verified 后再沿用旧的
     # answer_validation=conflict，否则重建会把已经亲眼复核的题重新判回 hold。
     page_review_verified = bool(
-        old_row
-        and isinstance(old_row.get("page_review"), Mapping)
-        and same_hash
+        old_row and isinstance(old_row.get("page_review"), Mapping) and same_hash
     )
     reasons = list(old.get("reason_codes") or []) if same_hash and old else []
     if structural or vision_held:
@@ -363,13 +350,9 @@ def _new_item(
             overall = "certified"
         else:
             answer_status = (
-                str(old.get("answer_validation") or "pending")
-                if same_hash and old
-                else "pending"
+                str(old.get("answer_validation") or "pending") if same_hash and old else "pending"
             )
-            overall = (
-                str(old.get("overall") or "pending") if same_hash and old else "pending"
-            )
+            overall = str(old.get("overall") or "pending") if same_hash and old else "pending"
     elif same_hash and old:
         source_status = str(old.get("source_fidelity") or "pending")
         answer_status = str(old.get("answer_validation") or "pending")
@@ -383,9 +366,7 @@ def _new_item(
     if uid in old_holds and not structural and not same_hash:
         # 历史隔离是迁移证据，但内容变化后重新进入 pending，避免永久污染。
         reasons.append("legacy_hold_recheck")
-    answer = (
-        question.get("answer") if isinstance(question.get("answer"), Mapping) else {}
-    )
+    answer = question.get("answer") if isinstance(question.get("answer"), Mapping) else {}
     row = {
         "source_uid": uid,
         "course_key": course_key,
@@ -394,9 +375,7 @@ def _new_item(
         "source_hash": current_hash,
         "source_fidelity": source_status,
         "answer_validation": answer_status,
-        "overall": overall
-        if overall in {"pending", "certified", "hold"}
-        else "pending",
+        "overall": overall if overall in {"pending", "certified", "hold"} else "pending",
         "reason_codes": sorted(set(str(x) for x in reasons if str(x).strip())),
         "q_pages": list(question.get("q_pages") or []),
         "a_pages": list(question.get("a_pages") or []),
@@ -414,10 +393,7 @@ def _new_item(
 def _recompute_overall(item: dict[str, Any], strict: bool = False) -> None:
     if item["source_fidelity"] == "conflict" or item["answer_validation"] == "conflict":
         item["overall"] = "hold"
-    elif (
-        item["source_fidelity"] == "verified"
-        and item["answer_validation"] == "verified"
-    ):
+    elif item["source_fidelity"] == "verified" and item["answer_validation"] == "verified":
         item["overall"] = "certified"
     else:
         item["overall"] = "hold" if strict else "pending"
@@ -437,9 +413,7 @@ def build_ledger(*, strict_courses: set[str] | None = None) -> dict[str, Any]:
         if old_uid in old_holds:
             old_holds.add(new_uid)
     previous_uid_by_uid = {new: old for old, new in RENAMED_UIDS.items()}
-    previous_courses = (
-        old_ledger.get("courses") if isinstance(old_ledger, Mapping) else {}
-    )
+    previous_courses = old_ledger.get("courses") if isinstance(old_ledger, Mapping) else {}
     previous_courses = previous_courses if isinstance(previous_courses, Mapping) else {}
     strict_courses = (
         strict_courses
@@ -503,9 +477,7 @@ def build_ledger(*, strict_courses: set[str] | None = None) -> dict[str, Any]:
             _recompute_overall(item, course.key in strict_courses)
             items[uid] = item
         counts = Counter(
-            item["overall"]
-            for item in items.values()
-            if item["course_key"] == course.key
+            item["overall"] for item in items.values() if item["course_key"] == course.key
         )
         courses[course.key] = {
             "name": course.name,
@@ -547,9 +519,7 @@ def assert_consistent(ledger: Mapping[str, Any]) -> None:
     }
     actual = {key: int(summary.get(key, -1)) for key in expected}
     if expected != actual:
-        raise ValueError(
-            f"quality ledger summary mismatch: expected={expected} actual={actual}"
-        )
+        raise ValueError(f"quality ledger summary mismatch: expected={expected} actual={actual}")
     for uid, item in items.items():
         if item.get("source_uid") != uid:
             raise ValueError(f"quality ledger UID mismatch: {uid}")
@@ -571,9 +541,7 @@ def derive_manifests(
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     assert_consistent(ledger)
     items = ledger.get("items") or {}
-    hold_uids = sorted(
-        uid for uid, item in items.items() if item.get("overall") == "hold"
-    )
+    hold_uids = sorted(uid for uid, item in items.items() if item.get("overall") == "hold")
     hashes = dict(ledger.get("published_hashes") or {})
     hold = {
         "schema_version": 3,
@@ -621,9 +589,11 @@ def write_outputs(ledger: Mapping[str, Any]) -> None:
     write_text_atomic(LEDGER_JS_PATH, wrapper, encoding="utf-8")
 
 
-def _published_index(course_key: str) -> dict[str, Mapping[str, Any]]:
+def _published_index(
+    course_key: str, data: Mapping[str, Any] | None = None
+) -> dict[str, Mapping[str, Any]]:
     """发布数据里的 {uid: question}，重复 UID 会被 check_published 单独报出来。"""
-    data = _load_json(_published_path(course_key), {})
+    data = data if data is not None else _load_json(_published_path(course_key), {})
     index: dict[str, Mapping[str, Any]] = {}
     for uid, _chapter, question in iter_published_rows(course_key, data):
         index.setdefault(uid, question)
@@ -631,7 +601,10 @@ def _published_index(course_key: str) -> dict[str, Mapping[str, Any]]:
 
 
 def check_published(
-    ledger: Mapping[str, Any] | None = None, *, strict_item_hashes: bool = False
+    ledger: Mapping[str, Any] | None = None,
+    *,
+    strict_item_hashes: bool = False,
+    drift_out: list[str] | None = None,
 ) -> list[str]:
     """发布态自检：课程哈希、UID 集合、逐题哈希。
 
@@ -667,7 +640,7 @@ def check_published(
         for uid, count in sorted(counts.items()):
             if count > 1:
                 problems.append(f"{course.key}: 发布数据重复 UID ×{count} {uid}")
-        published = _published_index(course.key)
+        published = _published_index(course.key, data)
         ledger_uids = {
             uid
             for uid, item in items.items()
@@ -683,6 +656,8 @@ def check_published(
                 continue
             if item.get("source_hash") != question_hash(question):
                 drift.append(f"{course.key}: 逐题哈希过期 {uid}")
+                if drift_out is not None:
+                    drift_out.append(f"{course.key}: {uid}")
     if strict_item_hashes:
         problems.extend(drift)
     return problems
@@ -753,12 +728,13 @@ def migrate_drift(ledger: Mapping[str, Any] | None = None) -> tuple[dict[str, An
             row["question_id"] = str(published[new_uid].get("id") or "")
             row["source_hash"] = question_hash(published[new_uid])
             row["reason_codes"] = sorted(
-                set(row.get("reason_codes") or [])
-                | {f"renamed_from:{old_uid.split('::')[-1]}"}
+                set(row.get("reason_codes") or []) | {f"renamed_from:{old_uid.split('::')[-1]}"}
             )
             _recompute_overall(row, course.key in strict_courses)
             items[new_uid] = row
-            changes.append(f"{course.key}: 改号迁移 {old_uid.split('::')[-1]} → {new_uid.split('::')[-1]}")
+            changes.append(
+                f"{course.key}: 改号迁移 {old_uid.split('::')[-1]} → {new_uid.split('::')[-1]}"
+            )
 
         # 2) 新发布题：登记为 pending，等证据；不能悄悄发布无记录题
         for uid, question in published.items():
@@ -818,7 +794,7 @@ def migrate_drift(ledger: Mapping[str, Any] | None = None) -> tuple[dict[str, An
     return ledger, changes
 
 
-def refresh_published_hashes() -> int:
+def refresh_published_hashes() -> dict[str, Any]:
     """只更新 published_hashes 并重派生兼容清单，不迁移逐题状态。
 
     供 gen_answer_crops 改写发布 JSON 后调用：full rebuild 在纯文本管线里
@@ -833,7 +809,7 @@ def refresh_published_hashes() -> int:
     ledger["published_hashes"] = hashes
     write_outputs(ledger)
     print("published_hashes refreshed:", {k: v[:12] for k, v in hashes.items()})
-    return 0
+    return ledger
 
 
 def main() -> int:
@@ -863,10 +839,13 @@ def main() -> int:
     )
     args = parser.parse_args()
     if args.check_published:
-        problems = check_published(strict_item_hashes=args.strict_item_hashes)
+        refreshed = refresh_published_hashes() if args.refresh_hashes else None
+        drift: list[str] = []
+        problems = check_published(
+            refreshed, strict_item_hashes=args.strict_item_hashes, drift_out=drift
+        )
         for problem in problems:
             print(f"  ! {problem}")
-        drift = item_hash_drift()
         if drift:
             print(f"  · 逐题哈希漂移 {len(drift)} 条（不拦截；首条 {drift[0]}）")
         print(f"check-published: {len(problems)} 个问题")
@@ -882,7 +861,8 @@ def main() -> int:
         print(json.dumps(ledger["summary"], ensure_ascii=False))
         return 0
     if args.refresh_hashes:
-        return refresh_published_hashes()
+        refresh_published_hashes()
+        return 0
     ledger = build_ledger(strict_courses=set(args.strict_course) or None)
     write_outputs(ledger)
     print(json.dumps(ledger["summary"], ensure_ascii=False, indent=2))
