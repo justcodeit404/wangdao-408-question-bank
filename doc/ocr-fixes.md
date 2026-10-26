@@ -3624,3 +3624,11 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **修复**：新增 `OCR_LABEL_LINE_RE = /^(?:[A-Za-z]{1,3}\s*\d{1,3}|[图表题式例注]\s*\d{1,3})\s*[：:.．、]/`，`isOcrStructuralBreak()` 命中即保留断行；编号项（F1：/I2：/图3：/表2.）不再被吸进上一行。
 - **回归**：`tests/test_stem_table_reflow.mjs` 加 VLAN 固定样例（要求重排后仍是 5 行且不含「F1：…F2：」同行）；`node tests/test_stem_table_reflow.mjs` 全库 64 段含表文本通过，`pytest tests/test_stem_table_reflow.py` 1 passed。全库扫描 9 道题含编号断行（X50、coa X24/X28、os A01/A06 等），修复后均按行保留。
 - **云端**：`push_data.ps1` → `remote __BANK_DATA_VER__=489`，热更 `index.html` / `sw.js` / `app.js` 3 个文件（数据未变，平台池同步跳过）；公网 `app.js?v=489` 已含 `OCR_LABEL_LINE_RE`，云端详情页 F1~F4 各占一行（929px 宽度实测）。
+
+## 2026-10-26 · net 数据链路层设备 X23 真题漏配拓扑图（主人截图「这一题是不是少一个图」）
+
+- **病征**：net 数据链路层·设备 X23（2016 统考，p128）题干问「H2 向 H4 发数据帧、H4 回确认帧，除 H4 外物理层还能收到的主机」，平台/题库都只显示题干和 A~D，没有原书那张 R2–Switch–Hub–H1~H4 拓扑图，题目根本没法做。
+- **根因**：`fix_questions.detect_image_ref()` 用 `has_real_image_ref(content)` 判断要不要配图，即题干必须出现「如图/图所示/题图」等字样；这题原书图就画在题干下方、题干里一句都没提图，于是整张图被判定为「无图」。`data-net.json` 里 `has_image: false / image_ref: null`。
+- **修复**：按原页坐标 `(78,730,835,882)` 裁 `assets/pdf_images/net/page_128.png`，`ImageOps.expand(...,12,'white')` 后写 `math-bank/crops/net/page_128_X23.png`（781×176）；同步在 `output/questions_net.json` 写 `has_image: true` + `image_ref{cropped,box}`，`rebuild_bank.ps1 -Course net` 沿用已有裁图不再重裁。
+- **回归**：`rebuild_bank.ps1 -Course net` exit 0；发布态 `data-net.json` 的 X23 带 `image_ref`；`pytest tests/test_page_review_patches.py tests/test_notes_katex.py` 通过；platform 导入后本机 `questions.id=21244` 的 explanation 末尾出现「题目图片：crops/net/page_128_X23.png」，`/practice?question_id=21244` 实测题干下方出图。
+- **云端**：`push_data.ps1` → `remote __BANK_DATA_VER__=490`，`asset changed: 1 (crops=1)` 且远端哈希校验通过；公网 `crops/net/page_128_X23.png?v=490` 200（35078 B）；平台 408 池 `net updated 1`；云端题库详情页（`?chapter=数据链路层设备&q=X23`）已显示完整拓扑图。
