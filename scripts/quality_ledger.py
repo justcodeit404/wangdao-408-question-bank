@@ -31,8 +31,11 @@ LEDGER_PATH = DATA_QUALITY_DIR / "quality-ledger.json"
 VERIFICATION_PATH = DATA_QUALITY_DIR / "quality-verification.json"
 # QA 页（window.__QUALITY_LEDGER__）用的本地脚本副本。
 LEDGER_JS_PATH = DATA_QUALITY_DIR / "quality-ledger.js"
-# 发布副本：平台后端按 bank 路径读它，必须剥掉本机绝对路径。
+# 平台后端按 bank 路径读它，必须剥掉本机绝对路径。
 PUBLISHED_LEDGER_PATH = MATH_BANK_DIR / "quality-ledger.json"
+# 存量逐题哈希漂移基线：历史 normalize/repage 造成的已知漂移不阻断热更，
+# 但新增漂移（不在基线内）必须阻断，避免警告长期失去意义。
+DRIFT_BASELINE_PATH = DATA_QUALITY_DIR / "item-hash-drift-baseline.json"
 HOLD_PATH = MATH_BANK_DIR / "quality-hold.json"
 PAGE_REVIEW_EVIDENCE_PATH = (
     Path(__file__).resolve().parents[1] / "data" / "quality" / "page_review_evidence.json"
@@ -600,11 +603,36 @@ def _published_index(
     return index
 
 
+def load_drift_baseline(path: Path | None = None) -> set[str]:
+    """读取存量漂移基线；文件缺失/损坏时返回空集合（不阻断，先让基线可建立）。"""
+    payload = _load_json(path or DRIFT_BASELINE_PATH, {})
+    items = payload.get("items") if isinstance(payload, Mapping) else None
+    return {str(item) for item in items or [] if str(item)}
+
+
+def write_drift_baseline(items: list[str], path: Path | None = None) -> Path:
+    target = path or DRIFT_BASELINE_PATH
+    target.parent.mkdir(parents=True, exist_ok=True)
+    write_json_atomic(
+        target,
+        {
+            "schema_version": 1,
+            "updated_at": _utc_now(),
+            "count": len(items),
+            "items": sorted(set(items)),
+        },
+        indent=2,
+        ensure_ascii=False,
+    )
+    return target
+
+
 def check_published(
     ledger: Mapping[str, Any] | None = None,
     *,
     strict_item_hashes: bool = False,
     drift_out: list[str] | None = None,
+    drift_baseline: set[str] | None = None,
 ) -> list[str]:
     """发布态自检：课程哈希、UID 集合、逐题哈希。
 
@@ -613,8 +641,9 @@ def check_published(
 
     逐题哈希默认只报告不拦截：发布数据被重排/规范化后（normalize_spaces 之类）
     几乎所有题的内容哈希都会变，但题面和答案没有语义变化；这种漂移需要重建
-    ledger 才能消掉，不能当作「题目有问题」阻断热更。需要严格模式时传
-    ``strict_item_hashes=True``。
+    ledger 才能消掉，不能当作「题目有问题」阻断热更。存量漂移记录在
+    item-hash-drift-baseline.json；只有新增漂移会进入 problems。
+    ``strict_item_hashes=True`` 时仍然阻断全部漂移。
     """
     ledger = ledger if ledger is not None else _load_json(LEDGER_PATH, {})
     problems: list[str] = []
@@ -623,6 +652,8 @@ def check_published(
     hashes = ledger.get("published_hashes") if isinstance(ledger, Mapping) else None
     hashes = hashes if isinstance(hashes, Mapping) else {}
     drift: list[str] = []
+    drift_keys: list[str] = []
+    baseline = load_drift_baseline() if drift_baseline is None else drift_baseline
 
     for course in COURSES:
         path = _published_path(course.key)
@@ -656,10 +687,15 @@ def check_published(
                 continue
             if item.get("source_hash") != question_hash(question):
                 drift.append(f"{course.key}: 逐题哈希过期 {uid}")
+                drift_keys.append(f"{course.key}: {uid}")
                 if drift_out is not None:
                     drift_out.append(f"{course.key}: {uid}")
     if strict_item_hashes:
         problems.extend(drift)
+    else:
+        problems.extend(
+            problem for problem, key in zip(drift, drift_keys) if key not in baseline
+        )
     return problems
 
 
@@ -828,6 +864,11 @@ def main() -> int:
         help="只校验发布态（课程哈希、UID 集合、逐题哈希）；有问题返回 1",
     )
     parser.add_argument(
+        "--update-drift-baseline",
+        action="store_true",
+        help="把当前逐题哈希漂移固化为存量基线；此后只有新增漂移阻断热更",
+    )
+    parser.add_argument(
         "--strict-item-hashes",
         action="store_true",
         help="与 --check-published 同用：把逐题哈希漂移也算作失败",
@@ -838,16 +879,32 @@ def main() -> int:
         help="最小迁移：改号记录搬家、新发布题登记、删除题出账（不动其它题的证据）",
     )
     args = parser.parse_args()
+    if args.update_drift_baseline:
+        ledger = _load_json(LEDGER_PATH, {})
+        drift = item_hash_drift(ledger)
+        path = write_drift_baseline(drift)
+        print(f"drift baseline: {len(drift)} 条 -> {path}")
+        return 0
     if args.check_published:
         refreshed = refresh_published_hashes() if args.refresh_hashes else None
         drift: list[str] = []
+        baseline = load_drift_baseline()
         problems = check_published(
-            refreshed, strict_item_hashes=args.strict_item_hashes, drift_out=drift
+            refreshed,
+            strict_item_hashes=args.strict_item_hashes,
+            drift_out=drift,
+            drift_baseline=baseline,
         )
         for problem in problems:
             print(f"  ! {problem}")
         if drift:
-            print(f"  · 逐题哈希漂移 {len(drift)} 条（不拦截；首条 {drift[0]}）")
+            new_drift = [item for item in drift if item not in baseline]
+            print(
+                f"  · 逐题哈希漂移 {len(drift)} 条"
+                f"（存量 {len(drift) - len(new_drift)}，新增 {len(new_drift)}）"
+            )
+            if new_drift:
+                print(f"    ! 新增漂移首条：{new_drift[0]}")
         print(f"check-published: {len(problems)} 个问题")
         return 1 if problems else 0
     if args.fix_drift:

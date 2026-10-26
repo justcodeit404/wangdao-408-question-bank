@@ -310,12 +310,36 @@ def test_item_hash_drift_is_reported_but_only_blocks_in_strict_mode(monkeypatch,
 
     monkeypatch.setattr(quality_ledger, "_load_json", counted_load)
     reported = []
-    assert quality_ledger.check_published(ledger, drift_out=reported) == [], "重排不阻断热更"
+    assert quality_ledger.check_published(
+        ledger, drift_out=reported, drift_baseline={f"ds: {uid}"}
+    ) == [], "存量漂移不阻断热更"
     assert loads == 1, "UID 与逐题哈希检查应复用同一次发布数据加载"
     assert reported == [f"ds: {uid}"]
     assert quality_ledger.item_hash_drift(ledger) == [f"ds: {uid}"]
     strict = quality_ledger.check_published(ledger, strict_item_hashes=True)
     assert any("逐题哈希过期" in problem for problem in strict)
+
+
+def test_drift_baseline_suppresses_known_but_blocks_new_drift(monkeypatch, tmp_path):
+    _stub_legacy_sources(monkeypatch)
+    question = _answer_question("A04", "内容")
+    data = {"chapters": [{"name": "第一章 · 解答题", "questions": [question]}]}
+    _configure_published_bank(monkeypatch, tmp_path, data)
+    uid = "408:cs408-ds::第一章 · 解答题::A04"
+    ledger = {
+        "items": {uid: _mini_item(uid)},
+        "courses": {"ds": {"mode": "strict"}},
+        "published_hashes": {
+            "ds": quality_ledger.sha256_file(tmp_path / "math-bank" / "data-ds.json")
+        },
+    }
+
+    known = {f"ds: {uid}"}
+    assert quality_ledger.check_published(ledger, drift_baseline=known) == []
+    assert any(
+        "逐题哈希过期" in problem
+        for problem in quality_ledger.check_published(ledger, drift_baseline=set())
+    )
 
 
 def test_real_rename_registry_contains_the_migrated_uids():

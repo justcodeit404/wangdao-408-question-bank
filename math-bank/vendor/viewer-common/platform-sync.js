@@ -56,17 +56,22 @@
     return headers;
   }
 
-  async function syncFromBank(bank, items, auth) {
+  async function syncFromBank(bank, items, auth, opts) {
+    opts = opts || {};
     auth = auth || (await ensureAuth());
     if (!auth.ok) {
       return { ok: false, error: '未登录：请先在平台登录，再从 /banks/ 打开本题库' };
     }
     try {
+      var body = { bank: bank, items: items };
+      // 显式语义：live=当次真实作答（计入今日），backfill=历史进度回填（不计今日）。
+      // 旧客户端不传 mode 时，服务端仍沿用「≥10 条视为回填」的兼容口径。
+      if (opts.mode === 'live' || opts.mode === 'backfill') body.mode = opts.mode;
       var r = await fetch('/api/study-records/sync-from-bank', {
         method: 'POST',
         credentials: 'include',
         headers: authHeaders(auth),
-        body: JSON.stringify({ bank: bank, items: items }),
+        body: JSON.stringify(body),
       });
       if (!r.ok) {
         var detail = 'HTTP ' + r.status;

@@ -278,6 +278,8 @@ const ASM_CONT_RE = /^I\d+\s*:?\s*\S/;
 const OCR_STRUCTURAL_START_RE = /^(?:[①-⑳]|[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ]+[.．、]?|(?:I{1,3}|IV|VI{0,3}|IX)[.．、]|[（(]?\d+[)）.．、]|[A-D][.．、]|题目图片：|答案图片：|解析图片：)/;
 const OCR_ASSET_CAPTION_RE = /^(?:题目图片|答案图片|解析图片|题图|答图)\s*[：:]/;
 const OCR_TABLE_HINT_RE = /(?:如下表|下表|表所示|如下图|下图|图所示)/;
+// 编号标签行（F1：/图3：/表2.）：OCR 软换行不会把两个编号项接成一行。
+const OCR_LABEL_LINE_RE = /^(?:[A-Za-z]{1,3}\s*\d{1,3}|[图表题式例注]\s*\d{1,3})\s*[：:.．、]/;
 
 function looksLikeOcrCodeLine(line) {
   const s = String(line || '').trim();
@@ -291,6 +293,7 @@ function isOcrStructuralBreak(lines, index, hasTableOrFigure) {
   if (looksLikeOcrCodeLine(left) || looksLikeOcrCodeLine(right)) return true;
   if (OCR_ASSET_CAPTION_RE.test(left) || OCR_ASSET_CAPTION_RE.test(right)) return true;
   if (OCR_STRUCTURAL_START_RE.test(right)) return true;
+  if (OCR_LABEL_LINE_RE.test(right)) return true;
   if (/^(?:\||表头|指令类型|项目|名称|地址|序号|时间|操作)/.test(right)) return true;
   // 管道表行不与下一行合并：行尾是 prose 时整行会被拼出表格，渲染丢行（如 TLB 表最后一行）
   if (left.startsWith('|')) return true;
@@ -5490,7 +5493,12 @@ async function postSyncToPlatform(items, opts) {
         method: 'POST',
         credentials: 'include',
         headers: headers,
-        body: JSON.stringify({ bank: bank, items: list }),
+        body: JSON.stringify({
+          bank: bank,
+          items: list,
+          // live=刚标记的真实作答；backfill=手动全量重推，不计入今日
+          mode: opts.mode === 'backfill' ? 'backfill' : 'live',
+        }),
       });
       let data = {};
       try { data = await r.json(); } catch (e) {}
@@ -5521,7 +5529,8 @@ async function postSyncToPlatform(items, opts) {
 
 async function syncMasteryToPlatform(scope) {
   const items = gatherPlatformSyncItems(scope || 'all');
-  return postSyncToPlatform(items, { silent: false });
+  // 手动按钮用于修数据/换设备：按历史回填，不把整册标记刷成「今日」
+  return postSyncToPlatform(items, { silent: false, mode: 'backfill' });
 }
 
 /** 单题自动同步（标记后触发） */
@@ -5552,7 +5561,7 @@ async function flushAutoSyncQueue() {
   _autoSyncInFlight = true;
   const batch = _autoSyncQueue.splice(0, _autoSyncQueue.length);
   try {
-    const result = await postSyncToPlatform(batch, { silent: true, quietSuccess: true });
+    const result = await postSyncToPlatform(batch, { silent: true, quietSuccess: true, mode: 'live' });
     if (result && result.ok > 0 && result.fail === 0) {
       _autoSyncRetryCount = 0;
       try { localStorage.setItem('wd408_last_sync_sig', masterySignature()); } catch (e) {}
@@ -5714,7 +5723,8 @@ async function maybeAutoPushMasteryToPlatform(force) {
   try { lastSig = localStorage.getItem('wd408_last_sync_sig') || ''; } catch (e) {}
   if (!force && sig && sig === lastSig) return;
 
-  const result = await postSyncToPlatform(items, { silent: true, quietSuccess: true });
+  // 打开/聚焦时把本地既有标记补推平台：属于重放历史，不计入今日
+  const result = await postSyncToPlatform(items, { silent: true, quietSuccess: true, mode: 'backfill' });
   if (result && result.ok > 0 && result.fail === 0) {
     try { localStorage.setItem('wd408_last_sync_sig', sig); } catch (e) {}
   } else {
@@ -5787,7 +5797,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=487').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=489').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {

@@ -32,7 +32,7 @@ function extractConstLine(src, name) {
 const FN = ['looksLikeOcrCodeLine', 'isOcrStructuralBreak', 'joinOcrWrappedLines',
   'reflowOcrSoftWraps', 'splitRomanItems', 'normalizeDisplayText',
   'escapeHtml', 'isPipeRow', 'splitPipeRow', 'isSepRow', 'stemTableHtml'];
-const CONST = ['OCR_CODE_LINE_RE', 'ASM_MNEMONIC', 'ASM_INSN_RE', 'ASM_CONT_RE', 'OCR_STRUCTURAL_START_RE', 'OCR_ASSET_CAPTION_RE', 'OCR_TABLE_HINT_RE'];
+const CONST = ['OCR_CODE_LINE_RE', 'ASM_MNEMONIC', 'ASM_INSN_RE', 'ASM_CONT_RE', 'OCR_STRUCTURAL_START_RE', 'OCR_ASSET_CAPTION_RE', 'OCR_TABLE_HINT_RE', 'OCR_LABEL_LINE_RE'];
 const bundle = CONST.map((c) => extractConstLine(appSrc, c)).join('\n') + '\n'
   + FN.map((n) => extractFunction(appSrc, n)).join('\n');
 const { normalizeDisplayText, isPipeRow, splitPipeRow, isSepRow, stemTableHtml } = new Function(
@@ -72,6 +72,13 @@ assert(fencedOut.includes('进程P1\t进程P2\ny:=1;\tx:=1'), '代码围栏内�
 const block = X13.split('\n').filter(isPipeRow);
 const html = stemTableHtml(block);
 assert((html.match(/<tr>/g) || []).length === 5, 'fixture X13：stemTableHtml 应渲染 1 表头 + 4 数据行');
+
+// 事故：2026-10-26 408 网络 VLAN 真题 X50，F1~F4 各自一行被软换行合并成一段，
+// 详情页显示成「F1：… F2：… F3：… F4：…」一坨。编号行必须各自成行。
+const VLAN = '【2026统考真题】支持 VLAN 划分的以太网交换机，已按端口划分了 2 个 VLAN，VLAN 划分结果及部分端口连接主机的 MAC 地址如题 36 图所示（VLAN1：端口 1～7、13～19；VLAN2：端口 8～12、20～24；H1 接 13 口、H2 接 1 口、H3 接 5 口、H4 接 8 口、H5 接 9 口、H6 接 12 口）。下列具有不同目的 MAC 地址（DA）和源 MAC 地址（SA）的以太网帧 F1～F4 中，H3 会接收到的是（　）。\nF1：DA=00-1A-2B-3C-4D-03，SA=00-1A-2B-3C-4D-01\nF2：DA=00-1A-2B-3C-4D-03，SA=00-1A-2B-3C-4D-05\nF3：DA=FF-FF-FF-FF-FF-FF，SA=00-1A-2B-3C-4D-02\nF4：DA=FF-FF-FF-FF-FF-FF，SA=00-1A-2B-3C-4D-06';
+const vlanOut = normalizeDisplayText(VLAN);
+assert(vlanOut.split('\n').length === 5, 'fixture VLAN：F1~F4 应保持 4 行，实际 -> ' + JSON.stringify(vlanOut.slice(-160)));
+assert(!/F1：[^\n]*F2：/.test(vlanOut), 'fixture VLAN：F1/F2 被合并到同一行');
 
 // ---- 全库扫描：四科 content / explanation / sub_questions ----
 let tabled = 0;

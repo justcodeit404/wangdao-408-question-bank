@@ -3607,3 +3607,20 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **修复**：`scripts/fix_one.py --batch` 一次提交 12 题（ds X12/X33、coa X25/X38/X06/X17/X48、os X21/X62、net X21/X53/X61），只加前缀不改题干正文；四科全量重建，发布态断言 12 题通过。
 - **回归**：`tests/test_page_review_patches.py` 新增 `test_zhenti_stem_keeps_year_prefix`（12 条参数化断言，钉死这 12 题必须带前缀，防视觉补丁再次整段覆盖洗掉）。
 - **云端**：`push_data.ps1` → `remote __BANK_DATA_VER__=484`、4 个 data-*.json HTTP 200；平台 408 池 `ds 2 / os 2 / coa 5 / net 3`（changed 12 failed 0）；公网 `data-net.json?v=484` 复核 X21 题干 =「【2014统考真题】在下列因素中，不影响信道数据传输速率的是（）。」。图片未变，`BANK_IMAGE_VERSION` 不动。
+
+## 2026-10-26 · net 局域网 X41 题图裁切错位（主人截图反馈 p109）
+
+- **病征**：net 数据链路层·局域网 X41（p109，2016 统考 Hub 再生时延题）题图把上方 A/B/C/D 选项行裁了进去，同时下方 H1/H2/H3 三台主机及 IP 标注整块被切掉，图上只剩 R2/Switch/Hub/H4 一行。
+- **根因**：裁图沿用了 `crop_question_image` 按题干文本 bbox `[172,306,971,457]` 截取的口径——该 bbox 只覆盖题干与选项行，图本身（y≈438–575）落在框下方，扩边也补不回来。
+- **修复**：按原页像素边界重新框选（内容 x 286–812 / y 438–575），再 `ImageOps.expand` 12px 白边，与 `manual_crop_fig.py` 保存口径一致；直接覆盖 `math-bank/crops/net/page_109_X41.png`（647×116 → 551×162）。`rebuild_bank.ps1 -Course net` 重建时 `existing_stem_crop` 会沿用已有裁图，不会被按 bbox 重裁覆盖。
+- **回归**：重建 exit 0；发布态 `data-net.json` 的 `image_ref.cropped` 仍指向 `crops/net/page_109_X41.png`，`data-net.js` 含该引用；裁图尺寸复核 551×162。
+- **云端**：`push_data.ps1` → `remote __BANK_DATA_VER__=488`、`asset changed: 1 (crops=1)`，remote 哈希校验通过；数据未变故平台 408 池同步跳过；公网 `crops/net/page_109_X41.png?v=488` 返回 200（31390 B），本地与公网 md5 一致 `9a88d698fc22f2a6e0e76fa4ab1dccb2`。
+- **缓存戳**：图片字节变了但 URL 不变，PWA SW 对图片是 cache-first，需把 `BANK_IMAGE_VERSION` 20261022→20261026 并打包上云，已缓存设备才会拉新图。
+
+## 2026-10-26 · net 局域网 X50 真题 F1~F4 被并成一行（主人截图「这题显示的太乱了」）
+
+- **病征**：net 数据链路层·局域网 X50（2026 统考 VLAN 题）题目详情里 F1~F4 四行被拼成一段「F1：… F2：… F3：… F4：…」，MAC 地址还在连字符处折行，整题挤成一坨。
+- **根因**：`math-bank/app.js` 的 `reflowOcrSoftWraps()` 会把「非结构断行 + 上一行足够长」视为 OCR 软换行合并；`isOcrStructuralBreak()` 只认 `①`、`（1）`、`A.` 等前缀，不认 `F1：`。F1 行以数字结尾、F2 行以字母开头，正好命中 `joinOcrWrappedLines()` 的英文插空格分支，四行并成一行。题干源数据（`data/zhenti/2026.json`、平台 DB、`data-net.json`）本身换行完好，纯渲染问题。
+- **修复**：新增 `OCR_LABEL_LINE_RE = /^(?:[A-Za-z]{1,3}\s*\d{1,3}|[图表题式例注]\s*\d{1,3})\s*[：:.．、]/`，`isOcrStructuralBreak()` 命中即保留断行；编号项（F1：/I2：/图3：/表2.）不再被吸进上一行。
+- **回归**：`tests/test_stem_table_reflow.mjs` 加 VLAN 固定样例（要求重排后仍是 5 行且不含「F1：…F2：」同行）；`node tests/test_stem_table_reflow.mjs` 全库 64 段含表文本通过，`pytest tests/test_stem_table_reflow.py` 1 passed。全库扫描 9 道题含编号断行（X50、coa X24/X28、os A01/A06 等），修复后均按行保留。
+- **云端**：`push_data.ps1` → `remote __BANK_DATA_VER__=489`，热更 `index.html` / `sw.js` / `app.js` 3 个文件（数据未变，平台池同步跳过）；公网 `app.js?v=489` 已含 `OCR_LABEL_LINE_RE`，云端详情页 F1~F4 各占一行（929px 宽度实测）。
