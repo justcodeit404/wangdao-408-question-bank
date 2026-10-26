@@ -1708,6 +1708,8 @@ async function init() {
   setupShellContinue();
   const btnRandInline = document.getElementById('btnRandomInline');
   if (btnRandInline) btnRandInline.addEventListener('click', randomQuestion);
+  const btnExportWorkbook = document.getElementById('btnExportWorkbook');
+  if (btnExportWorkbook) btnExportWorkbook.addEventListener('click', exportFilteredWorkbook);
 
   // 打开、切回页面、重新联网及本地数据变化时自动双向同步。
   if (typeof setupAutomaticPlatformSync === 'function') setupAutomaticPlatformSync();
@@ -2844,13 +2846,13 @@ function resolveQuestionImageRef(q) {
   return null;
 }
 
-function questionStemHtml(q) {
+function questionStemHtml(q, mode) {
   const imgRef = resolveQuestionImageRef(q);
   // 配图放在题干下方：题干写「如下图」时直接看到图，无需再点「查看原图」
   return `
     <div class="q-text" data-role="qtext"></div>
     ${imgRef ? imageHtml(imgRef) : ''}
-    ${pageFallbackHtml(q)}
+    ${mode === 'print' ? '' : pageFallbackHtml(q)}
   `;
 }
 
@@ -2882,15 +2884,43 @@ function pageFallbackHtml(q) {
 
 function questionBelowHtml(q, mode) {
   const isPractice = mode === 'practice';
+  const answer = mode === 'print'
+    ? ''
+    : isPractice
+      ? practiceAnswerHtml(q)
+      : answerHtml(q);
   return `
     ${renderOptionsHtml(q)}
     ${renderSubHtml(q)}
-    ${isPractice ? practiceAnswerHtml(q) : answerHtml(q)}
+    ${answer}
   `;
 }
 
 function questionBodyHtml(q, mode) {
-  return questionStemHtml(q) + questionBelowHtml(q, mode);
+  return questionStemHtml(q, mode) + questionBelowHtml(q, mode);
+}
+
+function workbookQuestionHtml(q) {
+  const container = document.createElement('div');
+  container.innerHTML = `
+    <div class="q-chapter">${escapeHtml(q.chapter)} · ${escapeHtml(pageLabel(q, '—'))}</div>
+    <div class="q-id">${escapeHtml(displayId(q))} <span class="row-type ${q.type === '选择题' ? 'choice' : 'nonchoice'}">${escapeHtml(q.type || '')}</span></div>
+    ${questionBodyHtml(q, 'print')}
+  `;
+  renderQuestionBody(container, q, 'print');
+  return container.innerHTML;
+}
+
+function exportFilteredWorkbook() {
+  if (!window.ViewerPdfExport) {
+    alert('做题本导出组件未加载，请刷新后重试');
+    return;
+  }
+  void window.ViewerPdfExport.open({
+    title: document.title + ' · 当前筛选',
+    questions: filteredQuestions,
+    renderQuestion: workbookQuestionHtml,
+  });
 }
 
 function isPipeRow(line) {
@@ -3389,6 +3419,7 @@ function renderQuestionBody(container, q, mode) {
     });
   }
 
+  if (mode === 'print') return;
   container._q = q;
   if (mode === 'practice') bindPracticeInteractions(container, q);
   else bindDetailInteractions(container, q);
@@ -5828,7 +5859,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=493').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=494').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {
