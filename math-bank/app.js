@@ -174,7 +174,9 @@ function qualityVisible(q) {
   if (qualityLedger && qualityLedger.failClosed) return false;
   const item = qualityForQuestion(q);
   if (!item) return true;
-  if (item.overall === 'hold') return false;
+  // 未认证题不再隐藏：走原页兜底（题干下方直接给原书裁图 + 「未校验」角标），
+  // 让人能刷到全部题，同时一眼看出哪些答案没核过（详情见 pageFallbackHtml）。
+  if (item.overall === 'hold') return true;
   const course = (qualityLedger.courses || {})[item.course_key];
   return !(course && course.mode === 'strict' && item.overall !== 'certified');
 }
@@ -187,7 +189,7 @@ function qualityBadgeHtml(q) {
   else if (item.source_fidelity === 'verified') badges.push('<span class="quality-badge quality-source">原书已核对</span>');
   if (item.answer_validation === 'verified') badges.push('<span class="quality-badge quality-answer">答案已验算</span>');
   if (item.overall === 'pending') badges.push('<span class="quality-badge quality-pending">待核验</span>');
-  if (item.overall === 'hold') badges.push('<span class="quality-badge quality-hold">质量隔离</span>');
+  if (item.overall === 'hold') badges.push('<span class="quality-badge quality-hold" title="未通过原书复核，题干与答案以原页为准">未校验</span>');
   return badges.join(' ');
 }
 
@@ -2848,6 +2850,33 @@ function questionStemHtml(q) {
   return `
     <div class="q-text" data-role="qtext"></div>
     ${imgRef ? imageHtml(imgRef) : ''}
+    ${pageFallbackHtml(q)}
+  `;
+}
+
+/** hold 题的原页裁图：scripts/gen_page_crops.py 生成，文件缺失时 img onerror 自动隐藏 */
+function holdPageCropRef(q) {
+  const item = qualityForQuestion(q);
+  if (!item || item.overall !== 'hold' || !q || !q.page || !q.id) return null;
+  const m = /^408:cs408-([^:]+)::/.exec(platformSourceUid(q) || '');
+  if (!m) return null;
+  const page = Number(q.page);
+  if (!page) return null;
+  return {
+    page: q.page,
+    note: '原书原页（未校验）',
+    cropped: `page_crops/${m[1]}/page_${String(page).padStart(3, '0')}_${q.id}.jpg`,
+  };
+}
+
+function pageFallbackHtml(q) {
+  const ref = holdPageCropRef(q);
+  if (!ref) return '';
+  return `
+    <div class="quality-fallback">
+      <p class="quality-fallback-note">本题未通过原书复核，题干与答案可能有误；下方按原页展示，请对照原书判断。</p>
+      ${imageHtml(ref)}
+    </div>
   `;
 }
 
@@ -5799,7 +5828,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=492').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=493').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {

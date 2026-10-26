@@ -68,6 +68,12 @@ Push-Location $Root
 try {
     & $Python scripts/quality_ledger.py --refresh-hashes --check-published | Write-Host
     if ($LASTEXITCODE -ne 0) { Die "quality_ledger publish gate failed; not pushing" }
+    # hold 题的原页兜底裁图（viewer pageFallbackHtml 直接引用）：只补缺失，跟着台账走。
+    # 要 PIL，而本机全量依赖只在根 .venv（AGENTS.md §4），系统 python 没有。
+    $VenvPy = Join-Path $Root "..\..\.venv\Scripts\python.exe"
+    if (-not (Test-Path -LiteralPath $VenvPy)) { Die "gen_page_crops.py 需要 PIL：找不到根 .venv ($VenvPy)" }
+    & $VenvPy scripts/gen_page_crops.py | Write-Host
+    if ($LASTEXITCODE -ne 0) { Die "gen_page_crops.py failed" }
 } finally { Pop-Location }
 
 # ---- stamp consistency: index.html __BANK_DATA_VER__ == sw.js cache name ----
@@ -130,7 +136,7 @@ if (Test-Path -LiteralPath $CacheFile) {
     }
 }
 $newCache = @{}
-$assetDirs = @("crops", "answer_crops")
+$assetDirs = @("crops", "answer_crops", "page_crops")
 $assetChanged = New-Object System.Collections.Generic.List[string]
 $assetRemoved = New-Object System.Collections.Generic.List[string]
 foreach ($d in $assetDirs) {

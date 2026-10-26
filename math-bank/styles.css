@@ -1670,6 +1670,13 @@ body.compact-view .question-row .row-tags .row-tag { display: none; }
 .quality-source, .quality-answer { color: var(--success); background: var(--success-soft); }
 .quality-pending { color: var(--warning); background: var(--warning-soft); }
 .quality-hold { color: var(--danger, #b42318); background: var(--danger-soft, #fff1f0); }
+.quality-fallback { margin-top: 8px; }
+.quality-fallback-note {
+  margin: 0 0 6px;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--danger, #b42318);
+}
 
 .row-body {
   min-width: 0;

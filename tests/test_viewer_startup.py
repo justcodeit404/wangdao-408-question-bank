@@ -23,6 +23,13 @@ def _extract_hold_helpers(src: str) -> str:
     return src[start:end]
 
 
+def _extract_hold_helpers_with_badge(src: str) -> str:
+    """ledgerFromHoldList … qualityBadgeHtml（含 badge，用于验证「未校验」角标）。"""
+    start = src.index("function ledgerFromHoldList")
+    end = src.index("\n// 上一趟还在加载时")
+    return src[start:end]
+
+
 def _run_node(script: str) -> dict:
     tmp = Path(__import__("tempfile").gettempdir()) / "bank408-hold-ledger-runner.js"
     tmp.write_text(script, encoding="utf-8")
@@ -199,3 +206,36 @@ def test_http_hold_fetch_failure_fail_closed_hides_all() -> None:
     assert out["emptyOk"]["ledgerIsNull"] is False
     assert out["emptyOk"]["failClosed"] is False
     assert out["emptyOk"]["visible"] is True
+
+
+def test_hold_questions_stay_visible_with_unverified_badge() -> None:
+    """hold 题走原页兜底：不再隐藏，改打「未校验」角标（质量隔离角标已废弃）。"""
+    src = APP_JS.read_text(encoding="utf-8")
+    helpers = _extract_hold_helpers_with_badge(src)
+    script = (
+        helpers
+        + "\n"
+        + textwrap.dedent(
+            """
+            let qualityLedger = ledgerFromHoldList({
+              source_uids: ['408:cs408-ds::树与二叉树 · 选择题::X01'],
+            });
+            const window = { location: { protocol: 'file:' }, __QUALITY_LEDGER__: undefined };
+            function platformSourceUid(q) { return q.uid; }
+            const held = { uid: '408:cs408-ds::树与二叉树 · 选择题::X01' };
+            const clean = { uid: '408:cs408-ds::树与二叉树 · 选择题::X02' };
+            process.stdout.write(JSON.stringify({
+              heldVisible: qualityVisible(held),
+              cleanVisible: qualityVisible(clean),
+              heldBadge: qualityBadgeHtml(held),
+              cleanBadge: qualityBadgeHtml(clean),
+            }));
+            """
+        )
+    )
+    out = _run_node(script)
+    assert out["heldVisible"] is True
+    assert out["cleanVisible"] is True
+    assert "未校验" in out["heldBadge"]
+    assert "质量隔离" not in out["heldBadge"]
+    assert out["cleanBadge"] == ""

@@ -3664,3 +3664,15 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
   - `unregistered_publication` 加入 `HOLD_CODES`：认证落地后该码即失效，留着会让已认证题带 hold 语义。
 - **回归**：`pytest tests/test_page_review_evidence.py tests/test_quality_ledger.py tests/test_quality_hold.py tests/test_hold_buckets.py tests/test_page_review_queue.py` 26 passed；`quality_ledger.py --check-published` 0 问题，逐题哈希漂移 2640 条（存量，无新增）；账本逐题 diff 只动了这 7 条。
 - **云端**：`push_data.ps1` → `remote __BANK_DATA_VER__=492`，推 `quality-ledger.json` / `quality-hold.json`；平台 408 池 `net updated 7 failed 0`；公网 `quality-hold.json` 428 条且 7 个 uid 均不在其中（题目恢复可见）。
+
+## 2026-10-26 · hold 题改「原页兜底」：不再隐藏，改打「未校验」+ 原页裁图
+
+- **背景**：主人反馈「hold 题为什么非要逐题核，直接裁切不就行了」。原做法是 `qualityVisible()` 见 hold 即隐藏，428 道题在题库里消失。
+- **关键事实**：408 壳是 choice-only——`choice-only.js` 在数据加载层滤掉解答题，所以 428 道 hold 里 422 道解答题本来就**不展示**（与 hold 无关），真正被隐藏的只有 6 道选择题（计组 X40/X18/X14、数据结构 X09/X13、操作系统 X13）。剩下 81 道网络 hold 全是解答题。
+- **改动**：
+  - `app.js`：`qualityVisible()` 对 hold 返回 true；角标 `质量隔离` → `未校验`；`questionStemHtml()` 追加 `pageFallbackHtml()`（红字提示 + 原页裁图），裁图 404 时 `img` 的 `onerror` 自动隐藏。
+  - 新增 `scripts/gen_page_crops.py`：按台账里 hold 选择题的 page+bbox，从 `assets/pdf_images/<course>/page_NNN.png` 裁整宽横条到 `math-bank/page_crops/<course>/page_NNN_<id>.jpg`（JPEG q88；整宽 PNG 平均 200KB/张，428 张要 90MB，JPEG 后 87KB）。独立目录，不混进 `crops/`，避免被 `detect_image_ref` 当成题目配图。
+  - `push_data.ps1`：把 `page_crops` 纳入资产增量推送，并在发布门禁后跑一次生成器（用根 `.venv` 的 python，系统 python 没有 PIL），以后新增 hold 自动补图。
+  - 首次误按「全部 hold 题」裁了 428 张（含 422 道解答题，38MB），已删并在云端 `asset removed: 422` 清掉，现只保留 6 张（240KB）。
+- **回归**：`pytest tests` 393 passed（含新增 `test_page_crops.py` 与 viewer 的「hold 可见 + 未校验角标」用例）。
+- **云端**：`push_data.ps1` → `remote __BANK_DATA_VER__=493`，推 `index.html/sw.js/app.js/styles.css`；公网 `page_crops/coa/page_070_X40.jpg` 200、已删的 `page_crops/net/page_043_A01.jpg` 404；真实浏览器验收：题库详情显示「40 选择题 未校验」红标 + 红字提示 + 原页裁图（第 70 页）。
