@@ -3643,3 +3643,11 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **顺带修**：`app.js` 的 hold 清单 fetch 改为 `{cache:'no-cache'}`（走 ETag 条件请求）——清单 URL 不随版本变，原来浏览器启发式缓存会把已解禁的题继续藏住，解禁后刷新仍是 49。
 - **回归**：`rebuild_bank.ps1 -Course net` exit 0；`quality-ledger.json` X23 = certified / reasons []；`node tests/test_stem_table_reflow.mjs` 通过。
 - **云端**：`push_data.ps1` 两次 → `__BANK_DATA_VER__=490`（推 quality 清单）→ `491`（推 `app.js` 缓存修正）；公网 `quality-hold.json` 435 条且不含 X23；云端题库局域网实测「共 50 道题目」，X23 可见。
+
+## 2026-10-26 · net 局域网 X23 解析没有答案图片（主人问「答案为什么不是图片」）
+
+- **病征**：X23（p107，「IEEE 802 局域网标准对应 OSI 参考模型的（）」）点「显示答案」只有 `答案：B` + 文字解析，没有同章其他题那样的答案裁图。
+- **根因**：该题 `topic_title` 被解析成 `3.5.4 本节习题精选`（实际属 `3.6.5`），`gen_answer_crops.py` 按 topic 取答案页去找答案段，在 3.5.4 的页里找不到 → 报 `3.5.4 X23: 无答案段` → 不裁图、`explanation` 里也没有「答案图片：」行。
+- **修复**：`output/questions_net.json` 把 X23 的 `topic_title` 改回 `3.6.5 本节习题精选`；`rebuild_bank.ps1 -Course net -Qids X23` 强制重裁（answers 指纹没变，不加 `-Qids` 会整批跳过）→ `answer_crops/net/page_113_X23_ans.jpg`（856×93，含「23. B」+ 两行解析），`explanation` 开头出现「答案图片：…」。
+- **回归**：本次裁剪 8 题 / 跳过 0（原先 3.5.4 X23 的「无答案段」不再出现）；裁图目视完整无截断。
+- **云端**：`push_data.ps1` → `__BANK_DATA_VER__=492`，`asset changed: 1 (answer_crops=1)`、`data-net.json 200`、远端哈希校验通过；平台 408 池 `net updated 10`；云端题库详情点「显示答案」已渲染解析配图（`answer_crops/net/page_113_X23_ans.jpg?v=492`）。
