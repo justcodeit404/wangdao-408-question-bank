@@ -3639,7 +3639,7 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **根因**：台账里 X23 是 `overall: hold` + `reason_codes: [unregistered_publication]` —— 它在某次重建后才首次进入台账（`quality_ledger.py` 对「新发布题」一律登记 pending 并打该 code），从未有 `original_page_review` 证据；`qualityVisible()` 见 hold 即隐藏。题目本身无错。
 - **核对**：原书 p107 第 23 题题干 + A~D 四个选项，与 p113 答案页「23. B」及解析（IEEE 802 对应 OSI 数据链路层与物理层，链路层分 LLC/MAC）逐字一致。
 - **修复**：向 `data/quality/page_review_evidence.json` 追加该 uid 的 `kimi-original-page-review-v1` 认证记录（q_pages=p107、a_pages=p113，sha256 记录在案），把台账置 `certified` 并移出 `quality-hold.json`（436→435）。
-  - 注：`apply_page_review_certifications.py` 全量跑会因历史孤儿记录（已删除题的旧证据 `408:cs408-ds::…::A01_2`）整体报错，本次用一次性脚本按同一判定单题应用。
+  - 注：`apply_page_review_certifications.py` 全量跑会因历史孤儿记录（已删除题的旧证据 `408:cs408-ds::…::A01_2`）整体报错，本次用一次性脚本按同一判定单题应用（脚本已修，见同日「7 道 hold 选择题」条目）。
 - **顺带修**：`app.js` 的 hold 清单 fetch 改为 `{cache:'no-cache'}`（走 ETag 条件请求）——清单 URL 不随版本变，原来浏览器启发式缓存会把已解禁的题继续藏住，解禁后刷新仍是 49。
 - **回归**：`rebuild_bank.ps1 -Course net` exit 0；`quality-ledger.json` X23 = certified / reasons []；`node tests/test_stem_table_reflow.mjs` 通过。
 - **云端**：`push_data.ps1` 两次 → `__BANK_DATA_VER__=490`（推 quality 清单）→ `491`（推 `app.js` 缓存修正）；公网 `quality-hold.json` 435 条且不含 X23；云端题库局域网实测「共 50 道题目」，X23 可见。
@@ -3651,3 +3651,16 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **修复**：`output/questions_net.json` 把 X23 的 `topic_title` 改回 `3.6.5 本节习题精选`；`rebuild_bank.ps1 -Course net -Qids X23` 强制重裁（answers 指纹没变，不加 `-Qids` 会整批跳过）→ `answer_crops/net/page_113_X23_ans.jpg`（856×93，含「23. B」+ 两行解析），`explanation` 开头出现「答案图片：…」。
 - **回归**：本次裁剪 8 题 / 跳过 0（原先 3.5.4 X23 的「无答案段」不再出现）；裁图目视完整无截断。
 - **云端**：`push_data.ps1` → `__BANK_DATA_VER__=492`，`asset changed: 1 (answer_crops=1)`、`data-net.json 200`、远端哈希校验通过；平台 408 池 `net updated 10`；云端题库详情点「显示答案」已渲染解析配图（`answer_crops/net/page_113_X23_ans.jpg?v=492`）。
+
+## 2026-10-26 · net 7 道 hold 选择题补原书复核认证（批量解禁）
+
+- **病征**：网络科 hold 88 道里 7 道是选择题——概述 X16（p16）、体系结构与参考模型 X30（p30）、IPv4 X62（p162）、IPv6 X03（p189）、移动IP X03（p218）、UDP X16（p237）、TCP X48（p256），题库里被 `qualityVisible()` 隐藏，平台池也同样看不到。
+- **根因**：7 题在 `quality_ledger.py` 里都是 `reason_codes: [unregistered_publication]`、`source_fidelity/answer_validation: pending` —— 它们首次进入台账时就属于「新发布题」，从未有过 `original_page_review` 证据；严格模式下无证据不允许 certified。题目本身无错。
+- **核对**：逐题看题面页 + 答案页（a_pages 依次 p19/p33/p177/p190/p219/p240/p265），题干、A~D 选项、答案字母、解析结论与原书一致。概述 X16 的拓扑图 `crops/net/page_016_X16.png` 完整；IPv4 X62 原书解析的二进制表在发布文本里用等值文字复述（32/40/48/56 → 00100000/00101000/00110000/00111000）。无题需要改。
+- **修复**：向 `data/quality/page_review_evidence.json` 追加 7 条 `codex-original-page-review-v1` 记录（q/a 页路径 + sha256、`final_action: certify`、source_hash 绑定当前发布哈希），跑 `apply_page_review_certifications.py` → 7 题 `hold → certified`，网络 held 88→81（certified 567→574），全局 2502/428。
+- **顺带修 `apply_page_review_certifications.py`**：
+  - 历史孤儿证据（账本里已不存在的 UID，如 `408:cs408-ds::…::A01_2`）改为跳过并按 `orphans` 计数，不再让整批认证直接抛错（此前只能写一次性脚本绕）。
+  - 认证后按 `items` 重算 `ledger.courses` 分科计数——只更新全局 `summary` 会让分科数字停在认证前，这正是 `courses.net.held=89` 与逐题 88 长期不一致的根因。
+  - `unregistered_publication` 加入 `HOLD_CODES`：认证落地后该码即失效，留着会让已认证题带 hold 语义。
+- **回归**：`pytest tests/test_page_review_evidence.py tests/test_quality_ledger.py tests/test_quality_hold.py tests/test_hold_buckets.py tests/test_page_review_queue.py` 26 passed；`quality_ledger.py --check-published` 0 问题，逐题哈希漂移 2640 条（存量，无新增）；账本逐题 diff 只动了这 7 条。
+- **云端**：`push_data.ps1` → `remote __BANK_DATA_VER__=492`，推 `quality-ledger.json` / `quality-hold.json`；平台 408 池 `net updated 7 failed 0`；公网 `quality-hold.json` 428 条且 7 个 uid 均不在其中（题目恢复可见）。

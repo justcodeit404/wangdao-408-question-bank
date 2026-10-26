@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-26T08:16:49+00:00",
+  "generated_at": "2026-10-26T13:26:06+00:00",
   "published_hashes": {
     "ds": "38ef4290c9dea46747b3bdfda637550e7602c72614341574d88ecac6662491c1",
     "coa": "f78343ec7e2b9c919a2cfa4b90ce0b83ae8c5642d32f8efaa7861d3c1778128c",
@@ -36,16 +36,16 @@
       "name": "计算机网络",
       "mode": "strict",
       "total": 655,
-      "certified": 566,
+      "certified": 574,
       "pending": 0,
-      "held": 89
+      "held": 81
     }
   },
   "summary": {
     "total": 2930,
-    "certified": 2495,
+    "certified": 2502,
     "pending": 0,
-    "held": 435
+    "held": 428
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -159970,12 +159970,10 @@
       "chapter": "传输层 · TCP · 选择题",
       "question_id": "X48",
       "source_hash": "886a0078931c775195d7591f155db6bd6876567957217961c7e60b60e439ec55",
-      "source_fidelity": "pending",
-      "answer_validation": "pending",
-      "overall": "hold",
-      "reason_codes": [
-        "unregistered_publication"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         256
       ],
@@ -159992,8 +159990,38 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": null,
-      "evidence": {},
+      "verified_at": "2026-10-26T13:18:42+00:00",
+      "evidence": {
+        "original_page_review": {
+          "source_uid": "408:cs408-net::传输层 · TCP · 选择题::X48",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-vision",
+          "reviewed_at": "2026-10-26T13:18:42+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_256.png",
+              "sha256": "cbc7418b96a0c76d12bc5dae166f8e96d4aaacd9361a99943a4fb3889fe2793d",
+              "page": 256
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_265.png",
+              "sha256": "7b67878be27347d11e694bd5662db4b1e666fab6b6b33c25a68f95a0cf3ba19c",
+              "page": 265
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": null,
+          "detected_errors": [],
+          "rationale": "逐页核对题面/选项/答案：题干与选项与原书一致，答案字母与解析结论一致",
+          "source_hash": "886a0078931c775195d7591f155db6bd6876567957217961c7e60b60e439ec55"
+        }
+      },
       "certification_profile": "objective_full"
     },
     "408:cs408-net::传输层 · TCP · 选择题::X49": {
@@ -163351,12 +163379,10 @@
       "chapter": "传输层 · UDP · 选择题",
       "question_id": "X16",
       "source_hash": "20a74df61047b6ab50d9e7014dde5e9f37294a01f1fa4eb151dfede76a2a7039",
-      "source_fidelity": "pending",
-      "answer_validation": "pending",
-      "overall": "hold",
-      "reason_codes": [
-        "unregistered_publication"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         236,
         237,
@@ -163379,8 +163405,38 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": null,
-      "evidence": {},
+      "verified_at": "2026-10-26T13:18:42+00:00",
+      "evidence": {
+        "original_page_review": {
+          "source_uid": "408:cs408-net::传输层 · UDP · 选择题::X16",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-vision",
+          "reviewed_at": "2026-10-26T13:18:42+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_237.png",
+              "sha256": "450aa154771abe107ab4ced7146203567eb7c5e6e3c78076565ca9abfde30321",
+              "page": 237
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_240.png",
+              "sha256": "578c97411b2be2627d9f1a4989234c9a1415a16d3f7175d21f6238bf2dee1a74",
+              "page": 240
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": null,
+          "detected_errors": [],
+          "rationale": "逐页核对题面/选项/答案：题干与选项与原书一致，答案字母与解析结论一致",
+          "source_hash": "20a74df61047b6ab50d9e7014dde5e9f37294a01f1fa4eb151dfede76a2a7039"
+        }
+      },
       "certification_profile": "objective_full"
     },
     "408:cs408-net::传输层 · UDP · 选择题::X17": {
@@ -201583,12 +201639,10 @@
       "chapter": "网络层 · IPv4 · 选择题",
       "question_id": "X62",
       "source_hash": "4a1796807a0f387de43b1bdec3443797536a2344dba46160e4982b307f9c5e75",
-      "source_fidelity": "pending",
-      "answer_validation": "pending",
-      "overall": "hold",
-      "reason_codes": [
-        "unregistered_publication"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         156,
         157,
@@ -201629,8 +201683,38 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": null,
-      "evidence": {},
+      "verified_at": "2026-10-26T13:18:42+00:00",
+      "evidence": {
+        "original_page_review": {
+          "source_uid": "408:cs408-net::网络层 · IPv4 · 选择题::X62",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-vision",
+          "reviewed_at": "2026-10-26T13:18:42+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_162.png",
+              "sha256": "7764f5e32d040dddd477575457a0af6260430b5ac8b47edbd4d2101524ea0d45",
+              "page": 162
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_177.png",
+              "sha256": "4950fecec0656ec139be3b6b283d3dc2aa748a60459879f76103688ab6162e98",
+              "page": 177
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": null,
+          "detected_errors": [],
+          "rationale": "逐页核对题面/选项/答案：题干与选项与原书一致，答案字母与解析结论一致；原书解析用二进制表，发布文本以等值文字复述 32/40/48/56 的位模式，结论一致",
+          "source_hash": "4a1796807a0f387de43b1bdec3443797536a2344dba46160e4982b307f9c5e75"
+        }
+      },
       "certification_profile": "objective_full"
     },
     "408:cs408-net::网络层 · IPv4 · 选择题::X63": {
@@ -202788,12 +202872,10 @@
       "chapter": "网络层 · IPv6 · 选择题",
       "question_id": "X03",
       "source_hash": "ed3cbfb0a0f9f1746cec97a5d06a843acc37c527381d57b19dd01874ff893d7c",
-      "source_fidelity": "pending",
-      "answer_validation": "pending",
-      "overall": "hold",
-      "reason_codes": [
-        "unregistered_publication"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         189
       ],
@@ -202806,8 +202888,38 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": null,
-      "evidence": {},
+      "verified_at": "2026-10-26T13:18:42+00:00",
+      "evidence": {
+        "original_page_review": {
+          "source_uid": "408:cs408-net::网络层 · IPv6 · 选择题::X03",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-vision",
+          "reviewed_at": "2026-10-26T13:18:42+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_189.png",
+              "sha256": "2ab8b8ea835498d8849480892c9805458435027603e87aa0863a0e98e93b5f84",
+              "page": 189
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_190.png",
+              "sha256": "5d3985f6e75fc2fe5911894db2908595a3f86d6780a573467eb128e420688640",
+              "page": 190
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": null,
+          "detected_errors": [],
+          "rationale": "逐页核对题面/选项/答案：题干与选项与原书一致，答案字母与解析结论一致",
+          "source_hash": "ed3cbfb0a0f9f1746cec97a5d06a843acc37c527381d57b19dd01874ff893d7c"
+        }
+      },
       "certification_profile": "objective_full"
     },
     "408:cs408-net::网络层 · IPv6 · 选择题::X04": {
@@ -203869,12 +203981,10 @@
       "chapter": "网络层 · 移动IP · 选择题",
       "question_id": "X03",
       "source_hash": "b77aa00971ea464bc3137a0f67a624481829800876869060cd9d4f86d8512d8a",
-      "source_fidelity": "pending",
-      "answer_validation": "pending",
-      "overall": "hold",
-      "reason_codes": [
-        "unregistered_publication"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         218,
         219
@@ -203885,8 +203995,38 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": null,
-      "evidence": {},
+      "verified_at": "2026-10-26T13:18:42+00:00",
+      "evidence": {
+        "original_page_review": {
+          "source_uid": "408:cs408-net::网络层 · 移动IP · 选择题::X03",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-vision",
+          "reviewed_at": "2026-10-26T13:18:42+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_218.png",
+              "sha256": "d1683e38b891be05a50fd0fe7ef51a2635e5b00a02136518c5261849d9c53e52",
+              "page": 218
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_219.png",
+              "sha256": "7b54847dc537cc4ec1fbdcadba890a593b38dbeaa3b7ca8ed41182e6601dfb1b",
+              "page": 219
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": null,
+          "detected_errors": [],
+          "rationale": "逐页核对题面/选项/答案：题干与选项与原书一致，答案字母与解析结论一致",
+          "source_hash": "b77aa00971ea464bc3137a0f67a624481829800876869060cd9d4f86d8512d8a"
+        }
+      },
       "certification_profile": "objective_full"
     },
     "408:cs408-net::网络层 · 网络层的功能 · 选择题::X01": {
@@ -214477,12 +214617,10 @@
       "chapter": "计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题",
       "question_id": "X30",
       "source_hash": "9b3874ee811f06fe881689b8e82cb0070de4e844d17ae243039673d40170d7d9",
-      "source_fidelity": "pending",
-      "answer_validation": "pending",
-      "overall": "hold",
-      "reason_codes": [
-        "unregistered_publication"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         27,
         28,
@@ -214503,8 +214641,38 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": null,
-      "evidence": {},
+      "verified_at": "2026-10-26T13:18:42+00:00",
+      "evidence": {
+        "original_page_review": {
+          "source_uid": "408:cs408-net::计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题::X30",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-vision",
+          "reviewed_at": "2026-10-26T13:18:42+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_030.png",
+              "sha256": "4aec4eab9a8d5f8472069e96cc0b938d5f3041e9bb220a514530f8d5c5668686",
+              "page": 30
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_033.png",
+              "sha256": "835f37f3c126760275a13e1096e5564286d4c480f4d977f602149266450dda3e",
+              "page": 33
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": null,
+          "detected_errors": [],
+          "rationale": "逐页核对题面/选项/答案：题干与选项与原书一致，答案字母与解析结论一致",
+          "source_hash": "9b3874ee811f06fe881689b8e82cb0070de4e844d17ae243039673d40170d7d9"
+        }
+      },
       "certification_profile": "objective_full"
     },
     "408:cs408-net::计算机网络体系结构 · 计算机网络体系结构与参考模型 · 选择题::X31": {
@@ -217240,12 +217408,10 @@
       "chapter": "计算机网络体系结构 · 计算机网络概述 · 选择题",
       "question_id": "X16",
       "source_hash": "7f7a2e1e6cd480932b592a300323d27c32c4611742e285947f18ab984386235e",
-      "source_fidelity": "pending",
-      "answer_validation": "pending",
-      "overall": "hold",
-      "reason_codes": [
-        "unregistered_publication"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         14,
         15,
@@ -217266,8 +217432,38 @@
       ],
       "has_image": true,
       "answer_choice": "B",
-      "verified_at": null,
-      "evidence": {},
+      "verified_at": "2026-10-26T13:18:42+00:00",
+      "evidence": {
+        "original_page_review": {
+          "source_uid": "408:cs408-net::计算机网络体系结构 · 计算机网络概述 · 选择题::X16",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-vision",
+          "reviewed_at": "2026-10-26T13:18:42+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_016.png",
+              "sha256": "3972be12df3c89441b82feaece8bb0191b57865a193ffc8cd30699763e1bbe8f",
+              "page": 16
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_019.png",
+              "sha256": "c8f3ffafcafbb768bc3951a865b99720e8df6ae56ed9ed2f9d51ba5b9de07edf",
+              "page": 19
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "逐页核对题面/选项/答案：题干与选项与原书一致，答案字母与解析结论一致；题干含网络拓扑图，已核对 crops/net/page_016_X16.png 与题面一致",
+          "source_hash": "7f7a2e1e6cd480932b592a300323d27c32c4611742e285947f18ab984386235e"
+        }
+      },
       "certification_profile": "objective_full"
     },
     "408:cs408-net::计算机网络体系结构 · 计算机网络概述 · 选择题::X17": {

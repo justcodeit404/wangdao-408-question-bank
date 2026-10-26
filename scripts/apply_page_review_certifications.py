@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -17,6 +18,8 @@ HOLD_CODES = {
     "legacy_hold_recheck", "source_conflict", "answer_conflict", "structural_check",
     "structural_error", "strict_hold", "human_hold", "luna_source_conflict",
     "luna_answer_conflict", "luna_stale_source_hash", "source_unreadable",
+    # 「未登记发布」在认证落地后即失效，留着会让已认证题带着 hold 语义。
+    "unregistered_publication",
 }
 
 
@@ -44,10 +47,14 @@ def apply(evidence_path: Path = DEFAULT_EVIDENCE, ledger_path: Path = LEDGER_PAT
             if uid not in latest or _review_rank(record) >= _review_rank(latest[uid]):
                 latest[uid] = record
     changed = 0
+    orphans: list[str] = []
     for uid, record in latest.items():
         item = items.get(uid)
         if not isinstance(item, dict):
-            raise ValueError(f"page review evidence UID not in ledger: {uid}")
+            # 证据是只增历史：改号/删除题会留下账本里已不存在的 UID，
+            # 这里跳过并汇报，不能因为一条孤儿记录让整批认证失败。
+            orphans.append(uid)
+            continue
         # 视觉记录不能绕过当前发布数据的结构门禁。选项缺失、非法
         # choice 等 structural_* 题必须先有可复现补丁并重建消除结构错误，
         # 否则严格 ledger 会把它保留为 hold，造成应用计数与正式账本漂移。
@@ -75,9 +82,22 @@ def apply(evidence_path: Path = DEFAULT_EVIDENCE, ledger_path: Path = LEDGER_PAT
               "held": sum(item.get("overall") == "hold" for item in items.values())}
     ledger["generated_at"] = _now()
     ledger["summary"] = {"total": len(items), **counts}
+    # courses 必须与 items 同源重算：只改全局 summary 会让分科计数停在认证前的旧值。
+    for course, data in (ledger.get("courses") or {}).items():
+        if not isinstance(data, dict):
+            continue
+        course_counts = Counter(
+            item.get("overall") for item in items.values() if item.get("course_key") == course
+        )
+        data.update(
+            total=sum(course_counts.values()),
+            certified=course_counts.get("certified", 0),
+            pending=course_counts.get("pending", 0),
+            held=course_counts.get("hold", 0),
+        )
     assert_consistent(ledger)
     write_outputs(ledger)
-    return {"changed": changed, **ledger["summary"]}
+    return {"changed": changed, "orphans": len(orphans), **ledger["summary"]}
 
 
 def main() -> int:
