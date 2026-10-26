@@ -1,5 +1,5 @@
 /**
- * Shared A4 workbook print preview for the independent question banks.
+ * Shared A4 landscape workbook print preview for the independent question banks.
  * Hosts keep their own stem/KaTeX/image renderers; this module only owns the
  * print document, pagination, resource readiness and print interaction.
  */
@@ -11,7 +11,7 @@
   var RESOURCE_TIMEOUT_MS = 15000;
 
   var PRINT_CSS = `
-@page { size: A4; margin: 14mm 15mm; }
+@page { size: A4 landscape; margin: 12mm 14mm; }
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; background: #e5e7eb; }
 body.viewer-pdf-body {
@@ -38,7 +38,7 @@ body.viewer-pdf-body {
 .viewer-pdf-toolbar-hint { flex-basis: 100%; color: #6b7280; font-size: 12px; }
 .viewer-pdf-items { padding: 24px 12px 60px; }
 .viewer-pdf-item {
-  width: 210mm; min-height: 297mm; margin: 0 auto 24px; padding: 14mm 15mm;
+  width: 297mm; min-height: 210mm; margin: 0 auto 24px; padding: 12mm 14mm;
   color: #111827; background: #fff; box-shadow: 0 2px 14px rgb(0 0 0 / 14%);
   font-size: 11pt; line-height: 1.65;
 }
@@ -49,12 +49,12 @@ body.viewer-pdf-body {
 }
 .viewer-pdf-qhead-title { min-width: 0; overflow-wrap: anywhere; }
 .viewer-pdf-qhead-count { flex: none; white-space: nowrap; }
-.viewer-pdf-question { color: #111827; overflow-wrap: break-word; }
+.viewer-pdf-question { max-width: 240mm; color: #111827; overflow-wrap: break-word; }
 .viewer-pdf-meta { display: flex; flex-wrap: wrap; gap: 6px 12px; margin-bottom: 4mm; color: #4b5563; font-size: 9pt; }
 .viewer-pdf-options { margin-top: 4mm; }
 .viewer-pdf-option { display: flex; align-items: flex-start; gap: 6px; margin: 2mm 0; break-inside: avoid; page-break-inside: avoid; }
 .viewer-pdf-option strong { flex: none; }
-.viewer-pdf-question img { max-width: 100% !important; max-height: 190mm; height: auto; object-fit: contain; }
+.viewer-pdf-question img { max-width: 100% !important; max-height: 140mm; height: auto; object-fit: contain; }
 .viewer-pdf-question .q-image img,
 .viewer-pdf-question figure img { display: block; margin: 4mm auto; }
 .viewer-pdf-question .q-image,
@@ -125,7 +125,7 @@ body.viewer-pdf-body {
       '<span class="viewer-pdf-toolbar-status" id="viewerPdfStatus">正在准备 ' + count + ' 道题…</span>' +
       '<button type="button" class="viewer-pdf-print-button" id="viewerPdfPrint" disabled>打印 / 保存 PDF</button>' +
       '<button type="button" id="viewerPdfClose">关闭</button>' +
-      '<span class="viewer-pdf-toolbar-hint">A4 · 每题一页 · 不含答案。打印目标请选择“另存为 PDF”；超长题会自动续页。</span>' +
+      '<span class="viewer-pdf-toolbar-hint">A4 横版 · 每题一页 · 不含答案。打印目标请选择“另存为 PDF”；超长题会自动续页。</span>' +
       '</div><main class="viewer-pdf-items" id="viewerPdfItems"></main></body></html>';
   }
 
