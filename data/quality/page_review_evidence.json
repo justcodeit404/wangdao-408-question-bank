@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "protocol": "codex-original-page-review-v1",
-  "updated_at": "2026-08-27T07:19:05.785020+00:00",
+  "updated_at": "2026-10-26T16:15:52+08:00",
   "records": [
     {
       "source_uid": "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01",
@@ -562894,6 +562894,33 @@
       "detected_errors": [],
       "rationale": "亲眼核对原书题目页与答案页，题干、选项、答案及解析字段与原书一致。",
       "source_hash": "babc0773723a498b6013e7d59e528cc9440eecb80a5ee919ce18647527ea26d9"
+    },
+    {
+      "source_uid": "408:cs408-net::数据链路层 · 局域网 · 选择题::X23",
+      "protocol": "kimi-original-page-review-v1",
+      "reviewer": "kimi-vision",
+      "reviewed_at": "2026-10-26T16:15:52+08:00",
+      "q_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_107.png",
+          "sha256": "49f8ab4987c9a174ad2266f77a71ed9fa379ab1d0dfdfbe83a2d70010d1461ae"
+        }
+      ],
+      "a_pages_viewed": [
+        {
+          "path": "apps/bank-408/assets/pdf_images/net/page_113.png",
+          "sha256": "35e8632bd2cac8ea46ff013ca8cbe44cfbe7900c0cc2f06613ba3950b4c94b77"
+        }
+      ],
+      "final_action": "certify",
+      "content_match": true,
+      "options_match": true,
+      "answer_match": true,
+      "explanation_match": true,
+      "image_match": true,
+      "detected_errors": [],
+      "rationale": "对照原书 p107 第 23 题与 p113 答案页：题干、A~D 四个选项、答案 B 及解析（IEEE 802 对应 OSI 数据链路层与物理层，链路层分 LLC/MAC）完全一致。",
+      "source_hash": "ee2d59d7ea96030bbecdfc469a4023c746d26739662891a65f7d45d1e07b2c33"
     }
   ]
 }

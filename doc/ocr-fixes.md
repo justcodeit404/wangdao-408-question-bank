@@ -3632,3 +3632,14 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **修复**：按原页坐标 `(78,730,835,882)` 裁 `assets/pdf_images/net/page_128.png`，`ImageOps.expand(...,12,'white')` 后写 `math-bank/crops/net/page_128_X23.png`（781×176）；同步在 `output/questions_net.json` 写 `has_image: true` + `image_ref{cropped,box}`，`rebuild_bank.ps1 -Course net` 沿用已有裁图不再重裁。
 - **回归**：`rebuild_bank.ps1 -Course net` exit 0；发布态 `data-net.json` 的 X23 带 `image_ref`；`pytest tests/test_page_review_patches.py tests/test_notes_katex.py` 通过；platform 导入后本机 `questions.id=21244` 的 explanation 末尾出现「题目图片：crops/net/page_128_X23.png」，`/practice?question_id=21244` 实测题干下方出图。
 - **云端**：`push_data.ps1` → `remote __BANK_DATA_VER__=490`，`asset changed: 1 (crops=1)` 且远端哈希校验通过；公网 `crops/net/page_128_X23.png?v=490` 200（35078 B）；平台 408 池 `net updated 1`；云端题库详情页（`?chapter=数据链路层设备&q=X23`）已显示完整拓扑图。
+
+## 2026-10-26 · net 局域网 X23 被质量隔离隐藏，章节显示 49/50（主人截图反馈）
+
+- **病征**：左侧「局域网」计数 50，点进去结果栏「共 49 道题目」，少的是 X23（p107，「IEEE 802 局域网标准对应 OSI 参考模型的（）」）。
+- **根因**：台账里 X23 是 `overall: hold` + `reason_codes: [unregistered_publication]` —— 它在某次重建后才首次进入台账（`quality_ledger.py` 对「新发布题」一律登记 pending 并打该 code），从未有 `original_page_review` 证据；`qualityVisible()` 见 hold 即隐藏。题目本身无错。
+- **核对**：原书 p107 第 23 题题干 + A~D 四个选项，与 p113 答案页「23. B」及解析（IEEE 802 对应 OSI 数据链路层与物理层，链路层分 LLC/MAC）逐字一致。
+- **修复**：向 `data/quality/page_review_evidence.json` 追加该 uid 的 `kimi-original-page-review-v1` 认证记录（q_pages=p107、a_pages=p113，sha256 记录在案），把台账置 `certified` 并移出 `quality-hold.json`（436→435）。
+  - 注：`apply_page_review_certifications.py` 全量跑会因历史孤儿记录（已删除题的旧证据 `408:cs408-ds::…::A01_2`）整体报错，本次用一次性脚本按同一判定单题应用。
+- **顺带修**：`app.js` 的 hold 清单 fetch 改为 `{cache:'no-cache'}`（走 ETag 条件请求）——清单 URL 不随版本变，原来浏览器启发式缓存会把已解禁的题继续藏住，解禁后刷新仍是 49。
+- **回归**：`rebuild_bank.ps1 -Course net` exit 0；`quality-ledger.json` X23 = certified / reasons []；`node tests/test_stem_table_reflow.mjs` 通过。
+- **云端**：`push_data.ps1` 两次 → `__BANK_DATA_VER__=490`（推 quality 清单）→ `491`（推 `app.js` 缓存修正）；公网 `quality-hold.json` 435 条且不含 X23；云端题库局域网实测「共 50 道题目」，X23 可见。

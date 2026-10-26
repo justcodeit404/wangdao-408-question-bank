@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-24T10:15:36+00:00",
+  "generated_at": "2026-10-26T08:16:49+00:00",
   "published_hashes": {
     "ds": "38ef4290c9dea46747b3bdfda637550e7602c72614341574d88ecac6662491c1",
     "coa": "f78343ec7e2b9c919a2cfa4b90ce0b83ae8c5642d32f8efaa7861d3c1778128c",
@@ -43,9 +43,9 @@
   },
   "summary": {
     "total": 2930,
-    "certified": 2494,
+    "certified": 2495,
     "pending": 0,
-    "held": 436
+    "held": 435
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -177761,12 +177761,10 @@
       "chapter": "数据链路层 · 局域网 · 选择题",
       "question_id": "X23",
       "source_hash": "ee2d59d7ea96030bbecdfc469a4023c746d26739662891a65f7d45d1e07b2c33",
-      "source_fidelity": "pending",
-      "answer_validation": "pending",
-      "overall": "hold",
-      "reason_codes": [
-        "unregistered_publication"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         107
       ],
@@ -177780,8 +177778,36 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": null,
-      "evidence": {},
+      "verified_at": "2026-10-26T16:15:52+08:00",
+      "evidence": {
+        "original_page_review": {
+          "source_uid": "408:cs408-net::数据链路层 · 局域网 · 选择题::X23",
+          "protocol": "kimi-original-page-review-v1",
+          "reviewer": "kimi-vision",
+          "reviewed_at": "2026-10-26T16:15:52+08:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_107.png",
+              "sha256": "49f8ab4987c9a174ad2266f77a71ed9fa379ab1d0dfdfbe83a2d70010d1461ae"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_113.png",
+              "sha256": "35e8632bd2cac8ea46ff013ca8cbe44cfbe7900c0cc2f06613ba3950b4c94b77"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书 p107 第 23 题与 p113 答案页：题干、A~D 四个选项、答案 B 及解析（IEEE 802 对应 OSI 数据链路层与物理层，链路层分 LLC/MAC）完全一致。",
+          "source_hash": "ee2d59d7ea96030bbecdfc469a4023c746d26739662891a65f7d45d1e07b2c33"
+        }
+      },
       "certification_profile": "objective_full"
     },
     "408:cs408-net::数据链路层 · 局域网 · 选择题::X24": {

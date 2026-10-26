@@ -145,7 +145,9 @@ async function loadQualityLedger() {
     if (window.location.protocol === 'file:') {
       qualityLedger = { items: {} };
     } else {
-      const response = await fetch('quality-hold.json');
+      // hold 清单随台账更新但 URL 不变：no-cache 走 ETag 条件请求，避免浏览器
+      // 启发式缓存把已解禁的题继续藏住（2026-10-26 X23 解禁后仍显示 49 题）。
+      const response = await fetch('quality-hold.json', { cache: 'no-cache' });
       if (response.ok) {
         qualityLedger = ledgerFromHoldList(await response.json());
       } else {
@@ -5797,7 +5799,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=490').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=491').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {
