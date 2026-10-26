@@ -54,7 +54,18 @@ body.viewer-pdf-body {
 .viewer-pdf-options { margin-top: 4mm; }
 .viewer-pdf-option { display: flex; align-items: flex-start; gap: 6px; margin: 2mm 0; break-inside: avoid; page-break-inside: avoid; }
 .viewer-pdf-option strong { flex: none; }
-.viewer-pdf-question img { max-width: 100% !important; max-height: 140mm; height: auto; object-fit: contain; }
+.viewer-pdf-question img { max-width: 150mm !important; max-height: 100mm !important; height: auto; object-fit: contain; }
+.viewer-pdf-question .q-image {
+  margin: 3mm 0; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none;
+}
+.viewer-pdf-question .q-image-note { display: none !important; }
+.viewer-pdf-question .sub-item {
+  padding: 0; margin: 2mm 0; border: 0; border-radius: 0; background: transparent;
+}
+.viewer-pdf-question input,
+.viewer-pdf-question textarea,
+.viewer-pdf-question select,
+.viewer-pdf-question button { display: none !important; }
 .viewer-pdf-question .q-image img,
 .viewer-pdf-question figure img { display: block; margin: 4mm auto; }
 .viewer-pdf-question .q-image,
