@@ -35,7 +35,7 @@ body.viewer-pdf-body {
 }
 .viewer-pdf-toolbar button.viewer-pdf-print-button { color: #fff; background: #1f2937; border-color: #1f2937; }
 .viewer-pdf-toolbar button:disabled { opacity: .45; cursor: wait; }
-.viewer-pdf-toolbar-hint { flex-basis: 100%; color: #6b7280; font-size: 12px; }
+.viewer-pdf-toolbar-hint { flex-basis: 100%; padding: 7px 10px; border-radius: 6px; color: #92400e; background: #fef3c7; border: 1px solid #fcd34d; font-size: 12px; line-height: 1.5; }
 .viewer-pdf-items { padding: 24px 12px 60px; }
 .viewer-pdf-item {
   width: 297mm; min-height: 210mm; margin: 0 auto 24px; padding: 12mm 14mm;
@@ -49,16 +49,25 @@ body.viewer-pdf-body {
 }
 .viewer-pdf-qhead-title { min-width: 0; overflow-wrap: anywhere; }
 .viewer-pdf-qhead-count { flex: none; white-space: nowrap; }
-.viewer-pdf-question { max-width: 240mm; color: #111827; overflow-wrap: break-word; }
+.viewer-pdf-question { max-width: none; color: #111827; overflow-wrap: break-word; }
+.viewer-pdf-question::after { content: ''; display: block; clear: both; }
 .viewer-pdf-meta { display: flex; flex-wrap: wrap; gap: 6px 12px; margin-bottom: 4mm; color: #4b5563; font-size: 9pt; }
 .viewer-pdf-options { margin-top: 4mm; }
 .viewer-pdf-option { display: flex; align-items: flex-start; gap: 6px; margin: 2mm 0; break-inside: avoid; page-break-inside: avoid; }
 .viewer-pdf-option strong { flex: none; }
-.viewer-pdf-question img { max-width: 150mm !important; max-height: 100mm !important; height: auto; object-fit: contain; }
-.viewer-pdf-question .q-image {
-  margin: 3mm 0; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none;
+.viewer-pdf-question img { max-width: 92mm !important; max-height: 58mm !important; height: auto; object-fit: contain; }
+/* 题图改为右侧浮动小图：正文绕排，不再独占整行版面 */
+.viewer-pdf-question .q-image,
+.viewer-pdf-question figure {
+  float: right; max-width: 92mm; margin: 0 0 3mm 8mm; padding: 0; border: 0; border-radius: 0;
+  background: transparent; box-shadow: none; text-align: center;
 }
+.viewer-pdf-question .q-image-content { padding: 0 !important; }
 .viewer-pdf-question .q-image-note { display: none !important; }
+.viewer-pdf-question .option-item .q-image,
+.viewer-pdf-question .option-item figure,
+.viewer-pdf-question table .q-image,
+.viewer-pdf-question table figure { float: none; margin: 2mm 0; }
 .viewer-pdf-question .sub-item {
   padding: 0; margin: 2mm 0; border: 0; border-radius: 0; background: transparent;
 }
@@ -136,7 +145,8 @@ body.viewer-pdf-body {
       '<span class="viewer-pdf-toolbar-status" id="viewerPdfStatus">正在准备 ' + count + ' 道题…</span>' +
       '<button type="button" class="viewer-pdf-print-button" id="viewerPdfPrint" disabled>打印 / 保存 PDF</button>' +
       '<button type="button" id="viewerPdfClose">关闭</button>' +
-      '<span class="viewer-pdf-toolbar-hint">A4 横版 · 每题一页 · 不含答案。打印目标请选择“另存为 PDF”；超长题会自动续页。</span>' +
+      '<span class="viewer-pdf-toolbar-hint">打印设置：目标打印机选 <b>“另存为 PDF”</b>，纸张 A4、布局<b>横向</b>。' +
+      '若用 Microsoft Print to PDF 等系统打印机且布局为纵向，横版页面会被旋转 90° 塞进竖纸。每题一页、不含答案，超长题自动续页。</span>' +
       '</div><main class="viewer-pdf-items" id="viewerPdfItems"></main></body></html>';
   }
 
@@ -145,6 +155,25 @@ body.viewer-pdf-body {
       '<header class="viewer-pdf-qhead"><span class="viewer-pdf-qhead-title">' + escapeHtml(title) + '</span>' +
       '<span class="viewer-pdf-qhead-count">第 ' + (index + 1) + ' / ' + total + ' 题</span></header>' +
       '<div class="viewer-pdf-question">' + String(html || '') + '</div></section>';
+  }
+
+  /**
+   * 题干级配图默认排在文字之后，右侧浮动无法绕排；打印前把它提到最前，
+   * 正文才会贴着图排。选项/表格里的图保持原位。
+   */
+  function hoistFigures(printDoc) {
+    if (!printDoc.querySelectorAll) return;
+    var questions = printDoc.querySelectorAll('.viewer-pdf-question');
+    for (var i = 0; i < questions.length; i++) {
+      var q = questions[i];
+      var kids = Array.prototype.slice.call(q.children);
+      for (var j = 0; j < kids.length; j++) {
+        var el = kids[j];
+        if (!el.classList || !el.classList.contains('q-image')) continue;
+        if (el.parentNode !== q || q.firstChild === el) continue;
+        q.insertBefore(el, q.firstChild);
+      }
+    }
   }
 
   function prepareImages(printDoc) {
@@ -233,6 +262,7 @@ body.viewer-pdf-body {
         }
       }
       items.innerHTML = html.join('');
+      hoistFigures(printDoc);
       var images = prepareImages(printDoc);
       status.textContent = images.length ? '正在等待字体与 ' + images.length + ' 张题图加载…' : '正在等待字体加载…';
       var failedImages = await waitForResources(printDoc, images);
