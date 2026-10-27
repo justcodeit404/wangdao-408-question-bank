@@ -5859,7 +5859,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=499').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=500').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {
@@ -5868,44 +5868,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-// ========================
-// 备份提醒：超过 30 天未备份时显示非强制提示，用户点击后才下载
-// ========================
-const BACKUP_KEY = 'mathbank_last_backup_at';
-const BACKUP_REMIND_KEY = 'mathbank_backup_reminded_at';
-const BACKUP_INTERVAL = 30 * 86400000;  // 30 天
-function maybeShowBackupReminder() {
-  try {
-    const now = Date.now();
-    const lastBackup = parseInt(localStorage.getItem(BACKUP_KEY) || '0', 10);
-    const lastRemind = parseInt(localStorage.getItem(BACKUP_REMIND_KEY) || '0', 10);
-    // 全新用户首次使用不提醒（还没有进度可备份），只播种提醒时间
-    if (!lastBackup && !lastRemind) {
-      safeSetItem(BACKUP_REMIND_KEY, String(now));
-      return;
-    }
-    if (now - Math.max(lastBackup, lastRemind) < BACKUP_INTERVAL) return;
-    // 先记录提醒时间，保证最多每 30 天提示一次（无论用户点不点）
-    safeSetItem(BACKUP_REMIND_KEY, String(now));
-    showBackupReminder();
-  } catch(e) {}
-}
-function showBackupReminder() {
-  if (document.getElementById('backupReminder')) return;
-  const el = document.createElement('div');
-  el.id = 'backupReminder';
-  el.className = 'backup-reminder';
-  el.innerHTML = '<span>进度已 30 天未备份，建议导出一份</span>' +
-    '<button type="button" id="backupReminderGo">立即备份</button>' +
-    '<button type="button" id="backupReminderClose" aria-label="关闭">×</button>';
-  document.body.appendChild(el);
-  el.querySelector('#backupReminderGo').addEventListener('click', () => {
-    triggerBackup(false);
-    el.remove();
-  });
-  el.querySelector('#backupReminderClose').addEventListener('click', () => el.remove());
-  requestAnimationFrame(() => el.classList.add('show'));
-}
 function triggerBackup(silent) {
   try {
     const data = buildFullExportPayload();
@@ -5916,7 +5878,6 @@ function triggerBackup(silent) {
     a.download = `mathbank-backup-${new Date().toISOString().slice(0,10)}.json`;
     a.click();
     URL.revokeObjectURL(url);
-    safeSetItem(BACKUP_KEY, String(Date.now()));
     if (!silent) flashToast('已下载完整备份');
     return true;
   } catch(e) {
@@ -5924,6 +5885,3 @@ function triggerBackup(silent) {
     return false;
   }
 }
-
-// 启动后异步检查是否该提醒（只显示提示，绝不自动下载）
-setTimeout(maybeShowBackupReminder, 3000);

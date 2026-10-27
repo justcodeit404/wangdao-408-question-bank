@@ -714,43 +714,6 @@ img, svg { display: block; }
 }
 .flash-toast.show { opacity: 1; transform: translate(-50%, 0); }
 
-/* 备份提醒条（非强制，需用户点击） */
-.backup-reminder {
-  position: fixed;
-  left: 50%;
-  bottom: 60px;
-  transform: translate(-50%, 10px);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 16px;
-  background: var(--surface);
-  color: var(--text-primary);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.18);
-  opacity: 0;
-  transition: opacity 0.18s, transform 0.18s;
-  z-index: 9999;
-}
-.backup-reminder.show { opacity: 1; transform: translate(-50%, 0); }
-.backup-reminder button {
-  border: none;
-  background: none;
-  cursor: pointer;
-  font: inherit;
-  padding: 2px 8px;
-  border-radius: 999px;
-}
-#backupReminderGo {
-  background: var(--accent);
-  color: #fff;
-  padding: 4px 12px;
-}
-#backupReminderClose { color: var(--text-secondary); font-size: 1rem; line-height: 1; }
-
 /* 搜索历史下拉 */
 .search-box { position: relative; }
 .search-history-dropdown {
