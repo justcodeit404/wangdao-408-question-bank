@@ -92,7 +92,7 @@ body.viewer-pdf-body {
 .viewer-pdf-question .zoom-overlay { display: none !important; }
 @media print {
   html, body, body.viewer-pdf-body { background: #fff !important; }
-  .viewer-pdf-toolbar { display: none !important; }
+  body.viewer-pdf-body > *:not(.viewer-pdf-items) { display: none !important; }
   .viewer-pdf-items { padding: 0; }
   .viewer-pdf-item {
     width: auto; min-height: 0; margin: 0; padding: 0; border: 0; box-shadow: none;
@@ -145,7 +145,7 @@ body.viewer-pdf-body {
       '<span class="viewer-pdf-toolbar-status" id="viewerPdfStatus">正在准备 ' + count + ' 道题…</span>' +
       '<button type="button" class="viewer-pdf-print-button" id="viewerPdfPrint" disabled>打印 / 保存 PDF</button>' +
       '<button type="button" id="viewerPdfClose">关闭</button>' +
-      '<span class="viewer-pdf-toolbar-hint">打印设置：目标打印机选 <b>“另存为 PDF”</b>，纸张 A4、布局<b>横向</b>。' +
+      '<span class="viewer-pdf-toolbar-hint">打印设置：目标打印机选 <b>“另存为 PDF”</b>，纸张 A4、布局<b>横向</b>，并<b>取消勾选“页眉和页脚”</b>。' +
       '若用 Microsoft Print to PDF 等系统打印机且布局为纵向，横版页面会被旋转 90° 塞进竖纸。每题一页、不含答案，超长题自动续页。</span>' +
       '</div><main class="viewer-pdf-items" id="viewerPdfItems"></main></body></html>';
   }
