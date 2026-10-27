@@ -3676,3 +3676,10 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
   - 首次误按「全部 hold 题」裁了 428 张（含 422 道解答题，38MB），已删并在云端 `asset removed: 422` 清掉，现只保留 6 张（240KB）。
 - **回归**：`pytest tests` 393 passed（含新增 `test_page_crops.py` 与 viewer 的「hold 可见 + 未校验角标」用例）。
 - **云端**：`push_data.ps1` → `remote __BANK_DATA_VER__=493`，推 `index.html/sw.js/app.js/styles.css`；公网 `page_crops/coa/page_070_X40.jpg` 200、已删的 `page_crops/net/page_043_A01.jpg` 404；真实浏览器验收：题库详情显示「40 选择题 未校验」红标 + 红字提示 + 原页裁图（第 70 页）。
+
+## 2026-10-27 · PDF 做题本保留 hold 题原页兜底
+
+- **病征**：题库详情已对 hold 选择题显示「未校验」和原页裁图，但 `questionStemHtml(q, 'print')` 在导出做题本时排除 `pageFallbackHtml()`，打印结果只剩未校验 OCR 题干，没有质量警告与原书依据。
+- **修复**：打印模式也复用现有 `pageFallbackHtml()`；`questionBelowHtml(..., 'print')` 仍排除答案与解析，不把答案内容带进做题本。
+- **回归**：`pytest tests/test_workbook_export.py` 2 passed，覆盖警告文案、`page_crops/...` 路径与答案隔离；本机 Chromium 打开计组浮点数 X40 所在章，真实打印预览共 46 题，hold 警告 1 条，`page_crops/coa/page_070_X40.jpg` 加载成功（naturalWidth=1058），答案区块 0。
+- **云端**：`push_data.ps1` → `remote __BANK_DATA_VER__=498`，热更 `index.html` / `sw.js` / `app.js` 3 个文件；数据未变，平台 408 题池同步按预期跳过。

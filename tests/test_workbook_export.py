@@ -19,6 +19,8 @@ def test_workbook_renderer_excludes_answers_and_exports_filtered_order():
     functions = "\n".join(
         _function(source, name)
         for name in (
+            "holdPageCropRef",
+            "pageFallbackHtml",
             "questionStemHtml",
             "questionBelowHtml",
             "questionBodyHtml",
@@ -36,8 +38,11 @@ function escapeHtml(value) {
 function displayId(q) { return q.id.replace(/^[XA]/, ''); }
 function pageLabel(q) { return '第 ' + q.page + ' 页'; }
 function resolveQuestionImageRef(q) { return q.image_ref ? { src: q.image_ref } : null; }
-function imageHtml(ref) { return '<img src="' + ref.src + '">'; }
-function pageFallbackHtml() { throw new Error('page fallback leaked into workbook'); }
+function qualityForQuestion(q) { return q.id === 'X23' ? { overall: 'hold' } : null; }
+function platformSourceUid(q) { return '408:cs408-ds::' + q.id; }
+function imageHtml(ref) {
+  return '<figure class="q-image"><img src="' + (ref.src || ref.cropped) + '"></figure>';
+}
 function renderOptionsHtml(q) {
   return '<div class="q-options">' + Object.entries(q.options || {})
     .map(([key, value]) => key + '. ' + value).join('；') + '</div>';
@@ -87,7 +92,10 @@ const second = Object.assign({}, fixture, { id: 'X2', content: '先排版题' })
 const filteredQuestions = [second, fixture];
 """ + functions + r"""
 const html = workbookQuestionHtml(fixture);
-for (const expected of ['408 题干 $x^2$', 'question.png', 'A. 甲', '子题正文', '第1章 绪论']) {
+for (const expected of [
+  '408 题干 $x^2$', 'question.png', 'A. 甲', '子题正文', '第1章 绪论',
+  '未通过原书复核', 'page_crops/ds/page_012_X23.jpg',
+]) {
   if (!html.includes(expected)) throw new Error('question content missing: ' + expected);
 }
 if (html.includes('SECRET_')) throw new Error('answer data leaked');

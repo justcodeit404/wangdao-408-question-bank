@@ -257,11 +257,12 @@ body.viewer-pdf-body {
         var rendered = options.renderQuestion(questions[i], i);
         html.push(questionShell(title, rendered, i, questions.length));
         if ((i + 1) % RENDER_CHUNK_SIZE === 0 || i === questions.length - 1) {
+          items.insertAdjacentHTML('beforeend', html.join(''));
+          html = [];
           status.textContent = '正在排版 ' + (i + 1) + ' / ' + questions.length + ' 题…';
           await yieldToBrowser();
         }
       }
-      items.innerHTML = html.join('');
       hoistFigures(printDoc);
       var images = prepareImages(printDoc);
       status.textContent = images.length ? '正在等待字体与 ' + images.length + ' 张题图加载…' : '正在等待字体加载…';
