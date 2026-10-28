@@ -3692,3 +3692,17 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **回归**：缓存戳 500→501；`fix_one.py` 发布态断言 1 题通过；rebuild 内 `pytest` 150 passed；本机 v501 打详情页，四行正文 x 均 77.5、徽章→正文 12px。
 - **门禁**：`quality_ledger.py --check-published` 把这次题面改动判为**新增**逐题哈希漂移并拦截（存量 2640 条放行、新增必拦）→ `--update-drift-baseline` 固化为 2641 条存量基线（`data/quality/item-hash-drift-baseline.json` 入库），非 bug。
 - **云端**：`push_data.ps1` → `remote __BANK_DATA_VER__=501`，`data-net.json` 200、6 个文件热更；平台 408 池 `sync done, changed 10 failed 0`；公网 `data-net.json?v=501` 四选项已是顿号。其余 21 道混用两种逗号的题未动（等主人点名再扫）。
+
+## 2026-10-28 · 全库选项标点统一（21 道混用全角/半角逗号的题）
+
+- **背景**：net X01 修完后主人说「都修了」，把同一类缺陷一次扫干净。
+- **定位**：扫 `math-bank/data-*.json` 里「同一选项同时出现 `，` 与 `,`」的题，命中 21 道（ds 5 / coa 5 / net 10 / os 1），加已修的 net X01 共 22 道。
+- **分类处理**（不是一刀切）：
+  - 纯 ASCII 选项（IP、MAC、`seq=202,ack=200`、`O(n),O(n)`、`0，3`）→ 半角逗号。注意 `normalize_spaces.py` 的 R3 规定 `,` 后接字母数字**不留空格**，所以最终形态是 `R[ax]=7FCEH,OF=1,SF=0`，不是 `, `。
+  - 中文语境并列项 → 顿号：coa X32 `若x、y和z…`、ds X02 `（构造顺序：3+5、6+9…）`、ds X33 `d左→Null、d右→a；…`（顺带 `;`→`；`）、os X41 `P3、P1、P2`。
+  - 中文语境并列项/分句 → 全角逗号：coa X22 `CF，计算机教育`、coa X13 `x不变，y为010000101，0.001111110…`、net X10(p279) `1条，1条`。
+- **跳过 2 道（假阳性）**：ds X07 `($T_1$,$T_2$,…)` 是数学列表、ds X03 `G={V,{E}}` 是集合记号，那里的半角逗号是记号本体，不是分隔符。
+- **踩到的坑**：补丁里写 `, ` 会被 `normalize_spaces.py` 静默删空格，补丁与发布产物不一致（`fix_one` 断言按去空白比较，所以不会报错）。已把补丁文本对齐成 `,`，重建后缓存戳仍是 502（发布文本未变）。
+- **回归**：`fix_one.py --batch` 一次重建四科、逐题断言 19 通过；`quality_ledger.py --check-published` 0 问题（新增漂移 0 —— 这 19 题本就在 2640 条存量基线内，只有 net X01 是新漂移）。
+- **验收**：公网 `data-{ds,coa,os,net}.json?v=502` 逐题复扫，19 题同一选项内不再混用两种逗号；coa X32 / ds X02 / ds X33 / os X41 的顿号+全角逗号是分工（并列 vs 分句），保留。再跑一次 `push_data.ps1` 得 `no changes, nothing to push`。
+- **云端**：`push_data.ps1` → `remote __BANK_DATA_VER__=502`，四个 `data-*.json` 均 200、9 个文件热更；平台 408 池 `changed 19 failed 0`。
