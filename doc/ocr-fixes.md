@@ -3683,3 +3683,12 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **修复**：打印模式也复用现有 `pageFallbackHtml()`；`questionBelowHtml(..., 'print')` 仍排除答案与解析，不把答案内容带进做题本。
 - **回归**：`pytest tests/test_workbook_export.py` 2 passed，覆盖警告文案、`page_crops/...` 路径与答案隔离；本机 Chromium 打开计组浮点数 X40 所在章，真实打印预览共 46 题，hold 警告 1 条，`page_crops/coa/page_070_X40.jpg` 加载成功（naturalWidth=1058），答案区块 0。
 - **云端**：`push_data.ps1` → `remote __BANK_DATA_VER__=498`，热更 `index.html` / `sw.js` / `app.js` 3 个文件；数据未变，平台 408 题池同步按预期跳过。
+
+## 2026-10-28 · net X01 选项逗号全角/半角混用（主人问「选项为什么不是对齐的」）
+
+- **病征**：X01（p156，「Internet 的网络层含有 4 个重要的协议，分别为（）」）四个选项在详情/练习页看起来左边缘不齐。
+- **根因**：不是布局。截图（708×386）逐行扫描，四行徽章框左边缘同 x，正文首笔 x = 82/81/82/82（1px 为字形反锯齿）；本机同版本实测徽章 x=43、正文 x=77.5、徽章→正文一律 12px（`.option-item` flex + `gap:12px`，`.option-key` 固定 `min-width:1.5rem`）。真正参差的是选项文本混用半角 `,`（无空格，≈4px）与全角 `，`（一个字宽，≈14px）：A/D 半角、B/C 含全角，四个选项里的协议名落在不同 x。全库 2493 道有选项题里 22 道有同种混用。
+- **修复**：按原书答案页 `answer_crops/net/page_170_X01_ans.jpg`（原文「TCP 和 UDP 是传输层协议，IP、ICMP、ARP、RARP…」）统一为顿号：`fix_one.py --course net --chapter IPv4 --qid X01` → `data/quality/page_review_patches.json`，重建 net。
+- **回归**：缓存戳 500→501；`fix_one.py` 发布态断言 1 题通过；rebuild 内 `pytest` 150 passed；本机 v501 打详情页，四行正文 x 均 77.5、徽章→正文 12px。
+- **门禁**：`quality_ledger.py --check-published` 把这次题面改动判为**新增**逐题哈希漂移并拦截（存量 2640 条放行、新增必拦）→ `--update-drift-baseline` 固化为 2641 条存量基线（`data/quality/item-hash-drift-baseline.json` 入库），非 bug。
+- **云端**：`push_data.ps1` → `remote __BANK_DATA_VER__=501`，`data-net.json` 200、6 个文件热更；平台 408 池 `sync done, changed 10 failed 0`；公网 `data-net.json?v=501` 四选项已是顿号。其余 21 道混用两种逗号的题未动（等主人点名再扫）。
