@@ -3706,3 +3706,12 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **回归**：`fix_one.py --batch` 一次重建四科、逐题断言 19 通过；`quality_ledger.py --check-published` 0 问题（新增漂移 0 —— 这 19 题本就在 2640 条存量基线内，只有 net X01 是新漂移）。
 - **验收**：公网 `data-{ds,coa,os,net}.json?v=502` 逐题复扫，19 题同一选项内不再混用两种逗号；coa X32 / ds X02 / ds X33 / os X41 的顿号+全角逗号是分工（并列 vs 分句），保留。再跑一次 `push_data.ps1` 得 `no changes, nothing to push`。
 - **云端**：`push_data.ps1` → `remote __BANK_DATA_VER__=502`，四个 `data-*.json` 均 200、9 个文件热更；平台 408 池 `changed 19 failed 0`。
+
+## 2026-10-28 · net X12 路由表被压成一行（主人问「这一题 OCR 是不是有问题」）
+
+- **病征**：X12（p157，「路由器R0的路由表见下表…目的地址 132.19.237.5」）题干里四行路由表黏成一串：`目的网络下一跳路由器132.0.0.0/8 R1 / 132.0.0.0/11 R2132.19.232.0/22 R3 / 0.0.0.0/0 R4`，表头与行首尾相接。
+- **不是 OCR 数值错**：对源页图 `assets/pdf_images/net/page_157.png` 逐行核对，132.0.0.0/8→R1、132.0.0.0/11→R2、132.19.232.0/22→R3、0.0.0.0/0→R4 全部正确，答案 B（/11 最长前缀，/22 不含 132.19.237.5）也正确。
+- **根因**：`page_review_patches.json` 里这题的 content 补丁是伪表格（`目的网络 下一跳路由器132.0.0.0/8 R1`，没有 `|`）。`normalize_spaces.py` 只对**行首 `|`** 的管道表整行保留空格（R1/R2 规则否则会把「下一跳路由器 132.0.0.0/8」的空格全删），于是四行被拍平成一段。壳（`app.js` 的 `isPipeRow`/`stemTableHtml`）和平台（`frontend/src/lib/katex.ts` 同源逻辑）本来就支持管道表——同科 X57、A08、os X26 等 70 道题都是这么写的，所以病在补丁，不在渲染链路。
+- **修复**：`fix_one.py --batch` 把 content 改成真管道表（题干 + 空行 + 表头 + 分隔行 + 4 行），重建 net；缓存戳 502→503。
+- **回归**：发布态断言 1 题通过；rebuild 内 `pytest` 150 passed；`quality_ledger.py --refresh-hashes --check-published` 0 问题（逐题哈希按去空白比较，纯版式改动不算漂移）；浏览器打开 `/?course=计算机网络&chapter=网络层 · IPv4 · 选择题&q=X12`，详情页已是两列表格、四行对齐。
+- **踩到的坑**：`fix_one.py` 收尾的「重导本机平台题池」会失败——`quality-hold.json` / `quality-ledger.json` 的课程哈希只在 `quality_ledger.py --refresh-hashes` 里刷新，`fix_one` 不跑它。手动刷新后 `import_408_banks.py` 得 `408-cs408-net updated 1`。
