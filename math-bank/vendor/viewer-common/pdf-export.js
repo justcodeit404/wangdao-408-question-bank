@@ -175,7 +175,7 @@ body.viewer-pdf-body {
       '<a class="viewer-pdf-bookmark-save" id="viewerPdfBookmarkSave" hidden>没弹出下载？点这里保存</a>' +
       '<button type="button" id="viewerPdfClose">关闭</button>' +
       '<span class="viewer-pdf-toolbar-hint">打印设置：目标打印机选 <b>“另存为 PDF”</b>，纸张 A4、布局<b>横向</b>，并<b>取消勾选“页眉和页脚”</b>。' +
-      '若用 Microsoft Print to PDF 等系统打印机且布局为纵向，横版页面会被旋转 90° 塞进竖纸。每题一页、不含答案，超长题自动续页。保存后点「为 PDF 加书签」再选一次该文件，就会在浏览器内写入每页可点击跳转的书签（不上传）。</span>' +
+      '若用 Microsoft Print to PDF 等系统打印机且布局为纵向，横版页面会被旋转 90° 塞进竖纸。每题一页、不含答案，超长题自动续页。平台默认直接生成并下载带书签的 PDF；失败时才用打印导出，保存后可再点「为 PDF 加书签」手动补写。</span>' +
       '</div><main class="viewer-pdf-items" id="viewerPdfItems"></main></body></html>';
   }
 
@@ -494,6 +494,27 @@ body.viewer-pdf-body {
     }
   }
 
+  function canAutoDownload() {
+    return !!(global.location && global.location.pathname.indexOf('/banks/') === 0);
+  }
+
+  async function downloadWorkbookPdf(printDoc, title, titles, manualLink) {
+    var response = await global.fetch('/api/study/workbook-export.pdf', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        title: title,
+        html: '<!doctype html>' + printDoc.documentElement.outerHTML,
+        titles: titles,
+        filename: title + '-带书签.pdf',
+      }),
+    });
+    if (!response.ok) throw new Error('PDF 生成接口返回 ' + response.status);
+    var blob = await response.blob();
+    downloadBlob(printDoc, blob, title + '-带书签.pdf', manualLink);
+    return blob.size;
+  }
+
   function downloadBlob(printDoc, blob, filename, manualLink) {
     releaseDownloadUrl();
     var url = global.URL.createObjectURL(blob);
@@ -615,7 +636,21 @@ body.viewer-pdf-body {
       var failedImages = await waitForResources(printDoc, images);
       var layout = measureWorkbook(printDoc, items);
       var entries = buildEntries(layout);
-      if (bookmarkInput) wireBookmarkInput(printDoc, bookmarkInput, bookmarkStatus, buildPageTitles(entries));
+      var pageTitles = buildPageTitles(entries);
+      if (bookmarkInput) wireBookmarkInput(printDoc, bookmarkInput, bookmarkStatus, pageTitles);
+      if (options.autoDownload !== false && canAutoDownload()) {
+        status.textContent = '正在生成带书签的 PDF，题目较多时需要等几秒…';
+        try {
+          var bytes = await downloadWorkbookPdf(
+            printDoc, title, pageTitles, printDoc.getElementById('viewerPdfBookmarkSave')
+          );
+          printButton.disabled = false;
+          status.textContent = '完成：带书签的 PDF 已开始下载（' + Math.max(1, Math.round(bytes / 1024)) + ' KB）。';
+          return true;
+        } catch (error) {
+          status.textContent = '自动生成失败，已保留打印导出：' + (error && error.message ? error.message : String(error));
+        }
+      }
       printButton.disabled = false;
       if (printWindow.closed) return false;
       if (failedImages) {
