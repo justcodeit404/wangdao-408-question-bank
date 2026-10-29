@@ -3723,3 +3723,13 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **修复**：人工框改 `[281,853,820,1023]`，`auto_recrop_figs.py --only net:161:X53` 重裁为 563×194，R1、192.168.1.0/24、R2、192.168.2.0/25、192.168.2.1/130、192.168.2.128/25 全在框内。`rebuild_bank.ps1 -Course net` 经 `fix_questions.existing_stem_crop` 沿用已有裁图（不会按 bbox 反向盖掉）；本次只改图，`data-*.json` 内容不变，缓存戳 503→504 来自壳哈希。
 - **回归**：rebuild 内 `pytest` 150 passed；`tests/test_choice_only_viewer.py` 21 passed（`?v=` / `__BANK_DATA_VER__` / `sw.js` 三处戳一致）。
 - **云端**：`push_data.ps1` → `remote __BANK_DATA_VER__=504`，`crops/net/page_161_X53.png` 远端哈希一致；公网 `/banks/408/crops/net/page_161_X53.png?v=504` 200、563×194。data-*.json 未变，平台 408 池按设计跳过重导。
+
+## 2026-10-29 · net X58/X59 题图下缘与说明框被切（主人「这一题也是一样的问题」）
+
+- **病征**：X58（p162，2016 统考真题，Internet/R1–R3/Switch/Hub/H1–H4 拓扑）裁图 540×300，底部 H1/H2 的 `192.168.3.2`/`.3.3`、H4/H3 的 `.252`/`.251` 全被切掉半行，右上说明框「100Base-T交换机」顶到右边缘。X59 题干是「在上题的图中…」，配的就是同一张图，同样被切。
+- **根因**：这两题没有人工框，自动定位按「题干底→选项顶」取墨迹，主机地址标签落在 y795–804，与选项行 818 只隔 14px，被判成选项带而漏在框外。原页整图实为 x243–816 / y488–804。
+- **修复**：`data/fig_manual_boxes.json` 加 `net:162:X58`、`net:162:X59` = `[233,483,826,809]`（同一张图，两题各存一份），`auto_recrop_figs.py --only` 重裁为 611×349。
+- **坑**：题面文字没变，`data-net.json` 哈希与上次相同，`bump_bank_version.py` 判定「未变化」跳过 → `?v=` 不变，浏览器仍会命中旧裁图。改用 `bump_bank_version.py --force` 把戳 504→505。
+- **回归**：`rebuild_bank.ps1 -Course net` pytest 150 passed；公网 `__BANK_DATA_VER__=505`，两题裁图 `?v=505` 均 200、611×349；实机第 58 题图完整（主机地址、说明框都在框内）。
+- **云端**：`push_data.ps1` → remote 505，2 张裁图哈希核对通过；`data-*.json` 未变，平台 408 池按设计跳过重导。
+- **顺带发现（未改）**：`page_162_X63.png` 顶部混进题干尾行「地址分别是（ ）。」，图本身完整，属裁图带进正文的杂质，等点名再处理。
