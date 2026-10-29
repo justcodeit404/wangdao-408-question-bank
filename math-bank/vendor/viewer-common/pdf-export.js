@@ -103,9 +103,20 @@ body.viewer-pdf-body {
   text-decoration: none; font: inherit;
 }
 .viewer-pdf-toolbar a.viewer-pdf-bookmark-save[hidden] { display: none; }
+/* 题头不用 header 标签：扩展/广告过滤常按 header 注入 ::before/::after 或圆角装饰，
+   打印且关闭背景图形时，圆角边框会剩成页眉中线的两个黑角。 */
+.viewer-pdf-qhead::before,
+.viewer-pdf-qhead::after,
+.viewer-pdf-qhead *::before,
+.viewer-pdf-qhead *::after {
+  content: none !important; display: none !important; border: 0 !important;
+  background: none !important; box-shadow: none !important; width: 0 !important; height: 0 !important;
+}
 @media print {
   html, body, body.viewer-pdf-body { background: #fff !important; }
   body.viewer-pdf-body > *:not(.viewer-pdf-items) { display: none !important; }
+  body.viewer-pdf-body > *:not(.viewer-pdf-items) { visibility: hidden !important; position: static !important; }
+  .viewer-pdf-qhead { border-radius: 0 !important; }
   .viewer-pdf-items { padding: 0; }
   .viewer-pdf-item {
     width: auto; min-height: 0; margin: 0; padding: 0; border: 0; box-shadow: none;
@@ -170,9 +181,52 @@ body.viewer-pdf-body {
 
   function questionShell(title, html, index, total) {
     return '<section class="viewer-pdf-item">' +
-      '<header class="viewer-pdf-qhead"><span class="viewer-pdf-qhead-title">' + escapeHtml(title) + '</span>' +
-      '<span class="viewer-pdf-qhead-count">第 ' + (index + 1) + ' / ' + total + ' 题</span></header>' +
+      '<div class="viewer-pdf-qhead"><span class="viewer-pdf-qhead-title">' + escapeHtml(title) + '</span>' +
+      '<span class="viewer-pdf-qhead-count">第 ' + (index + 1) + ' / ' + total + ' 题</span></div>' +
       '<div class="viewer-pdf-question">' + String(html || '') + '</div></section>';
+  }
+
+  var PRINT_LOCK_CSS = '.viewer-pdf-qhead::before,.viewer-pdf-qhead::after,' +
+    '.viewer-pdf-qhead *::before,.viewer-pdf-qhead *::after{content:none !important;' +
+    'display:none !important;border:0 !important;background:none !important;' +
+    'box-shadow:none !important;width:0 !important;height:0 !important;}';
+
+  /** 打印前去掉扩展插进题头或 body 的外来节点，并把隔离样式挪到最后，压过后注入的规则。 */
+  function lockPrintSurface(printDoc) {
+    stripForeignPrintNodes(printDoc);
+    if (!printDoc || typeof printDoc.createElement !== 'function' || typeof printDoc.getElementById !== 'function') return;
+    var style = printDoc.getElementById('viewerPdfPrintLock');
+    if (!style) {
+      style = printDoc.createElement('style');
+      style.id = 'viewerPdfPrintLock';
+    }
+    style.textContent = PRINT_LOCK_CSS;
+    var parent = printDoc.head || printDoc.documentElement;
+    if (parent && parent.appendChild) parent.appendChild(style);
+  }
+
+  function stripForeignPrintNodes(printDoc) {
+    if (!printDoc || typeof printDoc.querySelectorAll !== 'function') return;
+    var headers = printDoc.querySelectorAll('.viewer-pdf-qhead');
+    for (var i = 0; i < headers.length; i++) {
+      var header = headers[i];
+      if (!header.childNodes || typeof header.removeChild !== 'function') continue;
+      var nodes = Array.prototype.slice.call(header.childNodes);
+      for (var n = 0; n < nodes.length; n++) {
+        var node = nodes[n];
+        var keep = node.nodeType === 1 && node.classList &&
+          (node.classList.contains('viewer-pdf-qhead-title') || node.classList.contains('viewer-pdf-qhead-count'));
+        if (!keep) header.removeChild(node);
+      }
+    }
+    if (!printDoc.body || !printDoc.body.children) return;
+    var extras = Array.prototype.slice.call(printDoc.body.children);
+    for (var j = 0; j < extras.length; j++) {
+      var el = extras[j];
+      if (el.classList && (el.classList.contains('viewer-pdf-toolbar') || el.classList.contains('viewer-pdf-items'))) continue;
+      if (typeof el.remove === 'function') el.remove();
+      else printDoc.body.removeChild(el);
+    }
   }
 
   /**
@@ -532,10 +586,15 @@ body.viewer-pdf-body {
       var bookmarkInput = printDoc.getElementById('viewerPdfBookmarkFile');
       var bookmarkStatus = printDoc.getElementById('viewerPdfBookmarkStatus');
       var closeButton = printDoc.getElementById('viewerPdfClose');
-      printButton.onclick = function () { printWindow.focus(); printWindow.print(); };
+      printButton.onclick = function () {
+        lockPrintSurface(printDoc);
+        printWindow.focus();
+        printWindow.print();
+      };
       closeButton.onclick = function () { releaseDownloadUrl(); printWindow.close(); };
       if (typeof printWindow.addEventListener === 'function') {
         printWindow.addEventListener('pagehide', releaseDownloadUrl);
+        printWindow.addEventListener('beforeprint', function () { lockPrintSurface(printDoc); });
       }
 
       var html = [];
@@ -569,6 +628,7 @@ body.viewer-pdf-body {
       status.textContent = '已准备好 ' + questions.length + ' 道题，可选择“另存为 PDF”。';
       if (options.autoPrint === false) return true;
       await yieldToBrowser();
+      lockPrintSurface(printDoc);
       printWindow.focus();
       printWindow.print();
       return true;
