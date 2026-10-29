@@ -97,6 +97,12 @@ body.viewer-pdf-body {
 }
 .viewer-pdf-toolbar label.viewer-pdf-bookmark:hover { background: #f3f4f6; }
 .viewer-pdf-toolbar label.viewer-pdf-bookmark.is-busy { opacity: .45; cursor: wait; }
+.viewer-pdf-toolbar a.viewer-pdf-bookmark-save {
+  display: inline-flex; align-items: center; padding: 7px 12px;
+  border: 1px solid #1d4ed8; border-radius: 6px; color: #1d4ed8; background: #eff6ff;
+  text-decoration: none; font: inherit;
+}
+.viewer-pdf-toolbar a.viewer-pdf-bookmark-save[hidden] { display: none; }
 @media print {
   html, body, body.viewer-pdf-body { background: #fff !important; }
   body.viewer-pdf-body > *:not(.viewer-pdf-items) { display: none !important; }
@@ -155,6 +161,7 @@ body.viewer-pdf-body {
       '为 PDF 加书签<input type="file" id="viewerPdfBookmarkFile" accept="application/pdf,.pdf" hidden>' +
       '</label>' +
       '<span class="viewer-pdf-toolbar-status" id="viewerPdfBookmarkStatus"></span>' +
+      '<a class="viewer-pdf-bookmark-save" id="viewerPdfBookmarkSave" hidden>没弹出下载？点这里保存</a>' +
       '<button type="button" id="viewerPdfClose">关闭</button>' +
       '<span class="viewer-pdf-toolbar-hint">打印设置：目标打印机选 <b>“另存为 PDF”</b>，纸张 A4、布局<b>横向</b>，并<b>取消勾选“页眉和页脚”</b>。' +
       '若用 Microsoft Print to PDF 等系统打印机且布局为纵向，横版页面会被旋转 90° 塞进竖纸。每题一页、不含答案，超长题自动续页。保存后点「为 PDF 加书签」再选一次该文件，就会在浏览器内写入每页可点击跳转的书签（不上传）。</span>' +
@@ -226,6 +233,7 @@ body.viewer-pdf-body {
   // 书签在浏览器内写入：pdf-lib 与本文件同目录，丢失时回退 CDN
   var PDFLIB_FILE = 'pdf-lib.min.js';
   var PDFLIB_CDN = 'https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js';
+  var SCRIPT_LOAD_TIMEOUT_MS = 8000;
   // pdf-export.js 自身所在目录：独立端口是 vendor/viewer-common/，平台是 /banks/common/
   var SCRIPT_BASE = (function () {
     var script = global.document && global.document.currentScript;
@@ -307,11 +315,22 @@ body.viewer-pdf-body {
         reject(new Error('当前环境不支持加载脚本'));
         return;
       }
+      var settled = false;
+      var timer = null;
+      function finish(error) {
+        if (settled) return;
+        settled = true;
+        global.clearTimeout(timer);
+        if (error) reject(error);
+        else resolve();
+      }
       var script = doc.createElement('script');
       script.src = url;
       script.async = true;
-      script.onload = function () { resolve(); };
-      script.onerror = function () { reject(new Error('无法加载 ' + url)); };
+      script.onload = function () { finish(null); };
+      script.onerror = function () { finish(new Error('无法加载 ' + url)); };
+      // CDN 卡住时不能无限等，超时就换下一个地址
+      timer = global.setTimeout(function () { finish(new Error(url + ' 加载超时')); }, SCRIPT_LOAD_TIMEOUT_MS);
       (doc.head || doc.body || doc.documentElement).appendChild(script);
     });
   }
@@ -387,7 +406,7 @@ body.viewer-pdf-body {
     else el.classList.remove('is-error');
   }
 
-  function downloadBlob(printDoc, blob, filename) {
+  function downloadBlob(printDoc, blob, filename, manualLink) {
     var url = global.URL.createObjectURL(blob);
     var link = printDoc.createElement('a');
     link.href = url;
@@ -395,24 +414,35 @@ body.viewer-pdf-body {
     printDoc.body.appendChild(link);
     link.click();
     printDoc.body.removeChild(link);
-    global.setTimeout(function () { global.URL.revokeObjectURL(url); }, 60000);
+    // 自动下载被浏览器拦掉时，工具栏留一个可点的链接兜底
+    if (manualLink) {
+      manualLink.href = url;
+      manualLink.download = filename;
+      manualLink.hidden = false;
+    }
+    global.setTimeout(function () { global.URL.revokeObjectURL(url); }, 300000);
   }
 
   function wireBookmarkInput(printDoc, input, statusEl, titles) {
     var label = input.parentNode;
+    var saveLink = printDoc.getElementById('viewerPdfBookmarkSave');
     input.onchange = function () {
       var file = input.files && input.files[0];
       if (!file) return;
       input.disabled = true;
+      if (saveLink) saveLink.hidden = true;
       if (label && label.classList) label.classList.add('is-busy');
-      setToolbarStatus(statusEl, '正在为 ' + file.name + ' 写入 ' + titles.length + ' 条书签…', false);
+      setToolbarStatus(statusEl, '正在为 ' + file.name + ' 写入 ' + titles.length +
+        ' 条书签…（首次要加载书签组件，PDF 较大时需等几秒）', false);
       injectBookmarks(file, titles).then(function (result) {
-        downloadBlob(printDoc, new Blob([result.bytes], { type: 'application/pdf' }),
-          file.name.replace(/\.pdf$/i, '') + '-带书签.pdf');
+        var name = file.name.replace(/\.pdf$/i, '') + '-带书签.pdf';
+        downloadBlob(printDoc, new Blob([result.bytes], { type: 'application/pdf' }), name, saveLink);
+        var kb = Math.max(1, Math.round(result.bytes.byteLength / 1024));
         setToolbarStatus(statusEl, result.mismatch
           ? '已写入 ' + result.pageCount + ' 条书签，但这份 PDF 实际 ' + result.pageCount +
             ' 页，与预览推算的 ' + titles.length + ' 页不一致，标题可能错位；请按提示的打印设置重新另存。'
-          : '已写入 ' + result.pageCount + ' 条书签，正在下载。', result.mismatch);
+          : '完成：' + result.pageCount + ' 条书签已写入 ' + name + '（' + kb + ' KB），并交给浏览器下载。' +
+            '没看到文件就到下载列表里找，或点右侧「没弹出下载」链接再存一次。', result.mismatch);
       }).catch(function (error) {
         setToolbarStatus(statusEl, '写入书签失败：' + (error && error.message ? error.message : String(error)), true);
       }).then(function () {
