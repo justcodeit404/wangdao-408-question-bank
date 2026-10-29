@@ -3715,3 +3715,11 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **修复**：`fix_one.py --batch` 把 content 改成真管道表（题干 + 空行 + 表头 + 分隔行 + 4 行），重建 net；缓存戳 502→503。
 - **回归**：发布态断言 1 题通过；rebuild 内 `pytest` 150 passed；`quality_ledger.py --refresh-hashes --check-published` 0 问题（逐题哈希按去空白比较，纯版式改动不算漂移）；浏览器打开 `/?course=计算机网络&chapter=网络层 · IPv4 · 选择题&q=X12`，详情页已是两列表格、四行对齐。
 - **踩到的坑**：`fix_one.py` 收尾的「重导本机平台题池」会失败——`quality-hold.json` / `quality-ledger.json` 的课程哈希只在 `quality_ledger.py --refresh-hashes` 里刷新，`fix_one` 不跑它。手动刷新后 `import_408_banks.py` 得 `408-cs408-net updated 1`。
+
+## 2026-10-29 · net X53 拓扑图右/下被切（主人「这一题图截的不完整」）
+
+- **病征**：X53（p161，2011 统考真题，R1/R2 三子网拓扑）题图只有 509×184，右端 `192.168.2.128/25` 那朵云只剩半截 `192.168.2.12`，R2 与左右网段下缘同样被切。
+- **根因**：`data/fig_manual_boxes.json` 的 `net:161:X53` 人工框 `[275,855,765,1015]` 右边界短了约 50px、下边界压到 R2。原页 `assets/pdf_images/net/page_161.png` 上该图墨迹实为 x289–811 / y861–1014。
+- **修复**：人工框改 `[281,853,820,1023]`，`auto_recrop_figs.py --only net:161:X53` 重裁为 563×194，R1、192.168.1.0/24、R2、192.168.2.0/25、192.168.2.1/130、192.168.2.128/25 全在框内。`rebuild_bank.ps1 -Course net` 经 `fix_questions.existing_stem_crop` 沿用已有裁图（不会按 bbox 反向盖掉）；本次只改图，`data-*.json` 内容不变，缓存戳 503→504 来自壳哈希。
+- **回归**：rebuild 内 `pytest` 150 passed；`tests/test_choice_only_viewer.py` 21 passed（`?v=` / `__BANK_DATA_VER__` / `sw.js` 三处戳一致）。
+- **云端**：`push_data.ps1` → `remote __BANK_DATA_VER__=504`，`crops/net/page_161_X53.png` 远端哈希一致；公网 `/banks/408/crops/net/page_161_X53.png?v=504` 200、563×194。data-*.json 未变，平台 408 池按设计跳过重导。
