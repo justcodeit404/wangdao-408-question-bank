@@ -110,6 +110,13 @@ body.viewer-pdf-body {
 .viewer-pdf-toc-leader { flex: 1 1 8mm; min-width: 8mm; margin: 0 2mm; border-bottom: 1px dotted #9ca3af; }
 .viewer-pdf-toc-page { flex: none; min-width: 9mm; text-align: right; color: #374151; font-variant-numeric: tabular-nums; }
 .viewer-pdf-toc-note { margin: 3mm 0 0; color: #9ca3af; font-size: 8pt; line-height: 1.4; }
+.viewer-pdf-toolbar label.viewer-pdf-bookmark {
+  display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px;
+  border: 1px solid #9ca3af; border-radius: 6px; color: #111827; background: #fff;
+  cursor: pointer; font: inherit;
+}
+.viewer-pdf-toolbar label.viewer-pdf-bookmark:hover { background: #f3f4f6; }
+.viewer-pdf-toolbar label.viewer-pdf-bookmark.is-busy { opacity: .45; cursor: wait; }
 @media print {
   html, body, body.viewer-pdf-body { background: #fff !important; }
   body.viewer-pdf-body > *:not(.viewer-pdf-items) { display: none !important; }
@@ -164,9 +171,13 @@ body.viewer-pdf-body {
       '<span class="viewer-pdf-toolbar-title">' + escapeHtml(title) + '</span>' +
       '<span class="viewer-pdf-toolbar-status" id="viewerPdfStatus">正在准备 ' + count + ' 道题…</span>' +
       '<button type="button" class="viewer-pdf-print-button" id="viewerPdfPrint" disabled>打印 / 保存 PDF</button>' +
+      '<label class="viewer-pdf-bookmark" title="保存 PDF 后选中该文件，在浏览器内直接写入每页书签">' +
+      '为 PDF 加书签<input type="file" id="viewerPdfBookmarkFile" accept="application/pdf,.pdf" hidden>' +
+      '</label>' +
+      '<span class="viewer-pdf-toolbar-status" id="viewerPdfBookmarkStatus"></span>' +
       '<button type="button" id="viewerPdfClose">关闭</button>' +
       '<span class="viewer-pdf-toolbar-hint">打印设置：目标打印机选 <b>“另存为 PDF”</b>，纸张 A4、布局<b>横向</b>，并<b>取消勾选“页眉和页脚”</b>。' +
-      '若用 Microsoft Print to PDF 等系统打印机且布局为纵向，横版页面会被旋转 90° 塞进竖纸。首页为目录（可关闭），其后每题一页、不含答案，超长题自动续页。</span>' +
+      '若用 Microsoft Print to PDF 等系统打印机且布局为纵向，横版页面会被旋转 90° 塞进竖纸。首页为目录（可关闭），其后每题一页、不含答案，超长题自动续页。保存后点「为 PDF 加书签」再选一次该文件，就会在浏览器内写入每页可点击跳转的书签（不上传）。</span>' +
       '</div><main class="viewer-pdf-items" id="viewerPdfItems"></main></body></html>';
   }
 
@@ -235,6 +246,16 @@ body.viewer-pdf-body {
   var TOC_PAGE_WIDTH_MM = 269;
   var TOC_PAGE_HEIGHT_MM = 186;
   var TOC_NOTE = '每题单独起页 · 页码按版面高度推算，超长题续页时其后页码可能有偏差';
+  var BOOKMARK_LABEL_MAX_CHARS = 52;
+  // 书签在浏览器内写入：pdf-lib 与本文件同目录，丢失时回退 CDN
+  var PDFLIB_FILE = 'pdf-lib.min.js';
+  var PDFLIB_CDN = 'https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js';
+  // pdf-export.js 自身所在目录：独立端口是 vendor/viewer-common/，平台是 /banks/common/
+  var SCRIPT_BASE = (function () {
+    var script = global.document && global.document.currentScript;
+    if (!script || !script.src) return '';
+    return script.src.replace(/[?#].*$/, '').replace(/[^/]*$/, '');
+  })();
 
   /**
    * 浏览器打印接口不暴露“总共分了多少页”，目录要标页码只能自己量：
@@ -340,30 +361,52 @@ body.viewer-pdf-body {
     return text.length > TOC_LABEL_MAX_CHARS ? text.slice(0, TOC_LABEL_MAX_CHARS) + '…' : text;
   }
 
-  /** 把目录页插到所有题目之前，返回目录占的页数（0 表示没生成）。 */
-  function insertToc(printDoc, items, questions, options) {
-    if (!items || typeof items.insertAdjacentHTML !== 'function') return 0;
+  /**
+   * 每题起新页：量一遍版面高度，得到每题占几页。
+   * 目录页码和 PDF 书签都基于这份映射，所以即使关掉目录也要算。
+   */
+  function measureWorkbook(printDoc, items) {
     var nodes = typeof items.querySelectorAll === 'function' ? items.querySelectorAll('.viewer-pdf-item') : [];
-    var total = nodes.length;
-    if (!total) return 0;
-
     var pageBox = measurePrintPage(printDoc);
-    var perPage = Math.max(2, measureTocRowsPerPage(printDoc, pageBox) || TOC_FALLBACK_ROWS_PER_PAGE);
-    var tocPageCount = Math.max(1, Math.ceil(total / perPage));
+    var spans = [];
+    for (var i = 0; i < nodes.length; i++) {
+      spans.push(pageBox
+        ? Math.max(1, Math.ceil((itemContentHeight(printDoc, nodes[i]) - 0.5) / pageBox.height))
+        : 1);
+    }
+    return { nodes: nodes, pageBox: pageBox, spans: spans };
+  }
 
+  function tocPagesFor(printDoc, layout) {
+    if (!layout.nodes.length) return 0;
+    var perPage = Math.max(2, measureTocRowsPerPage(printDoc, layout.pageBox) || TOC_FALLBACK_ROWS_PER_PAGE);
+    return Math.max(1, Math.ceil(layout.nodes.length / perPage));
+  }
+
+  function buildEntries(questions, layout, options, tocPageCount) {
     var entries = [];
     var page = tocPageCount + 1;
-    for (var i = 0; i < total; i++) {
-      entries.push({ index: i + 1, label: tocEntryLabel(nodes[i], questions[i], i, options), page: page });
-      page += pageBox ? Math.max(1, Math.ceil((itemContentHeight(printDoc, nodes[i]) - 0.5) / pageBox.height)) : 1;
+    for (var i = 0; i < layout.nodes.length; i++) {
+      entries.push({
+        index: i + 1,
+        label: tocEntryLabel(layout.nodes[i], questions[i], i, options),
+        page: page,
+        span: layout.spans[i],
+      });
+      page += layout.spans[i];
     }
+    return entries;
+  }
 
+  function tocPagesHtml(entries, tocPageCount) {
+    // 按页数均分：ceil(total/pages) 恒 ≤ 实测每页容量
+    var perPage = Math.max(2, Math.ceil(entries.length / tocPageCount));
     var html = '';
     for (var p = 0; p < tocPageCount; p++) {
       var slice = entries.slice(p * perPage, (p + 1) * perPage);
       var half = Math.ceil(slice.length / 2);
       html += '<section class="viewer-pdf-item viewer-pdf-toc">' +
-        tocHeadHtml(p + 1, tocPageCount, total) +
+        tocHeadHtml(p + 1, tocPageCount, entries.length) +
         '<div class="viewer-pdf-toc-columns">' +
         tocColumnHtml(slice.slice(0, half)) +
         tocColumnHtml(slice.slice(half)) +
@@ -371,8 +414,151 @@ body.viewer-pdf-body {
         (p === tocPageCount - 1 ? '<p class="viewer-pdf-toc-note">' + escapeHtml(TOC_NOTE) + '</p>' : '') +
         '</section>';
     }
-    items.insertAdjacentHTML('afterbegin', html);
-    return tocPageCount;
+    return html;
+  }
+
+  function shorten(text, max) {
+    return text.length > max ? text.slice(0, max) + '\u2026' : text;
+  }
+
+  /** 书签标题：一页一条，续页标「续 n」；目录页也各占一条。 */
+  function buildPageTitles(entries, tocPageCount) {
+    var titles = [];
+    for (var p = 1; p <= tocPageCount; p++) {
+      titles.push(tocPageCount > 1 ? '目录 ' + p + '/' + tocPageCount : '目录');
+    }
+    for (var i = 0; i < entries.length; i++) {
+      var entry = entries[i];
+      for (var s = 0; s < entry.span; s++) {
+        titles.push(shorten(s === 0
+          ? '第 ' + entry.index + ' 题 · ' + entry.label
+          : '第 ' + entry.index + ' 题（续 ' + (s + 1) + '）', BOOKMARK_LABEL_MAX_CHARS));
+      }
+    }
+    return titles;
+  }
+
+  function loadScript(url) {
+    return new Promise(function (resolve, reject) {
+      var doc = global.document;
+      if (!doc || typeof doc.createElement !== 'function') {
+        reject(new Error('当前环境不支持加载脚本'));
+        return;
+      }
+      var script = doc.createElement('script');
+      script.src = url;
+      script.async = true;
+      script.onload = function () { resolve(); };
+      script.onerror = function () { reject(new Error('无法加载 ' + url)); };
+      (doc.head || doc.body || doc.documentElement).appendChild(script);
+    });
+  }
+
+  var pdfLibPromise = null;
+
+  /** 惰性加载 pdf-lib：先本地目录，不行再走 CDN（国内 CDN 时好时坏）。 */
+  function loadPdfLib() {
+    if (global.PDFLib) return Promise.resolve(global.PDFLib);
+    if (pdfLibPromise) return pdfLibPromise;
+    var urls = [];
+    if (SCRIPT_BASE) urls.push(SCRIPT_BASE + PDFLIB_FILE);
+    urls.push(PDFLIB_CDN);
+    pdfLibPromise = (async function () {
+      var lastError = null;
+      for (var i = 0; i < urls.length; i++) {
+        try {
+          await loadScript(urls[i]);
+          if (global.PDFLib) return global.PDFLib;
+          lastError = new Error(urls[i] + ' 未暴露 PDFLib');
+        } catch (error) {
+          lastError = error;
+        }
+      }
+      pdfLibPromise = null;
+      throw lastError || new Error('书签组件未加载');
+    })();
+    return pdfLibPromise;
+  }
+
+  /** 把原 PDF 每页写成一条可点击跳转的书签（目录树 /Outlines）。 */
+  async function injectBookmarks(file, titles) {
+    var PDFLib = await loadPdfLib();
+    var doc = await PDFLib.PDFDocument.load(new Uint8Array(await file.arrayBuffer()), {
+      ignoreEncryption: true,
+      updateMetadata: false,
+    });
+    var pages = doc.getPages();
+    if (!pages.length) throw new Error('这份 PDF 没有页面');
+    var name = PDFLib.PDFName.of;
+    var context = doc.context;
+    var items = [];
+    for (var i = 0; i < pages.length; i++) {
+      var dict = context.obj({});
+      dict.set(name('Title'), PDFLib.PDFHexString.fromText(titles[i] || '第 ' + (i + 1) + ' 页'));
+      dict.set(name('Dest'), context.obj([
+        pages[i].ref, name('XYZ'), PDFLib.PDFNull, PDFLib.PDFNull, PDFLib.PDFNull,
+      ]));
+      items.push({ dict: dict, ref: context.register(dict) });
+    }
+    var outlines = context.obj({});
+    var outlinesRef = context.register(outlines);
+    for (var j = 0; j < items.length; j++) {
+      items[j].dict.set(name('Parent'), outlinesRef);
+      if (j > 0) items[j].dict.set(name('Prev'), items[j - 1].ref);
+      if (j < items.length - 1) items[j].dict.set(name('Next'), items[j + 1].ref);
+    }
+    outlines.set(name('Type'), name('Outlines'));
+    outlines.set(name('First'), items[0].ref);
+    outlines.set(name('Last'), items[items.length - 1].ref);
+    outlines.set(name('Count'), PDFLib.PDFNumber.of(items.length));
+    // PageMode=UseOutlines：打开 PDF 时书签栏直接展开
+    doc.catalog.set(name('Outlines'), outlinesRef);
+    doc.catalog.set(name('PageMode'), name('UseOutlines'));
+    return { bytes: await doc.save(), pageCount: pages.length, mismatch: pages.length !== titles.length };
+  }
+
+  function setToolbarStatus(el, text, isError) {
+    if (!el) return;
+    el.textContent = text;
+    if (!el.classList) return;
+    if (isError) el.classList.add('is-error');
+    else el.classList.remove('is-error');
+  }
+
+  function downloadBlob(printDoc, blob, filename) {
+    var url = global.URL.createObjectURL(blob);
+    var link = printDoc.createElement('a');
+    link.href = url;
+    link.download = filename;
+    printDoc.body.appendChild(link);
+    link.click();
+    printDoc.body.removeChild(link);
+    global.setTimeout(function () { global.URL.revokeObjectURL(url); }, 60000);
+  }
+
+  function wireBookmarkInput(printDoc, input, statusEl, titles) {
+    var label = input.parentNode;
+    input.onchange = function () {
+      var file = input.files && input.files[0];
+      if (!file) return;
+      input.disabled = true;
+      if (label && label.classList) label.classList.add('is-busy');
+      setToolbarStatus(statusEl, '正在为 ' + file.name + ' 写入 ' + titles.length + ' 条书签…', false);
+      injectBookmarks(file, titles).then(function (result) {
+        downloadBlob(printDoc, new Blob([result.bytes], { type: 'application/pdf' }),
+          file.name.replace(/\.pdf$/i, '') + '-带书签.pdf');
+        setToolbarStatus(statusEl, result.mismatch
+          ? '已写入 ' + result.pageCount + ' 条书签，但这份 PDF 实际 ' + result.pageCount +
+            ' 页，与预览推算的 ' + titles.length + ' 页不一致，标题可能错位；请按提示的打印设置重新另存。'
+          : '已写入 ' + result.pageCount + ' 条书签，正在下载。', result.mismatch);
+      }).catch(function (error) {
+        setToolbarStatus(statusEl, '写入书签失败：' + (error && error.message ? error.message : String(error)), true);
+      }).then(function () {
+        input.disabled = false;
+        input.value = '';
+        if (label && label.classList) label.classList.remove('is-busy');
+      });
+    };
   }
 
   /**
@@ -413,6 +599,8 @@ body.viewer-pdf-body {
       var items = printDoc.getElementById('viewerPdfItems');
       status = printDoc.getElementById('viewerPdfStatus');
       var printButton = printDoc.getElementById('viewerPdfPrint');
+      var bookmarkInput = printDoc.getElementById('viewerPdfBookmarkFile');
+      var bookmarkStatus = printDoc.getElementById('viewerPdfBookmarkStatus');
       var closeButton = printDoc.getElementById('viewerPdfClose');
       printButton.onclick = function () { printWindow.focus(); printWindow.print(); };
       closeButton.onclick = function () { printWindow.close(); };
@@ -433,12 +621,16 @@ body.viewer-pdf-body {
       var images = prepareImages(printDoc);
       status.textContent = images.length ? '正在等待字体与 ' + images.length + ' 张题图加载…' : '正在等待字体加载…';
       var failedImages = await waitForResources(printDoc, images);
+      var layout = measureWorkbook(printDoc, items);
       var tocPageCount = 0;
-      if (options.toc !== false) {
+      if (options.toc !== false && layout.nodes.length) {
         status.textContent = '正在生成目录…';
         await yieldToBrowser();
-        tocPageCount = insertToc(printDoc, items, questions, options);
+        tocPageCount = tocPagesFor(printDoc, layout);
       }
+      var entries = buildEntries(questions, layout, options, tocPageCount);
+      if (tocPageCount) items.insertAdjacentHTML('afterbegin', tocPagesHtml(entries, tocPageCount));
+      if (bookmarkInput) wireBookmarkInput(printDoc, bookmarkInput, bookmarkStatus, buildPageTitles(entries, tocPageCount));
       printButton.disabled = false;
       if (printWindow.closed) return false;
       if (failedImages) {
@@ -466,5 +658,5 @@ body.viewer-pdf-body {
     }
   }
 
-  global.ViewerPdfExport = { open: open };
+  global.ViewerPdfExport = { open: open, _bookmarkTitles: buildPageTitles };
 })(typeof window !== 'undefined' ? window : globalThis);
