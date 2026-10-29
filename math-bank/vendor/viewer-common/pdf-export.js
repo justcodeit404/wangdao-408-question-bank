@@ -90,6 +90,26 @@ body.viewer-pdf-body {
 .viewer-pdf-question .stem-table { overflow: visible !important; }
 .viewer-pdf-question .q-image-zoom,
 .viewer-pdf-question .zoom-overlay { display: none !important; }
+/* 首页目录：每题一行、双栏铺满 A4 横版；行高固定，才能按行数切页 */
+.viewer-pdf-toc-head {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+  margin: 0 0 4mm; padding-bottom: 2mm; border-bottom: 1px solid #6b7280;
+  color: #111827; font-size: 15pt; font-weight: 700; line-height: 1.3;
+  break-after: avoid; page-break-after: avoid;
+}
+.viewer-pdf-toc-head-meta { color: #6b7280; font-size: 9pt; font-weight: 400; }
+.viewer-pdf-toc-columns { display: flex; align-items: flex-start; gap: 0 12mm; }
+.viewer-pdf-toc-column { flex: 1 1 0; min-width: 0; }
+.viewer-pdf-toc-row {
+  display: flex; align-items: baseline; height: 6.5mm; line-height: 6.2mm;
+  border-bottom: 1px solid #f1f5f9; color: #111827; font-size: 9.5pt;
+  break-inside: avoid; page-break-inside: avoid;
+}
+.viewer-pdf-toc-num { flex: none; width: 17mm; color: #6b7280; font-variant-numeric: tabular-nums; }
+.viewer-pdf-toc-label { flex: 0 1 auto; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.viewer-pdf-toc-leader { flex: 1 1 8mm; min-width: 8mm; margin: 0 2mm; border-bottom: 1px dotted #9ca3af; }
+.viewer-pdf-toc-page { flex: none; min-width: 9mm; text-align: right; color: #374151; font-variant-numeric: tabular-nums; }
+.viewer-pdf-toc-note { margin: 3mm 0 0; color: #9ca3af; font-size: 8pt; line-height: 1.4; }
 @media print {
   html, body, body.viewer-pdf-body { background: #fff !important; }
   body.viewer-pdf-body > *:not(.viewer-pdf-items) { display: none !important; }
@@ -146,7 +166,7 @@ body.viewer-pdf-body {
       '<button type="button" class="viewer-pdf-print-button" id="viewerPdfPrint" disabled>打印 / 保存 PDF</button>' +
       '<button type="button" id="viewerPdfClose">关闭</button>' +
       '<span class="viewer-pdf-toolbar-hint">打印设置：目标打印机选 <b>“另存为 PDF”</b>，纸张 A4、布局<b>横向</b>，并<b>取消勾选“页眉和页脚”</b>。' +
-      '若用 Microsoft Print to PDF 等系统打印机且布局为纵向，横版页面会被旋转 90° 塞进竖纸。每题一页、不含答案，超长题自动续页。</span>' +
+      '若用 Microsoft Print to PDF 等系统打印机且布局为纵向，横版页面会被旋转 90° 塞进竖纸。首页为目录（可关闭），其后每题一页、不含答案，超长题自动续页。</span>' +
       '</div><main class="viewer-pdf-items" id="viewerPdfItems"></main></body></html>';
   }
 
@@ -209,6 +229,152 @@ body.viewer-pdf-body {
     return images.filter(function (img) { return !img.complete || img.naturalWidth === 0; }).length;
   }
 
+  var TOC_FALLBACK_ROWS_PER_PAGE = 40;
+  var TOC_LABEL_MAX_CHARS = 46;
+  // 打印页内容区：A4 横版 297x210mm 去掉 @page 的 14mm/12mm 页边距
+  var TOC_PAGE_WIDTH_MM = 269;
+  var TOC_PAGE_HEIGHT_MM = 186;
+  var TOC_NOTE = '每题单独起页 · 页码按版面高度推算，超长题续页时其后页码可能有偏差';
+
+  /**
+   * 浏览器打印接口不暴露“总共分了多少页”，目录要标页码只能自己量：
+   * 屏幕预览与打印共用同一套 mm 尺寸（297x210 减页边距），按外观高度除以单页
+   * 可用高度即可推出每题占几页，再逐题累加得到起始页码。
+   */
+  function measurePrintPage(printDoc) {
+    if (!printDoc || !printDoc.body || typeof printDoc.createElement !== 'function') return null;
+    var probe = printDoc.createElement('div');
+    probe.setAttribute('aria-hidden', 'true');
+    probe.style.cssText = 'position:absolute;left:-10000px;top:0;visibility:hidden;' +
+      'width:' + TOC_PAGE_WIDTH_MM + 'mm;height:' + TOC_PAGE_HEIGHT_MM + 'mm;';
+    printDoc.body.appendChild(probe);
+    var rect = typeof probe.getBoundingClientRect === 'function' ? probe.getBoundingClientRect() : null;
+    printDoc.body.removeChild(probe);
+    return rect && rect.height ? { width: rect.width, height: rect.height } : null;
+  }
+
+  function boxHeight(printDoc, el, includeMargins) {
+    if (!el || typeof el.getBoundingClientRect !== 'function') return 0;
+    var height = el.getBoundingClientRect().height || 0;
+    var view = printDoc.defaultView || global;
+    if (includeMargins && view && typeof view.getComputedStyle === 'function') {
+      var style = view.getComputedStyle(el);
+      height += (parseFloat(style.marginTop) || 0) + (parseFloat(style.marginBottom) || 0);
+    }
+    return height > 0 ? height : 0;
+  }
+
+  /** 题目页在屏幕上是 297x210mm 加内边距，减掉内边距才是正文实际高度。 */
+  function itemContentHeight(printDoc, item) {
+    if (!item || typeof item.getBoundingClientRect !== 'function') return 0;
+    var height = item.getBoundingClientRect().height || 0;
+    var view = printDoc.defaultView || global;
+    if (view && typeof view.getComputedStyle === 'function') {
+      var style = view.getComputedStyle(item);
+      height -= (parseFloat(style.paddingTop) || 0) + (parseFloat(style.paddingBottom) || 0);
+    }
+    return height > 0 ? height : 0;
+  }
+
+  /** 用与真实目录同类的探针量标题/行/脚注高度，算出一页能排多少行。 */
+  function measureTocRowsPerPage(printDoc, pageBox) {
+    if (!pageBox || !printDoc || !printDoc.body || typeof printDoc.createElement !== 'function') return 0;
+    var probe = printDoc.createElement('section');
+    probe.className = 'viewer-pdf-item viewer-pdf-toc';
+    probe.setAttribute('aria-hidden', 'true');
+    probe.style.cssText = 'position:absolute;left:-10000px;top:0;visibility:hidden;';
+    probe.innerHTML = tocHeadHtml(1, 1, 1) +
+      '<div class="viewer-pdf-toc-columns"><div class="viewer-pdf-toc-column">' +
+      tocRowHtml({ index: 1, label: '示例题目', page: 9 }) +
+      '</div><div class="viewer-pdf-toc-column"></div></div>' +
+      '<p class="viewer-pdf-toc-note">' + escapeHtml(TOC_NOTE) + '</p>';
+    printDoc.body.appendChild(probe);
+    var row = typeof probe.querySelector === 'function' ? probe.querySelector('.viewer-pdf-toc-row') : null;
+    var head = typeof probe.querySelector === 'function' ? probe.querySelector('.viewer-pdf-toc-head') : null;
+    var note = typeof probe.querySelector === 'function' ? probe.querySelector('.viewer-pdf-toc-note') : null;
+    var rows = 0;
+    if (row && head && note) {
+      var rowHeight = boxHeight(printDoc, row, false);
+      // 留 2mm 余量：mm 取整若把最后一行挤到新页，后面所有页码都会漂移
+      var slack = (pageBox.height / TOC_PAGE_HEIGHT_MM) * 2;
+      var usable = pageBox.height - slack - boxHeight(printDoc, head, true) - boxHeight(printDoc, note, true);
+      if (rowHeight > 0 && usable > rowHeight * 2) rows = Math.floor(usable / rowHeight) * 2;
+    }
+    printDoc.body.removeChild(probe);
+    return rows;
+  }
+
+  function tocHeadHtml(pageNo, pageCount, total) {
+    return '<header class="viewer-pdf-toc-head"><span>目录</span>' +
+      '<span class="viewer-pdf-toc-head-meta">共 ' + total + ' 题 · 目录第 ' + pageNo + ' / ' + pageCount + ' 页</span></header>';
+  }
+
+  function tocRowHtml(entry) {
+    return '<div class="viewer-pdf-toc-row">' +
+      '<span class="viewer-pdf-toc-num">第 ' + entry.index + ' 题</span>' +
+      '<span class="viewer-pdf-toc-label">' + escapeHtml(entry.label) + '</span>' +
+      '<span class="viewer-pdf-toc-leader" aria-hidden="true"></span>' +
+      '<span class="viewer-pdf-toc-page">' + entry.page + '</span></div>';
+  }
+
+  function tocColumnHtml(rows) {
+    var html = '<div class="viewer-pdf-toc-column">';
+    for (var i = 0; i < rows.length; i++) html += tocRowHtml(rows[i]);
+    return html + '</div>';
+  }
+
+  /** 目录标签：宿主可用 tocLabel(q, index) 覆盖，否则取题干前几十字。 */
+  function tocEntryLabel(item, question, index, options) {
+    if (options && typeof options.tocLabel === 'function') {
+      try {
+        var custom = options.tocLabel(question, index);
+        if (custom != null && String(custom).trim()) return String(custom).trim();
+      } catch (error) {
+        // 宿主标签出错时退回题干摘要，别让目录拖垮整份导出
+      }
+    }
+    var body = item && typeof item.querySelector === 'function' ? item.querySelector('.viewer-pdf-question') : null;
+    var text = body && body.textContent ? String(body.textContent) : '';
+    text = text.replace(/\s+/g, ' ').trim();
+    if (!text) return '第 ' + (index + 1) + ' 题';
+    return text.length > TOC_LABEL_MAX_CHARS ? text.slice(0, TOC_LABEL_MAX_CHARS) + '…' : text;
+  }
+
+  /** 把目录页插到所有题目之前，返回目录占的页数（0 表示没生成）。 */
+  function insertToc(printDoc, items, questions, options) {
+    if (!items || typeof items.insertAdjacentHTML !== 'function') return 0;
+    var nodes = typeof items.querySelectorAll === 'function' ? items.querySelectorAll('.viewer-pdf-item') : [];
+    var total = nodes.length;
+    if (!total) return 0;
+
+    var pageBox = measurePrintPage(printDoc);
+    var perPage = Math.max(2, measureTocRowsPerPage(printDoc, pageBox) || TOC_FALLBACK_ROWS_PER_PAGE);
+    var tocPageCount = Math.max(1, Math.ceil(total / perPage));
+
+    var entries = [];
+    var page = tocPageCount + 1;
+    for (var i = 0; i < total; i++) {
+      entries.push({ index: i + 1, label: tocEntryLabel(nodes[i], questions[i], i, options), page: page });
+      page += pageBox ? Math.max(1, Math.ceil((itemContentHeight(printDoc, nodes[i]) - 0.5) / pageBox.height)) : 1;
+    }
+
+    var html = '';
+    for (var p = 0; p < tocPageCount; p++) {
+      var slice = entries.slice(p * perPage, (p + 1) * perPage);
+      var half = Math.ceil(slice.length / 2);
+      html += '<section class="viewer-pdf-item viewer-pdf-toc">' +
+        tocHeadHtml(p + 1, tocPageCount, total) +
+        '<div class="viewer-pdf-toc-columns">' +
+        tocColumnHtml(slice.slice(0, half)) +
+        tocColumnHtml(slice.slice(half)) +
+        '</div>' +
+        (p === tocPageCount - 1 ? '<p class="viewer-pdf-toc-note">' + escapeHtml(TOC_NOTE) + '</p>' : '') +
+        '</section>';
+    }
+    items.insertAdjacentHTML('afterbegin', html);
+    return tocPageCount;
+  }
+
   /**
    * Open a printable workbook. The popup is created before the first await so
    * browsers still treat it as part of the user's click gesture.
@@ -267,6 +433,12 @@ body.viewer-pdf-body {
       var images = prepareImages(printDoc);
       status.textContent = images.length ? '正在等待字体与 ' + images.length + ' 张题图加载…' : '正在等待字体加载…';
       var failedImages = await waitForResources(printDoc, images);
+      var tocPageCount = 0;
+      if (options.toc !== false) {
+        status.textContent = '正在生成目录…';
+        await yieldToBrowser();
+        tocPageCount = insertToc(printDoc, items, questions, options);
+      }
       printButton.disabled = false;
       if (printWindow.closed) return false;
       if (failedImages) {
@@ -276,7 +448,9 @@ body.viewer-pdf-body {
         return false;
       }
 
-      status.textContent = '已准备好 ' + questions.length + ' 道题，可选择“另存为 PDF”。';
+      status.textContent = tocPageCount
+        ? '已准备好 ' + questions.length + ' 道题（含 ' + tocPageCount + ' 页目录），可选择“另存为 PDF”。'
+        : '已准备好 ' + questions.length + ' 道题，可选择“另存为 PDF”。';
       if (options.autoPrint === false) return true;
       await yieldToBrowser();
       printWindow.focus();
