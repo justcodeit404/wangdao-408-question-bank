@@ -3741,3 +3741,14 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **回归**：发布态断言通过；`rebuild_bank.ps1 -Course net` pytest 150 passed；缓存戳 505→506；`q_lookup.py --check` 平台池 id=21324 与题库一致。
 - **云端**：`push_data.ps1` → `remote __BANK_DATA_VER__=506`，`data-net.json` 200，平台 408 池 `changed 1 failed 0`；公网 `data-net.json?v=506` 题干已无重复段，实机第 58 题只剩一句话题干 + 完整拓扑图。
 - **坑**：`fix_one` 收尾的本机池重导会因缺 `SECRET_KEY` 报错（不是池坏了）；刷新哈希后用临时随机 `SECRET_KEY` 跑 `platform-v2/backend/scripts/import_408_banks.py` 即 `changed 1 failed 0`。
+
+## 2026-10-29 · net X71 VLAN 交换机题：题干预混入图内文字 + 裁图只剩顶条（主人「题干和图都有问题」）
+
+- **病征**：X71（p164，2024 统考真题）题干末尾黏了一大串图内文字：`VLAN1 VLAN2 VLAN3 / H1 / 13 14 15 16 17!! 18 19 2021 22 23 / 00-3E-C2-39-12-B5中中中凸只H2 / 2 3 4 5116 8ii 9 10 11 12 / …`；题图裁图只有 589×72，只剩「H1」和三个 VLAN 标签，交换机面板、24 个端口、H1–H7 的 IP/MAC 全没了。
+- **根因**：这幅图是「面板图 + 大量文字标注」，OCR 把图内标注并进了题干；同时该题 bbox 的纵向范围到 VLAN 标签那一带就结束，自动定位只截到图的顶条，没有人工框。
+- **修复**：
+  1. `fix_one.py --course net --chapter IPv4 --qid X71` 把 content 截到「不会出现在 H4 的 ARP 表中的是（）。」为止（图内文字不再重复进题干）；
+  2. `data/fig_manual_boxes.json` 加 `net:164:X71` = `[187,303,872,560]`，`auto_recrop_figs.py --only net:164:X71` 重裁 695×277，VLAN1/2/3 分组虚线、端口 1–24、交换机、H1–H7 的 IP 与 MAC 全在框内。
+- **回归**：发布态断言通过；`rebuild_bank.ps1 -Course net` pytest 150 passed；缓存戳 506→507。
+- **云端**：`push_data.ps1` → `remote __BANK_DATA_VER__=507`，`data-net.json` 200、裁图哈希一致，平台 408 池 `changed 1 failed 0`；公网 `data-net.json?v=507` 题干已无图内文字，`crops/...?v=507` 200、695×277；实机第 71 题题干一句话 + 整幅图。
+- **备注**：本机池补导仍需临时 `SECRET_KEY`（同 X58 那条）。
