@@ -3761,3 +3761,12 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **踩到的坑**：改台账时先按「新增」写了一段，结果文件里出现两个同名 `net:164:X72` 键（JSON 允许重复、Python 取后者），重裁仍用旧框；删掉旧条目后才生效。以后动 `fig_manual_boxes.json` 先 `grep` 该 key。
 - **回归**：`rebuild_bank.ps1 -Course net` pytest 150 passed；`bump_bank_version.py --force` 507→508（只换图，数据哈希不变）。
 - **云端**：`push_data.ps1` → `remote __BANK_DATA_VER__=508`，裁图哈希一致；公网 `crops/net/page_164_X72.png?v=508` 200、339×254。`data-*.json` 未变，平台 408 池跳过重导。
+
+## 2026-10-29 · net X27 距离向量表格被渲染成一串文字（主人「这一题没有渲染好」）
+
+- **病征**：X27（p205，2021 统考真题）题干里的「目的网络 / A、B、C、D 的距离向量」表格渲染成一段文字：竖线原样露出，`Net3`、`Net4` 还黏在上一行行尾。
+- **根因**：OCR 出来的表行形如 `目的网络 | A的距离向量 | …`，行首行尾没有 `|`，也没有 `| --- |` 分隔行，`isPipeRow()`（`math-bank/app.js:2937`）认不出表格；随后 `reflowOcrSoftWraps()`（`app.js:321`）把这些行当软换行合并，`Net2 | … | 28` 与 `Net3 | …` 被拼成一行，只有第一行因「如下表所示」触发结构断行留下一个 `<br>`。
+- **修复**：`fix_one.py --course net --chapter 路由算法与路由协议 --qid X27` 只改 content，写成带首尾 `|` 和 `| --- | --- | --- | --- | --- |` 的标准管道表，交给 `stemTableHtml()` 渲染。
+- **回归**：发布态断言通过；`rebuild_bank.ps1 -Course net` pytest 150 passed；缓存戳 511→512。
+- **云端**：`push_data.ps1` → `remote __BANK_DATA_VER__=512`，`data-net.json` 200，平台 408 池 `changed 1 failed 0`，未重启服务；公网实机是 5 列表头 + Net1～Net4 四行真表格，题干正文止于「分别是（）。」。
+- **备注**：全库扫过，只有这一题真坏（`coa X09` 的 `|x| < 1.0×2^{-126}` 是绝对值，别按表格处理）。该题 explanation 里同款表也是空格分隔，但答案区已有原书裁图、`shouldHideExplanationProse()` 会隐去正文，故没动。本机池补导仍需临时 `SECRET_KEY`（同 X58/X71）。
