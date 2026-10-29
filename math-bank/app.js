@@ -2911,13 +2911,24 @@ function workbookQuestionHtml(q) {
   return container.innerHTML;
 }
 
+/** 导出文件名：课程 + 当前选中的二级标题（未选时为全部章节）。 */
+function workbookExportTitle() {
+  const course = getCurrentCourse() || '';
+  let section = '全部章节';
+  if (selectedChapter) {
+    const parts = String(selectedChapter).split('|');
+    section = parts[1] || parts[0] || section;
+  }
+  return [course, section].filter(Boolean).join(' · ');
+}
+
 function exportFilteredWorkbook() {
   if (!window.ViewerPdfExport) {
     alert('做题本导出组件未加载，请刷新后重试');
     return;
   }
   void window.ViewerPdfExport.open({
-    title: document.title + ' · 当前筛选',
+    title: workbookExportTitle(),
     questions: filteredQuestions,
     renderQuestion: workbookQuestionHtml,
   });
@@ -5859,7 +5870,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=508').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=509').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {

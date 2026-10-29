@@ -220,8 +220,6 @@ body.viewer-pdf-body {
     return images.filter(function (img) { return !img.complete || img.naturalWidth === 0; }).length;
   }
 
-  var ENTRY_LABEL_MAX_CHARS = 46;
-  var BOOKMARK_LABEL_MAX_CHARS = 52;
   // 打印页内容区：A4 横版 297x210mm 去掉 @page 的 14mm/12mm 页边距
   var PAGE_WIDTH_MM = 269;
   var PAGE_HEIGHT_MM = 186;
@@ -264,23 +262,6 @@ body.viewer-pdf-body {
     return height > 0 ? height : 0;
   }
 
-  /** 书签标题摘要：宿主可用 bookmarkLabel(q, index) 覆盖，否则取题干前几十字。 */
-  function bookmarkEntryLabel(item, question, index, options) {
-    if (options && typeof options.bookmarkLabel === 'function') {
-      try {
-        var custom = options.bookmarkLabel(question, index);
-        if (custom != null && String(custom).trim()) return String(custom).trim();
-      } catch (error) {
-        // 宿主标签出错时退回题干摘要，别让书签拖垮整份导出
-      }
-    }
-    var body = item && typeof item.querySelector === 'function' ? item.querySelector('.viewer-pdf-question') : null;
-    var text = body && body.textContent ? String(body.textContent) : '';
-    text = text.replace(/\s+/g, ' ').trim();
-    if (!text) return '第 ' + (index + 1) + ' 题';
-    return text.length > ENTRY_LABEL_MAX_CHARS ? text.slice(0, ENTRY_LABEL_MAX_CHARS) + '…' : text;
-  }
-
   /**
    * 每题起新页：量一遍版面高度，得到每题占几页。
    * PDF 书签的页码就靠这份映射。
@@ -297,34 +278,23 @@ body.viewer-pdf-body {
     return { nodes: nodes, pageBox: pageBox, spans: spans };
   }
 
-  function buildEntries(questions, layout, options) {
+  function buildEntries(layout) {
     var entries = [];
     var page = 1;
     for (var i = 0; i < layout.nodes.length; i++) {
-      entries.push({
-        index: i + 1,
-        label: bookmarkEntryLabel(layout.nodes[i], questions[i], i, options),
-        page: page,
-        span: layout.spans[i],
-      });
+      entries.push({ index: i + 1, page: page, span: layout.spans[i] });
       page += layout.spans[i];
     }
     return entries;
   }
 
-  function shorten(text, max) {
-    return text.length > max ? text.slice(0, max) + '\u2026' : text;
-  }
-
-  /** 书签标题：一页一条，续页标「续 n」。 */
+  /** 书签标题：一页一条，只标题号；续页标「续 n」。 */
   function buildPageTitles(entries) {
     var titles = [];
     for (var i = 0; i < entries.length; i++) {
       var entry = entries[i];
       for (var s = 0; s < entry.span; s++) {
-        titles.push(shorten(s === 0
-          ? '第 ' + entry.index + ' 题 · ' + entry.label
-          : '第 ' + entry.index + ' 题（续 ' + (s + 1) + '）', BOOKMARK_LABEL_MAX_CHARS));
+        titles.push(s === 0 ? '第 ' + entry.index + ' 题' : '第 ' + entry.index + ' 题（续 ' + (s + 1) + '）');
       }
     }
     return titles;
@@ -514,7 +484,7 @@ body.viewer-pdf-body {
       status.textContent = images.length ? '正在等待字体与 ' + images.length + ' 张题图加载…' : '正在等待字体加载…';
       var failedImages = await waitForResources(printDoc, images);
       var layout = measureWorkbook(printDoc, items);
-      var entries = buildEntries(questions, layout, options);
+      var entries = buildEntries(layout);
       if (bookmarkInput) wireBookmarkInput(printDoc, bookmarkInput, bookmarkStatus, buildPageTitles(entries));
       printButton.disabled = false;
       if (printWindow.closed) return false;
@@ -541,5 +511,5 @@ body.viewer-pdf-body {
     }
   }
 
-  global.ViewerPdfExport = { open: open, _bookmarkTitles: buildPageTitles, _bookmarkLabel: bookmarkEntryLabel };
+  global.ViewerPdfExport = { open: open, _bookmarkTitles: buildPageTitles };
 })(typeof window !== 'undefined' ? window : globalThis);
