@@ -272,7 +272,9 @@ body.viewer-pdf-body {
 
   /**
    * 每题起新页：量一遍版面高度，得到每题占几页。
-   * PDF 书签的页码就靠这份映射。
+   * PDF 书签的页码就靠这份映射。这里只按连续高度估算，break-inside: avoid
+   * 的内容块会把整块挤到下一页、留下页尾空白，实际页数可能比估算多；
+   * 注入书签时会用实际 PDF 页数核对，对不上就整份降级为通用页码。
    */
   function measureWorkbook(printDoc, items) {
     var nodes = typeof items.querySelectorAll === 'function' ? items.querySelectorAll('.viewer-pdf-item') : [];
@@ -361,7 +363,18 @@ body.viewer-pdf-body {
     return pdfLibPromise;
   }
 
-  /** 把原 PDF 每页写成一条可点击跳转的书签（目录树 /Outlines）。 */
+  /** 页数对不上时的通用标题：题号页码已不可信，只保留能跳对的页。 */
+  function genericPageTitles(count) {
+    var titles = [];
+    for (var i = 0; i < count; i++) titles.push('第 ' + (i + 1) + ' 页');
+    return titles;
+  }
+
+  /**
+   * 把原 PDF 每页写成一条可点击跳转的书签（目录树 /Outlines）。
+   * 实际页数与预览推算对不上（不可拆分内容块会强制换页）时，题号页码必然错位，
+   * 整份降级为「第 N 页」；宁可只标页，也不写入会跳错题的书签。
+   */
   async function injectBookmarks(file, titles) {
     var PDFLib = await loadPdfLib();
     var doc = await PDFLib.PDFDocument.load(new Uint8Array(await file.arrayBuffer()), {
@@ -370,15 +383,16 @@ body.viewer-pdf-body {
     });
     var pages = doc.getPages();
     if (!pages.length) throw new Error('这份 PDF 没有页面');
+    var mismatch = pages.length !== titles.length;
+    var pageTitles = mismatch ? genericPageTitles(pages.length) : titles;
     var name = PDFLib.PDFName.of;
     var context = doc.context;
     var items = [];
     for (var i = 0; i < pages.length; i++) {
       var dict = context.obj({});
-      dict.set(name('Title'), PDFLib.PDFHexString.fromText(titles[i] || '第 ' + (i + 1) + ' 页'));
-      dict.set(name('Dest'), context.obj([
-        pages[i].ref, name('XYZ'), PDFLib.PDFNull, PDFLib.PDFNull, PDFLib.PDFNull,
-      ]));
+      dict.set(name('Title'), PDFLib.PDFHexString.fromText(pageTitles[i] || '第 ' + (i + 1) + ' 页'));
+      // /Fit 整页适配：比 /XYZ 无缩放更不容易出现只露半页的跳转
+      dict.set(name('Dest'), context.obj([pages[i].ref, name('Fit')]));
       items.push({ dict: dict, ref: context.register(dict) });
     }
     var outlines = context.obj({});
@@ -395,7 +409,12 @@ body.viewer-pdf-body {
     // PageMode=UseOutlines：打开 PDF 时书签栏直接展开
     doc.catalog.set(name('Outlines'), outlinesRef);
     doc.catalog.set(name('PageMode'), name('UseOutlines'));
-    return { bytes: await doc.save(), pageCount: pages.length, mismatch: pages.length !== titles.length };
+    return {
+      bytes: await doc.save(),
+      pageCount: pages.length,
+      expectedPageCount: titles.length,
+      mismatch: mismatch,
+    };
   }
 
   function setToolbarStatus(el, text, isError) {
@@ -406,8 +425,25 @@ body.viewer-pdf-body {
     else el.classList.remove('is-error');
   }
 
+  // 工具栏兜底链接指向的 Blob URL。链接可能一直挂着，不能定时 revoke 变成死链；
+  // 下次导出或打印窗口关闭时释放，既不泄漏也不会让可见链接失效。
+  var activeDownloadUrl = null;
+
+  function releaseDownloadUrl() {
+    if (!activeDownloadUrl) return;
+    var url = activeDownloadUrl;
+    activeDownloadUrl = null;
+    try {
+      global.URL.revokeObjectURL(url);
+    } catch (error) {
+      // 环境不支持 revoke 时忽略：URL 已不再被引用，交给页面回收
+    }
+  }
+
   function downloadBlob(printDoc, blob, filename, manualLink) {
+    releaseDownloadUrl();
     var url = global.URL.createObjectURL(blob);
+    activeDownloadUrl = url;
     var link = printDoc.createElement('a');
     link.href = url;
     link.download = filename;
@@ -420,7 +456,6 @@ body.viewer-pdf-body {
       manualLink.download = filename;
       manualLink.hidden = false;
     }
-    global.setTimeout(function () { global.URL.revokeObjectURL(url); }, 300000);
   }
 
   function wireBookmarkInput(printDoc, input, statusEl, titles) {
@@ -430,17 +465,20 @@ body.viewer-pdf-body {
       var file = input.files && input.files[0];
       if (!file) return;
       input.disabled = true;
+      // 旧兜底链接已隐藏，它引用的 Blob URL 也不再需要
       if (saveLink) saveLink.hidden = true;
+      releaseDownloadUrl();
       if (label && label.classList) label.classList.add('is-busy');
       setToolbarStatus(statusEl, '正在为 ' + file.name + ' 写入 ' + titles.length +
         ' 条书签…（首次要加载书签组件，PDF 较大时需等几秒）', false);
-      injectBookmarks(file, titles).then(function (result) {
+      return injectBookmarks(file, titles).then(function (result) {
         var name = file.name.replace(/\.pdf$/i, '') + '-带书签.pdf';
         downloadBlob(printDoc, new Blob([result.bytes], { type: 'application/pdf' }), name, saveLink);
         var kb = Math.max(1, Math.round(result.bytes.byteLength / 1024));
         setToolbarStatus(statusEl, result.mismatch
-          ? '已写入 ' + result.pageCount + ' 条书签，但这份 PDF 实际 ' + result.pageCount +
-            ' 页，与预览推算的 ' + titles.length + ' 页不一致，标题可能错位；请按提示的打印设置重新另存。'
+          ? '实际 ' + result.pageCount + ' 页，预览推算 ' + result.expectedPageCount +
+            ' 页：已降级为通用页码书签（第 1 页…第 ' + result.pageCount +
+            ' 页），不再标题目号，避免跳错页。'
           : '完成：' + result.pageCount + ' 条书签已写入 ' + name + '（' + kb + ' KB），并交给浏览器下载。' +
             '没看到文件就到下载列表里找，或点右侧「没弹出下载」链接再存一次。', result.mismatch);
       }).catch(function (error) {
@@ -495,7 +533,10 @@ body.viewer-pdf-body {
       var bookmarkStatus = printDoc.getElementById('viewerPdfBookmarkStatus');
       var closeButton = printDoc.getElementById('viewerPdfClose');
       printButton.onclick = function () { printWindow.focus(); printWindow.print(); };
-      closeButton.onclick = function () { printWindow.close(); };
+      closeButton.onclick = function () { releaseDownloadUrl(); printWindow.close(); };
+      if (typeof printWindow.addEventListener === 'function') {
+        printWindow.addEventListener('pagehide', releaseDownloadUrl);
+      }
 
       var html = [];
       for (var i = 0; i < questions.length; i++) {
@@ -541,5 +582,9 @@ body.viewer-pdf-body {
     }
   }
 
-  global.ViewerPdfExport = { open: open, _bookmarkTitles: buildPageTitles };
+  global.ViewerPdfExport = {
+    open: open,
+    _bookmarkTitles: buildPageTitles,
+    _injectBookmarks: injectBookmarks,
+  };
 })(typeof window !== 'undefined' ? window : globalThis);
