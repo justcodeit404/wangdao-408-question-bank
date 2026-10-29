@@ -662,6 +662,7 @@ body.viewer-pdf-body {
           frameDoc.title = title;
           var rendered = await renderWorkbookDoc(frameDoc, options, questions, title);
           if (!rendered) return false;
+          if (rendered.failedImages) throw new Error(rendered.failedImages + ' 张题图未加载成功');
           await downloadWorkbookPdf(frameDoc, title, rendered.pageTitles, null);
           return true;
         } catch (error) {
