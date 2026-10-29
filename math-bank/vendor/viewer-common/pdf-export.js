@@ -567,8 +567,70 @@ body.viewer-pdf-body {
   }
 
   /**
+   * 自动下载路径的排版容器：屏幕外定位的隐藏 iframe。
+   * display:none 的 iframe 不布局、不加载题图，所以用 left:-10000px 隐藏。
+   */
+  function createRenderFrame() {
+    var doc = global.document;
+    if (!doc || typeof doc.createElement !== 'function') return null;
+    var parent = doc.body || doc.documentElement;
+    if (!parent || typeof parent.appendChild !== 'function') return null;
+    var iframe = doc.createElement('iframe');
+    if (!iframe || typeof iframe.setAttribute !== 'function') return null;
+    iframe.setAttribute('aria-hidden', 'true');
+    if (iframe.style) {
+      iframe.style.cssText = 'position:fixed;left:-10000px;top:0;width:1200px;height:800px;border:0;';
+    }
+    parent.appendChild(iframe);
+    return iframe;
+  }
+
+  function removeRenderFrame(iframe) {
+    if (!iframe || iframe.__workbookFrameRemoved) return;
+    iframe.__workbookFrameRemoved = true;
+    try {
+      if (typeof iframe.remove === 'function') iframe.remove();
+      else if (iframe.parentNode && typeof iframe.parentNode.removeChild === 'function') {
+        iframe.parentNode.removeChild(iframe);
+      }
+    } catch (error) {
+      // 已脱离文档时忽略
+    }
+  }
+
+  /**
+   * 把题目排版进目标文档（打印预览窗或隐藏 iframe）：渲染题目、等待字体题图、
+   * 量出每题页数。isClosed 用于预览窗中途被用户关闭；返回 null 表示已中止。
+   */
+  async function renderWorkbookDoc(printDoc, options, questions, title, isClosed) {
+    var items = printDoc.getElementById('viewerPdfItems');
+    var status = printDoc.getElementById('viewerPdfStatus');
+    var html = [];
+    for (var i = 0; i < questions.length; i++) {
+      if (isClosed && isClosed()) return null;
+      var rendered = options.renderQuestion(questions[i], i);
+      html.push(questionShell(title, rendered, i, questions.length));
+      if ((i + 1) % RENDER_CHUNK_SIZE === 0 || i === questions.length - 1) {
+        items.insertAdjacentHTML('beforeend', html.join(''));
+        html = [];
+        status.textContent = '正在排版 ' + (i + 1) + ' / ' + questions.length + ' 题…';
+        await yieldToBrowser();
+      }
+    }
+    hoistFigures(printDoc);
+    var images = prepareImages(printDoc);
+    status.textContent = images.length ? '正在等待字体与 ' + images.length + ' 张题图加载…' : '正在等待字体加载…';
+    var failedImages = await waitForResources(printDoc, images);
+    var layout = measureWorkbook(printDoc, items);
+    return { pageTitles: buildPageTitles(buildEntries(layout)), failedImages: failedImages };
+  }
+
+  /**
    * Open a printable workbook. The popup is created before the first await so
    * browsers still treat it as part of the user's click gesture.
+   *
+   * 平台 /banks/* 优先走静默路径：在隐藏 iframe 里排版并交给后端生成 PDF，
+   * 全程不弹任何窗口；接口失败才回退到打印预览窗。
    */
   async function open(options) {
     options = options || {};
@@ -587,6 +649,29 @@ body.viewer-pdf-body {
       '当前共 ' + questions.length + ' 道题，预计至少生成 ' + questions.length + ' 页 PDF（超长题会续页）。继续吗？'
     )) return false;
 
+    var autoError = null;
+    if (options.autoDownload !== false && canAutoDownload()) {
+      var iframe = createRenderFrame();
+      var frameDoc = iframe && (iframe.contentDocument ||
+        (iframe.contentWindow && iframe.contentWindow.document));
+      if (frameDoc) {
+        try {
+          frameDoc.open();
+          frameDoc.write(documentShell(title, questions.length));
+          frameDoc.close();
+          frameDoc.title = title;
+          var rendered = await renderWorkbookDoc(frameDoc, options, questions, title);
+          if (!rendered) return false;
+          await downloadWorkbookPdf(frameDoc, title, rendered.pageTitles, null);
+          return true;
+        } catch (error) {
+          autoError = error;
+        } finally {
+          removeRenderFrame(iframe);
+        }
+      }
+    }
+
     var printWindow = global.open('', '_blank');
     if (!printWindow) {
       alertHost('浏览器拦截了打印窗口。请允许本站打开弹窗后重试。');
@@ -601,7 +686,6 @@ body.viewer-pdf-body {
       printDoc.close();
       printDoc.title = title;
 
-      var items = printDoc.getElementById('viewerPdfItems');
       status = printDoc.getElementById('viewerPdfStatus');
       var printButton = printDoc.getElementById('viewerPdfPrint');
       var bookmarkInput = printDoc.getElementById('viewerPdfBookmarkFile');
@@ -618,49 +702,25 @@ body.viewer-pdf-body {
         printWindow.addEventListener('beforeprint', function () { lockPrintSurface(printDoc); });
       }
 
-      var html = [];
-      for (var i = 0; i < questions.length; i++) {
-        if (printWindow.closed) return false;
-        var rendered = options.renderQuestion(questions[i], i);
-        html.push(questionShell(title, rendered, i, questions.length));
-        if ((i + 1) % RENDER_CHUNK_SIZE === 0 || i === questions.length - 1) {
-          items.insertAdjacentHTML('beforeend', html.join(''));
-          html = [];
-          status.textContent = '正在排版 ' + (i + 1) + ' / ' + questions.length + ' 题…';
-          await yieldToBrowser();
-        }
-      }
-      hoistFigures(printDoc);
-      var images = prepareImages(printDoc);
-      status.textContent = images.length ? '正在等待字体与 ' + images.length + ' 张题图加载…' : '正在等待字体加载…';
-      var failedImages = await waitForResources(printDoc, images);
-      var layout = measureWorkbook(printDoc, items);
-      var entries = buildEntries(layout);
-      var pageTitles = buildPageTitles(entries);
-      if (bookmarkInput) wireBookmarkInput(printDoc, bookmarkInput, bookmarkStatus, pageTitles);
-      if (options.autoDownload !== false && canAutoDownload()) {
-        status.textContent = '正在生成带书签的 PDF，题目较多时需要等几秒…';
-        try {
-          var bytes = await downloadWorkbookPdf(
-            printDoc, title, pageTitles, printDoc.getElementById('viewerPdfBookmarkSave')
-          );
-          printButton.disabled = false;
-          status.textContent = '完成：带书签的 PDF 已开始下载（' + Math.max(1, Math.round(bytes / 1024)) + ' KB）。';
-          return true;
-        } catch (error) {
-          status.textContent = '自动生成失败，已保留打印导出：' + (error && error.message ? error.message : String(error));
-        }
-      }
+      var preview = await renderWorkbookDoc(printDoc, options, questions, title, function () {
+        return printWindow.closed;
+      });
+      if (!preview) return false;
+      if (bookmarkInput) wireBookmarkInput(printDoc, bookmarkInput, bookmarkStatus, preview.pageTitles);
       printButton.disabled = false;
       if (printWindow.closed) return false;
-      if (failedImages) {
-        status.textContent = failedImages + ' 张题图未加载成功。请检查预览，勿直接导出缺图 PDF。';
+      if (preview.failedImages) {
+        status.textContent = preview.failedImages + ' 张题图未加载成功。请检查预览，勿直接导出缺图 PDF。';
         status.classList.add('is-error');
-        alertHost('有 ' + failedImages + ' 张题图未加载成功，已暂停自动打印。请检查网络或刷新打印窗口后重试。');
+        alertHost('有 ' + preview.failedImages + ' 张题图未加载成功，已暂停自动打印。请检查网络或刷新打印窗口后重试。');
         return false;
       }
 
       status.textContent = '已准备好 ' + questions.length + ' 道题，可选择“另存为 PDF”。';
+      if (autoError) {
+        status.textContent = '自动生成失败，已改用打印导出：' +
+          (autoError && autoError.message ? autoError.message : String(autoError));
+      }
       if (options.autoPrint === false) return true;
       await yieldToBrowser();
       lockPrintSurface(printDoc);
