@@ -3733,3 +3733,11 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **回归**：`rebuild_bank.ps1 -Course net` pytest 150 passed；公网 `__BANK_DATA_VER__=505`，两题裁图 `?v=505` 均 200、611×349；实机第 58 题图完整（主机地址、说明框都在框内）。
 - **云端**：`push_data.ps1` → remote 505，2 张裁图哈希核对通过；`data-*.json` 未变，平台 408 池按设计跳过重导。
 - **顺带发现（未改）**：`page_162_X63.png` 顶部混进题干尾行「地址分别是（ ）。」，图本身完整，属裁图带进正文的杂质，等点名再处理。
+
+## 2026-10-29 · net X58 题干尾部与图内说明重复（主人「题干中最后的内容，图中有，有点冗余了」）
+
+- **病征**：X58 题干末尾还带着「图中：R1～R3为路由器；Switch为100Base-T交换机；Hub为100Base-T集线器；主机H1～H3的默认域名服务器均配置为201.1.1.1。」，与题图右上说明框逐字重复，同一屏里念两遍。
+- **修复**：`fix_one.py --course net --chapter IPv4 --qid X58` 只改 content，删掉尾部「图中：…」整段；题干以「则下列现象中可能发生的是（）」收尾，图内说明框保留（那是原书图的一部分）。
+- **回归**：发布态断言通过；`rebuild_bank.ps1 -Course net` pytest 150 passed；缓存戳 505→506；`q_lookup.py --check` 平台池 id=21324 与题库一致。
+- **云端**：`push_data.ps1` → `remote __BANK_DATA_VER__=506`，`data-net.json` 200，平台 408 池 `changed 1 failed 0`；公网 `data-net.json?v=506` 题干已无重复段，实机第 58 题只剩一句话题干 + 完整拓扑图。
+- **坑**：`fix_one` 收尾的本机池重导会因缺 `SECRET_KEY` 报错（不是池坏了）；刷新哈希后用临时随机 `SECRET_KEY` 跑 `platform-v2/backend/scripts/import_408_banks.py` 即 `changed 1 failed 0`。
