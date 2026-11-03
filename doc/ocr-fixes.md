@@ -3770,3 +3770,11 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **回归**：发布态断言通过；`rebuild_bank.ps1 -Course net` pytest 150 passed；缓存戳 511→512。
 - **云端**：`push_data.ps1` → `remote __BANK_DATA_VER__=512`，`data-net.json` 200，平台 408 池 `changed 1 failed 0`，未重启服务；公网实机是 5 列表头 + Net1～Net4 四行真表格，题干正文止于「分别是（）。」。
 - **备注**：全库扫过，只有这一题真坏（`coa X09` 的 `|x| < 1.0×2^{-126}` 是绝对值，别按表格处理）。该题 explanation 里同款表也是空格分隔，但答案区已有原书裁图、`shouldHideExplanationProse()` 会隐去正文，故没动。本机池补导仍需临时 `SECRET_KEY`（同 X58/X71）。
+
+## 2026-11-03 · 408 壳拆成「选择题 / 大题」两个独立题库（主人「选择题一个题库，大题一个题库」）
+
+- **病征**：408 王道网页题库只展示选择题，解答题在加载层被 `CHOICE_ONLY_MODE` 整体过滤，甚至侧栏和统计都没有大题口径。
+- **根因**：2026-09 起为规避未复核解答题，viewer 采用 choice-only 单题库；源数据实际包含 2493 道选择题和 437 道解答题，且每道解答题都有答案/原页依据。
+- **修复**：保留默认选择题库不变；顶栏新增「选择题 / 大题」切换，大题库通过 `filterCourseDataToEssays` 只加载解答题，独立统计、章节、课程计数和 `wd408_cursor_*_essay` 游标。`?library=essay` 可直达大题库；平台“继续上次”链接携带同一参数。payload manifest 同时写入 `question_count` 与 `essay_count`。
+- **回归**：bank-408 全量 pytest `397 passed`；本机与公网均验证数据结构选择题 650 题、大题 162 题，四科大题计数为 162 / 80 / 112 / 83；大题详情可打开，hold 题继续显示「未校验」和原页/答案图。
+- **云端**：`push_data.ps1` 热更 v515（11 files），`data-ds/coa/os/net.json` 均 200；平台 408 池重导 `changed 20 failed 0`，未重启服务。
