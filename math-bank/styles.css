@@ -1243,6 +1243,37 @@ body.compact-view .question-row .row-tags .row-tag { display: none; }
 
 .toggle-sidebar:hover { background: var(--surface-hover); color: var(--text-primary); }
 
+.library-tabs {
+  display: flex;
+  flex-shrink: 0;
+  gap: 2px;
+  padding: 2px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+}
+
+.library-tab {
+  height: 26px;
+  padding: 0 10px;
+  border: none;
+  border-radius: calc(var(--radius-md) - 2px);
+  background: transparent;
+  color: var(--text-tertiary);
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.library-tab:hover { color: var(--text-primary); background: var(--surface-hover); }
+.library-tab.active {
+  color: #fff;
+  background: var(--accent);
+  font-weight: 600;
+}
+[data-theme="dark"] .library-tab.active { color: #0a120e; }
+
 .course-tabs {
   display: flex;
   gap: 2px;

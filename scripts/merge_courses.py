@@ -220,6 +220,7 @@ window.__COURSE_CACHE__[{course_name}] = {data};
             'js_file': js_file_name,
             'chapter_count': len(cd['chapters']),
             'question_count': _choice_total(cd['chapters']),
+            'essay_count': cd['total_questions'] - _choice_total(cd['chapters']),
         })
 
     loader = bank_dir / 'data.js'

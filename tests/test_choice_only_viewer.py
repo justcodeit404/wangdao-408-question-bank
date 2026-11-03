@@ -167,6 +167,26 @@ def test_filter_drops_empty_essay_and_recounts():
     assert all("解答" not in n for n in out["names"])
 
 
+def test_essay_filter_keeps_only_essays_and_recounts():
+    data = _sample_course(choice_n=5, essay_n=2)
+    out = _node_eval(
+        """
+        const filtered = api.filterCourseDataToEssays(DATA);
+        return {
+          total: filtered.total_questions,
+          section_types: filtered.chapters.map(c => c.section_type),
+          types: filtered.chapters.flatMap(c => c.questions.map(q => q.type)),
+          course_count: filtered.courses[0].question_count,
+        };
+        """,
+        data=data,
+    )
+    assert out["total"] == 2
+    assert out["course_count"] == 2
+    assert out["section_types"] == ["解答题"]
+    assert out["types"] == ["解答题", "解答题"]
+
+
 def test_stats_only_show_choice_when_essay_zero():
     data = _sample_course(choice_n=30, essay_n=0)
     out = _node_eval(
@@ -326,7 +346,8 @@ def test_app_js_no_hardcoded_essay_stat():
     # 旧硬编码统计项必须移除
     assert "{label: '解答', value: types['解答题'] || 0, action: '解答题'}" not in text
     assert "buildTypeStatItems" in text
-    assert "sanitizeChoiceOnlySelection" in text
+    assert "sanitizeLibrarySelection" in text
+    assert "switchLibrary" in text
     assert "ChoiceOnlyView" in text
     # 两级树：L2 leaf 可点选；render 中不应创建 tree-l3 按钮
     assert "tree-l2 leaf" in text
@@ -400,6 +421,8 @@ def test_index_html_version_and_assets():
     assert "choice-only.js?v=" in html
     assert "app.js?v=" in html
     assert "data.js?v=" in html
+    assert 'id="libraryTabs"' in html
+    assert 'data-library="essay"' in html
     # 版本号一致
     import re
 

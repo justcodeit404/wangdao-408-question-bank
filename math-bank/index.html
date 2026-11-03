@@ -22,20 +22,20 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <!-- 不用 Google Fonts：国内常被墙/超时，阻塞首屏导致白屏 -->
-<link rel="stylesheet" href="styles.css?v=514">
-<script>window.__BANK_DATA_VER__='514';</script>
+<link rel="stylesheet" href="styles.css?v=515">
+<script>window.__BANK_DATA_VER__='515';</script>
 <script>
 (function () {
   var base = (location.pathname || '').indexOf('/banks/') === 0
     ? '/banks/common/'
     : 'vendor/viewer-common/';
   document.write('<script src="' + base + 'storage.js"><\/script>');
-  document.write('<script src="' + base + 'platform-sync.js?v=514"><\/script>');
-      document.write('<link rel="stylesheet" href="' + base + 'scratch-pad.css?v=514">');
-      document.write('<script src="' + base + 'scratch-ink.js?v=514"><\/script>');
-      document.write('<script src="' + base + 'scratch-pad.js?v=514"><\/script>');
-  document.write('<script src="' + base + 'question-notes.js?v=514"><\/script>');
-  document.write('<script src="' + base + 'pdf-export.js?v=514"><\/script>');
+  document.write('<script src="' + base + 'platform-sync.js?v=515"><\/script>');
+      document.write('<link rel="stylesheet" href="' + base + 'scratch-pad.css?v=515">');
+      document.write('<script src="' + base + 'scratch-ink.js?v=515"><\/script>');
+      document.write('<script src="' + base + 'scratch-pad.js?v=515"><\/script>');
+  document.write('<script src="' + base + 'question-notes.js?v=515"><\/script>');
+  document.write('<script src="' + base + 'pdf-export.js?v=515"><\/script>');
 })();
 </script>
 </head>
@@ -45,7 +45,7 @@
     <div class="sidebar-header">
       <div class="brand">
         <h1>408 · 王道精选</h1>
-        <p>考研题库一体 · 四科切换</p>
+        <p id="bankSubtitle">选择题库 · 四科切换</p>
       </div>
       <button class="theme-toggle" id="themeToggle" aria-label="切换主题" title="切换主题">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
@@ -94,6 +94,10 @@
       <button class="toggle-sidebar" id="toggleSidebar" aria-label="打开章节">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
+      <div class="library-tabs" id="libraryTabs" role="tablist" aria-label="题库切换">
+        <button type="button" class="library-tab" data-library="choice" role="tab">选择题</button>
+        <button type="button" class="library-tab" data-library="essay" role="tab">大题</button>
+      </div>
       <div class="course-tabs" id="courseTabs"></div>
       <div class="search-box">
         <input type="search" id="searchInput" placeholder="搜索题目内容、公式、章节...（按 / 聚焦）" autocomplete="off">
@@ -102,7 +106,7 @@
       <div class="topbar-actions">
         <select id="typeFilter" class="pill-select" aria-label="题型筛选">
           <option value="">全部题型</option>
-          <!-- 选项由 app.js 按当前可见题型动态填充；choice-only 下仅选择题 -->
+          <!-- 选项由 app.js 按当前题库动态填充 -->
         </select>
         <select id="featureFilter" class="pill-select" aria-label="题目特征">
           <option value="">全部题目</option>
@@ -414,9 +418,9 @@
   </div>
 </div>
 
-<script src="data.js?v=514"></script>
-<script src="choice-only.js?v=514"></script>
-<script src="app.js?v=514"></script>
+<script src="data.js?v=515"></script>
+<script src="choice-only.js?v=515"></script>
+<script src="app.js?v=515"></script>
 <div id="platformSyncBar" class="platform-sync-bar" hidden aria-hidden="true">
   <div class="platform-sync-bar-text" id="platformSyncBarText"></div>
   <button type="button" class="btn btn-primary" id="platformSyncBarBtn" hidden>重试同步</button>

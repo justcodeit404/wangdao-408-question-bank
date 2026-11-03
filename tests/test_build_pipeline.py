@@ -195,12 +195,16 @@ def test_data_js_manifest_bakes_choice_counts():
     assert manifest, 'empty manifest'
     for course in manifest:
         data = json.loads((bank / course['file']).read_text(encoding='utf-8'))
+        total_n = sum(len(ch.get('questions', [])) for ch in data['chapters'])
         choice_n = sum(
             1 for ch in data['chapters'] for q in ch.get('questions', [])
             if is_choice_type(q.get('type'))
         )
         assert course['question_count'] == choice_n, (
             f"{course['name']}: manifest={course['question_count']} 选择题实际={choice_n}"
+        )
+        assert course['essay_count'] == total_n - choice_n, (
+            f"{course['name']}: manifest={course['essay_count']} 大题实际={total_n - choice_n}"
         )
 
 

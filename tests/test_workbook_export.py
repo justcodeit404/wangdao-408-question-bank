@@ -36,6 +36,7 @@ function escapeHtml(value) {
     .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
 function displayId(q) { return q.id.replace(/^[XA]/, ''); }
+function workbookExportTitle() { return '408 王道 · 当前筛选'; }
 function pageLabel(q) { return '第 ' + q.page + ' 页'; }
 function resolveQuestionImageRef(q) { return q.image_ref ? { src: q.image_ref } : null; }
 function qualityForQuestion(q) { return q.id === 'X23' ? { overall: 'hold' } : null; }

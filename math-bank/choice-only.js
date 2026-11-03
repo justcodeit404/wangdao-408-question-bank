@@ -53,18 +53,23 @@
     return (ch.questions && ch.questions.length) || 0;
   }
 
+  function isEssayQuestionType(type) {
+    var t = String(type || '').trim();
+    if (!t) return false;
+    if (isChoiceQuestionType(t)) return false;
+    return /解答|综合应用|简答|计算题|证明题|问答|essay/i.test(t);
+  }
+
   /**
-   * 过滤课程数据为选择题视图：去掉非选择题与题数 0 的章节，重算课程/总题数。
+   * 只保留一种题型视图：去掉被过滤题型与题数 0 的章节，重算课程/总题数。
    * 不修改入参对象（浅拷贝）。
    */
-  function filterCourseDataToChoices(courseData) {
+  function filterCourseData(courseData, keepQuestion) {
     if (!courseData || !courseData.chapters) return courseData;
     var total = 0;
     var chapters = [];
     (courseData.chapters || []).forEach(function (ch) {
-      var qs = (ch.questions || []).filter(function (q) {
-        return isChoiceQuestionType(q.type);
-      });
+      var qs = (ch.questions || []).filter(keepQuestion);
       if (qs.length === 0) return;
       total += qs.length;
       var copy = Object.assign({}, ch, { questions: qs, question_count: qs.length });
@@ -82,6 +87,18 @@
       chapters: chapters,
       courses: courses,
       total_questions: total,
+    });
+  }
+
+  function filterCourseDataToChoices(courseData) {
+    return filterCourseData(courseData, function (q) {
+      return isChoiceQuestionType(q.type);
+    });
+  }
+
+  function filterCourseDataToEssays(courseData) {
+    return filterCourseData(courseData, function (q) {
+      return isEssayQuestionType(q.type);
     });
   }
 
@@ -153,12 +170,13 @@
       l1Node.l2Map.forEach(function (l2Node) {
         if (!l2Node.sections.length || l2Node.total <= 0) return;
         if (!l2Node.filterKey) l2Node.filterKey = l2Node.sections[0].key;
+        var visibleKey = choiceOnly ? l2Node.filterKey : l2Node.l2Key;
         l2List.push({
           name: l2Node.name,
           total: l2Node.total,
           l2Key: l2Node.l2Key,
-          key: l2Node.filterKey,
-          filterKey: l2Node.filterKey,
+          key: visibleKey,
+          filterKey: visibleKey,
           sections: l2Node.sections.slice(),
         });
       });
@@ -324,8 +342,10 @@
   return {
     CHOICE_QUESTION_TYPES: CHOICE_QUESTION_TYPES,
     isChoiceQuestionType: isChoiceQuestionType,
+    isEssayQuestionType: isEssayQuestionType,
     isChoiceSectionType: isChoiceSectionType,
     filterCourseDataToChoices: filterCourseDataToChoices,
+    filterCourseDataToEssays: filterCourseDataToEssays,
     buildChapterTreeFromChapters: buildChapterTreeFromChapters,
     buildChapterTreeMap: buildChapterTreeMap,
     buildTypeStatItems: buildTypeStatItems,

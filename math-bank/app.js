@@ -18,13 +18,19 @@ function toggleTheme() {
 document.getElementById('themeToggle').addEventListener('click', toggleTheme);
 
 // ========================
-// 408 现阶段只展示选择题（不删源数据，在数据加载层过滤）
-// 纯逻辑见 choice-only.js（ChoiceOnlyView）；契约：platform-v2 test_choice_type_contract
+// 两个独立题库：选择题库 / 大题题库
 // ========================
-const CHOICE_ONLY_MODE = true;
+function initialLibraryMode() {
+  try {
+    return new URLSearchParams(window.location.search).get('library') === 'essay' ? 'essay' : 'choice';
+  } catch (e) {
+    return 'choice';
+  }
+}
+let libraryMode = initialLibraryMode();
 const _COV = (typeof window !== 'undefined' && window.ChoiceOnlyView) ? window.ChoiceOnlyView : null;
 if (!_COV) {
-  console.error('[bank-408] choice-only.js 未加载，选择题过滤不可用');
+  console.error('[bank-408] choice-only.js 未加载，题库过滤不可用');
 }
 const CHOICE_QUESTION_TYPES = _COV
   ? _COV.CHOICE_QUESTION_TYPES
@@ -32,26 +38,19 @@ const CHOICE_QUESTION_TYPES = _COV
 function isChoiceQuestionType(type) {
   return _COV ? _COV.isChoiceQuestionType(type) : false;
 }
-function filterCourseDataToChoices(courseData) {
-  if (!_COV) return courseData;
-  const filtered = _COV.filterCourseDataToChoices(courseData);
-  // 同步回 manifest：选择题数量 + 非空章节数
-  const courses = filtered.courses || [];
-  (window.__COURSE_MANIFEST__ || []).forEach(function(m) {
-    const cc = courses.find(function(c) { return c.name === m.name; });
-    if (cc) {
-      m.question_count = cc.question_count;
-      m.chapter_count = (filtered.chapters || []).filter(function(ch) {
-        return (ch.course || cc.name) === m.name;
-      }).length;
-    }
-  });
-  return filtered;
+function isChoiceLibrary() {
+  return libraryMode !== 'essay';
 }
-/** URL/本地状态指向已隐藏章节或题型时回退，避免空白页/幽灵选中 */
-function sanitizeChoiceOnlySelection() {
-  if (!_COV || !CHOICE_ONLY_MODE) return;
-  const chRes = _COV.sanitizeSelectedChapter(selectedChapter, currentChapters, true);
+function filterCourseDataByLibrary(courseData) {
+  if (!_COV) return courseData;
+  return isChoiceLibrary()
+    ? _COV.filterCourseDataToChoices(courseData)
+    : _COV.filterCourseDataToEssays(courseData);
+}
+/** URL/本地状态指向另一题库的章节或题型时回退，避免空白页/幽灵选中 */
+function sanitizeLibrarySelection() {
+  if (!_COV) return;
+  const chRes = _COV.sanitizeSelectedChapter(selectedChapter, currentChapters, isChoiceLibrary());
   if (chRes.cleared) selectedChapter = '';
   else selectedChapter = chRes.selectedChapter;
 
@@ -61,7 +60,7 @@ function sanitizeChoiceOnlySelection() {
   if (typeEl) {
     const tRes = _COV.sanitizeTypeFilter(typeEl.value, types);
     if (tRes.cleared) typeEl.value = '';
-    // 动态题型选项：仅可见题型
+    // 动态题型选项：仅当前题库可见题型
     refreshTypeFilterOptions(types, typeEl.value);
   }
   if (activeStat && activeStat !== 'all' && activeStat !== 'sub' && activeStat !== 'image') {
@@ -88,13 +87,11 @@ function refreshTypeFilterOptions(types, currentValue) {
   if (prev && types[prev]) typeEl.value = prev;
   else typeEl.value = '';
 }
-// 对 data.js 提供的加载器做包装，使所有使用方拿到的都是选择题数据
+// 对 data.js 加载器做包装：按当前题库只暴露对应题型
 if (typeof window.loadCourseData === 'function') {
   const _originalLoadCourseData = window.loadCourseData;
   window.loadCourseData = function(courseName) {
-    return _originalLoadCourseData(courseName).then(function(data) {
-      return filterCourseDataToChoices(data);
-    });
+    return _originalLoadCourseData(courseName).then(filterCourseDataByLibrary);
   };
 }
 
@@ -806,7 +803,9 @@ function getAvailableCourses() {
     return window.__COURSE_MANIFEST__.map(c => ({
       name: c.name,
       short: c.short,
-      question_count: c.question_count,
+      question_count: isChoiceLibrary() ? c.question_count : (c.essay_count || 0),
+      choice_count: c.question_count,
+      essay_count: c.essay_count || 0,
     }));
   }
   if (bank && bank.courses) return bank.courses;
@@ -1381,7 +1380,7 @@ let CURSOR_KEY = 'wd408_cursor_default';
 
 function refreshCursorKey() {
   const course = getCurrentCourse() || 'default';
-  CURSOR_KEY = 'wd408_cursor_' + course;
+  CURSOR_KEY = 'wd408_cursor_' + course + (isChoiceLibrary() ? '' : '_essay');
 }
 
 function loadCursor() {
@@ -1414,7 +1413,8 @@ function saveCursor(q) {
       key: '408',
       course: course,
       title: '王道 408 · ' + (course || '精选'),
-      href: '/banks/408/?course=' + encodeURIComponent(course) + '&resume=1',
+      href: '/banks/408/?course=' + encodeURIComponent(course)
+        + (isChoiceLibrary() ? '' : '&library=essay') + '&resume=1',
       chapter: payload.chapter,
       chapterKey: payload.chapterKey,
       questionId: payload.questionId,
@@ -1598,6 +1598,7 @@ function syncUrl() {
   const params = new URLSearchParams();
   const course = getCurrentCourse();
   if (course) params.set('course', course);
+  if (!isChoiceLibrary()) params.set('library', 'essay');
   if (selectedChapter) params.set('chapter', selectedChapter);
   const type = document.getElementById('typeFilter').value;
   if (type) params.set('type', type);
@@ -1691,9 +1692,10 @@ async function init() {
 
   currentChapters = getCurrentChapters();
   buildAllQuestions();
-  sanitizeChoiceOnlySelection();
+  sanitizeLibrarySelection();
 
-  // 过滤后刷新课程标签数量（manifest 已在 filter 中写回选择题数）
+  // 两个题库共用课程标签，但数量按当前题库显示
+  renderLibraryTabs();
   renderCourseTabs();
   renderMobileCourseSelect();
   renderChapters();
@@ -1752,6 +1754,40 @@ function setupShellContinue() {
   }
 }
 
+function renderLibraryTabs() {
+  const tabsEl = document.getElementById('libraryTabs');
+  if (!tabsEl) return;
+  tabsEl.querySelectorAll('.library-tab').forEach(btn => {
+    const active = btn.dataset.library === libraryMode;
+    btn.classList.toggle('active', active);
+    btn.setAttribute('aria-selected', active ? 'true' : 'false');
+    btn.onclick = () => switchLibrary(btn.dataset.library);
+  });
+  const subtitle = document.getElementById('bankSubtitle');
+  if (subtitle) {
+    subtitle.textContent = isChoiceLibrary() ? '选择题库 · 四科切换' : '大题题库 · 四科切换';
+  }
+}
+
+async function switchLibrary(next) {
+  if ((next !== 'choice' && next !== 'essay') || next === libraryMode) return;
+  libraryMode = next;
+  selectedChapter = '';
+  activeStat = 'all';
+  activeStatusFilter = '';
+  currentPage = 1;
+  const searchEl = document.getElementById('searchInput');
+  const typeEl = document.getElementById('typeFilter');
+  const featureEl = document.getElementById('featureFilter');
+  if (searchEl) searchEl.value = '';
+  if (typeEl) typeEl.value = '';
+  if (featureEl) featureEl.value = '';
+  await loadBankData(getCurrentCourse());
+  applyLoadedCourse();
+  renderLibraryTabs();
+  syncUrl();
+}
+
 function renderCourseTabs() {
   const tabsEl = document.getElementById('courseTabs');
   if (!tabsEl) return;
@@ -1798,9 +1834,10 @@ async function switchCourse(course) {
 function applyLoadedCourse() {
   currentChapters = getCurrentChapters();
   buildAllQuestions();
-  sanitizeChoiceOnlySelection();
+  sanitizeLibrarySelection();
   refreshCursorKey();
 
+  renderLibraryTabs();
   renderCourseTabs();
   renderMobileCourseSelect();
   currentPage = 1;
@@ -1818,8 +1855,9 @@ function applyLoadedCourse() {
 // 内部筛选键仍为 l1|l2|选择题，兼容旧 URL
 // ========================
 function buildChapterTree() {
+  const choiceOnly = isChoiceLibrary();
   if (_COV) {
-    return _COV.buildChapterTreeMap(currentChapters, CHOICE_ONLY_MODE);
+    return _COV.buildChapterTreeMap(currentChapters, choiceOnly);
   }
   const l1Map = new Map();
   for (const ch of currentChapters) {
@@ -1828,8 +1866,8 @@ function buildChapterTree() {
     const l1 = ch.l1_name || '?';
     const l2 = ch.l2_name || '?';
     const sec = ch.section_type || '?';
-    if (CHOICE_ONLY_MODE && sec && String(sec).includes('解答')) continue;
-    if (CHOICE_ONLY_MODE && sec && !isChoiceQuestionType(sec) && !String(sec).includes('选择')) continue;
+    if (choiceOnly && sec && String(sec).includes('解答')) continue;
+    if (choiceOnly && sec && !isChoiceQuestionType(sec) && !String(sec).includes('选择')) continue;
     if (!l1Map.has(l1)) l1Map.set(l1, { name: l1, total: 0, l2Map: new Map() });
     const l1Node = l1Map.get(l1);
     l1Node.total += count;
@@ -2324,6 +2362,7 @@ function renderGrid(search) {
     if (q.sub_questions) tags.push(`${q.sub_questions.length} 个子问`);
     if (q.has_image) tags.push('含图片');
     if (q.options || optionGroupsOf(q)) tags.push('有选项');
+    else if (q.type !== '选择题') tags.push('参考答案');
     const chShort = (q.chapter || '').split('·')[0].trim() || q.chapter || '';
     return `
       <div class="question-card" tabindex="0" role="button" aria-label="${displayId(q)} ${q.type}" data-index="${start + i}">
@@ -4148,13 +4187,6 @@ function updatePaperChapters() {
   currentChapters
     .filter(ch => (ch.course || (bank && bank.courses && bank.courses[0] ? bank.courses[0].name : '')) === courseName || courseName === getCurrentCourse())
     .filter(ch => (ch.question_count || (ch.questions && ch.questions.length) || 0) > 0)
-    .filter(ch => {
-      if (!CHOICE_ONLY_MODE) return true;
-      const sec = ch.section_type || '';
-      if (sec && String(sec).includes('解答')) return false;
-      if (sec && !isChoiceQuestionType(sec) && !String(sec).includes('选择')) return false;
-      return true;
-    })
     .forEach(ch => {
       const opt = document.createElement('option');
       opt.value = ch.name;
@@ -5870,7 +5902,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=514').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=515').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {
