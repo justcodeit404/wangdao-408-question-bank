@@ -1,51 +1,51 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-04T05:27:34+00:00",
+  "generated_at": "2026-11-04T07:13:07+00:00",
   "published_hashes": {
-    "ds": "e63434ebc0311d52b4b55c3af243e95e63439593f13f7f10bc3128126e418c09",
-    "coa": "d7e3d88f3dcb0c594eda0746ac9eae2577b4c15a0fda54a2bff20529765ecce5",
-    "os": "b4d3bb69e40f07a0ee22602b122eb3a7464495a3ad1ebde65de1d8a5e8447975",
-    "net": "1dd4d40c9a6e2a94c959da5f00e622b58f75c1ec02d1b93ec503364be1f253d3"
+    "ds": "dab6fbab745ac3715465187d7bcd67ccd0cc0de082ac730bbc7ff8aad0cdc60d",
+    "coa": "1255086f6b43be186515d1362b9e36a3ce926f9721aec7bc48e173d77394db70",
+    "os": "a53961b648beccffb32849af66d3a59bfb7dbeb4eaac929df459d9e41b6f35b3",
+    "net": "b6b1771000ab4ed1be991cc6ef508025f42094fffffb246bb54f76b74085e21c"
   },
   "courses": {
     "ds": {
       "name": "数据结构",
       "mode": "strict",
       "total": 812,
-      "certified": 787,
+      "certified": 799,
       "pending": 0,
-      "held": 25
+      "held": 13
     },
     "coa": {
       "name": "计算机组成原理",
       "mode": "strict",
       "total": 691,
-      "certified": 665,
+      "certified": 682,
       "pending": 0,
-      "held": 26
+      "held": 9
     },
     "os": {
       "name": "操作系统",
       "mode": "strict",
       "total": 772,
-      "certified": 758,
+      "certified": 768,
       "pending": 0,
-      "held": 14
+      "held": 4
     },
     "net": {
       "name": "计算机网络",
       "mode": "strict",
       "total": 655,
-      "certified": 635,
+      "certified": 646,
       "pending": 0,
-      "held": 20
+      "held": 9
     }
   },
   "summary": {
     "total": 2930,
-    "certified": 2845,
+    "certified": 2895,
     "pending": 0,
-    "held": 85
+    "held": 35
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -6403,12 +6403,10 @@
       "chapter": "中央处理器 · 指令流水线 · 解答题",
       "question_id": "A02",
       "source_hash": "96783b482c11440058b788b97625e5498c07c82cfea650f91120cf006259d777",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         260,
         261,
@@ -6431,10 +6429,41 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::中央处理器 · 指令流水线 · 解答题::A02",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_265.png",
+              "sha256": "770bafba1d0d16637cd7373d45523d4db7ceac38bee0948c12454c4be04ce27a"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_270.png",
+              "sha256": "a398c46f27a34995cbd555ea5caa0b529386da87fcdb3b344104dc17188c4bc5"
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_271.png",
+              "sha256": "3985c1be1f2111b7a07eeec71bb84d36d67c35b499db30eb273b47fce350f2d8"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。PDF p.265（书 p.260）逐行核对：题干 for 循环、sum/i/N/A 的寄存器分配、起始地址 0804 8100H，以及 6 行汇编/机器码表（00022080H、00083020H、8C850000H、00250820H、20420001H、1446FFFAH 及对应汇编和注释）全部与 current_content 一致；bne 格式 31-26/25-21/20-16/15-0 = OP/Rs/Rd/OFFSET 与 1)–4) 小问一致。原书 4) 确印作“IF（取值）”，当前文本照录，不是 OCR 错。答案图 p.270 从“02.【解答】”到 I1/I2 流水线时空表，p.271 接“第三条指令阻塞了3个时钟周期。”至 ② 分析及 1)–4)（按字节编址、元素 4B、OFFSET=FFFAH=-6、目标地址=(PC)+4+OFFSET×4、阻塞指令 2/3/4/",
+          "source_hash": "96783b482c11440058b788b97625e5498c07c82cfea650f91120cf006259d777"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -13473,12 +13502,10 @@
       "chapter": "中央处理器 · 数据通路的功能和基本结构 · 解答题",
       "question_id": "A04",
       "source_hash": "b074463e75dbbea8acf9cf0afc8cdeaeeabe1eaab4234c6408729307cdae261d",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         218,
         219,
@@ -13507,10 +13534,41 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::中央处理器 · 数据通路的功能和基本结构 · 解答题::A04",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_222.png",
+              "sha256": "8c0ef720b142d7f596d438482ea4481840adf8176d74f3f197591bd183578515"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_229.png",
+              "sha256": "3514578416882d3987360bd5559ac750449d4e2f84f8784a70818ab59fa05bea"
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_230.png",
+              "sha256": "1cdbdd8dc928498bb0d66354e39fbba57c3ce2e502b178219011f0c42638500f"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。题干书p217六问逐字一致；配图 page_222_A04.png 就是书中右图（主存储器(M)、a/b/c/d、+1、ACC、ALU、状态寄存器、微操作信号发生器），对应无误。答案书p224-225一致：a=MDR、b=IR、c=MAR、d=PC；取指 PC→MAR→主存→MDR→IR；读 MAR(先置地址)、主存→MDR→ALU→ACC，写 ACC→MDR→主存；4) X→MAR→主存→MDR→ALU→ACC；6) Z→MAR，ACC→MDR→主存。唯一差异是 5) 在书中箭头图 Y→MAR→主存→MDR→ALU→ACC（ACC 并入 ALU）之外补了一句「同时ACC→ALU…结果存回ACC」的释义，与图意相符，不构成错误。",
+          "source_hash": "b074463e75dbbea8acf9cf0afc8cdeaeeabe1eaab4234c6408729307cdae261d"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -13521,12 +13579,10 @@
       "chapter": "中央处理器 · 数据通路的功能和基本结构 · 解答题",
       "question_id": "A05",
       "source_hash": "c6c6bc7d288248140697433ba21c30082c90ce4e97c55500c09f1abd5e8e0397",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         218,
         219,
@@ -13555,10 +13611,38 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::中央处理器 · 数据通路的功能和基本结构 · 解答题::A05",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_222.png",
+              "sha256": "8c0ef720b142d7f596d438482ea4481840adf8176d74f3f197591bd183578515"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_230.png",
+              "sha256": "1cdbdd8dc928498bb0d66354e39fbba57c3ce2e502b178219011f0c42638500f"
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。题干书p217末-p218两问一致（自增型寄存器间接寻址、先取地址后加1、结果写回R2）；配图 page_222_A05.png 完整覆盖书中13个功能部件方框；答案图 page_230 完整含连接图与流程图。原 explanation 把流程图压成一串无分隔文字，并把「(C)+(D)→MDR」写成「(C)+(D)-→MDR」，已按书p225原图重排为逐行「微操作：功能」，微操作与功能标注未增删。",
+          "post_patch_verified": true,
+          "source_hash": "c6c6bc7d288248140697433ba21c30082c90ce4e97c55500c09f1abd5e8e0397"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -13815,12 +13899,10 @@
       "chapter": "中央处理器 · 数据通路的功能和基本结构 · 解答题",
       "question_id": "A10",
       "source_hash": "8f3512d81c2d5f418a27e9e9cfbf20282b209c18e43704d5a36c6e3c9e159e91",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         218,
         219,
@@ -13849,10 +13931,42 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::中央处理器 · 数据通路的功能和基本结构 · 解答题::A10",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_225.png",
+              "sha256": "3453773c080b9f6b8826eef59d90e88e75211d561cc3e7a0e22678f219187bb9"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_232.png",
+              "sha256": "fac977c87b030ca19f4abe63a52ba7794374ebf870e8f8c8b0a0e72aa11e930c"
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_233.png",
+              "sha256": "3c21ffa172dc9147eb74cc2abb711aa26c8247387192752f90e3a2a331bacbb7"
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。逐页核对：PDF p.225（书 p.220）题干与数据通路图、PDF p.226（书 p.221）1)–5) 小问，全部与原书逐字一致；配图 crops/coa/page_225_A10.png 即该题数据通路图，MAR/MDR/PC/IR/Y/Z/ALU/GPRs/FR 及 Read/Write、MDRin/MDRout 等连线与原书相同。答案裁图 p.232 从“10.【解析】”到 1) 的 OF 公式（跨页处停在加号），p.233 接续 2)–5)（Y/Z 暂存原因、rs/rd 4bit→16 个寄存器且来自 IR、rd 接地址译码器、PCout/MARin→Read→MDRout/IRin 共 7 个时钟周期、CU 及 IR/FR 输出），两页首尾衔接无缺段。唯一问题是 current_content 把图中标注 OCR 成一串噪声（“系统总线MDRMDRin PCin送CU等部",
+          "post_patch_verified": true,
+          "source_hash": "8f3512d81c2d5f418a27e9e9cfbf20282b209c18e43704d5a36c6e3c9e159e91"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -15307,12 +15421,10 @@
       "chapter": "存储系统 · 主存储器 · 解答题",
       "question_id": "A01",
       "source_hash": "4b0261adafd2699d8e7ebc8b582ccc2829af5ce54c8da0a134da0123e8690d7b",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         92,
         93,
@@ -15332,10 +15444,37 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 主存储器 · 解答题::A01",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_096.png",
+              "sha256": "952618eb735de6cdefbf04a951d3192c4a979ce8afa9f3ba2b3d80c265ce0f3b"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_101.png",
+              "sha256": "c00d44ff0755cf9b0bcd57ed0efef5d2c722317f2d49e46269936790dc295f09"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。p96 题图：1024×768、颜色深度 3B、72Hz、总带宽 50% 用于刷新，两问一致。答案 p101：W1=1024×768×3B×72/s=169869KB/s，W0=339738KB/s=339.738MB/s（1K=1000），四条措施（DRAM/多体交叉/内部总线加倍/双端口）逐条对上；文本把原书 W0=W1(W0/W1) 写成 W÷50%，数值等价。",
+          "source_hash": "4b0261adafd2699d8e7ebc8b582ccc2829af5ce54c8da0a134da0123e8690d7b"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -23712,12 +23851,10 @@
       "chapter": "存储系统 · 虚拟存储器 · 解答题",
       "question_id": "A05",
       "source_hash": "9531104cae1a72a92d5b02cb13fbb4387c5bb559483d9aaefb0a7cf332d9d64b",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         140,
         141,
@@ -23741,10 +23878,37 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 虚拟存储器 · 解答题::A05",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_143.png",
+              "sha256": "0b7103111ec77dcd8051576f091337f941cf61fb31cc3dede4e610da2fa3b6ff"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_149.png",
+              "sha256": "159e909f3ed27ec80f72886d116c8a1d725af867f219333f63d90f49e7c768d9"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。题干（p143 末 + p144 上：32 位虚地址、24 位物理地址、8KB 页、全相联 TLB、64KB 两路、64B 块）与四问一致；配图 page_143_A05.png 即 p144 的地址转换示意图，A~H 字段齐全无截边。答案 p149：A=19、B=19、C=11、D=13、E=9、F=9、G=6，组号 3，H 字段 0 0000 1000B，及 3)、4) 文字均与文本一致。",
+          "source_hash": "9531104cae1a72a92d5b02cb13fbb4387c5bb559483d9aaefb0a7cf332d9d64b"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -23967,12 +24131,10 @@
       "chapter": "存储系统 · 虚拟存储器 · 解答题",
       "question_id": "A09",
       "source_hash": "f25915a3ef066ede70c4b79ed6fff192512134c8472a4f0e52d623cd3fb56aa3",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         140,
         141,
@@ -23996,10 +24158,38 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 虚拟存储器 · 解答题::A09",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_145.png",
+              "sha256": "b12842ad733da44f14aaa765bde46182d8d377f9601ca9f9f3f5be9ca2e4f8ed"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_151.png",
+              "sha256": "3f7868357a25f5eeadaf37f237c280fb938d9f99d758107e4928a666363d7df2"
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。p145/p146 题干四问、int x,d[2048],i 与 for 循环、0180 0020H 及 Cache/页参数一致；答案 p151 的 6 位块内地址/6 位组号、索引 VA11~VA6、0180 01B0H、组号 6、20H、129/4096≈3.15%、8.3 周期、3 个页全部对上。唯一问题：题干把原书下标 0 的 VA31～VA0 识别成「VAo」，按原书改为 VA0，其余保持原样。",
+          "post_patch_verified": true,
+          "source_hash": "f25915a3ef066ede70c4b79ed6fff192512134c8472a4f0e52d623cd3fb56aa3"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -27358,12 +27548,10 @@
       "chapter": "存储系统 · 高速缓冲存储器 · 解答题",
       "question_id": "A04",
       "source_hash": "a40db3323ccb5b3c92068019c2ad5b061f652506707429786356d5a04e893278",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         122,
         123,
@@ -27389,10 +27577,41 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 高速缓冲存储器 · 解答题::A04",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_126.png",
+              "sha256": "28ae50361a44d031f3ab86d50a42569085d2c7581643cbd8513dd2a463d43d79"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_133.png",
+              "sha256": "ffdcbb9f412b3963b15c61ea612e04b7d4edbf31a94aa2b2268689d6e65dc1ff"
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_134.png",
+              "sha256": "73147e617346fa30b8fb947065ab87f5c76b1ad94516f9ad77225dacef30ef70"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。p126/p127 题干两列伪代码（A 行内 i 外 j；B 列内 j 外 i）与 1)~3) 一致。答案 p133/p134：28 位地址、19 位标记、1 位有效位、8×(64+20/8)B=532B、组号 6 与 5、93.75%、0% 全部对上。首行被转成以整句为表头、有效位/脏位/替换控制位/标记位为列的空表，但答案区含「答案图片：」行，shouldHideExplanationProse() 会隐去正文，显示不受影响。",
+          "source_hash": "a40db3323ccb5b3c92068019c2ad5b061f652506707429786356d5a04e893278"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -36921,12 +37140,10 @@
       "chapter": "指令系统 · 寻址方式 · 解答题",
       "question_id": "A05",
       "source_hash": "a2b6ed41584d5d4a3d1216fedaa9a07f30ca435fcc6dad7866b8350f979469bb",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         165,
         166,
@@ -36955,10 +37172,37 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::指令系统 · 寻址方式 · 解答题::A05",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_170.png",
+              "sha256": "7841dbeb6e37a7056cc412343fa686cd62f45b4d8d9f889eda3b22e3d37c4913"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_176.png",
+              "sha256": "64d4f81ed7a5c231fb0e42656c8f1cfa28c193738fe920fc923fe3043b4cd324"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。题干书p164表（6/2/2/2/4位，R型000000|rs|rt|rd|op1，I型op2|rs|rt|imm，J型op3|target）与p166的op1~op3说明、五问均逐字一致。答案裁图（书p171）1)~5) 逐句一致：ALU 16位、2^20字节(1MB)、IR16/MAR20/MDR8；2^4(或16)、2^6-1=63、4个寄存器；01B2H=000000 01 10 11 0010B→R[3]=B052H-0008H=B04AH未溢出，01B3H→B052H×0008H=8290H（书原文即写8290H，并非58290H）、移出101判溢出；4)符号扩展；5)J型。",
+          "source_hash": "a2b6ed41584d5d4a3d1216fedaa9a07f30ca435fcc6dad7866b8350f979469bb"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -41774,12 +42018,10 @@
       "chapter": "指令系统 · 指令系统 · 解答题",
       "question_id": "A03",
       "source_hash": "7f02ede933516fce03756a1b1a888332e2403dc50e5f55b3f90bfd670a4d523d",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         156,
         157,
@@ -41796,10 +42038,41 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::指令系统 · 指令系统 · 解答题::A03",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_158.png",
+              "sha256": "231e10cce19692a97d8eb43e91c11d1d95d22a5a72b81643940dfd145d5ff453"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_160.png",
+              "sha256": "6abee5f1483820c0a36282418e6cf8e2404b8027182bda60ba0fb3244a88e774"
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_161.png",
+              "sha256": "e3cd73575d0006fd23a5544f3028a690d30d4a3c6125621e8ca32df7e9080fef"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。题干页码158（书p153）三小问逐字一致：36位、7条两15位地址+1个3位地址、500条一个15位+3位、50条无地址。答案裁图 page_160（书p155）为「1)」格式表 3|15|15|3、OP 000~110；page_161（书p156）为「2)」OP1(3)=111|OP2(15)|addr1(15)|addr2(3)，OP2 从 000000000000000 到 000000111110011（500条）与「3)」OP1|OP2|18个0，OP2 从 000000111110100 到 000001000100101（50条），与文本三问完全对应，未发现缺项。",
+          "source_hash": "7f02ede933516fce03756a1b1a888332e2403dc50e5f55b3f90bfd670a4d523d"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -43661,12 +43934,10 @@
       "chapter": "指令系统 · 程序的机器级代码表示 · 解答题",
       "question_id": "A04",
       "source_hash": "4c4074d7ef208cf08372135f2940b7827ab5da301f2ac0c320ea9d61a39dda74",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         186,
         187,
@@ -43685,10 +43956,37 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 解答题::A04",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_189.png",
+              "sha256": "9355778113deaaa43042de426a6478659debed6ca90a8159a6712603608f2eff"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_194.png",
+              "sha256": "3520bf81cbf7d730de1a7375eae1c1c92df343f48d77f70e6d36fdf856675a5a"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。题干书p184-185一致，代码表逐行核对（1 00401072 C7 45 F8 00 00 00 00、2 00401079 EB 09、3 0040107B 8B 55 F8、7 00401088 7D 32、8 0040108A C7 45 FC…、19 004010AE C7 84 82 00 20 42 00 0A 00 00 00，共11字节），四问一致。答案裁图（书p189）1)~4) 逐句一致：004010AEH+11=004010B9H；偏移09H、相对寻址；立即数寻址、ecx存i×256、小端；页号00401H同页故不缺页。",
+          "source_hash": "4c4074d7ef208cf08372135f2940b7827ab5da301f2ac0c320ea9d61a39dda74"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -54489,12 +54787,10 @@
       "chapter": "数据的表示和运算 · 运算方法和运算电路 · 解答题",
       "question_id": "A03",
       "source_hash": "802bd03d58dfaa68e72993c8c2536fe25b051fee3ce7d9a86e0092add4106037",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         49,
         50,
@@ -54519,10 +54815,37 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::数据的表示和运算 · 运算方法和运算电路 · 解答题::A03",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_052.png",
+              "sha256": "8d802c76fd39616e3dfa4972738bf1685e3fe57a8378b5d6f9263f3401fb991c"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_057.png",
+              "sha256": "98ccbdd293770773325aeaaee1e7a36c5ccba4acc87433a558248345e7a5ca00"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。p52 原书「二、综合应用题 01」两问（x/2、2x 的机器码与真值）与题干一致。答案图 p57：4000 0002H、C000 0002H、0000 0008H、真值 2^31+2^2、2^30+2、-(2^31-2^2)、-(2^30-2)、2^3(溢出)/8(溢出) 全部与文本一致。",
+          "source_hash": "802bd03d58dfaa68e72993c8c2536fe25b051fee3ce7d9a86e0092add4106037"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -54533,12 +54856,10 @@
       "chapter": "数据的表示和运算 · 运算方法和运算电路 · 解答题",
       "question_id": "A04",
       "source_hash": "7e8f5716bb2332382753663e651e103664b2b6be31d69d876bb409be9a397169",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         49,
         50,
@@ -54563,10 +54884,37 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::数据的表示和运算 · 运算方法和运算电路 · 解答题::A04",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_052.png",
+              "sha256": "8d802c76fd39616e3dfa4972738bf1685e3fe57a8378b5d6f9263f3401fb991c"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_058.png",
+              "sha256": "96f5e8c05d28ff0f8070650bed5d12170ddd42eaeaf619052f83a856b7b631e9"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。题干 1)~3) 与 p52 底部 + p53 顶部连续原文一致（8 位寄存器 A~D、x=-68、y=-80、十六进制要求）。答案图 p58：1011 1100=BCH、1011 0000=B0H、C=6CH/真值108/OF=1/SF=0、D=0CH/真值12/OF=0/SF=0 全部对上。",
+          "source_hash": "7e8f5716bb2332382753663e651e103664b2b6be31d69d876bb409be9a397169"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -54577,12 +54925,10 @@
       "chapter": "数据的表示和运算 · 运算方法和运算电路 · 解答题",
       "question_id": "A05",
       "source_hash": "462574dc1566be9ddf25f388d99df0fddb7ba76ea36c94370328f6ab9fec48a4",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         49,
         50,
@@ -54607,10 +54953,41 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::数据的表示和运算 · 运算方法和运算电路 · 解答题::A05",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_053.png",
+              "sha256": "4f61a607f3b291959e46da690d888afe61000dac205d783bd31c5dd1694957f8"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_057.png",
+              "sha256": "98ccbdd293770773325aeaaee1e7a36c5ccba4acc87433a558248345e7a5ca00"
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_058.png",
+              "sha256": "96f5e8c05d28ff0f8070650bed5d12170ddd42eaeaf619052f83a856b7b631e9"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。p53 的 2011 真题 8 条语句与四问与题干一致。答案 p57：R1=86H、R5=90H、R6=7CH、m=−122、k1=−112；p58：溢出判据（同号入不同号出 / 次高位与符号位进位不同）与「最后一条语句(k2)溢出」。文本为压缩改写，但数值与结论与原书一致。",
+          "source_hash": "462574dc1566be9ddf25f388d99df0fddb7ba76ea36c94370328f6ab9fec48a4"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -54621,12 +54998,10 @@
       "chapter": "数据的表示和运算 · 运算方法和运算电路 · 解答题",
       "question_id": "A06",
       "source_hash": "78c2705678b63deae12cee19b2a1e029a226eb8f7ccc8102efb8641a4a17bbce",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         49,
         50,
@@ -54651,10 +55026,37 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::数据的表示和运算 · 运算方法和运算电路 · 解答题::A06",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_053.png",
+              "sha256": "4f61a607f3b291959e46da690d888afe61000dac205d783bd31c5dd1694957f8"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_058.png",
+              "sha256": "96f5e8c05d28ff0f8070650bed5d12170ddd42eaeaf619052f83a856b7b631e9"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。p53 的 2020 真题四问（含 n=32、x=2^31−1、y=2）与题干一致。答案 p58：64 位乘积 0000 0000 FFFF FFFEH；imul 溢出、umul 不溢出；无符号「高 n 位全 0 则不溢出」判据均与文本一致。原书「注意」整段在文本中被压缩，结论未受影响。",
+          "source_hash": "78c2705678b63deae12cee19b2a1e029a226eb8f7ccc8102efb8641a4a17bbce"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -58647,12 +59049,10 @@
       "chapter": "计算机系统概述 · 计算机的性能指标 · 解答题",
       "question_id": "A01",
       "source_hash": "70da3bab9a2066b231d61935ef5c99f0d09de2ab76c9e9d37aa65f04c107b3d8",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         18,
         19,
@@ -58674,10 +59074,41 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 解答题::A01",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_020.png",
+              "sha256": "3ffd8cbed34a59bcdf2bd24de95094f19b7a213ce1ac02f33f635b7ef4d7152d"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_022.png",
+              "sha256": "8a2e6dc4cbfe8a2207cd958d48d871e2f9a94260a8ee3fe0fbff72f0957e2ebe"
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_023.png",
+              "sha256": "1100e784caf94a65add4c478ede610254245feec714639b3b32c01c397fdbf99"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。p20 题图与题干三小问逐字一致（8MHz/12MHz、0.4MIPS）。答案图 p22：0.125μs、2.5μs、20、1/12μs、5/3μs、0.6MIPS 与文本逐个对上；p23 顶部另有「【另解】微机B…×(12/8)=0.6MIPS」，文本未收但仍由已挂的 page_023_A01_ans_p2.jpg 完整呈现，属换页续文在第二张答案图，不算缺陷。",
+          "source_hash": "70da3bab9a2066b231d61935ef5c99f0d09de2ab76c9e9d37aa65f04c107b3d8"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -64726,12 +65157,10 @@
       "chapter": "输入/输出系统 · I/O方式 · 解答题",
       "question_id": "A11",
       "source_hash": "fc914402b4378bc736b102f06123568f7c3379874a6335fc64335be1f3d78dc5",
-      "source_fidelity": "pending",
-      "answer_validation": "pending",
-      "overall": "hold",
-      "reason_codes": [
-        "unregistered_publication"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         322
       ],
@@ -64741,8 +65170,40 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": null,
-      "evidence": {},
+      "verified_at": "2026-11-04T07:12:58+00:00",
+      "evidence": {
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::输入/输出系统 · I/O方式 · 解答题::A11",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_322.png",
+              "sha256": "2666d2e64db8733bb1b5eefa7136efc1c34aaf2cb213372811f6929027753a0d"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_330.png",
+              "sha256": "7767d9d15d525ad8de2def97d5233a35d64a21eaf2b776cbe8cbcf7eda9091e7"
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/coa/page_331.png",
+              "sha256": "b7083f68252b46b604821376913b3d0e0cbbe07037155c79117258608fe4dae5"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。PDF p.322（书 p.317）题目完整：4 个双面盘片、每盘面 20000 磁道、每磁道 500 扇区、每扇区 512B、7200rpm、平均寻道 5ms，1)–3) 小问文字与 current_content 一致。答案图 p.330 为 1)：柱面号（磁道号）/磁头号（盘面号）/扇区号，⌈log2 20000⌉=15 位；p.331 接磁头号 log2(4×2)=3 位、扇区号 ⌈log2 500⌉=9 位，2) 转一圈 8.33ms、平均访问 5+8.33/2+8.33/500≈9.18ms，3) 512B/64bit=64 次总线请求及周期挪用 DMA 优先，公式与数值和当前答案逐字一致。无配图（has_image=false），答案图片链接、a_pages 330/331 均正确。",
+          "source_hash": "fc914402b4378bc736b102f06123568f7c3379874a6335fc64335be1f3d78dc5"
+        }
+      },
       "certification_profile": "non_choice_source_answer"
     },
     "408:cs408-coa::输入/输出系统 · I/O方式 · 选择题::X01": {
@@ -73728,12 +74189,10 @@
       "chapter": "串 · 串的模式匹配 · 解答题",
       "question_id": "A01",
       "source_hash": "1c569d55b8ff7086abe7be4baaffa587d60b8bccdd78aa41e3880b0b51322aad",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         123,
         124
@@ -73749,10 +74208,38 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::串 · 串的模式匹配 · 解答题::A01",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_123.png",
+              "sha256": "7bcc176c46cf789e246d09dcc22594e156c36200addfbd6f0cc26b67a69ffb93"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_126.png",
+              "sha256": "15d4ec0fe112ab5e977b62cabb5e1c35537780ee06593868477bf0c3fd9e9ab3"
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。page_124（印刷 119）顶部 next[j] 是三行分段定义：0（j=1）；max{k|1<k<j 且 'p1…p(k-1)'='p(j-k+1)…p(j-1)'}（集合不为空）；1（其他情况）。现题干被压成一行，且把下标识别错：出现 `Pj-s+1`（应为 p_{j-k+1}）、`'pPk-1'`，三个小问里 `j=l`、`next[l]` 也是字母 l 而非数字 1，已按原页恢复。答案裁图 page_126_A01_ans.jpg 完整覆盖 01.【解答】三问；答案正文与原书一致，仅公式引号被识别成 `'p1\"Pk-1'=‘Pj-k+1\"·Pj-1'`，随本次 patch 一并修正为原书写法。",
+          "post_patch_verified": true,
+          "source_hash": "1c569d55b8ff7086abe7be4baaffa587d60b8bccdd78aa41e3880b0b51322aad"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -92194,12 +92681,10 @@
       "chapter": "排序 · 交换排序 · 解答题",
       "question_id": "A03",
       "source_hash": "0b3e444ae557369eefc9e0d7b59284c9c15dbdc5ede965d7f80d57aaa2eda425",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         349,
         350,
@@ -92217,10 +92702,42 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::排序 · 交换排序 · 解答题::A03",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_350.png",
+              "sha256": "f2f3ef66fe4b216d22d6c21d6f01e6f785e58c29401da4a24a4614ca3322fce9"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_354.png",
+              "sha256": "6382069a7f00db51e16aab262b25f4da306252e3e471e344be899974d2c8367d"
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_355.png",
+              "sha256": "ec1983f9b56b7a0f9ee49b2903eb053ab9f162e15ffb39af698de7a9396b0397"
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。page_350（书页345）末行起、page_351（书页346）顶部：题面与 current_content 一致，代码骨架原书为 typedef enum{RED, WHITE, BLUE} color; //设置枚举数组 与 void Flag_Arrange(color a[],int n){ … }，已按原文规范。答案 page_354（书页349）03.【解答】+ page_355（书页350）函数体裁图完整；current_answer 只到 typedef 一行即断，缺 while/switch 全部代码及末尾“例如…”一段，已补全。",
+          "post_patch_verified": true,
+          "source_hash": "0b3e444ae557369eefc9e0d7b59284c9c15dbdc5ede965d7f80d57aaa2eda425"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -99405,12 +99922,10 @@
       "chapter": "排序 · 归并排序、基数排序和计数排序 · 解答题",
       "question_id": "A02",
       "source_hash": "57d9444f229cba04c234fbb732d6cd752e71d00ca8e3b2250671104da0d3ff63",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         372,
         373,
@@ -99425,10 +99940,38 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::排序 · 归并排序、基数排序和计数排序 · 解答题::A02",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_374.png",
+              "sha256": "08936bc3cf1fb35aacc5fc120b6d20f3b7ffd4573efdacfbca84d18c3b47fb51"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_377.png",
+              "sha256": "904c9921e6f27a3986f69f6f14af39c338d5216f82cdad312f28314530e78c00"
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。题图 page_374.png（书页 369）第 02 题：原书重复关键字印作“16*”（16 右上角星号，放大到原生分辨率可见星形），current_content 写成“16\"”，属文本字符错，其余文字（12,2,16,30,28,10,16*,20,6,18 与“最低位优先（LSD）基数排序算法每趟排序后的结果”）完全一致，故按图像改正该字符。答案裁图 answer_crops/ds/page_377_A02_ans.jpg 对应 page_377.png（书页 372）的“02.【解答】”，含原始序列链、按最低位分配、收集、按最高位分配、收集及“需要通过 2 次分配和收集完成排序”，图内重复元素同样标为 16*，裁图完整无截断，答案仅以图片给出与当前字段一致。",
+          "post_patch_verified": true,
+          "source_hash": "57d9444f229cba04c234fbb732d6cd752e71d00ca8e3b2250671104da0d3ff63"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -102040,12 +102583,10 @@
       "chapter": "排序 · 插入排序 · 解答题",
       "question_id": "A02",
       "source_hash": "2d0e68b3dea53ce460e517b61c9036f9fd017e9fa86fbc0b34ad1efba805e88b",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         341,
         342,
@@ -102061,10 +102602,38 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::排序 · 插入排序 · 解答题::A02",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_342.png",
+              "sha256": "b1c9e4bbfaef06690c0966d0f70523889b4098572e8359cdb0447711303c25a7"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_345.png",
+              "sha256": "8561dc90fc0a64ece625ce65d19723bfbd239c6a2eca7cb2b57e0fcba28d91a5"
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。page_342（书页337）第 02 题原文为“给出关键字序列{50,26,38,80,70,90,8,30,40,20}的希尔排序过程（取增量序列为d={5,3,1}，排序结果为从小到大排列）。”；现有 content 只剩“的希{5,3,1}”，且 image_crop 右侧被裁（“的希”后断），已按页补全。答案 page_345 裁图完整，三趟结果 50,8,30,40,20,90,26,38,80,70 / 26,8,30,40,20,80,50,38,90,70 / 8,20,26,30,38,40,50,70,80,90 均正确；current_answer 末尾混入 page_345 下方 8.3 交换排序/冒泡排序教材正文，已删。",
+          "post_patch_verified": true,
+          "source_hash": "2d0e68b3dea53ce460e517b61c9036f9fd017e9fa86fbc0b34ad1efba805e88b"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -104232,12 +104801,10 @@
       "chapter": "排序 · 选择排序 · 解答题",
       "question_id": "A04",
       "source_hash": "51efaaf8283984db3867894ff25531580ff574b21537454af79c86f32aa41dd4",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         359,
         360,
@@ -104258,10 +104825,37 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::排序 · 选择排序 · 解答题::A04",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_361.png",
+              "sha256": "2416ad23b06c1b20522f979187bc37e8f7b5b6b5598ee48c93768d6eaf933e23"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_366.png",
+              "sha256": "ad300ceee19e58396191063b200b42f4e20af661be38c8457ee57658bd0494e4"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。题图 page_361.png（书页 356）第 04 题与 current_content 逐字一致：三小问（m 值/插入 65/删堆顶/完全 4 叉树编号/复杂度）齐全，无表格无代码。配图 crops/ds/page_361_A04.png 与原书该题插图完全对应（根 0，子 23、67、88、90，23 下 30、44、49、60，67 下 70）。答案裁图 answer_crops/ds/page_366_A04_ans.jpg 取自 page_366.png（书页 361）的“04.【解析】”，含 1)2)3) 全部文字与图 1（插入 65 后：0 的子为 23、65、88、90，65 下 70、67）、图 2（删堆顶后：23 为根，子 30、65、88、90，30 下 67、44、49、60，65 下 70），答案未跨页，裁图完整无截断。",
+          "source_hash": "51efaaf8283984db3867894ff25531580ff574b21537454af79c86f32aa41dd4"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -108889,12 +109483,10 @@
       "chapter": "查找 · 散列（Hash）表 · 解答题",
       "question_id": "A05",
       "source_hash": "574cbb2b10fd66376e9540651316b5b9a1855fb3d257d2189c1408a999b5ba1a",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         326,
         327,
@@ -108913,10 +109505,38 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::查找 · 散列（Hash）表 · 解答题::A05",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_328.png",
+              "sha256": "93450fcc5fd4dbec6c4631a3de8cfb105bae34a2917e98c3c9ea34081bce7074"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_334.png",
+              "sha256": "4d3b6b071adbba4342ebbfdcf8c37879a9bf1d4cb3338678018d3387072de478"
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。page_328（书页323）05 题：双散列、REV、序列 (2,8,31,20,19,18,53,27)、1）画表；2）在 page_329（书页324）首行“2）计算查找成功的平均查找长度 ASL。”，current_content 缺 2），已补。答案 page_334（书页329）裁图完整：H0/H1/H2 计算、散列表、ASL=11/8，数值与 current_answer 一致；仅下标被 OCR 抹平（H(2)→H0(2)、Ho/H;），已按原文恢复。",
+          "post_patch_verified": true,
+          "source_hash": "574cbb2b10fd66376e9540651316b5b9a1855fb3d257d2189c1408a999b5ba1a"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -115704,12 +116324,10 @@
       "chapter": "查找 · 顺序查找和折半查找 · 解答题",
       "question_id": "A06",
       "source_hash": "9ca4479706305317343a8f5e3ce6e191d01e830b2d4e7db7c6b75c9edd3c71ab",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         274,
         275,
@@ -115739,10 +116357,37 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::查找 · 顺序查找和折半查找 · 解答题::A06",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_277.png",
+              "sha256": "eda978ccffc445db2bc7f1fb6c2046e3d5d110e88d5231f87306b30bec9348bc"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_283.png",
+              "sha256": "39eb25447e3e873ca4a554b5521a21b4dc2fe61d4e7646b5df44ce8d505e64a8"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。page_277（书页272）第 06 题与 current_content 逐字一致：n 阶矩阵、无重复元素、每行从左到右升序、每列从上到下升序、示例矩阵 [1 4 7; 2 5 8; 3 6 9]、目标值 8、三小问齐全。page_283（书页278）06.【解析】裁图完整：从矩阵右上角开始、bool findkey(int A[][],int n,int k) 代码（i=0,j=n-1；A[i][j]==k 返回 true；>k 左移；<k 下移）、比较次数不超过 2n、时间 O(n)、空间 O(1)，与 current_answer 完全对应。本题无题干配图，has_image=false 与 image_crop_paths 为空正确。",
+          "source_hash": "9ca4479706305317343a8f5e3ce6e191d01e830b2d4e7db7c6b75c9edd3c71ab"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -146530,12 +147175,10 @@
       "chapter": "树与二叉树 · 树的基本概念 · 解答题",
       "question_id": "A04",
       "source_hash": "9379dcea8a55461adfde1a0a1126cccead8e3f489bfbdf17ec4428aa0e467926",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         131,
         132
@@ -146550,10 +147193,37 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::树与二叉树 · 树的基本概念 · 解答题::A04",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_132.png",
+              "sha256": "4047b9b9edaf115c2a091e93656d75eb5ab70dfa70cbae10da571db5da5ca867"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_134.png",
+              "sha256": "d49a1d03ba0e8e696839281abfe118f6d68d28fe6f9c4dba045ad6b2737d1b73"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。q_crop 为 page_132（印刷 127）第 03 题『已知一棵度为m的树中，有n1个度为1的结点…问该树有多少个叶结点？』，与现题干一致。答案裁图 page_134_A04_ans.jpg 即原书 03.【解答】：n=∑(i=0..m)i·ni+1=n1+2n2+3n3+…+m·nm+1、n0=n2+2n3+…+(m-1)nm+1=1+∑(i=2..m)(i-1)ni，与现答案文字吻合（含推导两步）。答案文字末尾『注意』三条（总结点数、总分支数、总结点数=总分支数+1）取自同页注意框，裁图未覆盖该框但内容与原书一致，不构成错误。",
+          "source_hash": "9379dcea8a55461adfde1a0a1126cccead8e3f489bfbdf17ec4428aa0e467926"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -148618,12 +149288,10 @@
       "chapter": "线性表 · 线性表的链式表示 · 解答题",
       "question_id": "A08",
       "source_hash": "b0b6283388700470ec16c651b1cd18210b59e90380c08f2d206ee0a4f0c3d9de",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         44,
         45,
@@ -148659,10 +149327,41 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::线性表 · 线性表的链式表示 · 解答题::A08",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_049.png",
+              "sha256": "c1a5981f9c0c1393429e6c347da429b1a50cf1e5a065473db9a4135b39c57bf5"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_058.png",
+              "sha256": "3c8035c7e9feeb27d99d1c926ed220ece1ab73117d3769881d1cbc579d6b59af"
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_059.png",
+              "sha256": "fbfcc9d7b6002bbf9b53047f9ebc33243b63923cfd0d6b4eea69ea1ee72fc7f5"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。q_crop 与现题干『设A和B是两个单链表（带头结点）…从A和B中的公共元素产生单链表C，要求不破坏A、B的结点』一致。答案裁图 page_058_A08_ans.jpg 内容只是 page_058（印刷 53）页末的『08.【解答】』标题；page_059_A08_ans_p2.jpg 覆盖算法思想（逐个比较、相等则新建结点尾插）与 `void Get_Common(LinkList A,LinkList B)` 全段代码（含 p/q 指针后移、`r->next=NULL;`）。两图拼合即原书完整解答，答案字段纯图片、无文字，图片齐备。",
+          "source_hash": "b0b6283388700470ec16c651b1cd18210b59e90380c08f2d206ee0a4f0c3d9de"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -155070,12 +155769,10 @@
       "chapter": "线性表 · 线性表的顺序表示 · 解答题",
       "question_id": "A07",
       "source_hash": "8400557d286ca0d642f7dca41b886dcceedbe4f91df61be984a2d94a42df1f34",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         23,
         24,
@@ -155104,10 +155801,37 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::线性表 · 线性表的顺序表示 · 解答题::A07",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_025.png",
+              "sha256": "e2382b86c091229d60b6895fbad4c9fc61b1b15d70a831f63060b12662d88d99"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_030.png",
+              "sha256": "ebacd57ff3c41ec2f30f6214bf2247f8c87e23091ec6e88a92525a7dc3a089c4"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。q_crop 显示『07. 已知在一维数组 A[m+n] 中依次存放两个线性表(a1,…,am)和(b1,…,bn)。编写一个函数，将数组中两个顺序表的位置互换，即将(b1,…,bn)放在(a1,…,am)的前面。』现题干与之一致，仅少了『位置互换，』后的一个『即』字，语义不变。page_030（印刷 25）07.【解答】的算法思想（整体逆置→前 n 个逆置→后 m 个逆置）与代码逐行核对一致：`if(left>=right||right>=arraySize)`、`int mid=(left+right)/2;`、`for(int i=0;i<=mid-left;i++)` 循环体，以及 Exchange 中三次 `Reverse(A,0,m+n-1,arraySize)` / `Reverse(A,0,n-1,arraySize)` / `Reverse(A,n,m+n-1,array",
+          "source_hash": "8400557d286ca0d642f7dca41b886dcceedbe4f91df61be984a2d94a42df1f34"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -155195,12 +155919,10 @@
       "chapter": "线性表 · 线性表的顺序表示 · 解答题",
       "question_id": "A09",
       "source_hash": "96e4b86faaffcfb6cd4d3df63a2ec6688554e89caedde64b9c2ea8a8a8215df4",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         23,
         24,
@@ -155229,10 +155951,37 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::线性表 · 线性表的顺序表示 · 解答题::A09",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_025.png",
+              "sha256": "e2382b86c091229d60b6895fbad4c9fc61b1b15d70a831f63060b12662d88d99"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_031.png",
+              "sha256": "09c3e6c24ca83c16ce5eb929551a9d87ebda26af44e02304c95688e98bd717a7"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。page_025（印刷 20）第 09 题逐字一致，含『逐行输出同时存在于这三个序列中的所有元素』、例 A={1,2,3}、B={2,3,4}、C={-1,0,2} 输出 2，以及 1)2)3) 三问。答案裁图 page_031_A09_ans.jpg 完整覆盖 09.【解析】：1) 三下标同扫的基本思想、2) `void samekey(int A[],int B[],int C[],int n)` 全段代码、3) O(n)/O(1)。答案字段目前只有图片行、无文字正文，与原书不冲突，不构成错误。",
+          "source_hash": "96e4b86faaffcfb6cd4d3df63a2ec6688554e89caedde64b9c2ea8a8a8215df4"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -157603,12 +158352,10 @@
       "chapter": "绪论 · 算法和算法评价 · 解答题",
       "question_id": "A02",
       "source_hash": "ea302067cefd7998a00e4409c856d709836ee83ab2a7366b4790db5f2d8d1806",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         8,
         9
@@ -157619,10 +158366,38 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::绪论 · 算法和算法评价 · 解答题::A02",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_009.png",
+              "sha256": "a2e60b3e8c833879968d774aee85e586dafd654b0f2e616c8a3c7cda66022822"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/ds/page_009.png",
+              "sha256": "a2e60b3e8c833879968d774aee85e586dafd654b0f2e616c8a3c7cda66022822"
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。q_crop 与 page_009（印刷页 4）『02. 举例说明对相同的逻辑结构，同一种运算在不同存储方式下实现时，其运算效率不同。』逐字一致。答案裁图 page_009_A02_ans.jpg 只覆盖『02.【解答】』三行，正文与上面给出的文字一致。现有答案字段在这段之后多粘了同页下半 1.2.1『算法的基本概念』整段（有穷性/确定性/可行性/输入/输出、正确性/可读性/健壮性/高效率与低存储量，约 300 字），那属于教材正文而非本题解答，故按裁图截断还原；原答案正文本身无错。",
+          "post_patch_verified": true,
+          "source_hash": "ea302067cefd7998a00e4409c856d709836ee83ab2a7366b4790db5f2d8d1806"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -167332,12 +168107,10 @@
       "chapter": "传输层 · UDP · 解答题",
       "question_id": "A05",
       "source_hash": "118cfab2864e61463ece666f7043e8eb8918e725b975a1b3de72e225563eba33",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         236,
         237,
@@ -167360,10 +168133,42 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::传输层 · UDP · 解答题::A05",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_238.png",
+              "sha256": "ff4ecbc3cb886a4bb6964cc96e7a7446c0308730e924d30452ebf8635f70c992"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_240.png",
+              "sha256": "578c97411b2be2627d9f1a4989234c9a1415a16d3f7175d21f6238bf2dee1a74"
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_241.png",
+              "sha256": "19c1e348c639250439c737b7936763f863fda8aab7225500fb54e24190d65cf4"
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。题干与 page 238（印 233）完全一致（8192B、假定 IP 数据报无选项、问分片数/数据字段长度/片偏移），本题书里无配图，has_image=false 正确。当前答案只有两行「答案图片：」，正文全空。原书答案在 page 241（印 236）：首部 8B、总长 8200B、6 个报片，总长 1500×5+820B、数据 1480×5+800B、片偏移 0/185/370/555/740/925，已照录。另提示：page_240_A05_ans.jpg 只截到「05.【解答】」标题行（正文在 241 页），真正正文在被引用的 page_241_A05_ans_p2.jpg 中，两张图合并可用。",
+          "post_patch_verified": true,
+          "source_hash": "118cfab2864e61463ece666f7043e8eb8918e725b975a1b3de72e225563eba33"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -176127,12 +176932,10 @@
       "chapter": "应用层 · 电子邮件 · 解答题",
       "question_id": "A03",
       "source_hash": "036e9c23303ef7b9e4d0018874e03415b788e5e1770db6ecb5babd92d258f1eb",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         291,
         292,
@@ -176149,10 +176952,37 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::应用层 · 电子邮件 · 解答题::A03",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_292.png",
+              "sha256": "3826bb68e04a2dd50fbfdc50ddaa7f10acbed939d0e205e3147d0713b6b59a49"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_294.png",
+              "sha256": "9e1c06d4c4b4bbcd41728a3473bbddfdcc3d2f3356201faf2ffe7627c5336b88"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。题干在 page 292（印 287）末尾与 page 293（印 288）上部；十六进制转储按 page 293 原图逐格核对：0020 行确为 14 字节（c0 e6 00 19 b0 ca d5 6f eb c9 10 e9 50 18），0030–0090 每行 16 字节，ASCII 列（…Message-ID、: <4DCE92BA.2010、902@163.com>..Da、te: Sat, 14 May、2011 22:33:30 +0、800..From: cskao、yan2012@163.com.）与当前代码块一一对应；三问齐全。答案 page 294（印 289）：SMTP、源端口 49382（0xc0e6）、目的端口 25（0x0019）、发件人 FROM: cskaoyan2012@163.com，与当前答案一致。配图裁图就是该转储、无截断（文件名 page_2",
+          "source_hash": "036e9c23303ef7b9e4d0018874e03415b788e5e1770db6ecb5babd92d258f1eb"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -181465,12 +182295,10 @@
       "chapter": "数据链路层 · 局域网 · 解答题",
       "question_id": "A04",
       "source_hash": "dcfdaa046d5c834928cfc371aa6d430809cfdeff765ddc3a6d8e77887f63ee09",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         105,
         106,
@@ -181493,10 +182321,38 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::数据链路层 · 局域网 · 解答题::A04",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_110.png",
+              "sha256": "96f8fa84369f92f1a44dc8b7d5f2878503ba99146e989bf13b3a300612e9f9c9"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_117.png",
+              "sha256": "8e0f32c1e8b87cff5f861a5b07080a59e74fa2e636e6d603444b8cb7f6f8f942"
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。p.110（书页105）题04：题干一致；当前解析是乱码，原书 p.117 为 125×8/(100×10^6)=2×L/(2×10^8)，L=125×8×10^8/(100×10^6)m=1000m；答案图完整。",
+          "post_patch_verified": true,
+          "source_hash": "dcfdaa046d5c834928cfc371aa6d430809cfdeff765ddc3a6d8e77887f63ee09"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -191807,12 +192663,10 @@
       "chapter": "数据链路层 · 流量控制与可靠传输机制 · 解答题",
       "question_id": "A02",
       "source_hash": "53b47818512d46549516aab65ab25885bc97ed00bf0acc188d552c7bad4f1957",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         72,
         73,
@@ -191836,10 +192690,42 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::数据链路层 · 流量控制与可靠传输机制 · 解答题::A02",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_075.png",
+              "sha256": "707222f500670ae262f1e1fe947735ef3cb6d6ea438235e1eb3d40f01f4cb8c0"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_080.png",
+              "sha256": "a451389840635f02090c604cbefbeb35a4aca541a33bd5c5d280e533af73ec6c"
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_081.png",
+              "sha256": "192a0502a2d0568cc6bc798be2bcea8f9d971a865220f1e9ee286f99ade7072e"
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。p.075（书页70）题01：原文为「发送窗口 W_T=6，接收窗口 W_R=3」，当前写成「Wr=6」，T 下标误识为 r；其余文字一致。答案图 p.080+p.081 含「W_R+W_T=9≥2^3」及 0~5 帧示例，完整。",
+          "post_patch_verified": true,
+          "source_hash": "53b47818512d46549516aab65ab25885bc97ed00bf0acc188d552c7bad4f1957"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -191850,12 +192736,10 @@
       "chapter": "数据链路层 · 流量控制与可靠传输机制 · 解答题",
       "question_id": "A03",
       "source_hash": "cad063753bd186fd0677ce21c89d47462cf099013b720978e1a19c58af7c329f",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         72,
         73,
@@ -191879,10 +192763,37 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::数据链路层 · 流量控制与可靠传输机制 · 解答题::A03",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_075.png",
+              "sha256": "707222f500670ae262f1e1fe947735ef3cb6d6ea438235e1eb3d40f01f4cb8c0"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_081.png",
+              "sha256": "192a0502a2d0568cc6bc798be2bcea8f9d971a865220f1e9ee286f99ade7072e"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。p.075（书页70）题02：题干逐字一致；答案图 p.081 给出 U=(L/B)/(L/B+2R)≥50%，L≥2RB=2×5000×0.03bit=300bit，完整。",
+          "source_hash": "cad063753bd186fd0677ce21c89d47462cf099013b720978e1a19c58af7c329f"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -192033,12 +192944,10 @@
       "chapter": "数据链路层 · 流量控制与可靠传输机制 · 解答题",
       "question_id": "A06",
       "source_hash": "26f011b6e61122f931a3ee4142fcc641d2e28784c1595a5c4b88aa59b889c989",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         72,
         73,
@@ -192062,10 +192971,37 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::数据链路层 · 流量控制与可靠传输机制 · 解答题::A06",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_076.png",
+              "sha256": "f3096a894d7e8679a314c40f8793afd3dbc5092f5415f8cd9bb70cf144a3c8b2"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_082.png",
+              "sha256": "470d815ee3d3617b0de585789bc127df256cb7a2a7ed7c7096b977972e2b2580"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。p.076（书页71）题05：R/S/D/T/F/N/A 七个参数与当前文本逐项一致；答案图 p.082 含公式与 ≈10.65bit/μs=10.65Mb/s，完整。",
+          "source_hash": "26f011b6e61122f931a3ee4142fcc641d2e28784c1595a5c4b88aa59b889c989"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -192144,12 +193080,10 @@
       "chapter": "数据链路层 · 流量控制与可靠传输机制 · 解答题",
       "question_id": "A08",
       "source_hash": "34b07a5dfe865fed8bf7286775bd4b9b7d80d283d7735fa36262da744ecd93e4",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         72,
         73,
@@ -192173,10 +193107,38 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::数据链路层 · 流量控制与可靠传输机制 · 解答题::A08",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_076.png",
+              "sha256": "f3096a894d7e8679a314c40f8793afd3dbc5092f5415f8cd9bb70cf144a3c8b2"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_082.png",
+              "sha256": "470d815ee3d3617b0de585789bc127df256cb7a2a7ed7c7096b977972e2b2580"
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。p.076（书页71）题07：原书记号 S_{x,y}、R_{x,y}，当前被吃成「Sx，和Rxy」「Sx，」「Sxy」；1000B、3比特、100Mb/s、RTT=0.96ms 与原文一致。答案图 p.082 与解析数值（3帧、5帧、S5,2/S1,2、3帧/S2,3、50%）一一吻合；配图含 (a)(b) 两图，底缘切掉 (a)/(b) 字样。",
+          "post_patch_verified": true,
+          "source_hash": "34b07a5dfe865fed8bf7286775bd4b9b7d80d283d7735fa36262da744ecd93e4"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -197359,12 +198321,10 @@
       "chapter": "物理层 · 通信基础 · 解答题",
       "question_id": "A01",
       "source_hash": "4cc187de1acb99cda121a184020fd6116b08d2b1ae968668c0ca1374d18b6d52",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         40,
         41,
@@ -197381,10 +198341,37 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::物理层 · 通信基础 · 解答题::A01",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_043.png",
+              "sha256": "8a1c1b4f0fb40bf6848b0d696b850f183367a4db11e961b6d84fbfb2a4ce1bf1"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_046.png",
+              "sha256": "3f8e17cf4aba29edac2a5c2ad71ce6340eed6db06a8602ae90dbb6d6ed6a0af2"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。p.043（书页38）题01：题干逐字一致（10Mb/s、20μs、35μs、10000bit、两个5000bit）；配图 page_043_A01.png 为 A—S—B 链路，与原文一致；答案图 p.046 含 2075μs 与 T=1575μs 时间表，完整。",
+          "source_hash": "4cc187de1acb99cda121a184020fd6116b08d2b1ae968668c0ca1374d18b6d52"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -200613,12 +201600,10 @@
       "chapter": "网络层 · IPv4 · 解答题",
       "question_id": "A07",
       "source_hash": "15faebfac3620d9ffd43c2f9004e009b49e199f545c8692436224f7c0a00a83c",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         156,
         157,
@@ -200659,10 +201644,38 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::网络层 · IPv4 · 解答题::A07",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_165.png",
+              "sha256": "db15dd5dba48f7cd9ec692cf010335b6936a3a7276808e6db074073a2495dec2"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_180.png",
+              "sha256": "7282265bc85434469c364eccfe88bcd20715175eff1faf9fb937ea4f32ca8722"
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。p.165（书页160）题06：路由表为 131.128.56.0/24→A、131.128.55.32/28→B、131.128.55.32/30→C、131.128.0.0/16→D；当前题干把表项插进正文并丢掉「并加以说明」。当前解析误配同页题07（C4.5E…）的答案；p.180（书页175）题06 答案应为：分组A→C、分组B→B；增加 131.128.55.33/32→A、0.0.0.0/0→E；划 4 个 /26 子网。答案图 page_180_A07_ans.jpg 内容确为题06，图对文错。",
+          "post_patch_verified": true,
+          "source_hash": "15faebfac3620d9ffd43c2f9004e009b49e199f545c8692436224f7c0a00a83c"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -201339,12 +202352,10 @@
       "chapter": "网络层 · IPv4 · 解答题",
       "question_id": "A15",
       "source_hash": "e83c8dc3a510e3dd8b638df9092abb7a1b039cb58928b2eb2ca38246413540e4",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         156,
         157,
@@ -201385,10 +202396,38 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::网络层 · IPv4 · 解答题::A15",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_167.png",
+              "sha256": "7325ac89d3270d60a4aa4437b04580f13dcdb9a36dd21cd5739e32c72d8dfd8f"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_184.png",
+              "sha256": "5a1fc003aef8bab4a42906a50b17f1155567d46d3bcf49287b53dfdd23fd349d"
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。p.167-168（书页162-163）题15：题干 192.168.1.0/24 均分销售部/技术部，MTU 1500B/800B，图注 192.168.1.1~20、F0 192.168.1.126、F1 192.168.1.254、129~208；当前正文夹入图注文字。答案 p.184（书页179）为 2^7−2=126、126−80−1=45、⌊(800−20)/8⌋×8=776、⌈(1500−20)/776⌉=2、偏移 0/97；当前「2”」「L…J」「[…]」为公式误识。",
+          "post_patch_verified": true,
+          "source_hash": "e83c8dc3a510e3dd8b638df9092abb7a1b039cb58928b2eb2ca38246413540e4"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -222544,12 +223583,10 @@
       "chapter": "计算机网络体系结构 · 计算机网络概述 · 解答题",
       "question_id": "A02",
       "source_hash": "fe33c1b25d8d7d1e9d8563f421f69cfceee8c9c2dd21177a6fa9c55120016eee",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         14,
         15,
@@ -222570,10 +223607,42 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::计算机网络体系结构 · 计算机网络概述 · 解答题::A02",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_016.png",
+              "sha256": "3972be12df3c89441b82feaece8bb0191b57865a193ffc8cd30699763e1bbe8f"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_019.png",
+              "sha256": "c8f3ffafcafbb768bc3951a865b99720e8df6ae56ed9ed2f9d51ba5b9de07edf"
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/net/page_020.png",
+              "sha256": "c05d49c5ced48412a2d66efa47effdbebb58531c7606af037490ff2f4edabc91"
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。p.016（书页11）题02：原文为「当带宽多大时」，当前「带宽更大时」误识；2km、2×10^8 m/s、100B、512B 均与原文一致。答案图 p.019 仅含「02.【解答】」标题，p.020 接公式与 80Mb/s、409.6Mb/s，两图拼接完整。",
+          "post_patch_verified": true,
+          "source_hash": "fe33c1b25d8d7d1e9d8563f421f69cfceee8c9c2dd21177a6fa9c55120016eee"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -224783,12 +225852,10 @@
       "chapter": "内存管理 · 内存管理概念 · 解答题",
       "question_id": "A04",
       "source_hash": "db7824a064ffcf867b3757ee04d45eb595fa8f6e7dafc87f53a258b177601e5b",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         196,
         197,
@@ -224831,10 +225898,37 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::内存管理 · 内存管理概念 · 解答题::A04",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_203.png",
+              "sha256": "725a2196fa7fa8c06f1735f92b2561828c1d6ee0f4f0f3125ece7764cba6e6d4"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_214.png",
+              "sha256": "7ac97e584ccb59286dd2eaec3af7fe9a468c41dffd2e54863bd3030870194e56"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。表A 段表与表B 逻辑地址见 page_204（p199）：段表 0:210/500、1:2350/20、2:100/90、3:1350/590、4:1938/95；逻辑地址 0:430、1:10、2:500、3:400、4:112、5:32，与当前 content 完全一致。答案 page_214：640、2360、(2,500) 越界非法、1750、(4,112) 越界非法、第5段不存在，与当前 explanation 逐项一致。",
+          "source_hash": "db7824a064ffcf867b3757ee04d45eb595fa8f6e7dafc87f53a258b177601e5b"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -225290,12 +226384,10 @@
       "chapter": "内存管理 · 内存管理概念 · 解答题",
       "question_id": "A10",
       "source_hash": "c5727aa338337c003bd5a30fa08ff3a04da579e99c7c8539fa14e72b4e430af6",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         196,
         197,
@@ -225338,10 +226430,38 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::内存管理 · 内存管理概念 · 解答题::A10",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_204.png",
+              "sha256": "0707c19effbd1ebe90aba84d96f8cbcd213def696b16e48369ad3b51b578bee0"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_216.png",
+              "sha256": "00fdd47c25e13b0bf13bc6f5efd9d88c9b09c981d21c9c1370e97110467b597b"
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。题干由 page_204（p199）末行接 page_205（p200）：位示图与待填页表在原书并排。当前 content 末尾的「1111111111111111页号块号（从0开始编址）000000 00011…」是位图数字被 OCR 成乱码，须删。答案 page_216：1) 页表 0→21、1→27、2→28、3→29、4→34、5→35；2) 内部碎片 0.8KB；3) 2^14 位=2KB，数值与当前 explanation 一致，但当前文本把 1) 排到 2)3) 之后且缩成引用块，并写成「位图图」，故 patch 重排。配图 crops/os/page_204_A10.png 为原书位示图+空白页表，底边略裁。",
+          "post_patch_verified": true,
+          "source_hash": "c5727aa338337c003bd5a30fa08ff3a04da579e99c7c8539fa14e72b4e430af6"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -241194,12 +242314,10 @@
       "chapter": "内存管理 · 虚拟内存管理 · 解答题",
       "question_id": "A02",
       "source_hash": "dfc7bee8c2259aef63bf7174be1be312d96b790882822287ad57ee1239c35b41",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         231,
         232,
@@ -241237,10 +242355,37 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 解答题::A02",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_237.png",
+              "sha256": "4f1a06f2f346d87cd9196de8675fcf6160e487ef345eeaa0f0d3d48fc495fcd9"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_248.png",
+              "sha256": "ea80fbd905ad48f472f40f15ccf72a168d30f75ddaff442243a16337ea53d8ad"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。题干 page_237（p232）02.：20ms、1μs、80%、剩余20%中10%（总数2%）缺页，与当前 content 完全对应。答案 page_248：1) 80%×1；2) 18%×(1+1)；3) 2%×(1+1+20ms)，有效访问时间 80%×1+18%×2+2%×(1×2+20×1000)=401.2μs，与当前 explanation 数值、公式一致（仅把 μs 写作 us）。",
+          "source_hash": "dfc7bee8c2259aef63bf7174be1be312d96b790882822287ad57ee1239c35b41"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -242333,12 +243478,10 @@
       "chapter": "内存管理 · 虚拟内存管理 · 解答题",
       "question_id": "A16",
       "source_hash": "a460abc15dd78776309643cad3e5c0c8f635a69eddea473110a9ebbd80fc4e26",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         231,
         232,
@@ -242376,10 +243519,37 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 解答题::A16",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_239.png",
+              "sha256": "4f7cac7b5e0d20f9a605bba9c3da07a6375258df922dbe1fc9a52aae7820e751"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_253.png",
+              "sha256": "04df62ab01f32456ba1f0f9b989f208948b0b02b17f83e876ba71f17bbdf2030"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。题干 page_239（p234）末至 page_240（p235）：页表 0/7/130/1、1/4/230/1、2/2/200/1、3/9/160/1，访问 17CAH，Clock 指针指向 2 号页框，均与当前 content 一致。答案 page_253：页号 5（17CAH=0001 0111 1100 1010B）、FIFO 换 0 号页→1FCAH、CLOCK 遍历一周后换 2 号页框→0BCAH，与当前 explanation 完全一致。配图 crops/os/page_239_A16.png 同时含页表与时钟圆图，对应原书。",
+          "source_hash": "a460abc15dd78776309643cad3e5c0c8f635a69eddea473110a9ebbd80fc4e26"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -242809,12 +243979,10 @@
       "chapter": "内存管理 · 虚拟内存管理 · 解答题",
       "question_id": "A22",
       "source_hash": "d55949b0a6377a4bad8e167c13aac38f3735731d42788dee92dc363d09828efd",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         231,
         232,
@@ -242852,10 +244020,38 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::内存管理 · 虚拟内存管理 · 解答题::A22",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_241.png",
+              "sha256": "fe79a98217906106c23f778740eff42bd3e059a99cfc13f59926040bf5c9e9ae"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_255.png",
+              "sha256": "f024634889d98caf3158839aef6e3dfe7a3287547e5093542e613fbae4b2ff79"
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。题干由 page_241（p236）末接 page_242（p237）：页表起始 B8C0 0000H、装入 6540 0000H、缺页后物理地址 BAB4 5678H、两问文字均与当前 content 一致。答案 page_255 应给出 1) 页表项虚拟地址 B8C0 0120H、物理地址 6540 0120H、页框号 2EAH；2) 页号 2E3H、页表项虚拟地址 B8C0 0B8CH、页框号 195H。当前 explanation 把「<<」写成「>」、丢掉物理地址与 0B8CH 等答案、注释也写成「>」表示右移，须整段替换。",
+          "post_patch_verified": true,
+          "source_hash": "d55949b0a6377a4bad8e167c13aac38f3735731d42788dee92dc363d09828efd"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -250556,12 +251752,10 @@
       "chapter": "文件管理 · 文件系统 · 解答题",
       "question_id": "A01",
       "source_hash": "e2099d73a98c9748772abca32a1a95f30be71be674954a80db268e7f3c6daee5",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         305,
         306,
@@ -250583,10 +251777,38 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::文件管理 · 文件系统 · 解答题::A01",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_306.png",
+              "sha256": "095a2a5e5bcaae0c3582578bea71dfd52b9356d2f87bea4bd8c70060f5230b45"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_309.png",
+              "sha256": "9713087736c6a6f1dd8b20dc972763981f76ddf2c2c9c028f96af7c9da53eff6"
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。题干由 page_306.png（印刷 301）末两行与 page_307.png（印刷 302）首两行拼成，与 current_content 完全一致（100 柱面、每柱面 20 磁道、每磁道 8 盘块、每盘块 1KB、两个小问及“从0开始编号”均无误），无需改题干。题图逐格核对：裁图 page_306_A01.png 与 page_307.png 顶部位示图一致——表头 i\\j=0–15，行0全1，行1全1，行2仅 j=2 为0，行3仅 j=6 与 j=12/13/14/15 为0，行4全0，左下角有“…”，故图像内容正确；仅文件名标 page_306 而图实际在 page_307，属命名偏差，不影响内容。答案 page_309_A01_ans.jpg（page_309.png 印刷 304）1）公式一致，但 current_answer 完全没有 2）（分配与回收过程），属实质性缺",
+          "post_patch_verified": true,
+          "source_hash": "e2099d73a98c9748772abca32a1a95f30be71be674954a80db268e7f3c6daee5"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -283192,12 +284414,10 @@
       "chapter": "输入/输出管理 · 设备独立性软件 · 解答题",
       "question_id": "A02",
       "source_hash": "1992f56bb1db9d06ae7b35637b758ad965c5b3027157960e11928a19d1ccb9e3",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         334,
         335,
@@ -283224,10 +284444,38 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::输入/输出管理 · 设备独立性软件 · 解答题::A02",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_338.png",
+              "sha256": "8a7db0f03bfdbc518c47692d89884594dd7944ccdd33e5f6a904e0a0c9bc95b7"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_344.png",
+              "sha256": "3bc539782dadba22d5a2ec0b0c6d002c2964b9625c8a3ceffc62067a27d9eeea"
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。题干与 page_338.png（印刷 333）末尾原文逐字一致（双缓冲区、80μs/20μs/50μs、4 个数据块、问平均处理时间），无需改题干；本题无题干配图，has_image=false 与 image_crop_paths 为空正确。答案 page_344.png（印刷 339）：390μs、390μs/4=97.5μs、(80n+20+50)μs=(80n+70)μs、(80n+70)/n μs、max(C,T)=80μs 全部与 current_answer 一致（仅“us”应为“μs”）。问题在于原答案中那张甘特图被 OCR 成乱码串（“进程缓冲区-用户区T T2 T3 T4 iM 1M2 M M磁盘-缓冲区CPU 0 80100150160180230 240260 310320340390t/μus”），已删除乱码，正文保留“如下图所示/从上图可以看出”，图本身仍完整",
+          "post_patch_verified": true,
+          "source_hash": "1992f56bb1db9d06ae7b35637b758ad965c5b3027157960e11928a19d1ccb9e3"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -300316,12 +301564,10 @@
       "chapter": "进程与线程 · 同步与互斥 · 解答题",
       "question_id": "A25",
       "source_hash": "6d4d9734a12fd40e030f33f7dfee1bbfa8975667b31e033d98415108e5eb5352",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         119,
         120,
@@ -300373,10 +301619,41 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::进程与线程 · 同步与互斥 · 解答题::A25",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_130.png",
+              "sha256": "2fa3d1ad63f1f048e97e64df8da1389d1be0e29673cfd0de9a6b0074a983f9c8"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_152.png",
+              "sha256": "8c3e2d6905d8119787550d3c7061a3095f94d075217718045329494c92378fa6"
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_153.png",
+              "sha256": "be19a596123e76a60e200514286bb9400ab205412aa8ff758eec48d9212c39fc"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。题干见 page_130（p125）表与 page_131（p126）三问。表内「功能描述/方法1/方法2」三段代码（方法1 关中断后 while(S<=0); 陷死循环；方法2 循环体内 开中断;关中断;）与当前 content 的 markdown 表逐条一致，未漏语句。答案 page_152 的 1)2)（共享变量需互斥、方法1错误/方法2正确）与 page_153 的 3)（开/关中断是特权指令）与当前 explanation 完全一致。",
+          "source_hash": "6d4d9734a12fd40e030f33f7dfee1bbfa8975667b31e033d98415108e5eb5352"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -300679,12 +301956,10 @@
       "chapter": "进程与线程 · 同步与互斥 · 解答题",
       "question_id": "A29",
       "source_hash": "6764d483b1db74f3263f4692b105d6dda19dce6e077cd34f40b221eb1fec7d1f",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         119,
         120,
@@ -300736,10 +302011,38 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::进程与线程 · 同步与互斥 · 解答题::A29",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_131.png",
+              "sha256": "9a6e75be2858c604113cdf3ae44fb91287abf7d1693de1ee0a0a10ad26a602f4"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_154.png",
+              "sha256": "5ec63a006dd67a4a57f0315196957f71b32fc083b4504a8d0d3c00214ca3c3f8"
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。题干在 page_131（p126）末至 page_132（p127）首段，文字与当前 content 一致。答案 page_154（p149）：文字说明部分与当前 explanation 逐句相同（position=3、pit=0、tree=0、mutex=1 及各步 wait/signal）；但当前文本把原书三列伪代码表交错拼成一段（出现「wait(position); wait(pit); wait(tree);」并列、列归属丢失），须按原表甲/乙/丙重排，故判 patch。",
+          "post_patch_verified": true,
+          "source_hash": "6764d483b1db74f3263f4692b105d6dda19dce6e077cd34f40b221eb1fec7d1f"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -316611,12 +317914,10 @@
       "chapter": "进程与线程 · 死锁 · 解答题",
       "question_id": "A04",
       "source_hash": "6ce63e61cc63fad84805509d63c72aa051da282e858d4c1f6db1802817ed20d4",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         163,
         164,
@@ -316657,10 +317958,41 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-04T07:12:58+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::进程与线程 · 死锁 · 解答题::A04",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-visual-subagent",
+          "reviewed_at": "2026-11-04T07:12:58+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_169.png",
+              "sha256": "28e9287649fb0280a47a89993a408228d7889bc3d953f4cda5de649869d9855b"
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_178.png",
+              "sha256": "087f507da3e1cc5bdfa6e8e1b28ccdcda6cdf164ea097061f20f9a87ced17664"
+            },
+            {
+              "path": "C:/Users/16416/Desktop/考研/apps/bank-408/assets/pdf_images/os/page_179.png",
+              "sha256": "24549a7fbd4e19ebef22c3ca0b335eff280b0b2593ba5e90cac04fb9f7577f0a"
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "视觉子代理对照原书页逐题复核。题干表在 page_169（p164）末、三问在 page_170（p165）。逐格核对 Allocation/Max：P0 0 0 1 2 / 0 0 1 2，P1 1 0 0 0 / 1 7 5 0，P2 1 3 5 4 / 2 3 5 6，P3 0 0 1 4 / 0 6 5 6，Available 1 5 2 0，与当前 content 一致；三问文字一致。答案 page_178 的 Need 矩阵（0,0,0,0 / 0,7,5,0 / 1,0,0,2 / 0,6,4,2）与 page_179 安全性表、安全序列<P0,P2,P1,P3>、请求后 Available(1,1,0,0)、Need1(0,3,3,0)、第二次安全序列与分析结论均与当前 explanation 数值一致。",
+          "source_hash": "6ce63e61cc63fad84805509d63c72aa051da282e858d4c1f6db1802817ed20d4"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
