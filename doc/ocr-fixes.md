@@ -3778,3 +3778,12 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **修复**：保留默认选择题库不变；顶栏新增「选择题 / 大题」切换，大题库通过 `filterCourseDataToEssays` 只加载解答题，独立统计、章节、课程计数和 `wd408_cursor_*_essay` 游标。`?library=essay` 可直达大题库；平台“继续上次”链接携带同一参数。payload manifest 同时写入 `question_count` 与 `essay_count`。
 - **回归**：bank-408 全量 pytest `397 passed`；本机与公网均验证数据结构选择题 650 题、大题 162 题，四科大题计数为 162 / 80 / 112 / 83；大题详情可打开，hold 题继续显示「未校验」和原页/答案图。
 - **云端**：`push_data.ps1` 热更 v515（11 files），`data-ds/coa/os/net.json` 均 200；平台 408 池重导 `changed 20 failed 0`，未重启服务。
+
+## 2026-11-04 · 大题二级章节点击后显示 0 题
+
+- **病征**：王道大题库侧栏显示「排序 · 归并排序、基数排序和计数排序」有 3 题，点击后却显示「未找到题目」。
+- **根因**：大题树的 `filterKey` 是两级 `l1|l2`，题目 `chapterKey` 是三级 `l1|l2|解答题`；`filterQuestions()` 对任何含 `|` 的键都要求完全相等，两级键因此匹配不到任何题。选择题使用三级键，不受此问题影响。
+- **修复**：`choice-only.js` 新增共享 `chapterMatchesSelection()`，一级键匹配章、两级键匹配小节前缀、三级键保持精确匹配；`app.js` 的章节筛选统一调用该函数。
+- **回归**：`pytest tests/test_choice_only_viewer.py -q` 24 passed；新增真实数据断言该小节目录计数与筛选结果均为 3，并覆盖章/小节/三级键及不匹配分支。本机 v516 实际展开「排序」并点击该小节，显示 3 张题目卡片。
+- **云端**：`push_data.ps1` 热更 v516，仅更新 `index.html` / `sw.js` / `app.js` / `choice-only.js`；`data-*.json` 未变，平台 408 题池同步按预期跳过；公网实际点击同小节确认 3 题，未重启服务。
+- **排障**：首次推送因早期超时代码检索留下的 `cbm_search` 进程占用质量清单而两次触发 WinError 5；结束该残留只读进程后，同一标准推送脚本成功。

@@ -596,3 +596,51 @@ def test_l1_chapter_deep_link_kept():
     assert out["ok"]["cleared"] is False
     assert out["ok"]["selectedChapter"] == out["l1"]
     assert out["bad"]["cleared"] is True
+
+
+def test_chapter_selection_matches_l1_l2_and_full_keys():
+    """大题两级键匹配三级 chapterKey；选择题三级键仍精确匹配。"""
+    out = _node_eval(
+        """
+        const essay = '排序|归并排序、基数排序和计数排序|解答题';
+        const sibling = '排序|交换排序|解答题';
+        return {
+          all: api.chapterMatchesSelection(essay, ''),
+          l1: api.chapterMatchesSelection(essay, '排序'),
+          l1Miss: api.chapterMatchesSelection(sibling, '查找'),
+          l2: api.chapterMatchesSelection(essay, '排序|归并排序、基数排序和计数排序'),
+          l2Miss: api.chapterMatchesSelection(sibling, '排序|归并排序、基数排序和计数排序'),
+          full: api.chapterMatchesSelection(essay, essay),
+          fullMiss: api.chapterMatchesSelection(essay, '排序|归并排序、基数排序和计数排序|选择题'),
+        };
+        """,
+    )
+    assert all(out[key] is True for key in ("all", "l1", "l2", "full"))
+    assert all(out[key] is False for key in ("l1Miss", "l2Miss", "fullMiss"))
+
+
+def test_real_essay_l2_selection_returns_all_listed_questions():
+    """截图小节：目录计数 3，筛选后必须真的得到 3 道大题。"""
+    path = DATA_FILES["数据结构"]
+    if not path.is_file():
+        pytest.skip("missing data-ds.json")
+    out = _node_eval(
+        """
+        const filtered = api.filterCourseDataToEssays(DATA);
+        const tree = api.buildChapterTreeFromChapters(filtered.chapters, false);
+        const l1 = tree.find(x => x.name === '排序');
+        const l2 = l1.children.find(x => x.name === '归并排序、基数排序和计数排序');
+        let matched = 0;
+        filtered.chapters.forEach(ch => {
+          const key = (ch.l1_name || '?') + '|' + (ch.l2_name || '?') + '|' + (ch.section_type || '?');
+          if (api.chapterMatchesSelection(key, l2.filterKey)) matched += ch.questions.length;
+        });
+        return { filterKey: l2.filterKey, listed: l2.total, matched };
+        """,
+        data_path=path,
+    )
+    assert out == {
+        "filterKey": "排序|归并排序、基数排序和计数排序",
+        "listed": 3,
+        "matched": 3,
+    }

@@ -2206,9 +2206,11 @@ function filterQuestions(source, opts) {
   const tokenSplitRe = /[\s,.;:!?。，；：！？、（）()\[\]"'"]+/;
   return source.filter(q => {
     if (!qualityVisible(q)) return false;
-    // 章级深链（如 树与二叉树，无 '|'）：匹配该章所有小节
+    // 大题目录使用 l1|l2，需匹配该小节的三级 chapterKey；选择题仍精确匹配三级键
     if (opts.chapter) {
-      if (opts.chapter.indexOf('|') === -1) {
+      if (_COV && typeof _COV.chapterMatchesSelection === 'function') {
+        if (!_COV.chapterMatchesSelection(q.chapterKey, opts.chapter)) return false;
+      } else if (opts.chapter.indexOf('|') === -1) {
         if (String(q.chapterKey || '').split('|')[0] !== opts.chapter) return false;
       } else if (q.chapterKey !== opts.chapter) return false;
     }
@@ -5902,7 +5904,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=515').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=516').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {

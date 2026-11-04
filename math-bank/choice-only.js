@@ -118,6 +118,17 @@
     return String(chOrL1 || '?') + '|' + (l2Name || '?');
   }
 
+  /** 章 / 小节筛选键分别匹配三级 chapterKey 的第一段 / 前两段。 */
+  function chapterMatchesSelection(chapterKey, selectedChapter) {
+    var key = String(chapterKey || '');
+    var selected = String(selectedChapter || '');
+    if (!selected) return true;
+    var depth = selected.split('|').length;
+    if (depth === 1) return key.split('|')[0] === selected;
+    if (depth === 2) return key.indexOf(selected + '|') === 0;
+    return key === selected;
+  }
+
   /**
    * 构建章节树（逻辑仍聚合 section；UI 只渲染到 L2）。
    * choiceOnly=true 时跳过非选择题 section 与零题章节。
@@ -354,6 +365,7 @@
     sanitizeTypeFilter: sanitizeTypeFilter,
     chapterTreeKey: chapterTreeKey,
     chapterL2Key: chapterL2Key,
+    chapterMatchesSelection: chapterMatchesSelection,
     collectSectionKeys: collectSectionKeys,
     l2MatchesSelection: l2MatchesSelection,
     normalizeToFilterKey: normalizeToFilterKey,
