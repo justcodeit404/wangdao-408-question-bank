@@ -3787,3 +3787,12 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **回归**：`pytest tests/test_choice_only_viewer.py -q` 24 passed；新增真实数据断言该小节目录计数与筛选结果均为 3，并覆盖章/小节/三级键及不匹配分支。本机 v516 实际展开「排序」并点击该小节，显示 3 张题目卡片。
 - **云端**：`push_data.ps1` 热更 v516，仅更新 `index.html` / `sw.js` / `app.js` / `choice-only.js`；`data-*.json` 未变，平台 408 题池同步按预期跳过；公网实际点击同小节确认 3 题，未重启服务。
 - **排障**：首次推送因早期超时代码检索留下的 `cbm_search` 进程占用质量清单而两次触发 WinError 5；结束该残留只读进程后，同一标准推送脚本成功。
+
+## 2026-11-04 · 大题 Xiaomi OCR 全量复核（177 解禁 / 245 保留）
+
+- **范围**：422 道 `strict_hold` 解答题（ds 158 / coa 78 / os 105 / net 81）。原书四册 PDF 切页从 F 盘备份恢复到 `apps/bank-408/assets/pdf_images/`，本机此前缺整页图。
+- **方法**：项目内 `Xiaomi-OCR-0 Q4`（Ollama `xiaomi-ocr-q4`，三并发）读取题目 bbox 裁图和答案裁图；题干/答案分别按 4-gram 覆盖率与数字集合比对。题干 <0.95、答案 <0.90、关键数字不一致的题保留 hold；对单边低覆盖题再 OCR 原书整页补读。配图题另用 OpenCV 在原书页做模板匹配，<0.80 保留 hold。
+- **结果**：177 道高一致度题写入 `xiaomi-ocr-q4-local` 原书复核证据并认证；245 道解答题仍 hold（文本差异 225、关键数字差异 115、配图位置不匹配 19，类别可重叠）。另有 6 道历史选择题 hold 不动，全局 hold 428→251。
+- **回归**：相关质量测试 26 passed；`quality_ledger.py --check-published` 0 问题；逐题对比确认只改了本次 177 条，其他题目 0 处变化。公网抽查已认证题警告消失。
+- **云端**：`push_data.ps1` 热更 `quality-ledger.json` / `quality-hold.json`（版本仍 v516，数据和壳未变）；平台 408 池 `changed 177 failed 0`，未重启服务。
+- **未解禁**：245 道存在可复现的题干/答案差异或配图位置不符，需后续逐题修正；复核明细在 `temp/xiaomi-ocr/review-408/report.json`。
