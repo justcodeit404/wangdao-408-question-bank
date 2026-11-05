@@ -611,15 +611,12 @@ CURATED_CHOICE_PATCHES = {
 CURATED_APPLICATION_PATCHES = {
     ("ds", 74, "X03_2"): {
         "id": "A03",
-        "content": "栈的初态和终态均为空，以I和O分别表示入栈和出栈，则出入栈的操作序列可表示为由I和O组成的序列，可以操作的序列称为合法序列，否则称为非法序列。",
+        "content": '栈的初态和终态均为空，以I和O分别表示入栈和出栈，则出入栈的操作序列可表示为由I和O组成的序列，可以操作的序列称为合法序列，否则称为非法序列。\n1）下面所示的序列中哪些是合法的？\nA. IOIIOIOO B. IOOIOIIO C. IIIOIOIO D. IIIOOIOO\n2）通过对1）的分析，写出一个算法，判定所给的操作序列是否合法。若合法，返回true，否则返回false（假定被判定的操作序列已存入一维数组中）。',
         "options": None,
-        "sub_questions": [
-            "下面所示的序列中哪些是合法的？\nA. IOIIOIOO　B. IOOIOIIO　C. IIIOIOIO　D. IIIOOIOO",
-            "通过对（1）的分析，写出一个算法，判定所给的操作序列是否合法。若合法，返回 true，否则返回 false（假定被判定的操作序列已存入一维数组中）。",
-        ],
+        "sub_questions": None,
         "answer": {
             "choice": None,
-            "explanation": "（1）A、D 合法，B、C 不合法。B 中先入栈 1 次，再连续出栈 2 次，出现空栈出栈；C 中入栈和出栈次数不相等，最终栈不为空。\n\n（2）扫描操作序列，用 balance 表示当前栈内元素个数。遇到 I 时 balance 加 1，遇到 O 时 balance 减 1；若任意时刻 balance 小于 0，则序列非法。扫描结束后 balance 必须等于 0。\n\nbool Judge(const char A[]) {\n    int balance = 0;\n    for (int i = 0; A[i] != '\\0'; ++i) {\n        if (A[i] == 'I') {\n            ++balance;\n        } else if (A[i] == 'O') {\n            if (--balance < 0) return false;\n        } else {\n            return false;\n        }\n    }\n    return balance == 0;\n}",
+            "explanation": '1）选项A、D合法，而选项B、C不合法。在B中，先入栈1次，再连续出栈2次，错误。在选项C中，入栈和出栈次数不一致，会导致最终的栈不空。选项A、D均为合法序列，请自行模拟。注意，在操作过程中，入栈次数一定大于或等于出栈次数；结束时，栈一定为空。\n2）设被判定的操作序列已存入一维数组A中。算法的基本设计思想：依次逐一扫描入栈出栈序列（由I和O组成的字符串），每扫描至任意一个位置均需检查出栈次数（O的个数）是否小于入栈次数（I的个数），若大于则为非法序列。扫描结束后，再判断入栈和出栈次数是否相等，若不相等则不合题意，为非法序列。\n本题代码如下：\nbool Judge(char A[]) {\n    int i=0;\n    int j=k=0;                  //i为下标，j和k分别为字母I和O的个数\n    while(A[i]!=\'\\0\') {         //未到字符数组尾\n        switch(A[i]) {\n            case \'I\': j++; break;   //入栈次数增1\n            case \'O\': k++;\n                if(k>j) {printf("序列非法\\n"); exit(0); }\n        }\n        i++;                    //不论A[i]是I还是O，指针i均后移\n    }\n    if(j!=k) {\n        printf("序列非法\\n");\n        return false;\n    }\n    else {\n        printf("序列合法\\n");\n        return true;\n    }\n}\n【另解】入栈后，栈内元素个数加1；出栈后，栈内元素个数减1，因此可将判定一组出入栈序列是否合法转化为一组由+1、-1组成的序列，它的任意前缀子序列的累加和不小于0（每次出栈或入栈操作后判断）则合法；否则非法。',
         },
     },
     # net IPv4 综合题 11：含报文图与三小问，OCR 曾误塞进选择题选项且解析串成 X11。
@@ -884,7 +881,8 @@ CURATED_INSERTS = {
         },
         "q_pages": [189],
         "a_pages": [190, 191, 192, 193, 194],
-    },    ("net", "网络层 · 移动IP · 选择题", "X03"): {
+    },
+    ("net", "网络层 · 移动IP · 选择题", "X03"): {
         "id": "X03",
         "type": "选择题",
         "content": "一台主机的IP地址为160.80.40.20/16，当它移动到另一个不属于160.80.40.16子网的网络时，它将（）。（能否通过被访网络的路由器直接发送/接收数据报）",

@@ -27,6 +27,7 @@
 from __future__ import annotations
 
 import argparse
+import copy
 import gzip
 import json
 import re
@@ -154,6 +155,43 @@ NET_SEG_QID_MAP: dict[str, dict[str, str | None]] = {
     # A04 记 None：题干是 A03 图 1/图 2 十六进制与拓扑的 OCR 残留（「2.128.100…0000
     # 0021272151 ee 0015 c5 cl5e 28 08 0045」），不是一道题，原书无独立答案块。
     "6.5.3 本节习题精选": {"A04": None, "A05": "04"},
+}
+
+# ds 库号是进度 key，下列题的题干是邻号印刷题，按「印刷号 == qid」会把答案图
+# 挂到上一题。只列本轮原书核对过的 hold 题，未列出的同节题保持原号，避免整节重挂。
+# 证据：5.1.4 A02 题干是三叉树（印刷 01）；6.2.6 A09 题干与答案都是印刷 08
+# （节内没有 09 块，TOC 又把 220 页以后封掉）；6.4.6 A03/A07/A09/A10/A13
+# 分别是印刷 04/08/10/11/14。
+DS_SEG_QID_MAP: dict[str, dict[str, str | None]] = {
+    "5.1.4 本节试题精选": {"A02": "01"},
+    "6.2.6 本节试题精选": {"A09": "08"},
+    "6.4.6 本节试题精选": {
+        "A03": "04",
+        "A07": "08",
+        "A09": "10",
+        "A10": "11",
+        "A13": "14",
+    },
+}
+
+# 分段器只认 OCR 文字行。插图没有文字时下沿停在最后一行；邻题标题和插图同一高度时，
+# 收口又会把插图切掉。这里只锁本轮核对过的页边，未列出的页保持原分段。
+# keep_pages 用来丢掉章末被吞进去的「归纳总结」。
+ANSWER_PART_CLAMP: dict[str, dict] = {
+    # 染色图图例在答案头上方，与上一题末行同一高度；图本身收到 y1430。
+    "ds\u241f6.3.4 本节试题精选\u241fA02": {"y0": {228: 1232}, "y1": {228: 1416}},
+    # 邻接表没有 OCR，页内又没有下一段，墨迹延展不会向下走。
+    "ds\u241f6.4.6 本节试题精选\u241fA03": {"y1": {260: 1405}},
+    # D–C 的权值 3 与下一题「09.【解答】」同一高度，不锁会被收口切掉。
+    # 下沿停在 09 的正文行（y1243）之前。
+    "ds\u241f6.4.6 本节试题精选\u241fA07": {"y1": {262: 1228}},
+    # 印刷 14 收到「从 2 压缩到 1」为止，不带归纳总结和后面的页。
+    "ds\u241f6.4.6 本节试题精选\u241fA13": {
+        "y1": {267: 216},
+        "keep_pages": [266, 267],
+    },
+    # 第 2 问首行「因为 S 的 TCP…还剩」没有进 OCR，现裁从「12KB，所以」开始。
+    "net\u241f5.3.7 本节习题精选\u241fA14": {"y0": {270: 150}},
 }
 
 
@@ -381,6 +419,26 @@ def page_content_bounds(lines: list[dict]) -> tuple[int, int]:
     )
 
 
+def clamp_answer_parts(key: str, topic: str, qid: str, span: dict | None) -> dict[int, set[str]]:
+    """按 ANSWER_PART_CLAMP 改这一题的段边界。返回被锁住的页边，crop 时不再向邻题收口。"""
+    spec = ANSWER_PART_CLAMP.get(f"{key}\u241f{topic}\u241f{qid}")
+    if not span or not spec:
+        return {}
+    keep = spec.get("keep_pages")
+    if keep is not None:
+        span["parts"] = [part for part in span["parts"] if part["page"] in keep]
+    locks: dict[int, set[str]] = {}
+    for part in span["parts"]:
+        page = part["page"]
+        if page in spec.get("y0", {}):
+            part["y0"] = spec["y0"][page]
+            locks.setdefault(page, set()).add("y0")
+        if page in spec.get("y1", {}):
+            part["y1"] = spec["y1"][page]
+            locks.setdefault(page, set()).add("y1")
+    return locks
+
+
 def crop_parts(
     span: dict,
     layout: dict,
@@ -389,12 +447,14 @@ def crop_parts(
     key: str,
     qid: str,
     dry: bool,
+    locks: dict[int, set[str]] | None = None,
 ) -> tuple[list[str], list[str]]:
     """裁剪一个答案的所有段，返回 (相对路径列表, 警告列表)。"""
     rels: list[str] = []
     warns: list[str] = []
     bounds_by_page: dict[int, list[tuple[float, float]]] = layout["bounds"]
     starts_by_page: dict[int, list[float]] = layout["starts"]
+    locks = locks or {}
     part_no = 0
     for part in span["parts"]:
         part_no += 1
@@ -403,20 +463,23 @@ def crop_parts(
         if not png_path.exists():
             warns.append(f"missing png {png_path.name}")
             continue
+        locked = locks.get(page) or set()
         y0 = part["y0"] - (PAD_TOP_HEADER if part_no == 1 else PAD_TOP_CONT)
         y1 = part["y1"] + PAD_BOTTOM
-        # padding 收口：不越过同页相邻答案段的边界（段间隙常小于 padding）
+        # padding 收口：不越过同页相邻答案段的边界（段间隙常小于 padding）。
+        # 人工锁住的边是为了保住与邻题同一高度的插图，不再向邻题收口。
         for b0, b1 in bounds_by_page.get(page, []):
             if (b0, b1) == (part["y0"], part["y1"]):
                 continue  # 跳过自身
-            if b1 <= part["y0"]:  # 上一段
+            if b1 <= part["y0"] and "y0" not in locked:  # 上一段
                 y0 = max(y0, b1 + 3)
-            if b0 >= part["y1"]:  # 下一段
+            if b0 >= part["y1"] and "y1" not in locked:  # 下一段
                 y1 = min(y1, b0 - 3)
-        for sy in starts_by_page.get(page, []):
-            if part["y0"] < sy <= part["y1"]:
-                # 段内包含下一段的起始行（少见）：裁到该行上方
-                y1 = min(y1, sy - 3)
+        if "y1" not in locked:
+            for sy in starts_by_page.get(page, []):
+                if part["y0"] < sy <= part["y1"]:
+                    # 段内包含下一段的起始行（少见）：裁到该行上方
+                    y1 = min(y1, sy - 3)
         if y1 - y0 < MIN_PART_H:
             warns.append(f"part {part_no} too thin ({y1 - y0:.0f}px)")
             continue
@@ -442,7 +505,7 @@ def crop_parts(
             for sy in starts_by_page.get(page, []):
                 if sy > part["y1"]:
                     nxt = sy if nxt is None else min(nxt, sy)
-            if nxt is not None and box[3] + 8 < min(h, int(nxt) - 3):
+            if "y1" not in locked and nxt is not None and box[3] + 8 < min(h, int(nxt) - 3):
                 strip = im.crop((box[0], box[3] + 2, box[2], min(h, int(nxt) - 3))).convert("L")
                 ink = strip.point(lambda p: 255 if p < 185 else 0).getbbox()
                 if ink is not None and ink[3] > 8:
@@ -704,6 +767,15 @@ def main() -> None:
             # Ceiling: 只覆盖这一节；同类误分类再出现要另加条目。
             if sec == "app" and topic == "8.6.3 本节试题精选":
                 seg_qid = {"A01": "", "A02": "01", "A03": "02", "A04": "03"}.get(qid, seg_qid)
+            # ponytail: ds 个别 hold 题库号比印刷号小 1（或 6.2.6 A09 对应印刷 08）。
+            # 只改表内题号；同节其余题仍按印刷号 == qid，避免把邻题答案一起挪走。
+            if sec == "app" and key == "ds" and qid in DS_SEG_QID_MAP.get(topic, {}):
+                target = DS_SEG_QID_MAP[topic][qid]
+                if target is None:
+                    stats["skipped"] += 1
+                    skips.append(f"{topic} {qid}: 原书无独立答案块（DS_SEG_QID_MAP=None），保持原文件")
+                    continue
+                seg_qid = target
             # ponytail: net 的答案块印刷号与 qid 整节错位，按 NET_SEG_QID_MAP 显式指派；
             # None = 本节无该题独立答案块（不造图、保留原文件）。Ceiling: 只覆盖表里那几节，
             # 新发现的偏移要往表里加条目（别在循环里再写 if）。
@@ -733,8 +805,11 @@ def main() -> None:
                 stats["skipped"] += 1
                 skips.append(f"{topic} {qid}: 无答案段")
                 continue
+            # 同一印刷号会被同节另一道库题再取一次。锁边前复制，避免改到邻题的段。
+            span = copy.deepcopy(span)
+            locks = clamp_answer_parts(key, topic, qid, span)
             rels, warns = crop_parts(
-                span, layout, lines_by_page, course.pdf_images_dir, key, qid, args.dry_run
+                span, layout, lines_by_page, course.pdf_images_dir, key, qid, args.dry_run, locks
             )
             # --refs-from-bank：分段数随映射变化，但库内引用文件名写死在 data-<key>.json
             # （本次不允许改），把重裁结果落到既有文件名上，避免产出「没人引用」的图。

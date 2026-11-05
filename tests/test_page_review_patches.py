@@ -4,13 +4,24 @@ from pathlib import Path
 
 import pytest
 
-from fix_questions import fix_file, load_page_review_patches
+from fix_questions import CURATED_APPLICATION_PATCHES, fix_file, load_page_review_patches
 
 BANK = Path(__file__).resolve().parents[1] / "math-bank"
 
 
 def _load(course: str) -> dict:
     return json.loads((BANK / f"data-{course}.json").read_text(encoding="utf-8"))
+
+
+def _essay(course: str, chapter_part: str, qid: str) -> dict:
+    data = _load(course)
+    for chapter in data["chapters"]:
+        name = str(chapter.get("name") or "")
+        if chapter_part in name and "解答" in name:
+            for question in chapter["questions"]:
+                if question.get("id") == qid:
+                    return question
+    raise AssertionError(f"missing essay {course} {chapter_part} {qid}")
 
 
 def _q(course: str, chapter_part: str, qid: str) -> dict:
@@ -1131,6 +1142,27 @@ def test_page_review_manifest_rejects_duplicate_target(tmp_path):
     path.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
     with pytest.raises(ValueError, match="duplicate page review patch target"):
         load_page_review_patches(path)
+
+
+def test_ds_stack_a03_book_text_survives_curated_overwrite():
+    """精选应用补丁在页复核之后整题覆盖。两边必须是同一份原书文本。"""
+    fields = load_page_review_patches()[("ds", "栈、队列和数组 · 栈 · 解答题", "A03")]
+    curated = CURATED_APPLICATION_PATCHES[("ds", 74, "X03_2")]
+    assert curated["content"] == fields["content"]
+    assert curated["answer"]["explanation"] == fields["explanation"]
+    assert curated["sub_questions"] is None
+    question = _essay("ds", "栈、队列和数组 · 栈", "A03")
+    assert "IOIIOIOO" in question["content"]
+    explanation = question["answer"]["explanation"]
+    assert "另解" in explanation
+    assert "用 balance" not in explanation
+
+
+def test_ds_majority_a12_keeps_else_if_braces():
+    explanation = _essay("ds", "线性表的顺序表示", "A12")["answer"]["explanation"]
+    assert "}else{" not in explanation
+    assert "count--; else{" in explanation or "count--;else{" in explanation
+    assert "Majority" in explanation
 
 
 def test_curated_inserts_restore_missing_questions():

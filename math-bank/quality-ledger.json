@@ -1,51 +1,51 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-04T07:13:07+00:00",
+  "generated_at": "2026-11-05T15:05:47+00:00",
   "published_hashes": {
-    "ds": "dab6fbab745ac3715465187d7bcd67ccd0cc0de082ac730bbc7ff8aad0cdc60d",
-    "coa": "1255086f6b43be186515d1362b9e36a3ce926f9721aec7bc48e173d77394db70",
-    "os": "a53961b648beccffb32849af66d3a59bfb7dbeb4eaac929df459d9e41b6f35b3",
-    "net": "b6b1771000ab4ed1be991cc6ef508025f42094fffffb246bb54f76b74085e21c"
+    "ds": "da5665b55ab82443105eff5109ae5e0fe070a1326758425b8b634e36f0edc85c",
+    "coa": "1672e4abb518c6531fa286c5ca82e02e8ed8ac7870abc6edaf663e34cf0d3cb3",
+    "os": "5424116322fdfdeef741eac7daf39eadf652b75bcb6a82a6667cf0c6ebd610f6",
+    "net": "e49c037ae531189e17143a88c882db2f855c02a6369d5ce69d6664fe3d7917f7"
   },
   "courses": {
     "ds": {
       "name": "数据结构",
       "mode": "strict",
       "total": 812,
-      "certified": 799,
+      "certified": 812,
       "pending": 0,
-      "held": 13
+      "held": 0
     },
     "coa": {
       "name": "计算机组成原理",
       "mode": "strict",
       "total": 691,
-      "certified": 682,
+      "certified": 690,
       "pending": 0,
-      "held": 9
+      "held": 1
     },
     "os": {
       "name": "操作系统",
       "mode": "strict",
       "total": 772,
-      "certified": 768,
+      "certified": 772,
       "pending": 0,
-      "held": 4
+      "held": 0
     },
     "net": {
       "name": "计算机网络",
       "mode": "strict",
       "total": 655,
-      "certified": 646,
+      "certified": 655,
       "pending": 0,
-      "held": 9
+      "held": 0
     }
   },
   "summary": {
     "total": 2930,
-    "certified": 2895,
+    "certified": 2929,
     "pending": 0,
-    "held": 35
+    "held": 1
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -13434,13 +13434,11 @@
       "course_key": "coa",
       "chapter": "中央处理器 · 数据通路的功能和基本结构 · 解答题",
       "question_id": "A03",
-      "source_hash": "e2953e0791ba9e54af36fa10b282b5a8037dfab222e7d2da50bc89be4dc7c920",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_hash": "bb4878b64ef3549801253a794b8844b550c23fed762806314dec0577d123074b",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         218,
         219,
@@ -13469,10 +13467,45 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-05T12:00:00+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::中央处理器 · 数据通路的功能和基本结构 · 解答题::A03",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "grok-page-review",
+          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_221.png",
+              "sha256": "b8ddc60cb56458bcfedc448b471633fed98cf53e53ba9b10be5020a05841ca14",
+              "page": 221
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_222.png",
+              "sha256": "8c0ef720b142d7f596d438482ea4481840adf8176d74f3f197591bd183578515",
+              "page": 222
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_229.png",
+              "sha256": "3514578416882d3987360bd5559ac750449d4e2f84f8784a70818ab59fa05bea",
+              "page": 229
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
+          "post_patch_verified": true,
+          "source_hash": "bb4878b64ef3549801253a794b8844b550c23fed762806314dec0577d123074b"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -13705,13 +13738,11 @@
       "course_key": "coa",
       "chapter": "中央处理器 · 数据通路的功能和基本结构 · 解答题",
       "question_id": "A07",
-      "source_hash": "6a5ea678313cce50dad7d1a5cc6ff92cdb180ada3f8d8916cc78c1d27dc4a706",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_hash": "f56342603e0bde96cf8298ae9191ff346bce2f6c4501192092920a0fd4a6a847",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         218,
         219,
@@ -13740,10 +13771,50 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-05T12:00:00+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::中央处理器 · 数据通路的功能和基本结构 · 解答题::A07",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "grok-page-review",
+          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_223.png",
+              "sha256": "40e4959dc0ae216886c5fea6932c3f928012c02b1c61dafb93573e8ffe6cec12",
+              "page": 223
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_224.png",
+              "sha256": "77cbb0cd5e01063c59dd7022ec3a0451fc0e4b604138521ff9232df6e01d26a7",
+              "page": 224
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_231.png",
+              "sha256": "e209962cc4610abd92c75b484fe2f733e2edb3c8c36688b58eff8c8e7ebda492",
+              "page": 231
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_232.png",
+              "sha256": "fac977c87b030ca19f4abe63a52ba7794374ebf870e8f8c8b0a0e72aa11e930c",
+              "page": 232
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
+          "post_patch_verified": true,
+          "source_hash": "f56342603e0bde96cf8298ae9191ff346bce2f6c4501192092920a0fd4a6a847"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -13826,13 +13897,11 @@
       "course_key": "coa",
       "chapter": "中央处理器 · 数据通路的功能和基本结构 · 解答题",
       "question_id": "A09",
-      "source_hash": "fa919e32db49de05a8bf4a202c890f1bfd3a0c1b86179f358424be0cf07975bb",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_hash": "0f4b804b767d98ee74aea60d8989d48850a4ddfe734203d4dcb636fd41a409e4",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         218,
         219,
@@ -13859,12 +13928,47 @@
         237,
         238
       ],
-      "has_image": false,
+      "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-05T12:00:00+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::中央处理器 · 数据通路的功能和基本结构 · 解答题::A09",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "grok-page-review",
+          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_224.png",
+              "sha256": "77cbb0cd5e01063c59dd7022ec3a0451fc0e4b604138521ff9232df6e01d26a7",
+              "page": 224
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_225.png",
+              "sha256": "3453773c080b9f6b8826eef59d90e88e75211d561cc3e7a0e22678f219187bb9",
+              "page": 225
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_232.png",
+              "sha256": "fac977c87b030ca19f4abe63a52ba7794374ebf870e8f8c8b0a0e72aa11e930c",
+              "page": 232
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
+          "post_patch_verified": true,
+          "source_hash": "0f4b804b767d98ee74aea60d8989d48850a4ddfe734203d4dcb636fd41a409e4"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -23619,13 +23723,11 @@
       "course_key": "coa",
       "chapter": "存储系统 · 虚拟存储器 · 解答题",
       "question_id": "A02",
-      "source_hash": "65a4e4676ab711468b8581310d414f849fcbf2b1066d91d7fd229842f395e961",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_hash": "91d480a6e8cb95984242a3f017a43dd9fe93d5d8ba0fc4c432b32a93cf886116",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         140,
         141,
@@ -23649,10 +23751,45 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-05T12:00:00+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::存储系统 · 虚拟存储器 · 解答题::A02",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "grok-page-review",
+          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_142.png",
+              "sha256": "62178ca87400f97e6192aa419a1e3dcfbf22fe8a15372dd250026f8ebbd95204",
+              "page": 142
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_143.png",
+              "sha256": "0b7103111ec77dcd8051576f091337f941cf61fb31cc3dede4e610da2fa3b6ff",
+              "page": 143
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_148.png",
+              "sha256": "b89a69eaed7dabde17abd462ecf571dd28ad94530b095f359cc144a343642c6c",
+              "page": 148
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
+          "post_patch_verified": true,
+          "source_hash": "91d480a6e8cb95984242a3f017a43dd9fe93d5d8ba0fc4c432b32a93cf886116"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -44054,13 +44191,11 @@
       "course_key": "coa",
       "chapter": "指令系统 · 程序的机器级代码表示 · 解答题",
       "question_id": "A07",
-      "source_hash": "b62475a94e07ebbd76196c1cec9743b7f19215d1b144732d6e2e7849d0e6e880",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_hash": "08d4e6d005b30c4b67f1364c240f5c060cd78cd28e323dd461fe3424cf55bc8e",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         186,
         187,
@@ -44079,10 +44214,45 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-05T12:00:00+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 解答题::A07",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "grok-page-review",
+          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_191.png",
+              "sha256": "dc0de77be2be22ca665f7a823aa3489f687e1a10be30db8d73075ac38b46913e",
+              "page": 191
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_192.png",
+              "sha256": "b521ac63e9a0910d63c23db9dbdd2c930e6077754c56a09b0d57a23743057b8f",
+              "page": 192
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_195.png",
+              "sha256": "ffeda0ed4f792b6348e6e413f4b8e517e492075c946eac817d307c4025182416",
+              "page": 195
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
+          "post_patch_verified": true,
+          "source_hash": "08d4e6d005b30c4b67f1364c240f5c060cd78cd28e323dd461fe3424cf55bc8e"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -53941,12 +54111,10 @@
       "chapter": "数据的表示和运算 · 浮点数的表示与运算 · 选择题",
       "question_id": "X40",
       "source_hash": "4d879fdc6617854f572f84a4b9632c9becc854a50b1e2bf29036bd367cebc79c",
-      "source_fidelity": "pending",
-      "answer_validation": "pending",
-      "overall": "hold",
-      "reason_codes": [
-        "unregistered_publication"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         66,
         67,
@@ -53973,8 +54141,38 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": null,
-      "evidence": {},
+      "verified_at": "2026-11-05T12:00:00+00:00",
+      "evidence": {
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::数据的表示和运算 · 浮点数的表示与运算 · 选择题::X40",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "grok-page-review",
+          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_070.png",
+              "sha256": "5644ae655091afaa77a435fab37d00e665312fd3001696dcec5ba37252e126af",
+              "page": 70
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_076.png",
+              "sha256": "3c16adec351896ad5a63c40f27963e837c989c5953ea676180d83b4dea4a5bbf",
+              "page": 76
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
+          "source_hash": "4d879fdc6617854f572f84a4b9632c9becc854a50b1e2bf29036bd367cebc79c"
+        }
+      },
       "certification_profile": "objective_full"
     },
     "408:cs408-coa::数据的表示和运算 · 浮点数的表示与运算 · 选择题::X41": {
@@ -60895,12 +61093,10 @@
       "chapter": "计算机系统概述 · 计算机的性能指标 · 选择题",
       "question_id": "X18",
       "source_hash": "be401f3081b21b244841c0b0103105aee6cf739d56a45a76acc842b3be39b25d",
-      "source_fidelity": "pending",
-      "answer_validation": "pending",
-      "overall": "hold",
-      "reason_codes": [
-        "unregistered_publication"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         20
       ],
@@ -60920,8 +61116,38 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": null,
-      "evidence": {},
+      "verified_at": "2026-11-05T12:00:00+00:00",
+      "evidence": {
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X18",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "grok-page-review",
+          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_020.png",
+              "sha256": "3ffd8cbed34a59bcdf2bd24de95094f19b7a213ce1ac02f33f635b7ef4d7152d",
+              "page": 20
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_022.png",
+              "sha256": "8a2e6dc4cbfe8a2207cd958d48d871e2f9a94260a8ee3fe0fbff72f0957e2ebe",
+              "page": 22
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
+          "source_hash": "be401f3081b21b244841c0b0103105aee6cf739d56a45a76acc842b3be39b25d"
+        }
+      },
       "certification_profile": "objective_full"
     },
     "408:cs408-coa::计算机系统概述 · 计算机的性能指标 · 选择题::X19": {
@@ -63902,13 +64128,11 @@
       "course_key": "coa",
       "chapter": "输入/输出系统 · I/O接口 · 选择题",
       "question_id": "X14",
-      "source_hash": "b4ae6633ba6d8d436a37c3f7da83f9120d15e30795e5165b5aae50407a755d13",
-      "source_fidelity": "pending",
-      "answer_validation": "pending",
-      "overall": "hold",
-      "reason_codes": [
-        "unregistered_publication"
-      ],
+      "source_hash": "986ee51702e12282f5a205b0300f659c9a2e9b63681c5150183769accbc3e42b",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         302
       ],
@@ -63920,8 +64144,39 @@
       ],
       "has_image": false,
       "answer_choice": "D",
-      "verified_at": null,
-      "evidence": {},
+      "verified_at": "2026-11-05T12:00:00+00:00",
+      "evidence": {
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X14",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "grok-page-review",
+          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_302.png",
+              "sha256": "d34de4c175c99a61ecf98d9063a33372370e381198dad9896fe4aa77e535b348",
+              "page": 302
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_303.png",
+              "sha256": "cbf3d00a05c77235829a8419cbea755064fb678c719a12bddff19ff35f6e864f",
+              "page": 303
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
+          "post_patch_verified": true,
+          "source_hash": "986ee51702e12282f5a205b0300f659c9a2e9b63681c5150183769accbc3e42b"
+        }
+      },
       "certification_profile": "objective_full"
     },
     "408:cs408-coa::输入/输出系统 · I/O接口 · 选择题::X15": {
@@ -77463,13 +77718,11 @@
       "course_key": "ds",
       "chapter": "图 · 图的存储及基本操作 · 解答题",
       "question_id": "A09",
-      "source_hash": "5bdd3518bc1ca047e65b88926d94c67693cb139222f04b2196ec33d2592b86bc",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_hash": "d81c47816f4f2846838cf4910c124f3cdbe95d027dfdddfa1ef9468fa042dde9",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         211,
         212,
@@ -77487,12 +77740,47 @@
         221,
         222
       ],
-      "has_image": false,
+      "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-05T12:00:00+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::图 · 图的存储及基本操作 · 解答题::A09",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "grok-page-review",
+          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_214.png",
+              "sha256": "562c46d7cc52d8f5fa6193fa5f09767991e0a696b79a89e8f6399e059e145dea",
+              "page": 214
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_215.png",
+              "sha256": "63f6b59fd57152aa70aaaa2e180c53cc6a39d907d201f92e8b42172d55a87ff0",
+              "page": 215
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_219.png",
+              "sha256": "58ea1cf0809640fa157c4d07451acad6942bd20015fd4c2fbc1fb796b1240282",
+              "page": 219
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
+          "post_patch_verified": true,
+          "source_hash": "d81c47816f4f2846838cf4910c124f3cdbe95d027dfdddfa1ef9468fa042dde9"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -80147,13 +80435,11 @@
       "course_key": "ds",
       "chapter": "图 · 图的应用 · 解答题",
       "question_id": "A03",
-      "source_hash": "0e8c69df2c0c9dec203725d185ab7931450a94fd3e8d6d9e6c8467771a180d70",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_hash": "e61f0876480dd592b1f77ce56f136bdea5e12eb6fbd14a1993f9eb60800c2980",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         242,
         243,
@@ -80193,10 +80479,45 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-05T12:00:00+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::图 · 图的应用 · 解答题::A03",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "grok-page-review",
+          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_248.png",
+              "sha256": "feb8268fda6ab74c1785e35b0e67e111b2827510cc7b78f1eb290fd2f9876467",
+              "page": 248
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_260.png",
+              "sha256": "171b31e51630192350b477dfcced68e83e52f0efe20b05093958e42268b8f847",
+              "page": 260
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_261.png",
+              "sha256": "fa11585021cea78a6319643f8c74911447ab41a76e2a638166cf466010b574b3",
+              "page": 261
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
+          "post_patch_verified": true,
+          "source_hash": "e61f0876480dd592b1f77ce56f136bdea5e12eb6fbd14a1993f9eb60800c2980"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -80462,13 +80783,11 @@
       "course_key": "ds",
       "chapter": "图 · 图的应用 · 解答题",
       "question_id": "A07",
-      "source_hash": "9938d88858f0027bbf2270849f073b4d1b236816b716ba816f260397e2730d66",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_hash": "44406b844ed068c871e63360eb909e833e47a6e1c2b754214034735e0abc7637",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         242,
         243,
@@ -80508,10 +80827,45 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-05T12:00:00+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::图 · 图的应用 · 解答题::A07",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "grok-page-review",
+          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_248.png",
+              "sha256": "feb8268fda6ab74c1785e35b0e67e111b2827510cc7b78f1eb290fd2f9876467",
+              "page": 248
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_249.png",
+              "sha256": "f6dcfe84820eecb998d7eefa4f1adc65a4c5222cb483d73b09fb4e506ab8c819",
+              "page": 249
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_262.png",
+              "sha256": "b7f19747715bf3757eab9457a7908d0cdc7ac6593dc3f68914fcdb7312b3dc30",
+              "page": 262
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
+          "post_patch_verified": true,
+          "source_hash": "44406b844ed068c871e63360eb909e833e47a6e1c2b754214034735e0abc7637"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -80605,13 +80959,11 @@
       "course_key": "ds",
       "chapter": "图 · 图的应用 · 解答题",
       "question_id": "A09",
-      "source_hash": "818db00cb3383fc7c296486d9702cdc865321c5bccb9a5072e750c9d48a8cf0b",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_hash": "854760dc732f819353e58d1dd26eadf99b4769050235fd1ffe5ec8260162b9ef",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         242,
         243,
@@ -80649,12 +81001,52 @@
         272,
         273
       ],
-      "has_image": false,
+      "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-05T12:00:00+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::图 · 图的应用 · 解答题::A09",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "grok-page-review",
+          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_249.png",
+              "sha256": "f6dcfe84820eecb998d7eefa4f1adc65a4c5222cb483d73b09fb4e506ab8c819",
+              "page": 249
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_262.png",
+              "sha256": "b7f19747715bf3757eab9457a7908d0cdc7ac6593dc3f68914fcdb7312b3dc30",
+              "page": 262
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_263.png",
+              "sha256": "f48767ca1c5938852470e9d2849770751eeb5bd25fbe3323aa6856f3e74c01b8",
+              "page": 263
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_264.png",
+              "sha256": "712f1e4ee5e2c4f57dd1b8b9d0ef337a8cc036b9f7aefba7f2ec197cb1a7e21e",
+              "page": 264
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
+          "post_patch_verified": true,
+          "source_hash": "854760dc732f819353e58d1dd26eadf99b4769050235fd1ffe5ec8260162b9ef"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -80664,13 +81056,11 @@
       "course_key": "ds",
       "chapter": "图 · 图的应用 · 解答题",
       "question_id": "A10",
-      "source_hash": "d0715c422eabf1b6447fc92ae8ef2e87cb35b5780f3b49f5f0a39f0222e39b1f",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_hash": "582fcc61c1d0f179e90a058875249b1f400391d784c638a3c3d8410ea2cfe7c4",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         242,
         243,
@@ -80708,12 +81098,57 @@
         272,
         273
       ],
-      "has_image": false,
+      "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-05T12:00:00+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::图 · 图的应用 · 解答题::A10",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "grok-page-review",
+          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_249.png",
+              "sha256": "f6dcfe84820eecb998d7eefa4f1adc65a4c5222cb483d73b09fb4e506ab8c819",
+              "page": 249
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_250.png",
+              "sha256": "19b7737dd9ae3488c45d3b71f3f64a934c7c9e5b2e47a7b52ad340500341a10c",
+              "page": 250
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_263.png",
+              "sha256": "f48767ca1c5938852470e9d2849770751eeb5bd25fbe3323aa6856f3e74c01b8",
+              "page": 263
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_264.png",
+              "sha256": "712f1e4ee5e2c4f57dd1b8b9d0ef337a8cc036b9f7aefba7f2ec197cb1a7e21e",
+              "page": 264
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_265.png",
+              "sha256": "47ac53269a4615b546e8cc73cfcc24d11e85807b6974723bfb8e647842ee579b",
+              "page": 265
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
+          "post_patch_verified": true,
+          "source_hash": "582fcc61c1d0f179e90a058875249b1f400391d784c638a3c3d8410ea2cfe7c4"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -80895,13 +81330,11 @@
       "course_key": "ds",
       "chapter": "图 · 图的应用 · 解答题",
       "question_id": "A13",
-      "source_hash": "cf7cd371eb03923f30e08283df2690551a1a5473e92d62c758a5b9c6a756f770",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_hash": "753aa30f3d436fe463900519bf5836fafddbf056c00b3e975e22ec1d2c7423eb",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         242,
         243,
@@ -80941,10 +81374,55 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-05T12:00:00+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::图 · 图的应用 · 解答题::A13",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "grok-page-review",
+          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_250.png",
+              "sha256": "19b7737dd9ae3488c45d3b71f3f64a934c7c9e5b2e47a7b52ad340500341a10c",
+              "page": 250
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_251.png",
+              "sha256": "913cd38e5a408895aca3edea82ef36b02abf05178a5ff8a772311bb71ee5a09c",
+              "page": 251
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_265.png",
+              "sha256": "47ac53269a4615b546e8cc73cfcc24d11e85807b6974723bfb8e647842ee579b",
+              "page": 265
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_266.png",
+              "sha256": "2a50ae2f4d49379acb0cab8e8c22deecd97582a0f398cb293777807e693044bb",
+              "page": 266
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_267.png",
+              "sha256": "43a088f618c4b8eedd4231e28c3374ff7da4fe05a15e0b138b061c5f92cb6617",
+              "page": 267
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
+          "post_patch_verified": true,
+          "source_hash": "753aa30f3d436fe463900519bf5836fafddbf056c00b3e975e22ec1d2c7423eb"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -89398,13 +89876,11 @@
       "course_key": "ds",
       "chapter": "图 · 图的遍历 · 解答题",
       "question_id": "A02",
-      "source_hash": "7f4ac4c152db0222ee6b52a8e1ad4effa71481921c1a0f4e4f703346bd7f7982",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_hash": "c9f70d79a63ae11da53e5b1fe9e26bfd41f4e86b2610754110f1121a3f5dd5a7",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         223,
         224,
@@ -89429,12 +89905,52 @@
         240,
         241
       ],
-      "has_image": false,
+      "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-05T12:00:00+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::图 · 图的遍历 · 解答题::A02",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "grok-page-review",
+          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_225.png",
+              "sha256": "9381d33c168bb7320cf3e7617591062538e71b8c34cc76e3c772aefe83a0b4a5",
+              "page": 225
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_226.png",
+              "sha256": "6a14f3b2580668cb4c2e599774588e4ed6b71d8cf899f9c71d5acd12e191d235",
+              "page": 226
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_228.png",
+              "sha256": "3dcca50fe06be8864126abed9d42af66eadc0f8d32fe332210a195b77b286060",
+              "page": 228
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_229.png",
+              "sha256": "08b37f8b311df43fcb55a5a9c48be06f7dc988273c36ae8b3dcaf76d9ba2af38",
+              "page": 229
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
+          "post_patch_verified": true,
+          "source_hash": "c9f70d79a63ae11da53e5b1fe9e26bfd41f4e86b2610754110f1121a3f5dd5a7"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -94671,13 +95187,11 @@
       "course_key": "ds",
       "chapter": "排序 · 各种内部排序算法的比较及应用 · 解答题",
       "question_id": "A01",
-      "source_hash": "4f0a6f1f5b690c0ec7642797071fad8041f32862902e26f4bcec7432b10e5091",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_hash": "db541a1de13752f668396a6d4996854fd1f7ee724fc93f48cd20759ce8d0e956",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         379,
         380,
@@ -94696,10 +95210,40 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-05T12:00:00+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::排序 · 各种内部排序算法的比较及应用 · 解答题::A01",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "grok-page-review",
+          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_380.png",
+              "sha256": "85964ea06f1479accf07b93189e35f392cd089c112133bbb042363bd3d372ef5",
+              "page": 380
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_382.png",
+              "sha256": "6b94e92c04e809387074bb2d08cfc157d671472bcebac04f92c0ac64447999d0",
+              "page": 382
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
+          "post_patch_verified": true,
+          "source_hash": "db541a1de13752f668396a6d4996854fd1f7ee724fc93f48cd20759ce8d0e956"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -100794,12 +101338,10 @@
       "chapter": "排序 · 归并排序、基数排序和计数排序 · 选择题",
       "question_id": "X09",
       "source_hash": "c2460c076980de387d52128b6c27a3b3d51abaf88dd8095998f7eac26d0479ba",
-      "source_fidelity": "pending",
-      "answer_validation": "pending",
-      "overall": "hold",
-      "reason_codes": [
-        "unregistered_publication"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         372,
         373,
@@ -100814,8 +101356,38 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": null,
-      "evidence": {},
+      "verified_at": "2026-11-05T12:00:00+00:00",
+      "evidence": {
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::排序 · 归并排序、基数排序和计数排序 · 选择题::X09",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "grok-page-review",
+          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_373.png",
+              "sha256": "eba025a6d79058ce65c0cf68b8f9a105f24b9dc226efebe7254614f91169dfa3",
+              "page": 373
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_375.png",
+              "sha256": "d473565ae493ea2a3fd8a1105499508e02b3b29834fde24e71291f23d41d6c51",
+              "page": 375
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
+          "source_hash": "c2460c076980de387d52128b6c27a3b3d51abaf88dd8095998f7eac26d0479ba"
+        }
+      },
       "certification_profile": "objective_full"
     },
     "408:cs408-ds::排序 · 归并排序、基数排序和计数排序 · 选择题::X10": {
@@ -121128,13 +121700,11 @@
       "course_key": "ds",
       "chapter": "栈、队列和数组 · 栈 · 解答题",
       "question_id": "A03",
-      "source_hash": "72e597d60091db2ccea07b595eb9f5e59178b2e9644957e17c29186cf8887ab8",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_hash": "78df792af07295cdbedabaa7b785be6b441bdd0c2dd41945113b4252b88a3a63",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         72,
         73,
@@ -121157,10 +121727,45 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-05T12:00:00+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 解答题::A03",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "grok-page-review",
+          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba",
+              "page": 74
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_078.png",
+              "sha256": "80610f6523291d5ae69f73e5610d63520022e522fda7a293f25da8009c8b73b5",
+              "page": 78
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_079.png",
+              "sha256": "21e293b356b1923b0720dc76aecd6d279280ee6019c530c689849cd59871fedb",
+              "page": 79
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
+          "post_patch_verified": true,
+          "source_hash": "78df792af07295cdbedabaa7b785be6b441bdd0c2dd41945113b4252b88a3a63"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -126786,12 +127391,10 @@
       "chapter": "栈、队列和数组 · 栈和队列的应用 · 选择题",
       "question_id": "X13",
       "source_hash": "a892ff8e3303fe4baab107af973f9d5eb31406a9825f9b00b93e7812d6b02e65",
-      "source_fidelity": "pending",
-      "answer_validation": "pending",
-      "overall": "hold",
-      "reason_codes": [
-        "unregistered_publication"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         100
       ],
@@ -126804,8 +127407,38 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": null,
-      "evidence": {},
+      "verified_at": "2026-11-05T12:00:00+00:00",
+      "evidence": {
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X13",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "grok-page-review",
+          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_100.png",
+              "sha256": "cc6ff41c9a44c557109e14423da3c32758c20099270c881c3b2b47936828b361",
+              "page": 100
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_103.png",
+              "sha256": "904ac7cb8031343324ce0777e2a16e6504007e72d947f610c700e3d38df9a9a3",
+              "page": 103
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
+          "source_hash": "a892ff8e3303fe4baab107af973f9d5eb31406a9825f9b00b93e7812d6b02e65"
+        }
+      },
       "certification_profile": "objective_full"
     },
     "408:cs408-ds::栈、队列和数组 · 栈和队列的应用 · 选择题::X14": {
@@ -146870,13 +147503,11 @@
       "course_key": "ds",
       "chapter": "树与二叉树 · 树的基本概念 · 解答题",
       "question_id": "A02",
-      "source_hash": "74cf05d3784ad35bd1294a802ab7f512940e38ddff24ef01fb76e1bb31615a41",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_hash": "0a9198654aa45f60b0862c4e6212cb4955c4f062abda7b7d671bf8afa5629768",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         131,
         132
@@ -146891,10 +147522,40 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-05T12:00:00+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::树与二叉树 · 树的基本概念 · 解答题::A02",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "grok-page-review",
+          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_132.png",
+              "sha256": "4047b9b9edaf115c2a091e93656d75eb5ab70dfa70cbae10da571db5da5ca867",
+              "page": 132
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_134.png",
+              "sha256": "d49a1d03ba0e8e696839281abfe118f6d68d28fe6f9c4dba045ad6b2737d1b73",
+              "page": 134
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
+          "post_patch_verified": true,
+          "source_hash": "0a9198654aa45f60b0862c4e6212cb4955c4f062abda7b7d671bf8afa5629768"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -155896,13 +156557,11 @@
       "course_key": "ds",
       "chapter": "线性表 · 线性表的顺序表示 · 解答题",
       "question_id": "A12",
-      "source_hash": "1e65f494eb36c3d680c83eb475366342f0326c03d69a9b2c29f08e6b200683bb",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_hash": "5fbdb7afc623af306d6c48d97662c3648a88243851df4bda65754a896fa7a687",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         23,
         24,
@@ -155931,10 +156590,45 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-05T12:00:00+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-ds::线性表 · 线性表的顺序表示 · 解答题::A12",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "grok-page-review",
+          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_025.png",
+              "sha256": "e2382b86c091229d60b6895fbad4c9fc61b1b15d70a831f63060b12662d88d99",
+              "page": 25
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_026.png",
+              "sha256": "e7025142c7963217951d082d1c944489a7a84df04e9038ad971d54ee36c26935",
+              "page": 26
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_033.png",
+              "sha256": "488cfcf17a56dffd46665da34c66148df45fae2cd8285eb55963a171d44450f9",
+              "page": 33
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
+          "post_patch_verified": true,
+          "source_hash": "5fbdb7afc623af306d6c48d97662c3648a88243851df4bda65754a896fa7a687"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -160752,13 +161446,11 @@
       "course_key": "net",
       "chapter": "传输层 · TCP · 解答题",
       "question_id": "A14",
-      "source_hash": "b46afabcf9a8e176649ec0216c5b04aa3773fe85075c2ac628a8d6c373774977",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_hash": "44c0fb0573ea485873bf2ae9efef51e39936f45e25bc321f306a092faebb3985",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         251,
         252,
@@ -160788,10 +161480,50 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-05T12:00:00+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::传输层 · TCP · 解答题::A14",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "grok-page-review",
+          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_260.png",
+              "sha256": "fbe4d529bfd603c303de2e873b5acf60da9b76f2cc9983c9dc43f143692f08f8",
+              "page": 260
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_261.png",
+              "sha256": "7f7fd639b75d687e2e0287cacbd9fe4e925946754156262cc48a32e1b8056838",
+              "page": 261
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_269.png",
+              "sha256": "1c7d0d9f917a24db40cc6f359bb111b12130c44e3c2d4c57c1fca6fda52f7606",
+              "page": 269
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_270.png",
+              "sha256": "fa4780c1cf9b8de03f50204122d9419c84735db62e6db15d0e9e3c1f901ca4cd",
+              "page": 270
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
+          "post_patch_verified": true,
+          "source_hash": "44c0fb0573ea485873bf2ae9efef51e39936f45e25bc321f306a092faebb3985"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -171058,13 +171790,11 @@
       "course_key": "net",
       "chapter": "应用层 · 万维网 · 解答题",
       "question_id": "A05",
-      "source_hash": "602ebb4d035fa05b05d24a1a4371957adad1a43d85d28d03d7dfb58e0b7122b6",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_hash": "7cb7598ce589dd374c8b726d2a3e058f80a3073583ed36db1466280de93a1b0a",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         300,
         301,
@@ -171082,10 +171812,40 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-05T12:00:00+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::应用层 · 万维网 · 解答题::A05",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "grok-page-review",
+          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+              "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c",
+              "page": 303
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_307.png",
+              "sha256": "ed79808178196950d431813429907a4c2259f4faeb5ff52ff1b854f7abc0bc05",
+              "page": 307
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
+          "post_patch_verified": true,
+          "source_hash": "7cb7598ce589dd374c8b726d2a3e058f80a3073583ed36db1466280de93a1b0a"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -201480,13 +202240,11 @@
       "course_key": "net",
       "chapter": "网络层 · IPv4 · 解答题",
       "question_id": "A09",
-      "source_hash": "277dac9eafdf0f655a52e538e3fee7840ba0744b97c23b9abe828a0d5a722528",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_hash": "126bb5cabe4ca50c27b7face0b85a3a94ef90aa76378ebf821a4c56e7145d01f",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         156,
         157,
@@ -201527,10 +202285,40 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-05T12:00:00+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::网络层 · IPv4 · 解答题::A09",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "grok-page-review",
+          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_165.png",
+              "sha256": "db15dd5dba48f7cd9ec692cf010335b6936a3a7276808e6db074073a2495dec2",
+              "page": 165
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_181.png",
+              "sha256": "9414ecc1b48eb0fe97429a420ea1ec8894f84734ca2b454838be9da64ead7927",
+              "page": 181
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
+          "post_patch_verified": true,
+          "source_hash": "126bb5cabe4ca50c27b7face0b85a3a94ef90aa76378ebf821a4c56e7145d01f"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -202234,13 +203022,11 @@
       "course_key": "net",
       "chapter": "网络层 · IPv4 · 解答题",
       "question_id": "A17",
-      "source_hash": "901f0596015ae630e59727a6537c9bf980890b111e753a74164fb0310f124a01",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_hash": "9caf8d338d8d77caa628c20b5f315c1c1622d3e25be3aaec0a8cc576f7cd4a38",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         156,
         157,
@@ -202281,10 +203067,45 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-05T12:00:00+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::网络层 · IPv4 · 解答题::A17",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "grok-page-review",
+          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_168.png",
+              "sha256": "b794b4ec559bb95d45a3a6c88c6e49cb61636d74eeae0bab803ba5f981a30872",
+              "page": 168
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_169.png",
+              "sha256": "b5fa3186da959c046af163b2c191f267e5747d364bb18d143615c775bd9d4d07",
+              "page": 169
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_185.png",
+              "sha256": "f74342c01d834673cd762de40de17212afc74b82dc3b5c869fe2387c2bca2c00",
+              "page": 185
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
+          "post_patch_verified": true,
+          "source_hash": "9caf8d338d8d77caa628c20b5f315c1c1622d3e25be3aaec0a8cc576f7cd4a38"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -202294,13 +203115,11 @@
       "course_key": "net",
       "chapter": "网络层 · IPv4 · 解答题",
       "question_id": "A18",
-      "source_hash": "d8c0d5e03436198ed72996f7bdc2387909c94755869839410430db2e72562920",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_hash": "1702b2b4aa72ea00a9112075a14c5dcf05f88acc9b986df152a7b8206813968e",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         156,
         157,
@@ -202339,12 +203158,52 @@
         187,
         188
       ],
-      "has_image": false,
+      "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-05T12:00:00+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::网络层 · IPv4 · 解答题::A18",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "grok-page-review",
+          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_169.png",
+              "sha256": "b5fa3186da959c046af163b2c191f267e5747d364bb18d143615c775bd9d4d07",
+              "page": 169
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_170.png",
+              "sha256": "907274a22747ddfc9ac1177ce7ad1696771d4358e5307a6f7080e20ec269f14f",
+              "page": 170
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_185.png",
+              "sha256": "f74342c01d834673cd762de40de17212afc74b82dc3b5c869fe2387c2bca2c00",
+              "page": 185
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_186.png",
+              "sha256": "c696965b67654dfc0c7e0676ecb25c8fb8578b13db5467cc239495e91de69db7",
+              "page": 186
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
+          "post_patch_verified": true,
+          "source_hash": "1702b2b4aa72ea00a9112075a14c5dcf05f88acc9b986df152a7b8206813968e"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -213860,13 +214719,11 @@
       "course_key": "net",
       "chapter": "网络层 · 网络层设备 · 解答题",
       "question_id": "A03",
-      "source_hash": "bbb93c3f1a5c8df7a4ff1f6fa375ec843e33e0b81a2e6984f45ba5bab037572d",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_hash": "5ff704c7043a507f1ce4bd825cf3834c0b9cb53f55492273bf39d3430b76c1dc",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         221,
         222,
@@ -213885,10 +214742,45 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-05T12:00:00+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::网络层 · 网络层设备 · 解答题::A03",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "grok-page-review",
+          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_223.png",
+              "sha256": "b99e1a17248a155ffe73333aa3483e69dc9b2a938db335f7236c2cb2f6a36545",
+              "page": 223
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_224.png",
+              "sha256": "8f6100e044dc93a485051bc67e86f7ae143fee9b9a040022c537b0de56e8ef39",
+              "page": 224
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_227.png",
+              "sha256": "7bf7c376f96ef8f9a159a999751a76e91d1aa8c39762ab37e13d2fec31b88fc2",
+              "page": 227
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
+          "post_patch_verified": true,
+          "source_hash": "5ff704c7043a507f1ce4bd825cf3834c0b9cb53f55492273bf39d3430b76c1dc"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -216019,13 +216911,11 @@
       "course_key": "net",
       "chapter": "网络层 · 路由算法与路由协议 · 解答题",
       "question_id": "A04",
-      "source_hash": "14ae4fd3bfe5ec544201d193e79150c4e446819b6070e7d1b4968ca7442d7a6b",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_hash": "d4b2406f78cfffd86affd2750dbb37efddf0019df03ee7b31849a8f7d9eb473a",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         201,
         202,
@@ -216047,10 +216937,45 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-05T12:00:00+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::网络层 · 路由算法与路由协议 · 解答题::A04",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "grok-page-review",
+          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_205.png",
+              "sha256": "6f9f53856a83666b2c3298553bcd832df19247fec3cece47b861de5c23c3521e",
+              "page": 205
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_206.png",
+              "sha256": "2ca75219395d9b5736186504086d248deb3d19740a73c6863e635a134a47d324",
+              "page": 206
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_212.png",
+              "sha256": "ab7c19362d12a783700a0ee5750aacd6e0ba066d44f80851ada75ee70c14da10",
+              "page": 212
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
+          "post_patch_verified": true,
+          "source_hash": "d4b2406f78cfffd86affd2750dbb37efddf0019df03ee7b31849a8f7d9eb473a"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -216127,54 +217052,11 @@
       "course_key": "net",
       "chapter": "网络层 · 路由算法与路由协议 · 解答题",
       "question_id": "A06",
-      "source_hash": "5b46bfced4aa33fec94711f36b1be4d97c2e9661ef974b5bb5e87f2a6e48e83c",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
-      "q_pages": [
-        201,
-        202,
-        203,
-        204,
-        205,
-        206,
-        207,
-        208
-      ],
-      "a_pages": [
-        208,
-        209,
-        210,
-        211,
-        212,
-        213,
-        214
-      ],
-      "has_image": false,
-      "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
-      "evidence": {
-        "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
-      },
-      "certification_profile": "non_choice_source_answer",
-      "primary_hold_reason": "strict_hold"
-    },
-    "408:cs408-net::网络层 · 路由算法与路由协议 · 解答题::A07": {
-      "source_uid": "408:cs408-net::网络层 · 路由算法与路由协议 · 解答题::A07",
-      "course_key": "net",
-      "chapter": "网络层 · 路由算法与路由协议 · 解答题",
-      "question_id": "A07",
-      "source_hash": "f35cb7bf82f3159342cdcab91b29ca90221617ae084c4ed86d05e6b02f68ef4d",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_hash": "56aed25125520cdcdb03902d0c5b0ee57c839594bd4a5ec1025a0ad68c6a0712",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         201,
         202,
@@ -216196,10 +217078,119 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-05T12:00:00+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::网络层 · 路由算法与路由协议 · 解答题::A06",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "grok-page-review",
+          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_206.png",
+              "sha256": "2ca75219395d9b5736186504086d248deb3d19740a73c6863e635a134a47d324",
+              "page": 206
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_207.png",
+              "sha256": "afd82fe017f69b40189904ef89ac814b8e95155fc1ec4a4b3fc3d296f9feb593",
+              "page": 207
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_212.png",
+              "sha256": "ab7c19362d12a783700a0ee5750aacd6e0ba066d44f80851ada75ee70c14da10",
+              "page": 212
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
+          "post_patch_verified": true,
+          "source_hash": "56aed25125520cdcdb03902d0c5b0ee57c839594bd4a5ec1025a0ad68c6a0712"
+        }
+      },
+      "certification_profile": "non_choice_source_answer",
+      "primary_hold_reason": "strict_hold"
+    },
+    "408:cs408-net::网络层 · 路由算法与路由协议 · 解答题::A07": {
+      "source_uid": "408:cs408-net::网络层 · 路由算法与路由协议 · 解答题::A07",
+      "course_key": "net",
+      "chapter": "网络层 · 路由算法与路由协议 · 解答题",
+      "question_id": "A07",
+      "source_hash": "227255eb952a20ffd237eb9679e92f4adb80f506e71cf111faba604d769dcfe4",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
+      "q_pages": [
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208
+      ],
+      "a_pages": [
+        208,
+        209,
+        210,
+        211,
+        212,
+        213,
+        214
+      ],
+      "has_image": true,
+      "answer_choice": "",
+      "verified_at": "2026-11-05T12:00:00+00:00",
+      "evidence": {
+        "human_action": "hold",
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-net::网络层 · 路由算法与路由协议 · 解答题::A07",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "grok-page-review",
+          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_207.png",
+              "sha256": "afd82fe017f69b40189904ef89ac814b8e95155fc1ec4a4b3fc3d296f9feb593",
+              "page": 207
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_212.png",
+              "sha256": "ab7c19362d12a783700a0ee5750aacd6e0ba066d44f80851ada75ee70c14da10",
+              "page": 212
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_213.png",
+              "sha256": "e35e85aa305ff2a4bfde0625e6a0fc737bd376c6fd23b2154562021430515bf4",
+              "page": 213
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
+          "post_patch_verified": true,
+          "source_hash": "227255eb952a20ffd237eb9679e92f4adb80f506e71cf111faba604d769dcfe4"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -253004,12 +253995,10 @@
       "chapter": "文件管理 · 文件系统 · 选择题",
       "question_id": "X13",
       "source_hash": "fd7dd62fd40abf5d485ef498139ec6e8dac68c955313c22b06033a9ec20dd84f",
-      "source_fidelity": "pending",
-      "answer_validation": "pending",
-      "overall": "hold",
-      "reason_codes": [
-        "unregistered_publication"
-      ],
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         305,
         306,
@@ -253031,8 +254020,38 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": null,
-      "evidence": {},
+      "verified_at": "2026-11-05T12:00:00+00:00",
+      "evidence": {
+        "original_page_review": {
+          "source_uid": "408:cs408-os::文件管理 · 文件系统 · 选择题::X13",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "grok-page-review",
+          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_306.png",
+              "sha256": "095a2a5e5bcaae0c3582578bea71dfd52b9356d2f87bea4bd8c70060f5230b45",
+              "page": 306
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_308.png",
+              "sha256": "92d0dfdd806e4dda073c18323985efdbd77e5c65fe3a90dbc23eb4a7854cb156",
+              "page": 308
+            }
+          ],
+          "final_action": "certify",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
+          "source_hash": "fd7dd62fd40abf5d485ef498139ec6e8dac68c955313c22b06033a9ec20dd84f"
+        }
+      },
       "certification_profile": "objective_full"
     },
     "408:cs408-os::文件管理 · 文件系统 · 选择题::X14": {
@@ -254380,13 +255399,11 @@
       "course_key": "os",
       "chapter": "文件管理 · 目录与文件 · 解答题",
       "question_id": "A05",
-      "source_hash": "12bb5c9dc90a35723c7be4d8e1438e6275f6be8aa2a08154dcc508cf4e63c233",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_hash": "9ddfe084b9c9ae62845e990ee9d34d2c385b08a1d829b6dcfdfd25e3c6080942",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         276,
         277,
@@ -254423,10 +255440,50 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-05T12:00:00+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 解答题::A05",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "grok-page-review",
+          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_283.png",
+              "sha256": "7a831e83fae16c94a71f2e1a795aaee9e83d8af7f1391ff20922dee9aabd8200",
+              "page": 283
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_284.png",
+              "sha256": "5150098b8fbdffa72ebf38c8493621ee7434995e437036c1e47d123df8b26341",
+              "page": 284
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_295.png",
+              "sha256": "436bd83e3348dd9bb84e32a9502c400fea57866ab52b43877b055d35b1f1aed0",
+              "page": 295
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_296.png",
+              "sha256": "f6725bf69faddd81a70275d6d9da043a1b453142861b851278aed0b3b25e212d",
+              "page": 296
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
+          "post_patch_verified": true,
+          "source_hash": "9ddfe084b9c9ae62845e990ee9d34d2c385b08a1d829b6dcfdfd25e3c6080942"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -290657,13 +291714,11 @@
       "course_key": "os",
       "chapter": "进程与线程 · CPU调度 · 解答题",
       "question_id": "A02",
-      "source_hash": "ff7cacb53291fe1eb967e73a82942f82430c01492cc3909acbc07899b8babf5f",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_hash": "c8634e782e7380bfe0e32e5c01644f4eeedf5549493895f64d19519d22dd50b0",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         83,
         84,
@@ -290707,10 +291762,50 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-05T12:00:00+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::进程与线程 · CPU调度 · 解答题::A02",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "grok-page-review",
+          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_089.png",
+              "sha256": "b85a69284406fec627e205477048626da250ff6495bd7a8de8c58ec36c623274",
+              "page": 89
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_090.png",
+              "sha256": "dd087cedf4339c0763e9c87921375165366853bc9035bbd2e3270d87433d08d6",
+              "page": 90
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_099.png",
+              "sha256": "513c92d47bd36b59c1f5665ec42299143dcf79ac1b9cf31961c2e33dfc728156",
+              "page": 99
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_100.png",
+              "sha256": "c64f6f16ae91928343f18bf7ad588ecb853f63367384219c0ae69bab429e5f17",
+              "page": 100
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
+          "post_patch_verified": true,
+          "source_hash": "c8634e782e7380bfe0e32e5c01644f4eeedf5549493895f64d19519d22dd50b0"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
@@ -326563,13 +327658,11 @@
       "course_key": "os",
       "chapter": "进程与线程 · 进程与线程简介 · 解答题",
       "question_id": "A01",
-      "source_hash": "438eb5abdcc18d0551de0fc62990c801f5bebdb4ec30eb473f1e738631245265",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_hash": "3bf93fc07ff364beee29d34a617035e9b6a116bcaf0a4cab6a0c7dc5adae1754",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
         56,
         57,
@@ -326604,10 +327697,45 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-05T12:00:00+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-os::进程与线程 · 进程与线程简介 · 解答题::A01",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "grok-page-review",
+          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_062.png",
+              "sha256": "d579a26c705f4fd7fa1df4a6efdec363ebf9ac719c773846951f68ee6b4a3d35",
+              "page": 62
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_063.png",
+              "sha256": "0290d9e903e7393bb496c814d3f51367378aa0dac0d5b67189984711f74d217c",
+              "page": 63
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_071.png",
+              "sha256": "17e73b2499841ec25325e09d85d2ba8c0eb307d3281ba27ea1c4d8f6db182b32",
+              "page": 71
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": true,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [],
+          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
+          "post_patch_verified": true,
+          "source_hash": "3bf93fc07ff364beee29d34a617035e9b6a116bcaf0a4cab6a0c7dc5adae1754"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"
