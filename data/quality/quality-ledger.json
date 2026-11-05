@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-05T15:05:47+00:00",
+  "generated_at": "2026-11-05T15:50:06+00:00",
   "published_hashes": {
     "ds": "da5665b55ab82443105eff5109ae5e0fe070a1326758425b8b634e36f0edc85c",
-    "coa": "1672e4abb518c6531fa286c5ca82e02e8ed8ac7870abc6edaf663e34cf0d3cb3",
+    "coa": "e12bfd9c77f03b004a5a890e57140b4597aa580a3b7a99b8178390a54ed78ee6",
     "os": "5424116322fdfdeef741eac7daf39eadf652b75bcb6a82a6667cf0c6ebd610f6",
     "net": "e49c037ae531189e17143a88c882db2f855c02a6369d5ce69d6664fe3d7917f7"
   },
@@ -19,10 +19,10 @@
     "coa": {
       "name": "计算机组成原理",
       "mode": "strict",
-      "total": 691,
-      "certified": 690,
+      "total": 692,
+      "certified": 692,
       "pending": 0,
-      "held": 1
+      "held": 0
     },
     "os": {
       "name": "操作系统",
@@ -42,10 +42,10 @@
     }
   },
   "summary": {
-    "total": 2930,
-    "certified": 2929,
+    "total": 2931,
+    "certified": 2931,
     "pending": 0,
-    "held": 1
+    "held": 0
   },
   "items": {
     "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01": {
@@ -43964,40 +43964,127 @@
       "provenance": "curated-zhenti",
       "certification_profile": "objective_full"
     },
+    "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 解答题::A01": {
+      "source_uid": "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 解答题::A01",
+      "course_key": "coa",
+      "chapter": "指令系统 · 程序的机器级代码表示 · 解答题",
+      "question_id": "A01",
+      "source_hash": "15fe0bba85a7671b86429c71ad689aaaae20bb23499f12e92bab3f82f84503c6",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
+      "q_pages": [
+        188
+      ],
+      "a_pages": [
+        193
+      ],
+      "has_image": false,
+      "answer_choice": "",
+      "verified_at": "2026-11-06T00:00:00+00:00",
+      "evidence": {
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 解答题::A01",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-page-review",
+          "reviewed_at": "2026-11-06T00:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_188.png",
+              "sha256": "157129fd25a2e086d36d5d30384543f032c0777ef5e33aaa1c586ec7eb78bfc5",
+              "page": 188
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_193.png",
+              "sha256": "6c010a52473b0d61cb090fb0ca1520e109ed5a6a57287bedeb039f2bd7f29ac3",
+              "page": 193
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": null,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [
+            "merged_2017_2019_essay_split"
+          ],
+          "rationale": "原书 p188（印 183）综合应用题 01=2017 f1、02=2019 阶乘本为两题；拆题后对照 p188/p189 题干与 p193/p194「01.【解答】」「02.【解答】」逐段核对，答案裁图 answer_crops/coa/page_193_A01_ans.jpg 与印面题号一致。",
+          "post_patch_verified": true,
+          "source_hash": "15fe0bba85a7671b86429c71ad689aaaae20bb23499f12e92bab3f82f84503c6"
+        }
+      },
+      "certification_profile": "non_choice_source_answer"
+    },
     "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 解答题::A02": {
       "source_uid": "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 解答题::A02",
       "course_key": "coa",
       "chapter": "指令系统 · 程序的机器级代码表示 · 解答题",
       "question_id": "A02",
-      "source_hash": "221d20f4a946af8234ecc7b2229d33b6a4dfbfad09febe4bb499680a4b1112ff",
-      "source_fidelity": "conflict",
-      "answer_validation": "conflict",
-      "overall": "hold",
-      "reason_codes": [
-        "strict_hold"
-      ],
+      "source_hash": "507e9f399eeaf11106e00cfd9f08d5dc84accc30d9e7043aa56130d5a96e3817",
+      "source_fidelity": "verified",
+      "answer_validation": "verified",
+      "overall": "certified",
+      "reason_codes": [],
       "q_pages": [
-        186,
-        187,
         188,
-        189,
-        190,
-        191,
-        192
+        189
       ],
       "a_pages": [
-        192,
         193,
-        194,
-        195,
-        196
+        194
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-08-26T11:53:58+00:00",
+      "verified_at": "2026-11-06T00:00:00+00:00",
       "evidence": {
         "human_action": "hold",
-        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice"
+        "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
+        "original_page_review": {
+          "source_uid": "408:cs408-coa::指令系统 · 程序的机器级代码表示 · 解答题::A02",
+          "protocol": "codex-original-page-review-v1",
+          "reviewer": "kimi-page-review",
+          "reviewed_at": "2026-11-06T00:00:00+00:00",
+          "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_188.png",
+              "sha256": "157129fd25a2e086d36d5d30384543f032c0777ef5e33aaa1c586ec7eb78bfc5",
+              "page": 188
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_189.png",
+              "sha256": "9355778113deaaa43042de426a6478659debed6ca90a8159a6712603608f2eff",
+              "page": 189
+            }
+          ],
+          "a_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_193.png",
+              "sha256": "6c010a52473b0d61cb090fb0ca1520e109ed5a6a57287bedeb039f2bd7f29ac3",
+              "page": 193
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_194.png",
+              "sha256": "3520bf81cbf7d730de1a7375eae1c1c92df343f48d77f70e6d36fdf856675a5a",
+              "page": 194
+            }
+          ],
+          "final_action": "patch",
+          "content_match": true,
+          "options_match": null,
+          "answer_match": true,
+          "explanation_match": true,
+          "image_match": true,
+          "detected_errors": [
+            "merged_2017_2019_essay_split"
+          ],
+          "rationale": "原书 p188（印 183）综合应用题 01=2017 f1、02=2019 阶乘本为两题；拆题后对照 p188/p189 题干与 p193/p194「01.【解答】」「02.【解答】」逐段核对，答案裁图 answer_crops/coa/page_193_A02_ans.jpg/answer_crops/coa/page_194_A02_ans_p2.jpg 与印面题号一致。",
+          "post_patch_verified": true,
+          "source_hash": "507e9f399eeaf11106e00cfd9f08d5dc84accc30d9e7043aa56130d5a96e3817"
+        }
       },
       "certification_profile": "non_choice_source_answer",
       "primary_hold_reason": "strict_hold"

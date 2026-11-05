@@ -20,7 +20,17 @@ from parse_patterns import has_real_image_ref
 sys.stdout.reconfigure(encoding="utf-8")
 
 PAGE_REVIEW_PATCHES_PATH = PROJECT_ROOT / "data" / "quality" / "page_review_patches.json"
-PAGE_REVIEW_PATCH_FIELDS = {"content", "options", "choice", "explanation", "option_groups"}
+PAGE_REVIEW_PATCH_FIELDS = {
+    "content",
+    "options",
+    "choice",
+    "explanation",
+    "option_groups",
+    # 题目/答案页是原书证据的一部分，question_hash 也计入；按小节整体赋值的
+    # q_pages/a_pages 在拆题、跨页题上不对时，允许在本轮复核后定点改写。
+    "q_pages",
+    "a_pages",
+}
 OPTION_KEYS = {"A", "B", "C", "D", "E"}
 ANSWER_CROP_LINE_RE = re.compile(
     r"^(?:答案图片|解析图片|题图|答图)\s*[：:]\s*answer_crops/[^\n]*", re.MULTILINE
@@ -84,6 +94,16 @@ def load_page_review_patches(path=PAGE_REVIEW_PATCHES_PATH):
         for key in ("content", "explanation"):
             if key in fields and (not isinstance(fields[key], str) or not fields[key].strip()):
                 raise ValueError(f"page review patch {course}/{chapter}/{qid} has empty {key}")
+        for key in ("q_pages", "a_pages"):
+            if key not in fields:
+                continue
+            pages = fields[key]
+            if (
+                not isinstance(pages, list)
+                or not pages
+                or any(isinstance(page, bool) or not isinstance(page, int) or page <= 0 for page in pages)
+            ):
+                raise ValueError(f"page review patch {course}/{chapter}/{qid} has invalid {key}")
         target = (course, chapter, qid)
         if target in patches:
             raise ValueError(f"duplicate page review patch target: {course}/{chapter}/{qid}")
@@ -653,6 +673,24 @@ CURATED_ID_RENAMES = {
 
 
 CURATED_INSERTS = {
+    # 2026-11 拆题：原 A02 把 2017 f1 与 2019 阶乘两题并在一处（p188 印 01/02），
+    # 答案图从「02.【解答】」起，2017 那题实际漏立。此处按原书恢复缺失的 01 号题；
+    # A02 保留原 UID 只留 2019，A03「对于题02」的引用因此仍然成立。
+    ("coa", "指令系统 · 程序的机器级代码表示 · 解答题", "A01"): {
+        "id": "A01",
+        "type": "解答题",
+        "content": "【2017统考真题】在按字节编址的计算机M上，f1的部分源程序（阴影部分）如下。将f1中的int都改成float，可得到计算f(n)的另一个函数f2。\nint f1(unsigned n){\n    int sum=1, power=1;\n    for(unsigned i=0;i<=n-1;i++){\n        power *=2;\n        sum += power;\n    }\n    return sum;\n}\n对应的机器级代码（包括指令的虚拟地址）如下：\n```\nint f1( unsigned n)\n1\t00401020\t55\tpush ebp\n…\t…\t…\nfor(unsigned i=0;i<=n-1;i++)\n…\t…\t…\n20\t0040105E\t39 4D F4\tcmp dword ptr [ebp-0Ch],ecx\n…\t…\t…\npower *= 2;\n…\t…\t…\n23\t00401066\tD1 E2\tshl edx,1\n…\t…\t…\nreturn sum;\n…\t…\t…\n35\t0040107F\tC3\tret\n```\n其中，机器级代码行包括行号、虚拟地址、机器指令和汇编指令。1）计算机M是RISC还是CISC？为什么？2）f1的机器指令代码共占多少字节？要求给出计算过程。3）第20条指令cmp通过i减n-1实现对i和n-1的比较。执行f1(0)的过程中，当i=0时，cmp指令执行后，进位/借位标志CF的内容是什么？要求给出计算过程。4）第23条指令shl通过左移操作实现了power*2运算，在f2中能否用shl指令实现power*2？为什么？",
+        "options": None,
+        "sub_questions": None,
+        "page": 188,
+        "bbox": [153.0, 522.0, 972.0, 1326.0],
+        "has_image": False,
+        "image_ref": None,
+        "topic_title": "4.3.5 本节习题精选",
+        "answer": {"choice": None, "explanation": "【2017统考真题解答】\n1）M为CISC。M的指令长短不一，不符合RISC指令系统的特点。\n2）f1的机器代码占96B。因为f1的第一条指令“push ebp”所在的虚拟地址为00401020H，最后一条指令地址为0040107FH，0040107FH−00401020H+1=60H=96B。\n3）CF=1。cmp指令实现i与n−1的比较功能，进行的是减法运算。在执行f1(0)的过程中，n=0，当i=0时，i=00000000H，并且n−1=FFFFFFFFH。因此执行第20条指令时，在补码加/减运算器中执行“0减FFFFFFFFH”操作，即00000000H+00000000H+1=00000001H，此时进位输出Cout=0，低位进位Sub=1，CF=Cout⊕Sub=0⊕1=1。\n4）f2中不能用shl指令实现power*2。因为shl指令把一个整数的所有有效数位整体左移，而f2中的变量power是float型，其机器数中不包含最高有效数位，但包含了阶码部分，将其作为一个整体左移时并不能实现“乘以2”的功能。浮点数运算比整型运算要复杂，耗时也较长。"},
+        "q_pages": [188],
+        "a_pages": [193],
+    },
     ("os", "文件管理 · 文件系统 · 选择题", "X13"): {
         "id": "X13",
         "type": "选择题",
@@ -924,10 +962,13 @@ def apply_curated_inserts(chapter: dict, course_key: str | None, fixes: dict) ->
         num = _qid_number(qid)
         pos = len(chapter["questions"])
         if num is not None:
+            # 插到第一个题号更大的题之前；都更小则追加。旧写法只找「更小的上一题」，
+            # 补章首题（A01 < 全章 A02…）时会落到章末。
             for i, q in enumerate(chapter["questions"]):
                 n = _qid_number(str(q.get("id") or ""))
-                if n is not None and n < num:
-                    pos = i + 1
+                if n is not None and n > num:
+                    pos = i
+                    break
         chapter["questions"].insert(pos, copy.deepcopy(question))
         chapter["question_count"] = len(chapter["questions"])
         existing.add(qid)
@@ -2100,6 +2141,10 @@ def fix_file(path, pdf_images_dir=None, course_key=None, apply_page_review_patch
                     ]
                 elif "option_groups" in q:
                     q.pop("option_groups", None)
+                if "q_pages" in page_patch:
+                    q["q_pages"] = list(page_patch["q_pages"])
+                if "a_pages" in page_patch:
+                    q["a_pages"] = list(page_patch["a_pages"])
                 ans = q.get("answer") or {}
                 if "choice" in page_patch:
                     ans["choice"] = str(page_patch["choice"]).strip().upper()

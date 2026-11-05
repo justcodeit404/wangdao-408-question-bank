@@ -3821,3 +3821,14 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **修复**：16 道有原书证据的文字补丁写入 `page_review_patches.json` 并经 `rebuild_bank.ps1` 发布。21 道题图按人工框定点重裁。ds 答案区段映射和纵向 clamp 修正错绑、漏行和截断。34 道用只含本轮记录的原书页证据认证：5 道选择 `certify`，29 道 `patch` 且 `post_patch_verified=true`，并只同步这 29 个 UID 的当前发布哈希。没有手改 `quality-hold.json`。
 - **回归**：重建发布断言通过，缓存戳 524→526。质量、认证、裁剪和 viewer 测试 207 passed。全量 pytest 405 passed，另有 1 个既有失败 `test_stem_table_reflow_preserves_pipe_rows`（os 虚拟内存 A19，正文与云端 v523 一致，本轮未改）。`check-published` 0 问题。实际哈希漂移 2642→2614，范围外新增 0，基线已按这个集合收缩。本机选择题库和 `?library=essay` 逐题打开原 35 题：34 道不再显示「未校验」，题图和答案图均能打开；A02 仍显示「未校验」。账本 2930 / 2929 / 0 / 1。
 - **云端**：`push_data.ps1` 热更 v526。`data-ds/coa/os/net.json` 均为 HTTP 200，9 个文件已更新，34 张裁图远端哈希校验通过。平台 408 题池 `sync done, changed 34 failed 0`（ds 13、os 4、coa 8、net 9），未重启服务。计组机器级 A02 仍 hold。
+
+## 2026-11-06 · 计组「程序的机器级代码表示」A02 拆题（恢复 2017/A01，保留 2019/A02）
+
+- **病征**：该节解答题只有 A02，题干把原书 p188（印 183）综合应用题 01（2017 统考 f1）与 02（2019 统考阶乘）首尾拼成一题，解析同样两段合写；答案图只从「02.【解答】」起，2017 那题实际漏立，账本因此长期 hold。A03 仍是「【2019统考真题】对于题02」。
+- **根因**：p188 的 OCR 把题号单独成块（`02.` 在 y1328，`【2019 统考真题】…` 在 y1320 另一块），题干分段没把二者拼成新题头，01/02 被并成一段；答案侧「01.【解答】」认得出来，但没有对应题可挂。
+- **修复**：`fix_questions.CURATED_INSERTS` 补回 A01（2017，q_pages=[188]、a_pages=[193]）；A02 保留原 UID，`page_review_patches.json` 只留 2019 正文与解答，并按证据改写 q_pages=[188,189]、a_pages=[193,194]；A03 及后续题号不动。顺带修三处机制：`apply_curated_inserts` 的插入位置（补章首题原会落到章末）、`merge_patches.py` 改为复用 `fix_questions` 的补丁字段白名单（原来自带一份，会把新字段静默丢掉）、补丁白名单新增 `q_pages/a_pages` 并校验；`gen_answer_crops` 的小节答案页范围由「取首见」改为「取多数题区间」，否则 A01 的窄页码会把整节答案流砍到只剩 193 页。
+- **回归**：新增 `test_coa_machine_code_essays_split_2017_2019`（A01/A02/A03 顺序、年份互斥、页码、答案图、A03 引用）、`test_coa_and_total_question_counts_after_split`（coa 692 / 全库 2931）、`test_curated_insert_goes_before_first_larger_qid`。重建内 `pytest` 155 passed；质量/认证/裁剪/viewer 定向 207 passed；全量 408 passed，另有既有失败 `test_stem_table_reflow_preserves_pipe_rows`（os 虚拟内存 A19，本轮未改）。`check-published` 0 问题。
+- **重建副作用（已修）**：`rebuild_bank.ps1` 不跑 `auto_recrop_figs.py`，重建会把上一轮 21 道人工校准题图回退成自动框（图框在 `data/fig_manual_boxes.json`）。按同一 21 个 key 重跑 `auto_recrop_figs.py --only` 恢复，题图 PNG 字节与上一轮完全一致，未覆盖既有图。
+- **账本**：coa 692 / 692 / 0 / 0，全库 2931 / 2931 / 0 / 0，`quality-hold.source_uids=[]`。A01/A02 用只含本轮两条记录的原书证据认证（p188/p189/p193/p194 及 sha256，`patch + post_patch_verified=true`，A02 走 `--sync-published-uids` 把账本哈希改成当前发布哈希）；实际哈希漂移 2614→2613，范围外新增 0，基线已收缩到 2613。
+- **图片**：新增 `answer_crops/coa/page_193_A01_ans.jpg`（859×404，只含「01.【解答】」四问）；`page_193_A02_ans.jpg`（859×159）与 `page_194_A02_ans_p2.jpg`（854×339）逐字节未变，既有题图也 0 变更，因此**未** bump `BANK_IMAGE_VERSION`、**未**发 platform release。
+- **云端**：`push_data.ps1` 热更 v528（526→528）。`data-coa.json`、`quality-{hold,ledger}.json`、`data.js`、三张裁图均 HTTP 200；1 张新增裁图远端哈希校验通过；平台 408 题池 `coa created 1 updated 1 failed 0`、`sync done, changed 2 failed 0`，未重启服务。公网 `quality-hold.json` 的 `source_uids=[]`；公网大题库该节 7 题、顺序 01(2017)/02(2019)/03(对于题02)，A01/A02 答案图完整且无「未校验」。

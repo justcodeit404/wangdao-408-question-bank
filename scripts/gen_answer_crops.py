@@ -32,7 +32,7 @@ import gzip
 import json
 import re
 import sys
-from collections import defaultdict
+from collections import Counter, defaultdict
 from pathlib import Path
 
 from PIL import Image
@@ -690,13 +690,17 @@ def main() -> None:
     for ch in src.get("chapters", []):
         for q in ch.get("questions", []):
             t = q.get("topic_title") or ""
-            g = topics.setdefault(t, {"a_pages": None, "qs": []})
+            g = topics.setdefault(t, {"a_pages": None, "ranges": [], "qs": []})
             g["qs"].append(q)
-            ap = q.get("a_pages") or []
-            if g["a_pages"] is None:
-                g["a_pages"] = ap
-            elif ap and ap != g["a_pages"]:
-                print(f"[!] {t}: 题间 a_pages 不一致 {ap} vs {g['a_pages']}，取首见")
+            ap = [int(p) for p in q.get("a_pages") or []]
+            if ap:
+                g["ranges"].append(tuple(ap))
+    for g in topics.values():
+        if not g["ranges"]:
+            continue
+        # a_pages 由解析器按 qa 对整节赋值，同节各题一致。拆题/整题补录后的单题页码
+        # 证据可以更窄（coa A01 只覆盖 193），首见会让整节答案流只剩那一页，取多数区间。
+        g["a_pages"] = list(Counter(g["ranges"]).most_common(1)[0][0])
 
     ocr_cache: dict[int, list[dict]] = {}
     chapter_starts, section_starts = load_toc_bounds(course.toc_json)

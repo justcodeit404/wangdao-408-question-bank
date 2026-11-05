@@ -15,7 +15,8 @@ from pathlib import Path
 
 sys.stdout.reconfigure(encoding="utf-8")
 PATCH_PATH = Path(__file__).resolve().parent.parent / "data" / "quality" / "page_review_patches.json"
-VALID_FIELDS = {"content", "options", "choice", "explanation", "option_groups"}
+# 与 fix_questions 同一份白名单：这里若另存一份，新增字段会被合并步骤静默丢掉。
+from fix_questions import PAGE_REVIEW_PATCH_FIELDS as VALID_FIELDS  # noqa: E402
 
 
 def merge_items(items: list) -> tuple[list, int]:

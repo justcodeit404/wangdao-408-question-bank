@@ -4,7 +4,12 @@ from pathlib import Path
 
 import pytest
 
-from fix_questions import CURATED_APPLICATION_PATCHES, fix_file, load_page_review_patches
+from fix_questions import (
+    CURATED_APPLICATION_PATCHES,
+    apply_curated_inserts,
+    fix_file,
+    load_page_review_patches,
+)
 
 BANK = Path(__file__).resolve().parents[1] / "math-bank"
 
@@ -1171,6 +1176,82 @@ def test_curated_inserts_restore_missing_questions():
     assert _q("net", "局域网", "X23")["answer"]["choice"] == "B"
     assert _q("net", "TCP", "X48")["answer"]["choice"] == "A"
     assert _q("net", "IPv6", "X03")["answer"]["choice"] == "C"
+
+
+def test_curated_insert_goes_before_first_larger_qid():
+    # 补章首题时旧逻辑（只找更小的上一题）会把新题追加到章末。
+    chapter = {
+        "name": "指令系统 · 程序的机器级代码表示 · 解答题",
+        "questions": [{"id": "A02"}, {"id": "A03"}, {"id": "A10"}],
+    }
+    apply_curated_inserts(chapter, "coa", {"curated_inserted": 0})
+    assert [q["id"] for q in chapter["questions"]] == ["A01", "A02", "A03", "A10"]
+
+
+def test_coa_machine_code_essays_split_2017_2019():
+    """原书 p188 印 01=2017 f1、02=2019 阶乘本是两题，曾并进 A02 且答案图只从
+    「02.【解答】」起，2017 那题因此漏立。拆开后 A01=2017、A02 保留原 UID 只留
+    2019，A03「对于题02」继续指向 2019 阶乘题。"""
+    data = _load("coa")
+    chapter = next(
+        ch
+        for ch in data["chapters"]
+        if ch["name"] == "指令系统 · 程序的机器级代码表示 · 解答题"
+    )
+    ids = [q["id"] for q in chapter["questions"]]
+    assert ids[:3] == ["A01", "A02", "A03"]
+    assert len(ids) == len(set(ids)) == 7
+    assert chapter["question_count"] == 7
+    a01, a02, a03 = chapter["questions"][:3]
+
+    # A01 = 2017 统考 f1：题干/代码表/四问俱全，不夹 2019。
+    assert a01["content"].startswith("【2017统考真题】")
+    assert "【2019统考真题】" not in a01["content"]
+    assert "int f1(unsigned n)" in a01["content"] and "float" in a01["content"]
+    assert "0040105E" in a01["content"] and "D1 E2" in a01["content"]
+    for sub in ("1）计算机M是RISC还是CISC", "2）f1的机器指令代码共占多少字节",
+                "3）第20条指令cmp", "4）第23条指令shl"):
+        assert sub in a01["content"]
+    assert a01["answer"]["choice"] is None
+    a01_expl = a01["answer"]["explanation"]
+    assert a01_expl.startswith("答案图片：answer_crops/coa/page_193_A01_ans.jpg")
+    assert "page_193_A02_ans" not in a01_expl and "page_194_" not in a01_expl
+    assert "【2017统考真题解答】" in a01_expl
+    assert "【2019统考真题解答】" not in a01_expl
+    assert "M为CISC" in a01_expl and "96B" in a01_expl
+    assert "f2中不能用shl指令" in a01_expl
+    assert a01["q_pages"] == [188] and a01["a_pages"] == [193]
+
+    # A02 = 2019 统考阶乘：只留 2019，五问与解答完整。
+    assert a02["content"].startswith("【2019统考真题】")
+    assert "【2017统考真题】" not in a02["content"]
+    assert "sum += power" not in a02["content"]
+    for sub in ("1）计算f(10)", "2）上述代码中", "3）根据第16行的call指令",
+                "4）f(13)=6227020800", "5）第19行的imul指令"):
+        assert sub in a02["content"]
+    assert a02["answer"]["choice"] is None
+    a02_expl = a02["answer"]["explanation"]
+    assert a02_expl.splitlines()[:2] == [
+        "答案图片：answer_crops/coa/page_193_A02_ans.jpg",
+        "答案图片：answer_crops/coa/page_194_A02_ans_p2.jpg",
+    ]
+    assert "【2017统考真题解答】" not in a02_expl
+    assert "F2中不能用shl" not in a02_expl
+    assert "【2019统考真题解答】" in a02_expl
+    assert "0040102AH" in a02_expl and "FFFFFFD6H" in a02_expl
+    assert a02_expl.rstrip().endswith("调出“溢出异常处理程序”。")
+    assert a02["q_pages"] == [188, 189] and a02["a_pages"] == [193, 194]
+
+    # A03 不动号，仍是 2019 题02的后续题。
+    assert a03["content"].startswith("【2019统考真题】对于题02")
+
+
+def test_coa_and_total_question_counts_after_split():
+    courses = {key: _load(key) for key in ("ds", "coa", "os", "net")}
+    assert courses["coa"]["total_questions"] == 692
+    assert sum(data["total_questions"] for data in courses.values()) == 2931
+    coa_chapters = sum(len(ch["questions"]) for ch in courses["coa"]["chapters"])
+    assert coa_chapters == 692
 
 
 def test_net_ipv4_x62_renamed_from_fallback_id():
