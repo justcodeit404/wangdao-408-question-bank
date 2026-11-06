@@ -14,7 +14,7 @@
 │   ├── reshape_by_l2.py      # 按 L2 小节重组章节
 │   ├── fix_questions.py      # 答案 choice 提取、子问拆分、图片关联
 │   ├── merge_courses.py      # 合并四门课程并生成前端懒加载数据
-│   ├── auto_recrop_figs.py   # 有图题配图精准重裁 + 题干图区碎片清理（build_all/rebuild_course 在 merge 后自动执行）
+│   ├── auto_recrop_figs.py   # 有图题配图精准重裁 + 题干图区碎片清理（build_all/rebuild_course 全量执行；rebuild_bank 仅回放人工框）
 │   ├── enhance_audit.py      # 题库质量审计
 │   ├── parse_toc.py          # 从 PDF 书签提取目录
 │   ├── run_ocr.py            # OCR 流水线

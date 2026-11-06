@@ -138,6 +138,13 @@ def validate_fields(fields: dict) -> dict:
             if not isinstance(value, list) or len(value) < 2:
                 sys.exit("[fix_one] option_groups 至少两组")
             out[key] = value
+        elif key == "sub_questions":
+            if value is not None and (
+                not isinstance(value, list)
+                or any(not isinstance(item, str) or not item.strip() for item in value)
+            ):
+                sys.exit("[fix_one] sub_questions 只能是 null 或非空字符串数组")
+            out[key] = value
     return out
 
 

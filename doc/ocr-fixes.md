@@ -3832,3 +3832,12 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **账本**：coa 692 / 692 / 0 / 0，全库 2931 / 2931 / 0 / 0，`quality-hold.source_uids=[]`。A01/A02 用只含本轮两条记录的原书证据认证（p188/p189/p193/p194 及 sha256，`patch + post_patch_verified=true`，A02 走 `--sync-published-uids` 把账本哈希改成当前发布哈希）；实际哈希漂移 2614→2613，范围外新增 0，基线已收缩到 2613。
 - **图片**：新增 `answer_crops/coa/page_193_A01_ans.jpg`（859×404，只含「01.【解答】」四问）；`page_193_A02_ans.jpg`（859×159）与 `page_194_A02_ans_p2.jpg`（854×339）逐字节未变，既有题图也 0 变更，因此**未** bump `BANK_IMAGE_VERSION`、**未**发 platform release。
 - **云端**：`push_data.ps1` 热更 v528（526→528）。`data-coa.json`、`quality-{hold,ledger}.json`、`data.js`、三张裁图均 HTTP 200；1 张新增裁图远端哈希校验通过；平台 408 题池 `coa created 1 updated 1 failed 0`、`sync done, changed 2 failed 0`，未重启服务。公网 `quality-hold.json` 的 `source_uids=[]`；公网大题库该节 7 题、顺序 01(2017)/02(2019)/03(对于题02)，A01/A02 答案图完整且无「未校验」。
+
+## 2026-11-06 · 标准重建回放人工框 + OS A19 表格/误拆子问修复
+
+- **病征**：`rebuild_bank.ps1` 缺人工框回放，上一轮 21 道修补题在重建后回退成自动裁图；全量 `test_stem_table_reflow_preserves_pipe_rows` 另被 OS 虚拟内存 A19 的半条管道表与破损 `sub_questions` 卡住。
+- **修复**：`auto_recrop_figs.py` 新增 `--manual-only`，只收集 `fig_manual_boxes.json` 中仍存在的 56 个目标（旧 `net:166:X11_2` 已改号，不重复生成）；`rebuild_bank.ps1` 在答案图接线和覆盖图恢复后统一回放，再 bump。A19 按原书 p240/p254 把普通题干移出三列管道表；补丁支持显式 `sub_questions: null`，`split_sub_questions` 忽略 `$^{①}$` 形式的 TeX 页脚上标，不再把脚注拆成子问。
+- **回归**：新增人工目标/接线顺序、TeX 上标与正常①②拆分、A19 发布态断言。人工回放 56/56；连续两次完整重建后 196 个题图与发布 JSON 哈希均不变。重建内 157 passed；全量 **412 passed, 0 failed**。`check-published` 0 问题，账本保持 2931/2931/0/0。
+- **账本**：人工元数据回放涉及的 net X16、os A01 及 A19 均重新对照原页和当前发布内容后定点同步；实际漂移 2613→2612，新增 0，基线仅移除 A19。
+- **图片**：仅 net `page_128_X23.png` 字节变化，781×176→587×169；新旧图均含完整 R2/Switch/Hub/H1–H4 与地址，本机详情已实看。其余题图字节不变。平台 `BANK_IMAGE_VERSION` 升 20261106，图片缓存测试 4 passed。
+- **云端**：`push_data.ps1` 热更 v536，四份 `data-*.json` HTTP 200，1 张变更裁图远端哈希一致；平台 408 池 `sync done, changed 4 failed 0`，未重启服务。公网 `quality-hold.json` 仍为 0。

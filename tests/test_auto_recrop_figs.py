@@ -91,3 +91,20 @@ def test_question_ocr_bbox_detects_bottom_page_continuation():
     box, continues = question_ocr_bbox("X46", [172, 93, 970, 1374], blocks, 1100, 1500)
     assert box[1] == 1300
     assert continues is True
+
+
+def test_manual_only_targets_match_live_manual_boxes_and_rebuild_order():
+    from auto_recrop_figs import collect_targets
+
+    all_items = collect_targets(None, None)
+    expected = {item['key'] for item in all_items if item.get('manual_box') is not None}
+    actual = {
+        item['key'] for item in collect_targets(None, None, manual_only=True)
+    }
+    assert actual == expected
+
+    script = (SCRIPTS / 'rebuild_bank.ps1').read_text(encoding='utf-8')
+    answers = script.index('scripts/gen_answer_crops.py')
+    recrop = script.index('scripts/auto_recrop_figs.py --manual-only')
+    bump = script.index('scripts/bump_bank_version.py')
+    assert answers < recrop < bump

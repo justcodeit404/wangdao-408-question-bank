@@ -6,6 +6,7 @@
 用法:
   python apps/bank-408/scripts/auto_recrop_figs.py              # 全量
   python apps/bank-408/scripts/auto_recrop_figs.py --course ds
+  python apps/bank-408/scripts/auto_recrop_figs.py --manual-only  # 只回放人工框
   python apps/bank-408/scripts/auto_recrop_figs.py --dry-run
   python apps/bank-408/scripts/auto_recrop_figs.py --only ds:101:X16
   python apps/bank-408/scripts/auto_recrop_figs.py --report temp/fig-recrop-report.json
@@ -1032,7 +1033,9 @@ def write_course(course: str, data: dict) -> None:
             f.write(payload)
 
 
-def collect_targets(course_filter: str | None, only: set[str] | None):
+def collect_targets(
+    course_filter: str | None, only: set[str] | None, manual_only: bool = False
+):
     items = []
     # 人工校准框（可选）：{ "course:page:id": [x0,y0,x1,y1] }，优先生效
     manual_boxes: dict = {}
@@ -1062,6 +1065,8 @@ def collect_targets(course_filter: str | None, only: set[str] | None):
                 ok, cropped = looks_fig(q)
                 key = f"{code}:{q.get('page')}:{q.get('id')}"
                 manual = manual_boxes.get(key)
+                if manual_only and manual is None:
+                    continue
                 # 人工框显式声明该题有图（题干可无"如下图"类标记，如 X23）
                 if not ok and manual and not (
                     isinstance(manual, dict) and manual.get("drop")
@@ -1328,6 +1333,7 @@ def process_one(item: dict, page_cache: dict, ocr_cache: dict, dry: bool) -> dic
 def main():
     ap = argparse.ArgumentParser(description="Auto re-crop 408 figure questions")
     ap.add_argument("--course", choices=list(COURSE_META), default=None)
+    ap.add_argument("--manual-only", action="store_true", help="only replay fig_manual_boxes.json")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--only", action="append", default=[], help="course:page:id")
     ap.add_argument(
@@ -1338,7 +1344,7 @@ def main():
     args = ap.parse_args()
 
     only = set(args.only) if args.only else None
-    items = collect_targets(args.course, only)
+    items = collect_targets(args.course, only, manual_only=args.manual_only)
     if args.limit:
         items = items[: args.limit]
     print(f"targets: {len(items)} dry={args.dry_run}")

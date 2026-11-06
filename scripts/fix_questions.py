@@ -26,6 +26,7 @@ PAGE_REVIEW_PATCH_FIELDS = {
     "choice",
     "explanation",
     "option_groups",
+    "sub_questions",
     # 题目/答案页是原书证据的一部分，question_hash 也计入；按小节整体赋值的
     # q_pages/a_pages 在拆题、跨页题上不对时，允许在本轮复核后定点改写。
     "q_pages",
@@ -104,6 +105,12 @@ def load_page_review_patches(path=PAGE_REVIEW_PATCHES_PATH):
                 or any(isinstance(page, bool) or not isinstance(page, int) or page <= 0 for page in pages)
             ):
                 raise ValueError(f"page review patch {course}/{chapter}/{qid} has invalid {key}")
+        sub_questions = fields.get("sub_questions")
+        if "sub_questions" in fields and sub_questions is not None and (
+            not isinstance(sub_questions, list)
+            or any(not isinstance(item, str) or not item.strip() for item in sub_questions)
+        ):
+            raise ValueError(f"page review patch {course}/{chapter}/{qid} has invalid sub_questions")
         target = (course, chapter, qid)
         if target in patches:
             raise ValueError(f"duplicate page review patch target: {course}/{chapter}/{qid}")
@@ -1822,6 +1829,8 @@ def split_sub_questions(content):
     # 收集圆圈数字标记位置及其数字
     markers = []
     for m in _CIRCLE_RE.finditer(content):
+        if re.search(r"\$\^\{\s*$", content[: m.start()]):
+            continue
         markers.append((m.start(), _CIRCLE_TO_ARABIC[m.group(0)]))
 
     # 按位置排序
@@ -2145,6 +2154,8 @@ def fix_file(path, pdf_images_dir=None, course_key=None, apply_page_review_patch
                     q["q_pages"] = list(page_patch["q_pages"])
                 if "a_pages" in page_patch:
                     q["a_pages"] = list(page_patch["a_pages"])
+                if "sub_questions" in page_patch:
+                    q["sub_questions"] = page_patch["sub_questions"]
                 ans = q.get("answer") or {}
                 if "choice" in page_patch:
                     ans["choice"] = str(page_patch["choice"]).strip().upper()
@@ -2181,7 +2192,11 @@ def fix_file(path, pdf_images_dir=None, course_key=None, apply_page_review_patch
                 q["answer"] = ans
 
             # 5. 拆分子问题（仅解答题，避免选择题选项中的编号被误拆）
-            if not q.get("sub_questions") and q.get("type") != "选择题":
+            if (
+                not q.get("sub_questions")
+                and q.get("type") != "选择题"
+                and not (page_patch is not None and "sub_questions" in page_patch)
+            ):
                 main, subs = split_sub_questions(cleaned)
                 if subs:
                     q["content"] = main

@@ -9,6 +9,7 @@ from fix_questions import (
     apply_curated_inserts,
     fix_file,
     load_page_review_patches,
+    split_sub_questions,
 )
 
 BANK = Path(__file__).resolve().parents[1] / "math-bank"
@@ -1314,3 +1315,19 @@ def test_os_vm_x47_roman_items_on_own_lines():
 )
 def test_zhenti_stem_keeps_year_prefix(course, chapter, qid, year):
     assert _q(course, chapter, qid)["content"].startswith(f"【{year}统考真题】")
+
+
+def test_circle_number_in_tex_superscript_is_not_a_sub_question():
+    text = "题干含页脚注 $^{①}$，不是子问题。\n① 本题注释也不是子问题。"
+    assert split_sub_questions(text) == (text, None)
+
+    main, subs = split_sub_questions("题干\n① 第一问\n② 第二问")
+    assert main == "题干"
+    assert subs == ["① 第一问", "② 第二问"]
+
+
+def test_os_vm_a19_prose_is_outside_pipe_table_and_has_no_stale_subs():
+    question = _essay("os", "虚拟内存管理", "A19")
+    assert question["content"].startswith("【2017统考真题】")
+    assert "虚拟地址格式如下：\n| 页目录号（10位） |" in question["content"]
+    assert question["sub_questions"] is None

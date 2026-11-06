@@ -91,6 +91,12 @@ if (Test-Path -LiteralPath $cropOverride) {
     Copy-Item -Path (Join-Path $cropOverride "*") -Destination (Join-Path $root "math-bank\answer_crops") -Recurse -Force
 }
 
+# Rebuild can restore naive crops for all courses. Replay every manual box after
+# all data/crop rewrites, without re-detecting automatic figures.
+Write-Host "==> replay manual figure crops (auto_recrop_figs.py --manual-only)" -ForegroundColor Cyan
+& $buildPy scripts/auto_recrop_figs.py --manual-only
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
 Write-Host "==> bump cache version (data content hash)" -ForegroundColor Cyan
 & $buildPy scripts/bump_bank_version.py
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
