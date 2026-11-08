@@ -87,11 +87,13 @@ function refreshTypeFilterOptions(types, currentValue) {
   if (prev && types[prev]) typeEl.value = prev;
   else typeEl.value = '';
 }
-// 对 data.js 加载器做包装：按当前题库只暴露对应题型
+// 对 data.js 加载器做包装：按当前题库只暴露对应题型。
+// 每日十题要跨科抽选择题，走 rawLoadCourseData，不受当前大题/选择题页签影响。
+let rawLoadCourseData = null;
 if (typeof window.loadCourseData === 'function') {
-  const _originalLoadCourseData = window.loadCourseData;
+  rawLoadCourseData = window.loadCourseData;
   window.loadCourseData = function(courseName) {
-    return _originalLoadCourseData(courseName).then(filterCourseDataByLibrary);
+    return rawLoadCourseData(courseName).then(filterCourseDataByLibrary);
   };
 }
 
@@ -116,6 +118,7 @@ let practiceFinished = false;
 let isLoadingCourse = false;
 // 考试模式状态：timed = 限时倒计时秒；target = 目标题数；mixed = 跨科题数；null = 普通练习
 let practiceMode = null;
+let practiceSession = '';       // 'daily' 时进度写每日记录，不覆盖未完成的普通练习
 let practiceTimer = null;       // setInterval 句柄
 let practiceDeadline = 0;       // 限时模式的截止时间戳
 let qualityLedger = null;
@@ -1171,6 +1174,168 @@ function refreshDueBadge() {
   btn.title = n > 0 ? `今日复习：${n} 道题到期` : '今日复习：暂无到期题';
 }
 
+// 每日十题：当天第一次从已掌握选择题里抽 10 道，之后沿用同一批。
+const DAILY_KEY = 'wd408_daily_choice_v1';
+const DAILY_COUNT = 10;
+let dailyStarting = false;
+
+function dailyQuestionKey(q) {
+  return (q.course || '') + '\t' + questionKey(q);
+}
+
+function loadDailyRecord() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(DAILY_KEY) || 'null');
+    if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return null;
+    return raw;
+  } catch (e) {
+    return null;
+  }
+}
+
+function saveDailyRecord(rec) {
+  if (!rec) return;
+  safeSetItem(DAILY_KEY, JSON.stringify(rec));
+}
+
+function saveDailyCursor() {
+  const rec = loadDailyRecord();
+  if (!rec || !Array.isArray(rec.keys)) return;
+  rec.index = practiceIndex;
+  rec.finished = !!practiceFinished;
+  saveDailyRecord(rec);
+}
+
+function markDailyFinished() {
+  const rec = loadDailyRecord();
+  if (!rec) return;
+  rec.finished = true;
+  rec.index = Array.isArray(rec.keys) ? rec.keys.length : practiceIndex;
+  saveDailyRecord(rec);
+  refreshDailyBadge();
+}
+
+function refreshDailyBadge() {
+  const badge = document.getElementById('dailyBadge');
+  const btn = document.getElementById('btnDailyTen');
+  if (!badge || !btn) return;
+  const rec = loadDailyRecord();
+  const today = _COV && _COV.localDateKey ? _COV.localDateKey(new Date()) : '';
+  const fresh = rec && rec.date === today && Array.isArray(rec.keys) && rec.keys.length;
+  if (!fresh) {
+    badge.hidden = true;
+    btn.title = '从四科已掌握的选择题里抽 10 道，当天不变';
+    return;
+  }
+  badge.hidden = false;
+  if (rec.finished) {
+    badge.textContent = '完';
+    badge.classList.add('zero');
+    btn.title = '今日十题已完成，再点可重练同一批';
+    return;
+  }
+  const left = Math.max(1, rec.keys.length - (rec.index | 0));
+  badge.textContent = String(left);
+  badge.classList.remove('zero');
+  btn.title = '今日十题：还剩 ' + left + ' 道（已掌握）';
+}
+
+async function loadAllChoiceQuestions() {
+  const courses = getAvailableCourses();
+  const loader = rawLoadCourseData;
+  if (!loader || !_COV) return [];
+  const pools = await Promise.all(courses.map(async (c) => {
+    try {
+      const data = await loader(c.name);
+      return flattenCourseQuestions(_COV.filterCourseDataToChoices(data), c.name);
+    } catch (e) {
+      console.warn('daily load failed', c.name, e);
+      return [];
+    }
+  }));
+  return pools.flat().filter(qualityVisible);
+}
+
+async function startDailyPractice() {
+  if (dailyStarting) return;
+  dailyStarting = true;
+  try {
+    if (window.innerWidth <= 768) {
+      const sb = document.getElementById('sidebar');
+      if (sb) sb.classList.remove('open');
+    }
+    if (!_COV || typeof _COV.resolveDailyPick !== 'function') {
+      alert('每日十题组件未加载，请刷新页面');
+      return;
+    }
+    if (qualityLedger && qualityLedger.failClosed) {
+      alert('题库校验清单加载失败，暂时不能抽题');
+      return;
+    }
+    const today = _COV.localDateKey(new Date());
+    const rec = loadDailyRecord();
+    let redo = false;
+    if (rec && rec.date === today && rec.finished && Array.isArray(rec.keys) && rec.keys.length) {
+      const ok = confirm('今天的 10 道已经做完。\n\n确定 = 再练一遍同一批\n取消 = 返回');
+      if (!ok) return;
+      redo = true;
+    }
+    flashToast('正在抽取今日十题…');
+    let pool;
+    try {
+      pool = await loadAllChoiceQuestions();
+    } catch (e) {
+      console.warn(e);
+      alert('题目加载失败，请稍后重试');
+      return;
+    }
+    const alive = pool.map(dailyQuestionKey);
+    const mastered = pool.filter(q => getMastery(q) === 'mastered').map(dailyQuestionKey);
+    const resolved = _COV.resolveDailyPick(rec, today, alive, mastered, DAILY_COUNT);
+    if (!resolved.keys.length) {
+      alert('还没有标记为「已掌握」的选择题。做题后点「已掌握」，就可以每天抽 10 道复习。');
+      return;
+    }
+    const byKey = new Map();
+    pool.forEach(q => {
+      const k = dailyQuestionKey(q);
+      if (!byKey.has(k)) byKey.set(k, q);
+    });
+    const queue = resolved.keys.map(k => byKey.get(k)).filter(Boolean);
+    if (!queue.length) {
+      alert('今日题目已不在题库里，请刷新后再试');
+      return;
+    }
+    const prevIndex = (!redo && rec && rec.date === today) ? (rec.index | 0) : 0;
+    const index = Math.min(Math.max(0, prevIndex), queue.length - 1);
+    saveDailyRecord({
+      date: today,
+      keys: queue.map(dailyQuestionKey),
+      index: index,
+      finished: false,
+    });
+    if (resolved.short && !resolved.reused) {
+      flashToast('已掌握只有 ' + queue.length + ' 道，今日就练这 ' + queue.length + ' 道');
+    } else if (!resolved.reused) {
+      flashToast('已从已掌握的题里抽出今日 ' + queue.length + ' 道');
+    }
+    practiceSession = 'daily';
+    practiceMode = 'daily';
+    practiceDeadline = 0;
+    stopPracticeTimer();
+    practiceQueue = queue;
+    practiceIndex = index;
+    practiceResults = [];
+    practiceFinished = false;
+    setPracticeFooter(true);
+    renderPractice();
+    openModal('practiceModal');
+    refreshDailyBadge();
+  } finally {
+    dailyStarting = false;
+  }
+}
+
 function buildFullExportPayload() {
   return {
     version: 2,
@@ -1184,7 +1349,8 @@ function buildFullExportPayload() {
     issueQueue: issueQueue,
     wrongLog: wrongLog,
     attemptLog: attemptLog,
-    searchHistory: searchHistory
+    searchHistory: searchHistory,
+    dailyChoice: loadDailyRecord()
   };
 }
 
@@ -1262,9 +1428,13 @@ function importProgress(file) {
         searchHistory = data.searchHistory.slice(0, SEARCH_HISTORY_MAX);
         saveSearchHistory();
       }
+      if (data.dailyChoice && typeof data.dailyChoice === 'object' && data.dailyChoice.date) {
+        saveDailyRecord(data.dailyChoice);
+      }
       renderStats();
       refreshChapterMastery();
       refreshDueBadge();
+      refreshDailyBadge();
       const search = document.getElementById('searchInput').value.trim().toLowerCase();
       renderGrid(search);
       flashToast(data.version >= 2 ? '完整进度已导入' : '进度已导入（旧版文件，仅含掌握/练习）');
@@ -1703,6 +1873,7 @@ async function init() {
   renderMarkDashboard();
   applyFilters();
   refreshDueBadge();
+  refreshDailyBadge();
   setupEvents();
   refreshCursorKey();
   updateResumeBar();
@@ -3148,6 +3319,15 @@ function stemAsmBlockEnd(s, i) {
   return end > i ? end : 0;
 }
 
+// 题面和代码被挤在同一行时，代码常以赋值语句开头（x=0;while…）。
+// 关键字切分会把它留在正文，这里把紧贴关键字的整条赋值语句并回代码段。
+const STEM_CODE_LEAD = /(?:^|[\n。：:])[ \t]*([A-Za-z_]\w*(?:\[[^\]]*\])?\s*=(?!=)[^;；\n]{0,40});[ \t]*$/;
+
+function stemCodeLeadStart(s, i) {
+  const m = STEM_CODE_LEAD.exec(s.slice(0, i));
+  return m ? m.index + m[0].indexOf(m[1]) : i;
+}
+
 function splitStemCode(src) {
   const s = String(src || '');
   const parts = [];
@@ -3157,9 +3337,12 @@ function splitStemCode(src) {
     const cEnd = stemCodeStartEnd(s, i);
     const end = cEnd || stemAsmBlockEnd(s, i);
     if (end) {
-      const head = s.slice(proseAt, i).replace(/^\n+|\n+$/g, '');
+      const start = cEnd ? stemCodeLeadStart(s, i) : i;
+      const head = s.slice(proseAt, start).replace(/^\n+|\n+$/g, '');
       if (head.trim()) parts.push({ kind: 'prose', text: head });
-      const raw = s.slice(i, end);
+      const raw = start < i
+        ? s.slice(start, i).trimEnd() + '\n' + s.slice(i, end)
+        : s.slice(i, end);
       parts.push({ kind: 'code', text: cEnd ? formatStemCode(raw) : formatAsmBlock(raw) });
       i = end;
       proseAt = end;
@@ -4612,6 +4795,10 @@ async function loadMixedPool(count) {
 }
 
 async function startPractice(status) {
+  if (practiceSession === 'daily' && !practiceFinished) saveDailyCursor();
+  practiceSession = '';
+  const titleEl = document.getElementById('practiceTitle');
+  if (titleEl) titleEl.textContent = '练习模式';
   const saved = loadProgress();
   if (saved && saved.ids && saved.ids.length > 0) {
     const choice = confirm(`发现上次未完成的练习（${saved.ids.length} 道题，进度 ${saved.index + 1}/${saved.ids.length}）。\n\n确定 = 继续上次练习\n取消 = 开始新练习`);
@@ -4692,6 +4879,12 @@ function renderPractice() {
   const q = practiceQueue[practiceIndex];
   const container = document.getElementById('practiceContent');
   const progress = `${practiceIndex + 1} / ${practiceQueue.length}`;
+  const titleEl = document.getElementById('practiceTitle');
+  if (titleEl) titleEl.textContent = practiceSession === 'daily' ? '每日十题' : '练习模式';
+  const where = practiceSession === 'daily' && q.course
+    ? escapeHtml(q.course) + ' · ' + escapeHtml(q.chapter)
+    : escapeHtml(q.chapter);
+  const dailyTag = practiceSession === 'daily' ? '每日十题 · ' : '';
 
   let timerHtml = '';
   if (practiceMode === 'timed') {
@@ -4700,7 +4893,7 @@ function renderPractice() {
 
   container.innerHTML = `
     ${timerHtml}
-    <div class="practice-progress">${escapeHtml(q.chapter)} · ${escapeHtml(displayId(q))} · ${progress}</div>
+    <div class="practice-progress">${dailyTag}${where} · ${escapeHtml(displayId(q))} · ${progress}</div>
     <div class="practice-question">
       <div class="q-id" style="margin-bottom:14px;font-size:0.95rem;color:var(--text-tertiary);font-weight:600;">${q.type} · ${pageLabel(q, '—')}</div>
       ${questionBodyHtml(q, 'practice')}
@@ -4754,10 +4947,12 @@ function nextPractice() {
 }
 
 function finishPractice() {
+  const session = practiceSession;
   practiceFinished = true;
   stopPracticeTimer();
   practiceMode = null;
-  clearProgress();
+  if (session === 'daily') markDailyFinished();
+  else clearProgress();
   const answered = practiceResults.length;
   const correct = practiceResults.filter(r => r.correct).length;
   const wrong = answered - correct;
@@ -4779,6 +4974,7 @@ function finishPractice() {
         ${skipped ? ` · 跳过 ${skipped} 题` : ''}
         （按已作答题计算）
       </p>
+      ${session === 'daily' ? '<p style="color:var(--text-tertiary);font-size:0.85rem;margin:-8px 0 16px">这批题今天固定，明天会从已掌握里重新抽。</p>' : ''}
       <div class="summary-actions">
         <button class="btn btn-primary" onclick="restartPractice()">重新练习</button>
         <button class="btn btn-secondary" onclick="closePractice()">退出</button>
@@ -4789,17 +4985,34 @@ function finishPractice() {
 }
 
 function restartPractice() {
-  practiceQueue = shuffleArray([...practiceQueue]);
+  if (practiceSession !== 'daily') practiceQueue = shuffleArray([...practiceQueue]);
   practiceIndex = 0;
   practiceResults = [];
   practiceFinished = false;
+  if (practiceSession === 'daily') {
+    practiceMode = 'daily';
+    const rec = loadDailyRecord();
+    if (rec) {
+      rec.finished = false;
+      rec.index = 0;
+      saveDailyRecord(rec);
+    }
+  }
   setPracticeFooter(true);
   saveProgress();
   renderPractice();
+  refreshDailyBadge();
 }
 
 function closePractice() {
   stopPracticeTimer();
+  if (practiceSession === 'daily') {
+    if (!practiceFinished) saveDailyCursor();
+    practiceSession = '';
+    closeModalById('practiceModal');
+    refreshDailyBadge();
+    return;
+  }
   // 未完成时保留进度，便于下次续做；已完成则已 clearProgress
   if (!practiceFinished) saveProgress();
   closeModalById('practiceModal');
@@ -4861,6 +5074,10 @@ function practiceKey() {
   return 'mathbank_practice_progress_v2';
 }
 function saveProgress() {
+  if (practiceSession === 'daily') {
+    saveDailyCursor();
+    return;
+  }
   if (practiceFinished || !practiceQueue.length) return;
   const payload = {
     version: 2,
@@ -5219,7 +5436,8 @@ function setupEvents() {
       if (!item) return;
       moreMenu.hidden = true;
       const act = item.dataset.action;
-      if (act === 'export') exportProgress();
+      if (act === 'daily') startDailyPractice();
+      else if (act === 'export') exportProgress();
       else if (act === 'import') document.getElementById('importFile').click();
       else if (act === 'notes') exportNotesAsMarkdown();
       else if (act === 'backup') triggerBackup(false);
@@ -5241,7 +5459,8 @@ function setupEvents() {
       if (!item) return;
       practiceMenu.hidden = true;
       const mode = item.dataset.mode;
-      if (mode === 'current' || !mode) startPractice();
+      if (mode === 'daily') startDailyPractice();
+      else if (mode === 'current' || !mode) startPractice();
       else startPractice(mode);
     });
     document.addEventListener('click', () => { practiceMenu.hidden = true; });
@@ -5254,6 +5473,8 @@ function setupEvents() {
     if (window.innerWidth <= 768) document.getElementById('sidebar').classList.remove('open');
     startPractice('review');
   });
+  const dailyBtn = document.getElementById('btnDailyTen');
+  if (dailyBtn) dailyBtn.addEventListener('click', () => startDailyPractice());
   document.getElementById('sidebarOverlay').addEventListener('click', () => {
     document.getElementById('sidebar').classList.remove('open');
   });
@@ -5271,7 +5492,10 @@ function setupEvents() {
 
   ['detailModal', 'practiceModal', 'helpModal', 'dashboardModal', 'wrongBookModal', 'paperModal'].forEach(id => {
     document.getElementById(id).addEventListener('click', (e) => {
-      if (e.target === e.currentTarget) closeModalById(id);
+      if (e.target === e.currentTarget) {
+        if (id === 'practiceModal' && practiceSession === 'daily') closePractice();
+        else closeModalById(id);
+      }
     });
   });
 
@@ -5283,6 +5507,9 @@ function setupEvents() {
         const dd = document.getElementById('searchHistoryDropdown');
         if (dd) dd.hidden = true;
         return;
+      }
+      if (practiceSession === 'daily' && document.getElementById('practiceModal').classList.contains('active')) {
+        closePractice();
       }
       closeModalById('detailModal');
       closeModalById('practiceModal');
@@ -5904,7 +6131,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=536').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=538').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {

@@ -3841,3 +3841,12 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **账本**：人工元数据回放涉及的 net X16、os A01 及 A19 均重新对照原页和当前发布内容后定点同步；实际漂移 2613→2612，新增 0，基线仅移除 A19。
 - **图片**：仅 net `page_128_X23.png` 字节变化，781×176→587×169；新旧图均含完整 R2/Switch/Hub/H1–H4 与地址，本机详情已实看。其余题图字节不变。平台 `BANK_IMAGE_VERSION` 升 20261106，图片缓存测试 4 passed。
 - **云端**：`push_data.ps1` 热更 v536，四份 `data-*.json` HTTP 200，1 张变更裁图远端哈希一致；平台 408 池 `sync done, changed 4 failed 0`，未重启服务。公网 `quality-hold.json` 仍为 0。
+
+## 2026-11-08 · 题干代码段以赋值语句开头时被切在正文外
+
+- **病征**：ds 绪论 X16（2019 统考，p13）题干末尾挂着 `x=0;`，代码块只剩 `while(n>=(x+1)*(x+1))` 和 `x=x+1;`；同章 X12（`x=2;`）相同。
+- **根因**：`splitStemCode()` 只从 `while/for/int…` 关键字起算代码段，紧贴关键字、以 `;` 结尾的赋值语句被留在正文；原书 p13 中 `x=0;` 与 while 同属一段缩进代码。
+- **修复**：新增 `STEM_CODE_LEAD` / `stemCodeLeadStart()`，把紧邻关键字、以 `;` 结尾的整条赋值语句并入代码段并单独成行；`math-bank/app.js` 与 platform `frontend/src/lib/katex.ts` 同步，未改题库数据。
+- **回归**：`tests/test_stem_tables.py` 23 passed（新增 `test_leading_assignment_stays_with_code_block`）；platform `katex.test.ts` 13 passed（新增同名回归）。本机 8099 实看 X16/X12 正确，X17 等原有代码块不变；`check-published` 0 问题，账本漂移存量 2612、新增 0。
+- **云端**：`push_data.ps1` 热更 **v538**，`index.html` / `sw.js` / `app.js` 已更新，`__BANK_DATA_VER__=538`，`data-*.json` 未变故平台 408 池跳过重导；公网 `/banks/408` 打开 X16 已显示完整三行代码块，未重启服务。
+- **遗留**：platform 刷题页同一处渲染依赖 `frontend/src/lib/katex.ts`，需随下一次 platform release 上线；本轮工作区有他人未提交改动（根 `AGENTS.md`、bank-408 每日十题壳），未强行打包。

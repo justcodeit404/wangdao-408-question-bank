@@ -22,20 +22,20 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <!-- 不用 Google Fonts：国内常被墙/超时，阻塞首屏导致白屏 -->
-<link rel="stylesheet" href="styles.css?v=536">
-<script>window.__BANK_DATA_VER__='536';</script>
+<link rel="stylesheet" href="styles.css?v=538">
+<script>window.__BANK_DATA_VER__='538';</script>
 <script>
 (function () {
   var base = (location.pathname || '').indexOf('/banks/') === 0
     ? '/banks/common/'
     : 'vendor/viewer-common/';
   document.write('<script src="' + base + 'storage.js"><\/script>');
-  document.write('<script src="' + base + 'platform-sync.js?v=536"><\/script>');
-      document.write('<link rel="stylesheet" href="' + base + 'scratch-pad.css?v=536">');
-      document.write('<script src="' + base + 'scratch-ink.js?v=536"><\/script>');
-      document.write('<script src="' + base + 'scratch-pad.js?v=536"><\/script>');
-  document.write('<script src="' + base + 'question-notes.js?v=536"><\/script>');
-  document.write('<script src="' + base + 'pdf-export.js?v=536"><\/script>');
+  document.write('<script src="' + base + 'platform-sync.js?v=538"><\/script>');
+      document.write('<link rel="stylesheet" href="' + base + 'scratch-pad.css?v=538">');
+      document.write('<script src="' + base + 'scratch-ink.js?v=538"><\/script>');
+      document.write('<script src="' + base + 'scratch-pad.js?v=538"><\/script>');
+  document.write('<script src="' + base + 'question-notes.js?v=538"><\/script>');
+  document.write('<script src="' + base + 'pdf-export.js?v=538"><\/script>');
 })();
 </script>
 </head>
@@ -68,6 +68,11 @@
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
       <span>今日复习</span>
       <span class="review-badge" id="dueBadge" hidden>0</span>
+    </button>
+    <button class="sidebar-review-btn" id="btnDailyTen" title="从四科已掌握的选择题里抽 10 道，当天不变">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
+      <span>每日十题</span>
+      <span class="review-badge" id="dailyBadge" hidden>0</span>
     </button>
     <div class="chapter-list" id="chapterList"></div>
   </aside>
@@ -159,6 +164,10 @@
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
               <span>收藏复习</span>
             </button>
+            <button class="split-menu-item" data-mode="daily">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span>每日十题（已掌握）</span>
+            </button>
             <div class="split-menu-sep"></div>
             <button class="split-menu-item" data-mode="timed30">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -213,6 +222,7 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg>
           </button>
           <div class="mobile-more-menu" id="mobileMoreMenu" hidden>
+            <button type="button" class="split-menu-item" data-action="daily">每日十题</button>
             <button type="button" class="split-menu-item" data-action="random">随机一题</button>
             <button type="button" class="split-menu-item" data-action="view">切换视图</button>
             <div class="split-menu-sep"></div>
@@ -353,6 +363,7 @@
       </table>
       <h4>学习模式</h4>
       <p>收藏与掌握度可同时存在。标记掌握度会进入间隔重复队列（1 / 3 / 7 / 14 / 30 天）。导出与备份均为完整数据包，可互相导入。</p>
+      <p>侧栏「每日十题」从四科已掌握的选择题里抽 10 道，当天固定，第二天重新抽。不足 10 道就全部抽。</p>
       <h4>图片</h4>
       <p>题干含「如下图」等配图时会<strong>直接显示在题干下方</strong>；点击图片可<strong>滚轮缩放</strong>，按住拖动可平移。</p>
       <h4>数据</h4>
@@ -404,7 +415,7 @@
 <div class="modal-overlay" id="practiceModal">
   <div class="modal-box">
     <div class="modal-header">
-      <h3>练习模式</h3>
+      <h3 id="practiceTitle">练习模式</h3>
       <button class="modal-close" onclick="closePractice()" aria-label="关闭">&times;</button>
     </div>
     <div class="modal-body">
@@ -418,9 +429,9 @@
   </div>
 </div>
 
-<script src="data.js?v=536"></script>
-<script src="choice-only.js?v=536"></script>
-<script src="app.js?v=536"></script>
+<script src="data.js?v=538"></script>
+<script src="choice-only.js?v=538"></script>
+<script src="app.js?v=538"></script>
 <div id="platformSyncBar" class="platform-sync-bar" hidden aria-hidden="true">
   <div class="platform-sync-bar-text" id="platformSyncBarText"></div>
   <button type="button" class="btn btn-primary" id="platformSyncBarBtn" hidden>重试同步</button>

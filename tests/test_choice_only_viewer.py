@@ -644,3 +644,87 @@ def test_real_essay_l2_selection_returns_all_listed_questions():
         "listed": 3,
         "matched": 3,
     }
+
+
+def test_pick_daily_keys_is_stable_and_capped():
+    """同一天同一批 key 抽到同一 10 道；不足 10 则全返回。"""
+    out = _node_eval(
+        """
+        const keys = Array.from({length: 30}, (_, i) => 'k' + String(i).padStart(2, '0'));
+        const a = api.pickDailyKeys(keys, '2026-08-14', 10);
+        const b = api.pickDailyKeys(keys.slice().reverse(), '2026-08-14', 10);
+        const c = api.pickDailyKeys(keys.concat(keys), '2026-08-14', 10);
+        const picks = ['2026-08-01', '2026-08-02', '2026-08-15', '2026-09-01', '2027-01-01']
+          .map(d => api.pickDailyKeys(keys, d, 10));
+        return {
+          a: a,
+          b: b,
+          c: c,
+          picks: picks,
+          short: api.pickDailyKeys(keys.slice(0, 3), '2026-08-14', 10),
+          empty: api.pickDailyKeys([], '2026-08-14', 10),
+          date: api.localDateKey(new Date(2026, 7, 14)),
+        };
+        """
+    )
+    assert out["a"] == out["b"] == out["c"]
+    assert len(out["a"]) == 10
+    assert len(set(out["a"])) == 10
+    assert set(out["a"]).issubset({f"k{i:02d}" for i in range(30)})
+    assert len({tuple(p) for p in out["picks"]}) > 1
+    assert len(out["short"]) == 3
+    assert set(out["short"]) == {"k00", "k01", "k02"}
+    assert out["empty"] == []
+    assert out["date"] == "2026-08-14"
+
+
+def test_resolve_daily_pick_freezes_the_day():
+    """当天抽定后不因掌握度变化换题；题从库里消失才补位。"""
+    out = _node_eval(
+        """
+        const alive = ['a','b','c','d','e','f','g','h','i','j','k','l'];
+        const first = api.resolveDailyPick(null, '2026-08-14', alive, alive, 10);
+        const saved = { date: '2026-08-14', keys: first.keys };
+        const later = api.resolveDailyPick(saved, '2026-08-14', alive, ['a'], 10);
+        const grew = api.resolveDailyPick(
+          { date: '2026-08-14', keys: ['a', 'b', 'c'] },
+          '2026-08-14',
+          alive,
+          alive,
+          10
+        );
+        const nextDay = api.resolveDailyPick(saved, '2026-08-15', alive, alive, 10);
+        const vanished = first.keys[0];
+        const alive2 = alive.filter(k => k !== vanished);
+        const mastered2 = alive2.slice();
+        const filled = api.resolveDailyPick(saved, '2026-08-14', alive2, mastered2, 10);
+        const filledAgain = api.resolveDailyPick(saved, '2026-08-14', alive2, mastered2, 10);
+        const none = api.resolveDailyPick(null, '2026-08-14', alive, [], 10);
+        return { first, later, grew, nextDay, filled, filledAgain, vanished, none };
+        """
+    )
+    assert len(out["first"]["keys"]) == 10
+    assert out["first"]["reused"] is False
+    assert out["later"]["reused"] is True
+    assert out["later"]["keys"] == out["first"]["keys"]
+    assert out["grew"]["keys"] == ["a", "b", "c"]
+    assert out["grew"]["reused"] is True
+    assert out["nextDay"]["reused"] is False
+    assert len(out["nextDay"]["keys"]) == 10
+    assert out["vanished"] not in out["filled"]["keys"]
+    assert len(out["filled"]["keys"]) == 10
+    assert out["filled"] == out["filledAgain"]
+    assert out["none"]["keys"] == []
+
+
+def test_daily_ten_is_wired_into_choice_shell():
+    html = INDEX_HTML.read_text(encoding="utf-8")
+    app = APP_JS.read_text(encoding="utf-8")
+    assert 'id="btnDailyTen"' in html
+    assert 'data-mode="daily"' in html
+    assert "每日十题" in html
+    assert "wd408_daily_choice_v1" in app
+    assert "resolveDailyPick" in app
+    assert "filterCourseDataToChoices" in app
+    assert "rawLoadCourseData" in app
+    assert "startDailyPractice" in app

@@ -288,6 +288,20 @@ def test_multiline_if_stays_one_block():
     assert res["proseTexts"][-1] == "结束。"
 
 
+def test_leading_assignment_stays_with_code_block():
+    # 回归：x=0; 曾被留在题干，代码块只剩 while 段
+    (res,) = _eval_fill(
+        [
+            "【2019统考真题】设n是描述问题规模的非负整数，下列程序段的时间复杂度是（）。"
+            "x=0;while(n>=(x+1)*(x+1))\nx=x+1;"
+        ]
+    )
+    assert res["proseTexts"] == [
+        "【2019统考真题】设n是描述问题规模的非负整数，下列程序段的时间复杂度是（）。"
+    ]
+    assert res["codeTexts"] == ["x = 0;\nwhile(n>=(x+1)*(x+1))\nx = x+1;"]
+
+
 def test_type_word_inside_chinese_is_not_code():
     (res,) = _eval_fill(["假定编译器规定int型和short型长度分别为32位。"])
     assert res["usedTextPath"]

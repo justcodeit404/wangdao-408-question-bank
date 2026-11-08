@@ -350,6 +350,114 @@
     return buildTypeStatItems(typeCounts).map(function (s) { return s.label; });
   }
 
+  function hashString(s) {
+    var h = 2166136261;
+    var text = String(s || '');
+    for (var i = 0; i < text.length; i++) {
+      h ^= text.charCodeAt(i);
+      h = Math.imul(h, 16777619);
+    }
+    return h >>> 0;
+  }
+
+  function mulberry32(seed) {
+    var a = seed >>> 0;
+    return function () {
+      a |= 0;
+      a = (a + 0x6D2B79F5) | 0;
+      var t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  function uniqueSortedKeys(keys) {
+    var seen = Object.create(null);
+    var out = [];
+    (keys || []).forEach(function (k) {
+      var s = String(k || '');
+      if (!s || seen[s]) return;
+      seen[s] = true;
+      out.push(s);
+    });
+    out.sort();
+    return out;
+  }
+
+  /**
+   * 按日期从 key 里稳定抽 count 道。同一 dateKey + 同一集合 → 同一顺序。
+   * 不足 count 则全部返回。
+   */
+  function pickDailyKeys(keys, dateKey, count) {
+    var unique = uniqueSortedKeys(keys);
+    var n = unique.length;
+    var want = count == null ? 10 : (count | 0);
+    if (want < 1 || n === 0) return [];
+    var arr = unique.slice();
+    var rand = mulberry32(hashString(String(dateKey || '')));
+    for (var i = arr.length - 1; i > 0; i--) {
+      var j = Math.floor(rand() * (i + 1));
+      var tmp = arr[i];
+      arr[i] = arr[j];
+      arr[j] = tmp;
+    }
+    return arr.slice(0, Math.min(want, n));
+  }
+
+  function localDateKey(date) {
+    var d = date instanceof Date ? date : new Date(date || Date.now());
+    if (isNaN(d.getTime())) d = new Date();
+    var y = d.getFullYear();
+    var m = d.getMonth() + 1;
+    var day = d.getDate();
+    function pad(n) { return (n < 10 ? '0' : '') + n; }
+    return y + '-' + pad(m) + '-' + pad(day);
+  }
+
+  /**
+   * 当天第一次抽定后沿用，即使后来改了掌握度也不换题。
+   * 抽中的题从题库消失时，用同一天种子从当前已掌握里补，刷新不换补位。
+   * saved 题还在 aliveKeys 里就保留；没抽过则从 masteredKeys ∩ alive 里抽。
+   */
+  function resolveDailyPick(saved, dateKey, aliveKeys, masteredKeys, count) {
+    var today = String(dateKey || '');
+    var want = count == null ? 10 : (count | 0);
+    if (want < 1) return { keys: [], reused: false, short: true };
+    var alive = Object.create(null);
+    uniqueSortedKeys(aliveKeys).forEach(function (k) { alive[k] = true; });
+    var mastered = uniqueSortedKeys(masteredKeys).filter(function (k) { return alive[k]; });
+    var hasSaved = saved && saved.date === today && Array.isArray(saved.keys) && saved.keys.length > 0;
+    if (hasSaved) {
+      var kept = [];
+      var seen = Object.create(null);
+      var missing = 0;
+      saved.keys.forEach(function (k) {
+        var s = String(k || '');
+        if (!s || seen[s]) return;
+        if (!alive[s]) {
+          missing++;
+          return;
+        }
+        seen[s] = true;
+        kept.push(s);
+      });
+      if (kept.length) {
+        if (missing > 0 && kept.length < want) {
+          var rest = mastered.filter(function (k) { return !seen[k]; });
+          var extra = pickDailyKeys(rest, today + '#fill', Math.min(missing, want - kept.length));
+          extra.forEach(function (s) {
+            if (seen[s] || kept.length >= want) return;
+            seen[s] = true;
+            kept.push(s);
+          });
+        }
+        return { keys: kept.slice(0, want), reused: true, short: kept.length < want };
+      }
+    }
+    var fresh = pickDailyKeys(mastered, today, want);
+    return { keys: fresh, reused: false, short: fresh.length < want };
+  }
+
   return {
     CHOICE_QUESTION_TYPES: CHOICE_QUESTION_TYPES,
     isChoiceQuestionType: isChoiceQuestionType,
@@ -361,6 +469,9 @@
     buildChapterTreeMap: buildChapterTreeMap,
     buildTypeStatItems: buildTypeStatItems,
     typeStatLabels: typeStatLabels,
+    pickDailyKeys: pickDailyKeys,
+    resolveDailyPick: resolveDailyPick,
+    localDateKey: localDateKey,
     sanitizeSelectedChapter: sanitizeSelectedChapter,
     sanitizeTypeFilter: sanitizeTypeFilter,
     chapterTreeKey: chapterTreeKey,
