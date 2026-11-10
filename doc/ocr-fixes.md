@@ -3850,3 +3850,12 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **回归**：`tests/test_stem_tables.py` 23 passed（新增 `test_leading_assignment_stays_with_code_block`）；platform `katex.test.ts` 13 passed（新增同名回归）。本机 8099 实看 X16/X12 正确，X17 等原有代码块不变；`check-published` 0 问题，账本漂移存量 2612、新增 0。
 - **云端**：`push_data.ps1` 热更 **v538**，`index.html` / `sw.js` / `app.js` 已更新，`__BANK_DATA_VER__=538`，`data-*.json` 未变故平台 408 池跳过重导；公网 `/banks/408` 打开 X16 已显示完整三行代码块，未重启服务。
 - **遗留**：platform 刷题页同一处渲染依赖 `frontend/src/lib/katex.ts`，需随下一次 platform release 上线；本轮工作区有他人未提交改动（根 `AGENTS.md`、bank-408 每日十题壳），未强行打包。
+
+## 2026-11-10 · ds 栈 X23 题干把数字 1 认成字母 l
+
+- **病征**：ds「栈、队列和数组 · 栈 · 选择题」X23（p73，平台题池 id 19204）题干印作「字符序列“nl_”作为栈的输入」，题库与刷题页同错；选项与答案（C）无误。
+- **根因**：OCR 把正文里的数字 `1` 认成小写 `l`。同题答案解析文本为「由 n、1、_ 三个字符组合成…」，且答案 3 只在含数字 1 时成立：若三字符全是字母/下划线，5 种出栈序列都合法（会是 5）。原书页图放大后字形为数字 1。
+- **修复**：`data/quality/page_review_patches.json` 新增 ds /「栈、队列和数组 · 栈 · 选择题」/ X23 的 `content` 补丁，仅 `nl_`→`n1_`，其余字段与答案未动。
+- **回归**：`fix_one.py` 发布态断言通过（1 题）；`rebuild_bank.ps1` 内 `pytest` 157 passed；缓存戳 538→539；`quality_ledger.py --check-published` 0 问题（存量漂移 2612、新增 0）。
+- **云端**：`push_data.ps1` 热更 v539，6 个文件推送、`data-ds.json` HTTP 200；平台 408 池 `ds updated 1 failed 0`、`sync done, changed 1 failed 0`，未重启服务。公网 `data-ds.json` 已含「字符序列“n1_”作为栈的输入时」。
+- **本机池**：`fix_one.py` 提示本机平台池重导失败是 `SECRET_KEY` 未加载；在 `apps/platform-v2/backend` 目录下重跑 `import_408_banks.py` 补导成功（changed 209 failed 0）。
