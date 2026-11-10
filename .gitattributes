@@ -1,0 +1,4 @@
+# Shared viewer runtime must stay byte-identical to apps/viewer-common:
+# tools/sync_viewer_common.ps1 compares SHA256 of the source against this copy,
+# and the root repo's .gitattributes does not reach into this submodule.
+math-bank/vendor/viewer-common/** text eol=lf
