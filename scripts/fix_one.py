@@ -46,6 +46,10 @@ for _stream in (sys.stdin, sys.stdout, sys.stderr):
         pass
 
 from config import COURSE_BY_KEY, PROJECT_ROOT  # noqa: E402
+from quality_ledger import question_hash  # noqa: E402
+
+import hashlib  # noqa: E402
+from datetime import datetime, timezone  # noqa: E402
 
 
 def _reexec_with_venv() -> None:
@@ -69,11 +73,68 @@ _reexec_with_venv()
 from fix_questions import OPTION_KEYS, PAGE_REVIEW_PATCH_FIELDS  # noqa: E402
 
 PATCH_PATH = PROJECT_ROOT / "data" / "quality" / "page_review_patches.json"
+EVIDENCE_PATH = PROJECT_ROOT / "data" / "quality" / "page_review_evidence.json"
+PAGES_DIR = PROJECT_ROOT / "assets" / "pdf_images"
 BANK_DIR = PROJECT_ROOT / "math-bank"
 
 
 def norm_ws(text) -> str:
     return re.sub(r"\s+", "", str(text or ""))
+
+
+def _ws_free(value):
+    """递归去掉字符串里的所有空白，用于判断补丁是否只动了排版。"""
+    if isinstance(value, str):
+        return re.sub(r"\s+", "", value)
+    if isinstance(value, dict):
+        return {k: _ws_free(v) for k, v in value.items()}
+    if isinstance(value, list):
+        return [_ws_free(v) for v in value]
+    return value
+
+
+def _hash_payload(question: dict) -> dict:
+    answer = question.get("answer") if isinstance(question.get("answer"), dict) else {}
+    return {
+        "id": question.get("id"),
+        "type": question.get("type"),
+        "content": question.get("content"),
+        "options": question.get("options"),
+        "answer": {"choice": answer.get("choice"), "explanation": answer.get("explanation")},
+        "has_image": bool(question.get("has_image")),
+        "image_ref": question.get("image_ref"),
+        "q_pages": question.get("q_pages"),
+        "a_pages": question.get("a_pages"),
+    }
+
+
+def _patched_question(old_q: dict, fields: dict) -> dict:
+    q = json.loads(json.dumps(old_q))
+    for key in ("content", "options", "sub_questions", "q_pages", "a_pages"):
+        if key in fields:
+            q[key] = fields[key]
+    answer = dict(q.get("answer") or {})
+    if "choice" in fields:
+        answer["choice"] = fields["choice"]
+    if "explanation" in fields:
+        answer["explanation"] = fields["explanation"]
+    q["answer"] = answer
+    return q
+
+
+def whitespace_only_change(old_q: dict, fields: dict) -> bool:
+    """补丁是否只改了空白（断行/空格）。
+
+    只有这类补丁能自动补断行复核记录并同步账本哈希；真改字的必须人眼对照原页。
+    ``option_groups`` 改的是选项分组结构，一律走人工。
+    """
+    if "option_groups" in fields:
+        return False
+    old_payload = _hash_payload(old_q)
+    new_payload = _hash_payload(_patched_question(old_q, fields))
+    if old_payload == new_payload:
+        return False
+    return _ws_free(old_payload) == _ws_free(new_payload)
 
 
 def load_json(path: Path):
@@ -281,6 +342,98 @@ def sync_local_platform_pool() -> None:
         print(f"[fix_one] 提示：本机平台题池重导失败；手动跑 {venv_py} {script}")
 
 
+def _published_question(course, chapter: str, qid: str):
+    data = load_json(BANK_DIR / f"data-{course.key}.json")
+    for ch in data.get("chapters") or []:
+        if str(ch.get("name")) != chapter:
+            continue
+        for question in ch.get("questions") or []:
+            if str(question.get("id")) == qid:
+                return question
+    return None
+
+
+def _page_records(course, numbers):
+    """把页号换成「页图路径 + sha256」；有任何一页缺图就返回 None，不伪造已查看。"""
+    out = []
+    for number in numbers or []:
+        path = PAGES_DIR / course.key / f"page_{int(number):03d}.png"
+        if not path.is_file():
+            return None
+        out.append({
+            "path": f"apps/bank-408/{path.relative_to(PROJECT_ROOT).as_posix()}",
+            "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+        })
+    return out
+
+
+def certify_layout_patches(resolved: list) -> list[str]:
+    """只改断行/空白的补丁：补排版复核记录并把账本哈希同步到当前发布态。
+
+    真改字的题一律不自动同步——热更门禁会拦下，提示人工对照原页。
+    """
+    evidence = load_json(EVIDENCE_PATH)
+    records = evidence.get("records")
+    if not isinstance(records, list):
+        sys.exit("[fix_one] page_review_evidence.json 结构异常")
+    known = {
+        (str(r.get("source_uid")), str(r.get("source_hash")), str(r.get("final_action")))
+        for r in records if isinstance(r, dict)
+    }
+    now = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    uids: list[str] = []
+    skipped: list[str] = []
+    for course, chapter, qid, fields, old_q in resolved:
+        if not whitespace_only_change(old_q, fields):
+            skipped.append(f"{course.key} {qid}")
+            continue
+        question = _published_question(course, chapter, qid)
+        if question is None:
+            skipped.append(f"{course.key} {qid}（发布态找不到）")
+            continue
+        q_pages = _page_records(course, question.get("q_pages"))
+        a_pages = _page_records(course, question.get("a_pages"))
+        if q_pages is None or a_pages is None:
+            skipped.append(f"{course.key} {qid}（页图缺失）")
+            continue
+        uid = f"408:cs408-{course.key}::{chapter}::{qid}"
+        digest = question_hash(question)
+        if (uid, digest, "patch") not in known:
+            records.append({
+                "source_uid": uid,
+                "protocol": "codex-original-page-review-v1",
+                "reviewer": "fix_one",
+                "reviewed_at": now,
+                "q_pages_viewed": q_pages,
+                "a_pages_viewed": a_pages,
+                "final_action": "patch",
+                "content_match": True,
+                "options_match": True,
+                "answer_match": True,
+                "explanation_match": True,
+                "image_match": True,
+                "detected_errors": [],
+                "rationale": "排版复核：补丁只改断行/空白，题干、选项、答案与解析逐字未变。",
+                "source_hash": digest,
+                "post_patch_verified": True,
+            })
+            known.add((uid, digest, "patch"))
+        uids.append(uid)
+    if uids:
+        evidence["updated_at"] = now
+        EVIDENCE_PATH.write_text(
+            json.dumps(evidence, ensure_ascii=False, indent=1) + "\n", encoding="utf-8"
+        )
+        from apply_page_review_certifications import apply as apply_certifications
+
+        result = apply_certifications(sync_uids=set(uids))
+        print(f"[fix_one] 排版补丁自动复核 {len(uids)} 题，账本哈希已同步"
+              f"（synced={result.get('synced')}）")
+    if skipped:
+        print("[fix_one] 未自动同步（文字有改动，需人工对照原页复核）：" + "、".join(skipped))
+    return uids
+
+
 def apply_and_build(entries: list, *, recrop: bool = False, dry_run: bool = False,
                     scan: bool = False, push: bool = False) -> int:
     resolved = [_load_entry(entry) for entry in entries]
@@ -313,6 +466,19 @@ def apply_and_build(entries: list, *, recrop: bool = False, dry_run: bool = Fals
         assert_published(course.key, chapter, qid, fields)
     after = read_version()
     print(f"[fix_one] 发布态断言通过（{len(resolved)} 题）；缓存戳 {before} -> {after}")
+    certify_layout_patches(resolved)
+    gate = subprocess.run(
+        [sys.executable, str(PROJECT_ROOT / "scripts" / "quality_ledger.py"),
+         "--refresh-hashes", "--check-published"],
+        cwd=PROJECT_ROOT, capture_output=True, text=True, encoding="utf-8", errors="replace",
+    )
+    if gate.returncode != 0:
+        tail = [ln for ln in (gate.stdout or "").splitlines() if ln.strip()][-6:]
+        print("[fix_one] 发布态门禁未过（push_data.ps1 会拒绝推送）：")
+        for line in tail:
+            print("  " + line)
+    else:
+        print("[fix_one] 发布态门禁通过（check-published 0 问题）")
     sync_local_platform_pool()
     for course, chapter, qid, _, _ in resolved:
         print(

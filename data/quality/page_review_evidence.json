@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "protocol": "codex-original-page-review-v1",
- "updated_at": "2026-11-13T08:07:19+00:00",
+ "updated_at": "2026-11-13T10:04:02+00:00",
  "records": [
   {
    "source_uid": "408:cs408-coa::中央处理器 · CPU的功能和基本结构 · 选择题::X01",
@@ -576910,6 +576910,186 @@
    "detected_errors": [],
    "rationale": "断行复核：仅恢复句末标点后的换行（补丁原有排版），题干/选项/答案/解析文字与上一版逐字一致。",
    "source_hash": "42a27248422adf4748caa7f4055cc3dafed12db5f0ef7b93df2bc7401e741be8",
+   "post_patch_verified": true
+  },
+  {
+   "source_uid": "408:cs408-net::物理层 · 通信基础 · 解答题::A02",
+   "protocol": "codex-original-page-review-v1",
+   "reviewer": "fix_one",
+   "reviewed_at": "2026-11-13T10:02:14+00:00",
+   "q_pages_viewed": [
+    {
+     "path": "apps/bank-408/assets/pdf_images/net/page_040.png",
+     "sha256": "9d2263c260539c4d9c4d86847a650f6af406cb7da74e70bed543a24c0d409237"
+    },
+    {
+     "path": "apps/bank-408/assets/pdf_images/net/page_041.png",
+     "sha256": "009dac1442816f923034d81b2933768e7a933ef5a1626fc25d4c9eea0649ebfc"
+    },
+    {
+     "path": "apps/bank-408/assets/pdf_images/net/page_042.png",
+     "sha256": "89864426c603454247c2bcf38289f672549c1ea84693de68b7fe343595064935"
+    },
+    {
+     "path": "apps/bank-408/assets/pdf_images/net/page_043.png",
+     "sha256": "8a1c1b4f0fb40bf6848b0d696b850f183367a4db11e961b6d84fbfb2a4ce1bf1"
+    }
+   ],
+   "a_pages_viewed": [
+    {
+     "path": "apps/bank-408/assets/pdf_images/net/page_043.png",
+     "sha256": "8a1c1b4f0fb40bf6848b0d696b850f183367a4db11e961b6d84fbfb2a4ce1bf1"
+    },
+    {
+     "path": "apps/bank-408/assets/pdf_images/net/page_044.png",
+     "sha256": "ed7f271021e68424c4963e13318c292a24c86ffcc92c1d4768b2b405ea508680"
+    },
+    {
+     "path": "apps/bank-408/assets/pdf_images/net/page_045.png",
+     "sha256": "1c80c776a91e0cd009601d7b92e7b9d0b50e1558935b7a93483c249ea81addd0"
+    },
+    {
+     "path": "apps/bank-408/assets/pdf_images/net/page_046.png",
+     "sha256": "3f8e17cf4aba29edac2a5c2ad71ce6340eed6db06a8602ae90dbb6d6ed6a0af2"
+    },
+    {
+     "path": "apps/bank-408/assets/pdf_images/net/page_047.png",
+     "sha256": "c6645873ad5361776c8aa5e05f0e5d40e05f58b121be4573dc5fb15175da6e83"
+    },
+    {
+     "path": "apps/bank-408/assets/pdf_images/net/page_048.png",
+     "sha256": "0cef1ee1eab2373acaa2567e0abb7752df6e4f7dcf8a4830040b5ca7f1cd4a9c"
+    }
+   ],
+   "final_action": "patch",
+   "content_match": true,
+   "options_match": true,
+   "answer_match": true,
+   "explanation_match": true,
+   "image_match": true,
+   "detected_errors": [],
+   "rationale": "排版复核：补丁只改断行/空白，题干、选项、答案与解析逐字未变。",
+   "source_hash": "4c59d9c9e2abaca71c7cb43fd58fcf023105d5a67e05aa95de61afade7c7bd18",
+   "post_patch_verified": true
+  },
+  {
+   "source_uid": "408:cs408-ds::排序 · 排序的基本概念 · 选择题::X01",
+   "protocol": "codex-original-page-review-v1",
+   "reviewer": "kimi-code",
+   "reviewed_at": "2026-11-13T10:04:02+00:00",
+   "q_pages_viewed": [
+    {
+     "path": "apps/bank-408/assets/pdf_images/ds/page_337.png",
+     "sha256": "329c51e7c01b5822cd02c96cfd6d8beb2effeb93ad0fad12b4524a6306cfbb87"
+    }
+   ],
+   "a_pages_viewed": [
+    {
+     "path": "apps/bank-408/assets/pdf_images/ds/page_337.png",
+     "sha256": "329c51e7c01b5822cd02c96cfd6d8beb2effeb93ad0fad12b4524a6306cfbb87"
+    },
+    {
+     "path": "apps/bank-408/assets/pdf_images/ds/page_338.png",
+     "sha256": "f15098c236442bc0eb84c7e3d87ff4eb938dbb8b3098d4863545ea64ae64d624"
+    },
+    {
+     "path": "apps/bank-408/assets/pdf_images/ds/page_339.png",
+     "sha256": "25837635b18fe7cfdf66ca3eb119770e6b9c63648851b2a0508c80f8d56db2fb"
+    },
+    {
+     "path": "apps/bank-408/assets/pdf_images/ds/page_340.png",
+     "sha256": "b0f93a66d14898baea951d0b2465f9c35aeb258d485ed44961906bb53161a002"
+    }
+   ],
+   "final_action": "patch",
+   "content_match": true,
+   "options_match": true,
+   "answer_match": true,
+   "explanation_match": true,
+   "image_match": true,
+   "detected_errors": [],
+   "rationale": "对照原书 p337–338（印 332–333）题干、四个选项与答案 01C/02A/03B 一致",
+   "source_hash": "909bcdb3d861c97c2de85319452d6ab88865d093a8d9b30e457163723399a894",
+   "post_patch_verified": true
+  },
+  {
+   "source_uid": "408:cs408-ds::排序 · 排序的基本概念 · 选择题::X02",
+   "protocol": "codex-original-page-review-v1",
+   "reviewer": "kimi-code",
+   "reviewed_at": "2026-11-13T10:04:02+00:00",
+   "q_pages_viewed": [
+    {
+     "path": "apps/bank-408/assets/pdf_images/ds/page_337.png",
+     "sha256": "329c51e7c01b5822cd02c96cfd6d8beb2effeb93ad0fad12b4524a6306cfbb87"
+    }
+   ],
+   "a_pages_viewed": [
+    {
+     "path": "apps/bank-408/assets/pdf_images/ds/page_337.png",
+     "sha256": "329c51e7c01b5822cd02c96cfd6d8beb2effeb93ad0fad12b4524a6306cfbb87"
+    },
+    {
+     "path": "apps/bank-408/assets/pdf_images/ds/page_338.png",
+     "sha256": "f15098c236442bc0eb84c7e3d87ff4eb938dbb8b3098d4863545ea64ae64d624"
+    },
+    {
+     "path": "apps/bank-408/assets/pdf_images/ds/page_339.png",
+     "sha256": "25837635b18fe7cfdf66ca3eb119770e6b9c63648851b2a0508c80f8d56db2fb"
+    },
+    {
+     "path": "apps/bank-408/assets/pdf_images/ds/page_340.png",
+     "sha256": "b0f93a66d14898baea951d0b2465f9c35aeb258d485ed44961906bb53161a002"
+    }
+   ],
+   "final_action": "patch",
+   "content_match": true,
+   "options_match": true,
+   "answer_match": true,
+   "explanation_match": true,
+   "image_match": true,
+   "detected_errors": [],
+   "rationale": "对照原书 p337–338（印 332–333）题干、四个选项与答案 01C/02A/03B 一致",
+   "source_hash": "56e6ec9a4b7b1e8af1f2465d4af902374c6dd64ad3c5f09b74bc1cbd1c2a9a08",
+   "post_patch_verified": true
+  },
+  {
+   "source_uid": "408:cs408-ds::排序 · 排序的基本概念 · 选择题::X03",
+   "protocol": "codex-original-page-review-v1",
+   "reviewer": "kimi-code",
+   "reviewed_at": "2026-11-13T10:04:02+00:00",
+   "q_pages_viewed": [
+    {
+     "path": "apps/bank-408/assets/pdf_images/ds/page_337.png",
+     "sha256": "329c51e7c01b5822cd02c96cfd6d8beb2effeb93ad0fad12b4524a6306cfbb87"
+    }
+   ],
+   "a_pages_viewed": [
+    {
+     "path": "apps/bank-408/assets/pdf_images/ds/page_337.png",
+     "sha256": "329c51e7c01b5822cd02c96cfd6d8beb2effeb93ad0fad12b4524a6306cfbb87"
+    },
+    {
+     "path": "apps/bank-408/assets/pdf_images/ds/page_338.png",
+     "sha256": "f15098c236442bc0eb84c7e3d87ff4eb938dbb8b3098d4863545ea64ae64d624"
+    },
+    {
+     "path": "apps/bank-408/assets/pdf_images/ds/page_339.png",
+     "sha256": "25837635b18fe7cfdf66ca3eb119770e6b9c63648851b2a0508c80f8d56db2fb"
+    },
+    {
+     "path": "apps/bank-408/assets/pdf_images/ds/page_340.png",
+     "sha256": "b0f93a66d14898baea951d0b2465f9c35aeb258d485ed44961906bb53161a002"
+    }
+   ],
+   "final_action": "patch",
+   "content_match": true,
+   "options_match": true,
+   "answer_match": true,
+   "explanation_match": true,
+   "image_match": true,
+   "detected_errors": [],
+   "rationale": "对照原书 p337–338（印 332–333）题干、四个选项与答案 01C/02A/03B 一致",
+   "source_hash": "80cf4910e94f6eeedd9acd925c25f666355d950764ee32e2bf1981bd61c58e06",
    "post_patch_verified": true
   }
  ]

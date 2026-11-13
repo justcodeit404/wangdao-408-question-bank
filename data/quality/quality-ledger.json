@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-13T08:07:25+00:00",
+  "generated_at": "2026-11-13T10:04:03+00:00",
   "published_hashes": {
     "ds": "52d991ec69d51ffca1554e125afcfe1023ffd2cdaad740219acc605873a7377e",
     "coa": "2085cc1276eabffa108482aef9e2b482a1390355304b058033103d9879c45ba6",
     "os": "157a7efd24881ee178b7b17f365c2203ab18d86b88a5877c9e9707860b7aff77",
-    "net": "09d7fed042a4aec15360a1caa330ed78f2ffa757e60b1777b404102fc8a23abb"
+    "net": "7c8afe74a6da4a4a885ba3b393d588c8d7ce61c08719553d5bf1e4378e74bcb7"
   },
   "courses": {
     "ds": {
@@ -103749,7 +103749,7 @@
       "course_key": "ds",
       "chapter": "排序 · 排序的基本概念 · 选择题",
       "question_id": "X01",
-      "source_hash": "969db4c09a897fcfba4c7d324e74c14fe88231cf26d94cb74c9ce1c796ec5f60",
+      "source_hash": "909bcdb3d861c97c2de85319452d6ab88865d093a8d9b30e457163723399a894",
       "source_fidelity": "verified",
       "answer_validation": "verified",
       "overall": "certified",
@@ -103765,7 +103765,7 @@
       ],
       "has_image": false,
       "answer_choice": "C",
-      "verified_at": "2026-08-27T06:12:55.889284+00:00",
+      "verified_at": "2026-11-13T10:04:02+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -103807,8 +103807,8 @@
         "original_page_review": {
           "source_uid": "408:cs408-ds::排序 · 排序的基本概念 · 选择题::X01",
           "protocol": "codex-original-page-review-v1",
-          "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T06:12:55.889284+00:00",
+          "reviewer": "kimi-code",
+          "reviewed_at": "2026-11-13T10:04:02+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/ds/page_337.png",
@@ -103833,15 +103833,16 @@
               "sha256": "b0f93a66d14898baea951d0b2465f9c35aeb258d485ed44961906bb53161a002"
             }
           ],
-          "final_action": "certify",
+          "final_action": "patch",
           "content_match": true,
           "options_match": true,
           "answer_match": true,
           "explanation_match": true,
           "image_match": true,
           "detected_errors": [],
-          "rationale": "已逐页查看原书题目页与答案页；题干、选项（含分项/表格/图示）、发布答案及解析与原书一致，保留发布内容并补充本轮原书证据。",
-          "source_hash": "969db4c09a897fcfba4c7d324e74c14fe88231cf26d94cb74c9ce1c796ec5f60"
+          "rationale": "对照原书 p337–338（印 332–333）题干、四个选项与答案 01C/02A/03B 一致",
+          "source_hash": "909bcdb3d861c97c2de85319452d6ab88865d093a8d9b30e457163723399a894",
+          "post_patch_verified": true
         }
       },
       "certification_profile": "objective_full"
@@ -103851,7 +103852,7 @@
       "course_key": "ds",
       "chapter": "排序 · 排序的基本概念 · 选择题",
       "question_id": "X02",
-      "source_hash": "cb279c8b0f92f8180bc4013bea18f707ca74615751242259d54a19cc571a59e0",
+      "source_hash": "56e6ec9a4b7b1e8af1f2465d4af902374c6dd64ad3c5f09b74bc1cbd1c2a9a08",
       "source_fidelity": "verified",
       "answer_validation": "verified",
       "overall": "certified",
@@ -103867,7 +103868,7 @@
       ],
       "has_image": false,
       "answer_choice": "A",
-      "verified_at": "2026-08-27T06:12:55.889284+00:00",
+      "verified_at": "2026-11-13T10:04:02+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -103909,8 +103910,8 @@
         "original_page_review": {
           "source_uid": "408:cs408-ds::排序 · 排序的基本概念 · 选择题::X02",
           "protocol": "codex-original-page-review-v1",
-          "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T06:12:55.889284+00:00",
+          "reviewer": "kimi-code",
+          "reviewed_at": "2026-11-13T10:04:02+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/ds/page_337.png",
@@ -103935,15 +103936,16 @@
               "sha256": "b0f93a66d14898baea951d0b2465f9c35aeb258d485ed44961906bb53161a002"
             }
           ],
-          "final_action": "certify",
+          "final_action": "patch",
           "content_match": true,
           "options_match": true,
           "answer_match": true,
           "explanation_match": true,
           "image_match": true,
           "detected_errors": [],
-          "rationale": "已逐页查看原书题目页与答案页；题干、选项（含分项/表格/图示）、发布答案及解析与原书一致，保留发布内容并补充本轮原书证据。",
-          "source_hash": "cb279c8b0f92f8180bc4013bea18f707ca74615751242259d54a19cc571a59e0"
+          "rationale": "对照原书 p337–338（印 332–333）题干、四个选项与答案 01C/02A/03B 一致",
+          "source_hash": "56e6ec9a4b7b1e8af1f2465d4af902374c6dd64ad3c5f09b74bc1cbd1c2a9a08",
+          "post_patch_verified": true
         }
       },
       "certification_profile": "objective_full"
@@ -103953,7 +103955,7 @@
       "course_key": "ds",
       "chapter": "排序 · 排序的基本概念 · 选择题",
       "question_id": "X03",
-      "source_hash": "0ebd1b39af62bf7068ce7084e88f4c0b9995d75a5ec2f05a3f8478eef1a194e5",
+      "source_hash": "80cf4910e94f6eeedd9acd925c25f666355d950764ee32e2bf1981bd61c58e06",
       "source_fidelity": "verified",
       "answer_validation": "verified",
       "overall": "certified",
@@ -103969,7 +103971,7 @@
       ],
       "has_image": false,
       "answer_choice": "B",
-      "verified_at": "2026-08-27T12:42:00+00:00",
+      "verified_at": "2026-11-13T10:04:02+00:00",
       "evidence": {
         "luna_reviews": {
           "protocol": "luna-review-v1",
@@ -104011,8 +104013,8 @@
         "original_page_review": {
           "source_uid": "408:cs408-ds::排序 · 排序的基本概念 · 选择题::X03",
           "protocol": "codex-original-page-review-v1",
-          "reviewer": "codex-vision",
-          "reviewed_at": "2026-08-27T12:42:00+00:00",
+          "reviewer": "kimi-code",
+          "reviewed_at": "2026-11-13T10:04:02+00:00",
           "q_pages_viewed": [
             {
               "path": "apps/bank-408/assets/pdf_images/ds/page_337.png",
@@ -104037,15 +104039,16 @@
               "sha256": "b0f93a66d14898baea951d0b2465f9c35aeb258d485ed44961906bb53161a002"
             }
           ],
-          "final_action": "certify",
+          "final_action": "patch",
           "content_match": true,
           "options_match": true,
           "answer_match": true,
           "explanation_match": true,
           "image_match": true,
           "detected_errors": [],
-          "rationale": "亲眼核对原书题目页与答案解析页：X03题干、选项及解析忠实，原书答案为A。",
-          "source_hash": "0ebd1b39af62bf7068ce7084e88f4c0b9995d75a5ec2f05a3f8478eef1a194e5"
+          "rationale": "对照原书 p337–338（印 332–333）题干、四个选项与答案 01C/02A/03B 一致",
+          "source_hash": "80cf4910e94f6eeedd9acd925c25f666355d950764ee32e2bf1981bd61c58e06",
+          "post_patch_verified": true
         }
       },
       "certification_profile": "objective_full"
@@ -200270,7 +200273,7 @@
       "course_key": "net",
       "chapter": "物理层 · 通信基础 · 解答题",
       "question_id": "A02",
-      "source_hash": "70c4fc466ed866d45cd14c7d290780e301171a64e7c9714c9eaa8dd8465abddc",
+      "source_hash": "4c59d9c9e2abaca71c7cb43fd58fcf023105d5a67e05aa95de61afade7c7bd18",
       "source_fidelity": "verified",
       "answer_validation": "verified",
       "overall": "certified",
@@ -200291,16 +200294,28 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-11-04T03:56:50+00:00",
+      "verified_at": "2026-11-13T10:02:14+00:00",
       "evidence": {
         "human_action": "hold",
         "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
         "original_page_review": {
           "source_uid": "408:cs408-net::物理层 · 通信基础 · 解答题::A02",
           "protocol": "codex-original-page-review-v1",
-          "reviewer": "xiaomi-ocr-q4-local",
-          "reviewed_at": "2026-11-04T03:56:50+00:00",
+          "reviewer": "fix_one",
+          "reviewed_at": "2026-11-13T10:02:14+00:00",
           "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_040.png",
+              "sha256": "9d2263c260539c4d9c4d86847a650f6af406cb7da74e70bed543a24c0d409237"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_041.png",
+              "sha256": "009dac1442816f923034d81b2933768e7a933ef5a1626fc25d4c9eea0649ebfc"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_042.png",
+              "sha256": "89864426c603454247c2bcf38289f672549c1ea84693de68b7fe343595064935"
+            },
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_043.png",
               "sha256": "8a1c1b4f0fb40bf6848b0d696b850f183367a4db11e961b6d84fbfb2a4ce1bf1"
@@ -200308,23 +200323,40 @@
           ],
           "a_pages_viewed": [
             {
+              "path": "apps/bank-408/assets/pdf_images/net/page_043.png",
+              "sha256": "8a1c1b4f0fb40bf6848b0d696b850f183367a4db11e961b6d84fbfb2a4ce1bf1"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_044.png",
+              "sha256": "ed7f271021e68424c4963e13318c292a24c86ffcc92c1d4768b2b405ea508680"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_045.png",
+              "sha256": "1c80c776a91e0cd009601d7b92e7b9d0b50e1558935b7a93483c249ea81addd0"
+            },
+            {
               "path": "apps/bank-408/assets/pdf_images/net/page_046.png",
               "sha256": "3f8e17cf4aba29edac2a5c2ad71ce6340eed6db06a8602ae90dbb6d6ed6a0af2"
             },
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_047.png",
               "sha256": "c6645873ad5361776c8aa5e05f0e5d40e05f58b121be4573dc5fb15175da6e83"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_048.png",
+              "sha256": "0cef1ee1eab2373acaa2567e0abb7752df6e4f7dcf8a4830040b5ca7f1cd4a9c"
             }
           ],
-          "final_action": "certify",
+          "final_action": "patch",
           "content_match": true,
           "options_match": true,
           "answer_match": true,
           "explanation_match": true,
           "image_match": true,
           "detected_errors": [],
-          "rationale": "Xiaomi-OCR-0 读取原书题干与答案裁图；题干覆盖率 0.979、答案覆盖率 1.000，数字一致率 1.000/1.000。",
-          "source_hash": "70c4fc466ed866d45cd14c7d290780e301171a64e7c9714c9eaa8dd8465abddc"
+          "rationale": "排版复核：补丁只改断行/空白，题干、选项、答案与解析逐字未变。",
+          "source_hash": "4c59d9c9e2abaca71c7cb43fd58fcf023105d5a67e05aa95de61afade7c7bd18",
+          "post_patch_verified": true
         }
       },
       "certification_profile": "non_choice_source_answer",
