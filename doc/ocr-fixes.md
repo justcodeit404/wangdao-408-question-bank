@@ -3859,3 +3859,12 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **回归**：`fix_one.py` 发布态断言通过（1 题）；`rebuild_bank.ps1` 内 `pytest` 157 passed；缓存戳 538→539；`quality_ledger.py --check-published` 0 问题（存量漂移 2612、新增 0）。
 - **云端**：`push_data.ps1` 热更 v539，6 个文件推送、`data-ds.json` HTTP 200；平台 408 池 `ds updated 1 failed 0`、`sync done, changed 1 failed 0`，未重启服务。公网 `data-ds.json` 已含「字符序列“n1_”作为栈的输入时」。
 - **本机池**：`fix_one.py` 提示本机平台池重导失败是 `SECRET_KEY` 未加载；在 `apps/platform-v2/backend` 目录下重跑 `import_408_banks.py` 补导成功（changed 209 failed 0）。
+
+## 2026-11-13 · ds 排序 X03 四条序列挤在正文里
+
+- **病征**：ds「排序 · 交换排序 · 选择题」X03（p349，平台题池 id 19645）题干把四条序列并成正文：`如下：1）25,84,…` 没有换行，`2）…68,35,843）15,20,…` 第 3 条黏在 2）末尾，`4）…68,84则所采用的排序算法是（）。` 结尾问句黏在 4）后面。选项与答案（D）无误。
+- **根因**：OCR 文本层把同段的多行序列压成一行，断行只剩 1）与 2）之间那一处。补丁里直接写 `\n` 也不够：`normalize_spaces.py` 对单个空白字符按 R2（alnum→CJK）规则删除，会把 `84` 与 `则` 之间的换行吞掉；只有编号行首（`_SEQ_NL_RX`）与 A./Ⅰ./①/（n）等标签前的换行受保护。
+- **修复**：`data/quality/page_review_patches.json` 新增 ds /「排序 · 交换排序 · 选择题」/ X03 的 `content` 补丁——引导句单独一行、`1）`～`4）` 各一行、结尾问句用**空行**（两字符空白串不触发单字符折叠）与序列分开。选项、答案、裁图未动。
+- **回归**：`fix_one.py` 发布态断言通过（1 题）；重建内 `pytest` 157 passed；缓存戳 539→541；`quality_ledger.py --check-published` 0 问题（存量漂移 2612、新增 0）；本机 8080 打开 X03 实看四行对齐、问句独立成段。
+- **云端**：`push_data.ps1` 热更 **v541**，6 个文件推送、`data-ds.json` HTTP 200；平台 408 池 `ds updated 1 failed 0`、`sync done, changed 1 failed 0`，未重启服务。公网 `__BANK_DATA_VER__=541`、`sw.js` 为 `wd408-ui-v541`，公网 `data-ds.json` 已含四行序列与独立问句。
+- **遗留**：全库同类「编号条目黏在同一行」的题干扫出 171 道（ds 61 / coa 48 / os 47 / net 15），多为解答题的 1）2）3）小问；逐题都要人眼定断行位置，本轮只修主人点到的这一道。
