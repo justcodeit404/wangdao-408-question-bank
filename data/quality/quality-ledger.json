@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-13T08:00:49+00:00",
+  "generated_at": "2026-11-13T08:07:25+00:00",
   "published_hashes": {
-    "ds": "69be377cac8b68cb66c7b4989b6a2af0028e77cd93f588ef6953750adfa16332",
-    "coa": "08e6f84d5ea471f0564f1e4c19109156ac7fdbb429c354e8c839995663e6f490",
-    "os": "13bc8ea7031caf12b2c5bb0bf3ec6682c1ef2daab080565399cd6c0d81bf053d",
-    "net": "9a2d73e0ee56050aa47fa2a4133cbf9f77e591bea0bf34f4a0daff8d0c847c3d"
+    "ds": "52d991ec69d51ffca1554e125afcfe1023ffd2cdaad740219acc605873a7377e",
+    "coa": "2085cc1276eabffa108482aef9e2b482a1390355304b058033103d9879c45ba6",
+    "os": "157a7efd24881ee178b7b17f365c2203ab18d86b88a5877c9e9707860b7aff77",
+    "net": "09d7fed042a4aec15360a1caa330ed78f2ffa757e60b1777b404102fc8a23abb"
   },
   "courses": {
     "ds": {
@@ -13762,7 +13762,7 @@
       "course_key": "coa",
       "chapter": "中央处理器 · 数据通路的功能和基本结构 · 解答题",
       "question_id": "A07",
-      "source_hash": "f56342603e0bde96cf8298ae9191ff346bce2f6c4501192092920a0fd4a6a847",
+      "source_hash": "cf0351fac2d88661693498d78bf380c8fb2f7a206a814a84811e86e5fe64d890",
       "source_fidelity": "verified",
       "answer_validation": "verified",
       "overall": "certified",
@@ -13795,37 +13795,105 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-11-05T12:00:00+00:00",
+      "verified_at": "2026-11-13T08:07:19+00:00",
       "evidence": {
         "human_action": "hold",
         "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
         "original_page_review": {
           "source_uid": "408:cs408-coa::中央处理器 · 数据通路的功能和基本结构 · 解答题::A07",
           "protocol": "codex-original-page-review-v1",
-          "reviewer": "grok-page-review",
-          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "reviewer": "kimi-code",
+          "reviewed_at": "2026-11-13T08:07:19+00:00",
           "q_pages_viewed": [
             {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_218.png",
+              "sha256": "bd9db215ec99a03052fecf4b08b9375c3bc4899ee143efa10c42fc2ed371697d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_219.png",
+              "sha256": "82bc8f0c934d8d041a5f990da41ba7745843f58c9dfb105f29a7f8747896be7b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_220.png",
+              "sha256": "532eb5cd382dd05cc89f56536e55afafa504bf0b0193e88e7cc5c0c51b2e79e9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_221.png",
+              "sha256": "b8ddc60cb56458bcfedc448b471633fed98cf53e53ba9b10be5020a05841ca14"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_222.png",
+              "sha256": "8c0ef720b142d7f596d438482ea4481840adf8176d74f3f197591bd183578515"
+            },
+            {
               "path": "apps/bank-408/assets/pdf_images/coa/page_223.png",
-              "sha256": "40e4959dc0ae216886c5fea6932c3f928012c02b1c61dafb93573e8ffe6cec12",
-              "page": 223
+              "sha256": "40e4959dc0ae216886c5fea6932c3f928012c02b1c61dafb93573e8ffe6cec12"
             },
             {
               "path": "apps/bank-408/assets/pdf_images/coa/page_224.png",
-              "sha256": "77cbb0cd5e01063c59dd7022ec3a0451fc0e4b604138521ff9232df6e01d26a7",
-              "page": 224
+              "sha256": "77cbb0cd5e01063c59dd7022ec3a0451fc0e4b604138521ff9232df6e01d26a7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_225.png",
+              "sha256": "3453773c080b9f6b8826eef59d90e88e75211d561cc3e7a0e22678f219187bb9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_226.png",
+              "sha256": "af89ba0428bb2f5e0eb86ccfb16512948222ce66bba865caaee5d1a79e407ec3"
             }
           ],
           "a_pages_viewed": [
             {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_226.png",
+              "sha256": "af89ba0428bb2f5e0eb86ccfb16512948222ce66bba865caaee5d1a79e407ec3"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_227.png",
+              "sha256": "fd3a8d3a20b29d8fc49ef14eb525f88decc125e231e73d1bb4070acb845f1e96"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_228.png",
+              "sha256": "5c18fd7c30c9c68272491af7d56651b8f1cf550d32ab1ea57d6841001f1a463e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_229.png",
+              "sha256": "3514578416882d3987360bd5559ac750449d4e2f84f8784a70818ab59fa05bea"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_230.png",
+              "sha256": "1cdbdd8dc928498bb0d66354e39fbba57c3ce2e502b178219011f0c42638500f"
+            },
+            {
               "path": "apps/bank-408/assets/pdf_images/coa/page_231.png",
-              "sha256": "e209962cc4610abd92c75b484fe2f733e2edb3c8c36688b58eff8c8e7ebda492",
-              "page": 231
+              "sha256": "e209962cc4610abd92c75b484fe2f733e2edb3c8c36688b58eff8c8e7ebda492"
             },
             {
               "path": "apps/bank-408/assets/pdf_images/coa/page_232.png",
-              "sha256": "fac977c87b030ca19f4abe63a52ba7794374ebf870e8f8c8b0a0e72aa11e930c",
-              "page": 232
+              "sha256": "fac977c87b030ca19f4abe63a52ba7794374ebf870e8f8c8b0a0e72aa11e930c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_233.png",
+              "sha256": "3c21ffa172dc9147eb74cc2abb711aa26c8247387192752f90e3a2a331bacbb7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_234.png",
+              "sha256": "15562e5552dfeb4bf4753b51e5dd00ce623edc892a9d37cb737fb823b29199bc"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_235.png",
+              "sha256": "e6afa0d1a06acf1963ef9a1430e5c41097e7178550cfeb91d9432373eb7a54eb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_236.png",
+              "sha256": "99bfde3ceaeb6d908c040585c21fad57d27f6028f9187b5956a8c86d2ea11ddf"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_237.png",
+              "sha256": "0ed2e7ea01104aa4a08f77187eb46e43519021a5fd2bec8fb905fe6abe7845ed"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/coa/page_238.png",
+              "sha256": "80e827e4b25faa57e117d9045a47042149e5216ed691d52ebd6475e5174f311e"
             }
           ],
           "final_action": "patch",
@@ -13835,9 +13903,9 @@
           "explanation_match": true,
           "image_match": true,
           "detected_errors": [],
-          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
-          "post_patch_verified": true,
-          "source_hash": "f56342603e0bde96cf8298ae9191ff346bce2f6c4501192092920a0fd4a6a847"
+          "rationale": "断行复核：仅恢复句末标点后的换行（补丁原有排版），题干/选项/答案/解析文字与上一版逐字一致。",
+          "source_hash": "cf0351fac2d88661693498d78bf380c8fb2f7a206a814a84811e86e5fe64d890",
+          "post_patch_verified": true
         }
       },
       "certification_profile": "non_choice_source_answer",
@@ -80864,7 +80932,7 @@
       "course_key": "ds",
       "chapter": "图 · 图的应用 · 解答题",
       "question_id": "A03",
-      "source_hash": "e61f0876480dd592b1f77ce56f136bdea5e12eb6fbd14a1993f9eb60800c2980",
+      "source_hash": "1fe291be4e828ce6c525f6339581fccb634bfc422001adc072e5a25815e1c044",
       "source_fidelity": "verified",
       "answer_validation": "verified",
       "overall": "certified",
@@ -80908,32 +80976,149 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-11-05T12:00:00+00:00",
+      "verified_at": "2026-11-13T08:07:19+00:00",
       "evidence": {
         "human_action": "hold",
         "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
         "original_page_review": {
           "source_uid": "408:cs408-ds::图 · 图的应用 · 解答题::A03",
           "protocol": "codex-original-page-review-v1",
-          "reviewer": "grok-page-review",
-          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "reviewer": "kimi-code",
+          "reviewed_at": "2026-11-13T08:07:19+00:00",
           "q_pages_viewed": [
             {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_242.png",
+              "sha256": "73566c0fa2b69c11db41e872e65e296f5c37dab9e3fdc61ea698d5c6fda3cf9d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_243.png",
+              "sha256": "7785d07bb007e8afdbaac56185e4c66c4f0401383e143e6539bd7dfa3a6ebaa9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_244.png",
+              "sha256": "1729271d76eabb461d6fc4ca072b1562a6feac270df1a5bdcc17c5ae7e118d3b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_245.png",
+              "sha256": "67d8c72bae32b8e364ab286b60b6cfa753d71201282422dc77579eed90438086"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_246.png",
+              "sha256": "22d7ee9acb5ef4561cbafe142c0c302e25c826ec04d0e2d06fef604ed875a217"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_247.png",
+              "sha256": "2149331a232d6b106f7c04bb829b01283a113b235fcc1dce7fe68e400b88c4ef"
+            },
+            {
               "path": "apps/bank-408/assets/pdf_images/ds/page_248.png",
-              "sha256": "feb8268fda6ab74c1785e35b0e67e111b2827510cc7b78f1eb290fd2f9876467",
-              "page": 248
+              "sha256": "feb8268fda6ab74c1785e35b0e67e111b2827510cc7b78f1eb290fd2f9876467"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_249.png",
+              "sha256": "f6dcfe84820eecb998d7eefa4f1adc65a4c5222cb483d73b09fb4e506ab8c819"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_250.png",
+              "sha256": "19b7737dd9ae3488c45d3b71f3f64a934c7c9e5b2e47a7b52ad340500341a10c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_251.png",
+              "sha256": "913cd38e5a408895aca3edea82ef36b02abf05178a5ff8a772311bb71ee5a09c"
             }
           ],
           "a_pages_viewed": [
             {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_251.png",
+              "sha256": "913cd38e5a408895aca3edea82ef36b02abf05178a5ff8a772311bb71ee5a09c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_252.png",
+              "sha256": "e058397c6cae69844e6bd28a9102e88287ce6a575d33779322e74d020edd3937"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_253.png",
+              "sha256": "958024d25de2d55081cc1aee000854a8f2cc1f7d6b923194fa4748f4212e241d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_254.png",
+              "sha256": "2ad7685fdcf83435750821e42466f35d6c0e44037adca3bf6178be5e8d5ef5b9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_255.png",
+              "sha256": "f31f5a570fe853ba6066dc38ff3d48b98c95d5c73ee575824b3b46e8d6b212c6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_256.png",
+              "sha256": "0146ca7f1866313e3c820d5c739d171fc4554953576155e66738e0c3a610d614"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_257.png",
+              "sha256": "a47c3bc9ac1784622bcc9ce02a42a2c2af8c7dcfbcb82d29880ea63a4487c27d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_258.png",
+              "sha256": "aa88ac319b68f2cf5f2e6bb1470ae3295888e96f1fbe9619c7e146cf4d0e5024"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_259.png",
+              "sha256": "02df8ad5b124f19771410239c8b07ab4f1f4fb943aeb41b90c27536b4f69f0a7"
+            },
+            {
               "path": "apps/bank-408/assets/pdf_images/ds/page_260.png",
-              "sha256": "171b31e51630192350b477dfcced68e83e52f0efe20b05093958e42268b8f847",
-              "page": 260
+              "sha256": "171b31e51630192350b477dfcced68e83e52f0efe20b05093958e42268b8f847"
             },
             {
               "path": "apps/bank-408/assets/pdf_images/ds/page_261.png",
-              "sha256": "fa11585021cea78a6319643f8c74911447ab41a76e2a638166cf466010b574b3",
-              "page": 261
+              "sha256": "fa11585021cea78a6319643f8c74911447ab41a76e2a638166cf466010b574b3"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_262.png",
+              "sha256": "b7f19747715bf3757eab9457a7908d0cdc7ac6593dc3f68914fcdb7312b3dc30"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_263.png",
+              "sha256": "f48767ca1c5938852470e9d2849770751eeb5bd25fbe3323aa6856f3e74c01b8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_264.png",
+              "sha256": "712f1e4ee5e2c4f57dd1b8b9d0ef337a8cc036b9f7aefba7f2ec197cb1a7e21e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_265.png",
+              "sha256": "47ac53269a4615b546e8cc73cfcc24d11e85807b6974723bfb8e647842ee579b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_266.png",
+              "sha256": "2a50ae2f4d49379acb0cab8e8c22deecd97582a0f398cb293777807e693044bb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_267.png",
+              "sha256": "43a088f618c4b8eedd4231e28c3374ff7da4fe05a15e0b138b061c5f92cb6617"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_268.png",
+              "sha256": "e61f0d7a210b76efdc498a73eafd03b0abd92387e7ced08eda41e9e7ea666446"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_269.png",
+              "sha256": "e058a286d6842dd30e21037a6921158a4aa1bc0d0bb5296a8b74ebb12bd912a7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_270.png",
+              "sha256": "5f614e41407fe69440fc01aeb9408aa520f014d04be47dd791a823671ab7adde"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_271.png",
+              "sha256": "1c4b51cbfcbe297ab6b21353561bd4c8f192c0fa50448f42a07cf93cf3202732"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_272.png",
+              "sha256": "84c9b4303b6e5310142c2a2400a246dfd70ac548870b35c695a989c734dc076c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_273.png",
+              "sha256": "0b9e30fd52bc5f044af028572c46a975fc5bd1404179d140bc849ac65c40d080"
             }
           ],
           "final_action": "patch",
@@ -80943,9 +81128,9 @@
           "explanation_match": true,
           "image_match": true,
           "detected_errors": [],
-          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
-          "post_patch_verified": true,
-          "source_hash": "e61f0876480dd592b1f77ce56f136bdea5e12eb6fbd14a1993f9eb60800c2980"
+          "rationale": "断行复核：仅恢复句末标点后的换行（补丁原有排版），题干/选项/答案/解析文字与上一版逐字一致。",
+          "source_hash": "1fe291be4e828ce6c525f6339581fccb634bfc422001adc072e5a25815e1c044",
+          "post_patch_verified": true
         }
       },
       "certification_profile": "non_choice_source_answer",
@@ -81212,7 +81397,7 @@
       "course_key": "ds",
       "chapter": "图 · 图的应用 · 解答题",
       "question_id": "A07",
-      "source_hash": "44406b844ed068c871e63360eb909e833e47a6e1c2b754214034735e0abc7637",
+      "source_hash": "5a1ef4c9f3a6c1d4f934d726554d6d937a3c7420328b59382e92f1a753dbde52",
       "source_fidelity": "verified",
       "answer_validation": "verified",
       "overall": "certified",
@@ -81256,32 +81441,149 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-11-05T12:00:00+00:00",
+      "verified_at": "2026-11-13T08:07:19+00:00",
       "evidence": {
         "human_action": "hold",
         "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
         "original_page_review": {
           "source_uid": "408:cs408-ds::图 · 图的应用 · 解答题::A07",
           "protocol": "codex-original-page-review-v1",
-          "reviewer": "grok-page-review",
-          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "reviewer": "kimi-code",
+          "reviewed_at": "2026-11-13T08:07:19+00:00",
           "q_pages_viewed": [
             {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_242.png",
+              "sha256": "73566c0fa2b69c11db41e872e65e296f5c37dab9e3fdc61ea698d5c6fda3cf9d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_243.png",
+              "sha256": "7785d07bb007e8afdbaac56185e4c66c4f0401383e143e6539bd7dfa3a6ebaa9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_244.png",
+              "sha256": "1729271d76eabb461d6fc4ca072b1562a6feac270df1a5bdcc17c5ae7e118d3b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_245.png",
+              "sha256": "67d8c72bae32b8e364ab286b60b6cfa753d71201282422dc77579eed90438086"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_246.png",
+              "sha256": "22d7ee9acb5ef4561cbafe142c0c302e25c826ec04d0e2d06fef604ed875a217"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_247.png",
+              "sha256": "2149331a232d6b106f7c04bb829b01283a113b235fcc1dce7fe68e400b88c4ef"
+            },
+            {
               "path": "apps/bank-408/assets/pdf_images/ds/page_248.png",
-              "sha256": "feb8268fda6ab74c1785e35b0e67e111b2827510cc7b78f1eb290fd2f9876467",
-              "page": 248
+              "sha256": "feb8268fda6ab74c1785e35b0e67e111b2827510cc7b78f1eb290fd2f9876467"
             },
             {
               "path": "apps/bank-408/assets/pdf_images/ds/page_249.png",
-              "sha256": "f6dcfe84820eecb998d7eefa4f1adc65a4c5222cb483d73b09fb4e506ab8c819",
-              "page": 249
+              "sha256": "f6dcfe84820eecb998d7eefa4f1adc65a4c5222cb483d73b09fb4e506ab8c819"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_250.png",
+              "sha256": "19b7737dd9ae3488c45d3b71f3f64a934c7c9e5b2e47a7b52ad340500341a10c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_251.png",
+              "sha256": "913cd38e5a408895aca3edea82ef36b02abf05178a5ff8a772311bb71ee5a09c"
             }
           ],
           "a_pages_viewed": [
             {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_251.png",
+              "sha256": "913cd38e5a408895aca3edea82ef36b02abf05178a5ff8a772311bb71ee5a09c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_252.png",
+              "sha256": "e058397c6cae69844e6bd28a9102e88287ce6a575d33779322e74d020edd3937"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_253.png",
+              "sha256": "958024d25de2d55081cc1aee000854a8f2cc1f7d6b923194fa4748f4212e241d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_254.png",
+              "sha256": "2ad7685fdcf83435750821e42466f35d6c0e44037adca3bf6178be5e8d5ef5b9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_255.png",
+              "sha256": "f31f5a570fe853ba6066dc38ff3d48b98c95d5c73ee575824b3b46e8d6b212c6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_256.png",
+              "sha256": "0146ca7f1866313e3c820d5c739d171fc4554953576155e66738e0c3a610d614"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_257.png",
+              "sha256": "a47c3bc9ac1784622bcc9ce02a42a2c2af8c7dcfbcb82d29880ea63a4487c27d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_258.png",
+              "sha256": "aa88ac319b68f2cf5f2e6bb1470ae3295888e96f1fbe9619c7e146cf4d0e5024"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_259.png",
+              "sha256": "02df8ad5b124f19771410239c8b07ab4f1f4fb943aeb41b90c27536b4f69f0a7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_260.png",
+              "sha256": "171b31e51630192350b477dfcced68e83e52f0efe20b05093958e42268b8f847"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_261.png",
+              "sha256": "fa11585021cea78a6319643f8c74911447ab41a76e2a638166cf466010b574b3"
+            },
+            {
               "path": "apps/bank-408/assets/pdf_images/ds/page_262.png",
-              "sha256": "b7f19747715bf3757eab9457a7908d0cdc7ac6593dc3f68914fcdb7312b3dc30",
-              "page": 262
+              "sha256": "b7f19747715bf3757eab9457a7908d0cdc7ac6593dc3f68914fcdb7312b3dc30"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_263.png",
+              "sha256": "f48767ca1c5938852470e9d2849770751eeb5bd25fbe3323aa6856f3e74c01b8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_264.png",
+              "sha256": "712f1e4ee5e2c4f57dd1b8b9d0ef337a8cc036b9f7aefba7f2ec197cb1a7e21e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_265.png",
+              "sha256": "47ac53269a4615b546e8cc73cfcc24d11e85807b6974723bfb8e647842ee579b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_266.png",
+              "sha256": "2a50ae2f4d49379acb0cab8e8c22deecd97582a0f398cb293777807e693044bb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_267.png",
+              "sha256": "43a088f618c4b8eedd4231e28c3374ff7da4fe05a15e0b138b061c5f92cb6617"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_268.png",
+              "sha256": "e61f0d7a210b76efdc498a73eafd03b0abd92387e7ced08eda41e9e7ea666446"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_269.png",
+              "sha256": "e058a286d6842dd30e21037a6921158a4aa1bc0d0bb5296a8b74ebb12bd912a7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_270.png",
+              "sha256": "5f614e41407fe69440fc01aeb9408aa520f014d04be47dd791a823671ab7adde"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_271.png",
+              "sha256": "1c4b51cbfcbe297ab6b21353561bd4c8f192c0fa50448f42a07cf93cf3202732"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_272.png",
+              "sha256": "84c9b4303b6e5310142c2a2400a246dfd70ac548870b35c695a989c734dc076c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_273.png",
+              "sha256": "0b9e30fd52bc5f044af028572c46a975fc5bd1404179d140bc849ac65c40d080"
             }
           ],
           "final_action": "patch",
@@ -81291,9 +81593,9 @@
           "explanation_match": true,
           "image_match": true,
           "detected_errors": [],
-          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
-          "post_patch_verified": true,
-          "source_hash": "44406b844ed068c871e63360eb909e833e47a6e1c2b754214034735e0abc7637"
+          "rationale": "断行复核：仅恢复句末标点后的换行（补丁原有排版），题干/选项/答案/解析文字与上一版逐字一致。",
+          "source_hash": "5a1ef4c9f3a6c1d4f934d726554d6d937a3c7420328b59382e92f1a753dbde52",
+          "post_patch_verified": true
         }
       },
       "certification_profile": "non_choice_source_answer",
@@ -81388,7 +81690,7 @@
       "course_key": "ds",
       "chapter": "图 · 图的应用 · 解答题",
       "question_id": "A09",
-      "source_hash": "854760dc732f819353e58d1dd26eadf99b4769050235fd1ffe5ec8260162b9ef",
+      "source_hash": "ae80c2953f73ec541e28cb002f55d439aba0d5ee9493a6008a67e86df317d94f",
       "source_fidelity": "verified",
       "answer_validation": "verified",
       "overall": "certified",
@@ -81432,37 +81734,149 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-11-05T12:00:00+00:00",
+      "verified_at": "2026-11-13T08:07:19+00:00",
       "evidence": {
         "human_action": "hold",
         "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
         "original_page_review": {
           "source_uid": "408:cs408-ds::图 · 图的应用 · 解答题::A09",
           "protocol": "codex-original-page-review-v1",
-          "reviewer": "grok-page-review",
-          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "reviewer": "kimi-code",
+          "reviewed_at": "2026-11-13T08:07:19+00:00",
           "q_pages_viewed": [
             {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_242.png",
+              "sha256": "73566c0fa2b69c11db41e872e65e296f5c37dab9e3fdc61ea698d5c6fda3cf9d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_243.png",
+              "sha256": "7785d07bb007e8afdbaac56185e4c66c4f0401383e143e6539bd7dfa3a6ebaa9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_244.png",
+              "sha256": "1729271d76eabb461d6fc4ca072b1562a6feac270df1a5bdcc17c5ae7e118d3b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_245.png",
+              "sha256": "67d8c72bae32b8e364ab286b60b6cfa753d71201282422dc77579eed90438086"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_246.png",
+              "sha256": "22d7ee9acb5ef4561cbafe142c0c302e25c826ec04d0e2d06fef604ed875a217"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_247.png",
+              "sha256": "2149331a232d6b106f7c04bb829b01283a113b235fcc1dce7fe68e400b88c4ef"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_248.png",
+              "sha256": "feb8268fda6ab74c1785e35b0e67e111b2827510cc7b78f1eb290fd2f9876467"
+            },
+            {
               "path": "apps/bank-408/assets/pdf_images/ds/page_249.png",
-              "sha256": "f6dcfe84820eecb998d7eefa4f1adc65a4c5222cb483d73b09fb4e506ab8c819",
-              "page": 249
+              "sha256": "f6dcfe84820eecb998d7eefa4f1adc65a4c5222cb483d73b09fb4e506ab8c819"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_250.png",
+              "sha256": "19b7737dd9ae3488c45d3b71f3f64a934c7c9e5b2e47a7b52ad340500341a10c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_251.png",
+              "sha256": "913cd38e5a408895aca3edea82ef36b02abf05178a5ff8a772311bb71ee5a09c"
             }
           ],
           "a_pages_viewed": [
             {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_251.png",
+              "sha256": "913cd38e5a408895aca3edea82ef36b02abf05178a5ff8a772311bb71ee5a09c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_252.png",
+              "sha256": "e058397c6cae69844e6bd28a9102e88287ce6a575d33779322e74d020edd3937"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_253.png",
+              "sha256": "958024d25de2d55081cc1aee000854a8f2cc1f7d6b923194fa4748f4212e241d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_254.png",
+              "sha256": "2ad7685fdcf83435750821e42466f35d6c0e44037adca3bf6178be5e8d5ef5b9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_255.png",
+              "sha256": "f31f5a570fe853ba6066dc38ff3d48b98c95d5c73ee575824b3b46e8d6b212c6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_256.png",
+              "sha256": "0146ca7f1866313e3c820d5c739d171fc4554953576155e66738e0c3a610d614"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_257.png",
+              "sha256": "a47c3bc9ac1784622bcc9ce02a42a2c2af8c7dcfbcb82d29880ea63a4487c27d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_258.png",
+              "sha256": "aa88ac319b68f2cf5f2e6bb1470ae3295888e96f1fbe9619c7e146cf4d0e5024"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_259.png",
+              "sha256": "02df8ad5b124f19771410239c8b07ab4f1f4fb943aeb41b90c27536b4f69f0a7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_260.png",
+              "sha256": "171b31e51630192350b477dfcced68e83e52f0efe20b05093958e42268b8f847"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_261.png",
+              "sha256": "fa11585021cea78a6319643f8c74911447ab41a76e2a638166cf466010b574b3"
+            },
+            {
               "path": "apps/bank-408/assets/pdf_images/ds/page_262.png",
-              "sha256": "b7f19747715bf3757eab9457a7908d0cdc7ac6593dc3f68914fcdb7312b3dc30",
-              "page": 262
+              "sha256": "b7f19747715bf3757eab9457a7908d0cdc7ac6593dc3f68914fcdb7312b3dc30"
             },
             {
               "path": "apps/bank-408/assets/pdf_images/ds/page_263.png",
-              "sha256": "f48767ca1c5938852470e9d2849770751eeb5bd25fbe3323aa6856f3e74c01b8",
-              "page": 263
+              "sha256": "f48767ca1c5938852470e9d2849770751eeb5bd25fbe3323aa6856f3e74c01b8"
             },
             {
               "path": "apps/bank-408/assets/pdf_images/ds/page_264.png",
-              "sha256": "712f1e4ee5e2c4f57dd1b8b9d0ef337a8cc036b9f7aefba7f2ec197cb1a7e21e",
-              "page": 264
+              "sha256": "712f1e4ee5e2c4f57dd1b8b9d0ef337a8cc036b9f7aefba7f2ec197cb1a7e21e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_265.png",
+              "sha256": "47ac53269a4615b546e8cc73cfcc24d11e85807b6974723bfb8e647842ee579b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_266.png",
+              "sha256": "2a50ae2f4d49379acb0cab8e8c22deecd97582a0f398cb293777807e693044bb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_267.png",
+              "sha256": "43a088f618c4b8eedd4231e28c3374ff7da4fe05a15e0b138b061c5f92cb6617"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_268.png",
+              "sha256": "e61f0d7a210b76efdc498a73eafd03b0abd92387e7ced08eda41e9e7ea666446"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_269.png",
+              "sha256": "e058a286d6842dd30e21037a6921158a4aa1bc0d0bb5296a8b74ebb12bd912a7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_270.png",
+              "sha256": "5f614e41407fe69440fc01aeb9408aa520f014d04be47dd791a823671ab7adde"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_271.png",
+              "sha256": "1c4b51cbfcbe297ab6b21353561bd4c8f192c0fa50448f42a07cf93cf3202732"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_272.png",
+              "sha256": "84c9b4303b6e5310142c2a2400a246dfd70ac548870b35c695a989c734dc076c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_273.png",
+              "sha256": "0b9e30fd52bc5f044af028572c46a975fc5bd1404179d140bc849ac65c40d080"
             }
           ],
           "final_action": "patch",
@@ -81472,9 +81886,9 @@
           "explanation_match": true,
           "image_match": true,
           "detected_errors": [],
-          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
-          "post_patch_verified": true,
-          "source_hash": "854760dc732f819353e58d1dd26eadf99b4769050235fd1ffe5ec8260162b9ef"
+          "rationale": "断行复核：仅恢复句末标点后的换行（补丁原有排版），题干/选项/答案/解析文字与上一版逐字一致。",
+          "source_hash": "ae80c2953f73ec541e28cb002f55d439aba0d5ee9493a6008a67e86df317d94f",
+          "post_patch_verified": true
         }
       },
       "certification_profile": "non_choice_source_answer",
@@ -81866,7 +82280,7 @@
       "course_key": "ds",
       "chapter": "图 · 图的应用 · 解答题",
       "question_id": "A13",
-      "source_hash": "753aa30f3d436fe463900519bf5836fafddbf056c00b3e975e22ec1d2c7423eb",
+      "source_hash": "1fce46a1823a56dcdd3f346b992a2643e95bcc2e7f506f0b570957e5deb162dd",
       "source_fidelity": "verified",
       "answer_validation": "verified",
       "overall": "certified",
@@ -81910,42 +82324,149 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-11-05T12:00:00+00:00",
+      "verified_at": "2026-11-13T08:07:19+00:00",
       "evidence": {
         "human_action": "hold",
         "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
         "original_page_review": {
           "source_uid": "408:cs408-ds::图 · 图的应用 · 解答题::A13",
           "protocol": "codex-original-page-review-v1",
-          "reviewer": "grok-page-review",
-          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "reviewer": "kimi-code",
+          "reviewed_at": "2026-11-13T08:07:19+00:00",
           "q_pages_viewed": [
             {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_242.png",
+              "sha256": "73566c0fa2b69c11db41e872e65e296f5c37dab9e3fdc61ea698d5c6fda3cf9d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_243.png",
+              "sha256": "7785d07bb007e8afdbaac56185e4c66c4f0401383e143e6539bd7dfa3a6ebaa9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_244.png",
+              "sha256": "1729271d76eabb461d6fc4ca072b1562a6feac270df1a5bdcc17c5ae7e118d3b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_245.png",
+              "sha256": "67d8c72bae32b8e364ab286b60b6cfa753d71201282422dc77579eed90438086"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_246.png",
+              "sha256": "22d7ee9acb5ef4561cbafe142c0c302e25c826ec04d0e2d06fef604ed875a217"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_247.png",
+              "sha256": "2149331a232d6b106f7c04bb829b01283a113b235fcc1dce7fe68e400b88c4ef"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_248.png",
+              "sha256": "feb8268fda6ab74c1785e35b0e67e111b2827510cc7b78f1eb290fd2f9876467"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_249.png",
+              "sha256": "f6dcfe84820eecb998d7eefa4f1adc65a4c5222cb483d73b09fb4e506ab8c819"
+            },
+            {
               "path": "apps/bank-408/assets/pdf_images/ds/page_250.png",
-              "sha256": "19b7737dd9ae3488c45d3b71f3f64a934c7c9e5b2e47a7b52ad340500341a10c",
-              "page": 250
+              "sha256": "19b7737dd9ae3488c45d3b71f3f64a934c7c9e5b2e47a7b52ad340500341a10c"
             },
             {
               "path": "apps/bank-408/assets/pdf_images/ds/page_251.png",
-              "sha256": "913cd38e5a408895aca3edea82ef36b02abf05178a5ff8a772311bb71ee5a09c",
-              "page": 251
+              "sha256": "913cd38e5a408895aca3edea82ef36b02abf05178a5ff8a772311bb71ee5a09c"
             }
           ],
           "a_pages_viewed": [
             {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_251.png",
+              "sha256": "913cd38e5a408895aca3edea82ef36b02abf05178a5ff8a772311bb71ee5a09c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_252.png",
+              "sha256": "e058397c6cae69844e6bd28a9102e88287ce6a575d33779322e74d020edd3937"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_253.png",
+              "sha256": "958024d25de2d55081cc1aee000854a8f2cc1f7d6b923194fa4748f4212e241d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_254.png",
+              "sha256": "2ad7685fdcf83435750821e42466f35d6c0e44037adca3bf6178be5e8d5ef5b9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_255.png",
+              "sha256": "f31f5a570fe853ba6066dc38ff3d48b98c95d5c73ee575824b3b46e8d6b212c6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_256.png",
+              "sha256": "0146ca7f1866313e3c820d5c739d171fc4554953576155e66738e0c3a610d614"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_257.png",
+              "sha256": "a47c3bc9ac1784622bcc9ce02a42a2c2af8c7dcfbcb82d29880ea63a4487c27d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_258.png",
+              "sha256": "aa88ac319b68f2cf5f2e6bb1470ae3295888e96f1fbe9619c7e146cf4d0e5024"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_259.png",
+              "sha256": "02df8ad5b124f19771410239c8b07ab4f1f4fb943aeb41b90c27536b4f69f0a7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_260.png",
+              "sha256": "171b31e51630192350b477dfcced68e83e52f0efe20b05093958e42268b8f847"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_261.png",
+              "sha256": "fa11585021cea78a6319643f8c74911447ab41a76e2a638166cf466010b574b3"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_262.png",
+              "sha256": "b7f19747715bf3757eab9457a7908d0cdc7ac6593dc3f68914fcdb7312b3dc30"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_263.png",
+              "sha256": "f48767ca1c5938852470e9d2849770751eeb5bd25fbe3323aa6856f3e74c01b8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_264.png",
+              "sha256": "712f1e4ee5e2c4f57dd1b8b9d0ef337a8cc036b9f7aefba7f2ec197cb1a7e21e"
+            },
+            {
               "path": "apps/bank-408/assets/pdf_images/ds/page_265.png",
-              "sha256": "47ac53269a4615b546e8cc73cfcc24d11e85807b6974723bfb8e647842ee579b",
-              "page": 265
+              "sha256": "47ac53269a4615b546e8cc73cfcc24d11e85807b6974723bfb8e647842ee579b"
             },
             {
               "path": "apps/bank-408/assets/pdf_images/ds/page_266.png",
-              "sha256": "2a50ae2f4d49379acb0cab8e8c22deecd97582a0f398cb293777807e693044bb",
-              "page": 266
+              "sha256": "2a50ae2f4d49379acb0cab8e8c22deecd97582a0f398cb293777807e693044bb"
             },
             {
               "path": "apps/bank-408/assets/pdf_images/ds/page_267.png",
-              "sha256": "43a088f618c4b8eedd4231e28c3374ff7da4fe05a15e0b138b061c5f92cb6617",
-              "page": 267
+              "sha256": "43a088f618c4b8eedd4231e28c3374ff7da4fe05a15e0b138b061c5f92cb6617"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_268.png",
+              "sha256": "e61f0d7a210b76efdc498a73eafd03b0abd92387e7ced08eda41e9e7ea666446"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_269.png",
+              "sha256": "e058a286d6842dd30e21037a6921158a4aa1bc0d0bb5296a8b74ebb12bd912a7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_270.png",
+              "sha256": "5f614e41407fe69440fc01aeb9408aa520f014d04be47dd791a823671ab7adde"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_271.png",
+              "sha256": "1c4b51cbfcbe297ab6b21353561bd4c8f192c0fa50448f42a07cf93cf3202732"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_272.png",
+              "sha256": "84c9b4303b6e5310142c2a2400a246dfd70ac548870b35c695a989c734dc076c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_273.png",
+              "sha256": "0b9e30fd52bc5f044af028572c46a975fc5bd1404179d140bc849ac65c40d080"
             }
           ],
           "final_action": "patch",
@@ -81955,9 +82476,9 @@
           "explanation_match": true,
           "image_match": true,
           "detected_errors": [],
-          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
-          "post_patch_verified": true,
-          "source_hash": "753aa30f3d436fe463900519bf5836fafddbf056c00b3e975e22ec1d2c7423eb"
+          "rationale": "断行复核：仅恢复句末标点后的换行（补丁原有排版），题干/选项/答案/解析文字与上一版逐字一致。",
+          "source_hash": "1fce46a1823a56dcdd3f346b992a2643e95bcc2e7f506f0b570957e5deb162dd",
+          "post_patch_verified": true
         }
       },
       "certification_profile": "non_choice_source_answer",
@@ -122267,7 +122788,7 @@
       "course_key": "ds",
       "chapter": "栈、队列和数组 · 栈 · 解答题",
       "question_id": "A03",
-      "source_hash": "78df792af07295cdbedabaa7b785be6b441bdd0c2dd41945113b4252b88a3a63",
+      "source_hash": "e5056e01d24d7f987dd63f126de66e540f665700271bd5ade662a80ff767d462",
       "source_fidelity": "verified",
       "answer_validation": "verified",
       "overall": "certified",
@@ -122294,32 +122815,81 @@
       ],
       "has_image": false,
       "answer_choice": "",
-      "verified_at": "2026-11-05T12:00:00+00:00",
+      "verified_at": "2026-11-13T08:07:19+00:00",
       "evidence": {
         "human_action": "hold",
         "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;essay_or_missing_published_choice",
         "original_page_review": {
           "source_uid": "408:cs408-ds::栈、队列和数组 · 栈 · 解答题::A03",
           "protocol": "codex-original-page-review-v1",
-          "reviewer": "grok-page-review",
-          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "reviewer": "kimi-code",
+          "reviewed_at": "2026-11-13T08:07:19+00:00",
           "q_pages_viewed": [
             {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_072.png",
+              "sha256": "e29868c3139ccdba635f2eed13d04f2985111c0d46f9cbecfbbc4810dfe73af9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_073.png",
+              "sha256": "d084f605084aefd40ed8a084df913148b70b18459f1edd515339a8c5571050f8"
+            },
+            {
               "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
-              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba",
-              "page": 74
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
             }
           ],
           "a_pages_viewed": [
             {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_074.png",
+              "sha256": "bd532f759473d7959d2e6eb6a84fab26b62b9752593d9642357917bc764c70ba"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_075.png",
+              "sha256": "ea0723b16dc3242cad3241caf4206ad1a14bbe9a0e5f66faf55b6a21c3645071"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_076.png",
+              "sha256": "953e4a071b6551197ee7356111d5112227fc93a50e75cd0e08034d5762c30913"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_077.png",
+              "sha256": "e7a0a9dadc123277d003ffbd51bdad0be15c851fade3dbc6bef2ce55640fc48b"
+            },
+            {
               "path": "apps/bank-408/assets/pdf_images/ds/page_078.png",
-              "sha256": "80610f6523291d5ae69f73e5610d63520022e522fda7a293f25da8009c8b73b5",
-              "page": 78
+              "sha256": "80610f6523291d5ae69f73e5610d63520022e522fda7a293f25da8009c8b73b5"
             },
             {
               "path": "apps/bank-408/assets/pdf_images/ds/page_079.png",
-              "sha256": "21e293b356b1923b0720dc76aecd6d279280ee6019c530c689849cd59871fedb",
-              "page": 79
+              "sha256": "21e293b356b1923b0720dc76aecd6d279280ee6019c530c689849cd59871fedb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_080.png",
+              "sha256": "408ac3c3671a278718066a9ad4f74a13a4e4898e86c32c6c1e029667840a1e2a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_081.png",
+              "sha256": "5cff68031e5a2cf2bb47f163f459f28f2540a241a3cb4ff3fc319341acf94a09"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_082.png",
+              "sha256": "b93c14e992a12da45cfb48247d99c57b104ffe223b8c9261cd3b8a753bdb1a2d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_083.png",
+              "sha256": "0ec3aea6e085258fe8e60a3e70e26a712fd19dee9c8fa661cf36246a6195df38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_084.png",
+              "sha256": "e10049ae74cb72983f225fdfa16196a8bcf04e8519283bc61679783a172d318d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_085.png",
+              "sha256": "c2bcc32db42133525bc6f43e037824dd56ed53ba9f0ef3cf38fa025d4b6e4dd4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/ds/page_086.png",
+              "sha256": "d2fbb7ac7febc3e3eae4aadf41ef0088add1265c9eb21a62a537ffb7217a0218"
             }
           ],
           "final_action": "patch",
@@ -122329,9 +122899,9 @@
           "explanation_match": true,
           "image_match": true,
           "detected_errors": [],
-          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
-          "post_patch_verified": true,
-          "source_hash": "78df792af07295cdbedabaa7b785be6b441bdd0c2dd41945113b4252b88a3a63"
+          "rationale": "断行复核：仅恢复句末标点后的换行（补丁原有排版），题干/选项/答案/解析文字与上一版逐字一致。",
+          "source_hash": "e5056e01d24d7f987dd63f126de66e540f665700271bd5ade662a80ff767d462",
+          "post_patch_verified": true
         }
       },
       "certification_profile": "non_choice_source_answer",
@@ -162151,7 +162721,7 @@
       "course_key": "net",
       "chapter": "传输层 · TCP · 解答题",
       "question_id": "A14",
-      "source_hash": "44c0fb0573ea485873bf2ae9efef51e39936f45e25bc321f306a092faebb3985",
+      "source_hash": "e5bbb41d02f495f8499fbfe16b7a270966b4ca0a5146ac90d74c5f814bd75abf",
       "source_fidelity": "verified",
       "answer_validation": "verified",
       "overall": "certified",
@@ -162185,37 +162755,109 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-11-05T12:00:00+00:00",
+      "verified_at": "2026-11-13T08:07:19+00:00",
       "evidence": {
         "human_action": "hold",
         "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
         "original_page_review": {
           "source_uid": "408:cs408-net::传输层 · TCP · 解答题::A14",
           "protocol": "codex-original-page-review-v1",
-          "reviewer": "grok-page-review",
-          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "reviewer": "kimi-code",
+          "reviewed_at": "2026-11-13T08:07:19+00:00",
           "q_pages_viewed": [
             {
+              "path": "apps/bank-408/assets/pdf_images/net/page_251.png",
+              "sha256": "58760bc03db358eb21c8a26b430a86577670963fa1f65ff738e27bddf448b5a1"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_252.png",
+              "sha256": "7264434b1c057d7f5cac6e1368cb52c34d73eb37c8ae6d28824d12dc12afd289"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_253.png",
+              "sha256": "005abd6eb02a0a0444d39a7e265163af56b5eff7f5222041d72525f8f2718790"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_254.png",
+              "sha256": "940e2590d9163174e74fc30e83086616b1b949181a0507ba5e89ad9fee68e71e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_255.png",
+              "sha256": "f232c05642a8ad857eab9f53e9ba0b94b9424ba38add1437ae3b9e4be4bea1c4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_256.png",
+              "sha256": "cbc7418b96a0c76d12bc5dae166f8e96d4aaacd9361a99943a4fb3889fe2793d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_257.png",
+              "sha256": "0f57ee2a08fd916bf153b0a96412d4cdf3a83f1b8a3e64da348ff8f2bd4cde15"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_258.png",
+              "sha256": "5d4c765d2775f48a8d1980ebec0ef9f244b64285bfb11e279e9dc04d6e40fe2b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_259.png",
+              "sha256": "86cba9284b911971a2e7c710e5c97fa31da2193715c7ab7dd0ac9e96d6c70557"
+            },
+            {
               "path": "apps/bank-408/assets/pdf_images/net/page_260.png",
-              "sha256": "fbe4d529bfd603c303de2e873b5acf60da9b76f2cc9983c9dc43f143692f08f8",
-              "page": 260
+              "sha256": "fbe4d529bfd603c303de2e873b5acf60da9b76f2cc9983c9dc43f143692f08f8"
             },
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_261.png",
-              "sha256": "7f7fd639b75d687e2e0287cacbd9fe4e925946754156262cc48a32e1b8056838",
-              "page": 261
+              "sha256": "7f7fd639b75d687e2e0287cacbd9fe4e925946754156262cc48a32e1b8056838"
             }
           ],
           "a_pages_viewed": [
             {
+              "path": "apps/bank-408/assets/pdf_images/net/page_261.png",
+              "sha256": "7f7fd639b75d687e2e0287cacbd9fe4e925946754156262cc48a32e1b8056838"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_262.png",
+              "sha256": "20cac070f923edbb6a7ebabce0f1c3c30b1c4657737fb802068f4e2b6ec975ee"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_263.png",
+              "sha256": "bb83c5e9ce7ea8062736f0c041495507ddcc7d32825606bf6b7994b9120d874f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_264.png",
+              "sha256": "1e4254415d3c6429454f9fcd769852171df16291bebbd6d415e1a747fefe0fab"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_265.png",
+              "sha256": "7b67878be27347d11e694bd5662db4b1e666fab6b6b33c25a68f95a0cf3ba19c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_266.png",
+              "sha256": "4ac9ea6822f78e814fc38b6cdfb5e524767649f5f5128cce11c7ddf1a821ab4a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_267.png",
+              "sha256": "2b8ce85a688163784cd2b8fbeb6faa2ef1c32da9cc8c931ccf03d3a5116b1e4c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_268.png",
+              "sha256": "7cb13cd5c0b5d564fcca2496fbf25064b6d543c14d4a95ebe0eb32b66acb669c"
+            },
+            {
               "path": "apps/bank-408/assets/pdf_images/net/page_269.png",
-              "sha256": "1c7d0d9f917a24db40cc6f359bb111b12130c44e3c2d4c57c1fca6fda52f7606",
-              "page": 269
+              "sha256": "1c7d0d9f917a24db40cc6f359bb111b12130c44e3c2d4c57c1fca6fda52f7606"
             },
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_270.png",
-              "sha256": "fa4780c1cf9b8de03f50204122d9419c84735db62e6db15d0e9e3c1f901ca4cd",
-              "page": 270
+              "sha256": "fa4780c1cf9b8de03f50204122d9419c84735db62e6db15d0e9e3c1f901ca4cd"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_271.png",
+              "sha256": "5dc4f1411bb512ff7c0fed8a5ae99d61151385760193361c5e0f57d6897ba0ec"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_272.png",
+              "sha256": "453107f671ec84977b63b5089acd5a406c954fb352df3cae180c8f1cf3462145"
             }
           ],
           "final_action": "patch",
@@ -162225,9 +162867,9 @@
           "explanation_match": true,
           "image_match": true,
           "detected_errors": [],
-          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
-          "post_patch_verified": true,
-          "source_hash": "44c0fb0573ea485873bf2ae9efef51e39936f45e25bc321f306a092faebb3985"
+          "rationale": "断行复核：仅恢复句末标点后的换行（补丁原有排版），题干/选项/答案/解析文字与上一版逐字一致。",
+          "source_hash": "e5bbb41d02f495f8499fbfe16b7a270966b4ca0a5146ac90d74c5f814bd75abf",
+          "post_patch_verified": true
         }
       },
       "certification_profile": "non_choice_source_answer",
@@ -172504,7 +173146,7 @@
       "course_key": "net",
       "chapter": "应用层 · 万维网 · 解答题",
       "question_id": "A05",
-      "source_hash": "7cb7598ce589dd374c8b726d2a3e058f80a3073583ed36db1466280de93a1b0a",
+      "source_hash": "42a27248422adf4748caa7f4055cc3dafed12db5f0ef7b93df2bc7401e741be8",
       "source_fidelity": "verified",
       "answer_validation": "verified",
       "overall": "certified",
@@ -172526,27 +173168,61 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-11-05T12:00:00+00:00",
+      "verified_at": "2026-11-13T08:07:19+00:00",
       "evidence": {
         "human_action": "hold",
         "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
         "original_page_review": {
           "source_uid": "408:cs408-net::应用层 · 万维网 · 解答题::A05",
           "protocol": "codex-original-page-review-v1",
-          "reviewer": "grok-page-review",
-          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "reviewer": "kimi-code",
+          "reviewed_at": "2026-11-13T08:07:19+00:00",
           "q_pages_viewed": [
             {
+              "path": "apps/bank-408/assets/pdf_images/net/page_300.png",
+              "sha256": "6303b116ee6d0fea63a19cc126faf5b56bd1dd199a2b8cec65c955a0baceea25"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_301.png",
+              "sha256": "5dc419e4c1f38c0f1df7d20d4aa6cbbed82f1972ee0e7df0c199f656d270906b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_302.png",
+              "sha256": "6d6443d5b5b49d518535505b48f0bfb5889401edccfaadd62d22d39615603fa8"
+            },
+            {
               "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
-              "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c",
-              "page": 303
+              "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
             }
           ],
           "a_pages_viewed": [
             {
+              "path": "apps/bank-408/assets/pdf_images/net/page_303.png",
+              "sha256": "daa1e7549be7a8b4793ae929a725c422bed7fc3836520dbcf07fe706c567d46c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_304.png",
+              "sha256": "6308cd004ee4887013780b36400fe2166d9982d8eb246cfec16bd761f37a0809"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_305.png",
+              "sha256": "27ce42bb7188ccfa681bc72de63639661d317c8d9c43c5e61e5103ef5ebf8e7b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_306.png",
+              "sha256": "97e289bfb0709c956731f08b41f57cee800ac933500543896c05bf311815a106"
+            },
+            {
               "path": "apps/bank-408/assets/pdf_images/net/page_307.png",
-              "sha256": "ed79808178196950d431813429907a4c2259f4faeb5ff52ff1b854f7abc0bc05",
-              "page": 307
+              "sha256": "ed79808178196950d431813429907a4c2259f4faeb5ff52ff1b854f7abc0bc05"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_308.png",
+              "sha256": "a31613ac9acb8921898f3f8bf2d586dcd82c284be376d486321b00111e812842"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_309.png",
+              "sha256": "42bb8023c3369eade4bb9ca22fc3d0179348d49a03252f2c76b6a4a38a76e91c"
             }
           ],
           "final_action": "patch",
@@ -172556,9 +173232,9 @@
           "explanation_match": true,
           "image_match": true,
           "detected_errors": [],
-          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
-          "post_patch_verified": true,
-          "source_hash": "7cb7598ce589dd374c8b726d2a3e058f80a3073583ed36db1466280de93a1b0a"
+          "rationale": "断行复核：仅恢复句末标点后的换行（补丁原有排版），题干/选项/答案/解析文字与上一版逐字一致。",
+          "source_hash": "42a27248422adf4748caa7f4055cc3dafed12db5f0ef7b93df2bc7401e741be8",
+          "post_patch_verified": true
         }
       },
       "certification_profile": "non_choice_source_answer",
@@ -203245,7 +203921,7 @@
       "course_key": "net",
       "chapter": "网络层 · IPv4 · 解答题",
       "question_id": "A11_2",
-      "source_hash": "88638e423f7e42196c02462a4230fadab7713cba2c77e160ce0e3a26b9954ae0",
+      "source_hash": "4ab469dd11ae70792810299a09b10cd1e39e804655151483e430b3371a26e8ce",
       "source_fidelity": "verified",
       "answer_validation": "verified",
       "overall": "certified",
@@ -203291,35 +203967,164 @@
         188
       ],
       "has_image": true,
-      "answer_choice": "C",
-      "verified_at": "2026-11-04T03:56:50+00:00",
+      "answer_choice": "",
+      "verified_at": "2026-11-13T08:07:19+00:00",
       "evidence": {
         "original_page_review": {
           "source_uid": "408:cs408-net::网络层 · IPv4 · 解答题::A11_2",
           "protocol": "codex-original-page-review-v1",
-          "reviewer": "xiaomi-ocr-q4-local",
-          "reviewed_at": "2026-11-04T03:56:50+00:00",
+          "reviewer": "kimi-code",
+          "reviewed_at": "2026-11-13T08:07:19+00:00",
           "q_pages_viewed": [
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_156.png",
+              "sha256": "4232cc830a95dcfade75a3dd109514bfb3683e6a0108dc5de48e3d0b8a6c8c7f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_157.png",
+              "sha256": "c8624856141ead95f59cdb625c6e7ca2e46d26080332c04e074f97a4c3dafe73"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_158.png",
+              "sha256": "f8a2747c9d2954158a349a3f5121b89c53d77e6b0f30174e9ba5c610c14c1cb3"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_159.png",
+              "sha256": "c455a3d7525c2941be9ae2fb4e981f403c3e5bff30c051b4377acc15e60773ce"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_160.png",
+              "sha256": "b454044c1156211bccaa58ca272ece41708823dd5adc9fababe8d54de54af168"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_161.png",
+              "sha256": "3ca9d34d385a0474f3dcea6171327eae4aa74869cfdadaba93f62a451eeb715b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_162.png",
+              "sha256": "7764f5e32d040dddd477575457a0af6260430b5ac8b47edbd4d2101524ea0d45"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_163.png",
+              "sha256": "475d4e0808a43c06402c1daa1b0273c6fa008fe2b995c7358d8febc9197e1a48"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_164.png",
+              "sha256": "cee09195cfc0c7afe45c0abcc1734a6a893d0f8e9282fe51f8ec69a725e08fe5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_165.png",
+              "sha256": "db15dd5dba48f7cd9ec692cf010335b6936a3a7276808e6db074073a2495dec2"
+            },
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_166.png",
               "sha256": "10e8f810f711c66457c8b9e9d482cf41afee4f86b5aa9165a044577f71380425"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_167.png",
+              "sha256": "7325ac89d3270d60a4aa4437b04580f13dcdb9a36dd21cd5739e32c72d8dfd8f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_168.png",
+              "sha256": "b794b4ec559bb95d45a3a6c88c6e49cb61636d74eeae0bab803ba5f981a30872"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_169.png",
+              "sha256": "b5fa3186da959c046af163b2c191f267e5747d364bb18d143615c775bd9d4d07"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_170.png",
+              "sha256": "907274a22747ddfc9ac1177ce7ad1696771d4358e5307a6f7080e20ec269f14f"
             }
           ],
           "a_pages_viewed": [
             {
+              "path": "apps/bank-408/assets/pdf_images/net/page_170.png",
+              "sha256": "907274a22747ddfc9ac1177ce7ad1696771d4358e5307a6f7080e20ec269f14f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_171.png",
+              "sha256": "7b82534d76298c3a44ff7de2ee71593c1212a893d7f0dc912479ac424854704f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_172.png",
+              "sha256": "6d798d5d5e4d2cbf724c056695fc93aaa75967103293a35c696ff2c9f51c475e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_173.png",
+              "sha256": "81e2549c48c6d93656fbeb6bde4a960e90fe9af3361ef018a441f4bb10d4419c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_174.png",
+              "sha256": "e8b480f54938f1e093fc622acb3ff8ec37751418b4f1f1fff85aeefa50ec2af0"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_175.png",
+              "sha256": "47d2d59d4a7e173532d061bfd763fd4b29d7b5ed52c89afbb778a740aab42f6f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_176.png",
+              "sha256": "a15909616fad0bab83f16b198425380c9a0b93d2e5f595b3f6e09ff299461c88"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_177.png",
+              "sha256": "4950fecec0656ec139be3b6b283d3dc2aa748a60459879f76103688ab6162e98"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_178.png",
+              "sha256": "30ea5ae91880565adc16b2574f864a8b6ee1f5d1198a8e1ee805b02a3bc67eab"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_179.png",
+              "sha256": "736ef50b3f852fbc3ba31a518aa3b6a9270dbfbbfabe4089ced9907efcea57b2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_180.png",
+              "sha256": "7282265bc85434469c364eccfe88bcd20715175eff1faf9fb937ea4f32ca8722"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_181.png",
+              "sha256": "9414ecc1b48eb0fe97429a420ea1ec8894f84734ca2b454838be9da64ead7927"
+            },
+            {
               "path": "apps/bank-408/assets/pdf_images/net/page_182.png",
               "sha256": "50a31d7f22ab93845761173a484705818eeb200015437422dd9b590435a4174e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_183.png",
+              "sha256": "dbe6943493a52de7e2cacc2bb085452641b52ff4b9eb4974836dbe2d62a76058"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_184.png",
+              "sha256": "5a1fc003aef8bab4a42906a50b17f1155567d46d3bcf49287b53dfdd23fd349d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_185.png",
+              "sha256": "f74342c01d834673cd762de40de17212afc74b82dc3b5c869fe2387c2bca2c00"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_186.png",
+              "sha256": "c696965b67654dfc0c7e0676ecb25c8fb8578b13db5467cc239495e91de69db7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_187.png",
+              "sha256": "b1c97b759ebc0a42bf0c0a70f94e7de288665c291f616159c6dab6d5fd7a6e18"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_188.png",
+              "sha256": "224ba5101f7830ef486a1189d9e0024bd0df57a31b123693773cc613b08a5645"
             }
           ],
-          "final_action": "certify",
+          "final_action": "patch",
           "content_match": true,
           "options_match": true,
           "answer_match": true,
           "explanation_match": true,
           "image_match": true,
           "detected_errors": [],
-          "rationale": "Xiaomi-OCR-0 读取原书题干与答案裁图；题干覆盖率 0.983、答案覆盖率 0.981，数字一致率 1.000/1.000。 配图定位匹配 1.000。",
-          "source_hash": "88638e423f7e42196c02462a4230fadab7713cba2c77e160ce0e3a26b9954ae0"
+          "rationale": "断行复核：仅恢复句末标点后的换行（补丁原有排版），题干/选项/答案/解析文字与上一版逐字一致。",
+          "source_hash": "4ab469dd11ae70792810299a09b10cd1e39e804655151483e430b3371a26e8ce",
+          "post_patch_verified": true
         }
       },
       "certification_profile": "non_choice_source_answer"
@@ -203767,7 +204572,7 @@
       "course_key": "net",
       "chapter": "网络层 · IPv4 · 解答题",
       "question_id": "A17",
-      "source_hash": "9caf8d338d8d77caa628c20b5f315c1c1622d3e25be3aaec0a8cc576f7cd4a38",
+      "source_hash": "0f7b4b1649007f788a7b223e5e059e20906add9b1fcf9524d63b463ca913fd94",
       "source_fidelity": "verified",
       "answer_validation": "verified",
       "overall": "certified",
@@ -203812,32 +204617,153 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-11-05T12:00:00+00:00",
+      "verified_at": "2026-11-13T08:07:19+00:00",
       "evidence": {
         "human_action": "hold",
         "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
         "original_page_review": {
           "source_uid": "408:cs408-net::网络层 · IPv4 · 解答题::A17",
           "protocol": "codex-original-page-review-v1",
-          "reviewer": "grok-page-review",
-          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "reviewer": "kimi-code",
+          "reviewed_at": "2026-11-13T08:07:19+00:00",
           "q_pages_viewed": [
             {
+              "path": "apps/bank-408/assets/pdf_images/net/page_156.png",
+              "sha256": "4232cc830a95dcfade75a3dd109514bfb3683e6a0108dc5de48e3d0b8a6c8c7f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_157.png",
+              "sha256": "c8624856141ead95f59cdb625c6e7ca2e46d26080332c04e074f97a4c3dafe73"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_158.png",
+              "sha256": "f8a2747c9d2954158a349a3f5121b89c53d77e6b0f30174e9ba5c610c14c1cb3"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_159.png",
+              "sha256": "c455a3d7525c2941be9ae2fb4e981f403c3e5bff30c051b4377acc15e60773ce"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_160.png",
+              "sha256": "b454044c1156211bccaa58ca272ece41708823dd5adc9fababe8d54de54af168"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_161.png",
+              "sha256": "3ca9d34d385a0474f3dcea6171327eae4aa74869cfdadaba93f62a451eeb715b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_162.png",
+              "sha256": "7764f5e32d040dddd477575457a0af6260430b5ac8b47edbd4d2101524ea0d45"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_163.png",
+              "sha256": "475d4e0808a43c06402c1daa1b0273c6fa008fe2b995c7358d8febc9197e1a48"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_164.png",
+              "sha256": "cee09195cfc0c7afe45c0abcc1734a6a893d0f8e9282fe51f8ec69a725e08fe5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_165.png",
+              "sha256": "db15dd5dba48f7cd9ec692cf010335b6936a3a7276808e6db074073a2495dec2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_166.png",
+              "sha256": "10e8f810f711c66457c8b9e9d482cf41afee4f86b5aa9165a044577f71380425"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_167.png",
+              "sha256": "7325ac89d3270d60a4aa4437b04580f13dcdb9a36dd21cd5739e32c72d8dfd8f"
+            },
+            {
               "path": "apps/bank-408/assets/pdf_images/net/page_168.png",
-              "sha256": "b794b4ec559bb95d45a3a6c88c6e49cb61636d74eeae0bab803ba5f981a30872",
-              "page": 168
+              "sha256": "b794b4ec559bb95d45a3a6c88c6e49cb61636d74eeae0bab803ba5f981a30872"
             },
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_169.png",
-              "sha256": "b5fa3186da959c046af163b2c191f267e5747d364bb18d143615c775bd9d4d07",
-              "page": 169
+              "sha256": "b5fa3186da959c046af163b2c191f267e5747d364bb18d143615c775bd9d4d07"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_170.png",
+              "sha256": "907274a22747ddfc9ac1177ce7ad1696771d4358e5307a6f7080e20ec269f14f"
             }
           ],
           "a_pages_viewed": [
             {
+              "path": "apps/bank-408/assets/pdf_images/net/page_170.png",
+              "sha256": "907274a22747ddfc9ac1177ce7ad1696771d4358e5307a6f7080e20ec269f14f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_171.png",
+              "sha256": "7b82534d76298c3a44ff7de2ee71593c1212a893d7f0dc912479ac424854704f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_172.png",
+              "sha256": "6d798d5d5e4d2cbf724c056695fc93aaa75967103293a35c696ff2c9f51c475e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_173.png",
+              "sha256": "81e2549c48c6d93656fbeb6bde4a960e90fe9af3361ef018a441f4bb10d4419c"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_174.png",
+              "sha256": "e8b480f54938f1e093fc622acb3ff8ec37751418b4f1f1fff85aeefa50ec2af0"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_175.png",
+              "sha256": "47d2d59d4a7e173532d061bfd763fd4b29d7b5ed52c89afbb778a740aab42f6f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_176.png",
+              "sha256": "a15909616fad0bab83f16b198425380c9a0b93d2e5f595b3f6e09ff299461c88"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_177.png",
+              "sha256": "4950fecec0656ec139be3b6b283d3dc2aa748a60459879f76103688ab6162e98"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_178.png",
+              "sha256": "30ea5ae91880565adc16b2574f864a8b6ee1f5d1198a8e1ee805b02a3bc67eab"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_179.png",
+              "sha256": "736ef50b3f852fbc3ba31a518aa3b6a9270dbfbbfabe4089ced9907efcea57b2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_180.png",
+              "sha256": "7282265bc85434469c364eccfe88bcd20715175eff1faf9fb937ea4f32ca8722"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_181.png",
+              "sha256": "9414ecc1b48eb0fe97429a420ea1ec8894f84734ca2b454838be9da64ead7927"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_182.png",
+              "sha256": "50a31d7f22ab93845761173a484705818eeb200015437422dd9b590435a4174e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_183.png",
+              "sha256": "dbe6943493a52de7e2cacc2bb085452641b52ff4b9eb4974836dbe2d62a76058"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_184.png",
+              "sha256": "5a1fc003aef8bab4a42906a50b17f1155567d46d3bcf49287b53dfdd23fd349d"
+            },
+            {
               "path": "apps/bank-408/assets/pdf_images/net/page_185.png",
-              "sha256": "f74342c01d834673cd762de40de17212afc74b82dc3b5c869fe2387c2bca2c00",
-              "page": 185
+              "sha256": "f74342c01d834673cd762de40de17212afc74b82dc3b5c869fe2387c2bca2c00"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_186.png",
+              "sha256": "c696965b67654dfc0c7e0676ecb25c8fb8578b13db5467cc239495e91de69db7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_187.png",
+              "sha256": "b1c97b759ebc0a42bf0c0a70f94e7de288665c291f616159c6dab6d5fd7a6e18"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_188.png",
+              "sha256": "224ba5101f7830ef486a1189d9e0024bd0df57a31b123693773cc613b08a5645"
             }
           ],
           "final_action": "patch",
@@ -203847,9 +204773,9 @@
           "explanation_match": true,
           "image_match": true,
           "detected_errors": [],
-          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
-          "post_patch_verified": true,
-          "source_hash": "9caf8d338d8d77caa628c20b5f315c1c1622d3e25be3aaec0a8cc576f7cd4a38"
+          "rationale": "断行复核：仅恢复句末标点后的换行（补丁原有排版），题干/选项/答案/解析文字与上一版逐字一致。",
+          "source_hash": "0f7b4b1649007f788a7b223e5e059e20906add9b1fcf9524d63b463ca913fd94",
+          "post_patch_verified": true
         }
       },
       "certification_profile": "non_choice_source_answer",
@@ -215464,7 +216390,7 @@
       "course_key": "net",
       "chapter": "网络层 · 网络层设备 · 解答题",
       "question_id": "A03",
-      "source_hash": "5ff704c7043a507f1ce4bd825cf3834c0b9cb53f55492273bf39d3430b76c1dc",
+      "source_hash": "c112ce9133e8a1843f6221fe544c35d409c1795ac1abd1f918e6e31c1585c791",
       "source_fidelity": "verified",
       "answer_validation": "verified",
       "overall": "certified",
@@ -215487,32 +216413,65 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-11-05T12:00:00+00:00",
+      "verified_at": "2026-11-13T08:07:19+00:00",
       "evidence": {
         "human_action": "hold",
         "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
         "original_page_review": {
           "source_uid": "408:cs408-net::网络层 · 网络层设备 · 解答题::A03",
           "protocol": "codex-original-page-review-v1",
-          "reviewer": "grok-page-review",
-          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "reviewer": "kimi-code",
+          "reviewed_at": "2026-11-13T08:07:19+00:00",
           "q_pages_viewed": [
             {
+              "path": "apps/bank-408/assets/pdf_images/net/page_221.png",
+              "sha256": "20f0a2e1f483d4819c7cb8d2d4f037b248c9792ed1f8909089f0544129815890"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_222.png",
+              "sha256": "08e85a7a1580b99d5c1d3f80420a1a16f940e66e7cecd396bc069dca3165ba06"
+            },
+            {
               "path": "apps/bank-408/assets/pdf_images/net/page_223.png",
-              "sha256": "b99e1a17248a155ffe73333aa3483e69dc9b2a938db335f7236c2cb2f6a36545",
-              "page": 223
+              "sha256": "b99e1a17248a155ffe73333aa3483e69dc9b2a938db335f7236c2cb2f6a36545"
             },
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_224.png",
-              "sha256": "8f6100e044dc93a485051bc67e86f7ae143fee9b9a040022c537b0de56e8ef39",
-              "page": 224
+              "sha256": "8f6100e044dc93a485051bc67e86f7ae143fee9b9a040022c537b0de56e8ef39"
             }
           ],
           "a_pages_viewed": [
             {
+              "path": "apps/bank-408/assets/pdf_images/net/page_224.png",
+              "sha256": "8f6100e044dc93a485051bc67e86f7ae143fee9b9a040022c537b0de56e8ef39"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_225.png",
+              "sha256": "b7518dd67d08561eae61ab3ae1c9eac1a87e008944d26b97d2f231ec120c06f8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_226.png",
+              "sha256": "3861de91ef2ca52b246e33c78beeb3148570de6da5902f9640fa699fde9a30ce"
+            },
+            {
               "path": "apps/bank-408/assets/pdf_images/net/page_227.png",
-              "sha256": "7bf7c376f96ef8f9a159a999751a76e91d1aa8c39762ab37e13d2fec31b88fc2",
-              "page": 227
+              "sha256": "7bf7c376f96ef8f9a159a999751a76e91d1aa8c39762ab37e13d2fec31b88fc2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_228.png",
+              "sha256": "468792c7f2926a5dcc6d1b7c167e067c2b7c16ee6b9ddc268b930983a85aaeb5"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_229.png",
+              "sha256": "9565dd064e98c63ab478433eae1a45d3f9282ed56fb9f0661a40fbf6df6e2cf4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_230.png",
+              "sha256": "386bd3e6f4d4255dbc68c746a0884ff4b24d9504815677f2765e0c422b172e6a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_231.png",
+              "sha256": "3c564bffd765481c17ed803b0463626ae933ae0488dd237f44779930d6297f71"
             }
           ],
           "final_action": "patch",
@@ -215522,9 +216481,9 @@
           "explanation_match": true,
           "image_match": true,
           "detected_errors": [],
-          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
-          "post_patch_verified": true,
-          "source_hash": "5ff704c7043a507f1ce4bd825cf3834c0b9cb53f55492273bf39d3430b76c1dc"
+          "rationale": "断行复核：仅恢复句末标点后的换行（补丁原有排版），题干/选项/答案/解析文字与上一版逐字一致。",
+          "source_hash": "c112ce9133e8a1843f6221fe544c35d409c1795ac1abd1f918e6e31c1585c791",
+          "post_patch_verified": true
         }
       },
       "certification_profile": "non_choice_source_answer",
@@ -217656,7 +218615,7 @@
       "course_key": "net",
       "chapter": "网络层 · 路由算法与路由协议 · 解答题",
       "question_id": "A04",
-      "source_hash": "d4b2406f78cfffd86affd2750dbb37efddf0019df03ee7b31849a8f7d9eb473a",
+      "source_hash": "5ee10b06255d527726552487677eb4e490475bd212f2a8cfccb5d88ff70b3fdc",
       "source_fidelity": "verified",
       "answer_validation": "verified",
       "overall": "certified",
@@ -217682,32 +218641,77 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-11-05T12:00:00+00:00",
+      "verified_at": "2026-11-13T08:07:19+00:00",
       "evidence": {
         "human_action": "hold",
         "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
         "original_page_review": {
           "source_uid": "408:cs408-net::网络层 · 路由算法与路由协议 · 解答题::A04",
           "protocol": "codex-original-page-review-v1",
-          "reviewer": "grok-page-review",
-          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "reviewer": "kimi-code",
+          "reviewed_at": "2026-11-13T08:07:19+00:00",
           "q_pages_viewed": [
             {
+              "path": "apps/bank-408/assets/pdf_images/net/page_201.png",
+              "sha256": "ecdc8e98f2aa631c8872849b0dd84c9f68b452c0877d2df7f024b5e786f5b9b9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_202.png",
+              "sha256": "db01eb11a3bfccd5354f2479503c2b506f15a7d1c206f573f3d35fe4c9d2fe69"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_203.png",
+              "sha256": "a1af43eccd1231627e186dbfbceab983a3078c3e8ac7c20cb78ea837d75e1b17"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_204.png",
+              "sha256": "f3a6565a6b6d90041e77b445d0bf4fd13ddf6a547592373ddd406311b895c6f3"
+            },
+            {
               "path": "apps/bank-408/assets/pdf_images/net/page_205.png",
-              "sha256": "6f9f53856a83666b2c3298553bcd832df19247fec3cece47b861de5c23c3521e",
-              "page": 205
+              "sha256": "6f9f53856a83666b2c3298553bcd832df19247fec3cece47b861de5c23c3521e"
             },
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_206.png",
-              "sha256": "2ca75219395d9b5736186504086d248deb3d19740a73c6863e635a134a47d324",
-              "page": 206
+              "sha256": "2ca75219395d9b5736186504086d248deb3d19740a73c6863e635a134a47d324"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_207.png",
+              "sha256": "afd82fe017f69b40189904ef89ac814b8e95155fc1ec4a4b3fc3d296f9feb593"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_208.png",
+              "sha256": "d33b1c079d212fd8c39cc2cf5de532a317a55097fd3aeea0f7ad684752567ac8"
             }
           ],
           "a_pages_viewed": [
             {
+              "path": "apps/bank-408/assets/pdf_images/net/page_208.png",
+              "sha256": "d33b1c079d212fd8c39cc2cf5de532a317a55097fd3aeea0f7ad684752567ac8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_209.png",
+              "sha256": "8d2c92547ab96daeceb2e4f8fcf4db12dc28424028274c3dff25ad6419d1fa85"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_210.png",
+              "sha256": "94a5821d6437b78a512140be5e22c0e3216be21574aa416e52a4df9dc2b015e9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_211.png",
+              "sha256": "32b7adace11b3600f1a9ed58b461a938b454d803df992809e32e0c9fa3ba56d3"
+            },
+            {
               "path": "apps/bank-408/assets/pdf_images/net/page_212.png",
-              "sha256": "ab7c19362d12a783700a0ee5750aacd6e0ba066d44f80851ada75ee70c14da10",
-              "page": 212
+              "sha256": "ab7c19362d12a783700a0ee5750aacd6e0ba066d44f80851ada75ee70c14da10"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_213.png",
+              "sha256": "e35e85aa305ff2a4bfde0625e6a0fc737bd376c6fd23b2154562021430515bf4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_214.png",
+              "sha256": "41a0e29afa3e161c0900800cd32b6a5ea545a1c08eda05acfa2ce2c135b7eefe"
             }
           ],
           "final_action": "patch",
@@ -217717,9 +218721,9 @@
           "explanation_match": true,
           "image_match": true,
           "detected_errors": [],
-          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
-          "post_patch_verified": true,
-          "source_hash": "d4b2406f78cfffd86affd2750dbb37efddf0019df03ee7b31849a8f7d9eb473a"
+          "rationale": "断行复核：仅恢复句末标点后的换行（补丁原有排版），题干/选项/答案/解析文字与上一版逐字一致。",
+          "source_hash": "5ee10b06255d527726552487677eb4e490475bd212f2a8cfccb5d88ff70b3fdc",
+          "post_patch_verified": true
         }
       },
       "certification_profile": "non_choice_source_answer",
@@ -217871,7 +218875,7 @@
       "course_key": "net",
       "chapter": "网络层 · 路由算法与路由协议 · 解答题",
       "question_id": "A07",
-      "source_hash": "227255eb952a20ffd237eb9679e92f4adb80f506e71cf111faba604d769dcfe4",
+      "source_hash": "7c6bb466e9097e8b30b366175ac15d4d3b64cf8c1f88f12e80253a7d357d004d",
       "source_fidelity": "verified",
       "answer_validation": "verified",
       "overall": "certified",
@@ -217897,32 +218901,77 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-11-05T12:00:00+00:00",
+      "verified_at": "2026-11-13T08:07:19+00:00",
       "evidence": {
         "human_action": "hold",
         "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
         "original_page_review": {
           "source_uid": "408:cs408-net::网络层 · 路由算法与路由协议 · 解答题::A07",
           "protocol": "codex-original-page-review-v1",
-          "reviewer": "grok-page-review",
-          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "reviewer": "kimi-code",
+          "reviewed_at": "2026-11-13T08:07:19+00:00",
           "q_pages_viewed": [
             {
+              "path": "apps/bank-408/assets/pdf_images/net/page_201.png",
+              "sha256": "ecdc8e98f2aa631c8872849b0dd84c9f68b452c0877d2df7f024b5e786f5b9b9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_202.png",
+              "sha256": "db01eb11a3bfccd5354f2479503c2b506f15a7d1c206f573f3d35fe4c9d2fe69"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_203.png",
+              "sha256": "a1af43eccd1231627e186dbfbceab983a3078c3e8ac7c20cb78ea837d75e1b17"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_204.png",
+              "sha256": "f3a6565a6b6d90041e77b445d0bf4fd13ddf6a547592373ddd406311b895c6f3"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_205.png",
+              "sha256": "6f9f53856a83666b2c3298553bcd832df19247fec3cece47b861de5c23c3521e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_206.png",
+              "sha256": "2ca75219395d9b5736186504086d248deb3d19740a73c6863e635a134a47d324"
+            },
+            {
               "path": "apps/bank-408/assets/pdf_images/net/page_207.png",
-              "sha256": "afd82fe017f69b40189904ef89ac814b8e95155fc1ec4a4b3fc3d296f9feb593",
-              "page": 207
+              "sha256": "afd82fe017f69b40189904ef89ac814b8e95155fc1ec4a4b3fc3d296f9feb593"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_208.png",
+              "sha256": "d33b1c079d212fd8c39cc2cf5de532a317a55097fd3aeea0f7ad684752567ac8"
             }
           ],
           "a_pages_viewed": [
             {
+              "path": "apps/bank-408/assets/pdf_images/net/page_208.png",
+              "sha256": "d33b1c079d212fd8c39cc2cf5de532a317a55097fd3aeea0f7ad684752567ac8"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_209.png",
+              "sha256": "8d2c92547ab96daeceb2e4f8fcf4db12dc28424028274c3dff25ad6419d1fa85"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_210.png",
+              "sha256": "94a5821d6437b78a512140be5e22c0e3216be21574aa416e52a4df9dc2b015e9"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_211.png",
+              "sha256": "32b7adace11b3600f1a9ed58b461a938b454d803df992809e32e0c9fa3ba56d3"
+            },
+            {
               "path": "apps/bank-408/assets/pdf_images/net/page_212.png",
-              "sha256": "ab7c19362d12a783700a0ee5750aacd6e0ba066d44f80851ada75ee70c14da10",
-              "page": 212
+              "sha256": "ab7c19362d12a783700a0ee5750aacd6e0ba066d44f80851ada75ee70c14da10"
             },
             {
               "path": "apps/bank-408/assets/pdf_images/net/page_213.png",
-              "sha256": "e35e85aa305ff2a4bfde0625e6a0fc737bd376c6fd23b2154562021430515bf4",
-              "page": 213
+              "sha256": "e35e85aa305ff2a4bfde0625e6a0fc737bd376c6fd23b2154562021430515bf4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/net/page_214.png",
+              "sha256": "41a0e29afa3e161c0900800cd32b6a5ea545a1c08eda05acfa2ce2c135b7eefe"
             }
           ],
           "final_action": "patch",
@@ -217932,9 +218981,9 @@
           "explanation_match": true,
           "image_match": true,
           "detected_errors": [],
-          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
-          "post_patch_verified": true,
-          "source_hash": "227255eb952a20ffd237eb9679e92f4adb80f506e71cf111faba604d769dcfe4"
+          "rationale": "断行复核：仅恢复句末标点后的换行（补丁原有排版），题干/选项/答案/解析文字与上一版逐字一致。",
+          "source_hash": "7c6bb466e9097e8b30b366175ac15d4d3b64cf8c1f88f12e80253a7d357d004d",
+          "post_patch_verified": true
         }
       },
       "certification_profile": "non_choice_source_answer",
@@ -256182,7 +257231,7 @@
       "course_key": "os",
       "chapter": "文件管理 · 目录与文件 · 解答题",
       "question_id": "A05",
-      "source_hash": "9ddfe084b9c9ae62845e990ee9d34d2c385b08a1d829b6dcfdfd25e3c6080942",
+      "source_hash": "83b5cb6f59de640fd0288c7f3ff01e0f34ff34d360d8f7b8911272e806c68c1c",
       "source_fidelity": "verified",
       "answer_validation": "verified",
       "overall": "certified",
@@ -256223,37 +257272,137 @@
       ],
       "has_image": true,
       "answer_choice": "",
-      "verified_at": "2026-11-05T12:00:00+00:00",
+      "verified_at": "2026-11-13T08:07:19+00:00",
       "evidence": {
         "human_action": "hold",
         "human_evidence": "fresh_content_mismatch;fresh_options_mismatch;published_answer_missing;raw_content_mismatch;raw_options_mismatch;risk_medium;essay_or_missing_published_choice",
         "original_page_review": {
           "source_uid": "408:cs408-os::文件管理 · 目录与文件 · 解答题::A05",
           "protocol": "codex-original-page-review-v1",
-          "reviewer": "grok-page-review",
-          "reviewed_at": "2026-11-05T12:00:00+00:00",
+          "reviewer": "kimi-code",
+          "reviewed_at": "2026-11-13T08:07:19+00:00",
           "q_pages_viewed": [
             {
+              "path": "apps/bank-408/assets/pdf_images/os/page_276.png",
+              "sha256": "97fe51b6634fa9be141d7e6534e9df558dffb85439fb6350a0982a078c763b57"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_277.png",
+              "sha256": "c67651a99bfee107eb92c7e42b78b2daa75613309e97096a3170bf2de7722c48"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_278.png",
+              "sha256": "b553e62fc02009ea5731de5520203857b44f00833b5194ccfd511eb50fc3dbf4"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_279.png",
+              "sha256": "c83fdf5bc21bd38a4c6dd7952c8a2a11fcb9741400066d5ea2b28b1ff65fdd8a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_280.png",
+              "sha256": "67b6b0dc3e9b7f0328ff7d434ae05fd418527aeda5080cf00a9c2192103f54f3"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_281.png",
+              "sha256": "c00af36a4b5d893967aed7b7ea8b3072b76fedd8614187284bcf33dc9ba896fb"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_282.png",
+              "sha256": "9c09b30990315c10c2d430536c88c1900879435f45bdd9a0b668e82fca2c1f80"
+            },
+            {
               "path": "apps/bank-408/assets/pdf_images/os/page_283.png",
-              "sha256": "7a831e83fae16c94a71f2e1a795aaee9e83d8af7f1391ff20922dee9aabd8200",
-              "page": 283
+              "sha256": "7a831e83fae16c94a71f2e1a795aaee9e83d8af7f1391ff20922dee9aabd8200"
             },
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_284.png",
-              "sha256": "5150098b8fbdffa72ebf38c8493621ee7434995e437036c1e47d123df8b26341",
-              "page": 284
+              "sha256": "5150098b8fbdffa72ebf38c8493621ee7434995e437036c1e47d123df8b26341"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_285.png",
+              "sha256": "3e60202abd62441b8d19bb5a3746948f594078782df9e014dd907d0d72460e82"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_286.png",
+              "sha256": "912e834acb38af0c28f248501a58cc2662ae1660c588b07ad2ad237d0ef5aee7"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_287.png",
+              "sha256": "00aeaa8040ea96497337b48497874602f7a8ff3069781114fb4715815fffb9a2"
             }
           ],
           "a_pages_viewed": [
             {
+              "path": "apps/bank-408/assets/pdf_images/os/page_287.png",
+              "sha256": "00aeaa8040ea96497337b48497874602f7a8ff3069781114fb4715815fffb9a2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_288.png",
+              "sha256": "fb1e136920811b986c10978413490479fde9204ec81e897c0b757b01b2fba925"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_289.png",
+              "sha256": "33ca4a3aaea769a01514d76ab657341de759ec4fc56f6e9b8371c0aa0561f10f"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_290.png",
+              "sha256": "fd4d66cfc66de1c2015b01c29ddd0c222e9b86763cebcf8a2882f79247f808fa"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_291.png",
+              "sha256": "2626b25cfeaec17610d4398d41574bcb1ede987266337b530c52247cac651402"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_292.png",
+              "sha256": "98f3d81b28508484504013243df77616a55ea6dbe3ce08b71a72862b3695d2fa"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_293.png",
+              "sha256": "a5d7c4d5bf674ec532c6fe50017b9b477cb8510a014c8fa919fb7c9183363c38"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_294.png",
+              "sha256": "4536ce11d08e120b975256e446fd0cedb0f64a478121a1fe69d76b3facf23a35"
+            },
+            {
               "path": "apps/bank-408/assets/pdf_images/os/page_295.png",
-              "sha256": "436bd83e3348dd9bb84e32a9502c400fea57866ab52b43877b055d35b1f1aed0",
-              "page": 295
+              "sha256": "436bd83e3348dd9bb84e32a9502c400fea57866ab52b43877b055d35b1f1aed0"
             },
             {
               "path": "apps/bank-408/assets/pdf_images/os/page_296.png",
-              "sha256": "f6725bf69faddd81a70275d6d9da043a1b453142861b851278aed0b3b25e212d",
-              "page": 296
+              "sha256": "f6725bf69faddd81a70275d6d9da043a1b453142861b851278aed0b3b25e212d"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_297.png",
+              "sha256": "a003a52259d85fff8f43dc65cb55c455301d5a824392cbe4ab6d637cfff14b5a"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_298.png",
+              "sha256": "630e70306c6ee364519ddc2c0b1032a0ebd8cc0cb499666b16dabfe5b58c742b"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_299.png",
+              "sha256": "4c4777a120811ec10ca60f65b7e46a995e098c6180bafd614e1b23eea01d65d6"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_300.png",
+              "sha256": "53ceec4eefa586a120217955b05e7fa0ad8cf520421f0c481cfd79b05f9b7b05"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_301.png",
+              "sha256": "afb77b4ca94e64efd5074771a20acc5e07b210e8888270c559be5062c2e4b1c2"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_302.png",
+              "sha256": "666e6a200e7e1c0258420149bcf44ebead61d3934729a5eda78a3dbf79bd248e"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_303.png",
+              "sha256": "c8382e877d5708ce09271035860888278a0611d666c75827527abe0bf7195251"
+            },
+            {
+              "path": "apps/bank-408/assets/pdf_images/os/page_304.png",
+              "sha256": "8022f11eaeb88d9572d946cc8e965ba858a841305f9d05b23c864d2daf1caa87"
             }
           ],
           "final_action": "patch",
@@ -256263,9 +257412,9 @@
           "explanation_match": true,
           "image_match": true,
           "detected_errors": [],
-          "rationale": "对照原书题目页和答案页复核当前发布题；补丁或裁图已核对。",
-          "post_patch_verified": true,
-          "source_hash": "9ddfe084b9c9ae62845e990ee9d34d2c385b08a1d829b6dcfdfd25e3c6080942"
+          "rationale": "断行复核：仅恢复句末标点后的换行（补丁原有排版），题干/选项/答案/解析文字与上一版逐字一致。",
+          "source_hash": "83b5cb6f59de640fd0288c7f3ff01e0f34ff34d360d8f7b8911272e806c68c1c",
+          "post_patch_verified": true
         }
       },
       "certification_profile": "non_choice_source_answer",

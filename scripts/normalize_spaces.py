@@ -58,6 +58,9 @@ _LABEL_RX = re.compile(
 # n）/n) 只保护换行：空格会误伤「115, 134)」「k==1)」「是5）」。
 # ponytail: 仅 1–2 位、仅换行。升级路径是只在行首匹配序号。
 _SEQ_NL_RX = re.compile(r"\n(?=\d{1,2}[)）])")
+# 句末标点后的换行是段落边界：人工补丁靠它把结问、代码段与正文分开。
+# 逗号/顿号/冒号后的换行仍按 OCR 折行吸掉（补丁抄 OCR 时常见的那种断行）。
+_SENT_NL_RX = re.compile(r"(?<=[。？！])\n")
 
 IMAGE_REF_RE = re.compile(r"^[ \t]*(题目图片|答案图片)：[^\n]*$", re.M)
 # 代码围栏整段先摘走：里面的换行、缩进和分栏制表符都是排版，不是 OCR 空格。
@@ -117,6 +120,7 @@ def normalize_text(s: str) -> "tuple[str, Counter]":
     text = IMAGE_REF_RE.sub(_stash, text)
     protected = {m.end() - 1 for m in _LABEL_RX.finditer(text)}
     protected.update(m.end() - 1 for m in _SEQ_NL_RX.finditer(text))
+    protected.update(m.end() - 1 for m in _SENT_NL_RX.finditer(text))
     enc = _enclosing_table(text)
 
     # ponytail: markdown 管道表格行内空格全部保留（行首 | 才算），否则 R2 会把
