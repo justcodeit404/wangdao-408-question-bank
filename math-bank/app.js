@@ -2967,15 +2967,23 @@ function bindPracticeInteractions(container, q) {
   }
 }
 
+// 练习里的掌握度按钮：点当前状态算确认。setMastery 对同值会取消（详情页语义），
+// 每日十题全是「已掌握」题，沿用取消语义会把原标记点没。
+function applyPracticeMastery(container, status) {
+  if (!container || !container._q) return;
+  if (status && getMastery(container._q) !== status) setMastery(container._q, status);
+  const box = container.querySelector('[data-role="practiceMastery"]');
+  if (box) box.hidden = true;
+}
+
 function showPracticeMastery(container) {
   const box = container.querySelector('[data-role="practiceMastery"]');
   if (!box) return;
+  const current = container._q ? getMastery(container._q) : '';
   box.hidden = false;
   box.querySelectorAll('[data-role="masteryBtn"]').forEach(btn => {
-    btn.onclick = () => {
-      setMastery(container._q, btn.dataset.mastery);
-      box.hidden = true;
-    };
+    btn.classList.toggle('active', btn.dataset.mastery === current);
+    btn.onclick = () => applyPracticeMastery(container, btn.dataset.mastery);
   });
 }
 
@@ -5570,8 +5578,7 @@ function setupEvents() {
         const box = container && container.querySelector('[data-role="practiceMastery"]');
         if (box && !box.hidden && container._q) {
           e.preventDefault();
-          setMastery(container._q, map[e.key]);
-          box.hidden = true;
+          applyPracticeMastery(container, map[e.key]);
         }
       }
     }
@@ -6131,7 +6138,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=544').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=545').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {

@@ -2792,6 +2792,11 @@ body.compact-view .question-row .row-tags .row-tag { display: none; }
 .btn-mastery.familiar:hover { background: var(--warning-soft); border-color: var(--warning); color: var(--warning); }
 .btn-mastery.unknown:hover { background: var(--danger-soft); border-color: var(--danger); color: var(--danger); }
 
+.btn-mastery.active { color: #fff; border-color: transparent; }
+.btn-mastery.mastered.active { background: var(--success); }
+.btn-mastery.familiar.active { background: var(--warning); }
+.btn-mastery.unknown.active { background: var(--danger); }
+
 /* Practice summary card */
 .practice-summary {
   text-align: center;
