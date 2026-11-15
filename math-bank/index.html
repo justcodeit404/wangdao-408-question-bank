@@ -19,27 +19,28 @@
 <title>考研题库 · 408</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0e100f">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<link rel="stylesheet" href="vendor/katex/katex.min.css?v=548">
+<script defer src="vendor/katex/katex.min.js?v=548"></script>
 <!-- 不用 Google Fonts：国内常被墙/超时，阻塞首屏导致白屏 -->
-<link rel="stylesheet" href="styles.css?v=545">
-<script>window.__BANK_DATA_VER__='545';</script>
+<link rel="stylesheet" href="styles.css?v=548">
+<script>window.__BANK_DATA_VER__='548';</script>
 <script>
 (function () {
   var base = (location.pathname || '').indexOf('/banks/') === 0
     ? '/banks/common/'
     : 'vendor/viewer-common/';
   document.write('<script src="' + base + 'storage.js"><\/script>');
-  document.write('<script src="' + base + 'platform-sync.js?v=545"><\/script>');
-      document.write('<link rel="stylesheet" href="' + base + 'scratch-pad.css?v=545">');
-      document.write('<script src="' + base + 'scratch-ink.js?v=545"><\/script>');
-      document.write('<script src="' + base + 'scratch-pad.js?v=545"><\/script>');
-  document.write('<script src="' + base + 'question-notes.js?v=545"><\/script>');
-  document.write('<script src="' + base + 'pdf-export.js?v=545"><\/script>');
+  document.write('<script src="' + base + 'platform-sync.js?v=548"><\/script>');
+      document.write('<link rel="stylesheet" href="' + base + 'scratch-pad.css?v=548">');
+      document.write('<script src="' + base + 'scratch-ink.js?v=548"><\/script>');
+      document.write('<script src="' + base + 'scratch-pad.js?v=548"><\/script>');
+  document.write('<script src="' + base + 'question-notes.js?v=548"><\/script>');
+  document.write('<script src="' + base + 'pdf-export.js?v=548"><\/script>');
 })();
 </script>
 </head>
 <body>
+<a class="skip-link" href="#content">跳到题目列表</a>
 <div class="app">
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
@@ -240,7 +241,7 @@
       </div>
     </div>
 
-    <div class="content" id="content">
+    <div class="content" id="content" tabindex="-1">
       <div class="resume-bar" id="resumeBar" hidden>
         <div class="resume-bar-text" id="resumeText">上次练到：—</div>
         <div class="resume-bar-actions">
@@ -269,10 +270,10 @@
 </div>
 
 <!-- Dashboard Modal -->
-<div class="modal-overlay" id="dashboardModal">
+<div class="modal-overlay" id="dashboardModal" role="dialog" aria-modal="true" aria-labelledby="dashboardTitle">
   <div class="modal-box dashboard-modal">
     <div class="modal-header">
-      <h3>📊 学习仪表盘</h3>
+      <h3 id="dashboardTitle">📊 学习仪表盘</h3>
       <button class="modal-close" onclick="closeDashboard()" aria-label="关闭">&times;</button>
     </div>
     <div class="modal-body">
@@ -282,10 +283,10 @@
 </div>
 
 <!-- Wrong Book Modal -->
-<div class="modal-overlay" id="wrongBookModal">
+<div class="modal-overlay" id="wrongBookModal" role="dialog" aria-modal="true" aria-labelledby="wrongBookTitle">
   <div class="modal-box wrongbook-modal">
     <div class="modal-header">
-      <h3>📕 错题本</h3>
+      <h3 id="wrongBookTitle">📕 错题本</h3>
       <div style="display:flex;gap:8px;align-items:center">
         <select id="wrongBookGroupBy" class="pill-select" style="padding:4px 8px;font-size:0.78rem">
           <option value="chapter">按章节</option>
@@ -302,10 +303,10 @@
 </div>
 
 <!-- Paper Modal -->
-<div class="modal-overlay" id="paperModal">
+<div class="modal-overlay" id="paperModal" role="dialog" aria-modal="true" aria-labelledby="paperTitle">
   <div class="modal-box paper-modal">
     <div class="modal-header">
-      <h3>🖨 试卷生成</h3>
+      <h3 id="paperTitle">🖨 试卷生成</h3>
       <button class="modal-close" onclick="closePaper()" aria-label="关闭">&times;</button>
     </div>
     <div class="modal-body">
@@ -332,10 +333,10 @@
 </div>
 
 <!-- Help Modal -->
-<div class="modal-overlay" id="helpModal">
+<div class="modal-overlay" id="helpModal" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
   <div class="modal-box help-modal">
     <div class="modal-header">
-      <h3>⌨️ 快捷键 & 使用技巧</h3>
+      <h3 id="helpTitle">⌨️ 快捷键 & 使用技巧</h3>
       <button class="modal-close" onclick="closeHelp()" aria-label="关闭">&times;</button>
     </div>
     <div class="modal-body">
@@ -373,10 +374,10 @@
 </div>
 
 <!-- Detail Modal -->
-<div class="modal-overlay" id="detailModal">
+<div class="modal-overlay" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
   <div class="modal-box">
     <div class="modal-header">
-      <h3>题目详情</h3>
+      <h3 id="detailTitle">题目详情</h3>
       <div class="modal-header-actions">
         <div class="mastery-group" role="group" aria-label="掌握程度">
           <button class="mastery-btn" id="detailMasteredBtn" onclick="setDetailMastery('mastered')" aria-label="会了" title="会了">
@@ -412,7 +413,7 @@
 </div>
 
 <!-- Practice Modal -->
-<div class="modal-overlay" id="practiceModal">
+<div class="modal-overlay" id="practiceModal" role="dialog" aria-modal="true" aria-labelledby="practiceTitle">
   <div class="modal-box">
     <div class="modal-header">
       <h3 id="practiceTitle">练习模式</h3>
@@ -429,9 +430,9 @@
   </div>
 </div>
 
-<script src="data.js?v=545"></script>
-<script src="choice-only.js?v=545"></script>
-<script src="app.js?v=545"></script>
+<script defer src="data.js?v=548"></script>
+<script defer src="choice-only.js?v=548"></script>
+<script defer src="app.js?v=548"></script>
 <div id="platformSyncBar" class="platform-sync-bar" hidden aria-hidden="true">
   <div class="platform-sync-bar-text" id="platformSyncBarText"></div>
   <button type="button" class="btn btn-primary" id="platformSyncBarBtn" hidden>重试同步</button>

@@ -2,13 +2,16 @@
 // JS/CSS/HTML + 题库数据 JSON：Network-First（避免题干修了仍显示旧缓存）
 // 其它同源静态：Stale-While-Revalidate
 
-const CACHE_NAME = 'wd408-ui-v545';
+const CACHE_PREFIX = 'wd408-ui-';
+const CACHE_NAME = 'wd408-ui-v548';
 const APP_SHELL = [
   './',
   './index.html',
-  './styles.css?v=545',
-  './app.js?v=545',
-  './data.js?v=545',
+  './styles.css?v=548',
+  './app.js?v=548',
+  './data.js?v=548',
+  './vendor/katex/katex.min.css?v=548',
+  './vendor/katex/katex.min.js?v=548',
   './manifest.json'
 ];
 
@@ -22,7 +25,9 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
-      Promise.all(keys.map((k) => (k === CACHE_NAME ? null : caches.delete(k))))
+      Promise.all(keys.map((k) => (
+        k.startsWith(CACHE_PREFIX) && k !== CACHE_NAME ? caches.delete(k) : null
+      )))
     ).then(() => self.clients.claim())
   );
 });

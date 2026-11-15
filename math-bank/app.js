@@ -790,14 +790,64 @@ function toggleViewMode() {
   renderGrid(search);
 }
 
+const modalFocusReturns = new Map();
+
+function activeModal() {
+  const modals = document.querySelectorAll('.modal-overlay.active');
+  return modals[modals.length - 1] || null;
+}
+
 function openModal(id) {
-  document.getElementById(id).classList.add('active');
+  const modal = document.getElementById(id);
+  if (!modal.classList.contains('active')) modalFocusReturns.set(id, document.activeElement);
+  modal.classList.add('active');
   document.body.style.overflow = 'hidden';
+  const app = document.querySelector('.app');
+  if (app) app.inert = true;
+  const closeBtn = modal.querySelector('.modal-close');
+  if (closeBtn) closeBtn.focus();
 }
 
 function closeModalById(id) {
-  document.getElementById(id).classList.remove('active');
-  document.body.style.overflow = '';
+  const modal = document.getElementById(id);
+  if (!modal.classList.contains('active')) return;
+  modal.classList.remove('active');
+  const returnTo = modalFocusReturns.get(id);
+  modalFocusReturns.delete(id);
+  const remaining = activeModal();
+  document.body.style.overflow = remaining ? 'hidden' : '';
+  const app = document.querySelector('.app');
+  if (app) app.inert = !!remaining;
+  if (remaining) {
+    const closeBtn = remaining.querySelector('.modal-close');
+    if (closeBtn) closeBtn.focus();
+  } else if (returnTo && returnTo.isConnected) {
+    returnTo.focus();
+  }
+}
+
+function trapModalTab(e) {
+  if (e.key !== 'Tab') return false;
+  const modal = activeModal();
+  if (!modal) return false;
+  const focusable = Array.from(modal.querySelectorAll(
+    'button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+  )).filter(el => el.getClientRects().length > 0);
+  if (!focusable.length) {
+    e.preventDefault();
+    return true;
+  }
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  const active = document.activeElement;
+  if (e.shiftKey && (active === first || !modal.contains(active))) {
+    e.preventDefault();
+    last.focus();
+  } else if (!e.shiftKey && (active === last || !modal.contains(active))) {
+    e.preventDefault();
+    first.focus();
+  }
+  return true;
 }
 
 function getAvailableCourses() {
@@ -3071,8 +3121,8 @@ function questionStemHtml(q, mode) {
   // 配图放在题干下方：题干写「如下图」时直接看到图，无需再点「查看原图」
   return `
     <div class="q-text" data-role="qtext"></div>
-    ${imgRef ? imageHtml(imgRef) : ''}
-    ${pageFallbackHtml(q)}
+    ${imgRef ? imageHtml(imgRef, mode) : ''}
+    ${pageFallbackHtml(q, mode)}
   `;
 }
 
@@ -3091,13 +3141,13 @@ function holdPageCropRef(q) {
   };
 }
 
-function pageFallbackHtml(q) {
+function pageFallbackHtml(q, mode) {
   const ref = holdPageCropRef(q);
   if (!ref) return '';
   return `
     <div class="quality-fallback">
       <p class="quality-fallback-note">本题未通过原书复核，题干与答案可能有误；下方按原页展示，请对照原书判断。</p>
-      ${imageHtml(ref)}
+      ${imageHtml(ref, mode)}
     </div>
   `;
 }
@@ -4194,11 +4244,16 @@ function appendExplainImage(el, path) {
   const img = document.createElement('img');
   img.src = src;
   img.alt = '解析配图';
-  img.loading = 'eager';
+  img.loading = 'lazy';
   img.decoding = 'async';
-  img.addEventListener('click', () => zoomImage(img.src));
+  const trigger = document.createElement('button');
+  trigger.type = 'button';
+  trigger.className = 'q-image-button';
+  trigger.setAttribute('aria-label', '放大解析配图');
+  trigger.addEventListener('click', () => zoomImage(img.src));
+  trigger.appendChild(img);
   img.addEventListener('error', () => fig.classList.add('is-broken'));
-  fig.appendChild(img);
+  fig.appendChild(trigger);
   const zoom = document.createElement('span');
   zoom.className = 'q-image-zoom';
   zoom.innerHTML = ZOOM_ICON_SVG;
@@ -4251,19 +4306,23 @@ function fillExplanation(el, expl, prefix) {
   }
 }
 
-function imageHtml(imageRef) {
+function imageHtml(imageRef, mode) {
   if (!imageRef) return '';
   const imgPath = resolveImageSrc(imageRef);
   if (!imgPath) return '';
   const pageLabel = imageRef.page != null && imageRef.page !== ''
     ? `第 ${imageRef.page} 页`
     : '题目配图';
+  const image = `<img src="${imgPath}" alt="${escapeHtml(pageLabel)}" loading="eager" decoding="async"
+    onerror="this.closest('.q-image').classList.add('is-broken')">`;
+  const content = mode === 'print'
+    ? image
+    : `<button type="button" class="q-image-button" aria-label="放大${escapeHtml(pageLabel)}"
+        onclick="zoomImage(this.querySelector('img').src)">${image}</button>`;
   // 默认直接展开配图：题干「如下图」时打开即见，无需点击「查看原图」
   return `
     <figure class="q-image q-image-inline" data-role="qimage">
-      <img src="${imgPath}" alt="${escapeHtml(pageLabel)}" loading="eager" decoding="async"
-        onerror="this.closest('.q-image').classList.add('is-broken')"
-        onclick="zoomImage(this.src)">
+      ${content}
       <span class="q-image-zoom" aria-hidden="true">${ZOOM_ICON_SVG}</span>
       <figcaption class="q-image-note">图 · ${escapeHtml(pageLabel)}</figcaption>
     </figure>
@@ -4271,10 +4330,18 @@ function imageHtml(imageRef) {
 }
 
 function zoomImage(src) {
+  const returnTo = document.activeElement;
+  const inertTarget = activeModal() || document.querySelector('.app');
+  if (inertTarget) inertTarget.inert = true;
   const overlay = document.createElement('div');
   overlay.className = 'zoom-overlay';
+  overlay.tabIndex = -1;
+  overlay.setAttribute('role', 'dialog');
+  overlay.setAttribute('aria-modal', 'true');
+  overlay.setAttribute('aria-label', '放大题图');
   const img = document.createElement('img');
   img.src = src;
+  img.alt = '放大题图';
   img.draggable = false;
   let scale = 1, tx = 0, ty = 0;
   let dragging = false, startX = 0, startY = 0;
@@ -4296,29 +4363,50 @@ function zoomImage(src) {
     startY = e.clientY - ty;
     img.style.cursor = 'grabbing';
   });
-  window.addEventListener('mousemove', (e) => {
+  const onMouseMove = (e) => {
     if (!dragging) return;
     tx = e.clientX - startX;
     ty = e.clientY - startY;
     apply();
-  });
-  window.addEventListener('mouseup', () => {
+  };
+  const onMouseUp = () => {
     if (!dragging) return;
     dragging = false;
     img.style.cursor = 'grab';
-  });
+  };
+  let closed = false;
+  const escHandler = (e) => {
+    if (e.key === 'Tab') {
+      e.preventDefault();
+      overlay.focus();
+    } else if (e.key === 'Escape') {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      close();
+    }
+  };
+  function close() {
+    if (closed) return;
+    closed = true;
+    overlay.remove();
+    window.removeEventListener('mousemove', onMouseMove);
+    window.removeEventListener('mouseup', onMouseUp);
+    window.removeEventListener('keydown', escHandler);
+    if (inertTarget) inertTarget.inert = false;
+    if (returnTo && returnTo.isConnected) returnTo.focus();
+  }
+  window.addEventListener('mousemove', onMouseMove);
+  window.addEventListener('mouseup', onMouseUp);
   overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) overlay.remove();
+    if (e.target === overlay) close();
   });
   const hint = document.createElement('div');
   hint.className = 'zoom-hint';
   hint.textContent = '滚轮缩放 · 拖动平移 · Esc 或点击空白关闭';
   overlay.appendChild(hint);
-  const escHandler = (e) => {
-    if (e.key === 'Escape') { overlay.remove(); window.removeEventListener('keydown', escHandler); }
-  };
   window.addEventListener('keydown', escHandler);
   document.body.appendChild(overlay);
+  overlay.focus();
   img.style.cursor = 'grab';
 }
 
@@ -5508,6 +5596,8 @@ function setupEvents() {
   });
 
   document.addEventListener('keydown', (e) => {
+    if (document.querySelector('.zoom-overlay')) return;
+    if (trapModalTab(e)) return;
     const inEditable = e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable);
     if (e.key === 'Escape') {
       if (inEditable && e.target.id === 'searchInput') {
@@ -6138,7 +6228,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=545').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=548').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {

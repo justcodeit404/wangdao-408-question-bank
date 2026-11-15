@@ -104,9 +104,12 @@
     try {
       global.localStorage.setItem(QUEUE_KEY, JSON.stringify(entries));
     } catch (e) {
-      console.warn('[viewer-notes] 本地存储空间不足，笔记暂存失败，即将丢失数据：' + e);
+      console.warn('[viewer-notes] 本地存储空间不足，笔记暂存失败：' + e);
+      updateQueueBadge();
+      return false;
     }
     updateQueueBadge();
+    return true;
   }
 
   function queueKey(meta) {
@@ -123,7 +126,7 @@
     var entry = { key: key, version: QUEUE_VERSION, bank: meta.bank, source_uid: meta.uid, chapter: meta.chapter, title: meta.title, ink_document: doc, created_at: Date.now(), revision: revisionPrefix + '-' + (++revisionSeq) };
     if (existing) entries.splice(entries.indexOf(existing), 1, entry);
     else entries.push(entry);
-    writeQueue(entries);
+    entry.persisted = writeQueue(entries);
     return entry;
   }
 
@@ -231,19 +234,24 @@
     // 记录已持久化笔迹签名，切题/关闭时据此脏检查，避免重复入队已同步内容
     controller.lastNoteStrokesSig = JSON.stringify(doc.strokes);
     var entry = enqueue(meta, doc);
+    var queueError = '本地暂存失败，原稿仍保留在当前画布；请导出或清理浏览器存储后重试';
+    if (!entry.persisted) controller.lastNoteStrokesSig = null;
 
     if (!onPlatformHost()) {
+      if (!entry.persisted) return { ok: false, error: queueError };
       return { ok: true, queued: true, message: '独立题库：已暂存本地，从平台 /banks/ 打开后自动补存' };
     }
     return withEntryLock(entry, async function () {
       var auth = await ensureAuthed();
       if (!auth.ok) {
+        if (!entry.persisted) return { ok: false, error: queueError };
         return { ok: true, queued: true, message: '未登录：已暂存本地，登录平台后自动补存' };
       }
 
       var resolved = await resolveRemote(meta, auth);
       if (!resolved.ok) {
         // 未解析到平台题目：仍保留原稿到本地队列，避免数据未导入时丢失
+        if (!entry.persisted) return { ok: false, error: queueError };
         return { ok: true, queued: true, message: '暂未在平台解析到该题，已暂存本地' };
       }
       meta.questionId = resolved.data.question_id;
@@ -253,9 +261,11 @@
         if (recognize && saved.status === 403) {
           return { ok: false, status: 403, error: '无权限保存笔记' };
         }
+        if (!entry.persisted) return { ok: false, error: queueError };
         return { ok: true, queued: true, message: '网络异常：已暂存本地，联网后自动补存' };
       }
       dropQueue(entry);
+      controller.lastNoteStrokesSig = JSON.stringify(doc.strokes);
       var note = saved.data;
 
       if (recognize) {
@@ -596,7 +606,10 @@
       var doc = currentDoc(controller);
       if (JSON.stringify(doc.strokes) === controller.lastNoteStrokesSig) return;
       doc.meta = { source: 'viewer', auto: true };
-      enqueue(meta, doc);
+      var entry = enqueue(meta, doc);
+      if (!entry.persisted) {
+        ui.setStatus('本地暂存失败，请保存原稿并清理浏览器存储后重试', true);
+      }
     };
 
     // 切题 / 打开草稿板后：清掉上一题结果面板，回显本题已保存笔记

@@ -136,7 +136,7 @@ if (Test-Path -LiteralPath $CacheFile) {
     }
 }
 $newCache = @{}
-$assetDirs = @("crops", "answer_crops", "page_crops")
+$assetDirs = @("crops", "answer_crops", "page_crops", "vendor/katex")
 $assetChanged = New-Object System.Collections.Generic.List[string]
 $assetRemoved = New-Object System.Collections.Generic.List[string]
 foreach ($d in $assetDirs) {

@@ -2847,6 +2847,29 @@ body.compact-view .question-row .row-tags .row-tag { display: none; }
   flex-wrap: wrap;
 }
 
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 3000;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: var(--on-accent);
+  transform: translateY(-160%);
+}
+.skip-link:focus-visible { transform: translateY(0); }
+
+.q-image-button {
+  display: block;
+  max-width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+.q-image-button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
 /* Focus visible */
 .question-row:focus-visible,
 .tree-toggle:focus-visible,
