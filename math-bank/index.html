@@ -19,23 +19,23 @@
 <title>考研题库 · 408</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0e100f">
-<link rel="stylesheet" href="vendor/katex/katex.min.css?v=548">
-<script defer src="vendor/katex/katex.min.js?v=548"></script>
+<link rel="stylesheet" href="vendor/katex/katex.min.css?v=549">
+<script defer src="vendor/katex/katex.min.js?v=549"></script>
 <!-- 不用 Google Fonts：国内常被墙/超时，阻塞首屏导致白屏 -->
-<link rel="stylesheet" href="styles.css?v=548">
-<script>window.__BANK_DATA_VER__='548';</script>
+<link rel="stylesheet" href="styles.css?v=549">
+<script>window.__BANK_DATA_VER__='549';</script>
 <script>
 (function () {
   var base = (location.pathname || '').indexOf('/banks/') === 0
     ? '/banks/common/'
     : 'vendor/viewer-common/';
   document.write('<script src="' + base + 'storage.js"><\/script>');
-  document.write('<script src="' + base + 'platform-sync.js?v=548"><\/script>');
-      document.write('<link rel="stylesheet" href="' + base + 'scratch-pad.css?v=548">');
-      document.write('<script src="' + base + 'scratch-ink.js?v=548"><\/script>');
-      document.write('<script src="' + base + 'scratch-pad.js?v=548"><\/script>');
-  document.write('<script src="' + base + 'question-notes.js?v=548"><\/script>');
-  document.write('<script src="' + base + 'pdf-export.js?v=548"><\/script>');
+  document.write('<script src="' + base + 'platform-sync.js?v=549"><\/script>');
+      document.write('<link rel="stylesheet" href="' + base + 'scratch-pad.css?v=549">');
+      document.write('<script src="' + base + 'scratch-ink.js?v=549"><\/script>');
+      document.write('<script src="' + base + 'scratch-pad.js?v=549"><\/script>');
+  document.write('<script src="' + base + 'question-notes.js?v=549"><\/script>');
+  document.write('<script src="' + base + 'pdf-export.js?v=549"><\/script>');
 })();
 </script>
 </head>
@@ -79,7 +79,7 @@
   </aside>
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-  <div class="main">
+  <main class="main">
     <div class="app-header" id="bankShellHeader">
       <div class="shell-left">
         <a class="shell-brand" href="/banks/math/" title="考研题库">
@@ -133,7 +133,7 @@
           <span>随机一题</span>
         </button>
         <div class="split-btn" id="practiceSplitBtn">
-          <button id="btnPractice" class="btn btn-primary">
+          <button id="btnPractice" class="btn btn-primary" aria-label="练习模式">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m10 8 6 4-6 4V8z"/></svg>
             <span>练习模式</span>
           </button>
@@ -266,7 +266,7 @@
       <div class="question-grid" id="questionGrid"></div>
       <div class="pagination" id="pagination"></div>
     </div>
-  </div>
+  </main>
 </div>
 
 <!-- Dashboard Modal -->
@@ -430,9 +430,9 @@
   </div>
 </div>
 
-<script defer src="data.js?v=548"></script>
-<script defer src="choice-only.js?v=548"></script>
-<script defer src="app.js?v=548"></script>
+<script defer src="data.js?v=549"></script>
+<script defer src="choice-only.js?v=549"></script>
+<script defer src="app.js?v=549"></script>
 <div id="platformSyncBar" class="platform-sync-bar" hidden aria-hidden="true">
   <div class="platform-sync-bar-text" id="platformSyncBarText"></div>
   <button type="button" class="btn btn-primary" id="platformSyncBarBtn" hidden>重试同步</button>

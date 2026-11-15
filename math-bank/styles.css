@@ -76,7 +76,7 @@
   --surface-active: rgb(134 149 233 / 0.14);
   --text-primary: #e9e7e2;
   --text-secondary: #a8a69f;
-  --text-tertiary: #6e716c;
+  --text-tertiary: #a8a69f;
   --border: #2a2f2c;
   --border-strong: #3a423d;
   --accent: #8695e9;
@@ -2913,8 +2913,15 @@ select:focus-visible {
   .toggle-sidebar { display: inline-flex; }
   .course-tabs { display: none; }
 
-  .topbar { padding: 0 12px; gap: 8px; }
-  .search-box { min-width: 0; }
+  .topbar {
+    height: auto;
+    min-height: var(--header-h);
+    flex-wrap: wrap;
+    padding: 8px 12px;
+    gap: 8px;
+  }
+  .search-box { flex: 1 1 120px; min-width: 120px; }
+  .topbar-actions { flex: 0 0 100%; overflow-x: auto; padding-bottom: 2px; }
   .pill-select { display: none; }
   .topbar-actions .btn span { display: none; }
 

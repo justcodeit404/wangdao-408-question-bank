@@ -2588,7 +2588,7 @@ function renderGrid(search) {
     else if (q.type !== '选择题') tags.push('参考答案');
     const chShort = (q.chapter || '').split('·')[0].trim() || q.chapter || '';
     return `
-      <div class="question-card" tabindex="0" role="button" aria-label="${displayId(q)} ${q.type}" data-index="${start + i}">
+      <div class="question-card" tabindex="0" role="button" data-index="${start + i}">
         <div class="card-header">
           <span class="card-id">${escapeHtml(chShort)} · ${escapeHtml(displayId(q))}</span>
           <div class="card-badges">
@@ -2628,7 +2628,7 @@ function renderPagination() {
     <span class="page-info">${currentPage} / ${totalPages}</span>
     <button onclick="changePage(${currentPage + 1})" ${currentPage >= totalPages ? 'disabled' : ''}>下一页</button>
     <button onclick="changePage(${totalPages})" ${currentPage >= totalPages ? 'disabled' : ''}>末页</button>
-    <span class="page-jump">跳转 <input type="number" min="1" max="${totalPages}" value="${currentPage}" onkeydown="if(event.key==='Enter')changePage(+this.value)"> 页</span>
+    <span class="page-jump">跳转 <input type="number" min="1" max="${totalPages}" value="${currentPage}" aria-label="跳转页码" onkeydown="if(event.key==='Enter')changePage(+this.value)"> 页</span>
   `;
 }
 
@@ -6228,7 +6228,7 @@ init();
 // PWA：注册 Service Worker（换 CACHE 版本后主动 update，避免旧 CSS 一直 stale）
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=548').then((reg) => {
+    navigator.serviceWorker.register('./sw.js?v=549').then((reg) => {
       reg.update().catch(() => {});
       console.log('[SW] registered, scope:', reg.scope);
     }).catch((err) => {
