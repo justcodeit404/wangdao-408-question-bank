@@ -3232,7 +3232,7 @@ function stemTableHtml(lines) {
 }
 
 // ponytail: same splitter copied in platform katex.ts, miniapp render-math.ts, zhenti format.ts
-const STEM_CODE_KW = /^(#include|#define|unsigned|signed|short|int|char|float|double|void|struct|typedef|sizeof|switch|return|printf|scanf|while|else|for|if)\b/;
+const STEM_CODE_KW = /^(#include|#define|static|extern|register|const|unsigned|signed|long|short|int|char|float|double|void|struct|typedef|sizeof|switch|return|printf|scanf|while|else|for|if)\b/;
 const STEM_CODE_BREAK = /[\u3400-\u9fff\u3000-\u303f\uff00-\uffef\u2018\u2019\u201c\u201d]/;
 
 function stemCodeKwLen(s, i) {
@@ -3435,7 +3435,7 @@ const STEM_CODE_DL_ICON = '<svg width="14" height="14" viewBox="0 0 24 24" fill=
 function stemCodeLang(text) {
   const s = String(text || '');
   if (/^I\d+\b/m.test(s)) return 'asm';
-  if (/(^|[\n\s])(?:#include|#define|unsigned|signed|short|int|char|float|double|void|struct|typedef|sizeof|switch|return|printf|scanf|while|else|for|if)\b/.test(s)) return 'c';
+  if (/(^|[\n\s])(?:#include|#define|static|extern|register|const|unsigned|signed|long|short|int|char|float|double|void|struct|typedef|sizeof|switch|return|printf|scanf|while|else|for|if)\b/.test(s)) return 'c';
   return 'code';
 }
 
