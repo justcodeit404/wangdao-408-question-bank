@@ -3909,3 +3909,12 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **修复**：新增 `applyPracticeMastery()`：练习里点当前状态只当确认、不写库，只有换成别的状态才调 `setMastery`；按钮渲染时给当前状态加 `active` 高亮（`styles.css` 补 `.btn-mastery.*.active`）；键盘 1/2/3 同走该函数。未改题库数据。
 - **回归**：新增 `tests/test_practice_mastery_confirm.py` 3 条（同值确认、按钮走 helper、键盘走 helper）；bank-408 全量 **427 passed**；本机 8099 headless Chrome 实测——点「已掌握」后仍为 `mastered`、无墓碑，点「不熟」正常改写，键盘再确认不变。
 - **云端**：`push_data.ps1` 热更 **v545**，`index.html` / `sw.js` / `app.js` / `styles.css` 4 个壳文件推送；`__BANK_DATA_VER__=545`，`data-*.json` 未变故平台 408 池跳过重导，未重启服务。
+
+## 2026-11-17 · coa 寻址方式 X18 两空题答案只剩一个字母（按单选显示）
+
+- **病征**：coa「指令系统 · 寻址方式 · 选择题」X18（p167）题干两个空，选项是成对的机器码（A 2FH、FFH / B D5H、00H / C D5H、FFH / D 2FH、00H），题库里 `answer.choice` 只有 `D`，前端按普通单选渲染，只能点一个选项，第二个空无处作答。
+- **证据**：答案页 OCR 原文为 `18.D、C`，裁图 `answer_crops/coa/page_172_X18_ans.jpg` 印的是「18. D、C」，p173 解析 1）2）给出两空推导。按题意：PC=240 取指后为 243，290−243=47=2FH（低字节 2FH、高位补 0 → 00H）→ D；200−243=−43，补码 FF D5H（低字节 D5H、高位补 1 → FFH）→ C。
+- **根因**：基础抽取只留下答案行首字母。前端 `app.js` 的 `isOrderedChoice()` 以「答案字母 ≥ 2」判定连续多空题，平台导入侧 `bank_import_service` 也按 `len(letters) > 1` 归为 `ordered_choice`，答案缺字母后整条链路降级为 `single_choice`，所以题型不是「设计成单选」，而是答案被截断。
+- **修复**：`data/quality/page_review_patches.json` 新增 coa /「指令系统 · 寻址方式 · 选择题」/ X18 补丁：`choice` `D`→`DC`，并把 p173 的两空推导（1）2））补进 `explanation`；题干、四个选项、裁图未动。
+- **回归**：`fix_one.py` 发布态断言通过（1 题）；重建内 `pytest` 157 passed；缓存戳 550→551；`quality_ledger.py --check-published` 0 问题。本机 8791 静态服务实点：题干下方提示「本题 2 个空，请按顺序点击选项」，依次点 D、C 后显示「回答正确 答案：DC」。
+- **遗留**：全库扫出 30 道「题干 ≥2 个空、答案只有 1 个字母」的疑似同源题（coa 7 / ds 4 / net 5 / os 14），例如 coa X21（DMA 请求/总线控制权两空）、net X02（SMTP/POP3 两空）、os X19；需逐题对照原书答案页确认是否真为多空，未批量改。

@@ -3,15 +3,15 @@
 // 其它同源静态：Stale-While-Revalidate
 
 const CACHE_PREFIX = 'wd408-ui-';
-const CACHE_NAME = 'wd408-ui-v550';
+const CACHE_NAME = 'wd408-ui-v551';
 const APP_SHELL = [
   './',
   './index.html',
-  './styles.css?v=550',
-  './app.js?v=550',
-  './data.js?v=550',
-  './vendor/katex/katex.min.css?v=550',
-  './vendor/katex/katex.min.js?v=550',
+  './styles.css?v=551',
+  './app.js?v=551',
+  './data.js?v=551',
+  './vendor/katex/katex.min.css?v=551',
+  './vendor/katex/katex.min.js?v=551',
   './manifest.json'
 ];
 
