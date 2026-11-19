@@ -3919,3 +3919,12 @@ OS 选择题池 649 题，seen 从零建。20 题里 1 道真缺陷。连对 0/3
 - **回归**：`fix_one.py` 发布态断言通过（1 题）；重建内 `pytest` 157 passed；缓存戳 550→551；`quality_ledger.py --check-published` 0 问题。本机 8791 静态服务实点：题干下方提示「本题 2 个空，请按顺序点击选项」，依次点 D、C 后显示「回答正确 答案：DC」。
 - **扫库**：先按「题干 ≥2 个空、答案只有 1 个字母」筛出 29 道嫌疑（coa 6 / ds 4 / net 5 / os 14），逐题对照原书答案页：答案键全是单字母（如 coa X21 印「21. C」、net X02 印「2. A」、os X50 印「50. C」），且选项本身已是成对取值（`A. TCP,TCP` / `A. 外部设备、CPU`），一题一字母即正确；多出来的「（）」多是代码调用 `F()`、`printf()`、`x.wait()` 或统考真题措辞。**29/29 误报，未改。**
 - **全库答案键比对**：对 2493 道选择题，逐题取自身答案页 OCR（覆盖 2453 道，98%），把答案键字母串与库内 `choice` 比长度，**除 X18 外 0 处不符**；剩余 40 道未取到答案键的全是 2026 统考真题（无答案裁图、题干无多空），不属该族。结论：该截断只此一例。
+
+## 2026-11-20 · coa I/O接口 X17 答案多挂一张「下一节正文」续图
+
+- **病征**：coa「输入/输出系统 · I/O接口 · 选择题」X17（p302，2021 统考真题「不属于I/O接口」）点「显示答案」出现两张解析配图，第二张是 p304 顶部「7.3 I/O方式 / 7.3.1 程序查询方式」正文，与本题答案无关。
+- **根因**：X17 是 7.2.5 本节习题末题，答案在 p303 已收尾；`gen_answer_crops.py` 分段器找不到下一答案头，把 p304 当成续页裁出 `page_304_X17_ans_p2.jpg`，`wire_explanation` 把两段 rels 都写成 `答案图片：` 行，前端 `fillExplanation` 逐条渲染成图并隐藏文字解析，所以看上去「答案截图这么多」。
+- **修复**：`ANSWER_PART_CLAMP` 新增 `"coa␟7.2.5 本节习题精选␟X17": {"keep_pages": [303]}`，只保留 p303 段；清 `answer_crop_state.json` 的 coa 缓存后按标准 `rebuild_bank.ps1 -Course coa` 重裁，state 的 `rels_by_q` 与 explanation 同步收回单图，`page_304_X17_ans_p2.jpg` 不再被引用（文件保留，未删）。
+- **回归**：重建内 `pytest` **157 passed**；`answer_crop_state.json` 全库 diff 仅 X17 一条 rels 变化；本机 8123 静态服务实测 X17 答案卡只剩 1 张「17. A … 选项B、C和D均为I/O控制器」裁图，无截断。缓存戳 552→555（含两次 settle bump）。
+- **管线教训**：不要在 rebuild 之后单独再跑 `gen_answer_crops.py --write-expl` 验证指纹——它会重写 `data-*.json`，把 `auto_recrop_figs.py --manual-only` 补回的 `题目图片：crops/...png` 行冲掉（本次误伤 8 道 coa 解答题，其中 4 道有认证哈希，发布门禁直接拦下）。补跑一次 `auto_recrop_figs.py --manual-only` 后，四科 data 与云端逐题 diff 归零、只剩 X17。
+- **云端**：`push_data.ps1` 热更 **v555**，`check-published` 0 问题、新增漂移 0；`data-coa.json` HTTP 200，2 个裁图 hash-verified，平台 408 池 `coa updated 1 / failed 0`；公网 `__BANK_DATA_VER__=555`，云端 X17 已只有 1 张答案图。
